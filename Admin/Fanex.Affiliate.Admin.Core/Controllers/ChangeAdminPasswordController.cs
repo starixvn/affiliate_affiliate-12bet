@@ -1,4 +1,5 @@
 ﻿using Fanex.Affiliate.Admin.Core.Attributes;
+using Fanex.Affiliate.Admin.Core.Constants;
 using Fanex.Affiliate.Admin.Core.Extensions;
 using Fanex.Affiliate.Admin.Core.MetaModels.ChangeAdminPassword;
 using Fanex.Affiliate.Admin.Core.Services.ChangeAdminPassword;
@@ -27,6 +28,7 @@ namespace Fanex.Affiliate.Admin.Core.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryHeader]
+        [FunctionAuthorize(FunctionName = Function.AdminRoleMenu, IsHost = true)]
         public ActionResult ChangePassword(ChangeAdminPasswordParam param)
         {
             if (ModelState.IsValid)
