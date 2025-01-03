@@ -97,6 +97,7 @@
 
         [HttpPost]
         [AjaxOnly(PermissionName = ClaimConstant.MediaGallery)]
+        [PreventAccess]
         public ActionResult CountNumberOfCopies(CopiedBannerCounterParam param)
         {
             if (SessionService.IsInternal)

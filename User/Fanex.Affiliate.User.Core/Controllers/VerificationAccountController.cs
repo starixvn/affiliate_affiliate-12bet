@@ -73,6 +73,7 @@ namespace Fanex.Affiliate.User.Core.Controllers
         [AjaxOnly]
         [ValidateAntiForgeryToken]
         [HttpPost]
+        [PreventAccess]
         public ActionResult SendCode(string email)
         {
             var verificationSession = SessionService.VerificationSession;
@@ -107,6 +108,7 @@ namespace Fanex.Affiliate.User.Core.Controllers
         [EncryptedAction]
         [ValidateAntiForgeryToken]
         [HttpPost]
+        [PreventAccess]
         public ActionResult VerifyAccount(VerificationAccountParam param)
         {
             var verificationSession = SessionService.VerificationSession;

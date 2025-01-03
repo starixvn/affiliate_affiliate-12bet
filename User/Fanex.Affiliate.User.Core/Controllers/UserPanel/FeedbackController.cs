@@ -29,6 +29,11 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
         [AjaxOnly]
         public ActionResult Index(bool isClickLogout = false)
         {
+            if (SessionService != null)
+            {
+                return new EmptyResult();
+            }
+
             if (!SessionService.IsOpenedFeedback && IsValidAffToShowFeedback(isClickLogout))
             {
                 SessionService.IsOpenedFeedback = true;
@@ -47,6 +52,7 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
 
         [HttpPost]
         [AjaxOnly]
+        [PreventAccess]
         public ActionResult Insert(FeedbackParam param)
         {
             if (IsValidAffToAddFeedback(param.IsClickLogout))
@@ -68,6 +74,7 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
 
         [HttpPost]
         [AjaxOnly]
+        [PreventAccess]
         public ActionResult CloseFeedback(bool isClickLogout = false)
         {
             if (IsValidAffToAddFeedback(isClickLogout))

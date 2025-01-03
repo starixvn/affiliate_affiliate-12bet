@@ -360,6 +360,7 @@
     <Compile Include="DTO\UserPanel\Statistics\Country.cs" />
     <Compile Include="Extensions\HttpRequestExtension.cs" />
     <Compile Include="Filters\AddOnClaimAuthFilter.cs" />
+    <Compile Include="Filters\PreventAccessAttribute.cs" />
     <Compile Include="Filters\LanguageRouteCheckingAttribute.cs" />
     <Compile Include="Infrastructure\DateTimeProvider.cs" />
     <Compile Include="Infrastructure\HttpRequestParserHandler.cs" />

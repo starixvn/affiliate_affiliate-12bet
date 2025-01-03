@@ -53,6 +53,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PreventAccess]
         public ActionResult Index(UserSignUpParam param)
         {
             var result = new ResultInfo { IsOk = false };

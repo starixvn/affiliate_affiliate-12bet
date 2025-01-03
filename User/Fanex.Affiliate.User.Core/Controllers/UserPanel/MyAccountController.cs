@@ -74,6 +74,7 @@
         [HttpPost]
         [AjaxOnly]
         [ValidateAntiForgeryToken]
+        [PreventAccess]
         public ActionResult Index(AccountInformation model)
         {
             if (_sessionService.IsInternal)

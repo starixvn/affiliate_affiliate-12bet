@@ -65,6 +65,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PreventAccess]
         public ActionResult Index(ContactUsParam param)
         {
             var result = new ResultInfo { IsOk = false };

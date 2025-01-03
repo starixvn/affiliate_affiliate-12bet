@@ -47,6 +47,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PreventAccess]
         public ActionResult Forgot(string email)
         {
             if (string.IsNullOrEmpty(email))
@@ -98,6 +99,7 @@
         }
 
         [HttpGet]
+        [PreventAccess]
         public ActionResult RecoverPassword(string vid, int uid = 0)
         {
             if (uid == 0 || string.IsNullOrEmpty(vid))
@@ -166,6 +168,7 @@
         [CustomAuthorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PreventAccess]
         public ActionResult Update(UpdatePasswordParam param)
         {
             var resultInfo = new ResultInfo { IsOk = false };

@@ -53,6 +53,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PreventAccess]
         public async Task<ActionResult> CreatePaymentRequest(PaymentCreationParam paymentCreationParam)
         {
             var resultInfo = new ResultInfo { IsOk = true };
@@ -91,6 +92,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PreventAccess]
         public ActionResult CancelPaymentRequest(PaymentCancelParam cancelParam)
         {
             var resultInfo = new ResultInfo { IsOk = false };
