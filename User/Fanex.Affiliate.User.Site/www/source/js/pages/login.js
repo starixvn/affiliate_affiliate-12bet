@@ -35,6 +35,10 @@
             })
         },
         initLoginDialogEvent: function () {
+            if (!!window.isShowLogin) {
+                $("#loginDialog").modal({ backdrop: "static" });
+            }
+
             $('#mobileLogin').on('click', function () {
                 $("#loginDialog").modal({ backdrop: "static" });
             });

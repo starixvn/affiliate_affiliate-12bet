@@ -18,7 +18,13 @@ namespace Fanex.Affiliate.User.Core.Filters
                 var systemService = DependencyResolver.Current.GetService<ISystemService>();
                 var favoriteShortedLanguage = systemService.GetFavoriteShortedLanguage();
 
+                var queryString = filterContext.HttpContext.Request.Url?.Query.TrimStart('?');
                 var path = $"~/{favoriteShortedLanguage}/{filterContext.RouteData.Values["controller"]}";
+
+                if (!string.IsNullOrWhiteSpace(queryString))
+                {
+                    path += $"?{queryString}";
+                }
 
                 var controller = (BaseController)filterContext.Controller;
                 filterContext.Result = controller.RedirectToAbsolutePath(path);

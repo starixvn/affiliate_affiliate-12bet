@@ -4,6 +4,8 @@
     ViewBag.MetaDescription = Lang.MetaHomeDescription;
     ViewBag.MetaKeywords = Lang.MetaHomeKeywords;
     ViewBag.HeaderTitle = Lang.HomeHeaderTitle;
+
+    var isShowLogin = (bool)ViewBag.IsShowLogin;
 }
 
 @model Fanex.Affiliate.User.Core.ViewModels.HomeViewModel
@@ -51,6 +53,10 @@
     @Html.RenderPartialByLanguage("~/Views/Home/Partial/_Content", Model.Language, Model)
     @RazorHelper.RenderMovingTopButton()
 </div>
+
+<script>
+    window.isShowLogin = '@isShowLogin' === "True" ? true : false;
+</script>
 
 <input type="hidden" id="shortedLangCode" value="@Model.ShortedLanguageCode" />
 <input type="hidden" id="isCLickedBannerLink" value="0" />

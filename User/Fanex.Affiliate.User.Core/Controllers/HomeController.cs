@@ -23,7 +23,7 @@ namespace Fanex.Affiliate.User.Core.Controllers
 
         [HttpGet]
         [LanguageRouteChecking]
-        public ActionResult Index()
+        public ActionResult Index(bool isShowLogin = false)
         {
             var isAuthenticated = Request.IsAuthenticated && SessionService.UserSession != null;
 
@@ -35,6 +35,8 @@ namespace Fanex.Affiliate.User.Core.Controllers
                 BannerLink = isAuthenticated ? Url.RenderLanguageContent("~/UserPanel/Main/#MediaGallery") : "javascript:;",
                 Promotion12BetLink = GetPromotionLink()
             };
+
+            ViewBag.IsShowLogin = isShowLogin && !isAuthenticated;
 
             return View(viewModel);
         }
