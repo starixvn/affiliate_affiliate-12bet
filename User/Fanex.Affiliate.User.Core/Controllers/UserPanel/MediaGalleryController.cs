@@ -100,9 +100,9 @@
         [PreventAccess]
         public ActionResult CountNumberOfCopies(CopiedBannerCounterParam param)
         {
-            if (SessionService.IsInternal)
+            if (SessionService.IsPreventDBModification || SessionService.IsInternal)
             {
-                return Json(new ResultInfo { Message = Lang.ErrAuthorized });
+                return Json(GetErrorResult(Lang.ErrAuthorized));
             }
 
             param.AffId = SessionService.UserSession.AffId;

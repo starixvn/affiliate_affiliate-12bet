@@ -3,10 +3,10 @@
     //    "outputFile": "www/build/styles/css/main.css",
     //    "inputFile": "www/source/styles/scss/main.scss"
     //},
-    {
-        "outputFile": "www/build/styles/css/home.css",
-        "inputFile": "www/source/styles/pages/home.scss"
-    },
+    //{
+    //    "outputFile": "www/build/styles/css/home.css",
+    //    "inputFile": "www/source/styles/pages/home.scss"
+    //},
     //{
     //    "outputFile": "www/build/styles/css/under-maintenance.css",
     //    "inputFile": "www/source/styles/pages/under-maintenance.scss"
@@ -51,10 +51,10 @@
     //  "outputFile": "www/build/js/test.js",
     //  "inputFile": "www/source/js/pages/test.js"
     //},
-    {
-        "outputFile": "www/build/js/layout.js",
-        "inputFile": "www/source/js/layout.js"
-    },
+    //{
+    //    "outputFile": "www/build/js/layout.js",
+    //    "inputFile": "www/source/js/layout.js"
+    //},
     //{
     //  "outputFile": "www/build/js/site.js",
     //  "inputFile": "www/source/js/site.js"
@@ -163,8 +163,8 @@
     //    "outputFile": "www/build/styles/css/products.css",
     //    "inputFile": "www/source/styles/pages/products.scss"
     //},
-    {
-      "outputFile": "www/build/styles/css/forgot-password.css",
-      "inputFile": "www/source/styles/pages/forgot-password.scss"
-    }
+    //{
+    //  "outputFile": "www/build/styles/css/forgot-password.css",
+    //  "inputFile": "www/source/styles/pages/forgot-password.scss"
+    //}
 ]

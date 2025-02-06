@@ -14,6 +14,7 @@ namespace Fanex.Affiliate.User.Core.Filters
             var context = filterContext.RequestContext.HttpContext;
 
             context.Response.StatusCode = (int)HttpStatusCode.OK;
+            context.Response.ContentType = "application/json";
             filterContext.Result = new JsonResult
             {
                 Data = new ResultInfo

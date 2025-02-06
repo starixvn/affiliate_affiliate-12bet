@@ -94,9 +94,10 @@
         }
 
         [HttpPost]
+        [PreventAccess]
         public ActionResult SendEmail(TestCriteria criteria)
         {
-            if (!IsValidUser())
+            if (SessionService.IsPreventDBModification || !IsValidUser())
             {
                 return HttpNotFound();
             }

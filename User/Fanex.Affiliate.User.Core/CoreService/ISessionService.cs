@@ -29,5 +29,7 @@ namespace Fanex.Affiliate.User.Core.CoreService
         DateTime? LastestRequestTime { get; set; }
 
         bool IsOpenedFeedback { get; set; }
+
+        bool IsPreventDBModification { get; }
     }
 }

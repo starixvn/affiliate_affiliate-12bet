@@ -30,6 +30,7 @@ namespace Fanex.Affiliate.Link.Controllers
         private static readonly string[] MarketingLandingPages = ConfigurationManager.AppSettings["MarketingLandingPages"].ToString().Split(',');
         private static readonly bool IsRemovePortFromUrl = string.Equals(ConfigurationManager.AppSettings["RemovePortFromUrl"].ToString(), "1", StringComparison.OrdinalIgnoreCase);
         private static readonly bool IsLocal = string.Equals(ConfigurationManager.AppSettings["Environment"].ToString(), LOCAL_ENV, StringComparison.OrdinalIgnoreCase);
+        private static readonly bool IsPreventDBModification = string.Equals(ConfigurationManager.AppSettings["IsPreventDBModification"].ToString(), "1", StringComparison.OrdinalIgnoreCase);
         
         #region Services
 
@@ -102,7 +103,13 @@ namespace Fanex.Affiliate.Link.Controllers
 
         private ActionResult InsertAffiliate(int affId, string pageCode, string lang, string targetCountry)
         {
+            if(IsPreventDBModification)
+            {
+                ViewBag.Result = "This link does not exist or stop. Please contact administrator!";
 
+                return View("Link");
+            }
+            
             if (Request.Url != null)
             {
                 var affDomain = GetFullAffDomain(Request.Url.ToString(), affId);

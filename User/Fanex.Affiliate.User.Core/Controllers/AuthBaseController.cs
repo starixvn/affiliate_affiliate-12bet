@@ -71,15 +71,6 @@ namespace Fanex.Affiliate.User.Core.Controllers
             AuthService.SignIn(user.UserName, false);
         }
 
-        protected ResultInfo GetErrorResult(string message)
-        {
-            return new ResultInfo
-            {
-                IsOk = false,
-                Message = message
-            };
-        }
-
         private OnUserIdParam GetOnUserIdParam(int affId, string clientIpAddress, int adminId)
         {
             return new OnUserIdParam

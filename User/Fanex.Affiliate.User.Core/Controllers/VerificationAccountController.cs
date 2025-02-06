@@ -76,6 +76,11 @@ namespace Fanex.Affiliate.User.Core.Controllers
         [PreventAccess]
         public ActionResult SendCode(string email)
         {
+            if (SessionService.IsPreventDBModification)
+            {
+                return Json(GetErrorResult(Lang.ErrAuthorized));
+            }
+
             var verificationSession = SessionService.VerificationSession;
             if (verificationSession == null || string.IsNullOrEmpty(email))
             {
@@ -111,6 +116,11 @@ namespace Fanex.Affiliate.User.Core.Controllers
         [PreventAccess]
         public ActionResult VerifyAccount(VerificationAccountParam param)
         {
+            if (SessionService.IsPreventDBModification)
+            {
+                return Json(GetErrorResult(Lang.ErrAuthorized));
+            }
+
             var verificationSession = SessionService.VerificationSession;
             if (verificationSession == null)
             {

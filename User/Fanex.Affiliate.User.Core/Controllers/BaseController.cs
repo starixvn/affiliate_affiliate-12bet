@@ -1,5 +1,6 @@
 ﻿using Fanex.Affiliate.User.Core.BusinessService;
 using Fanex.Affiliate.User.Core.CoreService;
+using Fanex.Affiliate.User.Core.DTO;
 using ONEbook.UM.AspNetMVC.Filters;
 using System;
 using System.Web;
@@ -68,6 +69,15 @@ namespace Fanex.Affiliate.User.Core.Controllers
             {
                 SessionService.LastestRequestTime = DateTime.Now;
             }
+        }
+
+        protected ResultInfo GetErrorResult(string message)
+        {
+            return new ResultInfo
+            {
+                IsOk = false,
+                Message = message
+            };
         }
     }
 }

@@ -50,13 +50,14 @@
         [PreventAccess]
         public ActionResult Forgot(string email)
         {
+            if (SessionService.IsPreventDBModification)
+            {
+                return Json(GetErrorResult(Lang.ErrAuthorized));
+            }
+
             if (string.IsNullOrEmpty(email))
             {
-                return Json(new ResultInfo
-                {
-                    IsOk = false,
-                    Message = Lang.ErrEmailRequire
-                });
+                return Json(GetErrorResult(Lang.ErrEmailRequire));
             }
 
             var code = Generator.GetRandomString(10);
@@ -102,7 +103,7 @@
         [PreventAccess]
         public ActionResult RecoverPassword(string vid, int uid = 0)
         {
-            if (uid == 0 || string.IsNullOrEmpty(vid))
+            if (SessionService.IsPreventDBModification || uid == 0 || string.IsNullOrEmpty(vid))
             {
                 return RedirectToFixedAction("RecoverPasswordResult", new { isSuccessful = false });
             }
@@ -140,6 +141,11 @@
 
         public ActionResult RecoverPasswordResult(bool isSuccessful = false, int errCode = 0)
         {
+            if (SessionService.IsPreventDBModification)
+            {
+                return View(GetErrorResult(Lang.ErrAuthorized));
+            }
+
             var errorMsg = Common.GetErrorMessage("RecoverPassword", errCode == RecoverPasswordFailed ? RecoverPasswordFailed : InvalidUrlAddress);
             var result = new ResultInfo
             {
@@ -171,6 +177,11 @@
         [PreventAccess]
         public ActionResult Update(UpdatePasswordParam param)
         {
+            if (SessionService.IsPreventDBModification)
+            {
+                return Json(GetErrorResult(Lang.ErrAuthorized));
+            }
+
             var resultInfo = new ResultInfo { IsOk = false };
 
             if (SessionService.IsInternal)

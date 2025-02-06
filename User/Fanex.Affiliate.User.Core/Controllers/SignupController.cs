@@ -56,6 +56,11 @@
         [PreventAccess]
         public ActionResult Index(UserSignUpParam param)
         {
+            if (SessionService.IsPreventDBModification)
+            {
+                return Json(GetErrorResult(Lang.ErrAuthorized));
+            }
+
             var result = new ResultInfo { IsOk = false };
             if (!_captchaService.IsValid(param.Captcha, SessionService.SignUpCaptchaCode, Request.GetClientIP()))
             {

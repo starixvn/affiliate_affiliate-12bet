@@ -29,7 +29,7 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
         [AjaxOnly]
         public ActionResult Index(bool isClickLogout = false)
         {
-            if (SessionService != null)
+            if (SessionService.IsPreventDBModification)
             {
                 return new EmptyResult();
             }
@@ -55,6 +55,11 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
         [PreventAccess]
         public ActionResult Insert(FeedbackParam param)
         {
+            if (SessionService.IsPreventDBModification)
+            {
+                return Json(GetErrorResult(Lang.ErrAuthorized));
+            }
+
             if (IsValidAffToAddFeedback(param.IsClickLogout))
             {
                 if (ModelState.IsValid && param.IsValid)
@@ -69,7 +74,7 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
                 return Json(new ResultInfo { Message = ModelState.IsValid ? Error.InvalidFeedback : string.Join("<br>", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)) });
             }
 
-            return Json(new ResultInfo { Message = Lang.ErrAuthorized });
+            return Json(GetErrorResult(Lang.ErrAuthorized));
         }
 
         [HttpPost]
@@ -77,6 +82,11 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
         [PreventAccess]
         public ActionResult CloseFeedback(bool isClickLogout = false)
         {
+            if (SessionService.IsPreventDBModification)
+            {
+                return Json(GetErrorResult(Lang.ErrAuthorized));
+            }
+
             if (IsValidAffToAddFeedback(isClickLogout))
             {
                 var param = new FeedbackParam
@@ -89,7 +99,7 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
                 return Json(_feedbackService.Insert(param));
             }
 
-            return Json(new ResultInfo { Message = Lang.ErrAuthorized });
+            return Json(GetErrorResult(Lang.ErrAuthorized));
         }
 
         private bool IsValidAffToAddFeedback(bool isClickLogout)

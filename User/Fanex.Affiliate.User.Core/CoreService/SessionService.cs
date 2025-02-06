@@ -116,5 +116,7 @@ namespace Fanex.Affiliate.User.Core.CoreService
             get => HttpContext.Current.Session[ClaimIdentitiesKey] as IEnumerable<ClaimsIdentity>;
             set => HttpContext.Current.Session[ClaimIdentitiesKey] = value;
         }
+
+        public bool IsPreventDBModification => true;
     }
 }

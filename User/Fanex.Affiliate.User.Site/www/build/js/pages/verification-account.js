@@ -87,7 +87,14 @@ var VerificationAccount = (function () {
         },
         initEvent: function () {
             $("#btnSendCode").on("click", function (e) {
-                _me.sendCode();
+                //_me.sendCode();
+                var $form = $("#sendCodeForm");
+                var validator = $form.validate();
+                var isValidForm = validator.form();
+
+                if (isValidForm) {
+                    alert($("<div/>").html(resource.errAuthorized).text());
+                }
             });
             $("#btnLoginVerification").on("click", function (e) {
                 _me.submitForm();

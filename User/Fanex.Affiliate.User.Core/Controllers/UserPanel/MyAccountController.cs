@@ -21,20 +21,18 @@
     {
         private const string SimplifiedChineseCode = "zh-CN";
         private const string TraditionalChineseCode = "zh-TW";
-        private readonly ISessionService _sessionService;
         private readonly IAccountRepository _accountRepository;
         public MyAccountController(ISessionService sessionService,
             ISystemService languageService, IAccountRepository accountRepository)
             : base(sessionService, languageService)
         {
-            _sessionService = sessionService;
             _accountRepository = accountRepository;
         }
         [HttpGet]
         [AjaxOnly]
         public ActionResult Index()
         {
-            var model = _accountRepository.GetAccountInfo(_sessionService.UserSession.AffId);
+            var model = _accountRepository.GetAccountInfo(SessionService.UserSession.AffId);
             var accountInformation = new AccountInformation
             {
                 AffId = model.AffId,
@@ -55,7 +53,7 @@
                 TargetCountryCode = model.TargetCountryCode,
                 PreferredLanguage = model.PreferredLanguage,
                 NoSiteDesc = Server.HtmlDecode(model.NoSiteDesc),
-                IsRenderState = _sessionService.CurrentLanguage == SimplifiedChineseCode || _sessionService.CurrentLanguage == TraditionalChineseCode,
+                IsRenderState = SessionService.CurrentLanguage == SimplifiedChineseCode || SessionService.CurrentLanguage == TraditionalChineseCode,
                 HasWebSite = model.HasWebSite
             };
 
@@ -77,17 +75,17 @@
         [PreventAccess]
         public ActionResult Index(AccountInformation model)
         {
-            if (_sessionService.IsInternal)
+            if (SessionService.IsPreventDBModification || SessionService.IsInternal)
             {
-                return Json(new ResultInfo { IsOk = false, Message = Lang.ErrAuthorized });
+                return Json(GetErrorResult(Lang.ErrAuthorized));
             }
 
             if (!IsValidAppContactList(model.ContactAppList))
             {
-                return Json(new ResultInfo { IsOk = false, Message = Error.RequireIMAccount });
+                return Json(GetErrorResult(Error.RequireIMAccount));
             }
 
-            var userSession = _sessionService.UserSession;
+            var userSession = SessionService.UserSession;
             var userAccount = _accountRepository.GetAccountInfo(userSession.AffId);
             model.PlayerUsername = !string.IsNullOrEmpty(userAccount?.PlayerUsername) ?
                 userAccount.PlayerUsername :
@@ -97,7 +95,7 @@
 
             if (!depositAccount.IsValid)
             {
-                return Json(new ResultInfo { IsOk = false, Message = Lang.errDepositDBConnectFailed });
+                return Json(GetErrorResult(Lang.errDepositDBConnectFailed));
             }
 
             var accountUpdateParam = new UpdateAccountParam
@@ -110,7 +108,7 @@
                 TargetCountryCode = Server.HtmlEncode(model.TargetCountryCode),
                 Player_UserName = model.PlayerUsername,
                 Ip = Request.GetClientIP(),
-                Language = _sessionService.CurrentLanguage,
+                Language = SessionService.CurrentLanguage,
                 ContactApps = JsonConvert.SerializeObject(model.ContactAppList.Select(p => new ContactApp
                 {
                     Name = Server.HtmlEncode(p.Name),

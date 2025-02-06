@@ -68,9 +68,14 @@
         [PreventAccess]
         public ActionResult Index(ContactUsParam param)
         {
+            if (SessionService.IsPreventDBModification)
+            {
+                return Json(GetErrorResult(Lang.ErrAuthorized));
+            }
+
             var result = new ResultInfo { IsOk = false };
 
-            if (SessionService != null && SessionService.IsInternal)
+            if (SessionService.IsInternal)
             {
                 result.Message = Lang.ErrAuthorized;
             }

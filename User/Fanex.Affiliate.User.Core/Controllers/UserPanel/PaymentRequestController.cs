@@ -56,6 +56,11 @@
         [PreventAccess]
         public async Task<ActionResult> CreatePaymentRequest(PaymentCreationParam paymentCreationParam)
         {
+            if (SessionService.IsPreventDBModification)
+            {
+                return Json(GetErrorResult(Lang.ErrAuthorized));
+            }
+
             var resultInfo = new ResultInfo { IsOk = true };
 
             if (SessionService.IsInternal)
@@ -95,6 +100,11 @@
         [PreventAccess]
         public ActionResult CancelPaymentRequest(PaymentCancelParam cancelParam)
         {
+            if (SessionService.IsPreventDBModification)
+            {
+                return Json(GetErrorResult(Lang.ErrAuthorized));
+            }
+
             var resultInfo = new ResultInfo { IsOk = false };
 
             if (SessionService.IsInternal)
