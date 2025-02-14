@@ -28,7 +28,6 @@ namespace Fanex.Affiliate.Admin.Core.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryHeader]
-        [FunctionAuthorize(FunctionName = Function.AdminRoleMenu, IsHost = true)]
         public ActionResult ChangePassword(ChangeAdminPasswordParam param)
         {
             if (ModelState.IsValid)

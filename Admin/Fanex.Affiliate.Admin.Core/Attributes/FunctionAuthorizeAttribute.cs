@@ -58,7 +58,7 @@ namespace Fanex.Affiliate.Admin.Core.Attributes
 
         protected bool HasFuncClaim(ClaimsPrincipal claimsPrincipal, string funcName)
         {
-            return !IsHost && claimsPrincipal.HasClaim(funcName);
+            return funcName.MatchWith(Function.AdminRoleMenu) ? claimsPrincipal.HasClaim(funcName) : !IsHost && claimsPrincipal.HasClaim(funcName);
         }
     }
 }

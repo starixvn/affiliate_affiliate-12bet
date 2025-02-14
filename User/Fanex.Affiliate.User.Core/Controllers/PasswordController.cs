@@ -174,14 +174,8 @@
         [CustomAuthorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [PreventAccess]
         public ActionResult Update(UpdatePasswordParam param)
         {
-            if (SessionService.IsPreventDBModification)
-            {
-                return Json(GetErrorResult(Lang.ErrAuthorized));
-            }
-
             var resultInfo = new ResultInfo { IsOk = false };
 
             if (SessionService.IsInternal)
