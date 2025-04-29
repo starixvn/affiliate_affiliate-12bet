@@ -166,5 +166,9 @@
     //{
     //  "outputFile": "www/build/styles/css/forgot-password.css",
     //  "inputFile": "www/source/styles/pages/forgot-password.scss"
-    //}
+    //},
+    {
+      "outputFile": "www/build/styles/css/important-notice-closev1.css",
+      "inputFile": "www/source/styles/pages/important-notice-closev1.scss"
+    }
 ]

@@ -2345,4 +2345,14 @@ PEMBAYARAN KONSISTEN</value>
   <data name="Aff286TestimonialContent" xml:space="preserve">
     <value>"Bagi saya bergabung dengan 12BET adalah keputusan tepat. Join program afiliasinya gampang, dan pembayaran komisinya konsisten. Ini adalah kemitraan yang solid."</value>
   </data>
+  <data name="ImportantNoticeTitle" xml:space="preserve">
+    <value>Pemberitahuan Penting: Migrasi Akun Afiliasi</value>
+  </data>
+  <data name="ImportantNoticeContent" xml:space="preserve">
+    <value>Harap diketahui bahwa sistem akun afiliasi ini akan ditutup pada 30 Juni 2025. &lt;br&gt;&lt;br&gt;
+
+Untuk terus memantau performa Anda dan menerima komisi, silakan masuk ke dashboard afiliasi terbaru kami. &lt;br&gt;&lt;br&gt;
+
+Terima kasih atas kerja sama dan kemitraan Anda yang berkelanjutan!</value>
+  </data>
 </root>

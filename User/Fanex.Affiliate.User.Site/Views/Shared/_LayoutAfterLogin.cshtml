@@ -1,7 +1,7 @@
-﻿@using Fanex.Affiliate.User.Core.Utilities
+﻿
 @using Fanex.Affiliate.User.Core.CoreService
 @using Fanex.Affiliate.User.Core.BusinessService
-@using Fanex.Affiliate.User.Core.Constants
+
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
@@ -18,6 +18,8 @@
 @section afterLogin{after-login}
 
 @section styles{
+    <link href="@Url.RenderLink("~/www/build/styles/css/important-notice-closev1.css")" rel="stylesheet" />
+
     @RenderSection("styles", required: false)
 }
 
@@ -28,6 +30,7 @@
             IsIndiaAffiliate: '@isIndiaAffiliate'.toLowerCase() === 'true'
         }
     </script>
+    <script src="@Url.RenderLink("~/www/build/js/pages/important-notice-closev1.js")"></script>
     @RenderSection("scripts", required: false)
 }
 
@@ -70,6 +73,25 @@
     <div class="main-content">
         <div class="container-fluid">
             @RenderBody()
+        </div>
+    </div>
+</div>
+<!-- Modal Close V1 -->
+<div class="modal fade" id="importantNoticeModal" tabindex="-1" aria-labelledby="importantNoticeModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-icon">!</span>
+                <h5 class="modal-title" id="importantNoticeModalLabel">
+                    @Lang.ImportantNoticeTitle
+                </h5>
+                <button type="button" class="close-btn" id="closeModal">×</button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    @Html.Raw(Lang.ImportantNoticeContent)
+                </p>
+            </div>
         </div>
     </div>
 </div>

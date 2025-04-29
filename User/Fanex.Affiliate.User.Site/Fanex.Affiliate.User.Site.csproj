@@ -378,6 +378,10 @@
     <Content Include="www\build\js\pages\home.min.js">
       <DependentUpon>home.js</DependentUpon>
     </Content>
+    <Content Include="www\build\js\pages\important-notice-closev1.js" />
+    <Content Include="www\build\js\pages\important-notice-closev1.min.js">
+      <DependentUpon>important-notice-closev1.js</DependentUpon>
+    </Content>
     <Content Include="www\build\js\pages\products.js" />
     <Content Include="www\build\js\pages\products.min.js">
       <DependentUpon>products.js</DependentUpon>
@@ -404,6 +408,10 @@
     <Content Include="www\build\styles\css\forgot-password.css" />
     <Content Include="www\build\styles\css\forgot-password.min.css">
       <DependentUpon>forgot-password.css</DependentUpon>
+    </Content>
+    <Content Include="www\build\styles\css\important-notice-closev1.css" />
+    <Content Include="www\build\styles\css\important-notice-closev1.min.css">
+      <DependentUpon>important-notice-closev1.css</DependentUpon>
     </Content>
     <Content Include="www\build\styles\css\under-maintenance.css" />
     <Content Include="www\build\styles\css\under-maintenance.min.css">
@@ -694,6 +702,7 @@
     <Content Include="www\source\js\lib\jquery-3.3.1.min.js" />
     <Content Include="www\source\js\lib\swiper.min.js" />
     <Content Include="www\source\js\pages\commission-structure.js" />
+    <Content Include="www\source\js\pages\important-notice-closev1.js" />
     <Content Include="www\source\js\pages\products.js" />
     <Content Include="www\source\styles\scss\vendors\swiper.css" />
     <None Include="Configurations\AppSetting\AppSetting.tt">
@@ -1393,6 +1402,7 @@
     <Content Include="www\build\styles\Images\commission\top-banner\item\desktop.vi-VN.webp" />
     <Content Include="www\build\styles\Images\commission\top-banner\item\desktop.zh-TW.webp" />
     <Content Include="Views\Home\Partial\_AffTestimonialContentBlock.cshtml" />
+    <Content Include="www\source\styles\pages\important-notice-closev1.scss" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

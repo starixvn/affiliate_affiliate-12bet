@@ -181,14 +181,14 @@
   //    "www/source/js/pages/verification-account.js"
   //  ]
   //},
-  //{
-  //  "outputFileName": "www/build/js/pages/login.js",
-  //  "inputFiles": [
-  //    "www/source/js/components/authhelper.js",
-  //    "www/source/js/components/pagetracking.js",
-  //    "www/source/js/pages/login.js"
-  //  ]
-  //},
+  {
+    "outputFileName": "www/build/js/pages/login.js",
+    "inputFiles": [
+      "www/source/js/components/authhelper.js",
+      "www/source/js/components/pagetracking.js",
+      "www/source/js/pages/login.js"
+    ]
+  },
   //{
   //  "outputFileName": "www/build/js/pages/changepassword.js",
   //  "inputFiles": [
@@ -199,5 +199,11 @@
   //{
   //  "outputFileName": "www/build/styles/css/bootstrap-3.3.7.min.css",
   //  "inputFiles": [ "www/source/styles/scss/vendors/bootstrap-3.3.7.min.css" ]
-  //}
+  //},
+  {
+    "outputFileName": "www/build/js/pages/important-notice-closev1.js",
+    "inputFiles": [
+      "www/source/js/pages/important-notice-closev1.js"
+    ]
+  },
 ]

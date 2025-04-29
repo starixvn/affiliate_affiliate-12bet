@@ -2452,4 +2452,14 @@ CONSISTENT PAYMENT</value>
   <data name="Aff286TestimonialContent" xml:space="preserve">
     <value>"Joining 12BET has been a great decision for me. The affiliate program is easy to join, and the commission payments are always consistent. It's a solid partnership."</value>
   </data>
+  <data name="ImportantNoticeTitle" xml:space="preserve">
+    <value>Important Notice: Affiliate Account Migration</value>
+  </data>
+  <data name="ImportantNoticeContent" xml:space="preserve">
+    <value>Please be informed that this affiliate account system will be closed on June 30, 2025. &lt;br&gt;&lt;br&gt;
+
+To continue tracking your performance and receiving commissions, kindly log in to our new affiliate dashboard. &lt;br&gt;&lt;br&gt;
+
+Thank you for your cooperation and continued partnership!</value>
+  </data>
 </root>

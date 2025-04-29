@@ -2807,6 +2807,28 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please be informed that this affiliate account system will be closed on June 30, 2025. &lt;br&gt;&lt;br&gt;
+        ///
+        ///To continue tracking your performance and receiving commissions, kindly log in to our new affiliate dashboard. &lt;br&gt;&lt;br&gt;
+        ///
+        ///Thank you for your cooperation and continued partnership!.
+        /// </summary>
+        public static string ImportantNoticeContent {
+            get {
+                return ResourceManager.GetString("ImportantNoticeContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Important Notice: Affiliate Account Migration.
+        /// </summary>
+        public static string ImportantNoticeTitle {
+            get {
+                return ResourceManager.GetString("ImportantNoticeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to IN.
         /// </summary>
         public static string IN {

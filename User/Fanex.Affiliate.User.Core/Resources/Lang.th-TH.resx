@@ -2370,4 +2370,12 @@
 จ่ายค่าคอมมิชั่นสม่ำเสมอ​&lt;br/&gt;
 ซึ่งถือเป็นการเข้าร่วมที่มั่นคง"​</value>
   </data>
+  <data name="ImportantNoticeTitle" xml:space="preserve">
+    <value>ประกาศสำคัญ: เรื่องการย้ายบัญชีพันธมิตร</value>
+  </data>
+  <data name="ImportantNoticeContent" xml:space="preserve">
+    <value>โปรดทราบ! บัญชีพันธมิตรนี้จะถูกปิดในวันที่ 30 มิถุนายน 2025 &lt;br&gt;&lt;br&gt;
+หากต้องการติดตามผลงาน ยอด และรับคอมมิชชันของคุณต่อไป โปรดลงชื่อเข้าใช้แดชบอร์ดพันธมิตรใหม่ของเรา &lt;br&gt;&lt;br&gt;
+ขอขอบคุณสำหรับความร่วมมือของคุณและการเป็นพันธมิตรของตลอดมา! &lt;br&gt;&lt;br&gt;</value>
+  </data>
 </root>

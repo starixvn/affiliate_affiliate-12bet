@@ -2366,4 +2366,12 @@
 而且佣金支付一直都很穩定。&lt;br/&gt;
 這是一個穩固的合作夥伴關係。</value>
   </data>
+  <data name="ImportantNoticeContent" xml:space="preserve">
+    <value>請注意，目前的合作夥伴會員帳戶系統將於2025年6月30日關閉。&lt;br&gt;&lt;br&gt;
+為了繼續追蹤您的推廣成效並領取佣金，請登入我們全新的合作夥伴後台系統。&lt;br&gt;&lt;br&gt;
+感謝您的支持與合作！</value>
+  </data>
+  <data name="ImportantNoticeTitle" xml:space="preserve">
+    <value>重要通知：合作夥伴會員帳戶遷移</value>
+  </data>
 </root>

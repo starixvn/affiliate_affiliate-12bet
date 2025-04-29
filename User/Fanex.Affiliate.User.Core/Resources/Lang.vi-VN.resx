@@ -2342,4 +2342,14 @@ THANH TOÁN ỔN ĐỊNH</value>
   <data name="Aff286TestimonialContent" xml:space="preserve">
     <value>Tham gia 12BET là một quyết định tuyệt vời đối với tôi. Chương trình đại lý dễ tham gia, và các khoản thanh toán hoa hồng luôn ổn định. Đây là một đối tác vững chắc.</value>
   </data>
+  <data name="ImportantNoticeTitle" xml:space="preserve">
+    <value>Thông Báo Quan Trọng: Chuyển Đổi Tài Khoản Đại Lý</value>
+  </data>
+  <data name="ImportantNoticeContent" xml:space="preserve">
+    <value>Xin lưu ý rằng hệ thống Tài Khoản Đại Lý hiện tại sẽ chính thức ngừng hoạt động vào ngày 30/6/2025. &lt;br&gt;&lt;br&gt;
+
+Để tiếp tục theo dõi hiệu suất và nhận hoa hồng, vui lòng đăng nhập vào bảng Tài Khoản Đại Lý mới của chúng tôi. &lt;br&gt;&lt;br&gt;
+
+Xin chân thành cảm ơn sự hợp tác và đồng hành của bạn!</value>
+  </data>
 </root>
