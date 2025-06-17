@@ -1,7 +1,6 @@
 ﻿using Fanex.Affiliate.Admin.Core.Constants;
 using Fanex.Affiliate.Admin.Core.DTO;
 using Fanex.Affiliate.Admin.Core.DTO.Common;
-using Fanex.Affiliate.Admin.Core.Extensions;
 using Fanex.Caching;
 using Fanex.Data.Repository;
 using System.Collections.Generic;
@@ -13,7 +12,10 @@ namespace Fanex.Affiliate.Admin.Core.Services.Common
 {
     public class SystemService : BaseDynamicService, ISystemService
     {
-        private const string ChineseSimplifiedForMalaysia = "mycs";
+        private const string _Chinese_Simplified_For_Malaysia = "mycs";
+        private const string _English_For_Philippines = "phen";
+        private static readonly IList<string> _unsupportedFilterLanguages = new List<string> { _Chinese_Simplified_For_Malaysia, _English_For_Philippines };
+
         private readonly ICacheService _cacheService;
 
         public SystemService(
@@ -31,7 +33,7 @@ namespace Fanex.Affiliate.Admin.Core.Services.Common
             {
                 const string SpKey = "Aff_Market_Sel";
 
-                languageList = FetchTData<Language>(SpKey).Where(l => !l.ShortedLanguageCode.MatchWith(ChineseSimplifiedForMalaysia));
+                languageList = FetchTData<Language>(SpKey).Where(l => !_unsupportedFilterLanguages.Contains(l.ShortedLanguageCode));
                 _cacheService.Set(CacheKey.LanguageList, languageList);
             }
 

@@ -199,7 +199,13 @@ namespace Fanex.Affiliate.User.Core.Constants
 
         public const string ShortedChineseSimplifiedInMalaysia = "mycs";
 
+        public const string ShortedEnglishInPhilippines = "phen";
+
         public const string SelectedAllLanguages = "";
+
+        private static readonly IList<string> _unsupportedFilterLanguages = new List<string> { ShortedChineseSimplifiedInMalaysia, ShortedEnglishInPhilippines };
+
+        public static IList<string> UnsupportedFilterLanguages => _unsupportedFilterLanguages;
 
         public static string GetShortedCodeForTracking(string currentLanguage)
         {

@@ -69,7 +69,7 @@
 
             if (languageList == null)
             {
-                languageList = GetAllLanguages().Where(l => !l.ShortedCode.MatchWith(SystemLanguage.ShortedChineseSimplifiedInMalaysia));
+                languageList = GetAllLanguages().Where(l => !SystemLanguage.UnsupportedFilterLanguages.Contains(l.ShortedCode));
                 _cacheService.Set(CacheKey.LanguageList, languageList);
             }
 
