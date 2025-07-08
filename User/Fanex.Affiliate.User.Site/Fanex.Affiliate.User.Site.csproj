@@ -451,6 +451,7 @@
     <Content Include="www\build\styles\Images\account-overview\qr-disabled.png" />
     <Content Include="www\build\styles\Images\commission\revenue-share-hierarchy\revenue_share_hierarchy.bn-BD.png" />
     <Content Include="www\build\styles\Images\commission\revenue-share-hierarchy\revenue_share_hierarchy.en-IN.png" />
+    <Content Include="www\build\styles\Images\commission\revenue-share-hierarchy\revenue_share_hierarchy.en-PH.png" />
     <Content Include="www\build\styles\Images\commission\revenue-share-hierarchy\revenue_share_hierarchy.ja-JP.png" />
     <Content Include="www\build\styles\Images\commission\revenue-share-hierarchy\revenue_share_hierarchy.zh-CN.png" />
     <Content Include="www\build\styles\Images\commission\revenue-share-hierarchy\revenue_share_hierarchy.vi-VN.png" />
@@ -507,11 +508,14 @@
     <Content Include="www\build\styles\Images\langs\ms.svg" />
     <Content Include="www\build\styles\Images\langs\ch.png" />
     <Content Include="www\build\styles\Images\langs\ch.svg" />
+    <Content Include="www\build\styles\Images\langs\ph.png" />
+    <Content Include="www\build\styles\Images\langs\ph.svg" />
     <Content Include="www\build\styles\Images\logo-original.svg" />
     <Content Include="www\build\styles\Images\logo.svg" />
     <Content Include="www\build\styles\Images\logo\bn-BD.png" />
     <Content Include="www\build\styles\Images\logo\br.png" />
     <Content Include="www\build\styles\Images\logo\en-IN.png" />
+    <Content Include="www\build\styles\Images\logo\en-PH.png" />
     <Content Include="www\build\styles\Images\logo\en-US.png" />
     <Content Include="www\build\styles\Images\logo\id-ID.png" />
     <Content Include="www\build\styles\Images\logo\ja-JP.png" />
@@ -700,6 +704,7 @@
     <Content Include="www\build\styles\Images\product\sports\saba-sports.png" />
     <Content Include="www\build\styles\Images\qr-icon\bn-BD.png" />
     <Content Include="www\build\styles\Images\qr-icon\en-GB.png" />
+    <Content Include="www\build\styles\Images\qr-icon\en-PH.png" />
     <Content Include="www\build\styles\Images\qr-icon\te-IN.png" />
     <Content Include="www\build\styles\Images\qr-icon\zh-CN.png" />
     <Content Include="www\build\styles\Images\qr-icon\en-US.png" />

@@ -17,6 +17,7 @@ namespace Fanex.Affiliate.User.Core.Constants
         private const string _VietNam_LanguageCode = "vi-VN";
         private const string _Chinese_LanguageCode = "zh-CN";
         private const string _Taiwan_LanguageCode = "zh-TW";
+        private const string _Philippines_LanguageCode = "en-PH";
 
         private static readonly IReadOnlyDictionary<string, string> _supportedLanguageForGoogleAnalytics = new Dictionary<string, string>
         {
@@ -31,6 +32,7 @@ namespace Fanex.Affiliate.User.Core.Constants
             [_VietNam_LanguageCode] = "vn",
             [_Chinese_LanguageCode] = "cs",
             [_Taiwan_LanguageCode] = "ch",
+            [_Philippines_LanguageCode] = "phen",
         };
 
         private static readonly IReadOnlyDictionary<string, string> _supportedLanguageForSEO = new Dictionary<string, string>
@@ -43,6 +45,7 @@ namespace Fanex.Affiliate.User.Core.Constants
             [_Indonesia_LanguageCode] = "id",
             [_India_LanguageCode] = "en-IN",
             [_Korea_LanguageCode] = "ko",
+            [_Philippines_LanguageCode] = "en-PH",
         };
 
 
@@ -68,6 +71,7 @@ namespace Fanex.Affiliate.User.Core.Constants
             ["cs"] = _Chinese_LanguageCode,
             ["tw"] = _Taiwan_LanguageCode,
             ["ch"] = _Taiwan_LanguageCode,
+            ["phen"] = _Philippines_LanguageCode,
         };
 
         private static readonly IReadOnlyDictionary<string, IList<KeyValuePair<string, string>>> _supportedAlternateLanguages = new Dictionary<string, IList<KeyValuePair<string, string>>>
@@ -81,6 +85,7 @@ namespace Fanex.Affiliate.User.Core.Constants
                 new KeyValuePair<string, string>("en", "my"),
                 new KeyValuePair<string, string>("en", "en-US"),
                 new KeyValuePair<string, string>("en", "en-UK"),
+                new KeyValuePair<string, string>("en", "en-PH"),
                 new KeyValuePair<string, string>("en", "en"),
                 new KeyValuePair<string, string>("en", "")
             },
@@ -193,17 +198,17 @@ namespace Fanex.Affiliate.User.Core.Constants
 
         public const string TaiwanLanguageCode = _Taiwan_LanguageCode;
 
+        public const string PhilippinesLanguageCode = _Philippines_LanguageCode;
+
         public const string ShortedDefaultCode = "en";
 
         public const string ShortedTeluguCode = "hitg";
 
         public const string ShortedChineseSimplifiedInMalaysia = "mycs";
 
-        public const string ShortedEnglishInPhilippines = "phen";
-
         public const string SelectedAllLanguages = "";
 
-        private static readonly IList<string> _unsupportedFilterLanguages = new List<string> { ShortedChineseSimplifiedInMalaysia, ShortedEnglishInPhilippines };
+        private static readonly IList<string> _unsupportedFilterLanguages = new List<string> { ShortedChineseSimplifiedInMalaysia };
 
         public static IList<string> UnsupportedFilterLanguages => _unsupportedFilterLanguages;
 

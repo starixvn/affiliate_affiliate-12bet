@@ -1,6 +1,6 @@
 var Layout = (function ($) {
     var DEFAULT_SPEED = 39;
-    let regexLangPartten = /\/(\w{2}|hien|hitg)\//g;
+    let regexLangPartten = /\/(\w{2}|hien|hitg|phen)\//g;
     let regexLang = new RegExp(regexLangPartten);
 
     function createNewUrlByLanguage(language) {

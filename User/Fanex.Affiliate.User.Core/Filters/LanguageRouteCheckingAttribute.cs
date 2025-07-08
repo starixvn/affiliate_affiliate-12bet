@@ -17,7 +17,7 @@ namespace Fanex.Affiliate.User.Core.Filters
         {
             var preferedUrlLang = filterContext.RouteData.Values["lang"]?.ToString();
             if (!filterContext.HttpContext.Request.IsAjaxRequest() &&
-                (string.IsNullOrEmpty(preferedUrlLang) || RegexHelper.IsMatch(filterContext.HttpContext.Request.RawUrl, "/((\\w{2}|hien|hitg)/?)?$", RegexOptions.IgnoreCase)))
+                (string.IsNullOrEmpty(preferedUrlLang) || RegexHelper.IsMatch(filterContext.HttpContext.Request.RawUrl, "/((\\w{2}|hien|hitg|phen)/?)?$", RegexOptions.IgnoreCase)))
             {
                 var systemService = DependencyResolver.Current.GetService<ISystemService>();
                 var favoriteShortedLanguage = systemService.GetFavoriteShortedLanguage();

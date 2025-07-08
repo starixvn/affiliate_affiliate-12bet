@@ -45,7 +45,7 @@ namespace Fanex.Affiliate.User.Site
             routes.MapRoute(
               name: "UserPanelHasLang",
               url: "{lang}/UserPanel/{controller}/{action}/{id}",
-              constraints: new { lang = @"(\w{2}|hien|hitg)" },
+              constraints: new { lang = @"(\w{2}|hien|hitg|phen)" },
               defaults: new { controller = "AccountOverview", action = IndexAction, id = UrlParameter.Optional, lang = UrlParameter.Optional }
             );
 
@@ -58,7 +58,7 @@ namespace Fanex.Affiliate.User.Site
             routes.MapRoute(
                 name: "DefaultHasLang",
                 url: "{lang}/{controller}/{action}/{id}",
-                constraints: new { lang = @"(\w{2}|hien|hitg)" },
+                constraints: new { lang = @"(\w{2}|hien|hitg|phen)" },
                 defaults: new { controller = "Home", action = IndexAction, id = UrlParameter.Optional, lang = UrlParameter.Optional }
             );
 

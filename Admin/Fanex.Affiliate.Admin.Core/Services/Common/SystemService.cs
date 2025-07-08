@@ -13,8 +13,7 @@ namespace Fanex.Affiliate.Admin.Core.Services.Common
     public class SystemService : BaseDynamicService, ISystemService
     {
         private const string _Chinese_Simplified_For_Malaysia = "mycs";
-        private const string _English_For_Philippines = "phen";
-        private static readonly IList<string> _unsupportedFilterLanguages = new List<string> { _Chinese_Simplified_For_Malaysia, _English_For_Philippines };
+        private static readonly IList<string> _unsupportedFilterLanguages = new List<string> { _Chinese_Simplified_For_Malaysia };
 
         private readonly ICacheService _cacheService;
 
