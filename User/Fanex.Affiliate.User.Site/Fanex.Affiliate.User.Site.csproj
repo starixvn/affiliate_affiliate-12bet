@@ -1324,6 +1324,14 @@
     <Content Include="Configurations\Web\Web.12b-user.klprod.config">
       <DependentUpon>Web.tt</DependentUpon>
     </Content>
+    <Content Include="Views\Shared\Email\ContactInfo\Html\Content.en-PH.cshtml" />
+    <Content Include="Views\Shared\Email\ContactInfo\Text\Content.en-PH.cshtml" />
+    <Content Include="Views\Shared\Email\NewPassword\Content.en-PH.cshtml" />
+    <Content Include="Views\Shared\Email\PaymentCancel\Content.en-PH.cshtml" />
+    <Content Include="Views\Shared\Email\PaymentRequest\Content.en-PH.cshtml" />
+    <Content Include="Views\Shared\Email\RecoverPassword\Content.en-PH.cshtml" />
+    <Content Include="Views\Shared\Email\Signup\Content.en-PH.cshtml" />
+    <Content Include="Views\Shared\Email\VerificationAccount\Content.en-PH.cshtml" />
     <Content Include="www\build\styles\Images\home\top-banner\item\mobile.en-US.webp" />
     <Content Include="www\build\styles\Images\home\top-banner\item\mobile.id-ID.webp" />
     <Content Include="www\build\styles\Images\home\top-banner\item\mobile.ko-KR.webp" />

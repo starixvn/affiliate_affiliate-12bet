@@ -7,6 +7,7 @@ using Fanex.Affiliate.Admin.Core.Resources;
 using Fanex.Affiliate.Admin.Core.Services.Common;
 using Fanex.Affiliate.Admin.Core.Services.Message;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace Fanex.Affiliate.Admin.Core.Controllers
@@ -15,9 +16,11 @@ namespace Fanex.Affiliate.Admin.Core.Controllers
     public class MessageController : ReadOnlySessionBaseController
     {
         private const int threeMilliSecond = 3;
+        private static readonly IReadOnlyList<string> _unsupportedMessageLanguages = new List<string> { "en-GB", "en-IN", "bn-BD", "ja-JP", "te-IN", "en-PH" };
+
         private readonly IMessageService _messageSevice;
         private readonly ISystemService _languageService;
-
+        
         public MessageController(
             ISessionService sessionService,
             IMessageService messageSevice,
@@ -30,7 +33,7 @@ namespace Fanex.Affiliate.Admin.Core.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var mode = _languageService.GetLanguageList();
+            var mode = _languageService.GetLanguageList().Where(l => !_unsupportedMessageLanguages.Contains(l.LanguageCode));
 
             return View(mode);
         }

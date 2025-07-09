@@ -1396,7 +1396,6 @@
     <Content Include="Areas\Portal\Views\Shared\Email\WithdrawalGuidance\Content.bn-BD.cshtml" />
     <Content Include="Areas\Portal\Views\Shared\Email\WithdrawalGuidance\Content.en-GB.cshtml" />
     <Content Include="Areas\Portal\Views\Shared\Email\WithdrawalGuidance\Content.en-US.cshtml" />
-    <Content Include="Areas\Portal\Views\Shared\Email\WithdrawalGuidance\Content.es-ES.cshtml" />
     <Content Include="Areas\Portal\Views\Shared\Email\WithdrawalGuidance\Content.hi-IN.cshtml" />
     <Content Include="Areas\Portal\Views\Shared\Email\WithdrawalGuidance\Content.id-ID.cshtml" />
     <Content Include="Areas\Portal\Views\Shared\Email\WithdrawalGuidance\Content.ja-JP.cshtml" />
@@ -1421,6 +1420,14 @@
     <Content Include="Areas\Portal\Views\Operation\Deal.cshtml" />
     <Content Include="Areas\Portal\www\source\style\pages\operation\deal.scss" />
     <Content Include="Areas\Portal\Views\Operation\AssignDeal.cshtml" />
+    <Content Include="Areas\Portal\Views\Shared\Email\ContactInfo\Text\Content.en-PH.cshtml" />
+    <Content Include="Areas\Portal\Views\Shared\Email\ContactInfo\Html\Content.en-PH.cshtml" />
+    <Content Include="Areas\Portal\Views\Shared\Email\AffiliateApproved\Content.en-PH.cshtml" />
+    <Content Include="Areas\Portal\Views\Shared\Email\AffiliateDisapproved\Content.en-PH.cshtml" />
+    <Content Include="Areas\Portal\Views\Shared\Email\AffiliateInformation\Content.en-PH.cshtml" />
+    <Content Include="Areas\Portal\Views\Shared\Email\PaymentRequest\Approved\Content.en-PH.cshtml" />
+    <Content Include="Areas\Portal\Views\Shared\Email\PaymentRequest\Rejected\Content.en-PH.cshtml" />
+    <Content Include="Areas\Portal\Views\Shared\Email\WithdrawalGuidance\Content.en-PH.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\Settings.settings">
