@@ -16,6 +16,7 @@ namespace Fanex.Affiliate.User.Core.Constants
         public static readonly IReadOnlyDictionary<string, string> FirsAppContactList = new Dictionary<string, string>
         {
             [SystemLanguage.EnglishLanguageCode] = Telegram,
+            [SystemLanguage.PhilippinesLanguageCode] = Telegram,
             [SystemLanguage.BangladeshLanguageCode] = WhatsApp,
             [SystemLanguage.IndiaLanguageCode] = WhatsApp,
             [SystemLanguage.IndonesiaLanguageCode] = WhatsApp,
@@ -31,6 +32,7 @@ namespace Fanex.Affiliate.User.Core.Constants
         public static readonly IReadOnlyDictionary<string, string> SecondAppContactList = new Dictionary<string, string>
         {
             [SystemLanguage.EnglishLanguageCode] = Facebook,
+            [SystemLanguage.PhilippinesLanguageCode] = Facebook,
             [SystemLanguage.BangladeshLanguageCode] = Telegram,
             [SystemLanguage.IndiaLanguageCode] = Telegram,
             [SystemLanguage.JapanLanguageCode] = Facebook,
