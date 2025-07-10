@@ -2553,4 +2553,7 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   <data name="RevenueSharePayoutExample" xml:space="preserve">
     <value>Ví dụ về cách tính tiền hoa hồng</value>
   </data>
+  <data name="EnglishPhilippines" xml:space="preserve">
+    <value>Tiếng Anh (Philippines)</value>
+  </data>
 </root>

@@ -2571,4 +2571,7 @@
   <data name="RevenueSharePayoutExample" xml:space="preserve">
     <value>佣金盈利计算示例</value>
   </data>
+  <data name="EnglishPhilippines" xml:space="preserve">
+    <value>英语 (菲律宾)</value>
+  </data>
 </root>

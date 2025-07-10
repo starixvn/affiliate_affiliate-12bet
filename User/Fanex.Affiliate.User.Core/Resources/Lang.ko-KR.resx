@@ -2525,4 +2525,7 @@
   <data name="VietnamCountry" xml:space="preserve">
     <value>베트남</value>
   </data>
+  <data name="EnglishPhilippines" xml:space="preserve">
+    <value>영어 (필리핀)</value>
+  </data>
 </root>

@@ -2551,4 +2551,7 @@ Anda juga bisa mengirim email ke {1} atau cukup isi formulir di bawah ini.</valu
   <data name="RevenueSharePayoutExample" xml:space="preserve">
     <value>Contoh Pembayaran Pembagian Hasil</value>
   </data>
+  <data name="EnglishPhilippines" xml:space="preserve">
+    <value>Inggris (Filipina)</value>
+  </data>
 </root>

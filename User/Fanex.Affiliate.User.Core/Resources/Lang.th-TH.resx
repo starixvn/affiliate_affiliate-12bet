@@ -2575,4 +2575,7 @@
   <data name="RevenueSharePayoutExample" xml:space="preserve">
     <value>ตัวอย่างการจ่ายส่วนแบ่งรายได้</value>
   </data>
+  <data name="EnglishPhilippines" xml:space="preserve">
+    <value>อังกฤษ (ฟิลิปปินส์)</value>
+  </data>
 </root>
