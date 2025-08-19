@@ -77,8 +77,23 @@ export class AggregateHeaderColumn extends HeaderColumn {
     }
 
     get totalShowableCol() {
-        return this.childHeader.filter(item => item.isShowable).length;
+        const countLeaf = (nodes) => {
+            let count = 0;
+
+            nodes.forEach(item => {
+                if (item.childHeader && item.childHeader.length > 0) {
+                    count += countLeaf(item.childHeader);
+                } else {
+                    if (item.showable) count++;
+                }
+            });
+
+            return count;
+        };
+
+        return countLeaf(this.childHeader || []);
     }
+
 }
 
 export class HeaderRow extends AggregateHeaderColumn {
