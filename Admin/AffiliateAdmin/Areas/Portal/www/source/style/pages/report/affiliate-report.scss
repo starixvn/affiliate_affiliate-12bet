@@ -39,7 +39,7 @@
 
     .aff-report-table-container {
         .freeze-table {
-            min-width: 2000px;
+            min-width: 3000px;
             border-collapse: separate;
             border-spacing: 0;
 
@@ -60,6 +60,10 @@
 
                     &-h2 th {
                         top: 28px;
+                    }
+
+                    &-h3 th {
+                        top: 56px;
                     }
 
                     .freeze-column-header {
