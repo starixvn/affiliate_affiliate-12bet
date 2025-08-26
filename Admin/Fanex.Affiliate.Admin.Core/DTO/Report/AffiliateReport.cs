@@ -52,15 +52,25 @@ namespace Fanex.Affiliate.Admin.Core.DTO.Report
 
         public decimal TotalFee { get; set; }
 
-        public decimal CommissionRate { get; set; }
-
-        public decimal Earning { get; set; }
-
-        public string EarningBy { get; set; }
-
         public decimal AffWithdrawal { get; set; }
 
         public decimal AffAdjustment { get; set; }
+
+        public decimal Earning { get; set; }
+
+        public decimal CommissionRate { get; set; }
+
+        public decimal CpaAmount { get; set; }
+
+        public decimal TotalMainEarning { get; set; }
+
+        public decimal SubAffEarning { get; set; }
+
+        public decimal SubCpaAmount { get; set; }
+
+        public decimal TotalSubEarning { get; set; }
+
+        public decimal TotalEarning { get; set; }
 
         public decimal BalanceBf { get; set; }
 
@@ -68,18 +78,20 @@ namespace Fanex.Affiliate.Admin.Core.DTO.Report
 
         public int NoOfSubAff { get; set; }
 
-        public decimal SubAffEarning { get; set; }
-
-        public decimal TotalEarning => Earning + SubAffEarning;
-
         public bool IsMultiGroupProduct { get; set; }
 
-        public int TotalDeposit { get; set; }
+        public decimal TotalDeposit { get; set; }
 
         public string PreferredLanguage { get; set; }
 
         public string Status { get; set; }
 
         public string CommGroupName { get; set; }
+
+        public string PaymentFrequency { get; set; }
+
+        public int GroupId { get; set; }
+
+        public byte GroupTypeId { get; set; }
     }
 }

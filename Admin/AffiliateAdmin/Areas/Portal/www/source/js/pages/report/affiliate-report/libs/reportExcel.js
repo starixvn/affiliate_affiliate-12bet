@@ -54,7 +54,7 @@ const colConfig =
         [COL_WIDTH]: 150
     },
     [fields.PaymentFrequency]: {
-        [MAIN_SECTION_STYLE]: bodyCellStyle.center,
+        [MAIN_SECTION_STYLE]: bodyCellStyle.left,
         [TOTAL_SECTION_STYLE]: totalCellStyle.default,
         [COL_WIDTH]: 150
     },
@@ -164,7 +164,7 @@ const colConfig =
         [TOTAL_SECTION_STYLE]: totalCellStyle.right,
         [COL_WIDTH]: 120
     },
-    [fields.RevenueShare]: {
+    [fields.Earning]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
         [TOTAL_SECTION_STYLE]: totalCellStyle.decimal,
         [COL_WIDTH]: 120
@@ -174,22 +174,22 @@ const colConfig =
         [TOTAL_SECTION_STYLE]: totalCellStyle.decimal,
         [COL_WIDTH]: 120
     },
-    [fields.Total]: {
+    [fields.TotalMainEarning]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
         [TOTAL_SECTION_STYLE]: totalCellStyle.decimal,
         [COL_WIDTH]: 120
     },
-    [fields.RevenueShareSubAff]: {
+    [fields.SubAffEarning]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
         [TOTAL_SECTION_STYLE]: totalCellStyle.decimal,
         [COL_WIDTH]: 120
     },
-    [fields.CpaAmountSubAff]: {
+    [fields.SubCpaAmount]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
         [TOTAL_SECTION_STYLE]: totalCellStyle.decimal,
         [COL_WIDTH]: 120
     },
-    [fields.TotalSubAff]: {
+    [fields.TotalSubEarning]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
         [TOTAL_SECTION_STYLE]: totalCellStyle.decimal,
         [COL_WIDTH]: 120
@@ -634,9 +634,12 @@ export default class ReportExcel {
 
         if (columnConfig.field === fields.PreferredLanguage) {
             value = this.languageList[value] || '';
+        } else if (columnConfig.field === fields.PaymentFrequency) {
+            value = value ? value.replace(/ - /g, '\n') : '';
+        } else if (columnConfig.field === fields.PaymentCurrency) {
+            value = value || DEFAULT_PAYMENT_CURRENCY;
         }
 
-        item.PaymentCurrency = item.PaymentCurrency || DEFAULT_PAYMENT_CURRENCY;
         return value;
     }
 

@@ -10,6 +10,8 @@ const sortByCommon = {
 
 export const defaultSortBy = 1;
 
+export const REVENUE_SHARE_GROUP_TYPE_ID = 1;
+
 export const sortByMainView = {
     Affiliate: 1,
     ...sortByCommon,
@@ -78,15 +80,15 @@ export const reportKey = {
     DepositFee: 'DepositFee',
     WithdrawalFee: 'WithdrawalFee',
     TotalFee: 'TotalFee',
+    EarningTitle: 'EarningTitle',
     Earning: 'Earning',
     CommissionRate: 'CommissionRate',
-    RevenueShare: 'RevenueShare',
     CpaAmount: 'CpaAmount',
-    Total: 'Total',
+    TotalMainEarning: 'TotalMainEarning',
+    SubAffEarningTitle: 'SubAffEarningTitle',
     SubAffEarning: 'SubAffEarning',
-    RevenueShareSubAff: 'RevenueShareSubAff',
-    CpaAmountSubAff: 'CpaAmountSubAff',
-    TotalSubAff: 'TotalSubAff',
+    SubCpaAmount: 'SubCpaAmount',
+    TotalSubEarning: 'TotalSubEarning',
     TotalEarning: 'TotalEarning',
     AffWithdrawal: 'AffWithdrawal',
     AffAdjustment: 'AffAdjustment',
@@ -126,15 +128,15 @@ export const headerText = {
     [reportKey.DepositFee]: 'Deposit Fee',
     [reportKey.WithdrawalFee]: 'Withdrawal Fee',
     [reportKey.TotalFee]: 'Total Fee',
-    [reportKey.Earning]: 'Earning',
+    [reportKey.EarningTitle]: 'Earning',
     [reportKey.CommissionRate]: 'Revenue Share%',
-    [reportKey.RevenueShare]: 'Revenue Share',
-    [reportKey.CpaAmount]: 'CPA Amount',
-    [reportKey.Total]: 'Total',
-    [reportKey.SubAffEarning]: 'Sub-Affiliate Earning',
-    [reportKey.RevenueShareSubAff]: 'Revenue Share',
-    [reportKey.CpaAmountSubAff]: 'CPA Amount',
-    [reportKey.TotalSubAff]: 'Total',
+    [reportKey.Earning]: 'Revenue Share',
+    [reportKey.CpaAmount]: 'Approved CPA Amount',
+    [reportKey.TotalMainEarning]: 'Total',
+    [reportKey.SubAffEarningTitle]: 'Sub-Affiliate Earning',
+    [reportKey.SubAffEarning]: 'Revenue Share',
+    [reportKey.SubCpaAmount]: 'Approved CPA Amount',
+    [reportKey.TotalSubEarning]: 'Total',
     [reportKey.TotalEarning]: 'Total Earning',
     [reportKey.AffWithdrawal]: 'Withdrawal',
     [reportKey.AffAdjustment]: 'Adjustment',
@@ -182,21 +184,21 @@ export const headerConfig = {
     [reportKey.AffiliateStatistics]: {
         label: headerText[reportKey.AffiliateStatistics],
         cols: {
-            [reportKey.Earning]: { 
-                label: headerText[reportKey.Earning],
+            [reportKey.EarningTitle]: { 
+                label: headerText[reportKey.EarningTitle],
                 cols: {
                     [reportKey.CommissionRate]: { label: headerText[reportKey.CommissionRate] },
-                    [reportKey.RevenueShare]: { label: headerText[reportKey.RevenueShare] },
+                    [reportKey.Earning]: { label: headerText[reportKey.Earning] },
                     [reportKey.CpaAmount]: { label: headerText[reportKey.CpaAmount] },
-                    [reportKey.Total]: { label: headerText[reportKey.Total] }
+                    [reportKey.TotalMainEarning]: { label: headerText[reportKey.TotalMainEarning] }
                 }
             },
-            [reportKey.SubAffEarning]: {
-                label: headerText[reportKey.SubAffEarning],
+            [reportKey.SubAffEarningTitle]: {
+                label: headerText[reportKey.SubAffEarningTitle],
                 cols: {
-                    [reportKey.RevenueShareSubAff]: { label: headerText[reportKey.RevenueShareSubAff] },
-                    [reportKey.CpaAmountSubAff]: { label: headerText[reportKey.CpaAmountSubAff] },
-                    [reportKey.TotalSubAff]: { label: headerText[reportKey.TotalSubAff] }
+                    [reportKey.SubAffEarning]: { label: headerText[reportKey.SubAffEarning] },
+                    [reportKey.SubCpaAmount]: { label: headerText[reportKey.SubCpaAmount] },
+                    [reportKey.TotalSubEarning]: { label: headerText[reportKey.TotalSubEarning] }
                 }
             },
             [reportKey.TotalEarning]: { label: headerText[reportKey.TotalEarning], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },

@@ -11,7 +11,7 @@ import { toggleLoader } from '../../../../actions/loaderAction';
 import { globalResource } from '../../../../modules/globalResource';
 import { resolveClientUrl } from '../../../../modules/utils';
 import { getMaxHeight } from '../../libs/constants';
-import { viewLevel, sortByMonthOnMonthView, sortDirectionType, totalText, headerText, reportKey } from '../libs/constants';
+import { viewLevel, sortByMonthOnMonthView, sortDirectionType, totalText, headerText, reportKey, REVENUE_SHARE_GROUP_TYPE_ID } from '../libs/constants';
 import { AggregateHeaderColumn, HeaderRow } from '../libs/headerConfigs';
 
 export class GridData extends PureComponent {
@@ -100,7 +100,6 @@ export class GridData extends PureComponent {
         const mainHeader = AggregateHeaderColumn.convertColsToObject(headerRow.getHeaderCols(0));
         const childHeader = AggregateHeaderColumn.convertColsToObject(headerRow.getHeaderCols(1));
         const childHeader2 = AggregateHeaderColumn.convertColsToObject(headerRow.getHeaderCols(2));
-        console.log(mainHeader[reportKey.AffiliateStatistics]);
 
         return [
             <tr className="freeze-row freeze-row-h1" key="thead-1">
@@ -108,22 +107,22 @@ export class GridData extends PureComponent {
                 {mainHeader[reportKey.Status].isShowable && (<th width={80} rowSpan="3" title={headerText.Status}>{headerText.Status}</th>)}
                 {mainHeader[reportKey.PreferredLanguage].isShowable && <th header={true} colWidth={80} rowSpan="3" title={headerText.PreferredLanguage}>{headerText.PreferredLanguage}</th>}
                 {mainHeader[reportKey.PaymentCurrency].isShowable && (<th width={70} rowSpan="3" title={headerText.PaymentCurrency}>{headerText.PaymentCurrency}</th>)}
-                {mainHeader[reportKey.CommGroupName].isShowable && (<th width={100} rowSpan="3" title={headerText.CommGroupName}>{headerText.CommGroupName}</th>)}
-                {mainHeader[reportKey.PaymentFrequency].isShowable && (<th width={100} rowSpan="3" title={headerText.PaymentFrequency}>{headerText.PaymentFrequency}</th>)}
-                {mainHeader[reportKey.TotalClick].isShowable && (<th width={60} rowSpan="3" title={headerText.TotalClick}>{headerText.TotalClick}</th>)}
-                {mainHeader[reportKey.UniqueClick].isShowable && (<th width={55} rowSpan="3" title={headerText.UniqueClick}>{headerText.UniqueClick}</th>)}
-                {mainHeader[reportKey.Signup].isShowable && (<th width={55} rowSpan="3" title={headerText.Signup}>{headerText.Signup}</th>)}
-                {mainHeader[reportKey.Fdm].isShowable && (<th width={55} rowSpan="3" title={headerText.Fdm}>{headerText.Fdm}</th>)}
-                {mainHeader[reportKey.Fdm_Amount].isShowable && (<th width={65} rowSpan="3" title={headerText.Fdm_Amount}>{headerText.Fdm_Amount}</th>)}
-                {mainHeader[reportKey.FDM_TotalDeposit].isShowable && (<th width={65} rowSpan="3" title={headerText.FDM_TotalDeposit}>{headerText.FDM_TotalDeposit}</th>)}
-                {mainHeader[reportKey.ActivePlayer].isShowable && (<th width={55} rowSpan="3" title={headerText.ActivePlayer}>{headerText.ActivePlayer}</th>)}
-                {mainHeader[reportKey.QualifiedMember].isShowable && (<th width={55} rowSpan="3" title={headerText.QualifiedMember}>{headerText.QualifiedMember}</th>)}
-                {mainHeader[reportKey.NoOfSubAff].isShowable && (<th width={65} rowSpan="3" title={headerText.NoOfSubAff}>{headerText.NoOfSubAff}</th>)}
-                {mainHeader[reportKey.TotalDeposit].isShowable && (<th width={65} rowSpan="3" title={headerText.TotalDeposit}>{headerText.TotalDeposit}</th>)}
+                {mainHeader[reportKey.CommGroupName].isShowable && (<th width={150} rowSpan="3" title={headerText.CommGroupName}>{headerText.CommGroupName}</th>)}
+                {mainHeader[reportKey.PaymentFrequency].isShowable && (<th width={180} rowSpan="3" title={headerText.PaymentFrequency}>{headerText.PaymentFrequency}</th>)}
+                {mainHeader[reportKey.TotalClick].isShowable && (<th width={70} rowSpan="3" title={headerText.TotalClick}>{headerText.TotalClick}</th>)}
+                {mainHeader[reportKey.UniqueClick].isShowable && (<th width={70} rowSpan="3" title={headerText.UniqueClick}>{headerText.UniqueClick}</th>)}
+                {mainHeader[reportKey.Signup].isShowable && (<th width={70} rowSpan="3" title={headerText.Signup}>{headerText.Signup}</th>)}
+                {mainHeader[reportKey.Fdm].isShowable && (<th width={70} rowSpan="3" title={headerText.Fdm}>{headerText.Fdm}</th>)}
+                {mainHeader[reportKey.Fdm_Amount].isShowable && (<th width={80} rowSpan="3" title={headerText.Fdm_Amount}>{headerText.Fdm_Amount}</th>)}
+                {mainHeader[reportKey.FDM_TotalDeposit].isShowable && (<th width={80} rowSpan="3" title={headerText.FDM_TotalDeposit}>{headerText.FDM_TotalDeposit}</th>)}
+                {mainHeader[reportKey.ActivePlayer].isShowable && (<th width={70} rowSpan="3" title={headerText.ActivePlayer}>{headerText.ActivePlayer}</th>)}
+                {mainHeader[reportKey.QualifiedMember].isShowable && (<th width={70} rowSpan="3" title={headerText.QualifiedMember}>{headerText.QualifiedMember}</th>)}
+                {mainHeader[reportKey.NoOfSubAff].isShowable && (<th width={70} rowSpan="3" title={headerText.NoOfSubAff}>{headerText.NoOfSubAff}</th>)}
+                {mainHeader[reportKey.TotalDeposit].isShowable && (<th width={70} rowSpan="3" title={headerText.TotalDeposit}>{headerText.TotalDeposit}</th>)}
                 {mainHeader[reportKey.MemberStatistics].isShowable && (<th colSpan={mainHeader[reportKey.MemberStatistics].totalShowableCol} title={headerText.MemberStatistics}>{headerText.MemberStatistics}</th>)}
                 {mainHeader[reportKey.AffiliateStatistics].isShowable && (<th colSpan={mainHeader[reportKey.AffiliateStatistics].totalShowableCol} title={headerText.AffiliateStatistics}>{headerText.AffiliateStatistics}</th>)}
-                {isMainView && !isCheckedDatePicker && (<th width={55} rowSpan="3" title={headerText.MonthOnMonth}>{headerText.MonthOnMonth}</th>)}
-                {isMainView && (<th width={55} rowSpan="3" title={headerText.PlayerGgr}>{headerText.PlayerGgr}</th>)}
+                {isMainView && !isCheckedDatePicker && (<th width={60} rowSpan="3" title={headerText.MonthOnMonth}>{headerText.MonthOnMonth}</th>)}
+                {isMainView && (<th width={60} rowSpan="3" title={headerText.PlayerGgr}>{headerText.PlayerGgr}</th>)}
             </tr>,
             <tr className="freeze-row freeze-row-h2" key="thead-2">
                 {childHeader[reportKey.Deposit].isShowable && (<th rowSpan="2" width={75} title={headerText.Deposit}>{headerText.Deposit}</th>)}
@@ -137,8 +136,8 @@ export class GridData extends PureComponent {
                 {childHeader[reportKey.WithdrawalFee].isShowable && (<th rowSpan="2" width={70} title={headerText.WithdrawalFee}>{headerText.WithdrawalFee}</th>)}
                 {childHeader[reportKey.TotalFee].isShowable && (<th rowSpan="2" width={70} title={headerText.TotalFee}>{headerText.TotalFee}</th>)}
 
-                {childHeader[reportKey.Earning].isShowable && (<th colSpan={childHeader[reportKey.Earning].totalShowableCol} width={75} title={headerText.Earning}>{headerText.Earning}</th>)}
-                {childHeader[reportKey.SubAffEarning].isShowable && (<th colSpan={childHeader[reportKey.SubAffEarning].totalShowableCol} width={75} title={headerText.SubAffEarning}>{headerText.SubAffEarning}</th>)}
+                {childHeader[reportKey.EarningTitle].isShowable && (<th colSpan={childHeader[reportKey.EarningTitle].totalShowableCol} width={75} title={headerText.EarningTitle}>{headerText.EarningTitle}</th>)}
+                {childHeader[reportKey.SubAffEarningTitle].isShowable && (<th colSpan={childHeader[reportKey.SubAffEarningTitle].totalShowableCol} width={75} title={headerText.SubAffEarningTitle}>{headerText.SubAffEarningTitle}</th>)}
                 {childHeader[reportKey.TotalEarning].isShowable && (<th rowSpan="2" width={75} title={headerText.TotalEarning}>{headerText.TotalEarning}</th>)}
                 {childHeader[reportKey.AffWithdrawal].isShowable && (<th rowSpan="2" width={75} title={headerText.AffWithdrawal}>{headerText.AffWithdrawal}</th>)}
                 {childHeader[reportKey.AffAdjustment].isShowable && (<th rowSpan="2" width={75} title={headerText.AffAdjustment}>{headerText.AffAdjustment}</th>)}
@@ -147,13 +146,13 @@ export class GridData extends PureComponent {
             </tr>,
             <tr className="freeze-row freeze-row-h3" key="thead-3">
                 {childHeader2[reportKey.CommissionRate].isShowable && (<th width={65} title={headerText.CommissionRate}>{headerText.CommissionRate}</th>)}
-                {childHeader2[reportKey.RevenueShare].isShowable && (<th width={65} title={headerText.RevenueShare}>{headerText.RevenueShare}</th>)}
+                {childHeader2[reportKey.Earning].isShowable && (<th width={65} title={headerText.Earning}>{headerText.Earning}</th>)}
                 {childHeader2[reportKey.CpaAmount].isShowable && (<th width={65} title={headerText.CpaAmount}>{headerText.CpaAmount}</th>)}
-                {childHeader2[reportKey.Total].isShowable && (<th width={65} title={headerText.Total}>{headerText.Total}</th>)}
+                {childHeader2[reportKey.TotalMainEarning].isShowable && (<th width={65} title={headerText.TotalMainEarning}>{headerText.TotalMainEarning}</th>)}
 
-                {childHeader2[reportKey.RevenueShareSubAff].isShowable && (<th width={65} title={headerText.RevenueShareSubAff}>{headerText.RevenueShareSubAff}</th>)}
-                {childHeader2[reportKey.CpaAmountSubAff].isShowable && (<th width={65} title={headerText.CpaAmountSubAff}>{headerText.CpaAmountSubAff}</th>)}
-                {childHeader2[reportKey.TotalSubAff].isShowable && (<th width={65} title={headerText.TotalSubAff}>{headerText.TotalSubAff}</th>)}
+                {childHeader2[reportKey.SubAffEarning].isShowable && (<th width={65} title={headerText.SubAffEarning}>{headerText.SubAffEarning}</th>)}
+                {childHeader2[reportKey.SubCpaAmount].isShowable && (<th width={65} title={headerText.SubCpaAmount}>{headerText.SubCpaAmount}</th>)}
+                {childHeader2[reportKey.TotalSubEarning].isShowable && (<th width={65} title={headerText.TotalSubEarning}>{headerText.TotalSubEarning}</th>)}
             </tr>
         ];
     }
@@ -177,7 +176,7 @@ export class GridData extends PureComponent {
             const header = AggregateHeaderColumn.convertColsToObject(this.props.headerRow.getHeaderCols(0));
             const singleColumns = Object.keys(header).filter(i => header[i].showable).length;
             const memberStatisticsColumns = header[reportKey.MemberStatistics].isShowable ? header[reportKey.MemberStatistics].childHeader.filter(i => i.showable).length : 0;
-            const affStatisticsColumns = header[reportKey.AffiliateStatistics].isShowable ? header[reportKey.AffiliateStatistics].childHeader.filter(i => i.showable).length : 0;
+            const affStatisticsColumns = this._isMainView() ? 12 : 11;
 
             const colSpan = singleColumns + memberStatisticsColumns + affStatisticsColumns + (this._isMainView() ? !this.props.isCheckedDatePicker + 1 : 0);
 
@@ -210,6 +209,7 @@ export class GridData extends PureComponent {
     _buildCommonCell(dataItem, productColumnClassName, isTotalRow, isMainView, isBeforeCutOffDate) {
         const { headerRow, languageList } = this.props;
         const header = AggregateHeaderColumn.convertColsToObject(headerRow.getCols());
+        const isLinkToAffCpaReport = dataItem.GroupTypeId !== REVENUE_SHARE_GROUP_TYPE_ID && !isTotalRow;
 
         const totalClick = format(dataItem.TotalClick);
         const uniqueClick = format(dataItem.UniqueClick);
@@ -242,13 +242,13 @@ export class GridData extends PureComponent {
         const status = isTotalRow ? '' : dataItem.Status;
         const commGroupName = isTotalRow ? '' : dataItem.CommGroupName;
 
-        const paymentFrequency = isTotalRow ? '' : dataItem.PaymentFrequency;
-        const revenueShare = formatDecimal(0);
-        const cpaAmount = formatDecimal(0);
-        const total = formatDecimal(0);
-        const revenueShareSubAff = formatDecimal(0);
-        const cpaAmountSubAff = formatDecimal(0);
-        const totalSubAff = formatDecimal(0);
+        const paymentFrequency = isTotalRow || !dataItem.PaymentFrequency ? '' : dataItem.PaymentFrequency.replace(/ - /g, '</br>');
+        const earning = formatDecimal(dataItem.Earning);
+        const cpaAmount = formatDecimal(dataItem.CpaAmount);
+        const total = formatDecimal(dataItem.TotalEarning);
+        const subAffEarning = formatDecimal(dataItem.SubAffEarning);
+        const subCpaAmount = formatDecimal(dataItem.SubCpaAmount);
+        const totalSubEarning = formatDecimal(dataItem.TotalSubEarning);
 
         return (
             <React.Fragment>
@@ -256,7 +256,7 @@ export class GridData extends PureComponent {
                 {header[reportKey.PreferredLanguage].isShowable && <td title={language}>{language}</td>}
                 {header[reportKey.PaymentCurrency].isShowable && (<td className="text-center" title={paymentCurrency}>{paymentCurrency}</td>)}
                 {header[reportKey.CommGroupName].isShowable && (<td title={commGroupName}>{commGroupName}</td>)}
-                {header[reportKey.PaymentFrequency].isShowable && (<td className="text-center" title={paymentFrequency}>{paymentFrequency}</td>)}
+                {header[reportKey.PaymentFrequency].isShowable && (<td className="text-left" dangerouslySetInnerHTML={{ __html: paymentFrequency }}></td>)}
                 {header[reportKey.TotalClick].isShowable && (<td className="text-right" title={totalClick}>{totalClick}</td>)}
                 {header[reportKey.UniqueClick].isShowable && (<td className="text-right" title={uniqueClick}>{uniqueClick}</td>)}
                 {header[reportKey.Signup].isShowable && (<td className="text-right" title={signup}>{signup}</td>)}
@@ -284,12 +284,28 @@ export class GridData extends PureComponent {
                         <td className="text-right" title={commRate}>{commRate}</td>
                     ))
                 }
-                {header[reportKey.RevenueShare].isShowable && (<td className="text-right" title={revenueShare}>{revenueShare}</td>)}
-                {header[reportKey.CpaAmount].isShowable && (<td className="text-right" title={cpaAmount}>{cpaAmount}</td>)}
-                {header[reportKey.Total].isShowable && (<td className="text-right" title={total}>{total}</td>)}
-                {header[reportKey.RevenueShareSubAff].isShowable && (<td className="text-right" title={revenueShareSubAff}>{revenueShareSubAff}</td>)}
-                {header[reportKey.CpaAmountSubAff].isShowable && (<td className="text-right" title={cpaAmountSubAff}>{cpaAmountSubAff}</td>)}
-                {header[reportKey.TotalSubAff].isShowable && (<td className="text-right" title={totalSubAff}>{totalSubAff}</td>)}
+                {header[reportKey.Earning].isShowable && (<td className="text-right" title={earning}>{earning}</td>)}
+                {header[reportKey.CpaAmount].isShowable && (
+                    <td className="text-right" title={cpaAmount}>
+                        {
+                            isLinkToAffCpaReport
+                                ? <a href={`${resolveClientUrl(`Portal/AffiliateCpaReport?userName=${dataItem.UserName}&dealName=${dataItem.GroupId}&fromDate=${this.props.param.FromDate}&toDate=${this.props.param.ToDate}`)}`} target="_blank">{cpaAmount}</a>
+                                : cpaAmount
+                        }
+                    </td>)
+                }
+                {header[reportKey.TotalMainEarning].isShowable && (<td className="text-right" title={total}>{total}</td>)}
+                {header[reportKey.SubAffEarning].isShowable && (<td className="text-right" title={subAffEarning}>{subAffEarning}</td>)}
+                {header[reportKey.SubCpaAmount].isShowable && (
+                    <td className="text-right" title={subCpaAmount}>
+                        {
+                            isLinkToAffCpaReport
+                                ? <a href={`${resolveClientUrl(`Portal/AffiliateCpaReport?userName=${dataItem.UserName}&dealName=${dataItem.GroupId}&fromDate=${this.props.param.FromDate}&toDate=${this.props.param.ToDate}`)}`} target="_blank">{subCpaAmount}</a>
+                                : subCpaAmount
+                        }
+                    </td>)
+                }
+                {header[reportKey.TotalSubEarning].isShowable && (<td className="text-right" title={totalSubEarning}>{totalSubEarning}</td>)}
                 {header[reportKey.TotalEarning].isShowable && (<td className="text-right" title={totalEarning}>{totalEarning}</td>)}
                 {header[reportKey.AffWithdrawal].isShowable && (<td className="text-right" title={affWithdrawal}>{affWithdrawal}</td>)}
                 {header[reportKey.AffAdjustment].isShowable && (<td className="text-right" title={affAdjustment}>{affAdjustment}</td>)}
