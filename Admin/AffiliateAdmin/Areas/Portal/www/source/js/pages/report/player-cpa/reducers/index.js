@@ -55,6 +55,15 @@ export const affName = createReducer('', {
     }
 })
 
+export const shouldTriggerSearch = createReducer(false, {
+    [types.TRIGGER_SEARCH](prevState, action) {
+        return true;
+    },
+    [types.SET_PLAYER_CPA_DATA](prevState, action) {
+        return false;
+    }
+})
+
 export default combineReducers({
     params,
     reportTitle,
@@ -66,5 +75,6 @@ export default combineReducers({
     today,
     deals,
     playerCpaData,
-    affName
+    affName,
+    shouldTriggerSearch
 });

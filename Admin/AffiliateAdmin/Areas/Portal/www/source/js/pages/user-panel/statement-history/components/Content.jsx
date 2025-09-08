@@ -6,9 +6,11 @@ import { Button } from 'reactstrap';
 
 import { htmlDecode } from '../../../../modules/htmlHelper';
 import { formatDecimalWithCurrencySymbol } from '../../../../modules/numberFormat';
+import { resolveClientUrl } from '../../../../modules/utils';
 import { setPagingOption, toggleLoaderUserPanel, fetchData, setTransactionId, redirectToDailyEarning, setExpandMonthDateList, redirectToSubAffiliate } from '../actions';
-import { headerText, globalResource, transTypeList, monthlyEarning, MONTHLY_TOTAL, MONTHLY_EARNING, PAYMENT_REQUEST, SUBAFFILIATE, selectedAllProduct, maxWidth, CalculatedMonth } from '../modules/constants';
+import { headerText, globalResource, transTypeList, monthlyEarning, MONTHLY_TOTAL, MONTHLY_EARNING, PAYMENT_REQUEST, SUBAFFILIATE, selectedAllProduct, maxWidth, CalculatedMonth, CPA_EARNING } from '../modules/constants';
 import { getScrollTopPosition, setScrollTop } from '../modules/utils';
+import { setParams, toggleSubmit } from '../../../report/player-cpa/actions';
 
 export class Content extends PureComponent {
     constructor(props) {
@@ -37,7 +39,7 @@ export class Content extends PureComponent {
         const { affId } = this.props;
         const { isGetAll, fromDate, toDate, pageIndex, pageSize } = param;
 
-        const postParam = isGetAll ? { fromDate: null, toDate: null, affId, pageIndex, pageSize } : { fromDate, toDate, affId, pageIndex, pageSize  };
+        const postParam = isGetAll ? { fromDate: null, toDate: null, affId, pageIndex, pageSize } : { fromDate, toDate, affId, pageIndex, pageSize };
 
         const data = await this.props.fetchData(postParam);
 
@@ -113,13 +115,34 @@ export class Content extends PureComponent {
         return this.props.redirectToSubAffiliate(subAffiliateParam);
     }
 
+    _handleRedirectToPlayerCpa = (dataItem) => {
+        const { affName, param } = this.props;
+        const playerCpaParams = {
+            "userName": affName,
+            "custName": "",
+            "dealName": "",
+            "statusId": -1,
+            "viewBy": "3",
+            "fromDate": param.fromDate,
+            "toDate": param.toDate,
+        };
+        const playerCpaUrl = resolveClientUrl('Portal/PlayerCpaReport');
+
+        const queryString = Object.keys(playerCpaParams)
+            .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(playerCpaParams[key])}`)
+            .join('&');
+
+        window.location = `${playerCpaUrl}?${queryString}`;
+    }
+
     _getClickHandlerByTransType() {
         return {
             [PAYMENT_REQUEST]: (dataItem) => () => {
                 return this.handleSetTransactionId(dataItem.TransId);
             },
             [MONTHLY_EARNING]: (dataItem) => () => this._handleRedirectToDailyEarning(dataItem),
-            [SUBAFFILIATE]: (dataItem) => () => this._handleRedirectToSubAffiliate(dataItem)
+            [SUBAFFILIATE]: (dataItem) => () => this._handleRedirectToSubAffiliate(dataItem),
+            [CPA_EARNING]: (dataItem) => () => this._handleRedirectToPlayerCpa(dataItem),
         }
     }
 
@@ -222,13 +245,23 @@ export class Content extends PureComponent {
 function mapStateToProps({ affCommonInfo, statementHistory }) {
     const { pagingOption, param, expandMonthDateList } = statementHistory;
 
-    const { affId } = affCommonInfo;
+    const { affId, affName } = affCommonInfo;
 
-    return Object.assign({}, { affId, pagingOption, param, expandMonthDateList });
+    return Object.assign({}, { affId, affName, pagingOption, param, expandMonthDateList });
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ setPagingOption, toggleLoaderUserPanel, fetchData, setTransactionId, redirectToDailyEarning, setExpandMonthDateList, redirectToSubAffiliate }, dispatch);
+    return bindActionCreators({
+        setPagingOption,
+        toggleLoaderUserPanel,
+        fetchData,
+        setTransactionId,
+        redirectToDailyEarning,
+        setExpandMonthDateList,
+        redirectToSubAffiliate,
+        setParams,
+        toggleSubmit
+    }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Content);

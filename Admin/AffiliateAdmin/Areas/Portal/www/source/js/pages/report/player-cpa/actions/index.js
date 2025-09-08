@@ -50,3 +50,9 @@ export const setAffName = (data) => {
         data
     }
 }
+
+export const triggerSearch = () => {
+    return {
+        type: types.TRIGGER_SEARCH
+    }
+}

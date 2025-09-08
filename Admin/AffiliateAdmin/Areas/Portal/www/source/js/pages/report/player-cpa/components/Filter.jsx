@@ -16,8 +16,18 @@ import { defaultPagingOption, minDate, sixMonth } from '../../../../modules/cons
 import { getPlayerCpaData } from '../libs/service';
 import { toggleLoader } from '../../../../actions/loaderAction';
 
-const Filter = ({ params, setParams, setPlayerCpaData, setPagingOption, today, deals, toggleLoader, setReportTitle }) => {
-
+const Filter = ({
+    params,
+    setParams,
+    setPlayerCpaData,
+    setPagingOption,
+    pagingOption,
+    today,
+    deals,
+    toggleLoader,
+    setReportTitle,
+    shouldTriggerSearch
+}) => {
     const [nowString, setNowString] = useState('');
     const [dealList, setDealList] = useState(deals);
 
@@ -27,24 +37,31 @@ const Filter = ({ params, setParams, setPlayerCpaData, setPagingOption, today, d
         const currentMonthString = formatUnit(currentMonth);
         const currentYear = now.getFullYear();
 
-        const nowString = `${currentMonthString}/${formatUnit(now.getDate())}/${currentYear}`;
-        setNowString(nowString);
+        const nowStr = `${currentMonthString}/${formatUnit(now.getDate())}/${currentYear}`;
+        setNowString(nowStr);
 
-        // Set initial date params
-        setParams({
-            fromDate: `${currentMonthString}/01/${currentYear}`,
-            toDate: nowString
-        });
+        if (!shouldTriggerSearch) {
+            setParams({
+                fromDate: `${currentMonthString}/01/${currentYear}`,
+                toDate: nowStr
+            });
+        }
     }, []);
 
     useEffect(() => {
-        if (deals && deals.length > 0) {
+        if (!shouldTriggerSearch && deals && deals.length > 0) {
             const dealIds = deals.map(deal => deal.key).join(',');
             setParams({
                 dealName: dealIds
             });
         }
     }, []);
+
+    useEffect(() => {
+        if (shouldTriggerSearch) {
+            handleClickSearch();
+        }
+    }, [shouldTriggerSearch]);
 
     const handleChange = (e) => {
         setParams({
@@ -128,9 +145,9 @@ const Filter = ({ params, setParams, setPlayerCpaData, setPagingOption, today, d
                         hasInputOption={true}
                         onChange={handleChangeDeals} />
                 </FormGroup>
-                <Field className="my-sm-1 mr-sm-4" name="statusId" value={params.status} onChange={handleChange} label="Status" selectOptions={statusOptions} type='select' />
-                <Field className="my-sm-1 mr-sm-4" name="viewBy" value={params.viewBy} onChange={handleChange} label="View By" selectOptions={viewByOptions} type='select' />
-                <FormGroup className="my-sm-1 mr-sm-4">
+                <Field className="my-sm-1 mr-sm-2" name="statusId" selectedValue={params.statusId} onChange={handleChange} label="Status" selectOptions={statusOptions} type='select' />
+                <Field className="my-sm-1 mr-sm-2" name="viewBy" selectedValue={params.viewBy} onChange={handleChange} label="View By" selectOptions={viewByOptions} type='select' />
+                <FormGroup className="my-sm-1 mr-sm-2">
                     <Label className="mr-sm-2">{globalResource.From}</Label>
                     <DatePicker
                         minDate={minDate}
@@ -155,12 +172,14 @@ const Filter = ({ params, setParams, setPlayerCpaData, setPagingOption, today, d
         </div>
     )
 }
-function mapStateToProps({ playerCpaData, params, today, deals }) {
+function mapStateToProps({ playerCpaData, params, today, deals, pagingOption, shouldTriggerSearch }) {
     return Object.assign({}, {
         playerCpaData,
         params,
         today,
-        deals
+        deals,
+        pagingOption,
+        shouldTriggerSearch
     });
 }
 

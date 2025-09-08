@@ -19,6 +19,7 @@ export const MONTHLY_EARNING = 201;
 export const PAYMENT_REQUEST = 202;
 export const ADJUSTMENT = 203;
 export const SUBAFFILIATE = 204;
+export const CPA_EARNING = 206;
 
 export const monthlyEarning = 'Monthly Earning'
 
@@ -27,5 +28,6 @@ export const transTypeList = {
     [MONTHLY_EARNING]: monthlyEarning,
     [PAYMENT_REQUEST]: 'Payment Request',
     [ADJUSTMENT]: 'Adjustment',
-    [SUBAFFILIATE]: 'Sub-Affiliate'
+    [SUBAFFILIATE]: 'Sub-Affiliate',
+    [CPA_EARNING]: 'CPA Earning',
 }
