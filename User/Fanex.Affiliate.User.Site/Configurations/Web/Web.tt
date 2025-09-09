@@ -1,6 +1,6 @@
 ﻿<#@ template debug="true" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Xml" #>
-<#@ assembly name="Microsoft.Web.XmlTransform.dll" #>
+<#@ assembly name="$(SolutionDir)\packages\Microsoft.Web.Xdt.3.0.0\lib\net40\Microsoft.Web.XmlTransform.dll" #>
 <#@ import namespace="System.Xml" #>
 <#@ output extension=".txt" #>
 <#

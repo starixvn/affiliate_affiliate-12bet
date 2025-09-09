@@ -1,17 +1,17 @@
-﻿using Fanex.Affiliate.User.Core.Apis;
-using Fanex.Affiliate.User.Core.BusinessService;
-using Fanex.Affiliate.User.Core.Controllers;
-using Fanex.Affiliate.User.Core.CoreService;
-using Fanex.Affiliate.User.Core.DTO.Auth;
-using Fanex.Affiliate.User.Core.UnitTests.TestHelper;
-using Fanex.Affiliate.User.Core.Utilities;
-using NSubstitute;
-using System;
-using System.Web.Mvc;
-using Xunit;
-
-namespace Fanex.Affiliate.User.Core.UnitTests.Controllers
+﻿namespace Fanex.Affiliate.User.Core.UnitTests.Controllers
 {
+    using System;
+    using System.Web.Mvc;
+    using Apis;
+    using Core.BusinessService;
+    using Core.Controllers;
+    using Core.CoreService;
+    using Core.Utilities;
+    using DTO.Auth;
+    using NSubstitute;
+    using TestHelper;
+    using Xunit;
+
     public class TestingEmailControllerTest
     {
         private readonly ISessionService SessionService;
@@ -25,8 +25,8 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers
             SessionService = NSubstituteMockingHelper.FakeSessionService();
             AppSetting = Substitute.For<IAppSetting>();
             MailProcessor = Substitute.For<IMailProcessor>();
-            LanguageService = NSubstituteMockingHelper.FakeLanguageService();
             LicenseeApi = Substitute.For<ILicenseeApi>();
+            LanguageService = NSubstituteMockingHelper.FakeLanguageService();
         }
 
         [Fact]

@@ -1,12 +1,12 @@
-﻿using Fanex.Affiliate.User.Core.Enum;
-using Fanex.Affiliate.User.Core.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-
-namespace Fanex.Affiliate.User.Core.Utilities
+﻿namespace Fanex.Affiliate.User.Core.Utilities
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Configuration;
+    using System.Linq;
+    using Enum;
+    using Extensions;
+
     public class AppSetting : IAppSetting
     {
         public string Environment => GetValue("Environment");
@@ -20,8 +20,6 @@ namespace Fanex.Affiliate.User.Core.Utilities
         public int ServerId => Convert.ToInt32(GetValue("ServerId"));
 
         public IEnumerable<string> AllowedAffiliateTypes => GetValue("AllowedAffType").Split(',');
-
-        public string JsVersion => GetValue("JsVersion");
 
         public string Promotion12BetLink => GetValue("Promotion12BetLink");
 
