@@ -494,6 +494,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Affiliate CPA Report.
+        /// </summary>
+        public static string AffiliateCPAReport {
+            get {
+                return ResourceManager.GetString("AffiliateCPAReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Affiliate Currency.
         /// </summary>
         public static string AffiliateCurrency {
@@ -1786,6 +1795,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string CountryErr {
             get {
                 return ResourceManager.GetString("CountryErr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CPA Report.
+        /// </summary>
+        public static string CPAReport {
+            get {
+                return ResourceManager.GetString("CPAReport", resourceCulture);
             }
         }
         
@@ -5275,6 +5293,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string RecentPayment {
             get {
                 return ResourceManager.GetString("RecentPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Redeposit CPA Report.
+        /// </summary>
+        public static string RedepositCPAReport {
+            get {
+                return ResourceManager.GetString("RedepositCPAReport", resourceCulture);
             }
         }
         

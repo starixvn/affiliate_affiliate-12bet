@@ -2666,4 +2666,13 @@ You can also email us to {1} or simply fill the form below.</value>
   <data name="NetRevenue" xml:space="preserve">
     <value>Net Revenue</value>
   </data>
+  <data name="CPAReport" xml:space="preserve">
+    <value>CPA Report</value>
+  </data>
+  <data name="AffiliateCPAReport" xml:space="preserve">
+    <value>Affiliate CPA Report</value>
+  </data>
+  <data name="RedepositCPAReport" xml:space="preserve">
+    <value>Redeposit CPA Report</value>
+  </data>
 </root>

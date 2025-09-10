@@ -1,0 +1,6 @@
+@{
+    Layout = null;
+    var currentYear = DateTimeHelper.Gmt8CurrentYear;
+    var baseCurrencies = ViewBag.BaseCurrencies as IEnumerable<Fanex.Affiliate.User.Core.DTO.UserPanel.Currency>;
+    var defaultBaseCurrency = Convert.ToInt32(ViewBag.DefaultBaseCurrency);
+}

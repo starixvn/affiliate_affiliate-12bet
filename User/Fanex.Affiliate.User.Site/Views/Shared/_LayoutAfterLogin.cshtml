@@ -31,6 +31,13 @@
             <li><a class="menu-item" id="menuPaymentRequest" href="@Url.RenderLanguageContent("~/UserPanel/Main/#PaymentRequest")">@Lang.PaymentRequest</a></li>
             <li><a class="menu-item" id="menuRevenueReport" href="@Url.RenderLanguageContent("~/UserPanel/Main/#RevenueReport")">@Lang.CommissionReport</a></li>
             <li class="parent">
+                <a class="menu-item" href="javascript:;">@Lang.CPAReport <i class="caret"></i></a>
+                <ul class="menu submenu-container list-unstyled">
+                    <li><a class="menu-item" id="menuAffiliateCPAReport" href="@Url.RenderLanguageContent("~/UserPanel/Main/#xxxxxxxx")">@Lang.AffiliateCPAReport</a></li>
+                    <li><a class="menu-item" id="menuRedepositCPAReport" href="@Url.RenderLanguageContent("~/UserPanel/Main/#xxxxxxxx")">@Lang.RedepositCPAReport</a></li>
+                </ul>
+            </li>
+            <li class="parent">
                 <a class="menu-item" href="javascript:;">@Lang.Statistics <i class="caret"></i></a>
                 <ul class="menu submenu-container list-unstyled">
                     <li><a class="menu-item" id="menuReferrersStatistics" href="@Url.RenderLanguageContent("~/UserPanel/Main/#ReferrersStatistics")">@Lang.Referrals</a></li>

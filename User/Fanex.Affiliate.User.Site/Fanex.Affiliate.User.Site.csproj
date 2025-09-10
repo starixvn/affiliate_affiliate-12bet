@@ -1372,6 +1372,8 @@
     <Content Include="www\build\styles\Images\home\top-banner\item\mobile.ja-JP.webp" />
     <Content Include="www\build\styles\Images\home\top-banner\item\mobile.en-PH.webp" />
     <Content Include="www\build\styles\Images\home\top-banner\item\desktop.en-IN.webp" />
+    <Content Include="Views\UserPanel\CPAReport\RedepositCPAReport\Index.cshtml" />
+    <Content Include="Views\UserPanel\CPAReport\AffiliateCPAReport\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
