@@ -1,12 +1,12 @@
 ﻿namespace Fanex.Affiliate.User.Core.CoreService
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Commands;
     using Criterias;
     using Data.Repository;
     using DTO;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
 
     public class BaseDynamicService
     {
@@ -68,6 +68,18 @@
         {
             var (dataList, totalItem) = _dynamicRepository.FetchMultiple<T, T>(criteria);
 
+            return new EntityResult<T>
+            {
+                MainDataList = dataList,
+                Total = totalItem.FirstOrDefault()
+            };
+        }
+
+        public EntityResult<T> FetchEntityResultWithPaging<T>(PagingCriteria criteria, object param) where T : class
+        {
+            var (dataList, totalItem) = _dynamicRepository.FetchMultiple<T, T>(criteria);
+            var paramType = param.GetType();
+            SetPagingProperty(paramType, param, "NRows", criteria.NRows);
             return new EntityResult<T>
             {
                 MainDataList = dataList,

@@ -396,6 +396,10 @@
     <Content Include="www\build\js\pages\commission-structure.min.js">
       <DependentUpon>commission-structure.js</DependentUpon>
     </Content>
+    <Content Include="www\build\js\pages\cpa-report\redeposit-cpa-report.js" />
+    <Content Include="www\build\js\pages\cpa-report\redeposit-cpa-report.min.js">
+      <DependentUpon>redeposit-cpa-report.js</DependentUpon>
+    </Content>
     <Content Include="www\build\js\pages\home.js" />
     <Content Include="www\build\js\pages\home.min.js">
       <DependentUpon>home.js</DependentUpon>
@@ -434,6 +438,10 @@
     <Content Include="www\build\styles\css\forgot-password.css" />
     <Content Include="www\build\styles\css\forgot-password.min.css">
       <DependentUpon>forgot-password.css</DependentUpon>
+    </Content>
+    <Content Include="www\build\styles\css\pages\cpa-report\redeposit-cpa-report.css" />
+    <Content Include="www\build\styles\css\pages\cpa-report\redeposit-cpa-report.min.css">
+      <DependentUpon>redeposit-cpa-report.css</DependentUpon>
     </Content>
     <Content Include="www\build\styles\css\under-maintenance.css" />
     <Content Include="www\build\styles\css\under-maintenance.min.css">
@@ -736,6 +744,7 @@
     <Content Include="www\source\js\pages\account-overview\channel-link-statistic.js" />
     <Content Include="www\source\js\pages\commission-structure.js" />
     <Content Include="www\source\js\pages\contactus.js" />
+    <Content Include="www\source\js\pages\cpa-report\redeposit-cpa-report.js" />
     <Content Include="www\source\js\pages\products.js" />
     <Content Include="www\source\js\pages\statistics\marketing-statistics.js" />
     <Content Include="www\source\js\pages\sub-affiliate-earning.js" />
@@ -1374,6 +1383,7 @@
     <Content Include="www\build\styles\Images\home\top-banner\item\desktop.en-IN.webp" />
     <Content Include="Views\UserPanel\CPAReport\RedepositCPAReport\Index.cshtml" />
     <Content Include="Views\UserPanel\CPAReport\AffiliateCPAReport\Index.cshtml" />
+    <Content Include="www\source\styles\pages\cpa-report\redeposit-cpa-report.scss" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

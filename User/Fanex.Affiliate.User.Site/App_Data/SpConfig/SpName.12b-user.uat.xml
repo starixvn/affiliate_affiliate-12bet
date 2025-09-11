@@ -167,4 +167,8 @@
 	<Function Name="IPCountry">
 		<Setting Key="Acc_GetIPInfo_Full" SpName="Acc_GetIPInfo_Full" DbName="DBCUST.IPDB.wsv_afinet" />
 	</Function>
+
+	<Function Name="CPAReport">
+		<Setting Key="Aff_User_Report_RedepositCPA" SpName="Aff_User_Report_RedepositCPA" DbName="DBAFF12B.Affiliate_12B.wsv_afinet"></Setting>
+	</Function>
 </Functions>

@@ -2675,4 +2675,46 @@ You can also email us to {1} or simply fill the form below.</value>
   <data name="RedepositCPAReport" xml:space="preserve">
     <value>Redeposit CPA Report</value>
   </data>
+  <data name="StartFrom" xml:space="preserve">
+    <value>Start From</value>
+  </data>
+  <data name="RecheckDay" xml:space="preserve">
+    <value>Re-check days</value>
+  </data>
+  <data name="ExpiredRedepositDate" xml:space="preserve">
+    <value>Expired Redeposit Date</value>
+  </data>
+  <data name="ApprovedCPAPlayer" xml:space="preserve">
+    <value>Approved CPA Player</value>
+  </data>
+  <data name="RedepositRate" xml:space="preserve">
+    <value>Redeposit %</value>
+  </data>
+  <data name="NumberOfPlayerRedeposit" xml:space="preserve">
+    <value>No. of Player Redeposit</value>
+  </data>
+  <data name="TotalSettledCPAAmount" xml:space="preserve">
+    <value>Total Settled CPA Amount</value>
+  </data>
+  <data name="CPAPaymentDetails" xml:space="preserve">
+    <value>CPA Payment Details</value>
+  </data>
+  <data name="RedepositStatistics" xml:space="preserve">
+    <value>Redeposit Statistics</value>
+  </data>
+  <data name="TotalAllPages" xml:space="preserve">
+    <value>Total (all pages)</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>days</value>
+  </data>
+  <data name="Monitoring" xml:space="preserve">
+    <value>Monitoring</value>
+  </data>
+  <data name="Qualified" xml:space="preserve">
+    <value>Qualified</value>
+  </data>
+  <data name="NotQualified" xml:space="preserve">
+    <value>Not Qualified</value>
+  </data>
 </root>

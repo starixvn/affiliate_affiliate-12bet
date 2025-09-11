@@ -27,10 +27,10 @@
   //    "outputFile": "www/build/styles/css/contact-us.css",
   //    "inputFile": "www/source/styles/pages/contact-us.scss"
   //},
-  {
-    "outputFile": "www/build/styles/css/marketing.css",
-    "inputFile": "www/source/styles/pages/marketing.scss"
-  },
+  //{
+  //  "outputFile": "www/build/styles/css/marketing.css",
+  //  "inputFile": "www/source/styles/pages/marketing.scss"
+  //},
   //{
   //  "outputFile": "www/build/js/user-panel.js",
   //  "inputFile": "www/source/js/pages/user-panel.js"
@@ -71,10 +71,10 @@
   //  "outputFile": "www/build/styles/css/statement-history.css",
   //  "inputFile": "www/source/styles/pages/statement-history.scss"
   //},
-  {
-    "outputFile": "www/build/styles/css/account-overview.css",
-    "inputFile": "www/source/styles/pages/account-overview.scss"
-  },
+  //{
+  //  "outputFile": "www/build/styles/css/account-overview.css",
+  //  "inputFile": "www/source/styles/pages/account-overview.scss"
+  //},
   //{
   //  "outputFile": "www/build/styles/css/pages/commissionreport.css",
   //  "inputFile": "www/source/styles/pages/commissionreport.scss"
@@ -162,5 +162,9 @@
   //{
   //  "outputFile": "www/build/js/channel-link-statistic.js",
   //  "inputFile": "www/source/js/pages/account-overview/channel-link-statistic.js"
-  //}
+  //},
+  {
+    "outputFile": "www/build/styles/css/pages/cpa-report/redeposit-cpa-report.css",
+    "inputFile": "www/source/styles/pages/cpa-report/redeposit-cpa-report.scss"
+  }
 ]

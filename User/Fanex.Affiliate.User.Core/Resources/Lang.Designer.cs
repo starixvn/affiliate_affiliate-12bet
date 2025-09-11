@@ -683,6 +683,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approved CPA Player.
+        /// </summary>
+        public static string ApprovedCPAPlayer {
+            get {
+                return ResourceManager.GetString("ApprovedCPAPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to April.
         /// </summary>
         public static string April {
@@ -1799,6 +1808,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CPA Payment Details.
+        /// </summary>
+        public static string CPAPaymentDetails {
+            get {
+                return ResourceManager.GetString("CPAPaymentDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CPA Report.
         /// </summary>
         public static string CPAReport {
@@ -1948,6 +1966,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string DateRequest {
             get {
                 return ResourceManager.GetString("DateRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to days.
+        /// </summary>
+        public static string Days {
+            get {
+                return ResourceManager.GetString("Days", resourceCulture);
             }
         }
         
@@ -2524,6 +2551,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string ExperienceUnparalleledConvenience {
             get {
                 return ResourceManager.GetString("ExperienceUnparalleledConvenience", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expired Redeposit Date.
+        /// </summary>
+        public static string ExpiredRedepositDate {
+            get {
+                return ResourceManager.GetString("ExpiredRedepositDate", resourceCulture);
             }
         }
         
@@ -4037,6 +4073,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Monitoring.
+        /// </summary>
+        public static string Monitoring {
+            get {
+                return ResourceManager.GetString("Monitoring", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Month.
         /// </summary>
         public static string Month {
@@ -4433,6 +4478,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not Qualified.
+        /// </summary>
+        public static string NotQualified {
+            get {
+                return ResourceManager.GetString("NotQualified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to November.
         /// </summary>
         public static string November {
@@ -4474,6 +4528,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string NumberOfLink {
             get {
                 return ResourceManager.GetString("NumberOfLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No. of Player Redeposit.
+        /// </summary>
+        public static string NumberOfPlayerRedeposit {
+            get {
+                return ResourceManager.GetString("NumberOfPlayerRedeposit", resourceCulture);
             }
         }
         
@@ -5243,6 +5306,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Qualified.
+        /// </summary>
+        public static string Qualified {
+            get {
+                return ResourceManager.GetString("Qualified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Qualified Active Members.
         /// </summary>
         public static string QualifiedActiveMembers {
@@ -5297,11 +5369,38 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Re-check days.
+        /// </summary>
+        public static string RecheckDay {
+            get {
+                return ResourceManager.GetString("RecheckDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Redeposit CPA Report.
         /// </summary>
         public static string RedepositCPAReport {
             get {
                 return ResourceManager.GetString("RedepositCPAReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Redeposit %.
+        /// </summary>
+        public static string RedepositRate {
+            get {
+                return ResourceManager.GetString("RedepositRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Redeposit Statistics.
+        /// </summary>
+        public static string RedepositStatistics {
+            get {
+                return ResourceManager.GetString("RedepositStatistics", resourceCulture);
             }
         }
         
@@ -5986,6 +6085,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start From.
+        /// </summary>
+        public static string StartFrom {
+            get {
+                return ResourceManager.GetString("StartFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to State.
         /// </summary>
         public static string State {
@@ -6617,6 +6725,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total (all pages).
+        /// </summary>
+        public static string TotalAllPages {
+            get {
+                return ResourceManager.GetString("TotalAllPages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total Clicks.
         /// </summary>
         public static string TotalClick {
@@ -6658,6 +6775,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string TotalGGR {
             get {
                 return ResourceManager.GetString("TotalGGR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Settled CPA Amount.
+        /// </summary>
+        public static string TotalSettledCPAAmount {
+            get {
+                return ResourceManager.GetString("TotalSettledCPAAmount", resourceCulture);
             }
         }
         
