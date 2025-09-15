@@ -145,24 +145,24 @@ export class GridData extends PureComponent {
                 {childHeader[reportKey.CurrentBBF].isShowable && (<th rowSpan="2" width={80} title={headerText.CurrentBBF}>{headerText.CurrentBBF}</th>)}
             </tr>,
             <tr className="freeze-row freeze-row-h3" key="thead-3">
-                {childHeader2[reportKey.CommissionRate].isShowable && (<th width={65} title={headerText.CommissionRate}>{headerText.CommissionRate}</th>)}
-                {childHeader2[reportKey.Earning].isShowable && (<th width={65} title={headerText.Earning}>{headerText.Earning}</th>)}
-                {childHeader2[reportKey.CpaAmount].isShowable && (<th width={65} title={headerText.CpaAmount}>{headerText.CpaAmount}</th>)}
-                {childHeader2[reportKey.TotalMainEarning].isShowable && (<th width={65} title={headerText.TotalMainEarning}>{headerText.TotalMainEarning}</th>)}
+                {childHeader2[reportKey.CommissionRate] && childHeader2[reportKey.CommissionRate].isShowable && (<th width={65} title={headerText.CommissionRate}>{headerText.CommissionRate}</th>)}
+                {childHeader2[reportKey.Earning] && childHeader2[reportKey.Earning].isShowable && (<th width={65} title={headerText.Earning}>{headerText.Earning}</th>)}
+                {childHeader2[reportKey.CpaAmount] && childHeader2[reportKey.CpaAmount].isShowable && (<th width={65} title={headerText.CpaAmount}>{headerText.CpaAmount}</th>)}
+                {childHeader2[reportKey.TotalMainEarning] && childHeader2[reportKey.TotalMainEarning].isShowable && (<th width={65} title={headerText.TotalMainEarning}>{headerText.TotalMainEarning}</th>)}
 
-                {childHeader2[reportKey.SubAffEarning].isShowable && (<th width={65} title={headerText.SubAffEarning}>{headerText.SubAffEarning}</th>)}
-                {childHeader2[reportKey.SubCpaAmount].isShowable && (<th width={65} title={headerText.SubCpaAmount}>{headerText.SubCpaAmount}</th>)}
-                {childHeader2[reportKey.TotalSubEarning].isShowable && (<th width={65} title={headerText.TotalSubEarning}>{headerText.TotalSubEarning}</th>)}
+                {childHeader2[reportKey.SubAffEarning] && childHeader2[reportKey.SubAffEarning].isShowable && (<th width={65} title={headerText.SubAffEarning}>{headerText.SubAffEarning}</th>)}
+                {childHeader2[reportKey.SubCpaAmount] && childHeader2[reportKey.SubCpaAmount].isShowable && (<th width={65} title={headerText.SubCpaAmount}>{headerText.SubCpaAmount}</th>)}
+                {childHeader2[reportKey.TotalSubEarning] && childHeader2[reportKey.TotalSubEarning].isShowable && (<th width={65} title={headerText.TotalSubEarning}>{headerText.TotalSubEarning}</th>)}
             </tr>
         ];
     }
 
     _renderDataSection(dataList) {
         const dataRows = [];
+        const isMainView = this._isMainView();
 
         if (dataList.length) {
             const { productList } = this.props;
-            const isMainView = this._isMainView();
             const isBeforeCutOffDate = this._isBeforeCutOffDate();
             const isSelectedAllProducts = productList.every(p => p.checked);
             const productColumnClassName = isSelectedAllProducts ? 'text-right' : 'text-right highlight';
@@ -173,15 +173,13 @@ export class GridData extends PureComponent {
             }
         }
         else {
-            const header = AggregateHeaderColumn.convertColsToObject(this.props.headerRow.getHeaderCols(0));
-            const singleColumns = Object.keys(header).filter(i => header[i].showable).length;
-            const memberStatisticsColumns = header[reportKey.MemberStatistics].isShowable ? header[reportKey.MemberStatistics].childHeader.filter(i => i.showable).length : 0;
-            const affStatisticsColumns = this._isMainView() ? 12 : 11;
-
-            const colSpan = singleColumns + memberStatisticsColumns + affStatisticsColumns + (this._isMainView() ? !this.props.isCheckedDatePicker + 1 : 0);
+            let totalColumns = this.props.headerRow.totalShowableCol;
+            if (isMainView) {
+                totalColumns += this.props.isCheckedDatePicker ? 1 : 2;
+            }
 
             dataRows.push(<tr key="no-info">
-                <td className="text-center" colSpan={colSpan}>{globalResource.NoInfo}</td>
+                <td className="text-center" colSpan={totalColumns}>{globalResource.NoInfo}</td>
             </tr>);
         }
 
