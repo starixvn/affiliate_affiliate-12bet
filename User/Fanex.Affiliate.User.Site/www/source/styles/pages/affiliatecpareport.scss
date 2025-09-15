@@ -1,0 +1,202 @@
+﻿@import "../scss/abstracts/mixins";
+@import "../scss/components/pager";
+@import "../scss/components/pikaday";
+@import "../scss/components/multiple-select";
+
+.custom-panel {
+    background-color: #F5F5F5;
+    border: 1px solid #A6A6A6;
+    border-radius: 0px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+
+    .panel-body {
+        padding: 8px;
+    }
+
+    .form-inline {
+        margin-bottom: 0;
+
+        .form-control {
+            width: 150px;
+            margin-bottom: 0;
+            display: inline-block;
+        }
+
+        .view-by-select {
+            width: 180px !important;
+        }
+
+        @media(max-width: 576px) {
+            label {
+                width: 110px;
+            }
+        }
+    }
+}
+
+.affiliate-report {
+    @media screen and (max-width: 1048px) {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        border: 1px solid #ddd;
+
+        table {
+            table-layout: auto;
+        }
+    }
+
+
+}
+
+.monthlyDataTable {
+    width: 70%;
+    margin-top: 30px;
+    /*        & + #statisticsDetailTable {
+            margin-top: 0;
+        }*/
+
+    @include Tablet {
+        width: 100%;
+        min-width: 320px;
+    }
+}
+
+.table {
+    .th {
+        cursor: pointer;
+    }
+    // Header category row styling
+    .header-category-row {
+        .th {
+            background-color: #CD5C5C !important;
+            color: white !important;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #B85450;
+            padding: 8px 4px;
+            font-size: 14px;
+        }
+
+        .category-header {
+            background-color: #CD5C5C !important;
+            color: white !important;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #B85450;
+            padding: 8px 4px;
+            font-size: 14px;
+        }
+    }
+    // Header column row styling
+    .header-column-row {
+        .th {
+            background-color: #CD5C5C !important;
+            color: white !important;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #B85450;
+            padding: 6px 4px;
+            font-size: 13px;
+        }
+    }
+    // Left-aligned columns styling
+    .header-category-row {
+        .th:first-child,
+        .th:nth-child(2),
+        .th:nth-child(3) {
+            text-align: left !important;
+        }
+    }
+
+    .th-wrapper {
+        position: relative;
+        padding-right: 15px;
+        font-size: 13px;
+
+        .icon-container {
+            position: absolute;
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            top: calc(50% - 5px);
+            right: -6px;
+
+            .caret {
+                display: block;
+                border-width: 4px;
+
+                &.current {
+                    border-top-color: #FD0302;
+                }
+            }
+
+            > .asc {
+                transform: rotate(180deg);
+                margin-bottom: 3px;
+            }
+        }
+
+        &.col-comm {
+            .info-container {
+                position: absolute;
+                display: inline-block;
+                top: calc(50% - 8px);
+                right: 11px;
+
+                > .glyphicon-info-sign {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            > td {
+                background: #fff;
+
+                .row-wrapper {
+                    position: relative;
+
+                    .chevron {
+                        cursor: pointer;
+                        position: absolute;
+                        top: 3px;
+                        right: 2px;
+                        width: 20px;
+                        height: 20px;
+                        line-height: 11px;
+                        text-align: center;
+
+                        &.left {
+                            top: 5px;
+                        }
+                    }
+                }
+            }
+            
+            &.total {
+                display: table-row;
+
+                > td {
+                    background: #F8D8D1;
+                    color: #000;
+                    font-weight: bold;
+                }
+            }
+
+            &.noInfo {
+                display: table-row;
+            }
+
+            &.player-cpa-report {
+                margin-top: 20px;
+            }
+        }
+    }
+}

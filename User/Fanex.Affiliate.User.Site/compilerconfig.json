@@ -31,10 +31,10 @@
   //  "outputFile": "www/build/styles/css/marketing.css",
   //  "inputFile": "www/source/styles/pages/marketing.scss"
   //},
-  //{
-  //  "outputFile": "www/build/js/user-panel.js",
-  //  "inputFile": "www/source/js/pages/user-panel.js"
-  //},
+  {
+    "outputFile": "www/build/js/user-panel.js",
+    "inputFile": "www/source/js/pages/user-panel.js"
+  },
   //{
   //  "outputFile": "www/build/js/account-overview.js",
   //  "inputFile": "www/source/js/pages/account-overview/account-overview.js"
@@ -166,5 +166,7 @@
   {
     "outputFile": "www/build/styles/css/pages/cpa-report/redeposit-cpa-report.css",
     "inputFile": "www/source/styles/pages/cpa-report/redeposit-cpa-report.scss"
+    "outputFile": "www/build/styles/css/affiliate-cpa-report.css",
+    "inputFile": "www/source/styles/pages/affiliatecpareport.scss"
   }
 ]

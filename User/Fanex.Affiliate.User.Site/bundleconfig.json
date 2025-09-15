@@ -226,5 +226,14 @@
       //"www/source/js/components/multiple-select.js",
       "www/source/js/pages/cpa-report/redeposit-cpa-report.js"
     ]
+  },
+  {
+    "outputFileName": "www/build/js/pages/affiliate-cpa-report.js",
+    "inputFiles": [
+      "www/source/js/lib/pikaday.js",
+      "www/source/js/components/pager.js",
+      "www/source/js/components/multiple-select.js",
+      "www/source/js/pages/affiliate-cpa-report.js"
+    ]
   }
 ]

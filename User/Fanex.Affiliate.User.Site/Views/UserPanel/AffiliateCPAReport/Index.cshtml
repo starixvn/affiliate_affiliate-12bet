@@ -1,0 +1,161 @@
+﻿@{
+    Layout = null;
+    var currentYear = DateTimeHelper.Gmt8CurrentYear;
+    var fromDate = ViewBag.FromDate;
+    var toDate = ViewBag.ToDate;
+}
+
+
+@Html.InlineStyles("~/www/build/styles/css/affiliate-cpa-report.css")
+
+<div class="page-title">
+    <span class="text">@Lang.CommissionReport</span>
+</div>
+
+<div class="info-group">
+    <div class="panel custom-panel">
+        <div class="panel-body">
+            <form class="form-inline form-filter">
+                <div class="form-group">
+                    <label>CPA Status:</label>
+                    <select id="Status" class="form-control">
+                        <option value="-1">All Statuses</option>
+                        <option value="2">Eligible</option>
+                        <option value="3">Approved</option>
+                        <option value="1">Ineligible</option>
+                        <option value="4">Rejected</option>
+                        <option value="5">Quota Exceeded</option>
+                        <option value="0">Pending</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>View By:</label>
+                    <select id="ViewBy" class="form-control view-by-select">
+                        <option value="1">Active Qualified Date</option>
+                        <option value="2">Holding Qualified Date</option>
+                        <option value="3">Approval Date</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>@Lang.From:</label>
+                    <div id="fromPicker" class="date-wrapper">
+                        <input readonly class="form-control" type="text" id="FromDate" value="@ViewBag.FromDate" />
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>@Lang.To:</label>
+                    <div id="toPicker" class="date-wrapper">
+                        <input readonly class="form-control" type="text" id="ToDate" value="@ViewBag.ToDate" />
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-submit" id="btnSubmit">@Lang.Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="report-container">
+    <div class="table monthly-cpa-report overview-table">
+
+        <table id="monthlyDataTable" class="table table-medium table-responsive monthlyDataTable">
+            <thead>
+                <tr>
+                    <th width="3%" class="th">#</th>
+                    <th width="20%" class="th" data-name="Month">
+                        <div class="th-wrapper">
+                            <span>@Lang.Month</span>
+                            <div class="icon-container">
+                                <span class="caret asc"></span>
+                                <span id="defaultSorting" class="caret desc"></span>
+                            </div>
+                        </div>
+                    </th>
+                    <th width="10%" class="th" data-name="Quota">
+                        <div class="th-wrapper">
+                            <span>Quota</span>
+                            <div class="icon-container">
+                                <span class="caret asc"></span>
+                                <span class="caret desc"></span>
+                            </div>
+                        </div>
+                    </th>
+                    <th width="20%" class="th" data-name="CPAAmount">
+                        <div class="th-wrapper">
+                            <span>CPA Amount</span>
+                            <div class="icon-container">
+                                <span class="caret asc"></span>
+                                <span class="caret desc"></span>
+                            </div>
+                        </div>
+                    </th>
+                    <th width="20%" class="th" data-name="EstimatedCPAAmount">
+                        <div class="th-wrapper">
+                            <span>Estimated CPA Amount</span>
+                            <div class="icon-container">
+                                <span class="caret asc"></span>
+                                <span class="caret desc"></span>
+                            </div>
+                        </div>
+                    </th>
+                    <th width="20%" class="th" data-name="ApprovedCPAAmount">
+                        <div class="th-wrapper">
+                            <span>Approved CPA Amount</span>
+                            <div class="icon-container">
+                                <span class="caret asc"></span>
+                                <span class="caret desc"></span>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="monthlyReportData"></tbody>
+        </table>
+
+    </div>
+    <div class="table player-cpa-report overview-table">
+        <table id="playerDataTable">
+            <thead>
+                <!-- Main category header row -->
+                <tr>
+                    <th rowspan="2" width="3%" class="th">#</th>
+                    <th rowspan="2" width="10%" class="th">Player</th>
+                    <th rowspan="2" width="8%" class="th">Registration Date</th>
+                    <th colspan="4" class="th ">Active Period</th>
+                    <th colspan="3" class="th">Holding Period</th>
+                    <th colspan="4" class="th">Approval Period</th>
+                </tr>
+                <!-- Column header row -->
+                <tr>
+                    <th class="th">FTD</th>
+                    <th class="th">Total Deposit</th>
+                    <th class="th">Active Qualified Date</th>
+                    <th class="th">CPA Amount</th>
+                    <th class="th">Bet Ticket</th>
+                    <th class="th">Holding Qualified Date</th>
+                    <th class="th">Holding Expired Date</th>
+                    <th class="th">Estimated CPA Amount</th>
+                    <th class="th">Approved CPA Amount</th>
+                    <th class="th">CPA Status</th>
+                    <th class="th">Approval Date</th>
+                </tr>
+            </thead>
+            <tbody id="playerReportData"></tbody>
+        </table>
+    </div>
+    <div id="playerCPAPager"></div>
+</div>
+
+<script>
+    var langResource = {
+        noInfo: '@Lang.NoInfo',
+        total: '@Lang.Total',
+        theHighestShare: '@Lang.TheHighestShare',
+        isMaxLevel: '@Model'.toLowerCase() === 'true'
+    }
+</script>
+<input type="hidden" id="TotalItem" value="" />
+<script src="@Url.RenderLink("~/www/build/js/pages/affiliate-cpa-report.js")"></script>

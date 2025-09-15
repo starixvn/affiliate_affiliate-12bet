@@ -392,6 +392,11 @@
     <Content Include="www\build\js\overview.min.js">
       <DependentUpon>overview.js</DependentUpon>
     </Content>
+    <Content Include="www\build\js\pages\affiliate-cpa-report.js" />
+    <Content Include="www\build\js\pages\affiliate-cpa-report.js.js" />
+    <Content Include="www\build\js\pages\affiliate-cpa-report.min.js">
+      <DependentUpon>affiliate-cpa-report.js</DependentUpon>
+    </Content>
     <Content Include="www\build\js\pages\commission-structure.js" />
     <Content Include="www\build\js\pages\commission-structure.min.js">
       <DependentUpon>commission-structure.js</DependentUpon>
@@ -430,6 +435,14 @@
     </Content>
     <Content Include="www\build\js\summary.min.js">
       <DependentUpon>summary.js</DependentUpon>
+    </Content>
+    <Content Include="www\build\styles\css\affiliate-cpa-report.css" />
+    <Content Include="www\build\styles\css\affiliate-cpa-report.min.css">
+      <DependentUpon>affiliate-cpa-report.css</DependentUpon>
+    </Content>
+    <Content Include="www\build\styles\css\affiliate-pca-report.css" />
+    <Content Include="www\build\styles\css\affiliate-pca-report.min.css">
+      <DependentUpon>affiliate-pca-report.css</DependentUpon>
     </Content>
     <Content Include="www\build\styles\css\commission-structure.css" />
     <Content Include="www\build\styles\css\commission-structure.min.css">
@@ -742,6 +755,7 @@
     <Content Include="www\source\js\lib\jquery-3.3.1.min.js" />
     <Content Include="www\source\js\lib\swiper.min.js" />
     <Content Include="www\source\js\pages\account-overview\channel-link-statistic.js" />
+    <Content Include="www\source\js\pages\affiliate-cpa-report.js" />
     <Content Include="www\source\js\pages\commission-structure.js" />
     <Content Include="www\source\js\pages\contactus.js" />
     <Content Include="www\source\js\pages\cpa-report\redeposit-cpa-report.js" />
@@ -1383,6 +1397,8 @@
     <Content Include="www\build\styles\Images\home\top-banner\item\desktop.en-IN.webp" />
     <Content Include="Views\UserPanel\CPAReport\RedepositCPAReport\Index.cshtml" />
     <Content Include="Views\UserPanel\CPAReport\AffiliateCPAReport\Index.cshtml" />
+    <Content Include="Views\UserPanel\AffiliateCPAReport\Index.cshtml" />
+    <Content Include="www\source\styles\pages\affiliatecpareport.scss" />
     <Content Include="www\source\styles\pages\cpa-report\redeposit-cpa-report.scss" />
   </ItemGroup>
   <ItemGroup>
