@@ -1566,6 +1566,8 @@ var redepositCPAReport = (function ($) {
         initEvent: function () {
             $('#btnSubmit').click(function (e) {
                 e.preventDefault();
+                _pageIndex = 0;
+                _pageSize = 20;
                 _me.submit(initPager());
             });
 
