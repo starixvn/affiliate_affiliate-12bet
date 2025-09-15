@@ -1550,13 +1550,12 @@
     };
 })(jQuery);
 var affiliatePCAReport = (function ($) {
-    var _selectedPage;
-    var _selectedLanguage;
     var _pageSize = 20;
     var _pageIndex = 0;
     var _sortingColumn = 'Month';
     var _isSortingAsc = false;
     var _sortType = 1;
+    var _month = "";
 
     function initPager() {
         $("#playerCPAPager").pager({
@@ -1567,7 +1566,6 @@ var affiliatePCAReport = (function ($) {
             onChange: function (pageIndex, pageSize) {
                 _pageIndex = pageIndex;
                 _pageSize = pageSize;
-
                 var params = _me.getParams();
                 _me.getPlayerCPAReport(params);
             }
@@ -1622,6 +1620,7 @@ var affiliatePCAReport = (function ($) {
 
         initEvent: function () {
             $('#btnSubmit').on('click', function () {
+                _me.resetParams();
                 var params = _me.getParams();
                 _me.getFullReport(params);
             });
@@ -1633,11 +1632,27 @@ var affiliatePCAReport = (function ($) {
 
             $('#monthlyDataTable').on('click', '.month-link', function () {
                 var $this = $(this);
+                _me.resetParams();
                 var monthText = $this.text();
-                _pageSize = 20;
-                _pageIndex = 0;
-                var params = _me.getPlayerCPAByMonthParams(monthText);
-                _me.getPlayerCPAReportByMonth(params);
+                _month = monthText;
+                var params = _me.getParams();
+                _me.getPlayerCPAByMonthReport(params);
+            });
+
+            $('#playerDataTable').on('click', '.cpa-amount-link', function () {
+                var $this = $(this);
+                _me.resetParams();
+                var cpaId = $this.data("cpa-id");
+
+                var params = {
+                    memberCPAID: cpaId
+                };
+
+                _me.getPlayerCPATurnOverReport(params);
+            });
+
+            $('#closeModal').on('click', function () {
+                _me.hideDialog();
             });
         },
 
@@ -1703,17 +1718,37 @@ var affiliatePCAReport = (function ($) {
             });
         },
 
-        getPlayerCPAReportByMonth: function (params) {
+        getPlayerCPAByMonthReport: function (params) {
             $.ajax({
                 type: "POST",
                 dataType: "json",
                 cache: false,
                 data: JSON.stringify(params),
-                url: Site.resolveRelativeLangUrl("UserPanel/AffiliateCPAReport/GetPlayerCPAReportByMonth"),
+                url: Site.resolveRelativeLangUrl("UserPanel/AffiliateCPAReport/GetPlayerCPAReport"),
                 contentType: "application/json; charset=UTF-8",
                 success: function (response) {
                     _me.renderPlayerCPAReport(response);
                     initPager();
+                },
+                beforeSend: function () {
+                    Site.showLoader();
+                },
+                complete: function () {
+                    Site.hideLoader();
+                }
+            });
+        },
+
+        getPlayerCPATurnOverReport: function (params) {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                cache: false,
+                data: JSON.stringify(params),
+                url: Site.resolveRelativeLangUrl("UserPanel/AffiliateCPAReport/GetPlayerCPATurnOverReport"),
+                contentType: "application/json; charset=UTF-8",
+                success: function (response) {
+                    _me.renderPlayerCPATurnOverReport(response);
                 },
                 beforeSend: function () {
                     Site.showLoader();
@@ -1765,7 +1800,7 @@ var affiliatePCAReport = (function ($) {
             var rowItems = [];
             rowItems.push('<tr>');
             rowItems.push('<td class="text-center">' + rowIndex + '</td>');
-            rowItems.push('<td class="text-center"><a href="#" class="month-link">' + dataRow.Month + '</a></td>');
+            rowItems.push('<td class="text-center"><a href="javascript:;" class="month-link">' + dataRow.Month + '</a></td>');
             rowItems.push('<td class="text-center">' + dataRow.Quota + '</td>');
             rowItems.push(_me.buildCell(formatDecimal(dataRow.CPAAmount)));
             rowItems.push(_me.buildCell(formatDecimal(dataRow.EstimatedCPAAmount)));
@@ -1802,7 +1837,7 @@ var affiliatePCAReport = (function ($) {
         },
 
         buildPlayerRow: function (dataRow, index) {
-            var rowIndex = parseInt(index) + 1;
+            var rowIndex = _pageIndex * _pageSize + parseInt(index) + 1;
             var rowItems = [];
             rowItems.push('<tr>');
             rowItems.push('<td class="text-center">' + rowIndex + '</td>');
@@ -1811,7 +1846,11 @@ var affiliatePCAReport = (function ($) {
             rowItems.push(_me.buildCell(formatDecimal(dataRow.FTD)));
             rowItems.push(_me.buildCell(formatDecimal(dataRow.TotalDeposit)));
             rowItems.push('<td class="text-center">' + dataRow.AQDText + '</td>');
-            rowItems.push(_me.buildCell(formatDecimal(dataRow.CPAAmount)));
+            if (dataRow.IsTO) {
+                rowItems.push('<td class="text-right"><a href="javascript:;" class="cpa-amount-link" data-cpa-id="' + dataRow.MemberCPAId + '">' + formatDecimal(dataRow.CPAAmount) + '</a></td>');
+            } else {
+                rowItems.push(_me.buildCell(formatDecimal(dataRow.CPAAmount)));
+            }
             rowItems.push('<td class="text-center">' + dataRow.HoldingTickets + ' / ' + dataRow.HoldingBetTickets + '</td>');
             rowItems.push('<td class="text-center">' + dataRow.HQDText + '</td>');
             rowItems.push('<td class="text-center">' + dataRow.HEDText + '</td>');
@@ -1852,6 +1891,75 @@ var affiliatePCAReport = (function ($) {
             return '';
         },
 
+        renderPlayerCPATurnOverReport: function (data) {
+            $('#playerTurnoverReportData').empty();
+            if (data && data.Groups.length > 0) {
+                var bodyHtml = _me.buildPlayerCPATurnOverDataTable(data);
+                $('#playerTurnoverReportData').html(bodyHtml);
+            }
+            else {
+                $('#playerTurnoverReportData').html('<tr class="noInfo"><td class="text-center no-info" colspan="3">' + langResource.noInfo + '</td></tr>');
+            }
+
+            $('#play-cpa-turnover').removeClass("display-none");
+            $('#play-cpa-turnover').modal({ backdrop: 'static', keyboard: false });
+        },
+
+        hideDialog: function () {
+            $('#play-cpa-turnover').modal('hide');
+        },
+
+        buildPlayerCPATurnOverDataTable: function (data) {
+            var htmlRowList = [];
+
+            for (var i = 0; i < data.Groups.length; i++) {
+                var groupItem = data.Groups[i];
+                htmlRowList.push(_me.buildPlayerCPATurnOverGroupParrentRow(groupItem.Total));
+                for (var j = 0; j < groupItem.Players.length; j++) {
+                    var childItem = groupItem.Players[j];
+                    htmlRowList.push(_me.buildPlayerCPATurnOverGroupChildRow(childItem));
+                }
+            }
+
+            htmlRowList.push(_me.buildPlayerCPATurnOverTotalRow(data.Total));
+
+            return htmlRowList.join("");
+        },
+
+        buildPlayerCPATurnOverGroupParrentRow: function (dataRow) {
+            var rowItems = [];
+            rowItems.push('<tr class="parent-group">');
+            rowItems.push('<td class="text-left"> Group ' + dataRow.GroupProductId + '</td>');
+            rowItems.push(_me.buildCell(formatDecimal(dataRow.Turnover)));
+            rowItems.push(_me.buildCell(formatDecimal(dataRow.CPAAmount)));
+            rowItems.push('</tr>');
+
+            return rowItems.join("");
+        },
+
+        buildPlayerCPATurnOverGroupChildRow: function (dataRow) {
+            var rowItems = [];
+            rowItems.push('<tr class="child-group">');
+            rowItems.push('<td class="text-left">' + dataRow.ProductName + '</td>');
+            rowItems.push(_me.buildCell(formatDecimal(dataRow.Turnover)));
+            rowItems.push('<td></td>');
+            rowItems.push('</tr>');
+
+            return rowItems.join("");
+        },
+
+        buildPlayerCPATurnOverTotalRow: function (total) {
+            if (total) {
+                return '<tr class="total">' +
+                    '<td class="text-right">' + langResource.total + '</td>' +
+                    _me.buildCell(formatDecimal(total.Turnover)) +
+                    _me.buildCell(formatDecimal(total.CPAAmount)) 
+                    '</tr>';
+            }
+
+            return '';
+        },
+
         buildCell: function (cellData) {
             return '<td class="text-right">' + cellData + '</td>';
         },
@@ -1865,22 +1973,19 @@ var affiliatePCAReport = (function ($) {
                 pageSize: _pageSize,
                 pageIndex: _pageIndex + 1,
                 sortType: _sortType,
-                sortDirectionType: _isSortingAsc
+                sortDirectionType: _isSortingAsc,
+                month: _month
             };
 
             return params;
         },
 
-        getPlayerCPAByMonthParams: function (monthText) {
-            var params = {
-                month: monthText,
-                statusId: $('#Status').val(),
-                viewBy: $('#ViewBy').val(),
-                pageSize: _pageSize,
-                pageIndex: _pageIndex + 1
-            };
-
-            return params;
+        resetParams: function () {
+            _pageIndex = 0;
+            _pageSize = 20;
+            _month = "";
+            _isSortingAsc = false;
+            _sortType = 1;
         },
 
         processSorting: function processSorting($element) {

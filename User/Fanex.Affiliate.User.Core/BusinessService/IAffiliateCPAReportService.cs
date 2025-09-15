@@ -11,6 +11,6 @@ namespace Fanex.Affiliate.User.Core.BusinessService
 
         PlayerCPAViewModel GetPlayerData(CPAReportParam reportParams);
 
-        PlayerCPAViewModel GetPlayerDataByMonth(PlayerCPAReportParam reportParams);
+        PlayerCPATurnOverViewModel GetPlayerCPATurnOverData(PlayerCPATurnOverParam reportParams);
     }
 }

@@ -60,10 +60,9 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
 
         [HttpPost]
         [AjaxOnly]
-        public ActionResult GetPlayerCPAReportByMonth(PlayerCPAReportParam reportParams)
+        public ActionResult GetPlayerCPATurnOverReport(PlayerCPATurnOverParam reportParams)
         {
-            reportParams.AffId = SessionService.UserSession.AffId;
-            var viewModel = _reportService.GetPlayerDataByMonth(reportParams);
+            var viewModel = _reportService.GetPlayerCPATurnOverData(reportParams);
 
             return Json(viewModel);
         }

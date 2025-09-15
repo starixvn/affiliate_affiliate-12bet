@@ -23,5 +23,7 @@ namespace Fanex.Affiliate.User.Core.MetalModels.UserPanel
         public int SortType { get; set; }
 
         public bool SortDirectionType { get; set; }
+
+        public string Month { get; set; }
     }
 }

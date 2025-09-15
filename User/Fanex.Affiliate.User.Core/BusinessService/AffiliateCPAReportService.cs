@@ -5,8 +5,8 @@ using Fanex.Affiliate.User.Core.MetalModels.UserPanel;
 using Fanex.Affiliate.User.Core.ViewModels.UserPanel;
 using Fanex.Common.Extensions;
 using Fanex.Data.Repository;
-using Microsoft.SqlServer.Server;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
@@ -55,13 +55,25 @@ namespace Fanex.Affiliate.User.Core.BusinessService
 
         public PlayerCPAViewModel GetPlayerData(CPAReportParam reportParams)
         {
+            bool isGetDataFromMonthLink = string.IsNullOrEmpty(reportParams.Month);
+            
+            var fromDate = reportParams.FromDate;
+            var toDate = reportParams.ToDate;
+
+            if (!isGetDataFromMonthLink)
+            {
+                var monthDate = DateTime.ParseExact(reportParams.Month, "MM/yyyy", CultureInfo.InvariantCulture);
+                fromDate = monthDate.FirstDayOfMonth();
+                toDate = monthDate.LastDayOfMonth();
+            }
+
             var playerCPACriteria = new AffiliatePlayerCPACriteria
             {
                 AffId = reportParams.AffId,
                 StatusId = reportParams.StatusId,
                 ViewBy = reportParams.ViewBy,
-                FromDate = reportParams.FromDate,
-                ToDate = reportParams.ToDate,
+                FromDate = fromDate,
+                ToDate = toDate,
                 PageIndex = reportParams.PageIndex,
                 PageSize = reportParams.PageSize
             };
@@ -76,29 +88,35 @@ namespace Fanex.Affiliate.User.Core.BusinessService
             };
         }
 
-        public PlayerCPAViewModel GetPlayerDataByMonth(PlayerCPAReportParam reportParams)
+        public PlayerCPATurnOverViewModel GetPlayerCPATurnOverData(PlayerCPATurnOverParam reportParams)
         {
-            var monthDate = DateTime.ParseExact(reportParams.Month, "MM-yyyy", CultureInfo.InvariantCulture);
-
-            var playerCPACriteria = new AffiliatePlayerCPACriteria
+            var result = new PlayerCPATurnOverViewModel
             {
-                AffId = reportParams.AffId,
-                StatusId = reportParams.StatusId,
-                ViewBy = reportParams.ViewBy,
-                FromDate = monthDate.FirstDayOfMonth(),
-                ToDate = monthDate.LastDayOfMonth(),
-                PageIndex = reportParams.PageIndex,
-                PageSize = reportParams.PageSize
+                Groups = new List<PlayerCPATurnOverGroup>(),
+                Total = new PlayerCPATurnOverItem()
             };
 
-            var playerCPA = FetchEntityResultWithPaging<PlayerCPA>(playerCPACriteria, reportParams);
+            var criteria = new AffiliatePlayerCPATurnOverCriteria();
+            criteria.MemberCPAID = reportParams.MemberCPAID;
 
-            return new PlayerCPAViewModel
+            var data = FetchMultipleEntityResult<PlayerCPATurnOverItem>(criteria);
+
+            foreach (var parentItem in data.FirstDataList)
             {
-                PlayerCPA = playerCPA.MainDataList.ToList(),
-                PlayerCPATotal = playerCPA.Total,
-                TotalRows = playerCPACriteria.TotalRows
-            };
+                var groupPlayerCPATurnOver = new PlayerCPATurnOverGroup
+                {
+                    Total = parentItem,
+                    Players = data.SecondDataList.Where(
+                        x => x.GroupProductId == parentItem.GroupProductId &&
+                        x.MemberCPATierId == parentItem.MemberCPATierId).ToList()
+                };
+               
+                result.Groups.Add(groupPlayerCPATurnOver);
+            }
+
+            result.Total = data.Total;
+
+            return result;
         }
     }
 }

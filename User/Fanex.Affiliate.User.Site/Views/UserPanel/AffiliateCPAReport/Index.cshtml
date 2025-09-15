@@ -19,21 +19,21 @@
                 <div class="form-group">
                     <label>CPA Status:</label>
                     <select id="Status" class="form-control">
-                        <option value="-1">All Statuses</option>
-                        <option value="2">Eligible</option>
-                        <option value="3">Approved</option>
-                        <option value="1">Ineligible</option>
-                        <option value="4">Rejected</option>
-                        <option value="5">Quota Exceeded</option>
-                        <option value="0">Pending</option>
+                        <option value="-1">@Lang.All</option>
+                        <option value="2">@Lang.Eligible</option>
+                        <option value="3">@Lang.Approved</option>
+                        <option value="1">@Lang.Ineligible</option>
+                        <option value="4">@Lang.Rejected</option>
+                        <option value="5">@Lang.QuotaExceeded</option>
+                        <option value="0">@Lang.Pending</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>View By:</label>
                     <select id="ViewBy" class="form-control view-by-select">
-                        <option value="1">Active Qualified Date</option>
-                        <option value="2">Holding Qualified Date</option>
-                        <option value="3">Approval Date</option>
+                        <option value="1">@Lang.ActiveQualifiedDate</option>
+                        <option value="2">@Lang.HoldingQualifiedDate</option>
+                        <option value="3">@Lang.ApprovalDate</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -59,9 +59,8 @@
 </div>
 
 <div class="report-container">
-    <div class="table monthly-cpa-report overview-table">
-
-        <table id="monthlyDataTable" class="table table-medium table-responsive monthlyDataTable">
+    <div class="table monthly-cpa-report table-responsive">
+        <table id="monthlyDataTable" class="table table-medium monthlyDataTable">
             <thead>
                 <tr>
                     <th width="3%" class="th">#</th>
@@ -76,7 +75,7 @@
                     </th>
                     <th width="10%" class="th" data-name="Quota">
                         <div class="th-wrapper">
-                            <span>Quota</span>
+                            <span>@Lang.Quota</span>
                             <div class="icon-container">
                                 <span class="caret asc"></span>
                                 <span class="caret desc"></span>
@@ -85,7 +84,7 @@
                     </th>
                     <th width="20%" class="th" data-name="CPAAmount">
                         <div class="th-wrapper">
-                            <span>CPA Amount</span>
+                            <span>@Lang.CPAAmount</span>
                             <div class="icon-container">
                                 <span class="caret asc"></span>
                                 <span class="caret desc"></span>
@@ -94,7 +93,7 @@
                     </th>
                     <th width="20%" class="th" data-name="EstimatedCPAAmount">
                         <div class="th-wrapper">
-                            <span>Estimated CPA Amount</span>
+                            <span>@Lang.EstimatedCPAAmount</span>
                             <div class="icon-container">
                                 <span class="caret asc"></span>
                                 <span class="caret desc"></span>
@@ -103,7 +102,7 @@
                     </th>
                     <th width="20%" class="th" data-name="ApprovedCPAAmount">
                         <div class="th-wrapper">
-                            <span>Approved CPA Amount</span>
+                            <span>@Lang.ApprovedCPAAmount</span>
                             <div class="icon-container">
                                 <span class="caret asc"></span>
                                 <span class="caret desc"></span>
@@ -116,37 +115,59 @@
         </table>
 
     </div>
-    <div class="table player-cpa-report overview-table">
+    <div class="table player-cpa-report table-responsive">
         <table id="playerDataTable">
             <thead>
                 <!-- Main category header row -->
                 <tr>
                     <th rowspan="2" width="3%" class="th">#</th>
-                    <th rowspan="2" width="10%" class="th">Player</th>
-                    <th rowspan="2" width="8%" class="th">Registration Date</th>
-                    <th colspan="4" class="th ">Active Period</th>
-                    <th colspan="3" class="th">Holding Period</th>
-                    <th colspan="4" class="th">Approval Period</th>
+                    <th rowspan="2" width="10%" class="th">@Lang.Player</th>
+                    <th rowspan="2" width="8%" class="th">@Lang.RegistrationDate</th>
+                    <th colspan="4" class="th ">@Lang.ActivePeriod</th>
+                    <th colspan="3" class="th">@Lang.HoldingPeriod</th>
+                    <th colspan="4" class="th">@Lang.ApprovalPeriod</th>
                 </tr>
                 <!-- Column header row -->
                 <tr>
-                    <th class="th">FTD</th>
-                    <th class="th">Total Deposit</th>
-                    <th class="th">Active Qualified Date</th>
-                    <th class="th">CPA Amount</th>
-                    <th class="th">Bet Ticket</th>
-                    <th class="th">Holding Qualified Date</th>
-                    <th class="th">Holding Expired Date</th>
-                    <th class="th">Estimated CPA Amount</th>
-                    <th class="th">Approved CPA Amount</th>
-                    <th class="th">CPA Status</th>
-                    <th class="th">Approval Date</th>
+                    <th class="th">@Lang.FTD</th>
+                    <th class="th">@Lang.TotalDeposit</th>
+                    <th class="th">@Lang.ActiveQualifiedDate</th>
+                    <th class="th">@Lang.CPAAmount</th>
+                    <th class="th">@Lang.BetTicket</th>
+                    <th class="th">@Lang.HoldingQualifiedDate</th>
+                    <th class="th">@Lang.HoldingExpiredDate</th>
+                    <th class="th">@Lang.EstimatedCPAAmount</th>
+                    <th class="th">@Lang.ApprovedCPAAmount</th>
+                    <th class="th">@Lang.CPAStatus</th>
+                    <th class="th">@Lang.Approval_Date</th>
                 </tr>
             </thead>
             <tbody id="playerReportData"></tbody>
         </table>
     </div>
     <div id="playerCPAPager"></div>
+    <div id="play-cpa-turnover" class="table player-cpa-turn-over-report table-responsive modal-dialog modal fade display-none" tabindex="-1">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    Turnover CPA Detail
+                </h5>
+                <button type="button" class="close-btn" id="closeModal">×</button>
+            </div>
+            <div class="modal-body">
+                <table id="playerTurnoverDataTable" class="table table-medium playerTurnoverDataTable">
+                    <thead>
+                        <tr>
+                            <th width="20%" class="th">@Lang.ProductGroup</th>
+                            <th width="20%" class="th"> @Lang.Turnover</th>
+                            <th width="20%" class="th">@Lang.CPAAmount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="playerTurnoverReportData"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>

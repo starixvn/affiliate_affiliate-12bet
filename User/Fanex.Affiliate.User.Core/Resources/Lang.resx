@@ -2717,4 +2717,58 @@ You can also email us to {1} or simply fill the form below.</value>
   <data name="NotQualified" xml:space="preserve">
     <value>Not Qualified</value>
   </data>
+  <data name="Quota" xml:space="preserve">
+    <value>Quota</value>
+  </data>
+  <data name="CPAAmount" xml:space="preserve">
+    <value>CPA Amount</value>
+  </data>
+  <data name="EstimatedCPAAmount" xml:space="preserve">
+    <value>Estimated CPA Amount</value>
+  </data>
+  <data name="ApprovedCPAAmount" xml:space="preserve">
+    <value>Approved CPA Amount</value>
+  </data>
+  <data name="ActivePeriod" xml:space="preserve">
+    <value>Active Period</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>Registration Date</value>
+  </data>
+  <data name="HoldingPeriod" xml:space="preserve">
+    <value>Holding Period</value>
+  </data>
+  <data name="ApprovalPeriod" xml:space="preserve">
+    <value>Approval Period</value>
+  </data>
+  <data name="ActiveQualifiedDate" xml:space="preserve">
+    <value>Active Qualified Date</value>
+  </data>
+  <data name="BetTicket" xml:space="preserve">
+    <value>Bet Ticket</value>
+  </data>
+  <data name="HoldingQualifiedDate" xml:space="preserve">
+    <value>Holding Qualified Date</value>
+  </data>
+  <data name="HoldingExpiredDate" xml:space="preserve">
+    <value>Holding Expired Date</value>
+  </data>
+  <data name="CPAStatus" xml:space="preserve">
+    <value>CPA Status</value>
+  </data>
+  <data name="Approval Date" xml:space="preserve">
+    <value>Approval Date</value>
+  </data>
+  <data name="ProductGroup" xml:space="preserve">
+    <value>Product Group</value>
+  </data>
+  <data name="Eligible" xml:space="preserve">
+    <value>Eligible</value>
+  </data>
+  <data name="Ineligible" xml:space="preserve">
+    <value>Ineligible</value>
+  </data>
+  <data name="QuotaExceeded" xml:space="preserve">
+    <value>Quota Exceeded</value>
+  </data>
 </root>

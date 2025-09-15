@@ -197,6 +197,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active Period.
+        /// </summary>
+        public static string ActivePeriod {
+            get {
+                return ResourceManager.GetString("ActivePeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Active Players.
         /// </summary>
         public static string ActivePlayers {
@@ -211,6 +220,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string ActivePlayersAndQualified {
             get {
                 return ResourceManager.GetString("ActivePlayersAndQualified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Active Qualified Date.
+        /// </summary>
+        public static string ActiveQualifiedDate {
+            get {
+                return ResourceManager.GetString("ActiveQualifiedDate", resourceCulture);
             }
         }
         
@@ -667,9 +685,27 @@ namespace Fanex.Affiliate.User.Core.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Approval Date.
         /// </summary>
+        public static string Approval_Date {
+            get {
+                return ResourceManager.GetString("Approval Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Approval Date.
+        /// </summary>
         public static string ApprovalDate {
             get {
                 return ResourceManager.GetString("ApprovalDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Approval Period.
+        /// </summary>
+        public static string ApprovalPeriod {
+            get {
+                return ResourceManager.GetString("ApprovalPeriod", resourceCulture);
             }
         }
         
@@ -679,6 +715,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string Approved {
             get {
                 return ResourceManager.GetString("Approved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Approved CPA Amount.
+        /// </summary>
+        public static string ApprovedCPAAmount {
+            get {
+                return ResourceManager.GetString("ApprovedCPAAmount", resourceCulture);
             }
         }
         
@@ -1030,6 +1075,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string Bermuda {
             get {
                 return ResourceManager.GetString("Bermuda", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bet Ticket.
+        /// </summary>
+        public static string BetTicket {
+            get {
+                return ResourceManager.GetString("BetTicket", resourceCulture);
             }
         }
         
@@ -1808,6 +1862,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CPA Amount.
+        /// </summary>
+        public static string CPAAmount {
+            get {
+                return ResourceManager.GetString("CPAAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CPA Payment Details.
         /// </summary>
         public static string CPAPaymentDetails {
@@ -1822,6 +1885,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string CPAReport {
             get {
                 return ResourceManager.GetString("CPAReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CPA Status.
+        /// </summary>
+        public static string CPAStatus {
+            get {
+                return ResourceManager.GetString("CPAStatus", resourceCulture);
             }
         }
         
@@ -2177,6 +2249,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Eligible.
+        /// </summary>
+        public static string Eligible {
+            get {
+                return ResourceManager.GetString("Eligible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El Salvador .
         /// </summary>
         public static string ElSalvador {
@@ -2497,6 +2578,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string ESports {
             get {
                 return ResourceManager.GetString("ESports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estimated CPA Amount.
+        /// </summary>
+        public static string EstimatedCPAAmount {
+            get {
+                return ResourceManager.GetString("EstimatedCPAAmount", resourceCulture);
             }
         }
         
@@ -3033,6 +3123,33 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Holding Expired Date.
+        /// </summary>
+        public static string HoldingExpiredDate {
+            get {
+                return ResourceManager.GetString("HoldingExpiredDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Holding Period.
+        /// </summary>
+        public static string HoldingPeriod {
+            get {
+                return ResourceManager.GetString("HoldingPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Holding Qualified Date.
+        /// </summary>
+        public static string HoldingQualifiedDate {
+            get {
+                return ResourceManager.GetString("HoldingQualifiedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string Home {
@@ -3200,6 +3317,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string IndonesiaSupport {
             get {
                 return ResourceManager.GetString("IndonesiaSupport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ineligible.
+        /// </summary>
+        public static string Ineligible {
+            get {
+                return ResourceManager.GetString("Ineligible", resourceCulture);
             }
         }
         
@@ -5243,6 +5369,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Product Group.
+        /// </summary>
+        public static string ProductGroup {
+            get {
+                return ResourceManager.GetString("ProductGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 12BET Affiliate products.
         /// </summary>
         public static string ProductHeaderTitle {
@@ -5338,6 +5473,24 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string QualifyingMem {
             get {
                 return ResourceManager.GetString("QualifyingMem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quota.
+        /// </summary>
+        public static string Quota {
+            get {
+                return ResourceManager.GetString("Quota", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quota Exceeded.
+        /// </summary>
+        public static string QuotaExceeded {
+            get {
+                return ResourceManager.GetString("QuotaExceeded", resourceCulture);
             }
         }
         
@@ -5478,6 +5631,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string RegisteredDate {
             get {
                 return ResourceManager.GetString("RegisteredDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration Date.
+        /// </summary>
+        public static string RegistrationDate {
+            get {
+                return ResourceManager.GetString("RegistrationDate", resourceCulture);
             }
         }
         

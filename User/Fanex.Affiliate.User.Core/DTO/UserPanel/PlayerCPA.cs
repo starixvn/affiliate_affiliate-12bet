@@ -80,5 +80,7 @@ namespace Fanex.Affiliate.User.Core.DTO.UserPanel
         public bool IsAbnormal { get; set; }
 
         public string Description { get; set; }
+
+        public bool IsTO { get; set; }
     }
 }
