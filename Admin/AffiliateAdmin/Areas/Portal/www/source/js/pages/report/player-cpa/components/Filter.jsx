@@ -21,7 +21,6 @@ const Filter = ({
     setParams,
     setPlayerCpaData,
     setPagingOption,
-    pagingOption,
     today,
     deals,
     toggleLoader,
@@ -40,7 +39,7 @@ const Filter = ({
         const nowStr = `${currentMonthString}/${formatUnit(now.getDate())}/${currentYear}`;
         setNowString(nowStr);
 
-        if (!shouldTriggerSearch) {
+        if (!params.fromDate || !params.toDate) {
             setParams({
                 fromDate: `${currentMonthString}/01/${currentYear}`,
                 toDate: nowStr
@@ -49,7 +48,7 @@ const Filter = ({
     }, []);
 
     useEffect(() => {
-        if (!shouldTriggerSearch && deals && deals.length > 0) {
+        if (deals && deals.length > 0) {
             const dealIds = deals.map(deal => deal.key).join(',');
             setParams({
                 dealName: dealIds
@@ -172,13 +171,12 @@ const Filter = ({
         </div>
     )
 }
-function mapStateToProps({ playerCpaData, params, today, deals, pagingOption, shouldTriggerSearch }) {
+function mapStateToProps({ playerCpaData, params, deals, today, shouldTriggerSearch }) {
     return Object.assign({}, {
         playerCpaData,
         params,
         today,
         deals,
-        pagingOption,
         shouldTriggerSearch
     });
 }

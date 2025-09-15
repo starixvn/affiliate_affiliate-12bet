@@ -6,11 +6,10 @@ import { Button } from 'reactstrap';
 
 import { htmlDecode } from '../../../../modules/htmlHelper';
 import { formatDecimalWithCurrencySymbol } from '../../../../modules/numberFormat';
-import { resolveClientUrl } from '../../../../modules/utils';
+import { resolveClientUrl, formatDateTime } from '../../../../modules/utils';
 import { setPagingOption, toggleLoaderUserPanel, fetchData, setTransactionId, redirectToDailyEarning, setExpandMonthDateList, redirectToSubAffiliate } from '../actions';
 import { headerText, globalResource, transTypeList, monthlyEarning, MONTHLY_TOTAL, MONTHLY_EARNING, PAYMENT_REQUEST, SUBAFFILIATE, selectedAllProduct, maxWidth, CalculatedMonth, CPA_EARNING } from '../modules/constants';
 import { getScrollTopPosition, setScrollTop } from '../modules/utils';
-import { setParams, toggleSubmit } from '../../../report/player-cpa/actions';
 
 export class Content extends PureComponent {
     constructor(props) {
@@ -116,15 +115,18 @@ export class Content extends PureComponent {
     }
 
     _handleRedirectToPlayerCpa = (dataItem) => {
-        const { affName, param } = this.props;
+        const { affName } = this.props;
+        const itemDate = new Date(dataItem.MonthDate);
+        const startDate = formatDateTime(new Date(itemDate.getFullYear(), itemDate.getMonth(), 1));
+        const endDate = formatDateTime(new Date(itemDate.getFullYear(), itemDate.getMonth() + 1, 0));
         const playerCpaParams = {
             "userName": affName,
             "custName": "",
             "dealName": "",
             "statusId": -1,
             "viewBy": "3",
-            "fromDate": param.fromDate,
-            "toDate": param.toDate,
+            "fromDate": startDate,
+            "toDate": endDate,
         };
         const playerCpaUrl = resolveClientUrl('Portal/PlayerCpaReport');
 
@@ -259,8 +261,6 @@ function mapDispatchToProps(dispatch) {
         redirectToDailyEarning,
         setExpandMonthDateList,
         redirectToSubAffiliate,
-        setParams,
-        toggleSubmit
     }, dispatch);
 }
 
