@@ -165,7 +165,10 @@
   //},
   {
     "outputFile": "www/build/styles/css/pages/cpa-report/redeposit-cpa-report.css",
-    "inputFile": "www/source/styles/pages/cpa-report/redeposit-cpa-report.scss"
+    "inputFile": "www/source/styles/pages/cpa-report/redeposit-cpa-report.scss",
+
+  },
+  {
     "outputFile": "www/build/styles/css/affiliate-cpa-report.css",
     "inputFile": "www/source/styles/pages/affiliatecpareport.scss"
   }
