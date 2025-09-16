@@ -7,6 +7,7 @@
     var _month = "";
 
     function initPager() {
+        $("#playerCPAPager").removeClass("display-none");
         $("#playerCPAPager").pager({
             totalItems: parseInt($("#TotalItem").val()),
             pageSize: _pageSize,
@@ -69,6 +70,7 @@
 
         initEvent: function () {
             $('#btnSubmit').on('click', function () {
+                _me.hideReport();
                 _me.resetParams();
                 var params = _me.getParams();
                 _me.getFullReport(params);
@@ -82,6 +84,7 @@
             $('#monthlyDataTable').on('click', '.month-link', function () {
                 var $this = $(this);
                 _me.resetParams();
+                $("#player-cpa-report").addClass("display-none");
                 var monthText = $this.text();
                 _month = monthText;
                 var params = _me.getParams();
@@ -116,7 +119,10 @@
                 success: function (response) {
                     _me.renderMonthlyReport(response.MonthlyCPAViewModel);
                     _me.renderPlayerCPAReport(response.PlayerCPAViewModel);
-                    initPager();
+
+                    if (response.PlayerCPAViewModel.TotalRows != 0) {
+                        initPager();
+                    }
                 },
                 beforeSend: function () {
                     Site.showLoader();
@@ -177,7 +183,10 @@
                 contentType: "application/json; charset=UTF-8",
                 success: function (response) {
                     _me.renderPlayerCPAReport(response);
-                    initPager();
+
+                    if (response.TotalRows != 0) { 
+                        initPager();
+                    }
                 },
                 beforeSend: function () {
                     Site.showLoader();
@@ -209,6 +218,7 @@
         },
 
         renderMonthlyReport: function (data) {
+            $('#monthly-cpa-report').removeClass("display-none");
             $('#monthlyReportData').empty();
             if (data && data.MonthlyCPA.length > 0) {
                 var bodyHtml = _me.buildMonthlyDataTable(data);
@@ -220,6 +230,7 @@
         },
 
         renderPlayerCPAReport: function (data) {
+            $('#player-cpa-report').removeClass("display-none");
             $('#playerReportData').empty();
             if (data && data.PlayerCPA.length > 0) {
                 $('#TotalItem').val(data.TotalRows);
@@ -479,6 +490,12 @@
             } else {
                 return 1;
             }
+        },
+
+        hideReport: function () {
+            $("#player-cpa-report").addClass("display-none");
+            $("#monthly-cpa-report").addClass("display-none");
+            $("#playerCPAPager").addClass("display-none");
         }
     };
 
