@@ -23,7 +23,7 @@ namespace Fanex.Affiliate.Admin.Core.DTO.UserPanel
 
         public byte? CalculatedType { get; set; }
 
-        public string DateText => IsMonthlyTransType(TransType) ? MonthDate.ToString("MMM-yyyy") : MonthDate.ToString("dd-MMM-yyyy");
+        public string DateText => ShouldDisplayFullDate(TransType) ? MonthDate.ToString("dd-MMM-yyyy") : MonthDate.ToString("MMM-yyyy");
 
         public string NormalizeDateText => MonthDate.ToString("yyyy-MM-dd");
 
@@ -37,6 +37,36 @@ namespace Fanex.Affiliate.Admin.Core.DTO.UserPanel
                 }
 
                 return Description;
+            }
+        }
+
+        public string TransTypeDisplayText
+        {
+            get
+            {
+                switch (TransType)
+                {
+                    case Constants.TransType.MonthlyTotal:
+                        return "Transaction";
+                    case Constants.TransType.MonthlyEarning:
+                        return "Revenue Share";
+                    case Constants.TransType.PaymentRequest:
+                        return "Payment Request";
+                    case Constants.TransType.Adjustment:
+                        return "Adjustment";
+                    case Constants.TransType.SubAffiliateRevenueShare:
+                        return "Sub-Affiliate Revenue Share";
+                    case Constants.TransType.CpaEarning:
+                        return "CPA Earning";
+                    case Constants.TransType.SubCpaEarning:
+                        return "Sub-Affiliate CPA" +
+                            "" +
+                            "" +
+                            "" +
+                            "";
+                    default:
+                        return "Monthly Earning";
+                }
             }
         }
 
@@ -55,12 +85,10 @@ namespace Fanex.Affiliate.Admin.Core.DTO.UserPanel
             }
         }
 
-        private static bool IsMonthlyTransType(int transType)
+        private static bool ShouldDisplayFullDate(int transType)
         {
-            return transType == Constants.TransType.MonthlyEarning
-                || transType == Constants.TransType.MonthlyTotal
-                || transType == Constants.TransType.SubAffiliate
-                || transType == Constants.TransType.CpaEarning;
+            return transType == Constants.TransType.PaymentRequest
+                || transType == Constants.TransType.Adjustment;
         }
     }
 }

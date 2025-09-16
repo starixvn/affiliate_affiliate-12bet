@@ -141,9 +141,10 @@ namespace Fanex.Affiliate.Admin.Core.Services.UserPanel
 
         private static bool IsUnderMonthlyGroup(int transType)
         {
-            return transType == TransType.SubAffiliate 
-                || transType == TransType.MonthlyEarning 
-                || transType == TransType.CpaEarning;
+            return transType == TransType.MonthlyEarning 
+                || transType == TransType.SubAffiliateRevenueShare
+                || transType == TransType.CpaEarning
+                || transType == TransType.SubCpaEarning;
         }
 
         private static DailyEarningCriteria GetDailyEarningCriteria(string spKey, DailyEarningParam param)
