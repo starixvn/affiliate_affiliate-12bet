@@ -48,6 +48,12 @@ export const affName = createReducer('', {
     }
 })
 
+export const triggerSubmit = createReducer(false, {
+    [types.SHOULD_TRIGGER_SUBMIT](prevState) {
+        return !prevState;
+    }
+})
+
 export default combineReducers({
     params,
     today,
@@ -58,5 +64,6 @@ export default combineReducers({
     isSubmit,
     dealId,
     isShowDealPopup,
-    affName
+    affName,
+    triggerSubmit
 });

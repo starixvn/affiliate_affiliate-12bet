@@ -42,3 +42,9 @@ export const setAffName = (data) => {
         data
     }
 }
+
+export const shouldTriggerSubmit = () => {
+    return {
+        type: types.SHOULD_TRIGGER_SUBMIT,
+    }
+}

@@ -204,8 +204,45 @@ export class GridData extends PureComponent {
         return description ? `${monthDate} (${description})` : monthDate;
     }
 
+    _handleRedirectToAffCpaReport = (userName, groupId, monthDate) => {
+        const { param } = this.props;
+        const path = resolveClientUrl('Portal/AffiliateCpaReport');
+
+        const formatDate = (date) => {
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const year = date.getFullYear();
+            return `${month}/${day}/${year}`;
+        };
+
+        const getMonthRange = (month, year) => {
+            const firstDay = new Date(year, month - 1, 1);
+            const lastDay = new Date(year, month, 0);
+            return {
+                fromDate: formatDate(firstDay),
+                toDate: formatDate(lastDay),
+            };
+        };
+
+        let fromDate, toDate;
+
+        if (!this._isMainView()) {
+            const [month, year] = monthDate.split('/').map(Number);
+            ({ fromDate, toDate } = getMonthRange(month, year));
+        } else {
+            const [month1, , year1] = param.FromDate.split('/').map(Number);
+            const [month2, , year2] = param.ToDate.split('/').map(Number);
+
+            fromDate = getMonthRange(month1, year1).fromDate;
+            toDate = getMonthRange(month2, year2).toDate;
+        }
+
+        const url = `${path}?userName=${userName}&dealName=${groupId}&viewBy=3&fromDate=${fromDate}&toDate=${toDate}`;
+        return url;
+    };
+
     _buildCommonCell(dataItem, productColumnClassName, isTotalRow, isMainView, isBeforeCutOffDate) {
-        const { headerRow, languageList } = this.props;
+        const { headerRow, languageList, param } = this.props;
         const header = AggregateHeaderColumn.convertColsToObject(headerRow.getCols());
         const isLinkToAffCpaReport = dataItem.GroupTypeId !== REVENUE_SHARE_GROUP_TYPE_ID && !isTotalRow;
 
@@ -287,7 +324,7 @@ export class GridData extends PureComponent {
                     <td className="text-right" title={cpaAmount}>
                         {
                             isLinkToAffCpaReport
-                                ? <a href={`${resolveClientUrl(`Portal/AffiliateCpaReport?userName=${dataItem.UserName}&dealName=${dataItem.GroupId}&fromDate=${this.props.param.FromDate}&toDate=${this.props.param.ToDate}`)}`} target="_blank">{cpaAmount}</a>
+                                ? <a href={this._handleRedirectToAffCpaReport(isMainView ? dataItem.UserName : param.UserName, dataItem.GroupId, isMainView ? '' : dataItem.MonthDateString)} target="_blank">{cpaAmount}</a>
                                 : cpaAmount
                         }
                     </td>)
@@ -298,7 +335,7 @@ export class GridData extends PureComponent {
                     <td className="text-right" title={subCpaAmount}>
                         {
                             isLinkToAffCpaReport
-                                ? <a href={`${resolveClientUrl(`Portal/AffiliateCpaReport?userName=${dataItem.UserName}&dealName=${dataItem.GroupId}&fromDate=${this.props.param.FromDate}&toDate=${this.props.param.ToDate}`)}`} target="_blank">{subCpaAmount}</a>
+                                ? <a href={this._handleRedirectToAffCpaReport(isMainView ? dataItem.UserName : param.UserName, dataItem.GroupId, isMainView ? '' : dataItem.MonthDateString)} target="_blank">{subCpaAmount}</a>
                                 : subCpaAmount
                         }
                     </td>)

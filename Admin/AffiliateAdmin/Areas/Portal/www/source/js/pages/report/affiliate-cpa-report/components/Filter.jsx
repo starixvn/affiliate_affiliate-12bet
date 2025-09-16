@@ -12,26 +12,38 @@ import { viewByOptions, defaultParams } from '../libs/constants';
 import { formatUnit, handleAfterChangeFromDate, handleAfterChangeToDate, handleChangeMultipleSelected } from '../../../../modules/utils';
 import { minDate, sixMonth, defaultPagingOption } from '../../../../modules/constants';
 
-const Filter = ({ setParams, params, toggleSubmit, today, deals }) => {
+const Filter = ({ setParams, params, toggleSubmit, today, deals, triggerSubmit }) => {
     const [nowString, setNowString] = useState('');
     const [dealList, setDealList] = useState(deals);
 
     useEffect(() => {
         const now = new Date(today);
+
         const currentMonth = now.getMonth() + 1;
         const currentMonthString = formatUnit(currentMonth);
         const currentYear = now.getFullYear();
 
-        const nowString = `${currentMonthString}/${formatUnit(now.getDate())}/${currentYear}`;
+        let nowString = `${currentMonthString}/${formatUnit(now.getDate())}/${currentYear}`;
+
+        let fromDate = `${currentMonthString}/01/${currentYear}`;
+        let toDate = nowString;
+
+        if (params.fromDate) {
+            fromDate = params.fromDate;
+        }
+        if (params.toDate) {
+            toDate = params.toDate;
+        }
+
         setNowString(nowString);
         setParams({
-            fromDate: `${currentMonthString}/01/${currentYear}`,
-            toDate: nowString
+            fromDate,
+            toDate
         });
     }, []);
 
     useEffect(() => {
-        if (deals && deals.length > 0) {
+        if (!params.dealName && deals && deals.length > 0) {
             const dealIds = deals.map(deal => deal.key).join(',');
             setParams({
                 dealName: dealIds
@@ -39,6 +51,11 @@ const Filter = ({ setParams, params, toggleSubmit, today, deals }) => {
         }
     }, []);
 
+    useEffect(() => {
+        if (triggerSubmit) {
+            toggleSubmit();
+        }
+    }, [triggerSubmit]);
 
     const onEnterPress = (event) => {
         if (event.charCode === 13) {
@@ -149,7 +166,8 @@ function mapStateToProps(state) {
         isProduction: state.isProduction,
         today: state.today,
         params: state.params,
-        deals: state.deals
+        deals: state.deals,
+        triggerSubmit: state.triggerSubmit
     });
 }
 
