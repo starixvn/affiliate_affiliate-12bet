@@ -16,7 +16,7 @@ export class Filter extends Component {
     constructor(props) {
         super(props);
 
-        const { today, productList, baseCurrencyList, currencyList, paymentCurrencyList } = this.props;
+        const { today, productList, baseCurrencyList, currencyList, commGroupList } = this.props;
         this.now = new Date(today);
         const currentMonth = this.now.getMonth() + 1;
         const currentMonthString = formatUnit(currentMonth);
@@ -34,7 +34,7 @@ export class Filter extends Component {
             sortBy: defaultSortBy,
             isSortAscending: true,
             selectedProductList: productList.filter(item => item.checked).map(item => item.key).join(',') || '',
-            selectedCommGroupList: 'all',
+            selectedCommGroupList: commGroupList.filter(item => item.checked).map(item => item.key).join(',') || '',
             isGetAll: false,
             isExcludeNegvBBF: false,
             isExcludeNegvCurrentBBF: false,
@@ -216,7 +216,6 @@ export class Filter extends Component {
         } = this.state;
         const { pagingOption } = this.props;
 
-        const isSelectAllCommGroup = this.props.commGroupList.every(c => c.checked);
         const isSelectAllPaymentCurrency = this.props.paymentCurrencyList.every(c => c.checked);
 
         const param = {
@@ -226,7 +225,7 @@ export class Filter extends Component {
             ToDate: isCheckedDatePicker ? toDate : `${toMonth.month}/1/${toMonth.year}`,
             PreferredLanguage: selectedLanguage,
             BaseCurrencyId: Number(selectedBaseCurrency),
-            GroupIds: isSelectAllCommGroup ? 'all' : selectedCommGroupList,
+            GroupIds: selectedCommGroupList,
             CurrencyIds: selectedCurrencyList,
             PaymentCurrencyIds: isSelectAllPaymentCurrency ? 'all' : selectedPaymentCurrencyList,
             ProductIds: selectedProductList,

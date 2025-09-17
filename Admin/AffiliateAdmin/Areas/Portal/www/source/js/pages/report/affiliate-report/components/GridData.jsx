@@ -105,7 +105,7 @@ export class GridData extends PureComponent {
             <tr className="freeze-row freeze-row-h1" key="thead-1">
                 <th className="freeze-column-header" width={110} rowSpan="3" title={firstColName}>{firstColName}</th>
                 {mainHeader[reportKey.Status].isShowable && (<th width={80} rowSpan="3" title={headerText.Status}>{headerText.Status}</th>)}
-                {mainHeader[reportKey.PreferredLanguage].isShowable && <th header={true} colWidth={80} rowSpan="3" title={headerText.PreferredLanguage}>{headerText.PreferredLanguage}</th>}
+                {mainHeader[reportKey.PreferredLanguage].isShowable && <th header={true} width={150} rowSpan="3" title={headerText.PreferredLanguage}>{headerText.PreferredLanguage}</th>}
                 {mainHeader[reportKey.PaymentCurrency].isShowable && (<th width={70} rowSpan="3" title={headerText.PaymentCurrency}>{headerText.PaymentCurrency}</th>)}
                 {mainHeader[reportKey.CommGroupName].isShowable && (<th width={150} rowSpan="3" title={headerText.CommGroupName}>{headerText.CommGroupName}</th>)}
                 {mainHeader[reportKey.PaymentFrequency].isShowable && (<th width={180} rowSpan="3" title={headerText.PaymentFrequency}>{headerText.PaymentFrequency}</th>)}
@@ -420,11 +420,12 @@ export class GridData extends PureComponent {
     render() {
         const { gridData, total } = this.state;
         const maxHeight = getMaxHeight();
+        const minWidth = this.props.isCheckedDatePicker ? { minWidth: '2500px' } : {};
 
         return gridData && (
             <Fragment>
                 <div className="table-responsive aff-report-table-container" style={{ maxHeight }} ref={this.tableRef}>
-                    <Table className="freeze-table">
+                    <Table className="freeze-table" style={ minWidth }>
                         <thead>
                             {
                                 this._renderHeader()
