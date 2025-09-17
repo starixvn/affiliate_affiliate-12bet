@@ -234,10 +234,20 @@
 })(jQuery);
 var StatementHistory = (function ($) {
     const _currentPage = "StatementHistory";
-    const urlMapping = [
-        { transType: 201, url: "UserPanel/Main/#DailyEarning" },
-        { transType: 204, url: "UserPanel/Main/#SubAffEarning" }
-    ];
+    const urlMapping = {
+        201: {
+            url: "UserPanel/Main/#DailyEarning",
+            getParams: getDefaultParams
+        },
+        204: {
+            url: "UserPanel/Main/#SubAffEarning",
+            getParams: getDefaultParams
+        },
+        206: {
+            url: "UserPanel/Main/#AffiliateCPAReport",
+            getParams: getDateRangeParams
+        }
+    };
 
     let _pageSize = 20;
     let _pageIndex = 0;
@@ -274,11 +284,38 @@ var StatementHistory = (function ($) {
         $(children).toggleClass("display-none");
     }
 
+    function getDefaultParams(clickedDate) {
+        return {
+            monthDate: clickedDate,
+            requestPage: _currentPage,
+            baseCurrency: $("#base-currency").val(),
+            isOnlyContent: false
+        };
+    }
+
+    function getDateRangeParams(clickedDate) {
+        let date = new Date(clickedDate);
+        let firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+        let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        return {
+            fromDate: _me.formatDate(firstDay),
+            toDate: _me.formatDate(lastDay),
+            viewBy: 3
+        };
+    }
+
     var _me = {
         initialize: function () {
             _me.handleIfIsClickBreadcumb();
             initPager();
             _me.initEvent();
+        },
+
+        formatDate: function (date) {
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            return year + "-" + (month < 10 ? '0' + month : month) + "-" + (day < 10 ? '0' + day : day);
         },
 
         initEvent: function () {
@@ -290,15 +327,16 @@ var StatementHistory = (function ($) {
 
             $("#statementDataList").on("click", ".amountItem", function () {
                 let transtype = Number($(this).data("transtype"));
-                let url = urlMapping.find(elem => elem.transType === transtype).url;
-                let params = {
-                    monthDate: $(this).data("date"),
-                    requestPage: _currentPage,
-                    baseCurrency: $("#base-currency").val(),
-                    isOnlyContent: false
-                };
-                _me.setStatementHistoryParamIntoStorage();
-                Site.redirect(Site.resolveRelativeLangUrl(`${url}?${$.param(params)}`));
+                let mapping = urlMapping[transtype];
+                let clickedDate = $(this).data("date");
+
+                if (mapping) {
+                    let url = mapping.url;
+                    let params = mapping.getParams(clickedDate);
+
+                    _me.setStatementHistoryParamIntoStorage();
+                    Site.redirect(Site.resolveRelativeLangUrl(`${url}?${$.param(params)}`));
+                }
             });
 
             $("#statementDataList").on("click", ".btn.btn-transparent", function () {

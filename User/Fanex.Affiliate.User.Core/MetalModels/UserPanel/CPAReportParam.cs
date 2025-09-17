@@ -1,12 +1,13 @@
-﻿using System;
-
-namespace Fanex.Affiliate.User.Core.MetalModels.UserPanel
+﻿namespace Fanex.Affiliate.User.Core.MetalModels.UserPanel
 {
+    using System;
+    using Constants;
+
     public class CPAReportParam
     {
         public int AffId { get; set; }
 
-        public int StatusId {  get; set; }
+        public int StatusId { get; set; }
 
         public int ViewBy { get; set; }
 
@@ -14,9 +15,9 @@ namespace Fanex.Affiliate.User.Core.MetalModels.UserPanel
 
         public DateTime ToDate { get; set; }
 
-        public int PageSize { get; set; }
+        public int PageSize { get; set; } = Page.PageSize;
 
-        public int PageIndex { get; set; }
+        public int PageIndex { get; set; } = Page.PageIndex;
 
         public int NRows { get; set; }
 

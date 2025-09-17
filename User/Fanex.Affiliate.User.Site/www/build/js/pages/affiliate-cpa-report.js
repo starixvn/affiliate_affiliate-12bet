@@ -1604,12 +1604,16 @@ var affiliatePCAReport = (function ($) {
             trigger: document.getElementById(triggerId),
             yearRange: [2015, new Date().getFullYear()],
             toString: function (date, format) {
-                var day = date.getDate();
-                var month = date.getMonth() + 1;
-                var year = date.getFullYear();
-                return formatDateUnit(month) + "/" + formatDateUnit(day) + "/" + year;
+                return getDateString(date);
             }
         }));
+    }
+
+    function getDateString(date) {
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        return formatDateUnit(month) + "/" + formatDateUnit(day) + "/" + year;
     }
 
     var _me = {
@@ -1617,6 +1621,50 @@ var affiliatePCAReport = (function ($) {
             initDatePicker('FromDate', 'fromPicker');
             initDatePicker('ToDate', 'toPicker');
             _me.initEvent();
+            _me.handleUrlParameters();
+        },
+
+        getUrlParameter: function (name) {
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            let results = regex.exec(location.search);
+
+            if (!results && location.hash) {
+                results = regex.exec(location.hash);
+            }
+
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        },
+
+        convertDateFormat: function (dateStr) {
+            const date = new Date(dateStr);
+
+            if (isNaN(date.getTime())) {
+                return '';
+            }
+
+            return getDateString(date);
+        },
+
+        handleUrlParameters: function () {
+            const fromDate = _me.getUrlParameter('fromDate');
+            const toDate = _me.getUrlParameter('toDate');
+            const viewBy = _me.getUrlParameter('viewBy');
+
+            const convertedFromDate = _me.convertDateFormat(fromDate);
+            const convertedToDate = _me.convertDateFormat(toDate);
+
+            if (!convertedFromDate || !convertedToDate) {
+                alert($("<div/>").html(langResource.isInvalid).text());
+                return;
+            }
+
+            $('#FromDate').val(convertedFromDate);
+            $('#ToDate').val(convertedToDate);
+            $('#ViewBy').val(viewBy);
+
+            setTimeout(function () {
+                _me.getFullReport(_me.getParams());
+            }, 100);
         },
 
         initEvent: function () {
@@ -1735,7 +1783,7 @@ var affiliatePCAReport = (function ($) {
                 success: function (response) {
                     _me.renderPlayerCPAReport(response);
 
-                    if (response.TotalRows != 0) { 
+                    if (response.TotalRows != 0) {
                         initPager();
                     }
                 },
@@ -1868,7 +1916,7 @@ var affiliatePCAReport = (function ($) {
             rowItems.push(_me.buildCell(formatDecimal(dataRow.EstimatedCPAAmount)));
             rowItems.push(_me.buildCell(formatDecimal(dataRow.ApprovedCPAAmount)));
 
-            if (dataRow.CPAStatus === "Rejected") { 
+            if (dataRow.CPAStatus === "Rejected") {
                 rowItems.push('<td class="text-center">' + dataRow.CPAStatus + '<span title="' + dataRow.Description + '" class="glyphicon glyphicon-info-sign"></span></td>');
             } else {
                 rowItems.push('<td class="text-center">' + dataRow.CPAStatus + '</td>');
@@ -1964,8 +2012,8 @@ var affiliatePCAReport = (function ($) {
                 return '<tr class="total">' +
                     '<td class="text-right">' + langResource.total + '</td>' +
                     _me.buildCell(formatDecimal(total.Turnover)) +
-                    _me.buildCell(formatDecimal(total.CPAAmount)) 
-                    '</tr>';
+                    _me.buildCell(formatDecimal(total.CPAAmount))
+                '</tr>';
             }
 
             return '';
@@ -2025,10 +2073,10 @@ var affiliatePCAReport = (function ($) {
         getSortType: function () {
             if (_sortingColumn === 'Month') {
                 return 1;
-                   
+
             } else if (_sortingColumn === 'Quota') {
                 return 2;
-                   
+
             } else if (_sortingColumn === 'CPAAmount') {
                 return 3;
 

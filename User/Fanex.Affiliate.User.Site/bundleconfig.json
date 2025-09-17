@@ -106,13 +106,13 @@
   //    "www/source/js/pages/statistics/marketing-statistics.js"
   //  ]
   //},
-  //{
-  //  "outputFileName": "www/build/js/statement-history.js",
-  //  "inputFiles": [
-  //    "www/source/js/components/pager.js",
-  //    "www/source/js/pages/statement-history.js"
-  //  ]
-  //},
+  {
+    "outputFileName": "www/build/js/statement-history.js",
+    "inputFiles": [
+      "www/source/js/components/pager.js",
+      "www/source/js/pages/statement-history.js"
+    ]
+  },
   //{
   //  "outputFileName": "www/build/js/messagehistory.js",
   //  "inputFiles": [
