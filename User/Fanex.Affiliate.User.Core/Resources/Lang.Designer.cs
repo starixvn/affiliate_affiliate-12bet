@@ -1871,6 +1871,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CPA Earning.
+        /// </summary>
+        public static string CpaEarning {
+            get {
+                return ResourceManager.GetString("CpaEarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CPA Payment Details.
         /// </summary>
         public static string CPAPaymentDetails {
@@ -6355,11 +6364,29 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sub-Affiliate Revenue Share.
+        /// </summary>
+        public static string SubAffiliateRevenueShare {
+            get {
+                return ResourceManager.GetString("SubAffiliateRevenueShare", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sub Category.
         /// </summary>
         public static string SubCategory {
             get {
                 return ResourceManager.GetString("SubCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sub-Affiliate CPA.
+        /// </summary>
+        public static string SubCpaEarning {
+            get {
+                return ResourceManager.GetString("SubCpaEarning", resourceCulture);
             }
         }
         

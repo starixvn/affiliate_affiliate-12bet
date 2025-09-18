@@ -61,12 +61,16 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
                 {
                     case Constants.TransType.Adjustment:
                         return Resources.Lang.Adjustment;
-                    case Constants.TransType.Commission:
+                    case Constants.TransType.MonthlyEarning:
                         return Resources.Lang.MonthlyEarning;
                     case Constants.TransType.Payment:
                         return Resources.Lang.PaymentRequest;
-                    case Constants.TransType.SubAffBonus:
-                        return Resources.Lang.SubAffiliate;
+                    case Constants.TransType.SubAffiliateRevenueShare:
+                        return Resources.Lang.SubAffiliateRevenueShare;
+                    case Constants.TransType.CpaEarning:
+                        return Resources.Lang.CpaEarning;
+                    case Constants.TransType.SubCpaEarning:
+                        return Resources.Lang.CpaEarning;
                     case Constants.TransType.MonthlyTotal:
                         {
                             if (CalculatedType == Constants.CalculatedType.CalculatedMonth || CalculatedType == Constants.CalculatedType.UnCalculatedMonth)
@@ -88,9 +92,9 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
             {
                 switch (TransType)
                 {
-                    case Constants.TransType.Commission:
+                    case Constants.TransType.MonthlyEarning:
                         return GetCommissionDescription(CalculatedType);
-                    case Constants.TransType.SubAffBonus:
+                    case Constants.TransType.SubAffiliateRevenueShare:
                         return GetSubAffiliateDescription(CalculatedType);
                     case Constants.TransType.MonthlyTotal:
                         return GetMonthlyTotalDescription(CalculatedType);

@@ -93,7 +93,7 @@
 
             foreach (var item in statementHistoryList)
             {
-                if (item.TransType == TransType.Commission || item.TransType == TransType.SubAffBonus)
+                if (IsUnderMonthlyGroup(item.TransType))
                 {
                     if (CheckIfExistMonthlyTotal(item.MonthDate, vms))
                     {
@@ -113,9 +113,9 @@
         private static StatementHistoryViewModel CreateMonthlyTotal(DateTime monthDate, IEnumerable<StatementHistory> statementHistoryList)
         {
             var transItems = statementHistoryList.Where(s => s.MonthDate == monthDate)
-                .Where(s => s.TransType == TransType.SubAffBonus || s.TransType == TransType.Commission);
+                .Where(s => IsUnderMonthlyGroup(s.TransType));
 
-            var monthlyCom = transItems.FirstOrDefault(s => s.TransType == TransType.Commission);
+            var monthlyCom = transItems.FirstOrDefault(s => s.TransType == TransType.MonthlyEarning);
             var children = transItems.Select(CreateViewModelFromStatementHistoryItem);
 
             var monthlyTotal = new StatementHistoryViewModel
@@ -134,6 +134,14 @@
         private static bool CheckIfExistMonthlyTotal(DateTime monthDate, List<StatementHistoryViewModel> statementHistoryViews)
         {
             return statementHistoryViews.Exists(m => m.MonthDate == monthDate && m.TransType == TransType.MonthlyTotal);
+        }
+
+        private static bool IsUnderMonthlyGroup(int transType)
+        {
+            return transType == TransType.MonthlyEarning
+                || transType == TransType.SubAffiliateRevenueShare
+                || transType == TransType.CpaEarning
+                || transType == TransType.SubCpaEarning;
         }
 
         private static StatementHistoryViewModel CreateViewModelFromStatementHistoryItem(StatementHistory item)

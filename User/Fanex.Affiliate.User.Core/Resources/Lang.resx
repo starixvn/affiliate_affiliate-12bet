@@ -2771,4 +2771,13 @@ You can also email us to {1} or simply fill the form below.</value>
   <data name="QuotaExceeded" xml:space="preserve">
     <value>Quota Exceeded</value>
   </data>
+  <data name="SubAffiliateRevenueShare" xml:space="preserve">
+    <value>Sub-Affiliate Revenue Share</value>
+  </data>
+  <data name="CpaEarning" xml:space="preserve">
+    <value>CPA Earning</value>
+  </data>
+  <data name="SubCpaEarning" xml:space="preserve">
+    <value>Sub-Affiliate CPA</value>
+  </data>
 </root>
