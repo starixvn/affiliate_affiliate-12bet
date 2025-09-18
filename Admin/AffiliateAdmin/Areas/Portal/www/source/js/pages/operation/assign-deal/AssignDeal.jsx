@@ -13,7 +13,7 @@ export default class AssignDeal extends PureComponent {
 
         let { dealTypeList, dealList, affInfo } = window.initialState;
 
-        let selectedDealType = REVENUE_DEAL_TYPE;
+        let selectedDealType = affInfo.GroupTypeId;
 
         const dealByType = dealList.filter(item => item.GroupTypeId === selectedDealType);
 

@@ -41,13 +41,13 @@
             if (affId >= Validation.MinId)
             {
                 var dealTypeList = _commonDealService.GetDealTypes();
-                var param = new GetNormalDealParam { AffId = affId };
+                var param = new GetNormalDealParam { AffId = affId, IsOnlyRevenue = false };
                 var dealList = _commonDealService.GetNormalDealList(param);
 
                 viewModel = new AssignDealViewModel
                 {
                     DealList = dealList,
-                    DealTypeList = dealTypeList.Where(dt => dt.GroupTypeId == DealType.RevenueShare),
+                    DealTypeList = dealTypeList,
                     AffInfo = _affiliateService.GetAffiliateBasicInfo(affId)
                 };
             }
