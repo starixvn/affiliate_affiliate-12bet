@@ -19,7 +19,8 @@ export const GridData = ({ params, pagingOption, playerCpaData, setParams, setPa
 
     useEffect(() => {
         if (playerCpaData) {
-            const data = paginate(playerCpaData?.mainData, pagingOption?.PageIndex, pagingOption?.PageSize);
+            const sortedData = sortBy(playerCpaData?.mainData, params.sortColumn, params.isAscending);
+            const data = paginate(sortedData, pagingOption?.PageIndex, pagingOption?.PageSize);
 
             setGridData(data);
         }

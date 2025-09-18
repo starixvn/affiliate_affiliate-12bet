@@ -9,10 +9,10 @@ export const getPlayerCpaData = async (params) => {
 
     const response = await post(url, params);
 
-    return response && response.status === 200 ? transformData(response.data, params) : null;
+    return response && response.status === 200 ? transformData(response.data) : null;
 }
 
-const transformData = (data, params) => {
+const transformData = (data) => {
     const transformDecimal = (value) =>
         value == null ? '-' : formatDecimal(value);
 
@@ -25,11 +25,9 @@ const transformData = (data, params) => {
         )
     );
 
-    const sortedData = sortBy(transformData, params.sortColumn, params.isAscending);
-
     return {
         ...data,
-        mainData: sortedData
+        mainData: transformData
     };
 };
 

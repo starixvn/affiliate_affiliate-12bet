@@ -75,22 +75,20 @@ const Filter = ({ params, setParams, setPlayerCpaData, setPagingOption, today, d
     }
 
     const handleClickSearch = () => {
-        resetParams();
-        fetchData();
-    }
-
-
-    const resetParams = () => {
-        setParams({
+        const newParams = {
+            ...params,
             sortColumn: defaultParams.sortColumn,
             isAscending: defaultParams.isAscending
-        });
-    }
+        };
 
-    const fetchData = async () => {
+        setParams(newParams);
+        fetchData(newParams);
+    };
+
+    const fetchData = async (currentParams = params) => {
         toggleLoader(true);
 
-        const data = await getPlayerCpaData(params);
+        const data = await getPlayerCpaData(currentParams);
         if (data) {
             setPagingOption({
                 PageIndex: defaultPagingOption.PageIndex,
@@ -102,7 +100,7 @@ const Filter = ({ params, setParams, setPlayerCpaData, setPagingOption, today, d
         }
 
         toggleLoader(false);
-    }
+    };
 
     const getTitle = () => {
         let title = reportName;
