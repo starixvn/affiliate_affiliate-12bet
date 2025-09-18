@@ -23,5 +23,7 @@
         public decimal SubAffCommission { get; set; }
 
         public bool IsMaxSubLevel { get; set; }
+
+        public decimal NetGGR { get; set; }
     }
 }

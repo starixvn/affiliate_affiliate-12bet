@@ -2663,4 +2663,7 @@ You can also email us to {1} or simply fill the form below.</value>
   <data name="RevenueSharePayoutExample" xml:space="preserve">
     <value>Revenue Share Payout Example</value>
   </data>
+  <data name="NetGGR" xml:space="preserve">
+    <value></value>
+  </data>
 </root>

@@ -45,13 +45,17 @@
             <span class="info-panel-content">@Model.BalanceBroughtForward.ToStringMoneyWithSymbol("$")</span>
         </div>
     </div>
-    <div class="group group-three">
+    <div class="group group-two">
         <div class="img-icon">
             <img class="img-responsive" src="~/www/build/styles/Images/account-overview/total-deposit.svg" alt="Total Deposit icon" />
         </div>
-        <div class="info-panel w-100">
+        <div class="info-panel">
             <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.TotalDeposit/@Lang.FdmDeposit</span>
             <span class="info-panel-content">@Model.Deposit.ToStringMoneyWithSymbol("$")/@Model.FdmDeposit.ToStringMoneyWithSymbol("$")</span>
+        </div>
+        <div class="info-panel">
+            <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.NetGGR</span>
+            <span class="info-panel-content">@Model.NetGGR.ToStringMoneyWithSymbol("$")</span>
         </div>
     </div>
 </div>
