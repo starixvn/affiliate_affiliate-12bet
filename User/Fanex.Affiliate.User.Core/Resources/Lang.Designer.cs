@@ -4172,15 +4172,6 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Net GGR.
-        /// </summary>
-        public static string NetGGR {
-            get {
-                return ResourceManager.GetString("NetGGR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Netherlands .
         /// </summary>
         public static string Netherlands {
@@ -4195,6 +4186,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string NetProfit {
             get {
                 return ResourceManager.GetString("NetProfit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Net Revenue.
+        /// </summary>
+        public static string NetRevenue {
+            get {
+                return ResourceManager.GetString("NetRevenue", resourceCulture);
             }
         }
         
