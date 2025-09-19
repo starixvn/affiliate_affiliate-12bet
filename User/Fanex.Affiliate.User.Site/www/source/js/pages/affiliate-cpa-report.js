@@ -99,6 +99,8 @@
             const toDate = _me.getUrlParameter('toDate');
             const viewBy = _me.getUrlParameter('viewBy');
 
+            if (!fromDate || !toDate) return;
+
             const convertedFromDate = _me.convertDateFormat(fromDate);
             const convertedToDate = _me.convertDateFormat(toDate);
 

@@ -2509,10 +2509,10 @@ CONSISTENT PAYMENT</value>
     <value>Revenue Share</value>
   </data>
   <data name="UncalculatedCommission" xml:space="preserve">
-    <value>Uncalculated Revenue Share</value>
+    <value>Uncalculated Temporary Sub-Affiliate Revenue Share</value>
   </data>
   <data name="CurrentCommission" xml:space="preserve">
-    <value>Current Revenue Share</value>
+    <value>Current Temporary Sub-Affiliate Revenue Share</value>
   </data>
   <data name="CurrencyLabel" xml:space="preserve">
     <value>USD</value>
@@ -2779,5 +2779,11 @@ You can also email us to {1} or simply fill the form below.</value>
   </data>
   <data name="SubCpaEarning" xml:space="preserve">
     <value>Sub-Affiliate CPA</value>
+  </data>
+  <data name="ApprovedCpaEarning" xml:space="preserve">
+    <value>Approved CPA Earning</value>
+  </data>
+  <data name="ApprovedSubAffCpaEarning" xml:space="preserve">
+    <value>Approved Sub-Affiliate CPA Earning</value>
   </data>
 </root>

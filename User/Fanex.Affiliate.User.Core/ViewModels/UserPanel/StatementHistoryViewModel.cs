@@ -92,14 +92,18 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
             {
                 switch (TransType)
                 {
-                    case Constants.TransType.MonthlyEarning:
-                        return GetCommissionDescription(CalculatedType);
-                    case Constants.TransType.SubAffiliateRevenueShare:
-                        return GetSubAffiliateDescription(CalculatedType);
                     case Constants.TransType.MonthlyTotal:
                         return GetMonthlyTotalDescription(CalculatedType);
+                    case Constants.TransType.MonthlyEarning:
+                        return GetCommissionDescription(CalculatedType);
                     case Constants.TransType.Adjustment:
                         return GetAdjustmentDescription(Description);
+                    case Constants.TransType.SubAffiliateRevenueShare:
+                        return GetSubAffiliateRevenueShareDescription(CalculatedType);
+                    case Constants.TransType.CpaEarning:
+                        return Resources.Lang.ApprovedCpaEarning;
+                    case Constants.TransType.SubCpaEarning:
+                        return Resources.Lang.ApprovedSubAffCpaEarning;
                     default:
                         return Description;
                 }
@@ -132,7 +136,7 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
             return description.ToString();
         }
 
-        private static string GetSubAffiliateDescription(byte? calculatedType)
+        private static string GetSubAffiliateRevenueShareDescription(byte? calculatedType)
         {
             switch (calculatedType)
             {
