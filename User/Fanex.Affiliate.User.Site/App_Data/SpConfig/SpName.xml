@@ -172,8 +172,8 @@
 		<Setting Key="Aff_User_Report_RedepositCPA" SpName="Aff_User_Report_RedepositCPA" DbName="DBAFF12B.Affiliate_12B.wsv_afinet"></Setting>
 	</Function>
 	<Function Name="Affiliate CPA Report">
-		<Setting Key="Aff_User_Report_AffiliateCPA" SpName="Aff_User_Report_AffiliateCPA_UAT2" DbName="DBAFF12B.Affiliate_12B.wsv_afinet"></Setting>
-		<Setting Key="Aff_User_Report_PlayerCPA" SpName="Aff_User_Report_PlayerCPA_UAT2" DbName="DBAFF12B.Affiliate_12B.wsv_afinet"></Setting>
-		<Setting Key="Aff_User_Report_PlayerCPA_TO_Detail" SpName="Aff_User_Report_PlayerCPA_TO_Detail_UAT2" DbName="DBAFF12B.Affiliate_12B.wsv_afinet"></Setting>
+		<Setting Key="Aff_User_Report_AffiliateCPA" SpName="Aff_User_Report_AffiliateCPA" DbName="DBAFF12B.Affiliate_12B.wsv_afinet"></Setting>
+		<Setting Key="Aff_User_Report_PlayerCPA" SpName="Aff_User_Report_PlayerCPA" DbName="DBAFF12B.Affiliate_12B.wsv_afinet"></Setting>
+		<Setting Key="Aff_User_Report_PlayerCPA_TO_Detail" SpName="Aff_User_Report_PlayerCPA_TO_Detail" DbName="DBAFF12B.Affiliate_12B.wsv_afinet"></Setting>
 	</Function>
 </Functions>
