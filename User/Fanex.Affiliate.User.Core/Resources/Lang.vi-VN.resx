@@ -2553,4 +2553,109 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   <data name="NetRevenue" xml:space="preserve">
     <value>Doanh thu thuần</value>
   </data>
+  <data name="CPAReport" xml:space="preserve">
+    <value>Báo cáo CPA</value>
+  </data>
+  <data name="AffiliateCPAReport" xml:space="preserve">
+    <value>Báo cáo CPA Đại lý</value>
+  </data>
+  <data name="CPAAmount" xml:space="preserve">
+    <value>Số tiền CPA</value>
+  </data>
+  <data name="NotQualified" xml:space="preserve">
+    <value>Không đủ điều kiện</value>
+  </data>
+  <data name="Qualified" xml:space="preserve">
+    <value>Đủ điều kiện</value>
+  </data>
+  <data name="RedepositStatistics" xml:space="preserve">
+    <value>Thống kê tái nạp</value>
+  </data>
+  <data name="EstimatedCPAAmount" xml:space="preserve">
+    <value>Số tiền CPA dự kiến</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>ngày</value>
+  </data>
+  <data name="Monitoring" xml:space="preserve">
+    <value>Đang theo dõi</value>
+  </data>
+  <data name="StartFrom" xml:space="preserve">
+    <value>Bắt đầu từ</value>
+  </data>
+  <data name="RecheckDay" xml:space="preserve">
+    <value>Số ngày kiểm tra lại</value>
+  </data>
+  <data name="TotalAllPages" xml:space="preserve">
+    <value>Tổng cộng (tất cả các trang)</value>
+  </data>
+  <data name="RedepositRate" xml:space="preserve">
+    <value>Tỷ lệ tái nạp (%)</value>
+  </data>
+  <data name="CPAStatus" xml:space="preserve">
+    <value>Trạng thái CPA</value>
+  </data>
+  <data name="Approval Date" xml:space="preserve">
+    <value>Ngày duyệt</value>
+  </data>
+  <data name="ProductGroup" xml:space="preserve">
+    <value>Nhóm sản phẩm</value>
+  </data>
+  <data name="TotalSettledCPAAmount" xml:space="preserve">
+    <value>Tổng số tiền CPA đã thanh toán</value>
+  </data>
+  <data name="NumberOfPlayerRedeposit" xml:space="preserve">
+    <value>Số người chơi tái nạp</value>
+  </data>
+  <data name="ApprovedCPAPlayer" xml:space="preserve">
+    <value>Người chơi CPA đã được duy</value>
+  </data>
+  <data name="ExpiredRedepositDate" xml:space="preserve">
+    <value>Ngày hết hạn tái nạp</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>Ngày đăng ký</value>
+  </data>
+  <data name="QuotaExceeded" xml:space="preserve">
+    <value>Vượt chỉ tiêu</value>
+  </data>
+  <data name="Quota" xml:space="preserve">
+    <value>Chỉ tiêu</value>
+  </data>
+  <data name="ApprovedCPAAmount" xml:space="preserve">
+    <value>Số tiền CPA đã duyệt</value>
+  </data>
+  <data name="ActivePeriod" xml:space="preserve">
+    <value>Thời gian hoạt động</value>
+  </data>
+  <data name="ApprovalPeriod" xml:space="preserve">
+    <value>Thời gian duyệt</value>
+  </data>
+  <data name="HoldingExpiredDate" xml:space="preserve">
+    <value>Ngày hết hạn giữ</value>
+  </data>
+  <data name="HoldingQualifiedDate" xml:space="preserve">
+    <value>Ngày đủ điều kiện (tạm giữ)</value>
+  </data>
+  <data name="HoldingPeriod" xml:space="preserve">
+    <value>Thời gian giữ / Thời gian duy trì</value>
+  </data>
+  <data name="RedepositCPAReport" xml:space="preserve">
+    <value>Báo cáo CPA tái nạp</value>
+  </data>
+  <data name="ActiveQualifiedDate" xml:space="preserve">
+    <value>Ngày đủ điều kiện (hoạt động)</value>
+  </data>
+  <data name="BetTicket" xml:space="preserve">
+    <value>Vé cược</value>
+  </data>
+  <data name="CPAPaymentDetails" xml:space="preserve">
+    <value>Chi tiết thanh toán CPA</value>
+  </data>
+  <data name="Ineligible" xml:space="preserve">
+    <value>Không đủ điều kiện</value>
+  </data>
+  <data name="Eligible" xml:space="preserve">
+    <value>Đủ điều kiện</value>
+  </data>
 </root>

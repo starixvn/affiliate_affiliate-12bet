@@ -2571,4 +2571,109 @@
   <data name="NetRevenue" xml:space="preserve">
     <value>净收入</value>
   </data>
+  <data name="CPAReport" xml:space="preserve">
+    <value>CPA 报告</value>
+  </data>
+  <data name="AffiliateCPAReport" xml:space="preserve">
+    <value>CPA 合作伙伴报告</value>
+  </data>
+  <data name="CPAAmount" xml:space="preserve">
+    <value>CPA 金额</value>
+  </data>
+  <data name="NotQualified" xml:space="preserve">
+    <value>未达标</value>
+  </data>
+  <data name="Qualified" xml:space="preserve">
+    <value>已达标</value>
+  </data>
+  <data name="RedepositStatistics" xml:space="preserve">
+    <value>再存款数据统计</value>
+  </data>
+  <data name="EstimatedCPAAmount" xml:space="preserve">
+    <value>CPA 预估金额</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>天</value>
+  </data>
+  <data name="Monitoring" xml:space="preserve">
+    <value>监控中</value>
+  </data>
+  <data name="StartFrom" xml:space="preserve">
+    <value>起始日期</value>
+  </data>
+  <data name="RecheckDay" xml:space="preserve">
+    <value>复核天数</value>
+  </data>
+  <data name="TotalAllPages" xml:space="preserve">
+    <value>总计（所有分页）</value>
+  </data>
+  <data name="RedepositRate" xml:space="preserve">
+    <value>再存款率</value>
+  </data>
+  <data name="CPAStatus" xml:space="preserve">
+    <value>CPA 状态</value>
+  </data>
+  <data name="Approval Date" xml:space="preserve">
+    <value>批准日期</value>
+  </data>
+  <data name="ProductGroup" xml:space="preserve">
+    <value>产品组</value>
+  </data>
+  <data name="TotalSettledCPAAmount" xml:space="preserve">
+    <value>CPA 已结算总额</value>
+  </data>
+  <data name="NumberOfPlayerRedeposit" xml:space="preserve">
+    <value>再存款玩家数</value>
+  </data>
+  <data name="ApprovedCPAPlayer" xml:space="preserve">
+    <value>经批准的CPA玩家</value>
+  </data>
+  <data name="ExpiredRedepositDate" xml:space="preserve">
+    <value>到期再存款日期</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>注册日期</value>
+  </data>
+  <data name="QuotaExceeded" xml:space="preserve">
+    <value>超出配额</value>
+  </data>
+  <data name="Quota" xml:space="preserve">
+    <value>配额</value>
+  </data>
+  <data name="ApprovedCPAAmount" xml:space="preserve">
+    <value>CPA 已核准金额</value>
+  </data>
+  <data name="ActivePeriod" xml:space="preserve">
+    <value>活跃期间</value>
+  </data>
+  <data name="ApprovalPeriod" xml:space="preserve">
+    <value>审核期间</value>
+  </data>
+  <data name="HoldingExpiredDate" xml:space="preserve">
+    <value>观察期截止日期</value>
+  </data>
+  <data name="HoldingQualifiedDate" xml:space="preserve">
+    <value>观察期达标日期</value>
+  </data>
+  <data name="HoldingPeriod" xml:space="preserve">
+    <value>观察期间</value>
+  </data>
+  <data name="RedepositCPAReport" xml:space="preserve">
+    <value>CPA 存款报告</value>
+  </data>
+  <data name="ActiveQualifiedDate" xml:space="preserve">
+    <value>激活达标日期</value>
+  </data>
+  <data name="BetTicket" xml:space="preserve">
+    <value>投注单</value>
+  </data>
+  <data name="CPAPaymentDetails" xml:space="preserve">
+    <value>CPA 结算明细</value>
+  </data>
+  <data name="Ineligible" xml:space="preserve">
+    <value>不符合资格</value>
+  </data>
+  <data name="Eligible" xml:space="preserve">
+    <value>符合资格</value>
+  </data>
 </root>

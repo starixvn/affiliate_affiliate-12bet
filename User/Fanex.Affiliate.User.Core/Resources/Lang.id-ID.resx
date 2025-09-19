@@ -2551,4 +2551,109 @@ Anda juga bisa mengirim email ke {1} atau cukup isi formulir di bawah ini.</valu
   <data name="NetRevenue" xml:space="preserve">
     <value>Pendapatan Bersih</value>
   </data>
+  <data name="CPAReport" xml:space="preserve">
+    <value>Laporan CPA</value>
+  </data>
+  <data name="AffiliateCPAReport" xml:space="preserve">
+    <value>Laporan Afiliasi CPA</value>
+  </data>
+  <data name="CPAAmount" xml:space="preserve">
+    <value>Jumlah CPA</value>
+  </data>
+  <data name="NotQualified" xml:space="preserve">
+    <value>Tidak terkualifikasi</value>
+  </data>
+  <data name="Qualified" xml:space="preserve">
+    <value>Terkualifikasi</value>
+  </data>
+  <data name="RedepositStatistics" xml:space="preserve">
+    <value>Statistik Redeposit</value>
+  </data>
+  <data name="EstimatedCPAAmount" xml:space="preserve">
+    <value>Perkiraan Jumlah CPA</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>hari</value>
+  </data>
+  <data name="Monitoring" xml:space="preserve">
+    <value>Monitoring</value>
+  </data>
+  <data name="StartFrom" xml:space="preserve">
+    <value>Mulai Dari</value>
+  </data>
+  <data name="RecheckDay" xml:space="preserve">
+    <value>hari pemeriksaan ulang</value>
+  </data>
+  <data name="TotalAllPages" xml:space="preserve">
+    <value>Total ( semua halaman )</value>
+  </data>
+  <data name="RedepositRate" xml:space="preserve">
+    <value>% Redeposit</value>
+  </data>
+  <data name="CPAStatus" xml:space="preserve">
+    <value>Status CPA</value>
+  </data>
+  <data name="Approval Date" xml:space="preserve">
+    <value>Tanggal Disetujui</value>
+  </data>
+  <data name="ProductGroup" xml:space="preserve">
+    <value>Grup Produk</value>
+  </data>
+  <data name="TotalSettledCPAAmount" xml:space="preserve">
+    <value>Total Nominal CPA yang Diselesaikan</value>
+  </data>
+  <data name="NumberOfPlayerRedeposit" xml:space="preserve">
+    <value>Jumlah Pemain Redeposit</value>
+  </data>
+  <data name="ApprovedCPAPlayer" xml:space="preserve">
+    <value>Pemain CPA yang Disetujui</value>
+  </data>
+  <data name="ExpiredRedepositDate" xml:space="preserve">
+    <value>Tanggal Redeposit Kadaluwarsa</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>Tanggal Registrasi</value>
+  </data>
+  <data name="QuotaExceeded" xml:space="preserve">
+    <value>Kuota Melewati Batas</value>
+  </data>
+  <data name="Quota" xml:space="preserve">
+    <value>Kuota</value>
+  </data>
+  <data name="ApprovedCPAAmount" xml:space="preserve">
+    <value>Jumlah CPA yang Disetujui</value>
+  </data>
+  <data name="ActivePeriod" xml:space="preserve">
+    <value>Periode Aktif</value>
+  </data>
+  <data name="ApprovalPeriod" xml:space="preserve">
+    <value>Periode Disetujui</value>
+  </data>
+  <data name="HoldingExpiredDate" xml:space="preserve">
+    <value>Tanggal Kadaluwarsa Ditahan</value>
+  </data>
+  <data name="HoldingQualifiedDate" xml:space="preserve">
+    <value>Tanggal Terkualifikasi Ditahan</value>
+  </data>
+  <data name="HoldingPeriod" xml:space="preserve">
+    <value>Periode Ditahan</value>
+  </data>
+  <data name="RedepositCPAReport" xml:space="preserve">
+    <value>Laporan Redeposit CPA</value>
+  </data>
+  <data name="ActiveQualifiedDate" xml:space="preserve">
+    <value>Tanggal Terkualifikasi Aktif</value>
+  </data>
+  <data name="BetTicket" xml:space="preserve">
+    <value>Tiket Taruhan</value>
+  </data>
+  <data name="CPAPaymentDetails" xml:space="preserve">
+    <value>Detail Pembayaran CPA</value>
+  </data>
+  <data name="Ineligible" xml:space="preserve">
+    <value>Tidak Memenuhi Syarat</value>
+  </data>
+  <data name="Eligible" xml:space="preserve">
+    <value>Memenuhi Syarat</value>
+  </data>
 </root>
