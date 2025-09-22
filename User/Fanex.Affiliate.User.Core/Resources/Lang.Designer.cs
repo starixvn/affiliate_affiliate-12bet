@@ -1790,6 +1790,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CPA Amount.
+        /// </summary>
+        public static string CPAAmount {
+            get {
+                return ResourceManager.GetString("CPAAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creator.
         /// </summary>
         public static string Creator {

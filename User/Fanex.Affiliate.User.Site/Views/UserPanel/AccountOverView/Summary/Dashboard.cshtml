@@ -32,19 +32,59 @@
             </div>
         }
     </div>
-    <div class="group group-two">
-        <div class="img-icon">
-            <img class="img-responsive" src="~/www/build/styles/Images/account-overview/commission.svg" alt="Commission icon" />
+    @if (Model.IsHybridSetting)
+    {
+        <div class="group group-two">
+            <div class="img-icon">
+                <img class="img-responsive" src="~/www/build/styles/Images/account-overview/commission.svg" alt="Commission icon" />
+            </div>
+            <div class="info-panel">
+                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.RevenueShare</span>
+                <span class="info-panel-content">@Model.Commission.ToStringMoneyWithSymbol("$")</span>
+            </div>
+            <div class="info-panel">
+                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.CPAAmount</span>
+                <span class="info-panel-content">@Model.CPAAmount.ToStringMoneyWithSymbol("$")</span>
+            </div>
         </div>
-        <div class="info-panel">
-            <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.RevenueShare</span>
-            <span class="info-panel-content">@Model.Commission.ToStringMoneyWithSymbol("$")</span>
+        <div class="group group-three">
+            <div class="img-icon">
+                <img class="img-responsive" src="~/www/build/styles/Images/account-overview/commission.svg" alt="Total Deposit icon" />
+            </div>
+            <div class="info-panel w-100">
+                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.TotalDeposit/@Lang.BalForward</span>
+                <span class="info-panel-content">@Model.BalanceBroughtForward.ToStringMoneyWithSymbol("$")</span>
+            </div>
         </div>
-        <div class="info-panel">
-            <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.BalForward</span>
-            <span class="info-panel-content">@Model.BalanceBroughtForward.ToStringMoneyWithSymbol("$")</span>
+    }
+    else
+    {
+        <div class="group group-two">
+            <div class="img-icon">
+                <img class="img-responsive" src="~/www/build/styles/Images/account-overview/commission.svg" alt="Commission icon" />
+            </div>
+            @if (string.Equals(Model.GroupType, "Revenue Share", StringComparison.OrdinalIgnoreCase))
+            {
+                <div class="info-panel">
+                    <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.RevenueShare</span>
+                    <span class="info-panel-content">@Model.Commission.ToStringMoneyWithSymbol("$")</span>
+                </div>
+            }
+
+            @if (string.Equals(Model.GroupType, "Revenue Share", StringComparison.OrdinalIgnoreCase))
+            {
+                <div class="info-panel">
+                    <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.CPAAmount</span>
+                    <span class="info-panel-content">@Model.CPAAmount.ToStringMoneyWithSymbol("$")</span>
+                </div>
+            }
+
+            <div class="info-panel">
+                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.BalForward</span>
+                <span class="info-panel-content">@Model.BalanceBroughtForward.ToStringMoneyWithSymbol("$")</span>
+            </div>
         </div>
-    </div>
+    }
     <div class="group group-two">
         <div class="img-icon">
             <img class="img-responsive" src="~/www/build/styles/Images/account-overview/total-deposit.svg" alt="Total Deposit icon" />

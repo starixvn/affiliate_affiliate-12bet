@@ -25,5 +25,11 @@
         public bool IsMaxSubLevel { get; set; }
 
         public decimal NetGGR { get; set; }
+
+        public bool IsHybridSetting { get; set; }
+
+        public string GroupType { get; set; }
+
+        public decimal CPAAmount { get; set; }
     }
 }
