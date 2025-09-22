@@ -39,11 +39,25 @@
                 <img class="img-responsive" src="~/www/build/styles/Images/account-overview/commission.svg" alt="Commission icon" />
             </div>
             <div class="info-panel">
-                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.RevenueShare</span>
+                @if (Model.IsCurrentMonth)
+                {
+                    <p class="info-panel-title @sessionService.CurrentLanguage">@Lang.RevenueShare<span title="@Lang.MonthToDateEstimatedAmount" class="margin-left-3 glyphicon glyphicon-info-sign"></span></p>
+                }
+                else
+                {
+                    <p class="info-panel-title @sessionService.CurrentLanguage">@Lang.RevenueShare</p>
+                }
                 <span class="info-panel-content">@Model.Commission.ToStringMoneyWithSymbol("$")</span>
             </div>
             <div class="info-panel">
-                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.CPAAmount</span>
+                @if (Model.IsCurrentMonth)
+                {
+                    <p class="info-panel-title @sessionService.CurrentLanguage">@Lang.CPAAmount<span title="@Lang.MonthToDateEstimatedAmount" class="margin-left-3 glyphicon glyphicon-info-sign"></span></p>
+                }
+                else
+                {
+                    <p class="info-panel-title @sessionService.CurrentLanguage">@Lang.CPAAmount</p>
+                }
                 <span class="info-panel-content">@Model.CPAAmount.ToStringMoneyWithSymbol("$")</span>
             </div>
         </div>
@@ -66,16 +80,30 @@
             @if (string.Equals(Model.GroupType, "Revenue Share", StringComparison.OrdinalIgnoreCase))
             {
                 <div class="info-panel">
-                    <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.RevenueShare</span>
-                    <span class="info-panel-content">@Model.Commission.ToStringMoneyWithSymbol("$")</span>
+                    @if (Model.IsCurrentMonth)
+                    {
+                        <p class="info-panel-title @sessionService.CurrentLanguage">@Lang.RevenueShare<span title="@Lang.MonthToDateEstimatedAmount" class="margin-left-3 glyphicon glyphicon-info-sign"></span></p>
+                    }
+                    else
+                    {
+                        <p class="info-panel-title @sessionService.CurrentLanguage">@Lang.RevenueShare</p>
+                    }
+                    <p class="info-panel-content">@Model.Commission.ToStringMoneyWithSymbol("$")</p>
                 </div>
             }
 
-            @if (string.Equals(Model.GroupType, "Revenue Share", StringComparison.OrdinalIgnoreCase))
+            @if (string.Equals(Model.GroupType, "CPA", StringComparison.OrdinalIgnoreCase))
             {
                 <div class="info-panel">
-                    <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.CPAAmount</span>
-                    <span class="info-panel-content">@Model.CPAAmount.ToStringMoneyWithSymbol("$")</span>
+                    @if (Model.IsCurrentMonth)
+                    {
+                        <p class="info-panel-title @sessionService.CurrentLanguage">@Lang.CPAAmount<span title="@Lang.MonthToDateEstimatedAmount" class="margin-left-3 glyphicon glyphicon-info-sign"></span></p>
+                    }
+                    else
+                    {
+                        <p class="info-panel-title @sessionService.CurrentLanguage">@Lang.CPAAmount</p>
+                    }
+                    <p class="info-panel-content">@Model.CPAAmount.ToStringMoneyWithSymbol("$")</p>
                 </div>
             }
 
@@ -94,7 +122,7 @@
             <span class="info-panel-content">@Model.Deposit.ToStringMoneyWithSymbol("$")/@Model.FdmDeposit.ToStringMoneyWithSymbol("$")</span>
         </div>
         <div class="info-panel">
-            <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.NetRevenue</span>
+            <p class="info-panel-title @sessionService.CurrentLanguage">@Lang.NetRevenue</p>
             <span class="info-panel-content">@Model.NetGGR.ToStringMoneyWithSymbol("$")</span>
         </div>
     </div>

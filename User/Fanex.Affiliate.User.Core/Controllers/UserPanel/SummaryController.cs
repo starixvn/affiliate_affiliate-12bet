@@ -36,6 +36,7 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
         public ActionResult Dashboard(DateTime monthDate)
         {
             var model = _accountOverviewService.GetUserOverviewSummary(SessionService.UserSession.AffId, monthDate);
+            model.IsCurrentMonth  = monthDate.Month == DateTime.Now.Month;
             return PartialView("~/Views/UserPanel/AccountOverView/Summary/Dashboard.cshtml", model);
         }
 

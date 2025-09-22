@@ -595,6 +595,9 @@ span.toggle-handle {
       .summary-content .details-section-content .table #sub-aff-detail-table tr {
         min-width: 1335px; }
 
+.summary .margin-left-3 {
+  margin-left: 3px !important; }
+
 @media (max-width: 360px) {
   .summary-content .dashboard-section .info-panel-title.vi-VN {
     font-size: 1.3rem; } }

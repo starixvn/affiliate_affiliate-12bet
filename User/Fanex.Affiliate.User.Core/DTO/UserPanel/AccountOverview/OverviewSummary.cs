@@ -31,5 +31,7 @@
         public string GroupType { get; set; }
 
         public decimal CPAAmount { get; set; }
+
+        public bool IsCurrentMonth { get; set; }
     }
 }

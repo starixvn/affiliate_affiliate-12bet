@@ -4064,6 +4064,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Month-to-date estimated amount.
+        /// </summary>
+        public static string MonthToDateEstimatedAmount {
+            get {
+                return ResourceManager.GetString("MonthToDateEstimatedAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to More details about 12BET products.
         /// </summary>
         public static string MoreDetailProduct {

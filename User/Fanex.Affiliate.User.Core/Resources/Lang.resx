@@ -2669,4 +2669,7 @@ You can also email us to {1} or simply fill the form below.</value>
   <data name="CPAAmount" xml:space="preserve">
     <value>CPA Amount</value>
   </data>
+  <data name="MonthToDateEstimatedAmount" xml:space="preserve">
+    <value>Month-to-date estimated amount</value>
+  </data>
 </root>
