@@ -1,0 +1,71 @@
+@import "../components/modal";
+@import "../components/select";
+@import "../components/multiple-select";
+
+.confirm-popup-content {
+    background-color: #e4ebf5;
+    padding: 10px;
+
+    .confirm-popup-line {
+        margin: 0 0 16px 0;
+        font-size: 14px;
+        color: #4b5563;
+        line-height: 1.5;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.confirm-popup-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+}
+
+.filter-container {
+    .form-inline {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px;
+    }
+
+
+    .form-group {
+        margin-left: 20px;
+        font-size: 14px;
+
+        .wide-input {
+            font-size: 14px;
+            min-width: 280px !important;
+            width: 280px;
+
+            @media (max-width: 768px) {
+                min-width: 250px !important;
+                width: 250px;
+            }
+
+            @media (max-width: 480px) {
+                min-width: 200px !important;
+                width: 200px;
+            }
+        }
+    }
+
+    .button-group {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        margin-left: 20px;
+
+        .btn {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            justify-content: center;
+            font-size: 14px;
+        }
+    }
+}

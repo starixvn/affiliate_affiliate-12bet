@@ -24,8 +24,8 @@
     var marketingToolsSubmenus = new Dictionary<string, object>
     {
         {"LandingPageContentManagement", new { Functions = new string[] { Function.PageManagement, Function.AssetUploader, Function.RegistrationFormUploader }, Controller = "LandingPage", Action = "Index", DisplayName = "Landing Page Management" }},
-        //{"LinkGenerator", new { Functions = new string[] { Function.LinkGenerator}, Controller = "LinkGenerator", Action = "Index", DisplayName = "Link Generator" }},
-        {"CampaignManagement", new { Functions = new string[] { Function.AllCampaigns /*, Function.ComponentManagement */ }, Controller = "CampaignManagement", Action = "Index", DisplayName = "Campaign Management" }},
+        {"LinkGenerator", new { Functions = new string[] { Function.LinkGenerator }, Controller = "LinkGenerator", Action = "Index", DisplayName = "Link Generator" }},
+        {"CampaignManagement", new { Functions = new string[] { Function.AllCampaigns , Function.ComponentManagement }, Controller = "CampaignManagement", Action = "Index", DisplayName = "Campaign Management" }},
     };
 
     // Check which marketing tools submenus the user has access to

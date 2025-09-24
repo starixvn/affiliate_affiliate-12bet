@@ -393,6 +393,8 @@
     <Compile Include="Controllers\LandingPage\PageBuilderController.cs" />
     <Compile Include="Controllers\LandingPage\LandingPageController.cs" />
     <Compile Include="Controllers\LandingPage\AssetUploaderController.cs" />
+    <Compile Include="Controllers\LinkGenerator\LinkGeneratorController.cs" />
+    <Compile Include="Controllers\LinkGenerator\LinkManagementController.cs" />
     <Compile Include="Controllers\Operation\DealAssignmentController.cs" />
     <Compile Include="Controllers\Operation\OperationController.cs" />
     <Compile Include="Controllers\ReadOnlySessionBaseController.cs" />
@@ -464,6 +466,7 @@
     <Compile Include="Criterias\LandingPage\GetMediaSourceCriteria.cs" />
     <Compile Include="Criterias\LandingPage\GetModuleCriteria.cs" />
     <Compile Include="Criterias\LandingPage\GetPageManagementCriteria.cs" />
+    <Compile Include="Criterias\LinkGenerator\GetLinkManagementCriteria.cs" />
     <Compile Include="Criterias\MediaGallery\BannerCriteria.cs" />
     <Compile Include="Criterias\MediaGallery\BannerDetailCriteria.cs" />
     <Compile Include="Criterias\MediaGallery\BaseBannerCriteria.cs" />
@@ -547,6 +550,7 @@
     <Compile Include="DTO\LandingPage\PageBuilderDetail.cs" />
     <Compile Include="DTO\LandingPage\StatusInfo.cs" />
     <Compile Include="DTO\LandingPage\PageManagement.cs" />
+    <Compile Include="DTO\LinkGenerator\LinkManagement.cs" />
     <Compile Include="DTO\Market.cs" />
     <Compile Include="DTO\EmailHistory\EmailHistoryDetailInfo.cs" />
     <Compile Include="DTO\EmailHistory\EmailHistoryInfo.cs" />
@@ -644,6 +648,7 @@
     <Compile Include="MetaModels\LandingPage\UpdateAssetParam.cs" />
     <Compile Include="MetaModels\LandingPage\UpdateAssetsStatusParam.cs" />
     <Compile Include="MetaModels\LandingPage\UploadAssetsParam.cs" />
+    <Compile Include="MetaModels\LinkGenerator\LinkManagementParam.cs" />
     <Compile Include="MetaModels\Login\LoginParam.cs" />
     <Compile Include="MetaModels\MediaGallery\BannerParam.cs" />
     <Compile Include="MetaModels\MediaGallery\BannerParamFromHome.cs" />
@@ -762,6 +767,10 @@
     <Compile Include="Services\LandingPage\LandingPageService.cs" />
     <Compile Include="Services\LandingPage\PageBuilderService.cs" />
     <Compile Include="Services\LandingPage\PageManagementService.cs" />
+    <Compile Include="Services\LinkGenerator\ILinkGeneratorService.cs" />
+    <Compile Include="Services\LinkGenerator\ILinkManagementService.cs" />
+    <Compile Include="Services\LinkGenerator\LinkGeneratorService.cs" />
+    <Compile Include="Services\LinkGenerator\LinkManagementService.cs" />
     <Compile Include="Services\Operation\CommonDealService.cs" />
     <Compile Include="Services\Operation\DealAssignmentService.cs" />
     <Compile Include="Services\Operation\IDealAssignmentService.cs" />
@@ -903,6 +912,8 @@
     <Compile Include="ViewModels\LandingPage\AssetUploaderViewModel.cs" />
     <Compile Include="ViewModels\LandingPage\PageManagementViewModel.cs" />
     <Compile Include="ViewModels\LandingPage\PageBuilderViewModel.cs" />
+    <Compile Include="ViewModels\LinkGenerator\LinkGeneratorViewModel.cs" />
+    <Compile Include="ViewModels\LinkGenerator\LinkManagementViewModel.cs" />
     <Compile Include="ViewModels\Operation\AssignDealViewModel.cs" />
     <Compile Include="ViewModels\Operation\OperationViewModel.cs" />
     <Compile Include="ViewModels\Report\AffiliateReportViewModel.cs" />

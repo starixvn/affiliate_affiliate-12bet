@@ -31,7 +31,7 @@ namespace AffiliateAdmin.Areas.Portal
                     "Fanex.Affiliate.Admin.Core.Controllers.Domain", "Fanex.Affiliate.Admin.Core.Controllers.Administrator",
                     "Fanex.Affiliate.Admin.Core.Controllers.Report", "Fanex.Affiliate.Admin.Core.Controllers.Operation",
                     "Fanex.Affiliate.Admin.Core.Controllers.DealAssignment", "Fanex.Affiliate.Admin.Core.Controllers.LandingPage",
-                    "Fanex.Affiliate.Admin.Core.Controllers.CampaignManagement"
+                    "Fanex.Affiliate.Admin.Core.Controllers.CampaignManagement", "Fanex.Affiliate.Admin.Core.Controllers.LinkGenerator"
                 }
             );
         }

@@ -36,9 +36,10 @@ module.exports = {
     [`${jsDist}/pages/campaign-management`]: clientRoot + "/js/pages/campaign-management/index.jsx",
     [`${styleDist}/pages/campaign-management`]: clientRoot + "/style/pages/campaign-management.scss",
 
-    //Asset Modification
     [`${jsDist}/pages/asset-modification`]: clientRoot + "/js/pages/asset-modification/index.jsx",
     [`${styleDist}/pages/asset-modification`]: clientRoot + "/style/pages/asset-modification.scss",
+    [`${jsDist}/pages/link-generator`]: clientRoot + "/js/pages/link-generator/index.jsx",
+    [`${styleDist}/pages/link-generator`]: clientRoot + "/style/pages/link-generator.scss",
 
     //Domain
     [`${jsDist}/pages/domain`]: clientRoot + "/js/pages/domain/index.jsx",

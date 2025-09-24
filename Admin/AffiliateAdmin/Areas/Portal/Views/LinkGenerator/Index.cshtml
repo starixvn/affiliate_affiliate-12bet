@@ -1,0 +1,15 @@
+﻿@model Fanex.Affiliate.Admin.Core.ViewModels.LinkGenerator.LinkGeneratorViewModel
+
+@section pagecss{
+    <link href="@Url.VersionedLink("~/Areas/Portal/www/dist/style/pages/link-generator.css")" rel="stylesheet" />
+}
+
+@section pagejs{
+    <script type="text/javascript">
+        window.initialState = {
+            targetCountryList: @Html.Raw(Json.Encode(Model.TargetCountryList)),
+            allLanguagesInSystem: @Html.Raw(Json.Encode(Model.AllLanguagesInSystem)),
+        }
+    </script>
+    <script type="text/javascript" src="@Url.VersionedLink("~/Areas/Portal/www/dist/js/pages/link-generator.js")"></script>
+}
