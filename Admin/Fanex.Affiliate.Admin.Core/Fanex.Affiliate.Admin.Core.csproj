@@ -291,7 +291,9 @@
     <Compile Include="Commands\BaseAffNonQueryCommand.cs" />
     <Compile Include="Commands\BaseNonQueryCommand.cs" />
     <Compile Include="Commands\CampaignManagement\InsertCampaignCommand.cs" />
+    <Compile Include="Commands\CampaignManagement\InsertComponentCommand.cs" />
     <Compile Include="Commands\CampaignManagement\UpdateCampaignCommand.cs" />
+    <Compile Include="Commands\CampaignManagement\UpdateComponentCommand.cs" />
     <Compile Include="Commands\ChangeAdminPasswordCommand.cs" />
     <Compile Include="Commands\Customer\UpdateAffTypeCommand.cs" />
     <Compile Include="Commands\Customer\UpdateLanguageCommand.cs" />
@@ -385,6 +387,7 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CampaignManagement\CampaignManagementController.cs" />
+    <Compile Include="Controllers\CampaignManagement\ComponentManagementController.cs" />
     <Compile Include="Controllers\Domain\MemberDomainController.cs" />
     <Compile Include="Controllers\Domain\SpecificDomainControlController.cs" />
     <Compile Include="Controllers\LandingPage\FormManagementController.cs" />
@@ -442,8 +445,11 @@
     <Compile Include="Commands\Auth\CheckUserPermissionCommand.cs" />
     <Compile Include="Criterias\Auth\UserPermissionCriteria.cs" />
     <Compile Include="Criterias\CampaignManagement\GetAllCampaignStatusCriteria.cs" />
+    <Compile Include="Criterias\CampaignManagement\GetAllComponentStatusCriteria.cs" />
+    <Compile Include="Criterias\CampaignManagement\GetAllComponentTypeCriteria.cs" />
     <Compile Include="Criterias\CampaignManagement\GetCampaignDashboardCriteria.cs" />
     <Compile Include="Criterias\CampaignManagement\GetCampaignListCriteria.cs" />
+    <Compile Include="Criterias\CampaignManagement\GetComponentListCriteria.cs" />
     <Compile Include="Criterias\Customer\AffiliateInfoOnLeftPanelCriteria.cs" />
     <Compile Include="Criterias\Customer\AffiliateOnlineCriteria.cs" />
     <Compile Include="Criterias\Customer\CustomerStatisticsCriteria.cs" />
@@ -532,7 +538,11 @@
     <Compile Include="DTO\Api\TokenInfo.cs" />
     <Compile Include="DTO\CampaignManagement\CampaignDashboard.cs" />
     <Compile Include="DTO\CampaignManagement\CampaignStatus.cs" />
+    <Compile Include="DTO\CampaignManagement\ComponentStatus.cs" />
+    <Compile Include="DTO\CampaignManagement\ComponentType.cs" />
     <Compile Include="DTO\Common\TargetCountry.cs" />
+    <Compile Include="DTO\Component\ComponentDetailInfo.cs" />
+    <Compile Include="DTO\Component\ComponentInfo.cs" />
     <Compile Include="DTO\Currency.cs" />
     <Compile Include="DTO\Customer\TransferLimitSettingInfo.cs" />
     <Compile Include="DTO\Domain\AffSubDomainInfo.cs" />
@@ -614,8 +624,11 @@
     <Compile Include="MetaModels\AssetModification\DeleteAssetParam.cs" />
     <Compile Include="MetaModels\AssetModification\AddAssetsParam.cs" />
     <Compile Include="MetaModels\CampaignManagement\GetCampaignListParam.cs" />
+    <Compile Include="MetaModels\CampaignManagement\GetComponentListParam.cs" />
     <Compile Include="MetaModels\CampaignManagement\InsertCampaignParam.cs" />
+    <Compile Include="MetaModels\CampaignManagement\InsertComponentParam.cs" />
     <Compile Include="MetaModels\CampaignManagement\UpdateCampaignParam.cs" />
+    <Compile Include="MetaModels\CampaignManagement\UpdateComponentParam.cs" />
     <Compile Include="MetaModels\ChangeAdminPassword\ChangeAdminPasswordParam.cs" />
     <Compile Include="MetaModels\CheckPermissionParam.cs" />
     <Compile Include="MetaModels\Customer\TransferLimitSettingParam.cs" />
@@ -745,7 +758,9 @@
     <Compile Include="Services\Auth\AuthService.cs" />
     <Compile Include="Configurations\IoCConfig.cs" />
     <Compile Include="Services\CampaignManagement\CampaignService.cs" />
+    <Compile Include="Services\CampaignManagement\ComponentService.cs" />
     <Compile Include="Services\CampaignManagement\ICampaignService.cs" />
+    <Compile Include="Services\CampaignManagement\IComponentService.cs" />
     <Compile Include="Services\Domain\CommonDomainService.cs" />
     <Compile Include="Services\Domain\ICommonDomainService.cs" />
     <Compile Include="Services\Domain\ISpecificDomainControlService.cs" />

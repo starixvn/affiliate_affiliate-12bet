@@ -42,7 +42,7 @@ class ErrorBoundary extends React.Component {
 
 const menus = [
     { key: menuKey.allCampaigns, label: 'All Campaigns', href: relativePath.allCampaigns, component: AllCampaigns },
-    // { key: menuKey.componentManagement, label: 'Component Management', href: relativePath.componentManagement, component: ComponentManagement },
+    { key: menuKey.componentManagement, label: 'Component Management', href: relativePath.componentManagement, component: ComponentManagement },
 ];
 
 const App = () => {

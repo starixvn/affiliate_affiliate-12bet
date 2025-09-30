@@ -344,6 +344,12 @@
 		<Setting Key="Aff_LandingPage_Campaign_ManageSel" SpName="Aff_LandingPage_Campaign_ManageSel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_LandingPage_Campaign_Ins" SpName="Aff_LandingPage_Campaign_Ins" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_LandingPage_Campaign_Upd" SpName="Aff_LandingPage_Campaign_Upd" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_LandingPage_Component_Status_Sel" SpName="Aff_LandingPage_Component_Status_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_LandingPage_ComponentType_Sel" SpName="Aff_LandingPage_ComponentType_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_LandingPage_Component_ManageSel" SpName="Aff_LandingPage_Component_ManageSel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_LandingPage_Component_Ins" SpName="Aff_LandingPage_Component_Ins" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_LandingPage_Component_Upd" SpName="Aff_LandingPage_Component_Upd" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+
 	</Functions>
 </Functions>
 

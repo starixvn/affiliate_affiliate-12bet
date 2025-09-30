@@ -326,9 +326,9 @@
 		<Setting Key="Aff_LandingPage_Campaign_Creator_Sel" SpName="Aff_LandingPage_Campaign_Creator_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_LandingPage_Campaign_Dashboard_Sel" SpName="Aff_LandingPage_Campaign_Dashboard_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_LandingPage_Campaign_Del" SpName="Aff_LandingPage_Campaign_Del" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
-		<Setting Key="Aff_LandingPage_Campaign_Ins" SpName="Aff_LandingPage_Campaign_Ins" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_LandingPage_Campaign_Ins" SpName="Aff_LandingPage_Campaign_Ins_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_LandingPage_Campaign_Sel" SpName="Aff_LandingPage_Campaign_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
-		<Setting Key="Aff_LandingPage_Campaign_ManageSel" SpName="Aff_LandingPage_Campaign_ManageSel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_LandingPage_Campaign_ManageSel" SpName="Aff_LandingPage_Campaign_ManageSel_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_LandingPage_Campaign_Status_Sel" SpName="Aff_LandingPage_Campaign_Status_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_LandingPage_Campaign_Upd" SpName="Aff_LandingPage_Campaign_Upd" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_LandingPage_Media_Sel" SpName="Aff_LandingPage_Media_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
@@ -341,9 +341,15 @@
 	</Function>
 	<Functions Name="Campaign Management">
 		<Setting Key="Aff_LandingPage_Campaign_Dashboard_Sel" SpName="Aff_LandingPage_Campaign_Dashboard_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
-		<Setting Key="Aff_LandingPage_Campaign_ManageSel" SpName="Aff_LandingPage_Campaign_ManageSel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
-		<Setting Key="Aff_LandingPage_Campaign_Ins" SpName="Aff_LandingPage_Campaign_Ins" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_LandingPage_Campaign_ManageSel" SpName="Aff_LandingPage_Campaign_ManageSel_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_LandingPage_Campaign_Ins" SpName="Aff_LandingPage_Campaign_Ins_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_LandingPage_Campaign_Upd" SpName="Aff_LandingPage_Campaign_Upd" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_LandingPage_Component_Status_Sel" SpName="Aff_LandingPage_Component_Status_Sel_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_LandingPage_ComponentType_Sel" SpName="Aff_LandingPage_ComponentType_Sel_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_LandingPage_Component_ManageSel" SpName="Aff_LandingPage_Component_ManageSel_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_LandingPage_Component_Ins" SpName="Aff_LandingPage_Component_Ins_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_LandingPage_Component_Upd" SpName="Aff_LandingPage_Component_Upd_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+
 	</Functions>
 </Functions>
 

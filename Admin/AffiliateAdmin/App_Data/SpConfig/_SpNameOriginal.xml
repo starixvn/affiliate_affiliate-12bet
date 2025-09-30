@@ -344,5 +344,11 @@
 		<Setting Key="Aff_LandingPage_Campaign_ManageSel" SpName="Aff_LandingPage_Campaign_ManageSel" DbName="" />
 		<Setting Key="Aff_LandingPage_Campaign_Ins" SpName="Aff_LandingPage_Campaign_Ins" DbName="" />
 		<Setting Key="Aff_LandingPage_Campaign_Upd" SpName="Aff_LandingPage_Campaign_Upd" DbName="" />
+		<Setting Key="Aff_LandingPage_Component_Status_Sel" SpName="Aff_LandingPage_Component_Status_Sel" DbName="" />
+		<Setting Key="Aff_LandingPage_ComponentType_Sel" SpName="Aff_LandingPage_ComponentType_Sel" DbName="" />
+		<Setting Key="Aff_LandingPage_Component_ManageSel" SpName="Aff_LandingPage_Component_ManageSel" DbName="" />
+		<Setting Key="Aff_LandingPage_Component_Ins" SpName="Aff_LandingPage_Component_Ins" DbName="" />
+		<Setting Key="Aff_LandingPage_Component_Upd" SpName="Aff_LandingPage_Component_Upd" DbName="" />
+
 	</Functions>
 </Functions>

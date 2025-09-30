@@ -1,4 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Root>
 	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Test" Suffix="_xtest"></item>
+	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_LandingPage_Campaign_Ins" Suffix="_xtest"></item>
+	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_LandingPage_Campaign_ManageSel" Suffix="_xtest"></item>
+	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_LandingPage_ComponentType_Sel" Suffix="_xtest"></item>
+	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_LandingPage_Component_Ins" Suffix="_xtest"></item>
+	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_LandingPage_Component_ManageSel" Suffix="_xtest"></item>
+	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_LandingPage_Component_Upd" Suffix="_xtest"></item>
+	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_f_LandingPage_Component_Status" Suffix="_xtest"></item>
+	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_LandingPage_Component_Sel" Suffix="_xtest"></item>
+	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_LandingPage_Component_Status_Sel" Suffix="_xtest"></item>
+	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_LandingPage_Deal_ManageSel" Suffix="_xtest"></item>
+	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_LandingPage_Deal_Upd" Suffix="_xtest"></item>
 </Root>

@@ -1,11 +1,16 @@
 import React from 'react';
+import AppContainer from './components/AppContainer';
+import { Provider } from 'react-redux';
+import reducer from './reducers';
+import { configureStore } from '@/modules/store';
 
 const ComponentManagement = () => {
+    const store = configureStore({}, reducer);
+
     return (
-        <div className="component-management">
-            <h2>Component Management</h2>
-            <p>Component management functionality will be implemented here.</p>
-        </div>
+        <Provider store={store}>
+            <AppContainer />
+        </Provider>
     );
 };
 
