@@ -5,7 +5,6 @@ import { toggleLoader } from '../../../../actions/loaderAction';
 import ReportTitle from '../../../../components/ReportTitle';
 import GridData from './GridData';
 import ExportExcel from '../libs/exportExcel';
-import { headerRows } from '../libs/constants';
 import { sortBy } from '../libs/service';
 
 const Title = ({ reportTitle, params, toggleLoader, playerCpaData }) => {
@@ -14,7 +13,7 @@ const Title = ({ reportTitle, params, toggleLoader, playerCpaData }) => {
         toggleLoader(true);
         try {
             const sortedData = sortBy(playerCpaData?.mainData, params.sortColumn, params.isAscending);
-            const exportExcel = new ExportExcel(sortedData, reportTitle, headerRows);
+            const exportExcel = new ExportExcel(sortedData, reportTitle, playerCpaData?.total);
             exportExcel.export();
         }
         catch (err) {

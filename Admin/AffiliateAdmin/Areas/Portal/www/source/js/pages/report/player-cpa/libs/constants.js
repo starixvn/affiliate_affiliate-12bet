@@ -57,9 +57,11 @@ export const headerText = {
     HoldingQualifiedDate: 'Holding Qualified Date',
     HoldingExpiredDate: 'Holding Expired Date',
     EstimatedCPAAmount: 'Estimated CPA Amount',
-    ApprovedCPAAmount: 'Approved CPA Amount',
-    CPAStatus: 'CPA Status',
-    ApprovalDate: 'Approval Date'
+    FirstDepositDate: 'First Deposit Date',
+    ReCheckDays: 'Re-check days',
+    ExpiredDate: 'Expired Date',
+    IsRedeposit: 'Is Redeposit',
+    CPAStatus: 'CPA Status'
 };
 
 export const dataKey = {
@@ -78,9 +80,11 @@ export const dataKey = {
     HoldingQualifiedDate: 'hqdStr',
     HoldingExpiredDate: 'hedStr',
     EstimatedCPAAmount: 'estimatedCPAAmount',
-    ApprovedCPAAmount: 'approvedCPAAmount',
+    FirstDepositDate: 'firstDepositDateStr',
+    ReCheckDays: 'reCheckDays',
+    ExpiredDate: 'expiredDateStr',
+    IsRedeposit: 'isRedeposit',
     CPAStatus: 'cpaStatus',
-    ApprovalDate: 'cpaDateStr',
     HoldingTickets: 'holdingTickets'
 };
 
@@ -90,6 +94,7 @@ export const row1 = [
         width: 60,
         sortable: false,
         rowSpan: 2,
+        startCol: 0,
         field: dataKey.No
     },
     {
@@ -98,6 +103,7 @@ export const row1 = [
         sortable: true,
         sortColumn: dataKey.Affiliate,
         rowSpan: 2,
+        startCol: 1,
         field: dataKey.Affiliate
     },
     {
@@ -106,6 +112,7 @@ export const row1 = [
         sortable: true,
         sortColumn: dataKey.Player,
         rowSpan: 2,
+        startCol: 2,
         field: dataKey.Player
     },
     {
@@ -114,6 +121,7 @@ export const row1 = [
         sortable: true,
         sortColumn: dataKey.RegistrationDate,
         rowSpan: 2,
+        startCol: 3,
         field: dataKey.RegistrationDate
     },
     {
@@ -122,6 +130,7 @@ export const row1 = [
         sortable: true,
         sortColumn: dataKey.DealName,
         rowSpan: 2,
+        startCol: 4,
         field: dataKey.DealName
     },
     {
@@ -130,6 +139,7 @@ export const row1 = [
         sortable: true,
         sortColumn: dataKey.PaymentFrequency,
         rowSpan: 2,
+        startCol: 5,
         field: dataKey.PaymentFrequency
     },
     {
@@ -137,19 +147,31 @@ export const row1 = [
         sortable: false,
         columnSpan: 5,
         width: 150 * 5,
+        startCol: 6,
     },
     {
         title: "Holding Period",
         sortable: false,
         columnSpan: 4,
         width: 150 * 4,
+        startCol: 11,
     },
     {
-        title: "Approval Period",
+        title: "Redeposit Qualified Period",
         sortable: false,
-        columnSpan: 3,
-        width: 150 * 3
-    }
+        columnSpan: 4,
+        width: 150 * 4,
+        startCol: 15,
+    },
+    {
+        title: headerText.CPAStatus,
+        width: 120,
+        sortable: true,
+        sortColumn: dataKey.CPAStatus,
+        rowSpan: 2,
+        startCol: 19,
+        field: dataKey.CPAStatus
+    },
 ];
 
 export const row2 = [
@@ -179,63 +201,77 @@ export const row2 = [
         width: 150,
         sortable: true,
         sortColumn: dataKey.ActiveQualifiedDate,
-        field: dataKey.ActiveQualifiedDate
+        field: dataKey.ActiveQualifiedDate,
+        tooltipTitle: 'Date when player meets required actions (e.g., Min FTD, Deposit, or Turnover).'
     },
     {
         title: headerText.CPAAmount,
         width: 150,
         sortable: true,
         sortColumn: dataKey.CPAAmount,
-        field: dataKey.CPAAmount
+        field: dataKey.CPAAmount,
+        tooltipTitle: 'Click to view Turnover CPA Detail.'
     },
     {
         title: headerText.BetTicket,
         width: 150,
         sortable: true,
         sortColumn: dataKey.HoldingTickets,
-        field: dataKey.BetTicket
+        field: dataKey.BetTicket,
+        tooltipTitle: 'Total bet tickets placed during holding period.'
     },
     {
         title: headerText.HoldingQualifiedDate,
         width: 150,
         sortable: true,
         sortColumn: dataKey.HoldingQualifiedDate,
-        field: dataKey.HoldingQualifiedDate
+        field: dataKey.HoldingQualifiedDate,
+        tooltipTitle: 'Date when minimum bet tickets are met.'
     },
     {
         title: headerText.HoldingExpiredDate,
         width: 150,
         sortable: true,
         sortColumn: dataKey.HoldingExpiredDate,
-        field: dataKey.HoldingExpiredDate
+        field: dataKey.HoldingExpiredDate,
+        tooltipTitle: 'End date of the holding period.'
     },
     {
         title: headerText.EstimatedCPAAmount,
         width: 150,
         sortable: true,
         sortColumn: dataKey.EstimatedCPAAmount,
-        field: dataKey.EstimatedCPAAmount
+        field: dataKey.EstimatedCPAAmount,
     },
     {
-        title: headerText.ApprovedCPAAmount,
+        title: headerText.FirstDepositDate,
         width: 150,
         sortable: true,
-        sortColumn: dataKey.ApprovedCPAAmount,
-        field: dataKey.ApprovedCPAAmount
+        sortColumn: dataKey.FirstDepositDate,
+        field: dataKey.FirstDepositDate
     },
     {
-        title: headerText.CPAStatus,
+        title: headerText.ReCheckDays,
         width: 150,
         sortable: true,
-        sortColumn: dataKey.CPAStatus,
-        field: dataKey.CPAStatus
+        sortColumn: dataKey.ReCheckDays,
+        field: dataKey.ReCheckDays
     },
     {
-        title: headerText.ApprovalDate,
+        title: headerText.ExpiredDate,
         width: 150,
         sortable: true,
-        sortColumn: dataKey.ApprovalDate,
-        field: dataKey.ApprovalDate
+        sortColumn: dataKey.ExpiredDate,
+        field: dataKey.ExpiredDate,
+        tooltipTitle: 'Last day for player to redeposit.'
+    },
+    {
+        title: headerText.IsRedeposit,
+        width: 150,
+        sortable: true,
+        sortColumn: dataKey.IsRedeposit,
+        field: dataKey.IsRedeposit,
+        tooltipTitle: 'Shows if the player has redeposited.'
     }
 ]
 
@@ -245,8 +281,7 @@ export const decimalFields = [
     dataKey.FTD,
     dataKey.TotalDeposit,
     dataKey.CPAAmount,
-    dataKey.EstimatedCPAAmount,
-    dataKey.ApprovedCPAAmount
+    dataKey.EstimatedCPAAmount
 ]
 
 export const dateFields = [
@@ -254,5 +289,6 @@ export const dateFields = [
     dataKey.ActiveQualifiedDate,
     dataKey.HoldingQualifiedDate,
     dataKey.HoldingExpiredDate,
-    dataKey.ApprovalDate
+    dataKey.FirstDepositDate,
+    dataKey.ExpiredDate
 ]

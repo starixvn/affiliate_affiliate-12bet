@@ -19,9 +19,7 @@
 
         public async Task<EntityResult<PlayerCpaReport>> GetDataAsync(PlayerCpaReportRequest request)
         {
-            var result = await FetchFromDatabaseAsync(request);
-
-            return result;
+            return await FetchFromDatabaseAsync(request);
         }
 
         public async Task<TurnoverDetailModel> GetTurnoverDetailAsync(int memberCpaId)

@@ -14,7 +14,6 @@ export default function TableFooter({
     const totalDeposit = formatDecimal(total.totalDeposit);
     const cpaAmount = formatDecimal(total.cpaAmount);
     const estimatedCPAAmount = formatDecimal(total.estimatedCPAAmount);
-    const approvedCPAAmount = formatDecimal(total.approvedCPAAmount);
 
     return (
         <tfoot>
@@ -32,7 +31,11 @@ export default function TableFooter({
                 <td className="text-right font-weight-bold"></td>
                 <td className="text-right font-weight-bold"></td>
                 <td title={estimatedCPAAmount} className="text-right font-weight-bold">{estimatedCPAAmount}</td>
-                <td title={approvedCPAAmount} className="text-right font-weight-bold">{approvedCPAAmount}</td>
+                <td className="text-right font-weight-bold"></td>
+                <td className="text-right font-weight-bold"></td>
+                <td className="text-right font-weight-bold"></td>
+                <td className="text-right font-weight-bold"></td>
+                <td className="text-right font-weight-bold"></td>
                 <td className="text-right font-weight-bold"></td>
                 <td className="text-right font-weight-bold"></td>
             </tr>

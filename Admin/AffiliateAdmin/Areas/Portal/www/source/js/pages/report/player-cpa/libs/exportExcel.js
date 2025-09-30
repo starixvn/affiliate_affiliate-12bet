@@ -80,15 +80,23 @@ const colConfig = {
         [MAIN_SECTION_STYLE]: { ...bodyCellStyle.decimal, ...bodyCellStyle.right },
         [COL_WIDTH]: 150
     },
-    [dataKey.ApprovedCPAAmount]: {
-        [MAIN_SECTION_STYLE]: { ...bodyCellStyle.decimal, ...bodyCellStyle.right },
-        [COL_WIDTH]: 150
-    },
-    [dataKey.CPAStatus]: {
+    [dataKey.FirstDepositDate]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.center,
         [COL_WIDTH]: 150
     },
-    [dataKey.ApprovalDate]: {
+    [dataKey.ReCheckDays]: {
+        [MAIN_SECTION_STYLE]: bodyCellStyle.center,
+        [COL_WIDTH]: 150
+    },
+    [dataKey.ExpiredDate]: {
+        [MAIN_SECTION_STYLE]: bodyCellStyle.center,
+        [COL_WIDTH]: 150
+    },
+    [dataKey.IsRedeposit]: {
+        [MAIN_SECTION_STYLE]: bodyCellStyle.center,
+        [COL_WIDTH]: 150
+    },
+    [dataKey.CPAStatus]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.center,
         [COL_WIDTH]: 150
     }
@@ -97,14 +105,14 @@ const colConfig = {
 const GENERAL_COLUMNS = 6;
 const NUMBER_ACTIVE_COLUMNS = 5;
 const NUMBER_HOLDING_COLUMNS = 4;
-const NUMBER_APPROVAL_COLUMNS = 3;
+const NUMBER_REDEPOSIT_QUALIFIED_COLUMNS = 4;
 
 export default class ExportExcel {
-    constructor(data, title, header) {
+    constructor(data, title, total) {
         this.worksheet = {};
         this.title = title;
         this.data = data;
-        this.header = header;
+        this.total = total;
 
         this.currentRowIndex = DATA_ROW_INDEX;
         this.mergeConfig = [];
@@ -151,7 +159,7 @@ export default class ExportExcel {
         const periodColumns = [
             { title: "Active Period", count: NUMBER_ACTIVE_COLUMNS, startCol: GENERAL_COLUMNS },
             { title: "Holding Period", count: NUMBER_HOLDING_COLUMNS, startCol: GENERAL_COLUMNS + NUMBER_ACTIVE_COLUMNS },
-            { title: "Approval Period", count: NUMBER_APPROVAL_COLUMNS, startCol: GENERAL_COLUMNS + NUMBER_ACTIVE_COLUMNS + NUMBER_HOLDING_COLUMNS }
+            { title: "Redeposit Qualified Period", count: NUMBER_REDEPOSIT_QUALIFIED_COLUMNS, startCol: GENERAL_COLUMNS + NUMBER_ACTIVE_COLUMNS + NUMBER_HOLDING_COLUMNS }
         ];
 
         periodColumns.forEach(period => {
@@ -170,11 +178,11 @@ export default class ExportExcel {
      * @private
      */
     _createFirstRowHeaders() {
-        row1.forEach((cel, celIdx) => {
+        row1.forEach((cel) => {
             if (cel.columnSpan) {
-                this._createSpannedHeader(cel, celIdx);
+                this._createSpannedHeader(cel, cel.startCol);
             } else {
-                this._createSingleHeader(cel, celIdx);
+                this._createSingleHeader(cel, cel.startCol);
             }
         });
     }
@@ -257,7 +265,7 @@ export default class ExportExcel {
             },
             {
                 startCol: GENERAL_COLUMNS + NUMBER_ACTIVE_COLUMNS + NUMBER_HOLDING_COLUMNS,
-                endCol: GENERAL_COLUMNS + NUMBER_ACTIVE_COLUMNS + NUMBER_HOLDING_COLUMNS + NUMBER_APPROVAL_COLUMNS - 1
+                endCol: GENERAL_COLUMNS + NUMBER_ACTIVE_COLUMNS + NUMBER_HOLDING_COLUMNS + NUMBER_REDEPOSIT_QUALIFIED_COLUMNS - 1
             }
         ];
 
@@ -270,12 +278,19 @@ export default class ExportExcel {
         const mainData = Array.isArray(this.data) ? this.data : this.data.mainData;
         if (!mainData) return;
 
-        const _buildDataRow = (item, sectionStyleName, colIndex) => {
+        const _buildDataRow = (item, sectionStyleName, colIndex, hasFirstRedeposit) => {
             const columnConfig = this.columnConfigs[colIndex];
             let value = item[columnConfig.field];
 
             if (columnConfig.field === dataKey.Turnover) {
                 value = value ? "Yes" : "No";
+            }
+
+            if (columnConfig.field === dataKey.ReCheckDays) {
+                value = hasFirstRedeposit ? value : "-";
+            }
+            if (columnConfig.field === dataKey.IsRedeposit) {
+                value = hasFirstRedeposit ? (value ? "Yes" : "No") : "-";
             }
 
             return {
@@ -288,6 +303,7 @@ export default class ExportExcel {
         for (let i = 0; i < mainData.length; i++) {
             const item = mainData[i];
             item.no = i + 1;
+            const hasFirstRedeposit = !!item.firstDepositDate;
 
             for (let j = 0; j < this.totalColumn; j++) {
                 const address = Excel.getCellAddress({
@@ -295,7 +311,7 @@ export default class ExportExcel {
                     r: this.currentRowIndex
                 });
 
-                this.worksheet[address] = _buildDataRow(item, MAIN_SECTION_STYLE, j);
+                this.worksheet[address] = _buildDataRow(item, MAIN_SECTION_STYLE, j, hasFirstRedeposit);
             }
 
             this.currentRowIndex++;
@@ -303,7 +319,7 @@ export default class ExportExcel {
     }
 
     _createTotalRow() {
-        const total = this.data.total;
+        const total = this.total;
         if (!total) return;
 
         const cellValues = [
@@ -311,8 +327,7 @@ export default class ExportExcel {
             { colIndex: 6, value: formatDecimal(total.ftd), style: totalCellStyle.decimal },
             { colIndex: 7, value: formatDecimal(total.totalDeposit), style: totalCellStyle.decimal },
             { colIndex: 10, value: formatDecimal(total.cpaAmount), style: totalCellStyle.decimal },
-            { colIndex: 14, value: formatDecimal(total.estimatedCPAAmount), style: totalCellStyle.decimal },
-            { colIndex: 15, value: formatDecimal(total.approvedCPAAmount), style: totalCellStyle.decimal }
+            { colIndex: 14, value: formatDecimal(total.estimatedCPAAmount), style: totalCellStyle.decimal }
         ]
 
         for (let i = 0; i < this.totalColumn; i++) {
@@ -350,16 +365,13 @@ export default class ExportExcel {
     }
 
     _getColumnConfigs() {
-        return this.header.map(row => {
-            return row.filter(col => col.field).map(col => {
-                const key = col.field;
-                return {
-                    field: col.field,
-                    [MAIN_SECTION_STYLE]: colConfig[key] ? colConfig[key][MAIN_SECTION_STYLE] : bodyCellStyle.left,
-                    [COL_WIDTH]: colConfig[key] ? colConfig[key][COL_WIDTH] : 120
-                };
-            })
-        }).flat();
+        return Object.keys(colConfig).map(key => {
+            return {
+                field: key,
+                [MAIN_SECTION_STYLE]: colConfig[key] ? colConfig[key][MAIN_SECTION_STYLE] : bodyCellStyle.left,
+                [COL_WIDTH]: colConfig[key] ? colConfig[key][COL_WIDTH] : 120
+            };
+        });
     }
 
     _mergeCell(startRow, startCol, endRow, endCol) {

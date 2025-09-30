@@ -4,7 +4,7 @@ import { Cell } from '@9softstudio/react-fixed-table-header';
 import { connect } from 'react-redux';
 import { setParams, setPlayerCpaData } from '../../actions';
 import { bindActionCreators } from 'redux';
-import { headerRows, dataKey } from '../../libs/constants';
+import { headerRows } from '../../libs/constants';
 
 const RowHeader = ({ index, row, sortColumn, isAscending, handleClickHeader }) => {
     return (
@@ -27,8 +27,8 @@ const RowHeader = ({ index, row, sortColumn, isAscending, handleClickHeader }) =
                                     onClick={() => handleClickHeader(cell.sortColumn)}>
                                     {cell.title}
                                     {
-                                        cell.field === dataKey.CPAAmount && (
-                                            <span className="oi icon-info ml-1" title='Click to view Turnover CPA Detail'></span>
+                                        cell.tooltipTitle && (
+                                            <span className="oi icon-info ml-1" title={cell.tooltipTitle}></span>
                                         )
                                     }
                                     <div className="icon-container">

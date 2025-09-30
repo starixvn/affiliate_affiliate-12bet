@@ -59,11 +59,19 @@
 
         public decimal? ApprovedCPAAmount { get; set; }
 
+        public DateTime? FirstDepositDate { get; set; }
+
+        public string FirstDepositDateStr => FirstDepositDate?.ToString(DATE_FORMAT) ?? HYPHEN;
+
+        public int ReCheckDays { get; set; }
+
+        public DateTime? ExpiredDate { get; set; }
+
+        public string ExpiredDateStr => ExpiredDate?.ToString(DATE_FORMAT) ?? HYPHEN;
+
+        public bool IsRedeposit { get; set; }
+
         public string CPAStatus { get; set; }
-
-        public DateTime? CPADate { get; set; }
-
-        public string CpaDateStr => CPADate?.ToString(DATE_FORMAT) ?? HYPHEN;
 
         public bool IsAbnormal { get; set; }
 

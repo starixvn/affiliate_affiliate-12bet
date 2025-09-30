@@ -15,6 +15,8 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
         toggleDealPopup()
     }
 
+    const hasFirstRedeposit = !!data.firstDepositDate;
+
     return (
         <tr key={`dataRow-${rowNumber}`}>
             <td title={rowNumber} className="text-center freeze-column-0">
@@ -71,17 +73,23 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
             <td title={data.estimatedCPAAmount} className="text-right">
                 {data.estimatedCPAAmount}
             </td>
-            <td title={data.approvedCPAAmount} className="text-right">
-                {data.approvedCPAAmount}
+            <td title={data.firstDepositDateStr} className="text-center">
+                {data.firstDepositDateStr}
+            </td>
+            <td title={data.reCheckDays} className="text-center">
+                {hasFirstRedeposit ? data.reCheckDays : '-'}
+            </td>
+            <td title={data.expiredDateStr} className="text-center">
+                {data.expiredDateStr}
+            </td>
+            <td title={data.isRedeposit} className="text-center">
+                {hasFirstRedeposit ? (data.isRedeposit ? 'Yes' : 'No') : '-'}
             </td>
             <td title={data.cpaStatus} className="text-center">
                 {data.cpaStatus}
                 {
                     data.isAbnormal && <span title={data.description} className="ml-1 oi icon-info"></span>
                 }
-            </td>
-            <td title={data.cpaDateStr} className="text-center">
-                {data.cpaDateStr}
             </td>
         </tr>
     )
