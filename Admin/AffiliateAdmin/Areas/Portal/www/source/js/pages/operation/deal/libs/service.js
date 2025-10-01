@@ -25,7 +25,6 @@ const commonDealInfo = {
     HoldingTickets: 0,
     HoldingDays: 0,
     IsQuota: false,
-    IsInstant: false,
     IsRedeposit: false,
     RedepositRate: 0,
     RedepositDays: 0,

@@ -178,7 +178,7 @@ export const TierSettingDataItem = ({ tierSetting, isFirstItem, tier, index, dea
             <td className="text-center">
                 <Input
                     className={_getErrorClass(tier.MinTO, dealInfo.CheckedMinTurnover)}
-                    disabled={dealInfo.IsInstant || !dealInfo.CheckedMinTurnover}
+                    disabled={!dealInfo.CheckedMinTurnover}
                     type="text"
                     name="MinTO"
                     id={"MinTO" + tier.TierId}

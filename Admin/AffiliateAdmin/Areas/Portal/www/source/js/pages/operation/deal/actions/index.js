@@ -3,7 +3,6 @@ import { toggleLoader } from '../../../../actions/loaderAction';
 import { setPagingOption } from '../../../../actions/pagingAction';
 import { post } from '../../../../modules/ajaxRequest';
 import { formatDecimal } from '../../../../modules/numberFormat';
-import { MONTHLY_SCHEDULE_ID } from '../libs/constants';
 import { productGroupDefault } from '../libs/constants';
 import { isCheckedField } from '../libs/service';
 
@@ -90,7 +89,6 @@ const _buildDealInfo = (dealInfo) => {
         ScheduleId,
         StartDate,
         StartDateString,
-        IsInstant,
         ...rest
     } = dealInfo;
 
@@ -132,8 +130,7 @@ const _buildDealInfo = (dealInfo) => {
         CheckedMinTotalDeposit: isCheckedField(firstTier, 'MinTotalDeposit'),
         CheckedMinTurnover: isCheckedField(firstTier, 'MinTO'),
         StartDate: StartDateString,
-        ScheduleId,
-        IsInstant: ScheduleId !== MONTHLY_SCHEDULE_ID && ScheduleId !== 0
+        ScheduleId
     };
 };
 

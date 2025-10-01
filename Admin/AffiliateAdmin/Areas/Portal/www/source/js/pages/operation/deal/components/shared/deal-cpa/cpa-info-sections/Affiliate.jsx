@@ -1,24 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { FormGroup, Label, Col, Input } from 'reactstrap';
 import { DatePicker } from '@9softstudio/react-datepicker';
 
-import NotificationPopup from '../../../../../../common/components/NotificationPopup';
-
 import { setDealInfo } from '../../../../actions';
-import { INFINITY_NUMBER, MONTHLY_SCHEDULE_ID } from '../../../../libs/constants';
+import { INFINITY_NUMBER } from '../../../../libs/constants';
 import { format } from '../../../../../../../modules/numberFormat';
 import { isValidNumber } from '../../../../../../../modules/utils';
 
 
 export const Affiliate = ({ dealInfo, paymentFrequencyList, setDealInfo, isEdit, isSubmitted, today, isModifiable }) => {
-
-    const [message, setMessage] = useState('');
-    const [isConfirmPopup, setIsConfirmPopup] = useState(false);
-    const [scheduleId, setScheduleId] = useState(0);
-
     const todayDate = new Date(today);
     const todayString = `${todayDate.getMonth() + 1}/${todayDate.getDate()}/${todayDate.getFullYear()}`;
 
@@ -27,24 +20,6 @@ export const Affiliate = ({ dealInfo, paymentFrequencyList, setDealInfo, isEdit,
             setDealInfo({ StartDate: todayString });
         }
     }, [dealInfo.DealType]);
-
-    const _handleCloseNotificationPopup = (confirmResult) => {
-        setMessage('');
-
-        if (confirmResult) {
-            const firstGroupProductId = dealInfo.ProductGroup[0].GroupProductId;
-
-            const newGroupProduct = dealInfo.ProductGroup.find(p => p.GroupProductId === firstGroupProductId);
-            const newTierSetting = dealInfo.CPATierSetting.filter(t => t.GroupProductId === firstGroupProductId);
-
-            setDealInfo({
-                ProductGroup: [newGroupProduct],
-                CPATierSetting: newTierSetting,
-                IsInstant: true,
-                ScheduleId: scheduleId
-            });
-        }
-    }
 
     const _handleCheckRedeposit = (e) => {
         const { name } = e.target;
@@ -85,26 +60,7 @@ export const Affiliate = ({ dealInfo, paymentFrequencyList, setDealInfo, isEdit,
             return;
         }
 
-        const value = Number(e.target.value);
-
-        const isMonthly = value === MONTHLY_SCHEDULE_ID;
-        const isOther = value !== 0 && !isMonthly;
-
-        if (isMonthly) {
-            setDealInfo({ ScheduleId: MONTHLY_SCHEDULE_ID, IsInstant: false });
-            return;
-        }
-
-        if (isOther && !dealInfo.CheckedMinTurnover) {
-            if (dealInfo.ScheduleId === 0 || dealInfo.ScheduleId === MONTHLY_SCHEDULE_ID) {
-                setScheduleId(value);
-                setMessage('Selecting Instant Payment will automatically disable Min Turnover.</br>Do you want to proceed?');
-                setIsConfirmPopup(true);
-            } else {
-                setDealInfo({ ScheduleId: value });
-            }
-            return;
-        }
+        setDealInfo({ ScheduleId: Number(e.target.value) });
     };
 
     const _handleCheckQuota = (e) => {
@@ -167,7 +123,6 @@ export const Affiliate = ({ dealInfo, paymentFrequencyList, setDealInfo, isEdit,
         return '';
     }
 
-    const isDisabledScheduleId = isEdit || dealInfo.CheckedMinTurnover;
     const isRedepositRateError = isSubmitted && dealInfo.IsRedeposit && (Number.isNaN(dealInfo.RedepositRate) || dealInfo.RedepositRate < 1 || dealInfo.RedepositRate > 100);
 
     return (
@@ -252,7 +207,7 @@ export const Affiliate = ({ dealInfo, paymentFrequencyList, setDealInfo, isEdit,
                             paymentFrequencyList.map(pf =>
                                 <option key={pf.ScheduleId}
                                     value={pf.ScheduleId}
-                                    disabled={isDisabledScheduleId && pf.ScheduleId !== 0 && pf.ScheduleId !== MONTHLY_SCHEDULE_ID}>
+                                    disabled={isEdit && pf.ScheduleId !== 0}>
                                     {pf.ScheduleName}
                                 </option>)
                         }
@@ -269,13 +224,7 @@ export const Affiliate = ({ dealInfo, paymentFrequencyList, setDealInfo, isEdit,
                     />
                 </Col>
             </FormGroup>
-            {
-                !!message && <NotificationPopup
-                    message={message}
-                    isConfirmPopup={isConfirmPopup}
-                    onClose={_handleCloseNotificationPopup}
-                />
-            }
+            
         </fieldset>
     );
 }

@@ -9,7 +9,7 @@ import NotificationPopup from '../../../../../../common/components/NotificationP
 
 import { setDealInfo } from '../../../../actions';
 import { deepClone } from '../../../../../../../modules/dataHandler';
-import { cpaTierSettingTitle, MONTHLY_SCHEDULE_ID } from '../../../../libs/constants';
+import { cpaTierSettingTitle } from '../../../../libs/constants';
 
 export const TierSettingItem = (props) => {
     const { tierSetting, isFirstItem, index, dealInfo, isModifiable } = props;
@@ -114,21 +114,14 @@ export const TierSettingItem = (props) => {
         props.setDealInfo({ ProductGroup: productGroup });
     };
 
-    const _handleCheckMinTurnover = () => {
-        if (dealInfo.IsInstant) {
+    const _handleCheckMinTurnover = (e) => {
+        const { name, checked } = e.target;
+        if (checked) {
+            props.setDealInfo({ [name]: true });
             return;
         }
 
-        const isChecked = !dealInfo.CheckedMinTurnover;
-        if (isChecked) {
-            props.setDealInfo({ CheckedMinTurnover: true, ScheduleId: MONTHLY_SCHEDULE_ID });
-            return;
-        }
-
-        const message = props.isEdit
-            ? 'Unchecking for Min Turnover will remove all data from additional Product Groups, if present. Only the first Product Group will be retained.</br>Do you want to proceed?'
-            : 'Unchecking for Min Turnover will enable Instant Payment and remove all data from additional Product Groups, if present. Only the first Product Group will be retained.</br>Do you want to proceed?';
-
+        const message = 'Unchecking for Min Turnover will remove all data from additional Product Groups, if present. Only the first Product Group will be retained.</br>Do you want to proceed?'
         setMessage(message);
         setIsConfirmPopup(true);
     };
@@ -171,7 +164,7 @@ export const TierSettingItem = (props) => {
                             {isFirstItem &&
                                 <FormGroup check className="mx-sm-1">
                                     <Label check>
-                                        <Input type="checkbox" disabled={dealInfo.IsInstant || !isModifiable} name="CheckedMinTurnover" id="CheckedMinTurnover" checked={dealInfo.CheckedMinTurnover} onChange={_handleCheckMinTurnover} />
+                                        <Input type="checkbox" disabled={!isModifiable} name="CheckedMinTurnover" id="CheckedMinTurnover" checked={dealInfo.CheckedMinTurnover} onChange={_handleCheckMinTurnover} />
                                     </Label>
                                 </FormGroup>
                             }
