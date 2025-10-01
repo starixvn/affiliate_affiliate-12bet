@@ -112,6 +112,12 @@
                 messageList.AddRange(validateResult.messageList);
             }
 
+            validateResult = DealInfoValidator.ValidateSubCommRate(dealInfo.IsSubCommRate, dealInfo.SubCommRate);
+            if (!validateResult.isValid)
+            {
+                messageList.AddRange(validateResult.messageList);
+            }
+
             if (dealInfo.DealType == Constants.DealType.CPA)
             {
                 validateResult = DealInfoValidator.ValidateCPAInfo(dealInfo, isAdd);
@@ -140,6 +146,7 @@
         {
             command.GroupId = param.GroupId;
             command.GroupName = param.DealName;
+            command.IsSubCommRate = param.IsSubCommRate;
             command.SubCommRate = param.SubCommRate;
             command.Description = param.Description;
             command.UserId = param.UserId;

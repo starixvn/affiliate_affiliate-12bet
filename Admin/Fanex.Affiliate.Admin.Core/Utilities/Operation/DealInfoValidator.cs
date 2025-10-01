@@ -28,6 +28,7 @@
 
         private static readonly IDictionary<string, string> messages = new Dictionary<string, string>
         {
+            ["requireSubCommRate"] = "Sub-Affiliate Rate must be selected.",
             ["requireGroupName"] = "Deal name cannot be empty.",
             ["requireMinValue"] = "{0} must be greater than 0.",
             ["requireMaxValue"] = "{0} must be less than 100,000,000,000.",
@@ -47,7 +48,6 @@
             ["requireRedepositPeriod"] = "Redeposit Period must be between 1 and 30,000.",
             ["requirePaymentFrequency"] = "Payment Frequency must be selected.",
             ["requireStartDate"] = "Start date must be later than today."
-
         };
 
         public static (bool isValid, List<string> messageList) ValidateGroupName(string groupName)
@@ -57,6 +57,19 @@
             if (string.IsNullOrWhiteSpace(groupName))
             {
                 messageList.Add(messages["requireGroupName"]);
+                return (false, messageList);
+            }
+
+            return (true, messageList);
+        }
+
+        public static (bool isValid, List<string> messageList) ValidateSubCommRate(bool isSubCommRate, decimal subCommRate)
+        {
+            var messageList = new List<string>();
+
+            if (isSubCommRate && (subCommRate <= 0 || subCommRate > 0.1m))
+            {
+                messageList.Add(messages["requireSubCommRate"]);
                 return (false, messageList);
             }
 

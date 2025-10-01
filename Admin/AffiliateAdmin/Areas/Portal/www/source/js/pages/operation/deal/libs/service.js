@@ -8,7 +8,8 @@ import {
     DEAL_CPA,
     DEAL_REVENUE_SHARE,
     DEAL_HYBRID_CPA_SECTION,
-    DEAL_HYBRID_REVENUE_SHARE_SECTION
+    DEAL_HYBRID_REVENUE_SHARE_SECTION,
+    defaultSubAffRate
 } from './constants';
 
 import { buildDefaultRevenueShare, validateRevenueShareInfo } from './revenue-share-service';
@@ -18,7 +19,8 @@ const commonDealInfo = {
     DealName: '',
     DealType: 3,
     Description: '',
-    SubCommRate: 0.05,
+    IsSubCommRate: false,
+    SubCommRate: 0,
     CountryCodes: '',
     ActiveDays: '',
     IsActivePlayerHoldingPeriod: false,
@@ -53,6 +55,11 @@ export const buildDefaultDealInfo = (targetCountryList, dealName = '', dealType 
     newDealInfo.DealName = dealName;
 
     if (dealType !== DEAL_CPA) {
+        if (dealType === DEAL_REVENUE_SHARE) {
+            newDealInfo.IsSubCommRate = true;
+            newDealInfo.SubCommRate = defaultSubAffRate;
+        }
+
         const revenueShareInfo = buildDefaultRevenueShare(deductionList, productList);
         return { ...newDealInfo, ...revenueShareInfo };
     }
@@ -123,10 +130,11 @@ export const _handleSaveParam = (dealInfo) => {
 
 // Start validate deal info
 export const validateDealInfo = (dealInfo, today, isAdd = true) => {
-    const { DealType, DealName } = dealInfo;
+    const { DealType, DealName, IsSubCommRate, SubCommRate } = dealInfo;
     let validateResult = { isValid: false, messageList: [] };
 
     const groupNameValidation = validateGroupName(DealName);
+    const subCommRateValidation = validateSubCommRate(IsSubCommRate, SubCommRate);
 
     if (DealType === DEAL_CPA) {
         validateResult = validateCPAInfo(dealInfo, today, isAdd);
@@ -136,8 +144,8 @@ export const validateDealInfo = (dealInfo, today, isAdd = true) => {
         validateResult = validateHybridInfo(dealInfo, today, isAdd);
     }
 
-    const isValid = groupNameValidation.isValid && validateResult.isValid;
-    const messageList = [...groupNameValidation.messageList, ...validateResult.messageList];
+    const isValid = groupNameValidation.isValid && subCommRateValidation.isValid && validateResult.isValid;
+    const messageList = [...groupNameValidation.messageList, ...subCommRateValidation.messageList, ...validateResult.messageList];
 
     return { isValid, messageList };
 }
@@ -193,6 +201,14 @@ export const validateGroupName = (groupName) => {
     }
 
     return { isValid, messageList };
+}
+
+export const validateSubCommRate = (isSubCommRate, subCommRate) => {
+    if (!!isSubCommRate && (subCommRate <= 0 || subCommRate > 0.1)) {
+        return { isValid: false, messageList: [messages.requireSubCommRate] };
+    }
+
+    return { isValid: true, messageList: [] }
 }
 
 export const validateGeneralDealInfo = (dealInfo, today, isAdd = true) => {
