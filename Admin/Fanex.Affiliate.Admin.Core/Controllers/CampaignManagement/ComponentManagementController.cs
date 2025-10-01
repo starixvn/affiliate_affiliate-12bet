@@ -36,7 +36,7 @@
         [HttpPost]
         public ActionResult GetComponentList(GetComponentListParam param)
         {
-            param.Search = param.Search?.Trim();
+            param.ComponentName = param.ComponentName?.Trim();
             var result = _componentService.GetComponentList(param);
 
             return GenerateJsonNetResult(result);

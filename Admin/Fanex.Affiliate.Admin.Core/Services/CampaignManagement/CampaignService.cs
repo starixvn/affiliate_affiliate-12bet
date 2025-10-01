@@ -6,7 +6,6 @@
     using Data.Repository;
     using DTO;
     using DTO.Campaign;
-    using DTO.CampaignManagement;
     using Extensions;
     using MetaModels.CampaignManagement;
 

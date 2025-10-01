@@ -49,7 +49,7 @@ const FilterForm = () => {
         const params = {
             ComponentTypeId: selectedComponentType,
             StatusIds: selectedStatus,
-            Search: searchComponent,
+            ComponentName: searchComponent,
             RequestId: uuidv4()
         };
         dispatch(setParam(params));

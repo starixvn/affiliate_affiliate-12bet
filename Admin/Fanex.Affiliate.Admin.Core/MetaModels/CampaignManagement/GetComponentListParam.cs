@@ -2,7 +2,7 @@
 {
     public class GetComponentListParam
     {
-        public string Search { get; set; }
+        public string ComponentName { get; set; }
 
         public string StatusIds { get; set; }
 

@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using DTO;
     using DTO.Campaign;
-    using DTO.CampaignManagement;
     using MetaModels.CampaignManagement;
 
     public interface ICampaignService

@@ -5,7 +5,6 @@
     using Criterias.CampaignManagement;
     using Data.Repository;
     using DTO;
-    using DTO.CampaignManagement;
     using DTO.Component;
     using Extensions;
     using MetaModels.CampaignManagement;

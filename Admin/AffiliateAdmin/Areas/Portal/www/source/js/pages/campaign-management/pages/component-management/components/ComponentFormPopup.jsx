@@ -16,7 +16,8 @@ const ComponentFormModal = ({
     onSubmit,
     onClose,
     isAdd,
-    statusList
+    statusList,
+    showStatusNote
 }) => (
     <div className="modal-backdrop">
         <div className="component-form-modal" style={{ width: '500px', maxWidth: '90vw' }}>
@@ -91,6 +92,16 @@ const ComponentFormModal = ({
                         </Col>
                     </FormGroup>
 
+                    {showStatusNote && (
+                        <div className="status-change-note">
+                            <div className="status-note-content">
+                                <div className="status-note-line">
+                                    Only active component will be available for selection when generating a link.
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
                     <div className="component-form-actions text-right">
                         <Button
                             type="button"
@@ -149,7 +160,8 @@ const ComponentFormPopup = () => {
     const [state, setState] = useState({
         errors: {
             componentName: false
-        }
+        },
+        showStatusNote: false
     });
 
     const getCurrentComponentType = () => {
@@ -171,7 +183,8 @@ const ComponentFormPopup = () => {
             setState({
                 errors: {
                     componentName: false
-                }
+                },
+                showStatusNote: false
             });
         } else if (isAdd) {
             setFormData({
@@ -184,7 +197,8 @@ const ComponentFormPopup = () => {
             setState({
                 errors: {
                     componentName: false
-                }
+                },
+                showStatusNote: false
             });
         }
     }, [isAdd, selectedItem, selectedComponentType]);
@@ -196,13 +210,19 @@ const ComponentFormPopup = () => {
             [name]: value
         }));
 
-        setState(prev => ({
-            ...prev,
-            errors: {
-                ...prev.errors,
-                [name]: false
-            }
-        }));
+        setState(prev => {
+            const newState = {
+                ...prev,
+                errors: {
+                    ...prev.errors,
+                    [name]: false
+                }
+            };
+
+            newState.showStatusNote = name === 'statusId';
+
+            return newState;
+        });
     }, []);
 
     const handleNameBlur = useCallback((e) => {
@@ -230,7 +250,8 @@ const ComponentFormPopup = () => {
         setState({
             errors: {
                 componentName: false
-            }
+            },
+            showStatusNote: false
         });
 
         dispatch(closeComponentPopup());
@@ -288,6 +309,7 @@ const ComponentFormPopup = () => {
             onClose={handleClosePopup}
             isAdd={isAdd}
             statusList={statusList}
+            showStatusNote={state.showStatusNote}
         />
     );
 };

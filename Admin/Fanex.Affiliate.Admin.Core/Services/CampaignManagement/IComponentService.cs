@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using DTO;
-    using DTO.CampaignManagement;
     using DTO.Component;
     using MetaModels.CampaignManagement;
 

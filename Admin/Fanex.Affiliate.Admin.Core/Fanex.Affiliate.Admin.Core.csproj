@@ -536,10 +536,10 @@
     <Compile Include="DTO\Api\MemberSiteCustomerInfo.cs" />
     <Compile Include="DTO\Api\PaymentRequestInfo.cs" />
     <Compile Include="DTO\Api\TokenInfo.cs" />
-    <Compile Include="DTO\CampaignManagement\CampaignDashboard.cs" />
-    <Compile Include="DTO\CampaignManagement\CampaignStatus.cs" />
-    <Compile Include="DTO\CampaignManagement\ComponentStatus.cs" />
-    <Compile Include="DTO\CampaignManagement\ComponentType.cs" />
+    <Compile Include="DTO\Campaign\CampaignDashboard.cs" />
+    <Compile Include="DTO\Campaign\CampaignStatus.cs" />
+    <Compile Include="DTO\Component\ComponentStatus.cs" />
+    <Compile Include="DTO\Component\ComponentType.cs" />
     <Compile Include="DTO\Common\TargetCountry.cs" />
     <Compile Include="DTO\Component\ComponentDetailInfo.cs" />
     <Compile Include="DTO\Component\ComponentInfo.cs" />

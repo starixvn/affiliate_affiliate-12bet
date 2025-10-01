@@ -18,9 +18,9 @@
 
         public int UpdatedById { get; set; }
 
-        public DateTime UpdatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
 
-        public string UpdatedDateText => UpdatedDate.ToString("MM/dd/yyyy");
+        public string UpdatedDateText => UpdatedDate.HasValue ? UpdatedDate.Value.ToString("MM/dd/yyyy") : string.Empty;
 
         public int StatusId { get; set; }
 

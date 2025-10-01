@@ -1,4 +1,4 @@
-﻿namespace Fanex.Affiliate.Admin.Core.DTO.CampaignManagement
+﻿namespace Fanex.Affiliate.Admin.Core.DTO.Component
 {
     public class ComponentStatus
     {
