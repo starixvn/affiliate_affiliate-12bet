@@ -77,6 +77,36 @@ const columnConfig = {
         style: bodyCellStyle.center,
         width: 120,
         header: headerText[fields.Status]
+    },
+    [fields.AutoApprovedAmount]: {
+        style: bodyCellStyle.center,
+        width: 120,
+        header: headerText[fields.AutoApprovedAmount]
+    },
+    [fields.AutoApprovedDateStr]: {
+        style: bodyCellStyle.center,
+        width: 120,
+        header: headerText[fields.AutoApprovedDateStr]
+    },
+    [fields.ManualAdjustedAmount]: {
+        style: bodyCellStyle.center,
+        width: 120,
+        header: headerText[fields.ManualAdjustedAmount]
+    },
+    [fields.ManualAdjustedDateStr]: {
+        style: bodyCellStyle.center,
+        width: 120,
+        header: headerText[fields.ManualAdjustedDateStr]
+    },
+    [fields.ManualAdjustedDescription]: {
+        style: bodyCellStyle.center,
+        width: 120,
+        header: headerText[fields.ManualAdjustedDescription]
+    },
+    [fields.FinalCpaAmount]: {
+        style: bodyCellStyle.center,
+        width: 120,
+        header: headerText[fields.FinalCpaAmount]
     }
 };
 
@@ -97,10 +127,13 @@ function buildColumnOrder() {
             });
         } else {
             // Add single column
-            columns.push(key);
+            if (typeof config.isShowable !== 'function' || config.isShowable(true)) {
+                columns.push(key);
+            }
         }
     });
 
+    console.log(columns);
     return columns;
 }
 
@@ -169,7 +202,7 @@ export default class ReportExcel {
      */
     _generateFileName() {
         const timestamp = formatDateTime(new Date(), 'MM.dd.yyyy hh.mm.ss');
-        return `${resource.reportName} ${timestamp}`;
+        return `${resource.reportName}${resource.space}${timestamp}`;
     }
 
     /**
@@ -211,6 +244,10 @@ export default class ReportExcel {
 
         Object.keys(config).forEach(key => {
             const headerConfig = config[key];
+
+            if (typeof headerConfig.isShowable === 'function' && !headerConfig.isShowable(true)) {
+                return;
+            }
 
             if (headerConfig.cols) {
                 // Group with sub-columns - create horizontal merge
@@ -345,7 +382,7 @@ export default class ReportExcel {
 
             if (field === fields.ExpiredRedepositDateStr) {
                 value = totalText;
-                style = totalCellStyle.default;
+                style = totalCellStyle.right;
             } else if (field === fields.ApprovedCpaPlayer) {
                 value = totalData[field] || 0;
                 style = totalCellStyle.number;

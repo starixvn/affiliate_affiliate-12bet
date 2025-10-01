@@ -24,10 +24,15 @@ export const TableFooter = ({
                 <td className="text-right font-weight-bold freeze-column-footer"></td>
                 <td title={totalSettledCpaAmount} className="text-right font-weight-bold freeze-column-footer">{totalSettledCpaAmount}</td>
                 <td className="text-right font-weight-bold freeze-column-footer"></td>
+                <td className="text-right font-weight-bold freeze-column-footer"></td>
+                <td className="text-right font-weight-bold freeze-column-footer"></td>
+                <td className="text-right font-weight-bold freeze-column-footer"></td>
+                <td className="text-right font-weight-bold freeze-column-footer"></td>
+                <td className="text-right font-weight-bold freeze-column-footer"></td>
+                <td className="text-right font-weight-bold freeze-column-footer"></td>
             </tr>
         </tfoot>
     )
 }
-
 
 export default TableFooter;
