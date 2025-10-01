@@ -17,7 +17,16 @@ export const reportKey = {
     RedepositRate: 'RedepositRate',
     NumOfPlayerRedeposit: 'NumOfPlayerRedeposit',
     TotalSettledCpaAmount: 'TotalSettledCpaAmount',
-    Status: 'Status'
+    Status: 'Status',
+    AutomaticallyApprovedCpa: 'AutomaticallyApprovedCpa',
+    AutoApprovedAmount: 'AutoApprovedAmount',
+    AutoApprovedDateStr: 'AutoApprovedDateStr',
+    ManualAdjustedCpa: 'ManualAdjustedCpa',
+    ManualAdjustedAmount: 'ManualAdjustedAmount',
+    ManualAdjustedDateStr: 'ManualAdjustedDateStr',
+    ManualAdjustedDescription: 'ManualAdjustedDescription',
+    Action: 'Action',
+    FinalCpaAmount: 'FinalCpaAmount',
 }
 
 export const headerText = {
@@ -26,8 +35,8 @@ export const headerText = {
     [reportKey.DealName]: 'Deal Name',
     [reportKey.PaymentFrequency]: 'Payment Frequency',
     [reportKey.CpaPaymentDetails]: 'CPA Payment Details',
-    [reportKey.StartFromStr]: 'Start From',
-    [reportKey.ApprovalDateStr]: 'Approval Date',
+    [reportKey.StartFromStr]: 'Schedule Start Date',
+    [reportKey.ApprovalDateStr]: 'Schedule End Date',
     [reportKey.RecheckDays]: 'Re-check Days',
     [reportKey.ExpiredRedepositDateStr]: 'Expired Redeposit Date',
     [reportKey.RedepositStatistics]: 'Redeposit Statistics',
@@ -35,7 +44,16 @@ export const headerText = {
     [reportKey.RedepositRate]: 'Redeposit %',
     [reportKey.NumOfPlayerRedeposit]: 'No. of Player Redeposit',
     [reportKey.TotalSettledCpaAmount]: 'Total Settled CPA Amount',
-    [reportKey.Status]: 'Status'
+    [reportKey.Status]: 'Status',
+    [reportKey.AutomaticallyApprovedCpa]: 'Automatically Approved CPA',
+    [reportKey.AutoApprovedAmount]: 'Amount',
+    [reportKey.AutoApprovedDateStr]: 'Date',
+    [reportKey.ManualAdjustedCpa]: 'Manual Adjusted CPA',
+    [reportKey.ManualAdjustedAmount]: 'Amount',
+    [reportKey.ManualAdjustedDateStr]: 'Date',
+    [reportKey.ManualAdjustedDescription]: 'Description',
+    [reportKey.Action]: 'Action',
+    [reportKey.FinalCpaAmount]: 'Final CPA Amount',
 }
 
 export const headerConfigs = {
@@ -60,12 +78,28 @@ export const headerConfigs = {
             [reportKey.NumOfPlayerRedeposit]: { label: headerText[reportKey.NumOfPlayerRedeposit], width: 120 },
         }
     },
-
     [reportKey.TotalSettledCpaAmount]: { label: headerText[reportKey.TotalSettledCpaAmount], width: 120 },
-    [reportKey.Status]: { label: headerText[reportKey.Status], width: 150 }
+    [reportKey.Status]: { label: headerText[reportKey.Status], width: 150 },
+    [reportKey.AutomaticallyApprovedCpa]: {
+        label: headerText[reportKey.AutomaticallyApprovedCpa],
+        cols: {
+            [reportKey.AutoApprovedAmount]: { label: headerText[reportKey.AutoApprovedAmount], width: 120 },
+            [reportKey.AutoApprovedDateStr]: { label: headerText[reportKey.AutoApprovedDateStr], width: 120 },
+        }
+    },
+    [reportKey.ManualAdjustedCpa]: {
+        label: headerText[reportKey.ManualAdjustedCpa],
+        cols: {
+            [reportKey.ManualAdjustedAmount]: { label: headerText[reportKey.ManualAdjustedAmount], width: 120 },
+            [reportKey.ManualAdjustedDateStr]: { label: headerText[reportKey.ManualAdjustedDateStr], width: 120 },
+            [reportKey.ManualAdjustedDescription]: { label: headerText[reportKey.ManualAdjustedDescription], width: 120 },
+        }
+    },
+    [reportKey.Action]: { label: headerText[reportKey.Action], width: 120, isShowable: (isExportExcel) => !isExportExcel },
+    [reportKey.FinalCpaAmount]: { label: headerText[reportKey.FinalCpaAmount], width: 120 },
 }
 
 export const resource = {
     reportName: 'REDEPOSIT CPA REPORT',
-    space: ' '
+    space: ' - '
 }

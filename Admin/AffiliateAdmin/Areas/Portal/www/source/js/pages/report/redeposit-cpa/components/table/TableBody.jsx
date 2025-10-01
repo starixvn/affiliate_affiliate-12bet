@@ -29,9 +29,9 @@ const groupData = (data) => {
 const SubEntryRow = ({ subEntry, isFirst, rowSpan }) => {
 
     const statusClassName = `status-${subEntry.Status.toLowerCase().replace(' ', '-')}`;
-    const recheckDays = subEntry.RecheckDays ? `${format(subEntry.RecheckDays)} days` : '';
+    const recheckDays = subEntry.RecheckDays ? `${format(subEntry.RecheckDays)} days` : '-';
     const approvedCpaPlayer = format(subEntry.ApprovedCpaPlayer);
-    const redepositRate = subEntry.RedepositRate ? `${formatDecimal(subEntry.RedepositRate * 100)}%` : '';
+    const redepositRate = subEntry.RedepositRate ? `${formatDecimal(subEntry.RedepositRate * 100)}%` : '-';
     const totalSettledCpaAmount = formatDecimal(subEntry.TotalSettledCpaAmount);
 
     return (
@@ -65,6 +65,12 @@ const SubEntryRow = ({ subEntry, isFirst, rowSpan }) => {
                     {subEntry.Status}
                 </span>
             </td>
+            <td title={subEntry.AutoApprovedAmount} className="text-right">{subEntry.AutoApprovedAmount}</td>
+            <td title={subEntry.AutoApprovedDateStr} className="text-center">{subEntry.AutoApprovedDateStr}</td>
+            <td title={subEntry.ManualAdjustedAmount} className="text-right">{subEntry.ManualAdjustedAmount}</td>
+            <td title={subEntry.ManualAdjustedDateStr} className="text-center">{subEntry.ManualAdjustedDateStr}</td>
+            <td title={subEntry.ManualAdjustedDescription} className="text-left">{subEntry.ManualAdjustedDescription}</td>
+            <td title={subEntry.FinalCpaAmount} className="text-right">{subEntry.FinalCpaAmount}</td>
         </tr>
     );
 };
@@ -93,7 +99,7 @@ export function TableBody({
         return (
             <tbody>
                 <tr>
-                    <td className="text-center" colSpan={13}>{globalResource.NoInfo}</td>
+                    <td className="text-center" colSpan={20}>{globalResource.NoInfo}</td>
                 </tr>
             </tbody>
         )
