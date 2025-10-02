@@ -84,11 +84,11 @@ const colConfig = {
         [MAIN_SECTION_STYLE]: bodyCellStyle.center,
         [COL_WIDTH]: 150
     },
-    [dataKey.ReCheckDays]: {
+    [dataKey.ReDepositDays]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.center,
         [COL_WIDTH]: 150
     },
-    [dataKey.ExpiredDate]: {
+    [dataKey.ExpiredRedepositDate]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.center,
         [COL_WIDTH]: 150
     },
@@ -278,7 +278,7 @@ export default class ExportExcel {
         const mainData = Array.isArray(this.data) ? this.data : this.data.mainData;
         if (!mainData) return;
 
-        const _buildDataRow = (item, sectionStyleName, colIndex, hasFirstRedeposit) => {
+        const _buildDataRow = (item, sectionStyleName, colIndex, hasSettingRedeposit) => {
             const columnConfig = this.columnConfigs[colIndex];
             let value = item[columnConfig.field];
 
@@ -286,11 +286,11 @@ export default class ExportExcel {
                 value = value ? "Yes" : "No";
             }
 
-            if (columnConfig.field === dataKey.ReCheckDays) {
-                value = hasFirstRedeposit ? value : "-";
+            if (columnConfig.field === dataKey.ReDepositDays) {
+                value = hasSettingRedeposit ? value : "-";
             }
             if (columnConfig.field === dataKey.IsRedeposit) {
-                value = hasFirstRedeposit ? (value ? "Yes" : "No") : "-";
+                value = hasSettingRedeposit ? (value ? "Yes" : "No") : "-";
             }
 
             return {
@@ -303,7 +303,7 @@ export default class ExportExcel {
         for (let i = 0; i < mainData.length; i++) {
             const item = mainData[i];
             item.no = i + 1;
-            const hasFirstRedeposit = !!item.firstDepositDate;
+            const hasSettingRedeposit = !!item.expiredRedepositDate;
 
             for (let j = 0; j < this.totalColumn; j++) {
                 const address = Excel.getCellAddress({
@@ -311,7 +311,7 @@ export default class ExportExcel {
                     r: this.currentRowIndex
                 });
 
-                this.worksheet[address] = _buildDataRow(item, MAIN_SECTION_STYLE, j, hasFirstRedeposit);
+                this.worksheet[address] = _buildDataRow(item, MAIN_SECTION_STYLE, j, hasSettingRedeposit);
             }
 
             this.currentRowIndex++;

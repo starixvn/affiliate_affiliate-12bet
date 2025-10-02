@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Root>
 	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Test" Suffix="_xtest"></item>
+	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_Admin_Report_PlayerCPA" Suffix="_xpre"></item>
 </Root>

@@ -63,11 +63,11 @@
 
         public string FirstDepositDateStr => FirstDepositDate?.ToString(DATE_FORMAT) ?? HYPHEN;
 
-        public int ReCheckDays { get; set; }
+        public int ReDepositDays { get; set; }
 
-        public DateTime? ExpiredDate { get; set; }
+        public DateTime? ExpiredRedepositDate { get; set; }
 
-        public string ExpiredDateStr => ExpiredDate?.ToString(DATE_FORMAT) ?? HYPHEN;
+        public string ExpiredRedepositDateStr => ExpiredRedepositDate?.ToString(DATE_FORMAT) ?? HYPHEN;
 
         public bool IsRedeposit { get; set; }
 

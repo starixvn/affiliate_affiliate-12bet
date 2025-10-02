@@ -58,8 +58,8 @@ export const headerText = {
     HoldingExpiredDate: 'Holding Expired Date',
     EstimatedCPAAmount: 'Estimated CPA Amount',
     FirstDepositDate: 'First Deposit Date',
-    ReCheckDays: 'Re-check days',
-    ExpiredDate: 'Expired Date',
+    ReDepositDays: 'Re-check days',
+    ExpiredRedepositDate: 'Expired Date',
     IsRedeposit: 'Is Redeposit',
     CPAStatus: 'CPA Status'
 };
@@ -81,8 +81,8 @@ export const dataKey = {
     HoldingExpiredDate: 'hedStr',
     EstimatedCPAAmount: 'estimatedCPAAmount',
     FirstDepositDate: 'firstDepositDateStr',
-    ReCheckDays: 'reCheckDays',
-    ExpiredDate: 'expiredDateStr',
+    ReDepositDays: 'reDepositDays',
+    ExpiredRedepositDate: 'expiredRedepositDateStr',
     IsRedeposit: 'isRedeposit',
     CPAStatus: 'cpaStatus',
     HoldingTickets: 'holdingTickets'
@@ -251,18 +251,18 @@ export const row2 = [
         field: dataKey.FirstDepositDate
     },
     {
-        title: headerText.ReCheckDays,
+        title: headerText.ReDepositDays,
         width: 150,
         sortable: true,
-        sortColumn: dataKey.ReCheckDays,
-        field: dataKey.ReCheckDays
+        sortColumn: dataKey.ReDepositDays,
+        field: dataKey.ReDepositDays
     },
     {
-        title: headerText.ExpiredDate,
+        title: headerText.ExpiredRedepositDate,
         width: 150,
         sortable: true,
-        sortColumn: dataKey.ExpiredDate,
-        field: dataKey.ExpiredDate,
+        sortColumn: dataKey.ExpiredRedepositDate,
+        field: dataKey.ExpiredRedepositDate,
         tooltipTitle: 'Last day for player to redeposit.'
     },
     {
@@ -290,5 +290,5 @@ export const dateFields = [
     dataKey.HoldingQualifiedDate,
     dataKey.HoldingExpiredDate,
     dataKey.FirstDepositDate,
-    dataKey.ExpiredDate
+    dataKey.ExpiredRedepositDate
 ]

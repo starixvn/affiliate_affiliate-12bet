@@ -70,7 +70,7 @@
 		</Setting>
 		<Setting Key="Task_Aff_GetSetting" SpName="Task_Aff_GetSetting" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_Admin_Report_AffiliateCPA" SpName="Aff_Admin_Report_AffiliateCPA" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
-		<Setting Key="Aff_Admin_Report_PlayerCPA" SpName="Aff_Admin_Report_PlayerCPA" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_Admin_Report_PlayerCPA" SpName="Aff_Admin_Report_PlayerCPA_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_Admin_Report_PlayerCPA_TO_Detail" SpName="Aff_Admin_Report_PlayerCPA_TO_Detail" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_Admin_Report_PaymentCPA" SpName="Aff_Admin_Report_PaymentCPA_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 	</Function>

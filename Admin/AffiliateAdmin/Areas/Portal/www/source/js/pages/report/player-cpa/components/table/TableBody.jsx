@@ -15,7 +15,7 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
         toggleDealPopup()
     }
 
-    const hasFirstRedeposit = !!data.firstDepositDate;
+    const hasSettingRedeposit = !!data.expiredRedepositDate;
 
     return (
         <tr key={`dataRow-${rowNumber}`}>
@@ -76,14 +76,14 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
             <td title={data.firstDepositDateStr} className="text-center">
                 {data.firstDepositDateStr}
             </td>
-            <td title={data.reCheckDays} className="text-center">
-                {hasFirstRedeposit ? data.reCheckDays : '-'}
+            <td title={data.reDepositDays} className="text-center">
+                {hasSettingRedeposit ? data.reDepositDays : '-'}
             </td>
-            <td title={data.expiredDateStr} className="text-center">
-                {data.expiredDateStr}
+            <td title={data.expiredRedepositDateStr} className="text-center">
+                {data.expiredRedepositDateStr}
             </td>
             <td title={data.isRedeposit} className="text-center">
-                {hasFirstRedeposit ? (data.isRedeposit ? 'Yes' : 'No') : '-'}
+                {hasSettingRedeposit ? (data.isRedeposit ? 'Yes' : 'No') : '-'}
             </td>
             <td title={data.cpaStatus} className="text-center">
                 {data.cpaStatus}
