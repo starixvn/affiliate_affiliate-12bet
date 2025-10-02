@@ -13,7 +13,7 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
 
-    [FunctionAuthorize(FunctionName = Function.AffReport)]
+    [FunctionAuthorize(FunctionName = Function.DisabledFunction)]
     public class AffiliateCpaReportController : ReadOnlySessionBaseController
     {
         private readonly IAffiliateCpaReportService _affiliateCpaReportService;

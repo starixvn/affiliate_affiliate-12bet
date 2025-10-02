@@ -15,7 +15,7 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
         toggleDealPopup()
     }
 
-    const hasSettingRedeposit = !!data.expiredRedepositDate;
+    const hasSettingRedeposit = data.expiredRedepositDate !== "-";
 
     return (
         <tr key={`dataRow-${rowNumber}`}>

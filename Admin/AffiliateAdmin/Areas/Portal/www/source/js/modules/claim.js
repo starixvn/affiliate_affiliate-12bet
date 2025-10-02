@@ -28,6 +28,7 @@
     EditAffDetails: "[EditAffiliateDetails]",
     TransferPlayerSetting: "[HideTransferPlayerSetting]", //Hide Transfer Player
     TransferPlayerReport: "[HideTransferPlayerReport]", //Hide Transfer Player,
+    DisabledFunction: "[DisabledFunction]",
     CreateMarketingAccount: "[AddMarketingAccount]",
     Deal: '[Deal]',
 }

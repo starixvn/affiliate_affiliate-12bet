@@ -303,7 +303,7 @@ export default class ExportExcel {
         for (let i = 0; i < mainData.length; i++) {
             const item = mainData[i];
             item.no = i + 1;
-            const hasSettingRedeposit = !!item.expiredRedepositDate;
+            const hasSettingRedeposit = item.expiredRedepositDate !== "-";
 
             for (let j = 0; j < this.totalColumn; j++) {
                 const address = Excel.getCellAddress({
