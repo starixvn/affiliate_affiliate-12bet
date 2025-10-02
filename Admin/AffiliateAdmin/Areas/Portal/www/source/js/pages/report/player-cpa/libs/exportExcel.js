@@ -285,6 +285,17 @@ export default class ExportExcel {
             if (columnConfig.field === dataKey.Turnover) {
                 value = value ? "Yes" : "No";
             }
+            if (columnConfig.field === dataKey.FTD) {
+                value = item.isFTD ? value : "-";
+            }
+            if (columnConfig.field === dataKey.TotalDeposit) {
+                value = item.isTotalDeposit ? value : "-";
+            }
+
+            if (columnConfig.field === dataKey.HoldingQualifiedDate
+                || columnConfig.field === dataKey.HoldingExpiredDate || columnConfig.field === dataKey.BetTicket) {
+                value = item.isHolding ? value : "-";
+            }
 
             if (columnConfig.field === dataKey.ReDepositDays) {
                 value = hasSettingRedeposit ? value : "-";

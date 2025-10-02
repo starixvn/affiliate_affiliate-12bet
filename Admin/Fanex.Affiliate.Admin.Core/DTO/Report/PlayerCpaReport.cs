@@ -31,7 +31,11 @@
 
         public decimal? FTD { get; set; }
 
-        public decimal TotalDeposit { get; set; }
+        public bool IsFTD { get; set; }
+
+        public decimal? TotalDeposit { get; set; }
+
+        public bool IsTotalDeposit { get; set; }
 
         public bool IsTO { get; set; }
 
@@ -46,6 +50,8 @@
         public int HoldingBetTickets { get; set; }
 
         public int HoldingTickets { get; set; }
+
+        public bool IsHolding { get; set; }
 
         public DateTime? HQD { get; set; }
 

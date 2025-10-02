@@ -16,6 +16,13 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
     }
 
     const hasSettingRedeposit = data.expiredRedepositDate !== "-";
+    const ftd = data.isFTD ? data.ftd : '-';
+    const totalDeposit = data.isTotalDeposit ? data.totalDeposit : '-';
+    const betTicket = data.isHolding ? data.betTicket : '-';
+    const hqdStr = data.isHolding ? data.hqdStr : '-';
+    const hedStr = data.isHolding ? data.hedStr : '-';
+    const reDepositDays = hasSettingRedeposit ? data.reDepositDays : '-';
+    const isRedeposit = hasSettingRedeposit ? (data.isRedeposit ? 'Yes' : 'No') : '-';
 
     return (
         <tr key={`dataRow-${rowNumber}`}>
@@ -37,11 +44,11 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
             <td title={data.scheduleName} className="text-center">
                 {data.scheduleName}
             </td>
-            <td title={data.ftd} className="text-right">
-                {data.ftd}
+            <td title={ftd} className="text-right">
+                {ftd}
             </td>
-            <td title={data.totalDeposit} className="text-right">
-                {data.totalDeposit}
+            <td title={totalDeposit} className="text-right">
+                {totalDeposit}
             </td>
             <td className="text-center">
                 {
@@ -61,14 +68,14 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
                         </span> : data.cpaAmount
                 }
             </td>
-            <td title={data.betTicket} className="text-center">
-                {data.betTicket}
+            <td title={betTicket} className="text-center">
+                {betTicket}
             </td>
-            <td title={data.hqdStr} className="text-center">
-                {data.hqdStr}
+            <td title={hqdStr} className="text-center">
+                {hqdStr}
             </td>
-            <td title={data.hedStr} className="text-center">
-                {data.hedStr}
+            <td title={hedStr} className="text-center">
+                {hedStr}
             </td>
             <td title={data.estimatedCPAAmount} className="text-right">
                 {data.estimatedCPAAmount}
@@ -76,14 +83,14 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
             <td title={data.firstDepositDateStr} className="text-center">
                 {data.firstDepositDateStr}
             </td>
-            <td title={data.reDepositDays} className="text-center">
-                {hasSettingRedeposit ? data.reDepositDays : '-'}
+            <td title={reDepositDays} className="text-center">
+                {reDepositDays}
             </td>
             <td title={data.expiredRedepositDateStr} className="text-center">
                 {data.expiredRedepositDateStr}
             </td>
-            <td title={data.isRedeposit} className="text-center">
-                {hasSettingRedeposit ? (data.isRedeposit ? 'Yes' : 'No') : '-'}
+            <td title={isRedeposit} className="text-center">
+                {isRedeposit}
             </td>
             <td title={data.cpaStatus} className="text-center">
                 {data.cpaStatus}
@@ -107,7 +114,7 @@ export function TableBody({
         return (
             <tbody>
                 <tr>
-                    <td title={globalResource.NoInfo} className="text-center" colSpan={18}>{globalResource.NoInfo}</td>
+                    <td title={globalResource.NoInfo} className="text-center" colSpan={20}>{globalResource.NoInfo}</td>
                 </tr>
             </tbody>
         )

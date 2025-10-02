@@ -3,7 +3,7 @@ export const reportName = 'PLAYER CPA REPORT';
 export const statusOptions = [
     { value: -1, label: 'All Statuses' },
     { value: 2, label: 'Eligible' },
-    { value: 3, label: 'Approved' },
+    { value: 3, label: 'Settled' },
     { value: 1, label: 'Ineligible' },
     { value: 4, label: 'Rejected' },
     { value: 5, label: 'Quota Exceeded' },
@@ -12,8 +12,7 @@ export const statusOptions = [
 
 export const viewByOptions = [
     { value: '1', label: 'Active Qualified Date' },
-    { value: '2', label: 'Holding Qualified Date' },
-    { value: '3', label: 'Approval Date' },
+    { value: '2', label: 'Holding Qualified Date' }
 ]
 
 export const DATE_FORMAT = 'MM/DD/YYYY';
