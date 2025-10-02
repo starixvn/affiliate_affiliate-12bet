@@ -168,7 +168,7 @@ const ComponentFormPopup = () => {
         if (!componentTypesList || componentTypesList.length === 0) {
             return { name: 'Component', id: null };
         }
-        return componentTypesList.find(ct => ct.id === selectedComponentType) || componentTypesList[0];
+        return componentTypesList.find(ct => ct.id == selectedComponentType) || componentTypesList[0];
     };
 
     useEffect(() => {
@@ -296,6 +296,11 @@ const ComponentFormPopup = () => {
     if (!isOpen) return null;
 
     const currentComponentType = getCurrentComponentType();
+    const isDealType = currentComponentType.name === 'Deal';
+
+    // Don't render this popup for Deal type (use DealFormPopup instead)
+    if (isDealType) return null;
+
     const title = isAdd ? `Add New ${currentComponentType.name}` : `Edit ${currentComponentType.name}`;
 
     return (

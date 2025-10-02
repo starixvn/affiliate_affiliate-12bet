@@ -6,19 +6,24 @@ import { setGridData } from '../actions/gridAction';
 
 const SubMenu = () => {
     const dispatch = useDispatch();
-    const [selectedComponentType, componentTypesList] = useSelector(state => [
+    const [selectedComponentType, componentTypesList, statusList] = useSelector(state => [
         state.selectedComponentType,
-        state.componentTypesList
+        state.componentTypesList,
+        state.statusList
     ]);
 
-    const { setSelectedComponentType, setParam, setSelectedStatus, setSearchComponent } = ActionCreators;
+    const { setSelectedComponentType, setParam, setSelectedStatus, setSearchComponent, setStatusList } = ActionCreators;
 
     const handleComponentTypeClick = (componentType) => {
         if (selectedComponentType !== componentType.id) {
+            const allStatusIds = statusList.map(s => s.key).join(',');
+            const resetStatusList = statusList.map(status => ({ ...status, checked: true }));
             batch(() => {
                 dispatch(setSelectedComponentType(componentType.id));
                 // Reset search and status when changing component type
-                dispatch(setSelectedStatus('')); // Reset to "All"
+                // Set all statuses as selected for multiple selection
+                dispatch(setSelectedStatus(allStatusIds)); // Reset to "All" (all statuses selected)
+                dispatch(setStatusList(resetStatusList)); // Reset statusList with all checked
                 dispatch(setSearchComponent(''));  // Clear search
                 dispatch(setParam(null)); // Clear current data/filters
                 dispatch(setGridData(null)); // Clear grid data

@@ -349,6 +349,7 @@
 		<Setting Key="Aff_LandingPage_Component_ManageSel" SpName="Aff_LandingPage_Component_ManageSel" DbName="" />
 		<Setting Key="Aff_LandingPage_Component_Ins" SpName="Aff_LandingPage_Component_Ins" DbName="" />
 		<Setting Key="Aff_LandingPage_Component_Upd" SpName="Aff_LandingPage_Component_Upd" DbName="" />
-
+		<Setting Key="Aff_LandingPage_Deal_ManageSel" SpName="Aff_LandingPage_Deal_ManageSel" DbName="" />
+		<Setting Key="Aff_LandingPage_Deal_Upd" SpName="Aff_LandingPage_Deal_Upd" DbName="" />
 	</Functions>
 </Functions>

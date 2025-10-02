@@ -16,5 +16,13 @@
         ResultInfo UpdateComponent(UpdateComponentParam param);
 
         ResultInfo InsertComponent(InsertComponentParam param);
+
+        IEnumerable<ComponentDealInfo> GetDealList(GetDealListParam param);
+
+        IEnumerable<AssignDealInfo> GetAssignDealList(GetAssignDealListParam param);
+
+        ResultInfo InsertDeal(InsertDealParam param);
+
+        ResultInfo UpdateDeal(UpdateDealParam param);
     }
 }

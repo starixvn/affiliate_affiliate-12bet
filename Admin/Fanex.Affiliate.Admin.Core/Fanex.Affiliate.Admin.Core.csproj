@@ -292,6 +292,8 @@
     <Compile Include="Commands\BaseNonQueryCommand.cs" />
     <Compile Include="Commands\CampaignManagement\InsertCampaignCommand.cs" />
     <Compile Include="Commands\CampaignManagement\InsertComponentCommand.cs" />
+    <Compile Include="Commands\CampaignManagement\UpdateDealCommand.cs" />
+    <Compile Include="Commands\CampaignManagement\InsertDealCommand.cs" />
     <Compile Include="Commands\CampaignManagement\UpdateCampaignCommand.cs" />
     <Compile Include="Commands\CampaignManagement\UpdateComponentCommand.cs" />
     <Compile Include="Commands\ChangeAdminPasswordCommand.cs" />
@@ -450,6 +452,7 @@
     <Compile Include="Criterias\CampaignManagement\GetCampaignDashboardCriteria.cs" />
     <Compile Include="Criterias\CampaignManagement\GetCampaignListCriteria.cs" />
     <Compile Include="Criterias\CampaignManagement\GetComponentListCriteria.cs" />
+    <Compile Include="Criterias\CampaignManagement\GetDealListCriteria.cs" />
     <Compile Include="Criterias\Customer\AffiliateInfoOnLeftPanelCriteria.cs" />
     <Compile Include="Criterias\Customer\AffiliateOnlineCriteria.cs" />
     <Compile Include="Criterias\Customer\CustomerStatisticsCriteria.cs" />
@@ -538,6 +541,8 @@
     <Compile Include="DTO\Api\TokenInfo.cs" />
     <Compile Include="DTO\Campaign\CampaignDashboard.cs" />
     <Compile Include="DTO\Campaign\CampaignStatus.cs" />
+    <Compile Include="DTO\Component\ComponentDealInfo.cs" />
+    <Compile Include="DTO\Component\AssignDealInfo.cs" />
     <Compile Include="DTO\Component\ComponentStatus.cs" />
     <Compile Include="DTO\Component\ComponentType.cs" />
     <Compile Include="DTO\Common\TargetCountry.cs" />
@@ -623,10 +628,14 @@
     <Compile Include="MetaModels\Api\TokenRequestParam.cs" />
     <Compile Include="MetaModels\AssetModification\DeleteAssetParam.cs" />
     <Compile Include="MetaModels\AssetModification\AddAssetsParam.cs" />
+    <Compile Include="MetaModels\CampaignManagement\GetAssignDealListParam.cs" />
     <Compile Include="MetaModels\CampaignManagement\GetCampaignListParam.cs" />
     <Compile Include="MetaModels\CampaignManagement\GetComponentListParam.cs" />
+    <Compile Include="MetaModels\CampaignManagement\GetDealListParam.cs" />
     <Compile Include="MetaModels\CampaignManagement\InsertCampaignParam.cs" />
     <Compile Include="MetaModels\CampaignManagement\InsertComponentParam.cs" />
+    <Compile Include="MetaModels\CampaignManagement\UpdateDealParam.cs" />
+    <Compile Include="MetaModels\CampaignManagement\InsertDealParam.cs" />
     <Compile Include="MetaModels\CampaignManagement\UpdateCampaignParam.cs" />
     <Compile Include="MetaModels\CampaignManagement\UpdateComponentParam.cs" />
     <Compile Include="MetaModels\ChangeAdminPassword\ChangeAdminPasswordParam.cs" />

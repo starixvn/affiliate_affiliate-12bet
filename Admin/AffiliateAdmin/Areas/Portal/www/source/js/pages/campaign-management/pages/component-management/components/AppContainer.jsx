@@ -5,15 +5,17 @@ import SubMenu from './SubMenu';
 import FilterForm from './FilterForm';
 import TableGrid from './TableGrid';
 import ComponentFormPopup from './ComponentFormPopup';
+import DealFormPopup from './DealFormPopup';
 
 import AppLayout from '@/layouts/AppLayout';
 import Loader from '@/components/Loader';
 import { ActionCreators } from '../actions';
 
 const AppContainer = () => {
-    const [isShowLoader, selectedComponentType] = useSelector(state => [
+    const [isShowLoader, selectedComponentType, componentTypesList] = useSelector(state => [
         state.isShowLoader,
-        state.selectedComponentType
+        state.selectedComponentType,
+        state.componentTypesList
     ]);
 
     const dispatch = useDispatch();
@@ -31,6 +33,16 @@ const AppContainer = () => {
         }
     }, [selectedComponentType, dispatch, setSelectedComponentType]);
 
+    const getCurrentComponentType = () => {
+        if (!componentTypesList || componentTypesList.length === 0) {
+            return { name: 'Component', id: null };
+        }
+        return componentTypesList.find(ct => ct.id == selectedComponentType) || componentTypesList[0];
+    };
+
+    const currentComponentType = getCurrentComponentType();
+    const isDealType = currentComponentType.name === 'Deal';
+
     return (
         <AppLayout>
             <Loader show={isShowLoader} />
@@ -43,7 +55,7 @@ const AppContainer = () => {
                     <TableGrid />
                 </div>
             </div>
-            <ComponentFormPopup />
+            {isDealType ? <DealFormPopup /> : <ComponentFormPopup />}
         </AppLayout>
     );
 }

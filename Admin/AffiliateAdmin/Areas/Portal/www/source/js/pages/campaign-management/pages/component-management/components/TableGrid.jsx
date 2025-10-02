@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { batch, useSelector, useDispatch } from 'react-redux';
 import { ActionCreators } from '../actions';
 import { Table, Row, Cell } from '@9softstudio/react-fixed-table-header';
@@ -31,11 +31,22 @@ const TableGrid = () => {
         fetchData,
         setParam,
         updateComponent,
+        updateDeal,
         openComponentPopup,
         setShouldResetScrollPosition
     } = ActionCreators;
 
     const [tableMaxWidth, setTableMaxWidth] = useState(1800);
+
+    // Compute current component type once globally
+    const currentComponentType = useMemo(() => {
+        if (!componentTypesList || componentTypesList.length === 0) {
+            return { name: 'Component', id: null };
+        }
+        return componentTypesList.find(ct => ct.id == selectedComponentType) || componentTypesList[0];
+    }, [componentTypesList, selectedComponentType]);
+
+    const isDealType = useMemo(() => currentComponentType.name === 'Deal', [currentComponentType]);
 
     // Calculate table width based on container width minus sidebar width
     const calculateTableWidth = () => {
@@ -50,9 +61,10 @@ const TableGrid = () => {
         const sidebarWidth = sidebarElement.offsetWidth;
 
         // Account for padding and gaps (20px padding on main + potential borders/gaps)
-        const padding = 5;
+        const padding = 20;
 
         const calculatedWidth = Math.max(600, containerWidth - sidebarWidth - padding);
+        console.log('calculatedWidth', calculatedWidth);
         return calculatedWidth;
     };
 
@@ -81,20 +93,13 @@ const TableGrid = () => {
     useEffect(() => {
         // Only fetch data if param exists and has ComponentTypeId (indicating a valid selection)
         if (param && param.ComponentTypeId && param.RequestId) {
-            dispatch(fetchData(param));
+            dispatch(fetchData(param, isDealType));
         }
-    }, [param]);
+    }, [param, isDealType]);
 
     if (!gridData) {
         return <></>;
     }
-
-    const getCurrentComponentType = () => {
-        if (!componentTypesList || componentTypesList.length === 0) {
-            return { name: 'Component', id: null };
-        }
-        return componentTypesList.find(ct => ct.id === selectedComponentType) || componentTypesList[0];
-    };
 
 
     const handleEdit = (item) => {
@@ -116,69 +121,95 @@ const TableGrid = () => {
     };
 
     const handleConfirmStatusChange = (item, newStatusId) => {
-        var updateParam = {
-            componentCode: item.ComponentCode,
-            componentName: item.ComponentName,
-            componentId: item.ComponentId,
-            componentTypeId: selectedComponentType,
-            statusId: newStatusId
-        };
+        if (isDealType) {
+            var updateParam = {
+                dealName: item.DealName,
+                dealId: item.DealId,
+                statusId: newStatusId
+            };
 
-        dispatch(updateComponent(updateParam, () => {
-            dispatch(setParam({ ...param, RequestId: uuidv4() }));
-        }));
+            dispatch(updateDeal(updateParam, () => {
+                dispatch(setParam({ ...param, RequestId: uuidv4() }));
+            }));
+        } else {
+            var updateParam = {
+                componentCode: item.ComponentCode,
+                componentName: item.ComponentName,
+                componentId: item.ComponentId,
+                componentTypeId: selectedComponentType,
+                statusId: newStatusId
+            };
+
+            dispatch(updateComponent(updateParam, () => {
+                dispatch(setParam({ ...param, RequestId: uuidv4() }));
+            }));
+        }
+
     };
 
     const _renderHeader = () => {
+        const codeHeader = isDealType ? 'Deal Type' : headerText.Code;
+        const nameHeader = isDealType ? 'Deal Name' : headerText.Name;
+
         return (
             <Row key="thead">
-                <Cell header={true} colWidth={30} title={headerText.Index}>{headerText.Index}</Cell>
-                <Cell header={true} colWidth={150} title={headerText.Code}>{headerText.Code}</Cell>
-                <Cell header={true} colWidth={150} title={headerText.Name}>{headerText.Name}</Cell>
-                <Cell header={true} colWidth={120} title={headerText.CreatedDate}>{headerText.CreatedDate}</Cell>
-                <Cell header={true} colWidth={120} title={headerText.CreatedBy}>{headerText.CreatedBy}</Cell>
-                <Cell header={true} colWidth={120} title={headerText.LastModifiedDate}>{headerText.LastModifiedDate}</Cell>
-                <Cell header={true} colWidth={120} title={headerText.LastModifiedBy}>{headerText.LastModifiedBy}</Cell>
-                <Cell header={true} colWidth={90} title={headerText.Status}>{headerText.Status}</Cell>
-                <Cell header={true} colWidth={60} title={headerText.Edit}>{headerText.Edit}</Cell>
+                <Cell header={true} colWidth={1} title={headerText.Index}>{headerText.Index}</Cell>
+                <Cell header={true} colWidth={5} title={codeHeader}>{codeHeader}</Cell>
+                <Cell header={true} colWidth={5} title={nameHeader}>{nameHeader}</Cell>
+                <Cell header={true} colWidth={4} title={headerText.CreatedDate}>{headerText.CreatedDate}</Cell>
+                <Cell header={true} colWidth={4} title={headerText.CreatedBy}>{headerText.CreatedBy}</Cell>
+                <Cell header={true} colWidth={4} title={headerText.LastModifiedDate}>{headerText.LastModifiedDate}</Cell>
+                <Cell header={true} colWidth={4} title={headerText.LastModifiedBy}>{headerText.LastModifiedBy}</Cell>
+                <Cell header={true} colWidth={3} title={headerText.Status}>{headerText.Status}</Cell>
+                {!isDealType && <Cell header={true} colWidth={2} title={headerText.Edit}>{headerText.Edit}</Cell>}
             </Row>
         );
     };
 
     const _renderDataSection = () => {
+        const colSpan = isDealType ? "8" : "9";
+
         if (gridData && gridData.length > 0) {
-            return gridData.map((item, index) => (
-                <Row key={index}>
-                    <Cell className="text-center" title={index + 1}>{index + 1}</Cell>
-                    <Cell className="text-center" title={item.ComponentCode || ''}>{item.ComponentCode || ''}</Cell>
-                    <Cell className="text-left" title={item.ComponentName}>{item.ComponentName}</Cell>
-                    <Cell className="text-center" title={item.CreatedDateText}>{item.CreatedDateText}</Cell>
-                    <Cell className="text-center" title={item.CreatedBy}>{item.CreatedBy}</Cell>
-                    <Cell className="text-center" title={item.LastModifiedDateText}>{item.LastModifiedDateText}</Cell>
-                    <Cell className="text-center" title={item.LastModifiedBy}>{item.LastModifiedBy}</Cell>
-                    <Cell className="text-center" title={item.Status}>
-                        <StatusDropdown
-                            value={item.StatusId || '0'}
-                            onChange={(newStatusId) => handleStatusChange(item, newStatusId)}
-                        />
-                    </Cell>
-                    <Cell className="text-center" title="Edit">
-                        <span
-                            className="oi oi-pencil"
-                            style={{ cursor: 'pointer', color: '#007bff' }}
-                            onClick={() => handleEdit(item)}
-                        ></span>
-                    </Cell>
-                </Row>
-            ));
+            return gridData.map((item, index) => {
+                const displayCode = isDealType ? item.GroupTypeName : (item.ComponentCode || '');
+                const displayName = isDealType ? item.ComponentName : item.ComponentName;
+                const displayLastModifiedDate = isDealType ? item.UpdatedDateText : item.LastModifiedDateText;
+                const displayLastModifiedBy = isDealType ? item.UpdatedBy : item.LastModifiedBy;
+
+                return (
+                    <Row key={index}>
+                        <Cell className="text-center" title={index + 1}>{index + 1}</Cell>
+                        <Cell className="text-center" title={displayCode}>{displayCode}</Cell>
+                        <Cell className="text-left" title={displayName}>{displayName}</Cell>
+                        <Cell className="text-center" title={item.CreatedDateText}>{item.CreatedDateText}</Cell>
+                        <Cell className="text-center" title={item.CreatedBy}>{item.CreatedBy}</Cell>
+                        <Cell className="text-center" title={displayLastModifiedDate}>{displayLastModifiedDate}</Cell>
+                        <Cell className="text-center" title={displayLastModifiedBy}>{displayLastModifiedBy}</Cell>
+                        <Cell className="text-center" title={item.Status}>
+                            <StatusDropdown
+                                value={item.StatusId || '0'}
+                                onChange={(newStatusId) => handleStatusChange(item, newStatusId)}
+                            />
+                        </Cell>
+                        {!isDealType && (
+                            <Cell className="text-center" title="Edit">
+                                <span
+                                    className="oi oi-pencil"
+                                    style={{ cursor: 'pointer', color: '#007bff' }}
+                                    onClick={() => handleEdit(item)}
+                                ></span>
+                            </Cell>
+                        )}
+                    </Row>
+                );
+            });
         }
         return <Row key="no-info">
-            <Cell className="text-center" colSpan="9">{globalResource.NoInfo}</Cell>
+            <Cell className="text-center" colSpan={colSpan}>{globalResource.NoInfo}</Cell>
         </Row>
     };
 
     const _getReportTitle = () => {
-        const currentComponentType = getCurrentComponentType();
         let statusText = 'All Statuses';
 
         if (param.StatusIds && statusList && statusList.length > 0) {

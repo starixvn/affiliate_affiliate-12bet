@@ -22,6 +22,14 @@ export const statusList = createReducer([], {
     [types.SET_STATUS_LIST]: (state, action) => action.data,
 });
 
+export const selectedDealType = createReducer('', {
+    [types.SET_SELECTED_DEAL_TYPE]: (state, action) => action.data,
+});
+
+export const dealTypesList = createReducer([], {
+    [types.SET_DEAL_TYPES_LIST]: (state, action) => action.data,
+});
+
 export const param = createReducer(null, {
     [types.SET_PARAM]: (state, action) => action.data,
 });

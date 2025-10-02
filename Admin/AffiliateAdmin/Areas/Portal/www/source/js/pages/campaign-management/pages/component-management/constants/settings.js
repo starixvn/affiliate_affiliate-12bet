@@ -16,6 +16,11 @@ export const defaultState = {
     Search: ''
 }
 
+export const statusOptions = [
+    { value: '1', label: 'Active', type: 'active', className: 'status-select--active' },
+    { value: '2', label: 'Inactive', type: 'inactive', className: 'status-select--inactive' }
+];
+
 export const confirmPopupContent = {
     title: "Confirm this Action",
     content: [

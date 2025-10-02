@@ -259,7 +259,7 @@ $status-color-inactive: #6b7280;
 // Component Management Layout
 .component-management {
     display: flex;
-    min-height: 100vh;
+    min-height: calc(100vh - 192px); // Full viewport height minus menu tab height
     gap: 0;
 
     .component-management-sidebar {
@@ -281,14 +281,12 @@ $status-color-inactive: #6b7280;
     .component-management-main {
         flex: 1;
         padding: 20px;
-        overflow-x: auto;
         background-color: #ffffff;
 
         // Constrain table within container width
         .react-fixed-table-header {
             max-width: 100%;
             width: 100%;
-            overflow-x: auto;
             box-sizing: border-box;
         }
 
@@ -303,6 +301,12 @@ $status-color-inactive: #6b7280;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+
+        // Disable body-content's own scrolling to have one unified scroll
+        .body-content {
+            overflow-x: visible !important;
+            overflow-y: visible !important;
         }
 
         @media (max-width: 768px) {
@@ -529,7 +533,7 @@ $status-color-inactive: #6b7280;
 .component-form-modal {
     background: #ffffff;
     border-radius: 8px;
-    overflow: hidden;
+    overflow: visible;
     border: 1px solid #dee2e6;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.1);
     min-width: 600px;
@@ -537,7 +541,6 @@ $status-color-inactive: #6b7280;
     min-height: 250px;
     width: auto;
     max-height: 90vh;
-    overflow-y: auto;
     animation: modalSlideIn 0.05s ease-out;
 
     @media (max-width: 768px) {
@@ -621,6 +624,7 @@ $status-color-inactive: #6b7280;
         background-color: #ffffff;
         padding: 20px;
         border: none !important;
+        max-height: calc(90vh - 80px);
 
         .form {
             margin: 0;
@@ -707,6 +711,151 @@ $status-color-inactive: #6b7280;
             input[disabled] {
                 background-color: #e9ecef;
                 opacity: 1;
+            }
+
+            // Select component styling to match form-control
+            .select-container {
+                width: 100%;
+
+                .select-label {
+                    width: 100%;
+                    min-height: 40px;
+                    height: 40px;
+                    border: 1px solid #ced4da;
+                    border-radius: 4px;
+                    padding: 8px 10px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 1.5;
+                    background-color: #ffffff;
+                    cursor: pointer;
+                    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    &:hover {
+                        border-color: #80bdff;
+                    }
+
+                    &:focus,
+                    &:active {
+                        border-color: #80bdff;
+                        outline: 0;
+                        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+                    }
+                }
+            }
+
+            // Validation error styling for select component
+            .select-validation-error {
+                .select-container {
+                    .select-label {
+                        border-color: #dc3545 !important;
+
+                        &:hover,
+                        &:focus,
+                        &:active {
+                            border-color: #dc3545 !important;
+                            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+                        }
+                    }
+                }
+            }
+
+            .form-group.is-invalid {
+                .select-container {
+                    .select-label {
+                        border-color: #dc3545;
+
+                        &:hover,
+                        &:focus,
+                        &:active {
+                            border-color: #dc3545;
+                            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+                        }
+                    }
+                }
+            }
+
+            .select-container {
+                .select-label {
+                    .text-display {
+                        color: #495057;
+                        flex: 1;
+                        text-align: left;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
+                    .caret {
+                        margin-left: 8px;
+                        border-top: 4px solid #495057;
+                        border-right: 4px solid transparent;
+                        border-left: 4px solid transparent;
+                    }
+                }
+
+                .select-options-container {
+                    position: absolute;
+                    width: 100%;
+                    z-index: 10001;
+                    margin-top: 16px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+                    .select-options {
+                        background: #ffffff;
+                        border: 1px solid #ced4da;
+                        border-radius: 4px;
+                        padding: 4px;
+                        margin: 0;
+                        list-style: none;
+                        max-height: 250px;
+                        overflow-y: auto;
+
+                        input {
+                            width: 100%;
+                            border: 1px solid #ced4da;
+                            border-radius: 4px;
+                            padding: 6px 10px;
+                            font-size: 14px;
+                            margin-bottom: 4px;
+
+                            &:focus {
+                                border-color: #80bdff;
+                                outline: 0;
+                                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+                            }
+                        }
+
+                        .select-item {
+                            padding: 8px 10px;
+                            cursor: pointer;
+                            font-size: 14px;
+                            border-radius: 3px;
+                            transition: background-color 0.15s ease;
+                            height: 40px;
+                            display: flex;
+                            align-items: center;
+                            overflow: visible;
+                            white-space: normal;
+                            word-break: break-word;
+
+                            &:hover,
+                            &.hover {
+                                background-color: #f8f9fa;
+                            }
+
+                            .option-label {
+                                color: #495057;
+                                overflow: visible;
+                                white-space: normal;
+                                word-break: break-word;
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -804,9 +953,22 @@ $status-color-inactive: #6b7280;
     }
 }
 
-.first-row>td:nth-last-child(2) {
+// Default - All Campaigns page: Status column is 9th (10 columns total)
+#root .first-row>td:nth-child(9) {
     min-width: 140px !important;
     width: 140px !important;
+}
+
+// Component Management override - Status column is 8th (works for Deal with 8 cols and non-Deal with 9 cols)
+.component-management .first-row>td:nth-child(8) {
+    min-width: 140px !important;
+    width: 140px !important;
+}
+
+// Reset the 9th column in component management (since it's the Edit column, not Status)
+.component-management .first-row>td:nth-child(9) {
+    min-width: auto !important;
+    width: auto !important;
 }
 
 .confirm-popup-content {
@@ -982,6 +1144,21 @@ $status-color-inactive: #6b7280;
                 &:focus {
                     border-color: #dc3545;
                     box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+                }
+            }
+        }
+
+        // Deal Type specific width
+        &.deal-type-filter {
+            .status-select-input {
+                width: 200px;
+                
+                @media (max-width: 768px) {
+                    width: 180px;
+                }
+
+                @media (max-width: 480px) {
+                    width: 160px;
                 }
             }
         }

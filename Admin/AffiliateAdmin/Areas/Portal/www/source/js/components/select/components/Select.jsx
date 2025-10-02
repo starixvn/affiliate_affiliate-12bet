@@ -36,14 +36,16 @@ export default class Select extends Component {
         selectedKey: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
         onChange: PropTypes.func,
         hasInputOption: PropTypes.bool,
-        isDisable: PropTypes.bool
+        isDisable: PropTypes.bool,
+        unselectedText: PropTypes.string
     }
 
     static defaultProps = {
         keyField: KEY_NAME,
         valueField: VALUE_NAME,
         hasInputOption: false,
-        isDisable: false
+        isDisable: false,
+        unselectedText: 'Please select!'
     }
 
     componentDidMount() {
@@ -104,13 +106,14 @@ export default class Select extends Component {
 
     render() {
         const { inputOption, selectedItem } = this.state;
-        const { isDisable, hasInputOption } = this.props;
+        const { isDisable, hasInputOption, unselectedText } = this.props;
         const dataSource = this._convertDataSource(inputOption.trim().toLowerCase());
+        const displayText = selectedItem.value || unselectedText;
 
         return (
             <div className="select-container" id={this.id} ref={element => this.wrapper = element}>
                 <SelectLabel
-                    selectedText={selectedItem.value}
+                    selectedText={displayText}
                     onToggle={this.onToggle}
                     isDisable={isDisable} />
 

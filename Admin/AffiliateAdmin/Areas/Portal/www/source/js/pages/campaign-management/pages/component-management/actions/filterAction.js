@@ -39,6 +39,20 @@ export const setSearchComponent = (item) => {
     };
 };
 
+export const setSelectedDealType = (item) => {
+    return {
+        type: types.SET_SELECTED_DEAL_TYPE,
+        data: item,
+    };
+};
+
+export const setDealTypesList = (item) => {
+    return {
+        type: types.SET_DEAL_TYPES_LIST,
+        data: item,
+    };
+};
+
 export const setParam = (item) => {
     return {
         type: types.SET_PARAM,
@@ -52,7 +66,7 @@ export const fetchSettings = () => async (dispatch) => {
         const response = await post(apiUrl.getSettings, {});
         
         if (response && response.status === 200 && response.data) {
-            const { StatusList, ComponentTypes } = response.data;
+            const { StatusList, ComponentTypes, DealTypes } = response.data;
             
             // Process Component Types
             if (ComponentTypes && ComponentTypes.length > 0) {
@@ -74,16 +88,30 @@ export const fetchSettings = () => async (dispatch) => {
             
             // Process Status List
             if (StatusList && StatusList.length > 0) {
-                // Map API response to expected format (no need to add "All" option here since it's hardcoded in JSX)
+                // Map API response to expected format with checked property for MultipleSelect
                 const statusOptions = StatusList.map(status => ({
                     key: status.StatusId.toString(),
                     name: status.Status,
-                    value: status.StatusId.toString()
+                    value: status.StatusId.toString(),
+                    checked: true // Initialize all as checked for "All" default
                 }));
                 
-                // Set the first status (All) as default for filter
-                dispatch(setSelectedStatus(''));
+                // Set all status IDs as default for filter
+                const allStatusIds = statusOptions.map(s => s.key).join(',');
+                dispatch(setSelectedStatus(allStatusIds));
                 dispatch(setStatusList(statusOptions));
+            }
+
+            // Process Deal Types
+            if (DealTypes && DealTypes.length > 0) {
+                const dealTypeOptions = DealTypes.map(dealType => ({
+                    key: dealType.GroupTypeId.toString(),
+                    name: dealType.GroupTypeName,
+                    value: dealType.GroupTypeId.toString()
+                }));
+                
+                dispatch(setSelectedDealType(''));
+                dispatch(setDealTypesList(dealTypeOptions));
             }
         }
     }

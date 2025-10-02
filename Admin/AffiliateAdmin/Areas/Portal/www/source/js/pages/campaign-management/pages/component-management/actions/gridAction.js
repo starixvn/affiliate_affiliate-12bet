@@ -18,12 +18,26 @@ export const setShouldResetScrollPosition = (data) => {
     }
 }
 
-export const fetchData = (param) => async (dispatch) => {
+export const fetchData = (param, isDealType = false) => async (dispatch) => {
     try {
         dispatch(toggleLoader(true));
-        const response = await post(apiUrl.getComponentList, param);
+        
+        // Use different API endpoint based on component type
+        const apiEndpoint = isDealType ? apiUrl.getDealList : apiUrl.getComponentList;
+        const newParam = isDealType ? { ...param, DealName: param.ComponentName }:param;
+        const response = await post(apiEndpoint, newParam);
 
-        const data = response && response.status === 200 ? response.data : null;
+        let data = response && response.status === 200 ? response.data : null;
+
+        // Map Deal data to Component structure if it's Deal type
+        if (isDealType && data && Array.isArray(data)) {
+            data = data.map(item => ({
+                ...item,
+                ComponentId: item.DealId,
+                ComponentName: item.DealName,
+                ComponentCode: item.DealType
+            }));
+        }
 
         dispatch(setGridData(data ? data : []));
         dispatch(setShouldResetScrollPosition(true));
@@ -57,23 +71,23 @@ export const updateComponent = (param, callback) => async (dispatch) => {
     }
 }
 
-export const insertComponent = (param, callback) => async (dispatch) => {
+
+export const updateDeal = (param, callback) => async (dispatch) => {
     try {
         dispatch(toggleLoader(true));
-        const response = await postWithoutAlert(apiUrl.insertComponent, param);
+        const response = await postWithoutAlert(apiUrl.updateDeal, param);
         const isSuccess = response && response.status === 200 && response.data && response.data.Code === 0;
         if (isSuccess) {
-            showSuccessToast("Insert Success!", `Component "${param.componentName}" has been created successfully.`);
-            return { IsSuccessful: true, Message: "Component created successfully" };
+            showSuccessToast("Update Success!", `Deal "${param.dealName}" has been updated successfully.`);
         }
         else {
-            const errorMessage = response?.data?.Message || `Failed to create component "${param.componentName}". Please try again.`;
-            showErrorToast("Insert Failed!", errorMessage);
+            const errorMessage = response?.data?.Message || `Failed to update deal "${param.dealName}". Please try again.`;
+            showErrorToast("Update Failed!", errorMessage);
         }
     }
     catch (error) {
         console.error(error);
-        showErrorToast("Insert Failed!", `An error occurred while create component "${param.componentName}".`);
+        showErrorToast("Update Failed!", `An error occurred while updating deal "${param.dealName}".`);
     } finally {
         dispatch(toggleLoader(false));
         callback && callback();

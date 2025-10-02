@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using Commands.CampaignManagement;
     using Criterias.CampaignManagement;
+    using Criterias.Operation;
     using Data.Repository;
     using DTO;
     using DTO.Component;
@@ -41,6 +42,37 @@
         public ResultInfo InsertComponent(InsertComponentParam param)
         {
             var command = param.MapTo<InsertComponentParam, InsertComponentCommand>();
+
+            return ExecuteReturnResultInfo(command);
+        }
+
+        public IEnumerable<ComponentDealInfo> GetDealList(GetDealListParam param)
+        {
+            var criteria = param.MapTo<GetDealListParam, GetDealListCriteria>();
+            return FetchTData<ComponentDealInfo>(criteria);
+        }
+
+        public IEnumerable<AssignDealInfo> GetAssignDealList(GetAssignDealListParam param)
+        {
+            var criteria = param.MapTo<GetAssignDealListParam, GetAssignDealCriteria>();
+            criteria.IsOnlyRevenue = false;
+
+            var data = FetchTData<AssignDealInfo>(criteria);
+            param.GroupId = criteria.GroupId;
+
+            return data;
+        }
+
+        public ResultInfo InsertDeal(InsertDealParam param)
+        {
+            var command = param.MapTo<InsertDealParam, InsertDealCommand>();
+
+            return ExecuteReturnResultInfo(command);
+        }
+
+        public ResultInfo UpdateDeal(UpdateDealParam param)
+        {
+            var command = param.MapTo<UpdateDealParam, UpdateDealCommand>();
 
             return ExecuteReturnResultInfo(command);
         }

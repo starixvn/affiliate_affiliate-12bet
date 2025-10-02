@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { statusOptions } from '../constants/settings';
 
 const StatusDropdown = ({
     value = '0',
@@ -10,18 +10,6 @@ const StatusDropdown = ({
     const [isOpen, setIsOpen] = useState(false);
     const [positionKey, setPositionKey] = useState(0);
     const dropdownRef = useRef(null);
-
-    // Get status list from Redux state
-    const statusListFromState = useSelector(state => state.statusList);
-
-    // Transform statusList format to match component expectations
-    const statusOptions = statusListFromState.map(status => ({
-        value: status.value,
-        label: status.name,
-        key: status.key,
-        type: status.value === '1' ? 'active' : 'inactive',
-        className: status.value === '1' ? 'status-select--active' : 'status-select--inactive'
-    }));
 
     const getStatusClassName = (statusId) => {
         const status = statusOptions.find(opt => opt.value === statusId?.toString());

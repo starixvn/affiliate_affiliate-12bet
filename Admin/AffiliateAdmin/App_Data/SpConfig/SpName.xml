@@ -349,7 +349,8 @@
 		<Setting Key="Aff_LandingPage_Component_ManageSel" SpName="Aff_LandingPage_Component_ManageSel_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_LandingPage_Component_Ins" SpName="Aff_LandingPage_Component_Ins_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_LandingPage_Component_Upd" SpName="Aff_LandingPage_Component_Upd_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
-
+		<Setting Key="Aff_LandingPage_Deal_ManageSel" SpName="Aff_LandingPage_Deal_ManageSel_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_LandingPage_Deal_Upd" SpName="Aff_LandingPage_Deal_Upd_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 	</Functions>
 </Functions>
 
