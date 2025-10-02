@@ -5,7 +5,7 @@ export { globalResource };
 export const headerText = {
     Index: '#',
     LinkName: 'Link Name',
-    AffiliateCampaignLink: 'Affiliate Campaign Link',
+    AffiliateMediaLink: 'Affiliate Media Link',
     TargetCountry: 'Target Country',
     CreatedTime: 'Created Time',
     CreatedBy: 'Created By',

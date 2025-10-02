@@ -7,7 +7,15 @@ import * as types from '../actions/types';
 
 export const isModifyInLinkManagement = createReducer(false, {});
 
-export const targetCountryList = createReducer(null, {});
+export const today = createReducer(null, {});
+
+export const targetCountryList = createReducer([], {});
+export const languageList = createReducer([], {});
+export const eventList = createReducer([], {});
+export const groupList = createReducer([], {});
+export const channelList = createReducer([], {});
+export const agencyList = createReducer([], {});
+export const typeList = createReducer([], {});
 
 export const param = createReducer(null, {
     [types.SET_PARAM](prevState, action) {
@@ -35,7 +43,14 @@ export const gridData = createReducer(null, {
 
 export default combineReducers({
     isModifyInLinkManagement,
+    today,
     targetCountryList,
+    languageList,
+    eventList,
+    groupList,
+    channelList,
+    agencyList,
+    typeList,
     param,
     gridData,
     pagingOption,

@@ -20,7 +20,7 @@ const App = () => {
 
     return (
         <ErrorBoundary>
-            <Router forceRefresh={true}>
+            <Router>
                 <SubMenuList
                     img={imgSrc}
                     menus={renderMenuList.map((menu) => { return { label: menu.label, href: menu.href } })}

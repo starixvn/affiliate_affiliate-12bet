@@ -466,7 +466,12 @@
     <Compile Include="Criterias\LandingPage\GetMediaSourceCriteria.cs" />
     <Compile Include="Criterias\LandingPage\GetModuleCriteria.cs" />
     <Compile Include="Criterias\LandingPage\GetPageManagementCriteria.cs" />
+    <Compile Include="Criterias\LinkGenerator\GetAgencyCriteria.cs" />
+    <Compile Include="Criterias\LinkGenerator\GetChannelCriteria.cs" />
+    <Compile Include="Criterias\LinkGenerator\GetEventCriteria.cs" />
+    <Compile Include="Criterias\LinkGenerator\GetGroupCriteria.cs" />
     <Compile Include="Criterias\LinkGenerator\GetLinkManagementCriteria.cs" />
+    <Compile Include="Criterias\LinkGenerator\GetTypeCriteria.cs" />
     <Compile Include="Criterias\MediaGallery\BannerCriteria.cs" />
     <Compile Include="Criterias\MediaGallery\BannerDetailCriteria.cs" />
     <Compile Include="Criterias\MediaGallery\BaseBannerCriteria.cs" />
@@ -550,7 +555,12 @@
     <Compile Include="DTO\LandingPage\PageBuilderDetail.cs" />
     <Compile Include="DTO\LandingPage\StatusInfo.cs" />
     <Compile Include="DTO\LandingPage\PageManagement.cs" />
+    <Compile Include="DTO\LinkGenerator\Agency.cs" />
+    <Compile Include="DTO\LinkGenerator\Channel.cs" />
+    <Compile Include="DTO\LinkGenerator\Event.cs" />
+    <Compile Include="DTO\LinkGenerator\Group.cs" />
     <Compile Include="DTO\LinkGenerator\LinkManagement.cs" />
+    <Compile Include="DTO\LinkGenerator\Type.cs" />
     <Compile Include="DTO\Market.cs" />
     <Compile Include="DTO\EmailHistory\EmailHistoryDetailInfo.cs" />
     <Compile Include="DTO\EmailHistory\EmailHistoryInfo.cs" />

@@ -9,6 +9,8 @@ namespace Fanex.Affiliate.Admin.Core.Services.LandingPage
     {
         IEnumerable<CampaignInfo> GetCampaignInfoList();
 
+        IEnumerable<Language> GetLanguageList();
+
         IEnumerable<Language> GetAllLanguagesInSystem();
 
         IEnumerable<TargetCountry> GetTargetCountryList();

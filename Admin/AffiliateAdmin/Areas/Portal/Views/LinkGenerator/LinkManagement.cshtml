@@ -1,4 +1,5 @@
-﻿@model Fanex.Affiliate.Admin.Core.ViewModels.LinkGenerator.LinkManagementViewModel
+﻿@using Fanex.Affiliate.Admin.Core.Utilities
+@model Fanex.Affiliate.Admin.Core.ViewModels.LinkGenerator.LinkManagementViewModel
 
 @section pagecss{
     <link href="@Url.VersionedLink("~/Areas/Portal/www/dist/style/pages/link-generator.css")" rel="stylesheet" />
@@ -7,7 +8,14 @@
 @section pagejs{
     <script type="text/javascript">
         window.initialState = {
+            today: '@DateTimeHelper.Gmt8NowString',
             targetCountryList: @Html.Raw(Json.Encode(Model.TargetCountryList)),
+            languageList: @Html.Raw(Json.Encode(Model.LanguageList)),
+            eventList: @Html.Raw(Json.Encode(Model.EventList)),
+            groupList: @Html.Raw(Json.Encode(Model.GroupList)),
+            channelList: @Html.Raw(Json.Encode(Model.ChannelList)),
+            agencyList: @Html.Raw(Json.Encode(Model.AgencyList)),
+            typeList: @Html.Raw(Json.Encode(Model.TypeList))
         }
     </script>
     <script type="text/javascript" src="@Url.VersionedLink("~/Areas/Portal/www/dist/js/pages/link-generator.js")"></script>

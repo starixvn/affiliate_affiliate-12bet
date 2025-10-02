@@ -30,6 +30,11 @@ namespace Fanex.Affiliate.Admin.Core.Services.LinkGenerator
             return _systemService.GetAllLanguagesInSystem();
         }
 
+        public IEnumerable<Language> GetLanguageList()
+        {
+            return _systemService.GetLanguageList();
+        }
+
         public IEnumerable<TargetCountry> GetTargetCountryList()
         {
             return _systemService.GetTargetCountryList();

@@ -30,6 +30,12 @@ namespace Fanex.Affiliate.Admin.Core.Controllers.LinkGenerator
             var model = new LinkManagementViewModel
             {
                 TargetCountryList = _linkGeneratorService.GetTargetCountryList(),
+                LanguageList = _linkGeneratorService.GetLanguageList(),
+                EventList = _LinkManagementService.GetEvent(),
+                GroupList = _LinkManagementService.GetGroup(),
+                ChannelList = _LinkManagementService.GetChannel(),
+                AgencyList = _LinkManagementService.GetAgency(),
+                TypeList = _LinkManagementService.GetType()
             };
 
             return View("~/Areas/Portal/Views/LinkGenerator/LinkManagement.cshtml", model);

@@ -14,8 +14,8 @@ const devConfig = config(environment.development)[0];
 
 devConfig.entry = {
     //Campaign Management
-    [`${jsDist}/pages/campaign-management`]: clientRoot + "/js/pages/campaign-management/index.jsx",
-    [`${styleDist}/pages/campaign-management`]: clientRoot + "/style/pages/campaign-management.scss",
+    [`${jsDist}/pages/link-management`]: clientRoot + "/js/pages/link-management/index.jsx",
+    [`${styleDist}/pages/link-management`]: clientRoot + "/style/pages/link-management.scss",
 }
 
 module.exports = devConfig;
