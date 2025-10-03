@@ -12,6 +12,7 @@ import {
     defaultSubAffRate
 } from './constants';
 
+import { formatDecimal } from '../../../../modules/numberFormat';
 import { buildDefaultRevenueShare, validateRevenueShareInfo } from './revenue-share-service';
 
 const commonDealInfo = {
@@ -66,6 +67,93 @@ export const buildDefaultDealInfo = (targetCountryList, dealName = '', dealType 
 
     return newDealInfo;
 }
+
+export const _buildDetailDealInfo = (dealInfo) => {
+    if (!dealInfo) {
+        return null;
+    }
+
+    const {
+        HoldingDays,
+        HoldingTickets,
+        Quota,
+        RedepositRate,
+        RedepositDays,
+        ProductGroup,
+        CPATierSetting,
+        DepositFeeSetting,
+        WithdrawalFeeSetting,
+        ScheduleId,
+        StartDate,
+        StartDateString,
+        ...rest
+    } = dealInfo;
+
+    const isActivePlayerHoldingPeriod = HoldingDays > 0 && HoldingTickets > 0;
+    const isQuota = Quota > 0;
+    const isRedeposit = RedepositRate > 0 && RedepositDays > 0;
+    const productGroup = !ProductGroup || ProductGroup.length === 0 ? [productGroupDefault] : ProductGroup;
+
+    const firstGroupProductId = productGroup?.[0]?.GroupProductId;
+    const firstTier = CPATierSetting.filter(t => t.GroupProductId === firstGroupProductId);
+
+    if (WithdrawalFeeSetting) {
+        WithdrawalFeeSetting.DeductedAmount = WithdrawalFeeSetting.IsDeductedPercent
+            ? ''
+            : WithdrawalFeeSetting.DeductedAmount;
+    }
+
+    if (DepositFeeSetting) {
+        DepositFeeSetting.DeductedAmount = DepositFeeSetting.IsDeductedPercent
+            ? ''
+            : DepositFeeSetting.DeductedAmount;
+    }
+
+    return {
+        ...rest,
+        RedepositRate: RedepositRate === 0 ? 0 : formatDecimal(RedepositRate * 100) || 0,
+        RedepositDays: RedepositDays || 0,
+        HoldingDays: HoldingDays || 0,
+        HoldingTickets: HoldingTickets || 0,
+        Quota: Quota || 0,
+        ProductGroup: productGroup,
+        CPATierSetting,
+        DepositFeeSetting,
+        WithdrawalFeeSetting,
+        IsActivePlayerHoldingPeriod: isActivePlayerHoldingPeriod,
+        IsQuota: isQuota,
+        IsRedeposit: isRedeposit,
+        CheckedMinFdm: isCheckedField(firstTier, 'MinFdm'),
+        CheckedMinTotalDeposit: isCheckedField(firstTier, 'MinTotalDeposit'),
+        CheckedMinTurnover: isCheckedField(firstTier, 'MinTO'),
+        StartDate: StartDateString,
+        ScheduleId
+    };
+};
+
+export const _buildOnlyRevenueDealInfo = (dealInfo) => {
+    if (!dealInfo) return null;
+
+    return {
+        QmTurnover: dealInfo.QmTurnover,
+        IsActivePlayerSum: dealInfo.IsActivePlayerSum,
+        RevenueTierSetting: dealInfo.RevenueTierSetting,
+        PlatformFeeSetting: dealInfo.PlatformFeeSetting,
+        DepositFeeSetting: dealInfo.DepositFeeSetting
+            ? {
+                ...dealInfo.DepositFeeSetting,
+                DeductedAmount: dealInfo.DepositFeeSetting.IsDeductedPercent ? '' : dealInfo.DepositFeeSetting.DeductedAmount
+            }
+            : null,
+        WithdrawalFeeSetting: dealInfo.WithdrawalFeeSetting
+            ? {
+                ...dealInfo.WithdrawalFeeSetting,
+                DeductedAmount: dealInfo.WithdrawalFeeSetting.IsDeductedPercent ? '' : dealInfo.WithdrawalFeeSetting.DeductedAmount
+            }
+            : null,
+    };
+};
+
 
 export const isCheckedField = (list, field) => {
     return list && list.some(item => item[field] !== 0);

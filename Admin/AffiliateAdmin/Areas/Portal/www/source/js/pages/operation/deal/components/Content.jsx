@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { Pager } from '@9softstudio/react-fixed-table-header';
 
-import { setParam, setDealInfo, setPagingOption, fetchData, setIsEdit, setIsSubmitted } from '../actions';
+import { setParam, setDealInfo, setPagingOption, fetchData, setIsEdit, setIsSubmitted, setCopyRevenueDeal } from '../actions';
+import { copyRevenueDealDefault } from '../libs/constants';
 
 import GridData from './deal-list/GridData';
 import AddDeal from './add-deal/AddDeal';
@@ -47,6 +48,7 @@ export const Content = (props) => {
         props.setIsEdit(false);
         props.setIsSubmitted(false);
         props.setDealInfo(null);
+        props.setCopyRevenueDeal(copyRevenueDealDefault);
     }
 
     const _handleShowAddPopup = useCallback((dealId = null) => {
@@ -121,7 +123,8 @@ const mapDispatchToProps = (dispatch) => {
         setPagingOption,
         fetchData,
         setIsEdit,
-        setIsSubmitted
+        setIsSubmitted,
+        setCopyRevenueDeal
     }, dispatch);
 };
 

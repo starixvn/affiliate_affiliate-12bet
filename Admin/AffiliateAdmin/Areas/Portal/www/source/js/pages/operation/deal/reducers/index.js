@@ -5,6 +5,8 @@ import { pagingOption } from '../../../../reducers/pagingReducer';
 import { isShowLoader } from '../../../../reducers/loaderReducer';
 import { claimsPrincipal } from '../../../../reducers/claimReducer';
 
+import { copyRevenueDealDefault } from '../libs/constants';
+
 import * as types from '../actions/types';
 
 const dealTypeList = createReducer([], []);
@@ -46,6 +48,12 @@ const isEdit = createReducer(false, {
     }
 });
 
+const copyRevenueDeal = createReducer(copyRevenueDealDefault, {
+    [types.SET_COPY_REVENUE_DEAL]: (prevState, action) => {
+        return { ...prevState, ...action.data };
+    }
+});
+
 export default combineReducers({
     pagingOption,
     isShowLoader,
@@ -62,5 +70,6 @@ export default combineReducers({
     isModifiable,
     defaultCurrency,
     paymentFrequencyList,
-    today
+    today,
+    copyRevenueDeal
 });

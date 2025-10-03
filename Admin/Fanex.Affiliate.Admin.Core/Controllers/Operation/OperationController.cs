@@ -114,6 +114,13 @@
             return GenerateJsonNetResult(viewModel);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryHeader]
+        public ActionResult GetRevenueDealList()
+        {
+            return GenerateJsonNetResult(_commonDealService.GetNormalDealList(new GetNormalDealParam()));
+        }
+
         private OperationViewModel GetOperationViewModel()
         {
             return new OperationViewModel

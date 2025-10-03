@@ -97,3 +97,8 @@ export const productGroupDefault = {
     ProductIds: '',
     GroupProductId: 1,
 }
+
+export const copyRevenueDealDefault = {
+    RsDealId: 0,
+    RsDealList: [],
+}
