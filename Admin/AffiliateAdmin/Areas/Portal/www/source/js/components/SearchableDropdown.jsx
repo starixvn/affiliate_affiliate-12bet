@@ -96,6 +96,10 @@ const SearchableDropdown = ({
         setSearchTerm(e.target.value);
     }, []);
 
+    const handleClearSearch = useCallback(() => {
+        setSearchTerm('');
+    }, []);
+
     // Filter items based on search term
     const filteredItems = filterItems 
         ? filterItems(items, searchTerm)
@@ -223,6 +227,10 @@ const SearchableDropdown = ({
                     text-decoration: none !important;
                     box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25) !important;
                 }
+                .dropdown-toggle-visible-text.is-error {
+                    color: #dc3545 !important;
+                    border-color: #dc3545 !important;
+                }
                 .dropdown-item {
                     color: #495057 !important;
                     font-size: 13px !important;
@@ -254,6 +262,16 @@ const SearchableDropdown = ({
                     background-color: #f8f9fa !important;
                     cursor: pointer !important;
                 }
+                .search-clear-btn:hover {
+                    color: #495057 !important;
+                    background-color: #f8f9fa !important;
+                    border-radius: 50% !important;
+                }
+                .search-clear-btn:focus {
+                    outline: none !important;
+                    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25) !important;
+                    border-radius: 50% !important;
+                }
                 `}
             </style>
             
@@ -263,19 +281,18 @@ const SearchableDropdown = ({
                 className="w-100"
             >
                 <DropdownToggle
-                    caret
-                    className={`form-control text-truncate text-left dropdown-toggle-visible-text ${error ? 'is-invalid border-danger' : ''} ${dropdownClassName}`}
+                    className={`form-control text-truncate text-left multiple-select-label dropdown-toggle-visible-text ${error ? 'is-error' : ''} ${dropdownClassName}`}
                     style={{ 
                         backgroundColor: 'white',
-                        border: '1px solid #ced4da', 
-                        color: '#495057',
-                        textDecoration: 'none',
+                        border: '1px solid #ced4da',
+                        minWidth: '135px',
                         ...toggleStyle
                     }}
                     disabled={isDisabled}
                     title={getDisplayValue()}
                 >
                     {getDisplayValue()}
+                    <b class="caret"></b>
                 </DropdownToggle>
                 
                 <DropdownMenu 
@@ -287,7 +304,7 @@ const SearchableDropdown = ({
                         zIndex: 1050,
                         position: 'absolute',
                         width: '100%',
-                        minWidth: '250px',
+                        minWidth: '280px',
                         ...menuStyle
                     }}
                     flip={false}
@@ -297,13 +314,38 @@ const SearchableDropdown = ({
                     {searchable && (
                         <>
                             <DropdownItem header>
-                                <Input
-                                    type="text"
-                                    placeholder={searchPlaceholder}
-                                    value={searchTerm}
-                                    onChange={handleSearchChange}
-                                    onClick={(e) => e.stopPropagation()}
-                                />
+                                <div className="position-relative">
+                                    <Input
+                                        className="w-100 pr-4"
+                                        type="text"
+                                        placeholder={searchPlaceholder}
+                                        value={searchTerm}
+                                        onChange={handleSearchChange}
+                                        onClick={(e) => e.stopPropagation()}
+                                    />
+                                    {searchTerm && (
+                                        <button
+                                            type="button"
+                                            className="btn btn-sm position-absolute search-clear-btn"
+                                            onClick={handleClearSearch}
+                                            style={{
+                                                right: '5px',
+                                                top: '50%',
+                                                transform: 'translateY(-50%)',
+                                                border: 'none',
+                                                background: 'none',
+                                                padding: '2px 4px',
+                                                fontSize: '14px',
+                                                color: '#6c757d',
+                                                cursor: 'pointer',
+                                                zIndex: 10
+                                            }}
+                                            title="Clear search"
+                                        >
+                                            ×
+                                        </button>
+                                    )}
+                                </div>
                             </DropdownItem>
                             <DropdownItem divider />
                         </>
@@ -317,7 +359,7 @@ const SearchableDropdown = ({
                             onClick={handleAddNew}
                             className="add-new-item"
                         >
-                            <i className={`${addNewIcon} me-2`}></i>
+                            <i className={`${addNewIcon}`}></i>
                             {addNewLabel}
                         </DropdownItem>
                     )}
@@ -334,7 +376,6 @@ const SearchableDropdown = ({
                                     type="checkbox"
                                     checked={allFilteredSelected}
                                     onChange={() => {}}
-                                    className="me-2"
                                 />
                                 <strong>Select All ({filteredItems.length})</strong>
                             </DropdownItem>

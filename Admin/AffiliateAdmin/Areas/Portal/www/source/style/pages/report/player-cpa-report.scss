@@ -88,14 +88,14 @@ $outline: 0.5px solid #cccccc;
         overflow-x: auto;
 
         thead {
+            th {
+                border: 1px solid #cccccc;
+                position: sticky;
+                top: 0px;
+            }
+
             .freeze-row-h1 {
                 box-sizing: border-box;
-
-                th {
-                    border: 1px solid #cccccc;
-                    position: sticky;
-                    top: 0px;
-                }
 
                 .freeze-column {
                     &-0 {
@@ -123,8 +123,6 @@ $outline: 0.5px solid #cccccc;
 
             .freeze-row-h2 {
                 th {
-                    border: 1px solid #cccccc;
-                    position: sticky;
                     top: 28px;
                 }
             }

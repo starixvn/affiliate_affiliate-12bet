@@ -42,7 +42,8 @@ namespace Fanex.Affiliate.Admin.Core.Controllers.Report
                 CurrencyList = _systemService.GetCurrencies(),
                 BaseCurrencyList = _systemService.GetBaseCurrencies(),
                 PaymentCurrencyList = _systemService.GetPaymentCurrencies(),
-                CommGroupList = _commonDealService.GetNormalDealList(new GetNormalDealParam()),
+                DealTypeList = _commonDealService.GetDealTypes(),
+                DealList = _commonDealService.GetNormalDealList(new GetNormalDealParam()),
             };
 
             return View(viewModel);

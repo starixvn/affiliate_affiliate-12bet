@@ -99,50 +99,58 @@ export class GridData extends PureComponent {
 
         const mainHeader = AggregateHeaderColumn.convertColsToObject(headerRow.getHeaderCols(0));
         const childHeader = AggregateHeaderColumn.convertColsToObject(headerRow.getHeaderCols(1));
+        const subChildHeader = AggregateHeaderColumn.convertColsToObject(headerRow.getHeaderCols(2));
 
         return [
             <tr className="freeze-row freeze-row-h1" key="thead-1">
-                <th className="freeze-column-header" width={110} rowSpan="2" title={firstColName}>{firstColName}</th>
-                {mainHeader[reportKey.Status].isShowable && (<th width={80} rowSpan="2" title={headerText.Status}>{headerText.Status}</th>)}
-                {mainHeader[reportKey.PreferredLanguage].isShowable && <th header={true} colWidth={80} rowSpan="2" title={headerText.PreferredLanguage}>{headerText.PreferredLanguage}</th>}
-                {mainHeader[reportKey.PaymentCurrency].isShowable && (<th width={70} rowSpan="2" title={headerText.PaymentCurrency}>{headerText.PaymentCurrency}</th>)}
-                {mainHeader[reportKey.CommGroupName].isShowable && (<th width={100} rowSpan="2" title={headerText.CommGroupName}>{headerText.CommGroupName}</th>)}
-                {mainHeader[reportKey.TotalClick].isShowable && (<th width={60} rowSpan="2" title={headerText.TotalClick}>{headerText.TotalClick}</th>)}
-                {mainHeader[reportKey.UniqueClick].isShowable && (<th width={55} rowSpan="2" title={headerText.UniqueClick}>{headerText.UniqueClick}</th>)}
-                {mainHeader[reportKey.Signup].isShowable && (<th width={55} rowSpan="2" title={headerText.Signup}>{headerText.Signup}</th>)}
-                {mainHeader[reportKey.Fdm].isShowable && (<th width={55} rowSpan="2" title={headerText.Fdm}>{headerText.Fdm}</th>)}
-                {mainHeader[reportKey.Fdm_Amount].isShowable && (<th width={65} rowSpan="2" title={headerText.Fdm_Amount}>{headerText.Fdm_Amount}</th>)}
-                {mainHeader[reportKey.FDM_TotalDeposit].isShowable && (<th width={65} rowSpan="2" title={headerText.FDM_TotalDeposit}>{headerText.FDM_TotalDeposit}</th>)}
-                {mainHeader[reportKey.ActivePlayer].isShowable && (<th width={55} rowSpan="2" title={headerText.ActivePlayer}>{headerText.ActivePlayer}</th>)}
-                {mainHeader[reportKey.QualifiedMember].isShowable && (<th width={55} rowSpan="2" title={headerText.QualifiedMember}>{headerText.QualifiedMember}</th>)}
-                {mainHeader[reportKey.NoOfSubAff].isShowable && (<th width={65} rowSpan="2" title={headerText.NoOfSubAff}>{headerText.NoOfSubAff}</th>)}
-                {mainHeader[reportKey.TotalDeposit].isShowable && (<th width={65} rowSpan="2" title={headerText.TotalDeposit}>{headerText.TotalDeposit}</th>)}
+                <th className="freeze-column-header" width={110} rowSpan="3" title={firstColName}>{firstColName}</th>
+                {mainHeader[reportKey.Status].isShowable && (<th width={80} rowSpan="3" title={headerText.Status}>{headerText.Status}</th>)}
+                {mainHeader[reportKey.PreferredLanguage].isShowable && <th header={true} colWidth={80} rowSpan="3" title={headerText.PreferredLanguage}>{headerText.PreferredLanguage}</th>}
+                {mainHeader[reportKey.PaymentCurrency].isShowable && (<th width={70} rowSpan="3" title={headerText.PaymentCurrency}>{headerText.PaymentCurrency}</th>)}
+                {mainHeader[reportKey.CommGroupName].isShowable && (<th width={100} rowSpan="3" title={headerText.CommGroupName}>{headerText.CommGroupName}</th>)}
+                {mainHeader[reportKey.TotalClick].isShowable && (<th width={60} rowSpan="3" title={headerText.TotalClick}>{headerText.TotalClick}</th>)}
+                {mainHeader[reportKey.UniqueClick].isShowable && (<th width={55} rowSpan="3" title={headerText.UniqueClick}>{headerText.UniqueClick}</th>)}
+                {mainHeader[reportKey.Signup].isShowable && (<th width={55} rowSpan="3" title={headerText.Signup}>{headerText.Signup}</th>)}
+                {mainHeader[reportKey.Fdm].isShowable && (<th width={55} rowSpan="3" title={headerText.Fdm}>{headerText.Fdm}</th>)}
+                {mainHeader[reportKey.Fdm_Amount].isShowable && (<th width={65} rowSpan="3" title={headerText.Fdm_Amount}>{headerText.Fdm_Amount}</th>)}
+                {mainHeader[reportKey.FDM_TotalDeposit].isShowable && (<th width={65} rowSpan="3" title={headerText.FDM_TotalDeposit}>{headerText.FDM_TotalDeposit}</th>)}
+                {mainHeader[reportKey.ActivePlayer].isShowable && (<th width={55} rowSpan="3" title={headerText.ActivePlayer}>{headerText.ActivePlayer}</th>)}
+                {mainHeader[reportKey.QualifiedMember].isShowable && (<th width={55} rowSpan="3" title={headerText.QualifiedMember}>{headerText.QualifiedMember}</th>)}
+                {mainHeader[reportKey.NoOfSubAff].isShowable && (<th width={65} rowSpan="3" title={headerText.NoOfSubAff}>{headerText.NoOfSubAff}</th>)}
+                {mainHeader[reportKey.TotalDepositCount].isShowable && (<th width={65} rowSpan="3" title={headerText.TotalDepositCount}>{headerText.TotalDepositCount}</th>)}
+                {mainHeader[reportKey.TotalDepositAmount].isShowable && (<th width={65} rowSpan="3" title={headerText.TotalDepositAmount}>{headerText.TotalDepositAmount}</th>)}
                 {mainHeader[reportKey.MemberStatistics].isShowable && (<th colSpan={mainHeader[reportKey.MemberStatistics].totalShowableCol} height={28} title={headerText.MemberStatistics}>{headerText.MemberStatistics}</th>)}
-                {mainHeader[reportKey.AffiliateStatistics].isShowable && (<th colSpan={mainHeader[reportKey.AffiliateStatistics].totalShowableCol} title={headerText.AffiliateStatistics}>{headerText.AffiliateStatistics}</th>)}
-                {isMainView && !isCheckedDatePicker && (<th width={55} rowSpan="2" title={headerText.MonthOnMonth}>{headerText.MonthOnMonth}</th>)}
-                {isMainView && (<th width={55} rowSpan="2" title={headerText.PlayerGgr}>{headerText.PlayerGgr}</th>)}
+                {mainHeader[reportKey.AffiliateStatistics].isShowable && (<th colSpan={mainHeader[reportKey.AffiliateStatistics].totalShowableCol + childHeader[reportKey.Earning].totalShowableCol + childHeader[reportKey.SubAffEarning].totalShowableCol - 2} title={headerText.AffiliateStatistics}>{headerText.AffiliateStatistics}</th>)}
+                {isMainView && !isCheckedDatePicker && (<th width={55} rowSpan="3" title={headerText.MonthOnMonth}>{headerText.MonthOnMonth}</th>)}
+                {isMainView && (<th width={55} rowSpan="3" title={headerText.PlayerGgr}>{headerText.PlayerGgr}</th>)}
             </tr>,
             <tr className="freeze-row freeze-row-h2" key="thead-2">
-                {childHeader[reportKey.Deposit].isShowable && (<th width={75} title={headerText.Deposit}>{headerText.Deposit}</th>)}
-                {childHeader[reportKey.Withdrawal].isShowable && (<th width={75} title={headerText.Withdrawal}>{headerText.Withdrawal}</th>)}
-                {childHeader[reportKey.Turnover].isShowable && (<th width={75} title={headerText.Turnover}>{headerText.Turnover}</th>)}
-                {childHeader[reportKey.Ggr].isShowable && (<th width={75} title={headerText.Ggr}>{headerText.Ggr}</th>)}
-                {childHeader[reportKey.Bonus].isShowable && (<th width={70} title={headerText.Bonus}>{headerText.Bonus}</th>)}
-                {childHeader[reportKey.Rebate].isShowable && (<th width={70} title={headerText.Rebate}>{headerText.Rebate}</th>)}
-                {childHeader[reportKey.PlatformFee].isShowable && (<th width={70} title={headerText.PlatformFee}>{headerText.PlatformFee}</th>)}
-                {childHeader[reportKey.DepositFee].isShowable && (<th width={70} title={headerText.DepositFee}>{headerText.DepositFee}</th>)}
-                {childHeader[reportKey.WithdrawalFee].isShowable && (<th width={70} title={headerText.WithdrawalFee}>{headerText.WithdrawalFee}</th>)}
-                {childHeader[reportKey.TotalFee].isShowable && (<th width={70} title={headerText.TotalFee}>{headerText.TotalFee}</th>)}
+                {childHeader[reportKey.Deposit].isShowable && (<th width={75} rowSpan="2" title={headerText.Deposit}>{headerText.Deposit}</th>)}
+                {childHeader[reportKey.Withdrawal].isShowable && (<th width={75} rowSpan="2" title={headerText.Withdrawal}>{headerText.Withdrawal}</th>)}
+                {childHeader[reportKey.Turnover].isShowable && (<th width={75} rowSpan="2" title={headerText.Turnover}>{headerText.Turnover}</th>)}
+                {childHeader[reportKey.Ggr].isShowable && (<th width={75} rowSpan="2" title={headerText.Ggr}>{headerText.Ggr}</th>)}
+                {childHeader[reportKey.Bonus].isShowable && (<th width={70} rowSpan="2" title={headerText.Bonus}>{headerText.Bonus}</th>)}
+                {childHeader[reportKey.Rebate].isShowable && (<th width={70} rowSpan="2" title={headerText.Rebate}>{headerText.Rebate}</th>)}
+                {childHeader[reportKey.PlatformFee].isShowable && (<th width={70} rowSpan="2" title={headerText.PlatformFee}>{headerText.PlatformFee}</th>)}
+                {childHeader[reportKey.DepositFee].isShowable && (<th width={70} rowSpan="2" title={headerText.DepositFee}>{headerText.DepositFee}</th>)}
+                {childHeader[reportKey.WithdrawalFee].isShowable && (<th width={70} rowSpan="2" title={headerText.WithdrawalFee}>{headerText.WithdrawalFee}</th>)}
+                {childHeader[reportKey.TotalFee].isShowable && (<th width={70} rowSpan="2" title={headerText.TotalFee}>{headerText.TotalFee}</th>)}
 
-                {childHeader[reportKey.CommissionRate].isShowable && (<th width={65} title={headerText.CommissionRate}>{headerText.CommissionRate}</th>)}
-                {childHeader[reportKey.Earning].isShowable && (<th width={75} title={headerText.Earning}>{headerText.Earning}</th>)}
-                {childHeader[reportKey.EarningBy].isShowable && (<th width={75} title={headerText.EarningBy}>{headerText.EarningBy}</th>)}
-                {childHeader[reportKey.SubAffEarning].isShowable && (<th width={75} title={headerText.SubAffEarning}>{headerText.SubAffEarning}</th>)}
-                {childHeader[reportKey.TotalEarning].isShowable && (<th width={75} title={headerText.TotalEarning}>{headerText.TotalEarning}</th>)}
-                {childHeader[reportKey.AffWithdrawal].isShowable && (<th width={75} title={headerText.AffWithdrawal}>{headerText.AffWithdrawal}</th>)}
-                {childHeader[reportKey.AffAdjustment].isShowable && (<th width={75} title={headerText.AffAdjustment}>{headerText.AffAdjustment}</th>)}
-                {childHeader[reportKey.BalanceBf].isShowable && (<th width={80} title={headerText.BalanceBf}>{headerText.BalanceBf}</th>)}
-                {childHeader[reportKey.CurrentBBF].isShowable && (<th width={80} title={headerText.CurrentBBF}>{headerText.CurrentBBF}</th>)}
+                {childHeader[reportKey.Earning].isShowable && (<th width={75} colSpan={childHeader[reportKey.Earning].totalShowableCol} title={headerText.Earning}>{headerText.Earning}</th>)}
+                {childHeader[reportKey.SubAffEarning].isShowable && (<th width={75} colSpan={childHeader[reportKey.SubAffEarning].totalShowableCol} title={headerText.SubAffEarning}>{headerText.SubAffEarning}</th>)}
+                {childHeader[reportKey.TotalEarning].isShowable && (<th width={75} rowSpan="2" title={headerText.TotalEarning}>{headerText.TotalEarning}</th>)}
+                {childHeader[reportKey.AffWithdrawal].isShowable && (<th width={75} rowSpan="2" title={headerText.AffWithdrawal}>{headerText.AffWithdrawal}</th>)}
+                {childHeader[reportKey.AffAdjustment].isShowable && (<th width={75} rowSpan="2" title={headerText.AffAdjustment}>{headerText.AffAdjustment}</th>)}
+                {childHeader[reportKey.BalanceBf].isShowable && (<th width={80} rowSpan="2" title={headerText.BalanceBf}>{headerText.BalanceBf}</th>)}
+                {childHeader[reportKey.CurrentBBF].isShowable && (<th width={80} rowSpan="2" title={headerText.CurrentBBF}>{headerText.CurrentBBF}</th>)}
+            </tr>,
+            <tr className="freeze-row freeze-row-h3" key="thead-3">
+                {subChildHeader[reportKey.CommissionRate].isShowable && (<th width={65} title={headerText.CommissionRate}>{headerText.CommissionRate}</th>)}
+                {subChildHeader[reportKey.Commission].isShowable && (<th width={75} title={headerText.Commission}>{headerText.Commission}</th>)}
+                {subChildHeader[reportKey.AutoApprovedCPAAmount].isShowable && (<th width={75} title={headerText.AutoApprovedCPAAmount}>{headerText.AutoApprovedCPAAmount}</th>)}
+                {subChildHeader[reportKey.AdjustCPAAmount].isShowable && (<th width={75} title={headerText.AdjustCPAAmount}>{headerText.AdjustCPAAmount}</th>)}
+                {subChildHeader[reportKey.Total].isShowable && (<th width={75} title={headerText.Total}>{headerText.Total}</th>)}
+                {subChildHeader[reportKey.SubAffCommission].isShowable && (<th width={75} title={headerText.SubAffCommission}>{headerText.SubAffCommission}</th>)}
             </tr>
         ];
     }
@@ -234,6 +242,12 @@ export class GridData extends PureComponent {
         const status = isTotalRow ? '' : dataItem.Status;
         const commGroupName = isTotalRow ? '' : dataItem.CommGroupName;
 
+        const commission = formatDecimal(dataItem.Commission);
+        const autoApprovedCpaAmount = formatDecimal(dataItem.AutoApprovedCPAAmount);
+        const adjustCpaAmount = formatDecimal(dataItem.AdjustCPAAmount);
+        const total = formatDecimal(dataItem.Total);
+        const subAffCommission = formatDecimal(dataItem.SubAffCommission);
+
         return (
             <React.Fragment>
                 {header[reportKey.Status].isShowable && <td className="text-center" title={status}>{status}</td>}
@@ -249,15 +263,16 @@ export class GridData extends PureComponent {
                 {header[reportKey.ActivePlayer].isShowable && (<td className="text-right" title={activeMember}>{activeMember}</td>)}
                 {header[reportKey.QualifiedMember].isShowable && (<td className="text-right" title={qualifiedMember}>{qualifiedMember}</td>)}
                 {header[reportKey.NoOfSubAff].isShowable && (<td className="text-right" title={noOfSubAff}>{noOfSubAff}</td>)}
-                {header[reportKey.TotalDeposit].isShowable && (<td className="text-right" title={totalDeposit}>{totalDeposit}</td>)}
-                {header[reportKey.Deposit].isShowable && (<td className="text-right" title={deposit}>{deposit}</td>)}
+                {header[reportKey.TotalDepositCount].isShowable && (<td className="text-right" title={totalDeposit}>{totalDeposit}</td>)}
+                {header[reportKey.TotalDepositAmount].isShowable && (<td className="text-right" title={deposit}>{deposit}</td>)}
                 {header[reportKey.Withdrawal].isShowable && (<td className="text-right" title={withdrawal}>{withdrawal}</td>)}
                 {header[reportKey.Turnover].isShowable && (<td className={productColumnClassName} title={turnover}>{turnover}</td>)}
                 {header[reportKey.Ggr].isShowable && (<td className={productColumnClassName} title={ggr}>{ggr}</td>)}
                 {header[reportKey.Bonus].isShowable && (<td className="text-right" title={bonus}>{bonus}</td>)}
                 {header[reportKey.Rebate].isShowable && (<td className="text-right" title={rebate}>{rebate}</td>)}
                 {header[reportKey.PlatformFee].isShowable && (<td className="text-right" title={platformFee}>{platformFee}</td>)}
-                {header[reportKey.DepositFee].isShowable && (<td className="text-right" title={depositFee}>{depositFee}</td>)}
+                {header[reportKey.TotalDepositCount].isShowable && (<td className="text-right" title={depositFee}>{depositFee}</td>)}
+                {header[reportKey.TotalDepositAmount].isShowable && (<td className="text-right" title={depositFee}>{depositFee}</td>)}
                 {header[reportKey.WithdrawalFee].isShowable && (<td className="text-right" title={withdrawalFee}>{withdrawalFee}</td>)}
                 {header[reportKey.TotalFee].isShowable && (<td className="text-right" title={totalFee}>{totalFee}</td>)}
                 {header[reportKey.CommissionRate].isShowable && (
@@ -267,9 +282,12 @@ export class GridData extends PureComponent {
                         <td className="text-right" title={commRate}>{commRate}</td>
                     ))
                 }
-                {header[reportKey.Earning].isShowable && (<td className="text-right" title={earning}>{earning}</td>)}
-                {header[reportKey.EarningBy].isShowable && (<td className="text-right" title={earningBy}>{earningBy}</td>)}
-                {header[reportKey.SubAffEarning].isShowable && (<td className="text-right" title={subAffEarning}>{subAffEarning}</td>)}
+                {header[reportKey.Commission].isShowable && (<td className="text-right" title={commission}>{commission}</td>)}
+                {header[reportKey.AutoApprovedCPAAmount].isShowable && (<td className="text-right" title={autoApprovedCpaAmount}>{autoApprovedCpaAmount}</td>)}
+                {header[reportKey.AdjustCPAAmount].isShowable && (<td className="text-right" title={adjustCpaAmount}>{adjustCpaAmount}</td>)}
+                {header[reportKey.Total].isShowable && (<td className="text-right" title={total}>{total}</td>)}
+                {header[reportKey.SubAffCommission].isShowable && (<td className="text-right" title={subAffCommission}>{subAffCommission}</td>)}
+                
                 {header[reportKey.TotalEarning].isShowable && (<td className="text-right" title={totalEarning}>{totalEarning}</td>)}
                 {header[reportKey.AffWithdrawal].isShowable && (<td className="text-right" title={affWithdrawal}>{affWithdrawal}</td>)}
                 {header[reportKey.AffAdjustment].isShowable && (<td className="text-right" title={affAdjustment}>{affAdjustment}</td>)}
@@ -349,7 +367,7 @@ export class GridData extends PureComponent {
     render() {
         const { gridData, total } = this.state;
         const maxHeight = getMaxHeight(true);
-        const style = !this.props.isCheckedDatePicker ? { minWidth: '2500px' } : {};
+        const style = !this.props.isCheckedDatePicker ? { minWidth: '3000px' } : {};
 
         return gridData && (
             <Fragment>

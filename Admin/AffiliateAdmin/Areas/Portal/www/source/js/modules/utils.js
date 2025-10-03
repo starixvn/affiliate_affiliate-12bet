@@ -136,6 +136,19 @@ export const convertListToMutilpleSelected = (initialList, key, name, checked = 
     }) : [];
 }
 
+export const convertListToHierarchicalFilterDropdown = (typeList, itemsList, keyTypeId) => {
+    return typeList ? typeList.map(type => {
+        return {
+            ...type,
+            items: itemsList.filter(item => item[keyTypeId] === type[keyTypeId]).map(item => {
+                return {
+                    ...item
+                };
+            }),
+        };
+    }) : [];
+}
+
 export const handleChangeMultipleSelected = (initialList, selectedKey) => {
     const selectedList = typeof (selectedKey) === "string" ? selectedKey.split(',').filter(p => !!p) : selectedKey;
 
