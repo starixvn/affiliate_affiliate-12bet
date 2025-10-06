@@ -7,17 +7,17 @@ import ReportExcel from '../libs/reportExcel';
 import { getRedepositCpaData } from '../libs/service';
 
 import { toggleLoader } from '../../../../actions/loaderAction';
-
-const REDEPOSIT_CPA_REPORT_TITLE = 'REDEPOSIT CPA REPORT - View By Approval Date';
+import { resource, viewByList } from '../libs/constants';
 
 const Title = ({ params, isSubmit, toggleLoader }) => {
     const [reportTitle, setReportTitle] = useState('');
 
     useEffect(() => {
         if (isSubmit) {
-            let title = REDEPOSIT_CPA_REPORT_TITLE;
+            let title = resource.reportName;
 
-            title += ` - From ${params.fromDate} To ${params.toDate}`;
+            title += `${resource.space}View By ${viewByList[params.viewBy]}`
+            title += `${resource.space}From ${params.fromDate} To ${params.toDate}`;
 
             setReportTitle(title);
         }

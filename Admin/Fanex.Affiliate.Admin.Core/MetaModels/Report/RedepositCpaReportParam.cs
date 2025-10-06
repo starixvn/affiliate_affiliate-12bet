@@ -11,6 +11,10 @@
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string DealIds { get; set; }
 
+        public string Status { get; set; }
+
+        public byte ViewBy { get; set; }
+
         public DateTime FromDate { get; set; }
 
         public DateTime ToDate { get; set; }

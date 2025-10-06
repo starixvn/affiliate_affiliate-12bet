@@ -11,6 +11,8 @@ import TableFooter from './table/TableFooter';
 import { toggleLoader } from '../../../../actions/loaderAction';
 import { toggleSubmit, setPagingOption } from '../actions';
 import { getRedepositCpaData } from '../libs/service';
+import ClaimPrincipal, { claimResource } from '../../../../modules/claim';
+import { getMaxHeight } from '../../libs/constants';
 
 export const GridData = ({ params, isSubmit, toggleLoader, toggleSubmit, setPagingOption, pagingOption }) => {
     const [data, setData] = useState(null);
@@ -58,13 +60,17 @@ export const GridData = ({ params, isSubmit, toggleLoader, toggleSubmit, setPagi
         fetchData(newParams);
     }
 
+    const maxHeight = getMaxHeight();
+    const claimsPrincipal = ClaimPrincipal.currentClaimPrincipal;
+    const isAdjustable = claimsPrincipal.hasWriteClaim(claimResource.Payment);
+
     return data && (
         <React.Fragment>
-            <div className="table-responsive aff-report-table-container">
-                <Table className="freeze-table table-bordered table-hover" style={{ minWidth: '1500px' }}>
-                    <TableHeader />
-                    <TableBody data={data} />
-                    <TableFooter total={total} totalItem={pagingOption.TotalItem} />
+            <div id='payment-cpa-management' className="table-responsive aff-report-table-container" style={{ maxHeight }}>
+                <Table className="freeze-table table-bordered table-hover" style={{ minWidth: '3000px' }}>
+                    <TableHeader isAdjustable={isAdjustable} />
+                    <TableBody data={data} isAdjustable={isAdjustable} />
+                    <TableFooter total={total} totalItem={pagingOption.TotalItem} isAdjustable={isAdjustable} />
                 </Table>
             </div>
             <Pager
@@ -75,10 +81,11 @@ export const GridData = ({ params, isSubmit, toggleLoader, toggleSubmit, setPagi
 };
 
 const mapStateToProps = ({ params, isSubmit, pagingOption }) => {
+
     return {
         params,
         isSubmit,
-        pagingOption,
+        pagingOption
     }
 }
 
