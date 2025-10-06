@@ -33,78 +33,78 @@ const columnConfig = {
         width: 120,
         header: headerText[fields.PaymentFrequency]
     },
-    [fields.StartFromStr]: {
+    [fields.StartScheduleStr]: {
         style: bodyCellStyle.center,
         width: 120,
-        header: headerText[fields.StartFromStr]
+        header: headerText[fields.StartScheduleStr]
     },
-    [fields.ApprovalDateStr]: {
+    [fields.EndScheduleStr]: {
         style: bodyCellStyle.center,
         width: 120,
-        header: headerText[fields.ApprovalDateStr]
+        header: headerText[fields.EndScheduleStr]
     },
-    [fields.RecheckDays]: {
+    [fields.TotalEligiblePlayers]: {
         style: bodyCellStyle.center,
         width: 120,
-        header: headerText[fields.RecheckDays]
+        header: headerText[fields.TotalEligiblePlayers]
+    },
+    [fields.RedepositDays]: {
+        style: bodyCellStyle.center,
+        width: 120,
+        header: headerText[fields.RedepositDays]
     },
     [fields.ExpiredRedepositDateStr]: {
         style: bodyCellStyle.center,
         width: 150,
         header: headerText[fields.ExpiredRedepositDateStr]
     },
-    [fields.ApprovedCpaPlayer]: {
-        style: bodyCellStyle.number,
-        width: 150,
-        header: headerText[fields.ApprovedCpaPlayer]
-    },
     [fields.RedepositRate]: {
         style: bodyCellStyle.center,
         width: 120,
         header: headerText[fields.RedepositRate]
     },
-    [fields.NumOfPlayerRedeposit]: {
+    [fields.NoOfRedepositPlayers]: {
         style: bodyCellStyle.center,
         width: 150,
-        header: headerText[fields.NumOfPlayerRedeposit]
+        header: headerText[fields.NoOfRedepositPlayers]
     },
-    [fields.TotalSettledCpaAmount]: {
+    [fields.EstimateAmount]: {
         style: bodyCellStyle.decimal,
         width: 180,
-        header: headerText[fields.TotalSettledCpaAmount]
+        header: headerText[fields.EstimateAmount]
     },
     [fields.Status]: {
         style: bodyCellStyle.center,
         width: 120,
         header: headerText[fields.Status]
     },
-    [fields.AutoApprovedAmount]: {
-        style: bodyCellStyle.center,
+    [fields.ApprovedAmount]: {
+        style: bodyCellStyle.decimal,
         width: 120,
-        header: headerText[fields.AutoApprovedAmount]
+        header: headerText[fields.ApprovedAmount]
     },
-    [fields.AutoApprovedDateStr]: {
+    [fields.ApprovedDateStr]: {
         style: bodyCellStyle.center,
         width: 120,
-        header: headerText[fields.AutoApprovedDateStr]
+        header: headerText[fields.ApprovedDateStr]
     },
-    [fields.ManualAdjustedAmount]: {
-        style: bodyCellStyle.center,
+    [fields.AdjustedAmount]: {
+        style: bodyCellStyle.decimal,
         width: 120,
-        header: headerText[fields.ManualAdjustedAmount]
+        header: headerText[fields.AdjustedAmount]
     },
-    [fields.ManualAdjustedDateStr]: {
+    [fields.AdjustedDateStr]: {
         style: bodyCellStyle.center,
         width: 120,
-        header: headerText[fields.ManualAdjustedDateStr]
+        header: headerText[fields.AdjustedDateStr]
     },
-    [fields.ManualAdjustedDescription]: {
-        style: bodyCellStyle.center,
+    [fields.Description]: {
+        style: bodyCellStyle.left,
         width: 120,
-        header: headerText[fields.ManualAdjustedDescription]
+        header: headerText[fields.Description]
     },
     [fields.FinalCpaAmount]: {
-        style: bodyCellStyle.center,
+        style: bodyCellStyle.decimal,
         width: 120,
         header: headerText[fields.FinalCpaAmount]
     }
@@ -133,7 +133,6 @@ function buildColumnOrder() {
         }
     });
 
-    console.log(columns);
     return columns;
 }
 
@@ -350,16 +349,14 @@ export default class ReportExcel {
      */
     _formatCellValue(field, value, item) {
         switch (field) {
-            case fields.RecheckDays:
-                return value ? `${value} days` : '';
+            case fields.RedepositDays:
+                return value ? `${value} days` : '-';
             case fields.RedepositRate:
-                return value !== null && value !== undefined ? `${formatDecimal(value * 100)}%` : '';
-            case fields.NumOfPlayerRedeposit:
-                return value || '';
-            case fields.Status:
-                return value || '';
+                return value !== null && value !== undefined ? `${formatDecimal(value * 100)}%` : '-';
+            case fields.NoOfRedepositPlayers:
+                return value || '-';
             default:
-                return value || '';
+                return value !== null && value !== undefined ? value : '';
         }
     }
 
@@ -371,35 +368,82 @@ export default class ReportExcel {
         const totalData = this.data.Total;
         if (!totalData) return;
 
-        columnOrder.forEach((field, colIndex) => {
-            const address = Excel.getCellAddress({
-                c: colIndex,
-                r: this.currentRowIndex
-            });
-
-            let value = '';
-            let style = totalCellStyle.default;
-
-            if (field === fields.ExpiredRedepositDateStr) {
-                value = totalText;
-                style = totalCellStyle.right;
-            } else if (field === fields.ApprovedCpaPlayer) {
-                value = totalData[field] || 0;
-                style = totalCellStyle.number;
-            } else if (field === fields.TotalSettledCpaAmount) {
-                value = totalData[field] || 0;
-                style = totalCellStyle.decimal;
-            } else {
-                value = '';
-                style = totalCellStyle.center;
+        // Mapping configuration for total row fields
+        const totalFieldConfig = {
+            [fields.EndScheduleStr]: {
+                getValue: () => totalText,
+                style: totalCellStyle.right
+            },
+            [fields.TotalEligiblePlayers]: {
+                getValue: (data) => data[fields.TotalEligiblePlayers] || 0,
+                style: totalCellStyle.center
+            },
+            [fields.EstimateAmount]: {
+                getValue: (data) => data[fields.EstimateAmount] || 0,
+                style: totalCellStyle.decimal
+            },
+            [fields.ApprovedAmount]: {
+                getValue: (data) => data[fields.ApprovedAmount] || 0,
+                style: totalCellStyle.decimal
+            },
+            [fields.AdjustedAmount]: {
+                getValue: (data) => data[fields.AdjustedAmount] || 0,
+                style: totalCellStyle.decimal
+            },
+            [fields.FinalCpaAmount]: {
+                getValue: (data) => data[fields.FinalCpaAmount] || 0,
+                style: totalCellStyle.decimal
             }
+        };
 
-            this.worksheet[address] = {
-                t: Excel.getCellType(value),
-                v: value,
-                s: style
-            };
+        columnOrder.forEach((field, colIndex) => {
+            const cellConfig = this._getTotalCellConfig(field, totalData, totalFieldConfig);
+            this._createTotalCell(colIndex, cellConfig);
         });
+    }
+
+    /**
+     * Gets configuration for a total cell
+     * @private
+     * @param {string} field - Field name
+     * @param {Object} totalData - Total data object
+     * @param {Object} fieldConfig - Field configuration mapping
+     * @returns {Object} Cell configuration with value and style
+     */
+    _getTotalCellConfig(field, totalData, fieldConfig) {
+        const config = fieldConfig[field];
+
+        if (config) {
+            return {
+                value: config.getValue(totalData),
+                style: config.style
+            };
+        }
+
+        // Default configuration for fields not in mapping
+        return {
+            value: '',
+            style: totalCellStyle.center
+        };
+    }
+
+    /**
+     * Creates a total cell in the worksheet
+     * @private
+     * @param {number} colIndex - Column index
+     * @param {Object} cellConfig - Cell configuration with value and style
+     */
+    _createTotalCell(colIndex, cellConfig) {
+        const address = Excel.getCellAddress({
+            c: colIndex,
+            r: this.currentRowIndex
+        });
+
+        this.worksheet[address] = {
+            t: Excel.getCellType(cellConfig.value),
+            v: cellConfig.value,
+            s: cellConfig.style
+        };
     }
 
     /**

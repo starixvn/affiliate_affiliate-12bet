@@ -23,8 +23,8 @@ const RowHeader = ({ header, index, rowSpan }) => (
     </tr>
 );
 
-export const TableHeader = () => {
-    const headerRows = buildHeader();
+export const TableHeader = ({ isAdjustable }) => {
+    const headerRows = buildHeader(isAdjustable);
     if (!(headerRows instanceof HeaderRow)) return [];
 
     const mainHeader = AggregateHeaderColumn.convertColsToObject(headerRows.getHeaderCols(0));

@@ -2,80 +2,81 @@ import React from 'react';
 
 import { format, formatDecimal } from '../../../../../modules/numberFormat';
 import { globalResource } from '../../../../../modules/globalResource';
+import { groupData } from '../../libs/service';
+import { resolveClientUrl } from '../../../../../modules/utils';
 
-const groupData = (data) => {
-    const grouped = {};
+const _handleUrlRedirectToPlayerCpa = (data) => {
+    const path = `${resolveClientUrl('Portal/PlayerCpaReport')}`;
 
-    data.forEach(item => {
-        const key = `${item.AffUserName}_${item.DealName}_${item.RecheckDays}_${item.RedepositRate}`;
+    const url = `${path}
+                ?custName=${data.AffUserName}
+                &dealName=${data.GroupId}
+                &viewBy=2
+                &fromDate=${data.StartScheduleStr}
+                &toDate=${data.EndScheduleStr}`
+    return url;
+}
 
-        if (!grouped[key]) {
-            grouped[key] = {
-                AffUserName: item.AffUserName,
-                DealName: item.DealName,
-                PaymentFrequency: item.PaymentFrequency,
-                RecheckDays: item.RecheckDays,
-                RedepositRate: item.RedepositRate,
-                subEntries: []
-            };
-        }
-
-        grouped[key].subEntries.push(item);
-    });
-
-    return Object.values(grouped);
-};
-
-const SubEntryRow = ({ subEntry, isFirst, rowSpan }) => {
+const SubEntryRow = ({ subEntry, isFirst, rowSpan, rowNumber, isAdjustable }) => {
 
     const statusClassName = `status-${subEntry.Status.toLowerCase().replace(' ', '-')}`;
-    const recheckDays = subEntry.RecheckDays ? `${format(subEntry.RecheckDays)} days` : '-';
-    const approvedCpaPlayer = format(subEntry.ApprovedCpaPlayer);
+    const totalEligiblePlayers = format(subEntry.TotalEligiblePlayers);
+    const redepositDays = subEntry.RedepositDays ? `${format(subEntry.RedepositDays)} days` : '-';
     const redepositRate = subEntry.RedepositRate ? `${formatDecimal(subEntry.RedepositRate * 100)}%` : '-';
-    const totalSettledCpaAmount = formatDecimal(subEntry.TotalSettledCpaAmount);
+    const estimateAmount = formatDecimal(subEntry.EstimateAmount);
+    const approvedAmount = formatDecimal(subEntry.ApprovedAmount);
+    const adjustedAmount = formatDecimal(subEntry.AdjustedAmount);
+    const finalCpaAmount = formatDecimal(subEntry.FinalCpaAmount);
 
     return (
         <tr>
-            <td title={subEntry.RowIdx} className="text-center">{subEntry.RowIdx}</td>
             {isFirst && (
                 <>
+                    <td title={rowNumber} className="text-center" rowSpan={rowSpan}>{rowNumber}</td>
                     <td title={subEntry.AffUserName} className="text-left" rowSpan={rowSpan}>{subEntry.AffUserName}</td>
                     <td title={subEntry.DealName} className="text-left" rowSpan={rowSpan}>{subEntry.DealName}</td>
                     <td title={subEntry.PaymentFrequency} className="text-center" rowSpan={rowSpan}>{subEntry.PaymentFrequency}</td>
                 </>
             )}
-            <td title={subEntry.StartFromStr} className="text-center">{subEntry.StartFromStr}</td>
-            <td title={subEntry.ApprovalDateStr} className="text-center">{subEntry.ApprovalDateStr}</td>
+            <td title={subEntry.StartScheduleStr} className="text-center">{subEntry.StartScheduleStr}</td>
+            <td title={subEntry.EndScheduleStr} className="text-center">{subEntry.EndScheduleStr}</td>
+            <td title={totalEligiblePlayers} className="text-center">
+                <a href={_handleUrlRedirectToPlayerCpa(subEntry)} target="_blank">{totalEligiblePlayers}</a>
+            </td>
             {isFirst && (
-                <td title={recheckDays} className="text-center" rowSpan={rowSpan}>
-                    {recheckDays}
+                <td title={redepositDays} className="text-center" rowSpan={rowSpan}>
+                    {redepositDays}
                 </td>
             )}
             <td title={subEntry.ExpiredRedepositDateStr} className="text-center">{subEntry.ExpiredRedepositDateStr}</td>
-            <td title={approvedCpaPlayer} className="text-right">{approvedCpaPlayer}</td>
             {isFirst && (
                 <td title={redepositRate} className="text-center" rowSpan={rowSpan}>
                     {redepositRate}
                 </td>
             )}
-            <td title={subEntry.NumOfPlayerRedeposit} className="text-center">{subEntry.NumOfPlayerRedeposit}</td>
-            <td title={totalSettledCpaAmount} className="text-right">{totalSettledCpaAmount}</td>
+            <td title={subEntry.NoOfRedepositPlayers} className="text-center">{subEntry.NoOfRedepositPlayers}</td>
+            <td title={estimateAmount} className="text-right">{estimateAmount}</td>
             <td title={subEntry.Status} className="text-center">
                 <span className={statusClassName}>
                     {subEntry.Status}
                 </span>
             </td>
-            <td title={subEntry.AutoApprovedAmount} className="text-right">{subEntry.AutoApprovedAmount}</td>
-            <td title={subEntry.AutoApprovedDateStr} className="text-center">{subEntry.AutoApprovedDateStr}</td>
-            <td title={subEntry.ManualAdjustedAmount} className="text-right">{subEntry.ManualAdjustedAmount}</td>
-            <td title={subEntry.ManualAdjustedDateStr} className="text-center">{subEntry.ManualAdjustedDateStr}</td>
-            <td title={subEntry.ManualAdjustedDescription} className="text-left">{subEntry.ManualAdjustedDescription}</td>
-            <td title={subEntry.FinalCpaAmount} className="text-right">{subEntry.FinalCpaAmount}</td>
+            <td title={approvedAmount} className="text-right">{approvedAmount}</td>
+            <td title={subEntry.ApprovedDateStr} className="text-center">{subEntry.ApprovedDateStr}</td>
+            <td title={adjustedAmount} className="text-right">{adjustedAmount}</td>
+            <td title={subEntry.AdjustedDateStr} className="text-center">{subEntry.AdjustedDateStr}</td>
+            <td title={subEntry.Description} className="text-left">{subEntry.Description}</td>
+            {isAdjustable && (
+                <td title='Action' className='text-center'>
+                    <button className='btn btn-primary'>Adjust</button>
+                </td>
+            )}
+            <td title={finalCpaAmount} className="text-right">{finalCpaAmount}</td>
         </tr>
     );
 };
 
-const GroupRow = ({ group, rowNumber }) => {
+const GroupRow = ({ group, rowNumber, isAdjustable }) => {
     return (
         <>
             {group.subEntries.map((subEntry, index) => {
@@ -85,6 +86,8 @@ const GroupRow = ({ group, rowNumber }) => {
                         subEntry={subEntry}
                         isFirst={index === 0}
                         rowSpan={group.subEntries.length}
+                        rowNumber={rowNumber}
+                        isAdjustable={isAdjustable}
                     />
                 )
             })}
@@ -94,12 +97,14 @@ const GroupRow = ({ group, rowNumber }) => {
 
 export function TableBody({
     data,
+    isAdjustable
 }) {
+
     if (!data || data.length === 0) {
         return (
             <tbody>
                 <tr>
-                    <td className="text-center" colSpan={20}>{globalResource.NoInfo}</td>
+                    <td className="text-center" colSpan={isAdjustable ? 20 : 19}>{globalResource.NoInfo}</td>
                 </tr>
             </tbody>
         )
@@ -114,6 +119,7 @@ export function TableBody({
                     key={`group-${index}`}
                     group={group}
                     rowNumber={index + 1}
+                    isAdjustable={isAdjustable}
                 />
             ))}
         </tbody>

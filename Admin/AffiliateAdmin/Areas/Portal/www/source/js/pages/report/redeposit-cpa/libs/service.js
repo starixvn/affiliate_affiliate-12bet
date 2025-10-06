@@ -14,10 +14,13 @@ export const getRedepositCpaData = async (params, isExportExcel = false) => {
     return response && response.status === 200 ? response.data : null;
 }
 
-export const buildHeader = () => {
-    const headerKeys = Object.keys(headerConfigs);
-    const cols = [];
+export const buildHeader = (isAdjustable) => {
+    const headerKeys = Object.keys(headerConfigs).filter(key => {
+        const fn = headerConfigs[key].isShowable;
+        return typeof fn !== 'function' || fn(true, isAdjustable);
+    });
 
+    const cols = [];
     headerKeys.forEach(key => {
         if (!!headerConfigs[key].cols) {
             cols.push(_buildAggregateHeaderCol(key, headerConfigs[key]));
@@ -48,3 +51,26 @@ const _buildAggregateHeaderCol = (key, header) => {
 
     return new AggregateHeaderColumn(key, header.label, cols, header.width);
 }
+
+export const groupData = (data) => {
+    const grouped = {};
+
+    data.forEach(item => {
+        const key = `${item.AffUserName}_${item.DealName}`;
+
+        if (!grouped[key]) {
+            grouped[key] = {
+                AffUserName: item.AffUserName,
+                DealName: item.DealName,
+                PaymentFrequency: item.PaymentFrequency,
+                RedepositDays: item.RedepositDays,
+                RedepositRate: item.RedepositRate,
+                subEntries: []
+            };
+        }
+
+        grouped[key].subEntries.push(item);
+    });
+
+    return Object.values(grouped);
+};

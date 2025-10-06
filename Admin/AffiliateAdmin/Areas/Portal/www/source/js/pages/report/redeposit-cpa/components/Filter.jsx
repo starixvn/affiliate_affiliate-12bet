@@ -11,9 +11,11 @@ import { setParams, toggleSubmit } from '../actions';
 import { formatUnit, handleAfterChangeFromDate, handleAfterChangeToDate, handleChangeMultipleSelected } from '../../../../modules/utils';
 import { globalResource } from '../../../../modules/globalResource';
 import { defaultPagingOption, minDate, sixMonth } from '../../../../modules/constants';
+import { statusList, viewByList } from '../libs/constants';
 
 export const Filter = ({ params, setParams, today, deals, toggleSubmit }) => {
     const [dealList, setDealList] = useState(deals);
+    const [status, setStatus] = useState(statusList);
 
     useEffect(() => {
         const now = new Date(today);
@@ -21,19 +23,22 @@ export const Filter = ({ params, setParams, today, deals, toggleSubmit }) => {
         const currentMonthString = formatUnit(currentMonth);
         const currentYear = now.getFullYear();
 
+        let dealIds = '';
+        if (deals && deals.length > 0) {
+            dealIds = deals.map(deal => deal.key).join(',');
+        }
+
+        let statusIds = '';
+        if (status && status.length > 0) {
+            statusIds = status.map(status => status.key).join(',');
+        }
+
         setParams({
             fromDate: `${currentMonthString}/01/${currentYear}`,
-            toDate: today
+            toDate: today,
+            dealIds,
+            statusIds
         });
-    }, []);
-
-    useEffect(() => {
-        if (deals && deals.length > 0) {
-            const dealIds = deals.map(deal => deal.key).join(',');
-            setParams({
-                dealIds
-            });
-        }
     }, []);
 
     const handleChange = (e) => {
@@ -48,6 +53,13 @@ export const Filter = ({ params, setParams, today, deals, toggleSubmit }) => {
         setParams({
             dealIds: selectedDeals
         });
+    }
+
+    const handleChangeStatus = (item, selectedStatus) => {
+        setStatus(handleChangeMultipleSelected(status, selectedStatus));
+        setParams({
+            statusIds: selectedStatus
+        })
     }
 
     const handleChangeFromDate = (date) => {
@@ -97,13 +109,33 @@ export const Filter = ({ params, setParams, today, deals, toggleSubmit }) => {
                             valueField="name"
                             statusField="checked"
                             maxDisplayItemCount={1}
+                            noneSelectedLabel="Please Select"
                             selectedAllLabel="All Deals"
                             hasInputOption={true}
                             onChange={handleChangeDeals} />
                     </FormGroup>
+                    <FormGroup className="my-sm-2 mr-sm-4">
+                        <Label className="mr-sm-2">Status</Label>
+                        <MultipleSelect
+                            dataSource={status}
+                            keyField="key"
+                            valueField="name"
+                            statusField="checked"
+                            maxDisplayItemCount={1}
+                            noneSelectedLabel="Please Select"
+                            selectedAllLabel="All Status"
+                            hasInputOption={false}
+                            onChange={handleChangeStatus} />
+                    </FormGroup>
                     <FormGroup className="my-sm-1 mr-sm-4">
                         <Label className="mr-sm-2">View By</Label>
-                        <Input disabled name="viewBy" id="viewBy" value='Approval Date' />
+                        <Input type="select" name="viewBy" id="ViewBy" value={params.viewBy} onChange={handleChange}>
+                            {Object.entries(viewByList).map(([key, value]) => (
+                                <option key={`view-by-${key}`} value={key}>
+                                    {value}
+                                </option>
+                            ))}
+                        </Input>
                     </FormGroup>
                     <FormGroup className="my-sm-1 mr-sm-4">
                         <Label className="mr-sm-2">{globalResource.From}</Label>

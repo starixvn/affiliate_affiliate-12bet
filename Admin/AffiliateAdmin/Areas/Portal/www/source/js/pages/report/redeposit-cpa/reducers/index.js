@@ -6,12 +6,14 @@ import { isShowLoader } from '../../../../reducers/loaderReducer';
 import createReducer from '../../../../modules/createReducer';
 import * as types from '../actions/types';
 
+import { defaultParams } from '../libs/constants';
+
 const now = new Date();
 const defaultToday = `${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()}`;
 const today = createReducer(defaultToday, {});
 const deals = createReducer([], {});
 
-export const params = createReducer({}, {
+export const params = createReducer(defaultParams, {
     [types.SET_PARAMS](prevState, action) {
         return Object.assign({}, prevState, action.data);
     }
