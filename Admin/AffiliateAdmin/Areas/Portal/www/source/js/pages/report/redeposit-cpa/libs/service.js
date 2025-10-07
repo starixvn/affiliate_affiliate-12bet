@@ -55,21 +55,20 @@ const _buildAggregateHeaderCol = (key, header) => {
 export const groupData = (data) => {
     const grouped = {};
 
+    let index = 0;
     data.forEach(item => {
         const key = `${item.AffUserName}_${item.DealName}`;
 
         if (!grouped[key]) {
+            index++;
             grouped[key] = {
                 AffUserName: item.AffUserName,
                 DealName: item.DealName,
-                PaymentFrequency: item.PaymentFrequency,
-                RedepositDays: item.RedepositDays,
-                RedepositRate: item.RedepositRate,
                 subEntries: []
             };
         }
 
-        grouped[key].subEntries.push(item);
+        grouped[key].subEntries.push({ ...item, RowIdx: index });
     });
 
     return Object.values(grouped);
