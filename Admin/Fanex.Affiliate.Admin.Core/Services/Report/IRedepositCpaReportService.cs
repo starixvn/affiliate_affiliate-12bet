@@ -7,5 +7,7 @@
     public interface IRedepositCpaReportService
     {
         EntityResult<RedepositCpaReport> GetReportData(RedepositCpaReportParam param);
+
+        ResultInfo AdjustmentAmount(AdjustmentAmountParam param);
     }
 }

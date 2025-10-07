@@ -8,7 +8,6 @@ export const TableFooter = ({
     totalItem,
     isAdjustable
 }) => {
-
     if (!totalItem) {
         return null;
     }

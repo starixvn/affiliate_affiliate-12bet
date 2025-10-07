@@ -6,7 +6,7 @@ import { isShowLoader } from '../../../../reducers/loaderReducer';
 import createReducer from '../../../../modules/createReducer';
 import * as types from '../actions/types';
 
-import { defaultParams } from '../libs/constants';
+import { defaultAdjustAmount, defaultAdjustAmountModal, defaultParams } from '../libs/constants';
 
 const now = new Date();
 const defaultToday = `${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()}`;
@@ -25,11 +25,25 @@ export const isSubmit = createReducer(false, {
     }
 })
 
+export const adjustAmountModal = createReducer(defaultAdjustAmountModal, {
+    [types.TOGGLE_ADJUST_AMOUNT_MODAL](prevState, action) {
+        return action.data;
+    }
+})
+
+export const adjustAmountParam = createReducer(defaultAdjustAmount, {
+    [types.SET_ADJUST_AMOUNT_PARAM](prevState, action) {
+        return Object.assign({}, prevState, action.data);
+    }
+})
+
 export default combineReducers({
     today,
     deals,
     pagingOption,
     isShowLoader,
     params,
-    isSubmit
+    isSubmit,
+    adjustAmountModal,
+    adjustAmountParam
 });

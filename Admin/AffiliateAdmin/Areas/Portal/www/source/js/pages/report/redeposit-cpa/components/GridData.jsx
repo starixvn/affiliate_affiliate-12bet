@@ -9,12 +9,21 @@ import TableBody from './table/TableBody';
 import TableFooter from './table/TableFooter';
 
 import { toggleLoader } from '../../../../actions/loaderAction';
-import { toggleSubmit, setPagingOption } from '../actions';
+import { toggleSubmit, setPagingOption, toggleAdjustAmountModal, setAdjustAmountParam } from '../actions';
 import { getRedepositCpaData } from '../libs/service';
 import ClaimPrincipal, { claimResource } from '../../../../modules/claim';
 import { getMaxHeight } from '../../libs/constants';
 
-export const GridData = ({ params, isSubmit, toggleLoader, toggleSubmit, setPagingOption, pagingOption }) => {
+export const GridData = ({
+    params,
+    isSubmit,
+    toggleLoader,
+    toggleSubmit,
+    setPagingOption,
+    pagingOption,
+    toggleAdjustAmountModal,
+    setAdjustAmountParam }) => {
+
     const [data, setData] = useState(null);
     const [total, setTotal] = useState(null);
 
@@ -68,9 +77,18 @@ export const GridData = ({ params, isSubmit, toggleLoader, toggleSubmit, setPagi
         <React.Fragment>
             <div id='payment-cpa-management' className="table-responsive aff-report-table-container" style={{ maxHeight }}>
                 <Table className="freeze-table table-bordered table-hover" style={{ minWidth: '3000px' }}>
-                    <TableHeader isAdjustable={isAdjustable} />
-                    <TableBody data={data} isAdjustable={isAdjustable} />
-                    <TableFooter total={total} totalItem={pagingOption.TotalItem} isAdjustable={isAdjustable} />
+                    <TableHeader
+                        isAdjustable={isAdjustable} />
+                    <TableBody
+                        data={data}
+                        isAdjustable={isAdjustable}
+                        toggleAdjustAmountModal={toggleAdjustAmountModal}
+                        setAdjustAmountParam={setAdjustAmountParam}
+                        pagingOption={pagingOption} />
+                    <TableFooter
+                        total={total}
+                        totalItem={pagingOption.TotalItem}
+                        isAdjustable={isAdjustable} />
                 </Table>
             </div>
             <Pager
@@ -93,7 +111,9 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
         toggleLoader,
         toggleSubmit,
-        setPagingOption
+        setPagingOption,
+        toggleAdjustAmountModal,
+        setAdjustAmountParam
     }, dispatch);
 }
 

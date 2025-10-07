@@ -335,6 +335,7 @@
     <Compile Include="Commands\Operation\DeleteDealCommand.cs" />
     <Compile Include="Commands\Operation\InsertDealCommand.cs" />
     <Compile Include="Commands\Operation\UpdateDealCommand.cs" />
+    <Compile Include="Commands\PaymentCpa\AdjustmentAmountCommand.cs" />
     <Compile Include="Commands\Tracker\InsertJobTrackerCommand.cs" />
     <Compile Include="Commands\Tracker\UpdateJobTrackerCommand.cs" />
     <Compile Include="Commands\UserPanel\Adjustment\BalanceBroughtForwardCommand.cs" />
@@ -708,6 +709,7 @@
     <Compile Include="MetaModels\Payment\PaymentRequestParam.cs" />
     <Compile Include="MetaModels\Payment\PaymentRequestUpdateParam.cs" />
     <Compile Include="MetaModels\Payment\PaymentRequestParamFromHome.cs" />
+    <Compile Include="MetaModels\Report\AdjustmentAmountParam.cs" />
     <Compile Include="MetaModels\Report\AffiliateReportParam.cs" />
     <Compile Include="MetaModels\Report\AffiliateCpaRequest.cs" />
     <Compile Include="MetaModels\Report\PlayerCpaReportRequest.cs" />
