@@ -3,6 +3,7 @@ import { titleCellStyle, headerCellStyle, bodyCellStyle, totalCellStyle } from '
 import { totalText, resource, reportKey as fields, headerText, headerConfigs } from './constants';
 import { formatDecimal } from '../../../../modules/numberFormat';
 import { formatDateTime } from '../../../../modules/utils';
+import { groupData } from './service';
 
 const TITLE_ROW_INDEX = 0;
 const HEADER_ROW_INDEX = 1;
@@ -304,24 +305,29 @@ export default class ReportExcel {
     }
 
     /**
-     * Creates the body data section
+     * Creates the body data section with merged rows
      * @private
      */
     _createBodyData() {
         const mainData = this.data.MainData || [];
-        mainData.forEach((item, index) => {
-            const dataItem = { ...item, rowIndex: index + 1 };
-            this._createDataRow(dataItem);
-            this.currentRowIndex++;
+        const groupedData = groupData(mainData);
+
+        groupedData.forEach((group) => {
+            group.subEntries.forEach((item, rowIndex) => {
+                this._createDataRow(item, group.subEntries.length, rowIndex);
+                this.currentRowIndex++;
+            });
         });
     }
 
     /**
-     * Creates a data row
+     * Creates a data row with merge logic for AffUserName and DealName
      * @private
      * @param {Object} item - Data item
+     * @param {number} groupRowCount - Number of rows in the group
+     * @param {number} rowIndexInGroup - Index of current row within the group
      */
-    _createDataRow(item) {
+    _createDataRow(item, groupRowCount = 1, rowIndexInGroup = 0) {
         columnOrder.forEach((field, colIndex) => {
             const address = Excel.getCellAddress({
                 c: colIndex,
@@ -329,12 +335,46 @@ export default class ReportExcel {
             });
 
             const config = columnConfig[field];
-            const value = this._formatCellValue(field, item[field], item);
+            let value = this._formatCellValue(field, item[field], item);
 
+            // Handle merge for specific columns
+            const mergeColumns = [
+                fields.RowIdx,
+                fields.AffUserName,
+                fields.DealName,
+                fields.PaymentFrequency,
+                fields.RedepositDays,
+                fields.RedepositRate
+            ];
+
+            if (mergeColumns.includes(field) && groupRowCount > 1) {
+                // Only show value in the first row of the group
+                if (rowIndexInGroup === 0) {
+                    const cellStyle = this._getCellStyle(field, value, config);
+                    this.worksheet[address] = {
+                        t: Excel.getCellType(value),
+                        v: value,
+                        s: cellStyle
+                    };
+
+                    // Add merge configuration for vertical merge
+                    if (groupRowCount > 1) {
+                        this.mergeConfig.push({
+                            s: { r: this.currentRowIndex, c: colIndex },
+                            e: { r: this.currentRowIndex + groupRowCount - 1, c: colIndex }
+                        });
+                    }
+                }
+                // Skip creating cell for subsequent rows in the group
+                return;
+            }
+
+            // Create normal cell for other columns
+            const cellStyle = this._getCellStyle(field, value, config);
             this.worksheet[address] = {
                 t: Excel.getCellType(value),
                 v: value,
-                s: config.style
+                s: cellStyle
             };
         });
     }
@@ -357,6 +397,51 @@ export default class ReportExcel {
                 return value || '-';
             default:
                 return value !== null && value !== undefined ? value : '';
+        }
+    }
+
+    /**
+     * Gets cell style based on field and value
+     * @private
+     * @param {string} field - Field name
+     * @param {*} value - Cell value
+     * @param {Object} config - Column configuration
+     * @returns {Object} Cell style
+     */
+    _getCellStyle(field, value, config) {
+        if (field === fields.Status) {
+            return this._getStatusStyle(value);
+        }
+        return config.style;
+    }
+
+    /**
+     * Gets status-specific style with text colors only
+     * @private
+     * @param {string} status - Status value
+     * @returns {Object} Status style with text color
+     */
+    _getStatusStyle(status) {
+        const baseStyle = { ...bodyCellStyle.center };
+
+        switch (status?.toLowerCase()) {
+            case 'monitoring':
+                return {
+                    ...baseStyle,
+                    font: { ...baseStyle.font, color: { rgb: 'B8860B' } } // Dark goldenrod
+                };
+            case 'not qualified':
+                return {
+                    ...baseStyle,
+                    font: { ...baseStyle.font, color: { rgb: 'DC143C' } } // Crimson
+                };
+            case 'qualified':
+                return {
+                    ...baseStyle,
+                    font: { ...baseStyle.font, color: { rgb: '006400' } } // Dark green
+                };
+            default:
+                return baseStyle;
         }
     }
 
