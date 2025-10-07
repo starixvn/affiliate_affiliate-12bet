@@ -96,6 +96,7 @@
 		</Setting>
 		<Setting Key="Aff_Admin_AffiliatePaymentRequest_Upd" SpName="Aff_Admin_AffiliatePaymentRequest_Upd" DbName="" />
 		<Setting Key="Aff_PaymentMethod_Sel" SpName="Aff_PaymentMethod_Sel" DbName=""/>
+		<Setting Key="Aff_Admin_PaymentCPA_Adjustment_Ins" SpName="Aff_Admin_PaymentCPA_Adjustment_Ins" DbName=""/>
 	</Function>
 	<Function Name="StatementHistory">
 		<Setting Key="Aff_Admin_StatementHistory_Sel" SpName="Aff_Admin_StatementHistory_Sel" DbName="" />

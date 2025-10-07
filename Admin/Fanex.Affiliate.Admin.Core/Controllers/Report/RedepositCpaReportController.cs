@@ -40,5 +40,19 @@
         {
             return GenerateJsonNetResult(_redepositService.GetReportData(param));
         }
+
+        [FunctionAuthorize(FunctionName = Function.Payment, IsHost = true)]
+        [HttpPost]
+        [ValidateAntiForgeryHeader]
+        public ActionResult AdjustmentAmount(AdjustmentAmountParam param)
+        {
+            if (!ModelState.IsValid)
+            {
+                return GenerateModelStateErrResult();
+            }
+
+            AssignUserInfoParam(param);
+            return GenerateJsonNetResult(_redepositService.AdjustmentAmount(param));
+        }
     }
 }

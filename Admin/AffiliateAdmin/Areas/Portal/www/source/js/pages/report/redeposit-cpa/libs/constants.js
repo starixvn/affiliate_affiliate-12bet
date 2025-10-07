@@ -2,6 +2,10 @@
 export const NA = 'N/A';
 export const totalText = 'Total (all pages)';
 
+export const MONITORING = 1;
+export const NOT_QUALIFIED = 2;
+export const QUALIFIED = 3;
+
 export const statusList = [
     { key: 'Monitoring', name: 'Monitoring', checked: true },
     { key: 'Not Qualified', name: 'Not Qualified', checked: true },
@@ -24,6 +28,22 @@ export const defaultParams = {
     pageIndex: 1,
     pageSize: 20,
     isExportExcel: false
+}
+
+export const defaultAdjustAmountModal = {
+    title: '',
+    isOpen: false
+}
+
+export const defaultAdjustAmount = {
+    affId: 0,
+    affName: '',
+    paymentId: 0,
+    estimatedAmount: 0,
+    approvedAmount: 0,
+    adjustAmount: 0,
+    newAmount: 0,
+    transDesc: ''
 }
 
 export const reportKey = {

@@ -1,32 +1,55 @@
 import React from 'react';
 
+import { Button } from 'reactstrap';
+
 import { format, formatDecimal } from '../../../../../modules/numberFormat';
 import { globalResource } from '../../../../../modules/globalResource';
 import { groupData } from '../../libs/service';
 import { resolveClientUrl } from '../../../../../modules/utils';
+import { MONITORING, NOT_QUALIFIED } from '../../libs/constants';
+import { htmlDecode } from './../../../../../modules/htmlHelper';
 
-const _handleUrlRedirectToPlayerCpa = (data) => {
-    const path = `${resolveClientUrl('Portal/PlayerCpaReport')}`;
-
-    const url = `${path}
-                ?custName=${data.AffUserName}
-                &dealName=${data.GroupId}
-                &viewBy=2
-                &fromDate=${data.StartScheduleStr}
-                &toDate=${data.EndScheduleStr}`
-    return url;
-}
-
-const SubEntryRow = ({ subEntry, isFirst, rowSpan, rowNumber, isAdjustable }) => {
+const SubEntryRow = ({
+    subEntry,
+    isFirst,
+    rowSpan,
+    rowNumber,
+    isAdjustable,
+    toggleAdjustAmountModal,
+    setAdjustAmountParam }) => {
 
     const statusClassName = `status-${subEntry.Status.toLowerCase().replace(' ', '-')}`;
     const totalEligiblePlayers = format(subEntry.TotalEligiblePlayers);
     const redepositDays = subEntry.RedepositDays ? `${format(subEntry.RedepositDays)} days` : '-';
     const redepositRate = subEntry.RedepositRate ? `${formatDecimal(subEntry.RedepositRate * 100)}%` : '-';
+    const description = htmlDecode(subEntry.Description);
     const estimateAmount = formatDecimal(subEntry.EstimateAmount);
     const approvedAmount = formatDecimal(subEntry.ApprovedAmount);
     const adjustedAmount = formatDecimal(subEntry.AdjustedAmount);
     const finalCpaAmount = formatDecimal(subEntry.FinalCpaAmount);
+
+    const _handleUrlRedirectToPlayerCpa = (data) => {
+        const path = `${resolveClientUrl('Portal/PlayerCpaReport')}`;
+
+        return `${path}?custName=${data.AffUserName}&dealName=${data.GroupId}&viewBy=2&fromDate=${data.StartScheduleStr}&toDate=${data.EndScheduleStr}`;
+    }
+
+    const _handleShowModal = () => {
+        setAdjustAmountParam({
+            affId: subEntry.AffId,
+            paymentId: subEntry.PaymentId,
+            estimatedAmount: subEntry.EstimateAmount,
+            approvedAmount: subEntry.ApprovedAmount,
+            affName: subEntry.AffUserName,
+            isApproved: subEntry.StatusId === NOT_QUALIFIED
+        });
+
+        const title = `Adjust CPA Amount - ${subEntry.AffUserName} - ${subEntry.StartScheduleStr} - ${subEntry.EndScheduleStr}`;
+        toggleAdjustAmountModal({
+            title,
+            isOpen: true
+        });
+    }
 
     return (
         <tr>
@@ -65,10 +88,17 @@ const SubEntryRow = ({ subEntry, isFirst, rowSpan, rowNumber, isAdjustable }) =>
             <td title={subEntry.ApprovedDateStr} className="text-center">{subEntry.ApprovedDateStr}</td>
             <td title={adjustedAmount} className="text-right">{adjustedAmount}</td>
             <td title={subEntry.AdjustedDateStr} className="text-center">{subEntry.AdjustedDateStr}</td>
-            <td title={subEntry.Description} className="text-left">{subEntry.Description}</td>
+            <td title={description} className="text-left">{description}</td>
             {isAdjustable && (
-                <td title='Action' className='text-center'>
-                    <button className='btn btn-primary'>Adjust</button>
+                <td title='Adjust' className='text-center'>
+                    {subEntry.StatusId !== MONITORING
+                        ? subEntry.IsEnabled && subEntry.AdjustedBy === 0 ?
+                            <Button outline color="primary" type="button" onClick={_handleShowModal}>
+                                Adjust
+                            </Button> :
+                            <Button outline color="secondary" type="button" disabled>Adjust</Button>
+                        : ''
+                    }
                 </td>
             )}
             <td title={finalCpaAmount} className="text-right">{finalCpaAmount}</td>
@@ -76,7 +106,7 @@ const SubEntryRow = ({ subEntry, isFirst, rowSpan, rowNumber, isAdjustable }) =>
     );
 };
 
-const GroupRow = ({ group, rowNumber, isAdjustable }) => {
+const GroupRow = ({ group, rowNumber, isAdjustable, toggleAdjustAmountModal, setAdjustAmountParam }) => {
     return (
         <>
             {group.subEntries.map((subEntry, index) => {
@@ -88,6 +118,8 @@ const GroupRow = ({ group, rowNumber, isAdjustable }) => {
                         rowSpan={group.subEntries.length}
                         rowNumber={rowNumber}
                         isAdjustable={isAdjustable}
+                        toggleAdjustAmountModal={toggleAdjustAmountModal}
+                        setAdjustAmountParam={setAdjustAmountParam}
                     />
                 )
             })}
@@ -97,7 +129,10 @@ const GroupRow = ({ group, rowNumber, isAdjustable }) => {
 
 export function TableBody({
     data,
-    isAdjustable
+    isAdjustable,
+    toggleAdjustAmountModal,
+    setAdjustAmountParam,
+    pagingOption
 }) {
 
     if (!data || data.length === 0) {
@@ -110,6 +145,10 @@ export function TableBody({
         )
     }
 
+    const getRowNumber = (index) => {
+        return (pagingOption.PageIndex - 1) * pagingOption.PageSize + index + 1;
+    }
+
     const groupedData = groupData(data);
 
     return (
@@ -118,8 +157,10 @@ export function TableBody({
                 <GroupRow
                     key={`group-${index}`}
                     group={group}
-                    rowNumber={index + 1}
+                    rowNumber={getRowNumber(index)}
                     isAdjustable={isAdjustable}
+                    toggleAdjustAmountModal={toggleAdjustAmountModal}
+                    setAdjustAmountParam={setAdjustAmountParam}
                 />
             ))}
         </tbody>

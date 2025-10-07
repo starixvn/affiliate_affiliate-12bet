@@ -1,5 +1,6 @@
 ﻿namespace Fanex.Affiliate.Admin.Core.Services.Report
 {
+    using Commands.PaymentCpa;
     using Criterias.Report;
     using Data.Repository;
     using DTO;
@@ -23,6 +24,12 @@
 
             var criteria = param.MapTo<RedepositCpaReportParam, RedepositCpaReportCriteria>();
             return FetchEntityResultHasItemTotal<RedepositCpaReport>(criteria);
+        }
+
+        public ResultInfo AdjustmentAmount(AdjustmentAmountParam param)
+        {
+            var command = param.MapTo<AdjustmentAmountParam, AdjustmentAmountCommand>();
+            return ExecuteReturnResultInfo(command);
         }
     }
 }

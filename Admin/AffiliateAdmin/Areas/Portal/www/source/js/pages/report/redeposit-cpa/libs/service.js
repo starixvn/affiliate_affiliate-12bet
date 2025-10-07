@@ -17,7 +17,7 @@ export const getRedepositCpaData = async (params, isExportExcel = false) => {
 export const buildHeader = (isAdjustable) => {
     const headerKeys = Object.keys(headerConfigs).filter(key => {
         const fn = headerConfigs[key].isShowable;
-        return typeof fn !== 'function' || fn(true, isAdjustable);
+        return typeof fn !== 'function' || fn(false, isAdjustable);
     });
 
     const cols = [];

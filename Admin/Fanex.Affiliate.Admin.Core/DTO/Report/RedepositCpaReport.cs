@@ -63,5 +63,7 @@
         public decimal FinalCpaAmount { get; set; }
 
         public bool IsEnabled { get; set; }
+
+        public int AdjustedBy { get; set; }
     }
 }
