@@ -56,11 +56,11 @@
 		<Setting Key="Aff_Logout" SpName="Aff_Logout" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 	</Function>
 	<Function Name="Report">
-		<Setting Key="Aff_Admin_AffiliateReport_Sel" SpName="Aff_Admin_AffiliateReport_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" >
+		<Setting Key="Aff_Admin_AffiliateReport_Sel" SpName="Aff_Admin_AffiliateReport_Sel_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" >
 			<Mapping DataField="BFF" ObjectProperty="BalanceBf" />
 			<Mapping DataField="CurrentBFF" ObjectProperty="CurrentBBF" />
 		</Setting>
-		<Setting Key="Aff_Admin_AffiliateReport_Detail_Sel" SpName="Aff_Admin_AffiliateReport_Detail_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" >
+		<Setting Key="Aff_Admin_AffiliateReport_Detail_Sel" SpName="Aff_Admin_AffiliateReport_Detail_Sel_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" >
 			<Mapping DataField="BFF" ObjectProperty="BalanceBf" />
 		</Setting>
 		<Setting Key="Aff_Admin_PlayerReport_GGR" SpName="Aff_Admin_PlayerReport_GGR" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
@@ -99,7 +99,7 @@
 		<Setting Key="Aff_Admin_PaymentCPA_Adjustment_Ins" SpName="Aff_Admin_PaymentCPA_Adjustment_Ins" DbName="DBAFF12B.Affiliate_12B.wsv_afinet"/>
 	</Function>
 	<Function Name="StatementHistory">
-		<Setting Key="Aff_Admin_StatementHistory_Sel" SpName="Aff_Admin_StatementHistory_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_Admin_StatementHistory_Sel" SpName="Aff_Admin_StatementHistory_Sel_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_DailyEarning_Sel" SpName="Aff_DailyEarning_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_DailyEarning_Detail_Sel" SpName="Aff_DailyEarning_Detail_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 	</Function>

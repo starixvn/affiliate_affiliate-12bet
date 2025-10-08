@@ -25,12 +25,14 @@ const RowHeader = ({ index, row, sortColumn, isAscending, handleClickHeader }) =
                                     className="th-wrapper"
                                     color="link"
                                     onClick={() => handleClickHeader(cell.sortColumn)}>
-                                    {cell.title}
-                                    {
-                                        cell.tooltipTitle && (
-                                            <span className="oi icon-info ml-1" title={cell.tooltipTitle}></span>
-                                        )
-                                    }
+                                    <div className='px-2'>
+                                        {cell.title}
+                                        {
+                                            cell.tooltipTitle && (
+                                                <span className="oi icon-info ml-1" title={cell.tooltipTitle}></span>
+                                            )
+                                        }
+                                    </div>
                                     <div className="icon-container">
                                         <span className={`caret asc ${sortColumn === cell.sortColumn && isAscending ? "current" : ''}`}></span>
                                         <span className={`caret desc ${sortColumn === cell.sortColumn && !isAscending ? "current" : ''}`}></span>

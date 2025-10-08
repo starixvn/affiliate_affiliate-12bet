@@ -31,14 +31,14 @@ export class Content extends Component {
 
     handleExportExcel = async () => {
         this.props.toggleLoader(true);
-        const { param, reportTitle, currentViewLevel, languageList } = this.props;
+        const { param, reportTitle, currentViewLevel, languageList, isCheckedDatePicker } = this.props;
         const isMainView = currentViewLevel === viewLevel.main;
         const newParam = Object.assign({}, param, { IsExportExcel: true });
         const data = await this.props.fetchData(newParam, isMainView);
         const header = this._buildHeader();
 
         if (data) {
-            const reportExcel = new ReportExcel(data, reportTitle, isMainView, header, languageList);
+            const reportExcel = new ReportExcel(data, reportTitle, isMainView, header, languageList, isCheckedDatePicker);
             reportExcel.export();
         }
         this.props.toggleLoader(false);

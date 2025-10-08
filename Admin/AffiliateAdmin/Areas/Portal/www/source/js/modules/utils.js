@@ -1,5 +1,3 @@
-import moment from "moment";
-
 const _rootUrl = document.getElementById('RootUrl') ? document.getElementById('RootUrl').value : '/';
 
 export const resolveClientUrl = (relativeUrl) => {
@@ -214,22 +212,27 @@ function getFromDate(fromDate, selectedToDateString, fromDateString, maxRangeDat
     return sixMonthAgo < fromDate ? fromDateString : `${formatUnit(sixMonthAgo.getMonth() + 1)}/${formatUnit(sixMonthAgo.getDate())}/${sixMonthAgo.getFullYear()}`;
 }
 
-export const getFirstDayOfMonth = () => {
-    const now = new Date();
-    return `${now.getMonth() + 1}/01/${now.getFullYear()}`;
+export const getFirstDayOfMonth = (date) => {
+    return `${date.getMonth() + 1}/01/${date.getFullYear()}`;
 }
 
-export const getToDay = () => {
-    const now = new Date();
-    return `${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()}`;
+export const getDayOfMonth = (date) => {
+    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
 }
 
-export const getLastDayOfThisMonth = () => {
-    const today = moment()
-    return today.endOf('month').format('MM/DD/YYYY');
+export const getLastDayOfMonth = (date) => {
+    return new Date(date.getFullYear(), date.getMonth() + 1, 0);
 }
 
+export const getAdjustedDateFromNow = (date, now) => {
+    const maxDateOfMonth = getLastDayOfMonth(date);
 
+    if (maxDateOfMonth < now) {
+        return getDayOfMonth(maxDateOfMonth);
+    }
+
+    return getDayOfMonth(now);
+}
 
 let _xsrfToken = null;
 

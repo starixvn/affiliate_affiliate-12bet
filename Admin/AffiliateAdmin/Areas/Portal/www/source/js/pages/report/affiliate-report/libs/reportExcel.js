@@ -7,7 +7,7 @@ import { AggregateHeaderColumn } from './headerConfigs';
 
 const TITLE_ROW_INDEX = 0;
 const HEADER_ROW_INDEX = 1;
-const DATA_ROW_INDEX = 3;
+const DATA_ROW_INDEX = 4;
 
 const MAIN_SECTION_STYLE = 'mainSectionStyle';
 const MULTI_COMM_GROUP_SECTION_STYLE = 'multiCommGroupSectionStyle';
@@ -34,14 +34,19 @@ const colConfig =
     [fields.PreferredLanguage]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.left,
         [TOTAL_SECTION_STYLE]: totalCellStyle.default,
-        [COL_WIDTH]: 120
+        [COL_WIDTH]: 150
     },
     [fields.PaymentCurrency]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.center,
         [TOTAL_SECTION_STYLE]: totalCellStyle.center,
-        [COL_WIDTH]: 120
+        [COL_WIDTH]: 175
     },
     [fields.CommGroupName]: {
+        [MAIN_SECTION_STYLE]: bodyCellStyle.left,
+        [TOTAL_SECTION_STYLE]: totalCellStyle.default,
+        [COL_WIDTH]: 175
+    },
+    [fields.PaymentFrequency]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.left,
         [TOTAL_SECTION_STYLE]: totalCellStyle.default,
         [COL_WIDTH]: 150
@@ -74,7 +79,7 @@ const colConfig =
     [fields.FDM_TotalDeposit]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
         [TOTAL_SECTION_STYLE]: totalCellStyle.decimal,
-        [COL_WIDTH]: 120
+        [COL_WIDTH]: 150
     },
     [fields.ActivePlayer]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.number,
@@ -94,12 +99,12 @@ const colConfig =
     [fields.TotalDeposit]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.number,
         [TOTAL_SECTION_STYLE]: totalCellStyle.number,
-        [COL_WIDTH]: 120
+        [COL_WIDTH]: 150
     },
     [fields.Deposit]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
         [TOTAL_SECTION_STYLE]: totalCellStyle.decimal,
-        [COL_WIDTH]: 120
+        [COL_WIDTH]: 150
     },
     [fields.Withdrawal]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
@@ -157,9 +162,19 @@ const colConfig =
         [TOTAL_SECTION_STYLE]: totalCellStyle.decimal,
         [COL_WIDTH]: 120
     },
-    [fields.EarningBy]: {
-        [MAIN_SECTION_STYLE]: bodyCellStyle.right,
-        [TOTAL_SECTION_STYLE]: totalCellStyle.right,
+    [fields.ApprovedCPAAmount]: {
+        [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
+        [TOTAL_SECTION_STYLE]: totalCellStyle.decimal,
+        [COL_WIDTH]: 200
+    },
+    [fields.AdjustedCPAAmount]: {
+        [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
+        [TOTAL_SECTION_STYLE]: totalCellStyle.decimal,
+        [COL_WIDTH]: 150
+    },
+    [fields.TotalMainEarning]: {
+        [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
+        [TOTAL_SECTION_STYLE]: totalCellStyle.decimal,
         [COL_WIDTH]: 120
     },
     [fields.SubAffEarning]: {
@@ -195,13 +210,14 @@ const colConfig =
 };
 
 export default class ReportExcel {
-    constructor(data, title, isMainView, header, languageList) {
+    constructor(data, title, isMainView, header, languageList, isCheckedDatePicker) {
         this.worksheet = {};
         this.title = isMainView ? title : resource.reportName + ' > ' + title;
         this.data = data;
         this.isMainView = isMainView;
         this.header = header;
         this.languageList = languageList;
+        this.isCheckedDatePicker = isCheckedDatePicker;
 
         this.currentRowIndex = DATA_ROW_INDEX;
         this.mergeConfig = [];
@@ -247,9 +263,10 @@ export default class ReportExcel {
     _createHeader() {
         const showableCells = this.header.childHeader.filter(c => c.isShowable);
         let curColIndex = 0;
+
         showableCells.forEach(cell => {
             if (cell instanceof AggregateHeaderColumn) {
-                this._buildColspanColumn(HEADER_ROW_INDEX, curColIndex, cell);
+                this._buildAggregateHeader(HEADER_ROW_INDEX, curColIndex, cell);
                 curColIndex += cell.totalShowableCol;
             }
             else {
@@ -269,7 +286,65 @@ export default class ReportExcel {
                         c: curColIndex
                     },
                     e: {
-                        r: HEADER_ROW_INDEX + 1,
+                        r: HEADER_ROW_INDEX + 2,
+                        c: curColIndex
+                    }
+                });
+
+                curColIndex++;
+            }
+        })
+    }
+
+    _buildAggregateHeader(rowIndex, colIndex, headerCell) {
+        const showableCells = headerCell.childHeader.filter(c => c.isShowable);
+        let curColIndex = colIndex;
+
+        const colSpanCellAddress = Excel.getCellAddress({
+            c: colIndex,
+            r: rowIndex
+        });
+        this.worksheet[colSpanCellAddress] = {
+            t: "s",
+            v: headerCell.text,
+            s: headerCellStyle
+        }
+        
+        const totalColumn = colIndex + headerCell.totalShowableCol;
+        this.mergeConfig.push({
+            s: {
+                r: rowIndex,
+                c: colIndex
+            },
+            e: {
+                r: rowIndex,
+                c: totalColumn - 1
+            }
+        });
+
+        showableCells.forEach(cell => {
+            if (cell instanceof AggregateHeaderColumn) {
+                this._buildColspanColumn(rowIndex + 1, curColIndex, cell);
+                curColIndex += cell.totalShowableCol;
+            }
+            else {
+                let address = Excel.getCellAddress({
+                    c: curColIndex,
+                    r: rowIndex + 1
+                });
+                this.worksheet[address] = {
+                    t: "s",
+                    v: cell.text,
+                    s: headerCellStyle
+                }
+
+                this.mergeConfig.push({
+                    s: {
+                        r: rowIndex + 1,
+                        c: curColIndex
+                    },
+                    e: {
+                        r: rowIndex + 2,
                         c: curColIndex
                     }
                 });
@@ -386,7 +461,9 @@ export default class ReportExcel {
             value = this.languageList[value] || '';
         }
 
-        item.PaymentCurrency = item.PaymentCurrency || '';
+        if (columnConfig.field === fields.QualifiedMember) {
+            value = this.isCheckedDatePicker ? value : item.QualifiedCPAMember;
+        }
 
         return {
             t: Excel.getCellType(value),
