@@ -5,9 +5,9 @@ import { Button } from 'reactstrap';
 import { format, formatDecimal } from '../../../../../modules/numberFormat';
 import { globalResource } from '../../../../../modules/globalResource';
 import { groupData } from '../../libs/service';
-import { resolveClientUrl } from '../../../../../modules/utils';
 import { MONITORING, NOT_QUALIFIED } from '../../libs/constants';
 import { htmlDecode } from './../../../../../modules/htmlHelper';
+import { relativePath } from '../../../libs/constants';
 
 const SubEntryRow = ({
     subEntry,
@@ -28,10 +28,17 @@ const SubEntryRow = ({
     const adjustedAmount = formatDecimal(subEntry.AdjustedAmount);
     const finalCpaAmount = formatDecimal(subEntry.FinalCpaAmount);
 
-    const _handleUrlRedirectToPlayerCpa = (data) => {
-        const path = `${resolveClientUrl('Portal/PlayerCpaReport')}`;
+    const _handleUrlRedirectToPlayerCpa = () => {
+        const paramFromPaymentManagement = {
+            custName: subEntry.AffUserName,
+            dealName: subEntry.GroupId,
+            viewBy: 2,
+            fromDate: subEntry.StartScheduleStr,
+            toDate: subEntry.EndScheduleStr
+        };
 
-        return `${path}?custName=${data.AffUserName}&dealName=${data.GroupId}&viewBy=2&fromDate=${data.StartScheduleStr}&toDate=${data.EndScheduleStr}`;
+        document.cookie = `paramForPlayerCpaReport=${JSON.stringify(paramFromPaymentManagement)}; path=/`;
+        window.open(relativePath.playerCPA, '_blank');
     }
 
     const _handleShowModal = () => {
@@ -64,7 +71,7 @@ const SubEntryRow = ({
             <td title={subEntry.StartScheduleStr} className="text-center">{subEntry.StartScheduleStr}</td>
             <td title={subEntry.EndScheduleStr} className="text-center">{subEntry.EndScheduleStr}</td>
             <td title={totalEligiblePlayers} className="text-center">
-                <a href={_handleUrlRedirectToPlayerCpa(subEntry)} target="_blank">{totalEligiblePlayers}</a>
+                <span className='btn-link' onClick={_handleUrlRedirectToPlayerCpa}>{totalEligiblePlayers}</span>
             </td>
             {isFirst && (
                 <td title={redepositDays} className="text-center" rowSpan={rowSpan}>
