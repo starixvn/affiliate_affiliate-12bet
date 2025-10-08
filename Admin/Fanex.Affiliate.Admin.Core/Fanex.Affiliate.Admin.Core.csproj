@@ -415,7 +415,7 @@
     <Compile Include="Controllers\Affiliate\PaymentRequestController.cs" />
     <Compile Include="Controllers\Report\AffiliateCpaReportController.cs" />
     <Compile Include="Controllers\Report\PlayerCpaReportController.cs" />
-    <Compile Include="Controllers\Report\RedepositCpaReportController.cs" />
+    <Compile Include="Controllers\Report\PaymentCpaManagementController.cs" />
     <Compile Include="Controllers\Report\ReportController.cs" />
     <Compile Include="Controllers\Report\PlayerGgrReportController.cs" />
     <Compile Include="Controllers\Report\TransferReportController.cs" />
@@ -492,7 +492,7 @@
     <Compile Include="Criterias\Report\BaseAffiliateReportCriteria.cs" />
     <Compile Include="Criterias\Report\PlayerCpaReportCriteria.cs" />
     <Compile Include="Criterias\Report\PlayerGgrReportCriteria.cs" />
-    <Compile Include="Criterias\Report\RedepositCpaReportCriteria.cs" />
+    <Compile Include="Criterias\Report\PaymentCpaManagementCriteria.cs" />
     <Compile Include="Criterias\Report\ReportCutOffDateCriteria.cs" />
     <Compile Include="Criterias\Report\TransferReportCriteria.cs" />
     <Compile Include="Criterias\Report\TurnoverCpaDetailCriteria.cs" />
@@ -586,7 +586,7 @@
     <Compile Include="DTO\Report\PlayerCpaReport.cs" />
     <Compile Include="DTO\Report\PlayerGgrProductInfo.cs" />
     <Compile Include="DTO\Report\PlayerGgrReport.cs" />
-    <Compile Include="DTO\Report\RedepositCpaReport.cs" />
+    <Compile Include="DTO\Report\PaymentCpaManagement.cs" />
     <Compile Include="DTO\Report\TransferReport.cs" />
     <Compile Include="DTO\Report\TurnoverDetailModel.cs" />
     <Compile Include="DTO\Report\TurnoverGroupByProduct.cs" />
@@ -714,7 +714,7 @@
     <Compile Include="MetaModels\Report\AffiliateCpaRequest.cs" />
     <Compile Include="MetaModels\Report\PlayerCpaReportRequest.cs" />
     <Compile Include="MetaModels\Report\PlayerGgrReportParam.cs" />
-    <Compile Include="MetaModels\Report\RedepositCpaReportParam.cs" />
+    <Compile Include="MetaModels\Report\PaymentCpaManagementParam.cs" />
     <Compile Include="MetaModels\Report\TransferReportParam.cs" />
     <Compile Include="MetaModels\UserInfoParam.cs" />
     <Compile Include="MetaModels\UserPanel\AdjustmentParam.cs" />
@@ -774,8 +774,8 @@
     <Compile Include="Services\Report\IAffiliateCpaReportService.cs" />
     <Compile Include="Services\Report\IPlayerCpaService.cs" />
     <Compile Include="Services\Report\PlayerCpaService.cs" />
-    <Compile Include="Services\Report\IRedepositCpaReportService.cs" />
-    <Compile Include="Services\Report\RedepositCpaReportService.cs" />
+    <Compile Include="Services\Report\IPaymentCpaManagementService.cs" />
+    <Compile Include="Services\Report\PaymentCpaManagementService.cs" />
     <Compile Include="Services\Tracker\IJobTrackerService.cs" />
     <Compile Include="Services\Tracker\JobTrackerService.cs" />
     <Compile Include="Services\UserPanel\Statistics\ILandingPageStatisticsService.cs" />

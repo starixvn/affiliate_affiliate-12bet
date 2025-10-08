@@ -3,7 +3,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class RedepositCpaReportParam
+    public class PaymentCpaManagementParam
     {
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string UserName { get; set; }

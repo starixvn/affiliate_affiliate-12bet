@@ -1,6 +1,6 @@
 ﻿namespace Fanex.Affiliate.Admin.Core.Criterias.Report
 {
-    public class RedepositCpaReportCriteria : PagingByDateCriteria
+    public class PaymentCpaManagementCriteria : PagingByDateCriteria
     {
         public string UserName { get; set; }
 

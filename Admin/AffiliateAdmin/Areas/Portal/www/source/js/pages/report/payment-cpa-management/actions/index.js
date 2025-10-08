@@ -39,7 +39,7 @@ export const updateCpaAmount = (param) => async (dispatch) => {
     try {
         dispatch(toggleLoader(true));
 
-        const url = 'Portal/RedepositCpaReport/AdjustmentAmount';
+        const url = 'Portal/PaymentCpaManagement/AdjustmentAmount';
 
         param.transDesc = param.transDesc.trim();
         const response = await post(url, param);

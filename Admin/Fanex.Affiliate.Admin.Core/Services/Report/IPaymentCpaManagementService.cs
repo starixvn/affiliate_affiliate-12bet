@@ -4,9 +4,9 @@
     using Fanex.Affiliate.Admin.Core.DTO.Report;
     using Fanex.Affiliate.Admin.Core.MetaModels.Report;
 
-    public interface IRedepositCpaReportService
+    public interface IPaymentCpaManagementService
     {
-        EntityResult<RedepositCpaReport> GetReportData(RedepositCpaReportParam param);
+        EntityResult<PaymentCpaManagement> GetReportData(PaymentCpaManagementParam param);
 
         ResultInfo AdjustmentAmount(AdjustmentAmountParam param);
     }
