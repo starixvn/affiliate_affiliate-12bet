@@ -10,7 +10,7 @@ import TableFooter from './table/TableFooter';
 
 import { toggleLoader } from '../../../../actions/loaderAction';
 import { toggleSubmit, setPagingOption, toggleAdjustAmountModal, setAdjustAmountParam } from '../actions';
-import { getRedepositCpaData } from '../libs/service';
+import { getPaymentCpaManagementData } from '../libs/service';
 import ClaimPrincipal, { claimResource } from '../../../../modules/claim';
 import { getMaxHeight } from '../../libs/constants';
 
@@ -37,7 +37,7 @@ export const GridData = ({
 
     const fetchData = (params) => {
         toggleLoader(true);
-        getRedepositCpaData(params)
+        getPaymentCpaManagementData(params)
             .then(data => {
                 if (!!data) {
                     const { MainData, Total, TotalItem } = data;

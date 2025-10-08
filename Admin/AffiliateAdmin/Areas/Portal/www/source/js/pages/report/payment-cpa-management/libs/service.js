@@ -2,8 +2,8 @@ import { post } from '../../../../modules/ajaxRequest';
 import { headerConfigs } from './constants';
 import { SingleHeaderColumn, AggregateHeaderColumn, HeaderRow } from './headerConfigs';
 
-export const getRedepositCpaData = async (params, isExportExcel = false) => {
-    const url = 'Portal/RedepositCpaReport/GetData';
+export const getPaymentCpaManagementData = async (params, isExportExcel = false) => {
+    const url = 'Portal/PaymentCpaManagement/GetData';
 
     if (isExportExcel) {
         params = { ...params, isExportExcel };

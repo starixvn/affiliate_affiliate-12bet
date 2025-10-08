@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import GridData from './GridData';
 import ReportExcel from '../libs/reportExcel';
-import { getRedepositCpaData } from '../libs/service';
+import { getPaymentCpaManagementData } from '../libs/service';
 
 import { toggleLoader } from '../../../../actions/loaderAction';
 import { resource, viewByList } from '../libs/constants';
@@ -26,7 +26,7 @@ const Title = ({ params, isSubmit, toggleLoader }) => {
     const handleExportExcel = async () => {
         toggleLoader(true);
         try {
-            const exportData = await getRedepositCpaData(params, true);
+            const exportData = await getPaymentCpaManagementData(params, true);
 
             if (exportData) {
                 const reportExcel = new ReportExcel(exportData, reportTitle, {

@@ -11,17 +11,17 @@
     using Services.Report;
 
     [FunctionAuthorize(FunctionName = Function.AffReport)]
-    public class RedepositCpaReportController : ReadOnlySessionBaseController
+    public class PaymentCpaManagementController : ReadOnlySessionBaseController
     {
-        private readonly IRedepositCpaReportService _redepositService;
+        private readonly IPaymentCpaManagementService _paymentManagementService;
         private readonly ICommonDealService _commonDealService;
 
-        public RedepositCpaReportController(
+        public PaymentCpaManagementController(
             ISessionService sessionService,
-            IRedepositCpaReportService redepositService,
+            IPaymentCpaManagementService paymentManagementService,
             ICommonDealService commonDealService) : base(sessionService)
         {
-            _redepositService = redepositService;
+            _paymentManagementService = paymentManagementService;
             _commonDealService = commonDealService;
         }
 
@@ -31,14 +31,14 @@
             var deals = _commonDealService.GetNormalDealList(new GetNormalDealParam { IsOnlyRevenue = false });
             ViewBag.Deals = deals.Where(d => d.GroupTypeId != DealType.RevenueShare);
 
-            return View("~/Areas/Portal/Views/Report/RedepositCpaReport.cshtml");
+            return View("~/Areas/Portal/Views/Report/PaymentCpaManagement.cshtml");
         }
 
         [HttpPost]
         [ValidateAntiForgeryHeader]
-        public ActionResult GetData(RedepositCpaReportParam param)
+        public ActionResult GetData(PaymentCpaManagementParam param)
         {
-            return GenerateJsonNetResult(_redepositService.GetReportData(param));
+            return GenerateJsonNetResult(_paymentManagementService.GetReportData(param));
         }
 
         [FunctionAuthorize(FunctionName = Function.Payment, IsHost = true)]
@@ -52,7 +52,7 @@
             }
 
             AssignUserInfoParam(param);
-            return GenerateJsonNetResult(_redepositService.AdjustmentAmount(param));
+            return GenerateJsonNetResult(_paymentManagementService.AdjustmentAmount(param));
         }
     }
 }

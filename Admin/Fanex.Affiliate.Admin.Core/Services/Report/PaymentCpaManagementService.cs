@@ -9,21 +9,21 @@
     using MetaModels.Report;
     using Utilities;
 
-    public class RedepositCpaReportService : BaseDynamicService, IRedepositCpaReportService
+    public class PaymentCpaManagementService : BaseDynamicService, IPaymentCpaManagementService
     {
-        public RedepositCpaReportService(IDynamicRepository dynamicRepository) : base(dynamicRepository)
+        public PaymentCpaManagementService(IDynamicRepository dynamicRepository) : base(dynamicRepository)
         {
         }
 
-        public EntityResult<RedepositCpaReport> GetReportData(RedepositCpaReportParam param)
+        public EntityResult<PaymentCpaManagement> GetReportData(PaymentCpaManagementParam param)
         {
             if (!DateTimeHelper.IsValidDateRange(param.FromDate, param.ToDate))
             {
-                return new EntityResult<RedepositCpaReport>();
+                return new EntityResult<PaymentCpaManagement>();
             }
 
-            var criteria = param.MapTo<RedepositCpaReportParam, RedepositCpaReportCriteria>();
-            return FetchEntityResultHasItemTotal<RedepositCpaReport>(criteria);
+            var criteria = param.MapTo<PaymentCpaManagementParam, PaymentCpaManagementCriteria>();
+            return FetchEntityResultHasItemTotal<PaymentCpaManagement>(criteria);
         }
 
         public ResultInfo AdjustmentAmount(AdjustmentAmountParam param)

@@ -6,7 +6,7 @@ export const menuKey = {
     transferReport: 'transferReport',
     affiliateCpaReport: 'affiliateCpaReport',
     playerCPA: 'playerCPA',
-    redepositCpaReport: 'redepositCpaReport',
+    paymentCpaManagement: 'paymentCpaManagement',
 }
 
 export const relativePath = {
@@ -15,7 +15,7 @@ export const relativePath = {
     transferReport: resolveClientUrl('Portal/TransferReport'),
     affiliateCpaReport: resolveClientUrl('Portal/AffiliateCpaReport'),
     playerCPA: resolveClientUrl('Portal/PlayerCpaReport'),
-    redepositCpaReport: resolveClientUrl('Portal/RedepositCpaReport'),
+    paymentCpaManagement: resolveClientUrl('Portal/PaymentCpaManagement'),
 }
 
 export const getMaxHeight = () => {

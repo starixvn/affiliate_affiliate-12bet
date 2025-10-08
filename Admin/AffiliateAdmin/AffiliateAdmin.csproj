@@ -425,7 +425,7 @@
     <Content Include="Areas\Portal\Views\Operation\AssignDeal.cshtml" />
     <Content Include="Areas\Portal\Views\Report\AffiliateCpaReport.cshtml" />
     <Content Include="Areas\Portal\Views\Report\PlayerCpaReport.cshtml" />
-    <Content Include="Areas\Portal\Views\Report\RedepositCpaReport.cshtml" />
+    <Content Include="Areas\Portal\Views\Report\PaymentCpaManagement.cshtml" />
     <Content Include="Areas\Portal\Views\LandingPage\Index.cshtml" />
     <Content Include="Areas\Portal\Views\LandingPage\AssetUploader.cshtml" />
     <Content Include="Areas\Portal\Views\LandingPage\PageBuilder.cshtml" />
