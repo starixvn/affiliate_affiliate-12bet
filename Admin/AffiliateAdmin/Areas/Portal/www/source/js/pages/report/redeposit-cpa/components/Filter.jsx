@@ -8,10 +8,11 @@ import MultipleSelect from '../../../../components/multiple-select';
 import { DatePicker } from '@9softstudio/react-datepicker';
 
 import { setParams, toggleSubmit } from '../actions';
-import { formatUnit, handleAfterChangeFromDate, handleAfterChangeToDate, handleChangeMultipleSelected } from '../../../../modules/utils';
+import { formatUnit, getCookie, handleAfterChangeFromDate, handleAfterChangeToDate, handleChangeMultipleSelected } from '../../../../modules/utils';
 import { globalResource } from '../../../../modules/globalResource';
 import { defaultPagingOption, minDate, sixMonth } from '../../../../modules/constants';
 import { statusList, viewByList } from '../libs/constants';
+import { relativePath } from '../../libs/constants';
 
 export const Filter = ({ params, setParams, today, deals, toggleSubmit }) => {
     const [dealList, setDealList] = useState(deals);
@@ -39,6 +40,22 @@ export const Filter = ({ params, setParams, today, deals, toggleSubmit }) => {
             dealIds,
             statusIds
         });
+
+        const paramFromOtherReport = getCookie('paramForPaymentCPAManagement');
+        if (paramFromOtherReport) {
+            const param = JSON.parse(paramFromOtherReport);
+            setParams({
+                username: param.affName,
+                statusIds: param.statusIds,
+                viewBy: param.viewBy,
+                dealIds: param.dealIds || dealIds,
+                fromDate: param.fromDate,
+                toDate: param.toDate
+            });
+            document.cookie = `paramForPaymentCPAManagement=; path=${relativePath.paymentCpaManagement}`;
+
+            handleClickSearch();
+        }
     }, []);
 
     const handleChange = (e) => {
