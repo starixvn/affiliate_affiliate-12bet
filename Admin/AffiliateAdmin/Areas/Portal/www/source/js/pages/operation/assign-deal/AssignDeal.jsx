@@ -5,20 +5,19 @@ import { messages, popupEventNames } from '../deal/libs/constants';
 import { htmlDecode } from '../../../modules/htmlHelper';
 import Loader from '../../../components/Loader';
 
-const REVENUE_DEAL_TYPE = 1;
-
 export default class AssignDeal extends PureComponent {
     constructor(props) {
         super(props);
 
         let { dealTypeList, dealList, affInfo } = window.initialState;
 
-        let selectedDealType = REVENUE_DEAL_TYPE;
+        const selectedDealType = affInfo.GroupTypeId === 0
+            ? dealTypeList[0]?.GroupTypeId ?? 0
+            : affInfo.GroupTypeId;
 
-        const dealByType = dealList.filter(item => item.GroupTypeId === selectedDealType);
-
-        let selectedDeal =
-            dealByType.find(item => item.GroupId === affInfo.GroupId)?.GroupId
+        const dealByType = dealList.filter(d => d.GroupTypeId === selectedDealType);
+        const selectedDeal =
+            dealByType.find(d => d.GroupId === affInfo.GroupId)?.GroupId
             ?? dealByType[0]?.GroupId
             ?? 0;
 
@@ -35,14 +34,15 @@ export default class AssignDeal extends PureComponent {
 
         const { dealList, affInfo } = this.state;
 
-        const newDealByType = dealList.filter(item => item.GroupTypeId === Number(value));
-        const newSelectedDeal = newDealByType && newDealByType.length ? newDealByType.find(d => d.GroupId === affInfo.GroupId) : 0;
+        const newDealByType = dealList.filter(d => d.GroupTypeId === Number(value));
+        const newSelectedDeal = newDealByType.find(d => d.GroupId === affInfo.GroupId);
 
         this.setState({
             selectedDealType: Number(value),
-            selectedDeal: newSelectedDeal ? affInfo.GroupId : newDealByType[0].GroupId,
+            selectedDeal: newSelectedDeal?.GroupId ?? newDealByType[0]?.GroupId ?? 0,
             dealByType: newDealByType
         });
+
     }
 
     handleChangeDeal = (event) => {
