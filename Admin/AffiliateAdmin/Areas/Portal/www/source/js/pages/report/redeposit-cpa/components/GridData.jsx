@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -24,6 +24,8 @@ export const GridData = ({
     toggleAdjustAmountModal,
     setAdjustAmountParam }) => {
 
+    const tableRef = useRef(null);
+
     const [data, setData] = useState(null);
     const [total, setTotal] = useState(null);
 
@@ -46,6 +48,7 @@ export const GridData = ({
                         TotalItem: TotalItem
                     });
                     setData(MainData);
+                    resetScroll();
                 }
             })
             .catch(err => {
@@ -69,13 +72,20 @@ export const GridData = ({
         fetchData(newParams);
     }
 
+    const resetScroll = () => {
+        if (tableRef.current) {
+            tableRef.current.scrollTop = 0;
+            tableRef.current.scrollLeft = 0;
+        }
+    }
+
     const maxHeight = getMaxHeight();
     const claimsPrincipal = ClaimPrincipal.currentClaimPrincipal;
     const isAdjustable = claimsPrincipal.hasWriteClaim(claimResource.Payment);
 
     return data && (
         <React.Fragment>
-            <div id='payment-cpa-management' className="table-responsive aff-report-table-container" style={{ maxHeight }}>
+            <div id='payment-cpa-management' className="table-responsive aff-report-table-container" ref={tableRef} style={{ maxHeight }}>
                 <Table className="freeze-table table-bordered table-hover" style={{ minWidth: '3000px' }}>
                     <TableHeader
                         isAdjustable={isAdjustable} />
