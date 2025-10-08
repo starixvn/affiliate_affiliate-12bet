@@ -1,41 +1,136 @@
-@import "../../components/modal";
+@import '../../components/modal';
 
-#payment-cpa-management {
-    // Status colors based on the image
-    .status-not-qualified {
-        color: #d32f2f; // Red color
-    }
+.payment-cpa-management-content-container {
+    .payment-cpa-management-table-container {
+        .freeze-table {
+            min-width: 3000px;
+            border-collapse: separate;
+            border-spacing: 0;
 
-    .status-qualified {
-        color: #2e7d32; // Green color
-    }
+            .btn.disabled {
+                opacity: 1 !important;
+            }
 
-    .status-monitoring {
-        color: #f57c00; // Orange/Amber color
-    }
+            .btn-link {
+                cursor: pointer;
+            }
 
-    .table > tbody > tr:hover {
-        td {
-            background-color: #FFFFFF !important;
+            thead {
+                .freeze-row {
+                    th {
+                        line-height: 16px;
+                        border: 1px solid #cccccc;
+                        border-spacing: 0;
+                        position: sticky;
+                    }
+
+                    &-h1 th {
+                        top: 0px;
+                    }
+
+                    &-h2 th {
+                        top: 28px;
+                    }
+                }
+            }
+
+            .freeze-column {
+                // Header positions
+                &-header-0 {
+                    left: 0;
+                    z-index: 9;
+                }
+
+                &-header-1 {
+                    left: 50px;
+                    z-index: 9;
+                }
+
+                &-header-2 {
+                    left: 200px;
+                    z-index: 9;
+                }
+                // Body sticky columns
+                &-0,
+                &-1,
+                &-2 {
+                    position: sticky;
+                    z-index: 8;
+                }
+
+                &-0 {
+                    left: 0;
+                }
+
+                &-1 {
+                    left: 50px;
+                }
+
+                &-2 {
+                    left: 200px;
+                }
+                // Footer
+                &-footer {
+                    position: sticky;
+                    left: 0;
+                    z-index: 9;
+                }
+            }
+
+            tbody {
+                tr td {
+                    border-top: none;
+                }
+            }
+
+            tfoot {
+                font-weight: bold;
+                background: #ffc4a8;
+
+                td {
+                    padding: 5px;
+                    bottom: 0px;
+                    position: sticky;
+                    background: #ffc4a8;
+                    outline: 1px solid #cccccc;
+                }
+            }
+        }
+        // Status colors based on the image
+        .status-not-qualified {
+            color: #d32f2f; // Red color
+        }
+
+        .status-qualified {
+            color: #2e7d32; // Green color
+        }
+
+        .status-monitoring {
+            color: #f57c00; // Orange/Amber color
+        }
+
+        .table > tbody > tr:hover {
+            td {
+                background-color: #ffffff !important;
+            }
         }
     }
 }
 
 // Adjust CPA Amount Modal Styles
 .adjust-amount-cpa-popup-container {
-
     display: flex;
     justify-content: center;
     align-items: center;
     height: 90vh;
     text-align: center;
 
-    .margin-auto{
+    .margin-auto {
         margin-left: auto !important;
         margin-right: auto !important;
     }
 
-    .modal-header{
+    .modal-header {
         background: #cdd3d9 !important;
         height: 40px !important;
         font-size: 14px !important;
@@ -45,18 +140,18 @@
 
     .modal-body {
         padding-top: 15px !important;
-        background-color: #FFFFFF !important;
+        background-color: #ffffff !important;
     }
 
-    .modal-body-wrapper{
-        background-color: #FFFFFF !important;
+    .modal-body-wrapper {
+        background-color: #ffffff !important;
     }
 
     @media (min-width: 992px) {
         max-width: 550px !important;
     }
 
-    .btn-submit{
+    .btn-submit {
         width: 70px;
         height: 40px;
         font-size: 12px;

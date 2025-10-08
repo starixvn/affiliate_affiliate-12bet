@@ -62,9 +62,9 @@ const SubEntryRow = ({
         <tr>
             {isFirst && (
                 <>
-                    <td title={rowNumber} className="text-center" rowSpan={rowSpan}>{rowNumber}</td>
-                    <td title={subEntry.AffUserName} className="text-left" rowSpan={rowSpan}>{subEntry.AffUserName}</td>
-                    <td title={subEntry.DealName} className="text-left" rowSpan={rowSpan}>{subEntry.DealName}</td>
+                    <td title={rowNumber} className="text-center freeze-column-0" rowSpan={rowSpan}>{rowNumber}</td>
+                    <td title={subEntry.AffUserName} className="text-left freeze-column-1" rowSpan={rowSpan}>{subEntry.AffUserName}</td>
+                    <td title={subEntry.DealName} className="text-left freeze-column-2" rowSpan={rowSpan}>{subEntry.DealName}</td>
                     <td title={subEntry.PaymentFrequency} className="text-center" rowSpan={rowSpan}>{subEntry.PaymentFrequency}</td>
                 </>
             )}

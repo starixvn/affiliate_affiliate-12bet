@@ -455,7 +455,7 @@ export default class ReportExcel {
 
         // Mapping configuration for total row fields
         const totalFieldConfig = {
-            [fields.EndScheduleStr]: {
+            [fields.DealName]: {
                 getValue: () => totalText,
                 style: totalCellStyle.right
             },
