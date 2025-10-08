@@ -2755,4 +2755,19 @@ Anda juga bisa mengirim email ke {1} atau cukup isi formulir di bawah ini.</valu
   <data name="No" xml:space="preserve">
     <value>Tidak</value>
   </data>
+  <data name="QualifiedRevenueSharePlayers" xml:space="preserve">
+    <value>Pemain Yang Memenuhi Syarat Bagi Hasil</value>
+  </data>
+  <data name="QualifiedCPAPlayers" xml:space="preserve">
+    <value>Pemain Yang Memenuhi Syarat CPA</value>
+  </data>
+  <data name="TentativeCPAAmount" xml:space="preserve">
+    <value>Jumlah CPA Tentatif</value>
+  </data>
+  <data name="TentativeRevenueShare" xml:space="preserve">
+    <value>Bagi Hasil Tentatif </value>
+  </data>
+  <data name="ApprovedCPAAmount" xml:space="preserve">
+    <value>Jumlah CPA yang Disetujui</value>
+  </data>
 </root>

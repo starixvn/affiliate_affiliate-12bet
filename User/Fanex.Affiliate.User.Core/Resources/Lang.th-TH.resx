@@ -2779,4 +2779,19 @@
   <data name="No" xml:space="preserve">
     <value>ไม่ใช่</value>
   </data>
+  <data name="QualifiedRevenueSharePlayers" xml:space="preserve">
+    <value>ผู้เล่นที่ผ่านเกณฑ์สำหรับส่วนแบ่งรายได้</value>
+  </data>
+  <data name="QualifiedCPAPlayers" xml:space="preserve">
+    <value>ผู้เล่นที่ผ่านเกณฑ์สำหรับ CPA</value>
+  </data>
+  <data name="TentativeCPAAmount" xml:space="preserve">
+    <value>จำนวน CPA (โดยประมาณ)</value>
+  </data>
+  <data name="TentativeRevenueShare" xml:space="preserve">
+    <value>ส่วนแบ่งรายได้ (โดยประมาณ)</value>
+  </data>
+  <data name="ApprovedCPAAmount" xml:space="preserve">
+    <value>จำนวนเงิน CPA ที่อนุมัติแล้ว</value>
+  </data>
 </root>

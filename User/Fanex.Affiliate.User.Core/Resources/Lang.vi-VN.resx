@@ -2754,4 +2754,19 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   <data name="No" xml:space="preserve">
     <value>Không</value>
   </data>
+  <data name="QualifiedRevenueSharePlayers" xml:space="preserve">
+    <value>Người chơi đủ điều kiện chia doanh thu</value>
+  </data>
+  <data name="QualifiedCPAPlayers" xml:space="preserve">
+    <value>Người chơi đủ điều kiện CPA</value>
+  </data>
+  <data name="TentativeCPAAmount" xml:space="preserve">
+    <value>Số tiền CPA tạm tính</value>
+  </data>
+  <data name="TentativeRevenueShare" xml:space="preserve">
+    <value>Doanh thu chia sẻ tạm tính</value>
+  </data>
+  <data name="ApprovedCPAAmount" xml:space="preserve">
+    <value>Số tiền CPA đã duyệt</value>
+  </data>
 </root>

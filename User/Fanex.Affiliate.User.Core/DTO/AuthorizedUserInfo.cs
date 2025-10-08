@@ -20,6 +20,8 @@
 
         public string GroupName { get; set; }
 
+        public byte DealType { get; set; }
+
         public bool IsMaxSubLevel { get; set; }
 
         public bool IsDepositFeePercent { get; set; }

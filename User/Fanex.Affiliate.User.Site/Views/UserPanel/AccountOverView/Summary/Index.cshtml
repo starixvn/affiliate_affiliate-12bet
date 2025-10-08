@@ -1,22 +1,53 @@
 ﻿@using Fanex.Affiliate.User.Core.CoreService
 
-@model bool
+@model Fanex.Affiliate.User.Core.ViewModels.UserPanel.Summary.SummaryViewModel
 
 @{
     var sessionService = DependencyResolver.Current.GetService<ISessionService>();
-    var now = DateTimeHelper.Gmt8Now;
 }
 
 <div class="summary" id="summary">
-    <div class="form-group">
-        <div id="monthPicker" class="form-wrapper d-inline-block">
-            <input readonly id="MonthDate" data-original-date="@now.ToString("MM/dd/yyyy")" class="form-control d-inline-block" type="text" value="@now.ToString("MMM-yyyy")" />
-            <span class="glyphicon glyphicon-calendar" id="monthPickerTrigger"></span>
+    <form class="form-inline form-filter">
+        <div class="form-group">
+            <label for="ViewBy">@Lang.ViewBy:</label>
+            <select id="ViewBy" class="form-control">
+                <option value="0">@Lang.Month</option>
+                <option value="1">@Lang.DateRange</option>
+            </select>
+            @if (!Model.IsCPAAff)
+            {
+                <div class="info-container col-sm-1">
+                    <span title="@Lang.TentativeRevenueShareAndNetRevenue" class="glyphicon glyphicon-info-sign"></span>
+                </div>
+            }
         </div>
-        <div class="d-inline-block">
-            <button class="btn btn-submit" id="statisticsSubmit" type="button">@Lang.Submit</button>
+
+        <div class="form-group month-picker-group">
+            <div id="monthPicker" class="form-wrapper d-inline-block">
+                <input readonly id="MonthDate" data-original-date="@Model.FromDate.ToString("MM/dd/yyyy")" class="form-control d-inline-block" type="text" value="@Model.ToDate.ToString("MMM-yyyy")" />
+                <span class="glyphicon glyphicon-calendar" id="monthPickerTrigger"></span>
+            </div>
         </div>
-    </div>
+
+        <div class="form-group date-picker-group" style="display: none">
+            <div class="form-group">
+                <label for="FromDate">@Lang.From:</label>
+                <div id="fromPicker" class="date-wrapper">
+                    <input readonly class="form-control d-inline-block" type="text" id="FromDate" value="@Model.FromDate.ToString("MM/dd/yyyy")" />
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ToDate">@Lang.To:</label>
+                <div id="toPicker" class="date-wrapper">
+                    <input readonly class="form-control d-inline-block" type="text" id="ToDate" value="@Model.ToDate.ToString("MM/dd/yyyy")" />
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-submit" id="dashboardSubmit" type="button" style="margin-bottom: 5px;">@Lang.Submit</button>
+    </form>
     <div class="summary-content">
         <div class="dashboard-section @sessionService.CurrentLanguage" id="dashboard-section"></div>
 
@@ -25,7 +56,7 @@
                 <ul class="menu list-unstyled">
                     <li><a href="javascript:;" data-name="Overview" class="menu-item details-section-menu-item" id="menuOverview">@Lang.Overview</a></li>
                     <li><a href="javascript:;" data-name="PlayersDetails" class="menu-item details-section-menu-item" id="menuPlayersDetails">@Lang.PlayersDetails</a></li>
-                    @if (!Model)
+                    @if (!Model.IsMaxLevel)
                     {
                         <li><a href="javascript:;" data-name="SubAffDetails" class="menu-item details-section-menu-item" id="menuSubAffDetails">@Lang.SubAffDetail</a></li>
                     }
@@ -36,6 +67,6 @@
     </div>
 </div>
 
-<input type="hidden" id="ToDay" value="@now.ToString("MM/dd/yyyy")" />
+<input type="hidden" id="Today" value="@Model.ToDate.ToString("MM/dd/yyyy")" />
 
 <script src="@Url.RenderLink("~/www/build/js/summary.js")"></script>

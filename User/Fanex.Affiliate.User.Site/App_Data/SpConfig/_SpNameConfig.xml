@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Root>
 	<item Environment="DEV,LOCAL,SIT,UAT" SpName="test" Suffix="_xtest"></item>
+  	<item Environment="DEV,LOCAL,SIT,UAT" SpName="Aff_User_Overview_Summary_Sel" Suffix="_xpre"></item>
 	<item Environment="DEV,LOCAL,SIT,UAT" SpName="Aff_Admin_Report_PlayerCPA_TO_Detail" Suffix="_xpre"></item>
 	<item Environment="DEV,LOCAL,SIT,UAT" SpName="Aff_User_Report_PlayerCPA" Suffix="_xpre"></item>
 	<item Environment="DEV,LOCAL,SIT,UAT" SpName="Aff_User_Report_PaymentCPA" Suffix="_xpre"></item>

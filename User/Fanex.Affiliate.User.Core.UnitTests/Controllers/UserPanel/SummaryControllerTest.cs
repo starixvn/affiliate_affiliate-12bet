@@ -4,6 +4,7 @@ using Fanex.Affiliate.User.Core.CoreService;
 using Fanex.Affiliate.User.Core.DTO.UserPanel;
 using Fanex.Affiliate.User.Core.DTO.UserPanel.AccountOverview;
 using Fanex.Affiliate.User.Core.MetalModels.UserPanel;
+using Fanex.Affiliate.User.Core.MetalModels.UserPanel.AccountOverview;
 using Fanex.Affiliate.User.Core.UnitTests.TestHelper;
 using Fanex.Affiliate.User.Core.Utilities;
 using Fanex.Affiliate.User.Core.ViewModels.UserPanel;
@@ -39,11 +40,11 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
             // Arrange
             var expectedResult = new OverviewSummary { ActivePlayers = 123 };
             var accountOverviewService = new Mock<IAccountOverviewService>();
-            accountOverviewService.Setup(a => a.GetUserOverviewSummary(It.IsAny<int>(), monthDate)).Returns(expectedResult);
+            accountOverviewService.Setup(a => a.GetUserOverviewSummary(It.IsAny<AccountOverviewParam>())).Returns(expectedResult);
             var controller = CreateController(accountOverviewService: accountOverviewService.Object);
 
             // Action
-            var partialViewResult = controller.Dashboard(monthDate) as PartialViewResult;
+            var partialViewResult = controller.Dashboard(new AccountOverviewParam()) as PartialViewResult;
             var result = partialViewResult.Model as OverviewSummary;
             // Assert
             Assert.Equal("~/Views/UserPanel/AccountOverView/Summary/Dashboard.cshtml", partialViewResult.ViewName);
@@ -55,11 +56,11 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
         {
             // Arrange
             var accountOverviewService = new Mock<IAccountOverviewService>();
-            accountOverviewService.Setup(a => a.GetUserOverviewDetailList(It.IsAny<int>(), monthDate)).Returns(new List<OverviewDetail>());
+            accountOverviewService.Setup(a => a.GetUserOverviewDetailList(It.IsAny<AccountOverviewParam>())).Returns(new List<OverviewDetail>());
             var controller = CreateController(accountOverviewService: accountOverviewService.Object);
 
             // Action
-            var partialViewResult = controller.Overview(monthDate) as PartialViewResult;
+            var partialViewResult = controller.Overview(new AccountOverviewParam()) as PartialViewResult;
             var result = partialViewResult.Model as IEnumerable<OverviewDetail>;
             // Assert
             Assert.Equal("~/Views/UserPanel/AccountOverView/Summary/Overview.cshtml", partialViewResult.ViewName);
@@ -70,7 +71,7 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
         public void PlayersDetails_WhenCall_ReturnCorrectPartialView()
         {
             // Arrange
-            var param = new PlayerDetailParam { MonthDate = monthDate, IsSortAsc = true };
+            var param = new PlayerDetailParam { FromDate = monthDate, IsSortAsc = true };
             PlayerDetailParam passedParam = null;
             var accountOverviewService = new Mock<IAccountOverviewService>();
             accountOverviewService.Setup(a => a.GetPlayerDetailList(param)).Returns(new List<PlayerDetail> { new PlayerDetail() }).Callback<PlayerDetailParam>(p => passedParam = p);
@@ -82,7 +83,7 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
 
             // Assert
             Assert.Equal("~/Views/UserPanel/AccountOverView/Summary/PlayersDetails.cshtml", partialViewResult.ViewName);
-            Assert.Equal(param.MonthDate, passedParam.MonthDate);
+            Assert.Equal(param.FromDate, passedParam.FromDate);
             Assert.Single(result.PlayerDetailList);
         }
 
@@ -90,7 +91,7 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
         public void PlayersDetailsContent_WhenCall_ReturnCorrectPartialView()
         {
             // Arrange
-            var param = new PlayerDetailParam { MonthDate = monthDate };
+            var param = new PlayerDetailParam { ToDate = monthDate };
             PlayerDetailParam passedParam = null;
             var accountOverviewService = new Mock<IAccountOverviewService>();
             accountOverviewService.Setup(a => a.GetPlayerDetailList(param)).Returns(new List<PlayerDetail> { new PlayerDetail() }).Callback<PlayerDetailParam>(p => passedParam = p);
@@ -102,7 +103,7 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
 
             // Assert
             Assert.Equal("~/Views/UserPanel/AccountOverView/Summary/PlayersDetailsContent.cshtml", partialViewResult.ViewName);
-            Assert.Equal(param.MonthDate, passedParam.MonthDate);
+            Assert.Equal(param.ToDate, passedParam.ToDate);
             Assert.Single(result.PlayerDetailList);
         }
 
@@ -111,11 +112,11 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
         {
             // Arrange
             var accountOverviewService = new Mock<IAccountOverviewService>();
-            accountOverviewService.Setup(a => a.GetSubAffDetails(It.IsAny<SubAffDetailParam>())).Returns(new List<SubAffDetail> { new SubAffDetail() });
+            accountOverviewService.Setup(a => a.GetSubAffDetails(It.IsAny<AccountOverviewParam>())).Returns(new List<SubAffDetail> { new SubAffDetail() });
             var controller = CreateController(accountOverviewService: accountOverviewService.Object);
 
             // Action
-            var partialViewResult = controller.SubAffDetails(new SubAffDetailParam { MonthDate = DateTimeHelper.CreateDateTime(2020, 12, 01) }) as PartialViewResult;
+            var partialViewResult = controller.SubAffDetails(new AccountOverviewParam { FromDate = DateTimeHelper.CreateDateTime(2020, 12, 01) }) as PartialViewResult;
             var result = partialViewResult.Model as List<SubAffDetail>;
             // Assert
             Assert.Equal("~/Views/UserPanel/AccountOverView/Summary/SubAffDetails.cshtml", partialViewResult.ViewName);

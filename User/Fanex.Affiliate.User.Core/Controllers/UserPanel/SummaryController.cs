@@ -3,7 +3,10 @@ using Fanex.Affiliate.User.Core.CoreService;
 using Fanex.Affiliate.User.Core.DTO.UserPanel.AccountOverview;
 using Fanex.Affiliate.User.Core.Filters;
 using Fanex.Affiliate.User.Core.MetalModels.UserPanel;
+using Fanex.Affiliate.User.Core.MetalModels.UserPanel.AccountOverview;
+using Fanex.Affiliate.User.Core.Utilities;
 using Fanex.Affiliate.User.Core.ViewModels.UserPanel;
+using Fanex.Affiliate.User.Core.ViewModels.UserPanel.Summary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,22 +31,35 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
         [AjaxOnly]
         public ActionResult Index()
         {
-            return PartialView("~/Views/UserPanel/AccountOverView/Summary/Index.cshtml", SessionService.UserSession.IsMaxSubLevel);
+            var now = DateTimeHelper.Gmt8Now;
+            var viewModel = new SummaryViewModel
+            {
+                IsMaxLevel = SessionService.UserSession.IsMaxSubLevel,
+                FromDate = DateTimeHelper.CreateDateTime(now.Year, now.Month, 1),
+                ToDate = now,
+            };
+
+            return PartialView("~/Views/UserPanel/AccountOverView/Summary/Index.cshtml", viewModel);
         }
 
         [HttpPost]
         [AjaxOnly]
-        public ActionResult Dashboard(DateTime monthDate)
+        public ActionResult Dashboard(AccountOverviewParam param)
         {
-            var model = _accountOverviewService.GetUserOverviewSummary(SessionService.UserSession.AffId, monthDate);
+            param.AffId = SessionService.UserSession.AffId;
+            var model = _accountOverviewService.GetUserOverviewSummary(param);
+
+            model.IsGetMonthly = param.IsGetMonthly;
+
             return PartialView("~/Views/UserPanel/AccountOverView/Summary/Dashboard.cshtml", model);
         }
 
         [HttpPost]
         [AjaxOnly]
-        public ActionResult Overview(DateTime monthDate)
+        public ActionResult Overview(AccountOverviewParam param)
         {
-            var model = _accountOverviewService.GetUserOverviewDetailList(SessionService.UserSession.AffId, monthDate);
+            param.AffId = SessionService.UserSession.AffId;
+            var model = _accountOverviewService.GetUserOverviewDetailList(param);
 
             var itemTotal = new OverviewDetail
             {
@@ -80,7 +96,7 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
 
         [HttpPost]
         [AjaxOnly]
-        public ActionResult SubAffDetails(SubAffDetailParam param)
+        public ActionResult SubAffDetails(AccountOverviewParam param)
         {
             param.AffId = SessionService.UserSession.AffId;
             var model = _accountOverviewService.GetSubAffDetails(param);

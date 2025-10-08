@@ -728,6 +728,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approved CPA Amount.
+        /// </summary>
+        public static string ApprovedCPAAmount {
+            get {
+                return ResourceManager.GetString("ApprovedCPAAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Approved CPA Earning.
         /// </summary>
         public static string ApprovedCpaEarning {
@@ -2065,6 +2074,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string Date {
             get {
                 return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date Range.
+        /// </summary>
+        public static string DateRange {
+            get {
+                return ResourceManager.GetString("DateRange", resourceCulture);
             }
         }
         
@@ -4388,6 +4406,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Month-to-date tentative amount.
+        /// </summary>
+        public static string MonthToDateTentativeAmount {
+            get {
+                return ResourceManager.GetString("MonthToDateTentativeAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to More details about 12BET products.
         /// </summary>
         public static string MoreDetailProduct {
@@ -5189,6 +5216,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Players meet all required action in Active and Holding period.
+        /// </summary>
+        public static string PlayersMeetAllRequired {
+            get {
+                return ResourceManager.GetString("PlayersMeetAllRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Playtech.
         /// </summary>
         public static string Playtech {
@@ -5635,6 +5671,24 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string QualifiedActivePlayers {
             get {
                 return ResourceManager.GetString("QualifiedActivePlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Qualified CPA Players.
+        /// </summary>
+        public static string QualifiedCPAPlayers {
+            get {
+                return ResourceManager.GetString("QualifiedCPAPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Qualified Revenue Share Players.
+        /// </summary>
+        public static string QualifiedRevenueSharePlayers {
+            get {
+                return ResourceManager.GetString("QualifiedRevenueSharePlayers", resourceCulture);
             }
         }
         
@@ -6955,6 +7009,33 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string Tennis {
             get {
                 return ResourceManager.GetString("Tennis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tentative CPA Amount.
+        /// </summary>
+        public static string TentativeCPAAmount {
+            get {
+                return ResourceManager.GetString("TentativeCPAAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tentative Revenue Share.
+        /// </summary>
+        public static string TentativeRevenueShare {
+            get {
+                return ResourceManager.GetString("TentativeRevenueShare", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tentative Revenue Share and Net Revenue are displayed only when viewing by month.
+        /// </summary>
+        public static string TentativeRevenueShareAndNetRevenue {
+            get {
+                return ResourceManager.GetString("TentativeRevenueShareAndNetRevenue", resourceCulture);
             }
         }
         

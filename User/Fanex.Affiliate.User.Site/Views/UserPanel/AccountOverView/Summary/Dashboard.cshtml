@@ -3,7 +3,11 @@
 
 @{
     var sessionService = DependencyResolver.Current.GetService<ISessionService>();
-    var isAffOfNoCommissionCPAGroup = string.Equals(sessionService.UserSession?.GroupName, "NoCommission-CPA", StringComparison.OrdinalIgnoreCase);
+
+    var isGetMonthly = Model.IsGetMonthly;
+    var isHybridSetting = Model.IsHybridSetting;
+    var isCPAAff = !isHybridSetting && string.Equals(Model.GroupType, "CPA", StringComparison.OrdinalIgnoreCase);
+    var isRevenueShareAff = !isHybridSetting && string.Equals(Model.GroupType, "Revenue Share", StringComparison.OrdinalIgnoreCase);
 }
 
 <div class="dashboard-section-col">
@@ -12,52 +16,133 @@
         <div class="img-icon">
             <img class="img-responsive" src="~/www/build/styles/Images/account-overview/new-sign-up.svg" alt="New Signup icon" />
         </div>
-        <div class="info-panel">
-            <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.NewSignupAndDeposited</span>
-            <span class="info-panel-content">@($"{Model.Signups}/{Model.DepositedMembers}")</span>
-        </div>
-
-        @if (isAffOfNoCommissionCPAGroup)
+        @if (isRevenueShareAff)
         {
             <div class="info-panel">
-                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.ActivePlayers</span>
-                <span class="info-panel-content">@($"{Model.ActivePlayers}")</span>
+                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.NewSignupAndDeposited</span>
+                <span class="info-panel-content">@($"{Model.Signups}/{Model.DepositedMembers}")</span>
             </div>
-        }
-        else
-        {
             <div class="info-panel">
                 <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.ActivePlayersAndQualified</span>
                 <span class="info-panel-content">@($"{Model.ActivePlayers}/{Model.QualifiedMember}")</span>
             </div>
         }
+        else
+        {
+            <div class="info-panel">
+                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.NewSignupAndDeposited</span>
+                <span class="info-panel-content">@($"{Model.Signups}/{Model.DepositedMembers}")</span>
+            </div>
+            <div class="info-panel">
+                <span class="info-panel-title @sessionService.CurrentLanguage">
+                    @Lang.ActivePlayers
+                    @if (isCPAAff)
+                    {
+                        <span title="@Lang.PlayersMeetAllRequired" class="margin-left-3 glyphicon glyphicon-info-sign"></span>
+                    }
+                </span>
+                <span class="info-panel-content">@($"{Model.ActivePlayers}")</span>
+            </div>
+        }
     </div>
-    <div class="group group-two">
-        <div class="img-icon">
-            <img class="img-responsive" src="~/www/build/styles/Images/account-overview/commission.svg" alt="Commission icon" />
+    @if (isHybridSetting)
+    {
+        <div class="group group-one">
+            <div class="img-icon">
+                <img class="img-responsive" src="~/www/build/styles/Images/account-overview/new-sign-up.svg" alt="New Signup icon" />
+            </div>
+            <div class="info-panel">
+                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.QualifiedRevenueSharePlayers</span>
+                <span class="info-panel-content">@($"{Model.QualifiedMember}")</span>
+            </div>
+            <div class="info-panel">
+                <span class="info-panel-title @sessionService.CurrentLanguage">
+                    @Lang.QualifiedCPAPlayers
+                    <span title="@Lang.QualifiedCPAPlayers" class="margin-left-3 glyphicon glyphicon-info-sign"></span>
+                </span>
+                <span class="info-panel-content">@($"{Model.QualifiedMemberCPA}")</span>
+            </div>
         </div>
-        <div class="info-panel">
-            <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.RevenueShare</span>
-            <span class="info-panel-content">@Model.Commission.ToStringMoneyWithSymbol("$")</span>
+    }
+
+    @if (!isRevenueShareAff)
+    {
+        <div class="group group-two">
+            <div class="img-icon">
+                <img class="img-responsive" src="~/www/build/styles/Images/account-overview/commission.svg" alt="Commission icon" />
+            </div>
+            <div class="info-panel">
+                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.ApprovedCPAAmount</span>
+                <span class="info-panel-content">@Model.ApprovedCPAAmount.ToStringMoneyWithSymbol("$")</span>
+            </div>
+            <div class="info-panel">
+                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.TentativeCPAAmount</span>
+                <span class="info-panel-content">@Model.TentativeCPAAmount.ToStringMoneyWithSymbol("$")</span>
+            </div>
         </div>
-        <div class="info-panel">
-            <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.BalForward</span>
-            <span class="info-panel-content">@Model.BalanceBroughtForward.ToStringMoneyWithSymbol("$")</span>
+    }
+
+    @if (!isGetMonthly || isCPAAff)
+    {
+        <div class="group group-two">
+            <div class="img-icon">
+                <img class="img-responsive" src="~/www/build/styles/Images/account-overview/commission.svg" alt="Commission icon" />
+            </div>
+            <div class="info-panel w-100">
+                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.BalForward</span>
+                <span class="info-panel-content">@Model.BalanceBroughtForward.ToStringMoneyWithSymbol("$")</span>
+            </div>
         </div>
-    </div>
-    <div class="group group-three">
-        <div class="img-icon">
-            <img class="img-responsive" src="~/www/build/styles/Images/account-overview/total-deposit.svg" alt="Total Deposit icon" />
+    }
+    else
+    {
+        <div class="group group-two">
+            <div class="img-icon">
+                <img class="img-responsive" src="~/www/build/styles/Images/account-overview/commission.svg" alt="Commission icon" />
+            </div>
+            <div class="info-panel">
+                <span class="info-panel-title @sessionService.CurrentLanguage">
+                    @Lang.TentativeRevenueShare
+                    <span title="@Lang.MonthToDateTentativeAmount" class="margin-left-3 glyphicon glyphicon-info-sign"></span>
+                </span>
+                <span class="info-panel-content">@Model.Commission.ToStringMoneyWithSymbol("$")</span>
+            </div>
+            <div class="info-panel">
+                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.BalForward</span>
+                <span class="info-panel-content">@Model.BalanceBroughtForward.ToStringMoneyWithSymbol("$")</span>
+            </div>
         </div>
-        <div class="info-panel">
-            <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.TotalDeposit/@Lang.FdmDeposit</span>
-            <span class="info-panel-content">@Model.Deposit.ToStringMoneyWithSymbol("$")/@Model.FdmDeposit.ToStringMoneyWithSymbol("$")</span>
+    }
+
+    @if (!isGetMonthly || isCPAAff)
+    {
+        <div class="group group-three">
+            <div class="img-icon">
+                <img class="img-responsive" src="~/www/build/styles/Images/account-overview/total-deposit.svg" alt="Total Deposit icon" />
+            </div>
+            <div class="info-panel w-100">
+                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.TotalDeposit/@Lang.FdmDeposit</span>
+                <span class="info-panel-content">@Model.Deposit.ToStringMoneyWithSymbol("$")/@Model.FdmDeposit.ToStringMoneyWithSymbol("$")</span>
+            </div>
         </div>
-        <div class="info-panel">
-            <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.NetRevenue</span>
-            <span class="info-panel-content">@Model.NetGGR.ToStringMoneyWithSymbol("$")</span>
+    }
+    else
+    {
+        <div class="group group-three">
+            <div class="img-icon">
+                <img class="img-responsive" src="~/www/build/styles/Images/account-overview/total-deposit.svg" alt="Total Deposit icon" />
+            </div>
+            <div class="info-panel">
+                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.TotalDeposit/@Lang.FdmDeposit</span>
+                <span class="info-panel-content">@Model.Deposit.ToStringMoneyWithSymbol("$")/@Model.FdmDeposit.ToStringMoneyWithSymbol("$")</span>
+            </div>
+            <div class="info-panel">
+                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.NetRevenue</span>
+                <span class="info-panel-content">@Model.NetGGR.ToStringMoneyWithSymbol("$")</span>
+            </div>
         </div>
-    </div>
+    }
+
     <div class="group group-five">
         <div class="img-icon">
             <img class="img-responsive" src="~/www/build/styles/Images/account-overview/icon-click.svg" alt="Click icon" />

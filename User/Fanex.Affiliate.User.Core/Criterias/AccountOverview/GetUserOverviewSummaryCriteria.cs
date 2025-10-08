@@ -5,15 +5,13 @@
 
     public class GetUserOverviewSummaryCriteria : CriteriaBase
     {
-        public GetUserOverviewSummaryCriteria(int affId, DateTime monthDate)
-        {
-            AffId = affId;
-            MonthDate = monthDate;
-        }
-
         public int AffId { get; set; }
 
-        public DateTime MonthDate { get; set; }
+        public bool IsGetMonthly { get; set; }
+
+        public DateTime FromDate { get; set; }
+
+        public DateTime ToDate { get; set; }
 
         public override string GetSettingKey() => "Aff_User_Overview_Summary_Sel";
 

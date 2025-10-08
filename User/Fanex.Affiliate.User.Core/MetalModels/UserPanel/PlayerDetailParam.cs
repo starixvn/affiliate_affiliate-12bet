@@ -1,20 +1,15 @@
 ﻿namespace Fanex.Affiliate.User.Core.MetalModels.UserPanel
 {
     using Constants;
-    using System;
-    using Utilities;
+    using Fanex.Affiliate.User.Core.MetalModels.UserPanel.AccountOverview;
 
-    public class PlayerDetailParam
+    public class PlayerDetailParam : AccountOverviewParam
     {
         private const int Turnover = 5;
-
-        public int AffId { get; set; }
 
         public int PageIndex { get; set; } = Page.PageIndex;
 
         public int PageSize { get; set; } = Page.PageSize;
-
-        public DateTime MonthDate { get; set; } = DateTimeHelper.Gmt8Now;
 
         public int SortById { get; set; } = Turnover;
 

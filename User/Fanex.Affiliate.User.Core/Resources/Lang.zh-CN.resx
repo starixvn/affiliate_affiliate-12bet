@@ -2775,4 +2775,19 @@
   <data name="No" xml:space="preserve">
     <value>否</value>
   </data>
+  <data name="QualifiedRevenueSharePlayers" xml:space="preserve">
+    <value>符合资格的收益分成玩家</value>
+  </data>
+  <data name="QualifiedCPAPlayers" xml:space="preserve">
+    <value>符合资格的 CPA 玩家</value>
+  </data>
+  <data name="TentativeCPAAmount" xml:space="preserve">
+    <value>暂定 CPA 金额</value>
+  </data>
+  <data name="TentativeRevenueShare" xml:space="preserve">
+    <value>暂定收益分成金额</value>
+  </data>
+  <data name="ApprovedCPAAmount" xml:space="preserve">
+    <value>CPA 已核准金额</value>
+  </data>
 </root>

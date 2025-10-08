@@ -455,6 +455,7 @@
     <Compile Include="MetalModels\Apis\TokenRequestParam.cs" />
     <Compile Include="MetalModels\ContactUsParam.cs" />
     <Compile Include="MetalModels\MarketingLinkParam.cs" />
+    <Compile Include="MetalModels\UserPanel\AccountOverview\AccountOverviewParam.cs" />
     <Compile Include="MetalModels\UserPanel\AvalableDomainParam.cs" />
     <Compile Include="MetalModels\UserPanel\CommissionReportParam.cs" />
     <Compile Include="MetalModels\UserPanel\CPAReport\PlayerCPAReportParam.cs" />
@@ -721,6 +722,7 @@
     <Compile Include="ViewModels\UserPanel\Statistics\MarketingPageStatisticsViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\Statistics\ReferrerStatisticsViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\SubAffComViewModel.cs" />
+    <Compile Include="ViewModels\UserPanel\Summary\SummaryViewModel.cs" />
     <Compile Include="ViewModels\VerificationAccountViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

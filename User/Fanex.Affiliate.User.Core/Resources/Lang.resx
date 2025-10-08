@@ -2867,4 +2867,34 @@ You can also email us to {1} or simply fill the form below.</value>
   <data name="No" xml:space="preserve">
     <value>No</value>
   </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>View By</value>
+  </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>Date Range</value>
+  </data>
+  <data name="QualifiedRevenueSharePlayers" xml:space="preserve">
+    <value>Qualified Revenue Share Players</value>
+  </data>
+  <data name="QualifiedCPAPlayers" xml:space="preserve">
+    <value>Qualified CPA Players</value>
+  </data>
+  <data name="TentativeCPAAmount" xml:space="preserve">
+    <value>Tentative CPA Amount</value>
+  </data>
+  <data name="TentativeRevenueShare" xml:space="preserve">
+    <value>Tentative Revenue Share</value>
+  </data>
+  <data name="ApprovedCPAAmount" xml:space="preserve">
+    <value>Approved CPA Amount</value>
+  </data>
+  <data name="TentativeRevenueShareAndNetRevenue" xml:space="preserve">
+    <value>Tentative Revenue Share and Net Revenue are displayed only when viewing by month</value>
+  </data>
+  <data name="MonthToDateTentativeAmount" xml:space="preserve">
+    <value>Month-to-date tentative amount</value>
+  </data>
+  <data name="PlayersMeetAllRequired" xml:space="preserve">
+    <value>Players meet all required action in Active and Holding period</value>
+  </data>
 </root>

@@ -2747,4 +2747,19 @@
   <data name="No" xml:space="preserve">
     <value>아니요</value>
   </data>
+  <data name="QualifiedRevenueSharePlayers" xml:space="preserve">
+    <value>적격 수익 배분 플레이어</value>
+  </data>
+  <data name="QualifiedCPAPlayers" xml:space="preserve">
+    <value>적격 CPA 플레이어</value>
+  </data>
+  <data name="TentativeCPAAmount" xml:space="preserve">
+    <value>예정 CPA 금액</value>
+  </data>
+  <data name="TentativeRevenueShare" xml:space="preserve">
+    <value>예정 수익 배분</value>
+  </data>
+  <data name="ApprovedCPAAmount" xml:space="preserve">
+    <value>승인된 CPA 금액</value>
+  </data>
 </root>

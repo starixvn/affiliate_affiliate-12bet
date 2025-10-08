@@ -6,6 +6,7 @@
     using Data.Repository;
     using DTO.UserPanel;
     using DTO.UserPanel.AccountOverview;
+    using Fanex.Affiliate.User.Core.MetalModels.UserPanel.AccountOverview;
     using MetalModels.UserPanel;
     using Newtonsoft.Json;
     using NSubstitute;
@@ -86,14 +87,13 @@
         public void GetUserOverviewDetailList_WhenCalled_ReturnCorrectData()
         {
             // Arrange
-            const int AffId = 1;
             var expected = new List<OverviewDetail> { new OverviewDetail { ActiveMembers = 1 } };
 
             _repository.Fetch<OverviewDetail>(Arg.Any<GetUserOverviewDetailListCriteria>()).Returns(expected);
             var service = CreateService(_repository);
 
             // Action
-            var result = service.GetUserOverviewDetailList(AffId, DateTimeHelper.Gmt8Now);
+            var result = service.GetUserOverviewDetailList(new AccountOverviewParam());
 
             // Assert
             Assert.Equal(JsonConvert.SerializeObject(expected), JsonConvert.SerializeObject(result));
@@ -103,14 +103,13 @@
         public void GetUserOverviewSummary_WhenCalled_ReturnCorrectData()
         {
             // Arrange
-            const int AffId = 1;
             var expected = new OverviewSummary { ActivePlayers = 1 };
 
             _repository.Get<OverviewSummary>(Arg.Any<GetUserOverviewSummaryCriteria>()).Returns(expected);
             var service = CreateService(_repository);
 
             // Action
-            var result = service.GetUserOverviewSummary(AffId, DateTimeHelper.Gmt8Now);
+            var result = service.GetUserOverviewSummary(new AccountOverviewParam());
 
             // Assert
             Assert.Equal(JsonConvert.SerializeObject(expected), JsonConvert.SerializeObject(result));
@@ -122,7 +121,7 @@
             // Arrange
             const int AffId = 1;
             var expected = new List<SubAffDetail> { new SubAffDetail { AffId = AffId } };
-            var param = new SubAffDetailParam { AffId = AffId };
+            var param = new AccountOverviewParam { AffId = AffId };
 
             _repository.Fetch<SubAffDetail>(Arg.Any<GetSubAffDetailsCriteria>()).Returns(expected);
             var service = CreateService(_repository);

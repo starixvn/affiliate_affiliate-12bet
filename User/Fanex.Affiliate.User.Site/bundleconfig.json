@@ -42,13 +42,14 @@
   //    "www/source/js/pages/promotion.js"
   //  ]
   //},
-  //{
-  //  "outputFileName": "www/build/js/summary.js",
-  //  "inputFiles": [
-  //    "www/source/js/components/monthpicker.js",
-  //    "www/source/js/pages/account-overview/summary.js"
-  //  ]
-  //},
+  {
+    "outputFileName": "www/build/js/summary.js",
+    "inputFiles": [
+      "www/source/js/lib/pikaday.js",
+      "www/source/js/components/monthpicker.js",
+      "www/source/js/pages/account-overview/summary.js"
+    ]
+  },
   //{
   //  "outputFileName": "www/build/js/player-detail.js",
   //  "inputFiles": [

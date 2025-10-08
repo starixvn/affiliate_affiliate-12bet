@@ -2,6 +2,7 @@
 @import "../scss/abstracts/variables";
 @import "../scss/abstracts/mixins";
 @import "../scss/components/pager";
+@import "../scss/components/pikaday";
 @import '../scss/components/table-sticky';
 @import '../scss/components/toogle-button';
 @import '../scss/components/qr_code';
@@ -60,7 +61,7 @@
 }
 
 .summary {
-    .form-group {
+    .form-filter {
         padding-top: 12px;
         padding-left: 10px;
         margin-bottom: 0;
@@ -72,6 +73,7 @@
                 width: 100px;
                 height: 24px;
                 text-align: center;
+                background-color: #ffffff;
             }
 
             .glyphicon-calendar {
@@ -79,6 +81,10 @@
                 color: darkred;
                 cursor: pointer;
             }
+        }
+
+        .date-picker-group {
+            display: inline-flex;
         }
     }
 
@@ -393,6 +399,17 @@
 }
 
 @media (max-width: 767px) {
+    .summary {
+        .form-filter {
+            .form-group {
+                display: inline-block;
+            }
+
+            .date-picker-group {
+                display: inline-block;
+            }
+        }
+    }
     .details-section-content {
         .table {
             overflow-x: scroll;

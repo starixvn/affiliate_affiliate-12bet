@@ -290,13 +290,13 @@ var PlayersDetails = (function ($) {
         },
 
         getPlayersDetailsParam: function () {
-            return {
-                MonthDate: $("#MonthDate").data("original-date"),
-                PageSize: _pageSize,
-                PageIndex: _pageIndex + 1,
-                SortById: _sortById,
-                IsSortAsc: _isSortingAsc
-            };
+            const accountOverviewParams = Summary.getAccountOverviewParams();
+            accountOverviewParams.PageSize = _pageSize;
+            accountOverviewParams.PageIndex = _pageIndex + 1;
+            accountOverviewParams.SortById = _sortById;
+            accountOverviewParams.IsSortAsc = _isSortingAsc;
+
+            return accountOverviewParams;
         },
 
         renderPlayersDetails: function (params) {

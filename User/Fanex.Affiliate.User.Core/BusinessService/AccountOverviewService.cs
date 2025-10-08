@@ -5,6 +5,7 @@
     using Data.Repository;
     using DTO.UserPanel;
     using DTO.UserPanel.AccountOverview;
+    using Fanex.Affiliate.User.Core.MetalModels.UserPanel.AccountOverview;
     using MetalModels.UserPanel;
     using System;
     using System.Collections.Generic;
@@ -23,25 +24,29 @@
         public IEnumerable<PlayerDetail> GetPlayerDetailList(PlayerDetailParam param)
         {
             var criteria = param.MapTo<PlayerDetailParam, GetPlayerDetailListCriteria>();
+            criteria.MonthDate = param.FromDate;
 
             return FetchTDataWithPaging<PlayerDetail>(criteria, param);
         }
 
-        public IEnumerable<OverviewDetail> GetUserOverviewDetailList(int affId, DateTime monthDate)
+        public IEnumerable<OverviewDetail> GetUserOverviewDetailList(AccountOverviewParam param)
         {
-            return FetchTData<OverviewDetail>(new GetUserOverviewDetailListCriteria(affId, monthDate));
+            return FetchTData<OverviewDetail>(new GetUserOverviewDetailListCriteria(param.AffId, param.FromDate));
         }
 
-        public OverviewSummary GetUserOverviewSummary(int affId, DateTime monthDate)
+        public OverviewSummary GetUserOverviewSummary(AccountOverviewParam param)
         {
-            var overviewInfo = GetTData<OverviewSummary>(new GetUserOverviewSummaryCriteria(affId, monthDate)) ?? new OverviewSummary();
+            var overviewInfo = GetTData<OverviewSummary>(param.MapTo<AccountOverviewParam, GetUserOverviewSummaryCriteria>());
 
             return overviewInfo;
         }
 
-        public IEnumerable<SubAffDetail> GetSubAffDetails(SubAffDetailParam param)
+        public IEnumerable<SubAffDetail> GetSubAffDetails(AccountOverviewParam param)
         {
-            return FetchTData<SubAffDetail>(param.MapTo<SubAffDetailParam, GetSubAffDetailsCriteria>());
+            var criteria = param.MapTo<AccountOverviewParam, GetSubAffDetailsCriteria>();
+            criteria.MonthDate = param.FromDate;
+
+            return FetchTData<SubAffDetail>(criteria);
         }
     }
 }
