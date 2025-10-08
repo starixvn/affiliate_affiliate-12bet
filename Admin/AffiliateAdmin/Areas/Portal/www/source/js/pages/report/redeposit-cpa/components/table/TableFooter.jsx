@@ -21,23 +21,26 @@ export const TableFooter = ({
     return (
         <tfoot>
             <tr className="total-row freeze-row">
-                <td title={totalText} colSpan="6" className="text-right font-weight-bold freeze-column-footer">{totalText}</td>
-                <td title={totalEligiblePlayers} className="text-center font-weight-bold freeze-column-footer">{totalEligiblePlayers}</td>
-                <td className="text-right font-weight-bold freeze-column-footer"></td>
-                <td className="text-right font-weight-bold freeze-column-footer"></td>
-                <td className="text-right font-weight-bold freeze-column-footer"></td>
-                <td className="text-right font-weight-bold freeze-column-footer"></td>
-                <td title={estimateAmount} className="text-right font-weight-bold freeze-column-footer">{estimateAmount}</td>
-                <td className="text-right font-weight-bold freeze-column-footer"></td>
-                <td title={approvedAmount} className="text-right font-weight-bold freeze-column-footer">{approvedAmount}</td>
-                <td className="text-right font-weight-bold freeze-column-footer"></td>
-                <td title={adjustedAmount} className="text-right font-weight-bold freeze-column-footer">{adjustedAmount}</td>
-                <td className="text-right font-weight-bold freeze-column-footer"></td>
-                <td className="text-right font-weight-bold freeze-column-footer"></td>
+                <td title={totalText} colSpan="3" className="text-right font-weight-bold freeze-column-footer">{totalText}</td>
+                <td className="text-right font-weight-bold"></td>
+                <td className="text-right font-weight-bold"></td>
+                <td className="text-right font-weight-bold"></td>
+                <td title={totalEligiblePlayers} className="text-center font-weight-bold">{totalEligiblePlayers}</td>
+                <td className="text-right font-weight-bold"></td>
+                <td className="text-right font-weight-bold"></td>
+                <td className="text-right font-weight-bold"></td>
+                <td className="text-right font-weight-bold"></td>
+                <td title={estimateAmount} className="text-right font-weight-bold">{estimateAmount}</td>
+                <td className="text-right font-weight-bold"></td>
+                <td title={approvedAmount} className="text-right font-weight-bold">{approvedAmount}</td>
+                <td className="text-right font-weight-bold"></td>
+                <td title={adjustedAmount} className="text-right font-weight-bold">{adjustedAmount}</td>
+                <td className="text-right font-weight-bold"></td>
+                <td className="text-right font-weight-bold"></td>
                 {isAdjustable && (
-                    <td className="text-right font-weight-bold freeze-column-footer"></td>
+                    <td className="text-right font-weight-bold"></td>
                 )}
-                <td title={finalCpaAmount} className="text-right font-weight-bold freeze-column-footer">{finalCpaAmount}</td>
+                <td title={finalCpaAmount} className="text-right font-weight-bold">{finalCpaAmount}</td>
             </tr>
         </tfoot>
     )

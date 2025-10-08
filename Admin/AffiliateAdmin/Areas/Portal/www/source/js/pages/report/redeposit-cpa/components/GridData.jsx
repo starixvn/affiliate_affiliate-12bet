@@ -85,8 +85,8 @@ export const GridData = ({
 
     return data && (
         <React.Fragment>
-            <div id='payment-cpa-management' className="table-responsive aff-report-table-container" ref={tableRef} style={{ maxHeight }}>
-                <Table className="freeze-table table-bordered table-hover" style={{ minWidth: '3000px' }}>
+            <div className="table-responsive payment-cpa-management-table-container" ref={tableRef} style={{ maxHeight }}>
+                <Table className="freeze-table table-bordered table-hover">
                     <TableHeader
                         isAdjustable={isAdjustable} />
                     <TableBody

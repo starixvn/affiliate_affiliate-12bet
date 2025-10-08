@@ -5,8 +5,9 @@ import { AggregateHeaderColumn, HeaderRow } from '../../libs/headerConfigs';
 
 const RowHeader = ({ header, index, rowSpan }) => (
     <tr className={`freeze-row freeze-row-h${index}`} key={`thead-${index}`}>
-        {Object.entries(header).map(([key, col]) => {
+        {Object.entries(header).map(([key, col], currentIndex) => {
             const isAggregate = col instanceof AggregateHeaderColumn;
+            const isFreezeCol = index === 1 && currentIndex < 3;
 
             return (
                 <th
@@ -15,6 +16,7 @@ const RowHeader = ({ header, index, rowSpan }) => (
                     width={col.width}
                     rowSpan={isAggregate ? 1 : rowSpan}
                     colSpan={isAggregate ? col.totalShowableCol : 1}
+                    className={isFreezeCol ? `freeze-column-header-${currentIndex}` : ''}
                 >
                     {col.text}
                 </th>
