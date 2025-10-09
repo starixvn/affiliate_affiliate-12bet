@@ -2,10 +2,11 @@ import React, { useState, useMemo } from 'react';
 
 import { Form, FormGroup, Label, Col, Input, Button } from 'reactstrap';
 import { format, formatDecimal } from '../../../../../modules/numberFormat';
-import { isValidNumber } from '../../../../../modules/utils';
+import { money } from '../../../../../modules/constants';
 
 export const AdjustCpaAmountForm = ({ adjustAmountParam, setAdjustAmountParam, onSubmit }) => {
     const { estimatedAmount, approvedAmount, newAmount, transDesc, isApproved } = adjustAmountParam;
+    const [displayValue, setDisplayValue] = useState('');
 
     const [formState, setFormState] = useState({
         message: '',
@@ -17,7 +18,7 @@ export const AdjustCpaAmountForm = ({ adjustAmountParam, setAdjustAmountParam, o
     });
 
     const validation = useMemo(() => {
-        const isNewAmountValid = newAmount <= +estimatedAmount;
+        const isNewAmountValid = newAmount <= +estimatedAmount && newAmount !== '';
         const isTransDescValid = transDesc.trim() !== '';
         const isFormValid = isNewAmountValid && isTransDescValid;
 
@@ -32,6 +33,10 @@ export const AdjustCpaAmountForm = ({ adjustAmountParam, setAdjustAmountParam, o
         const est = Number(estimatedAmount);
         const appr = Number(approvedAmount);
         const diff = newAmount - appr;
+
+        if (newAmount === '') {
+            return 'New CPA Amount is required';
+        }
 
         if (newAmount > est) {
             return `New CPA Amount cannot exceed ${formatDecimal(est)}`;
@@ -50,8 +55,6 @@ export const AdjustCpaAmountForm = ({ adjustAmountParam, setAdjustAmountParam, o
         return '';
     }, [newAmount, estimatedAmount, approvedAmount, isApproved]);
 
-    const parseValue = (value) => Number(value.replace(/,/g, '').trim());
-
     const updateFormState = (updates) => {
         setFormState(prev => ({ ...prev, ...updates }));
     };
@@ -66,19 +69,38 @@ export const AdjustCpaAmountForm = ({ adjustAmountParam, setAdjustAmountParam, o
         setFieldTouched(fieldName);
     };
 
+    const parseValue = (value) => value.replace(/,/g, '').trim();
+
+    const isValidDecimalNumber = (inputValue) => {
+        const regex = /^\d*\.?\d{0,2}$/;
+        return regex.test(inputValue);
+    };
+
+
     const handleChangeAmount = (e) => {
         const { value } = e.target;
         setFieldTouched('newAmount');
 
         const parsedValue = parseValue(value);
-        if (parsedValue < 0 || !isValidNumber(parsedValue)) {
-            return;
-        }
+        if (isValidDecimalNumber(parsedValue)
+            && Number(parsedValue) >= 0
+            && Number(parsedValue) <= money.AllowedMaxValue) {
 
-        setAdjustAmountParam({
-            newAmount: parsedValue,
-            adjustAmount: parsedValue - +approvedAmount
-        });
+            const hasDecimal = value.includes('.');
+            const [integerPart, decimalPart] = hasDecimal ? value.split('.') : [value, null];
+            const numValue = Number(parseValue(integerPart));
+
+            let formattedDisplayValue = format(numValue);
+            if (hasDecimal) {
+                formattedDisplayValue += decimalPart !== null ? `.${decimalPart}` : '.';
+            }
+
+            setDisplayValue(formattedDisplayValue);
+            setAdjustAmountParam({
+                newAmount: Number(parsedValue),
+                adjustAmount: Number(parsedValue) - +approvedAmount
+            });
+        }
     };
 
     const handleChangeTransDesc = (e) => {
@@ -125,7 +147,7 @@ export const AdjustCpaAmountForm = ({ adjustAmountParam, setAdjustAmountParam, o
                                 type='text'
                                 name='newAmount'
                                 id='newAmount'
-                                value={format(newAmount)}
+                                value={displayValue}
                                 onChange={handleChangeAmount}
                                 onBlur={() => handleBlur('newAmount')}
                                 invalid={formState.touched.newAmount && !validation.isNewAmountValid}
@@ -171,7 +193,7 @@ export const AdjustCpaAmountForm = ({ adjustAmountParam, setAdjustAmountParam, o
                                 type='text'
                                 name='newAmount'
                                 id='newAmount'
-                                value={format(newAmount)}
+                                value={displayValue}
                                 onChange={handleChangeAmount}
                                 onBlur={() => handleBlur('newAmount')}
                                 invalid={formState.touched.newAmount && !validation.isNewAmountValid}
@@ -197,9 +219,10 @@ export const AdjustCpaAmountForm = ({ adjustAmountParam, setAdjustAmountParam, o
                 <Col sm={5}>
                     <Input
                         className='text-left'
-                        type='text'
+                        type='textarea'
                         name='transDesc'
                         id='transDesc'
+                        rows={3}
                         value={transDesc}
                         onChange={handleChangeTransDesc}
                         onBlur={() => handleBlur('transDesc')}

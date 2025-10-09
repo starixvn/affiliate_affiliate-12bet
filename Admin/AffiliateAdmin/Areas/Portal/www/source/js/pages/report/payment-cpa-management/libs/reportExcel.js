@@ -428,17 +428,22 @@ export default class ReportExcel {
             case 'monitoring':
                 return {
                     ...baseStyle,
-                    font: { ...baseStyle.font, color: { rgb: 'B8860B' } } // Dark goldenrod
+                    font: { ...baseStyle.font, color: { rgb: 'f57c00' } } // Orange/Amber
                 };
             case 'not qualified':
                 return {
                     ...baseStyle,
-                    font: { ...baseStyle.font, color: { rgb: 'DC143C' } } // Crimson
+                    font: { ...baseStyle.font, color: { rgb: 'd32f2f' } } // Red
                 };
             case 'qualified':
                 return {
                     ...baseStyle,
-                    font: { ...baseStyle.font, color: { rgb: '006400' } } // Dark green
+                    font: { ...baseStyle.font, color: { rgb: '2e7d32' } } // Green
+                };
+            case 'empty':
+                return {
+                    ...baseStyle,
+                    font: { ...baseStyle.font, color: { rgb: '7030a0' } } // Purple
                 };
             default:
                 return baseStyle;

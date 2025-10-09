@@ -2,7 +2,6 @@
 export const NA = 'N/A';
 export const totalText = 'Total (all pages)';
 
-export const MONITORING = 1;
 export const NOT_QUALIFIED = 2;
 export const QUALIFIED = 3;
 
@@ -10,6 +9,7 @@ export const statusList = [
     { key: 'Monitoring', name: 'Monitoring', checked: true },
     { key: 'Not Qualified', name: 'Not Qualified', checked: true },
     { key: 'Qualified', name: 'Qualified', checked: true },
+    { key: 'Empty', name: 'Empty', checked: true },
 ]
 
 export const viewByList = {
@@ -19,7 +19,7 @@ export const viewByList = {
 }
 
 export const defaultParams = {
-    username: '',
+    userName: '',
     dealIds: '',
     fromDate: '',
     toDate: '',
@@ -42,7 +42,7 @@ export const defaultAdjustAmount = {
     estimatedAmount: 0,
     approvedAmount: 0,
     adjustAmount: 0,
-    newAmount: 0,
+    newAmount: '',
     transDesc: ''
 }
 
