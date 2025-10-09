@@ -192,7 +192,7 @@ export class Content extends PureComponent {
     _handleRedirectToPaymentCPAManagement = (dataItem, isCpaAdjustment = false) => {
         const paramForPaymentCPAManagement = this._buildPaymentCpaParams(dataItem, isCpaAdjustment);
 
-        openUrlOnNewWindow(relativePath.redepositCpaReport, paramForPaymentCPAManagement, 'paramForPaymentCPAManagement');
+        openUrlOnNewWindow(relativePath.paymentCpaManagement, paramForPaymentCPAManagement, 'paramForPaymentCPAManagement');
     }
 
     _getClickHandlerByTransType() {

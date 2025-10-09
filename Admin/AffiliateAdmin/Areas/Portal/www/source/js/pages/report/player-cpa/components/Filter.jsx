@@ -10,11 +10,12 @@ import MultipleSelect from '../../../../components/multiple-select';
 
 import { setReportTitle, setParams, setPlayerCpaData, setPagingOption } from '../actions';
 import { reportName, statusOptions, viewByOptions, defaultParams } from '../libs/constants';
-import { formatUnit, handleAfterChangeFromDate, handleAfterChangeToDate, handleChangeMultipleSelected } from '../../../../modules/utils';
+import { handleAfterChangeFromDate, handleAfterChangeToDate, handleChangeMultipleSelected, getDayOfMonth, getFirstDayOfMonth, getCookie } from '@/modules/utils';
 import { globalResource } from '../../../../modules/globalResource';
 import { defaultPagingOption, minDate, sixMonth } from '../../../../modules/constants';
 import { getPlayerCpaData } from '../libs/service';
 import { toggleLoader } from '../../../../actions/loaderAction';
+import { relativePath } from '../../libs/constants';
 
 const Filter = ({
     params,
@@ -32,28 +33,36 @@ const Filter = ({
 
     useEffect(() => {
         const now = new Date(today);
-        const currentMonth = now.getMonth() + 1;
-        const currentMonthString = formatUnit(currentMonth);
-        const currentYear = now.getFullYear();
-
-        const nowStr = `${currentMonthString}/${formatUnit(now.getDate())}/${currentYear}`;
+        const nowStr = getDayOfMonth(now);
         setNowString(nowStr);
 
-        if (!params.fromDate || !params.toDate) {
-            setParams({
-                fromDate: `${currentMonthString}/01/${currentYear}`,
-                toDate: nowStr
-            });
+        let initialParams = {
+            fromDate: getFirstDayOfMonth(now),
+            toDate: nowStr
         }
-    }, []);
 
-    useEffect(() => {
-        if (deals && deals.length > 0) {
+        const paramFromPlayerCpaReport = getCookie('paramForPlayerCpaReport');
+        if (paramFromPlayerCpaReport !== '') {
+            const param = JSON.parse(paramFromPlayerCpaReport);
+
+            initialParams = {
+                ...initialParams,
+                custName: param.affName,
+                fromDate: param.fromDate,
+                toDate: param.toDate,
+                dealName: param.dealName,
+                viewBy: param.viewBy
+            }
+        } if (deals && deals.length > 0) {
             const dealIds = deals.map(deal => deal.key).join(',');
-            setParams({
+            initialParams = {
+                ...initialParams,
                 dealName: dealIds
-            });
+            };
         }
+
+        setParams(initialParams);
+        document.cookie = `paramForPlayerCpaReport=; path=${relativePath.playerCPA}`;
     }, []);
 
     useEffect(() => {

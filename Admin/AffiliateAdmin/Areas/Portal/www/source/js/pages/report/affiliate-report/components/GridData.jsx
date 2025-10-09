@@ -377,7 +377,7 @@ export class GridData extends PureComponent {
     handleOpenPaymentCPAManagement = (userName, groupId, monthDate, cpaSetting) => {
         const paramForPaymentCPAManagement = this._buildPaymentCPAManagementParams(userName, groupId, monthDate, cpaSetting);
         
-        openUrlOnNewWindow(relativePath.redepositCpaReport, paramForPaymentCPAManagement, 'paramForPaymentCPAManagement');
+        openUrlOnNewWindow(relativePath.paymentCpaManagement, paramForPaymentCPAManagement, 'paramForPaymentCPAManagement');
     }
 
     _buildPaymentCPAManagementParams = (userName, groupId, monthDate, cpaSetting) => {
