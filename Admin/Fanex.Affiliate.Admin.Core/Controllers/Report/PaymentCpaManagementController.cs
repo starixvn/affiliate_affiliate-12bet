@@ -38,6 +38,7 @@
         [ValidateAntiForgeryHeader]
         public ActionResult GetData(PaymentCpaManagementParam param)
         {
+            param.UserName = param.UserName.Trim();
             return GenerateJsonNetResult(_paymentManagementService.GetReportData(param));
         }
 
@@ -51,6 +52,7 @@
                 return GenerateModelStateErrResult();
             }
 
+            param.TransDesc = param.TransDesc.Trim();
             AssignUserInfoParam(param);
             return GenerateJsonNetResult(_paymentManagementService.AdjustmentAmount(param));
         }

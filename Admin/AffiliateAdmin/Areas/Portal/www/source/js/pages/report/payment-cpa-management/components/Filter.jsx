@@ -45,15 +45,20 @@ export const Filter = ({ params, setParams, today, deals, toggleSubmit }) => {
         if (paramFromOtherReport) {
             const param = JSON.parse(paramFromOtherReport);
             setParams({
-                username: param.affName,
-                statusIds: param.statusIds,
+                userName: param.affName,
+                statusIds: param.status,
                 viewBy: param.viewBy,
-                dealIds: param.dealIds || dealIds,
+                dealIds: `${param.dealIds}` || dealIds,
                 fromDate: param.fromDate,
                 toDate: param.toDate
             });
-            document.cookie = `paramForPaymentCPAManagement=; path=${relativePath.paymentCpaManagement}`;
 
+            setStatus(handleChangeMultipleSelected(status, `${param.status}`));
+            if (param.dealIds) {
+                setDealList(handleChangeMultipleSelected(dealList, `${param.dealIds}`));
+            }
+
+            document.cookie = `paramForPaymentCPAManagement=; path=${relativePath.paymentCpaManagement}`;
             handleClickSearch();
         }
     }, []);

@@ -41,7 +41,6 @@ export const updateCpaAmount = (param) => async (dispatch) => {
 
         const url = 'Portal/PaymentCpaManagement/AdjustmentAmount';
 
-        param.transDesc = param.transDesc.trim();
         const response = await post(url, param);
 
         const isSuccess = response && response.status === 200 && response.data && response.data.Code === 0;

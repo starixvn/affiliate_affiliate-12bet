@@ -5,7 +5,7 @@ import { Button } from 'reactstrap';
 import { format, formatDecimal } from '../../../../../modules/numberFormat';
 import { globalResource } from '../../../../../modules/globalResource';
 import { groupData } from '../../libs/service';
-import { MONITORING, NOT_QUALIFIED } from '../../libs/constants';
+import { NOT_QUALIFIED, QUALIFIED } from '../../libs/constants';
 import { htmlDecode } from './../../../../../modules/htmlHelper';
 import { relativePath } from '../../../libs/constants';
 
@@ -18,7 +18,7 @@ const SubEntryRow = ({
     toggleAdjustAmountModal,
     setAdjustAmountParam }) => {
 
-    const statusClassName = `status-${subEntry.Status.toLowerCase().replace(' ', '-')}`;
+    const statusClassName = `status-${subEntry.Status?.toLowerCase().replace(' ', '-')}`;
     const totalEligiblePlayers = format(subEntry.TotalEligiblePlayers);
     const redepositDays = subEntry.RedepositDays ? `${format(subEntry.RedepositDays)} days` : '-';
     const redepositRate = subEntry.RedepositRate ? `${formatDecimal(subEntry.RedepositRate * 100)}%` : '-';
@@ -37,7 +37,7 @@ const SubEntryRow = ({
             toDate: subEntry.EndScheduleStr
         };
 
-        document.cookie = `paramForPlayerCpaReport=${JSON.stringify(paramFromPaymentManagement)}; path=/`;
+        document.cookie = `paramForPlayerCpaReport=${JSON.stringify(paramFromPaymentManagement)}; path=${relativePath.playerCPA}`;
         window.open(relativePath.playerCPA, '_blank');
     }
 
@@ -98,7 +98,7 @@ const SubEntryRow = ({
             <td title={description} className="text-left">{description}</td>
             {isAdjustable && (
                 <td title='Adjust' className='text-center'>
-                    {subEntry.StatusId !== MONITORING
+                    {subEntry.StatusId === NOT_QUALIFIED || subEntry.StatusId === QUALIFIED
                         ? subEntry.IsEnabled && subEntry.AdjustedBy === 0 ?
                             <Button outline color="primary" type="button" onClick={_handleShowModal}>
                                 Adjust

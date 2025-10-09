@@ -109,6 +109,10 @@
             color: #f57c00; // Orange/Amber color
         }
 
+        .status-empty {
+            color: #7030a0; // Purple color
+        }
+
         .table > tbody > tr:hover {
             td {
                 background-color: #ffffff !important;
@@ -157,7 +161,7 @@
         font-size: 12px;
     }
 
-    input[type='text'] {
+    input[type='text'], textarea {
         font-size: 13px !important;
     }
 }
