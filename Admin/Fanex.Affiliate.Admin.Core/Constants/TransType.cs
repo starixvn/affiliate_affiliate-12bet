@@ -10,5 +10,6 @@ namespace Fanex.Affiliate.Admin.Core.Constants
         public const int SubAffiliateRevenueShare = 204;
         public const int CpaEarning = 206;
         public const int SubCpaEarning = 207;
+        public const int CpaAdjustment = 208;
     }
 }

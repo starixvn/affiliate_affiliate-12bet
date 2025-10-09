@@ -52,3 +52,10 @@ export const targetCountryStatus = {
     Normal: 0,
     Blocked: 1
 }
+
+export const CPAViewBySettings = {
+    ActiveQualifiedDate: 1,
+    HoldingQualifiedDate: 2,
+    AutoApprovedDate: 3,
+    AdjustmentDate: 4,
+}

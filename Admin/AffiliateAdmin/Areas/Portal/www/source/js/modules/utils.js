@@ -1,3 +1,5 @@
+import { minDate, sixMonth } from './constants';
+
 const _rootUrl = document.getElementById('RootUrl') ? document.getElementById('RootUrl').value : '/';
 
 export const resolveClientUrl = (relativeUrl) => {
@@ -233,6 +235,19 @@ export const getAdjustedDateFromNow = (date, now) => {
 
     return getDayOfMonth(now);
 }
+
+export const getSixMonthAgoFromNow = (today) => {
+    const sixMonthAgo = new Date(today);
+    sixMonthAgo.setMonth(sixMonthAgo.getMonth() - sixMonth);
+
+    return sixMonthAgo < minDate ? '01/01/2020' : `${sixMonthAgo.getMonth() + 1}/${sixMonthAgo.getDate()}/${sixMonthAgo.getFullYear()}`;
+}
+
+export const openUrlOnNewWindow = (path, params, cookieName) => {
+    document.cookie = `${cookieName}=${JSON.stringify(params)}; path=${path}`;
+    window.open(path, '_blank');
+}
+
 
 let _xsrfToken = null;
 

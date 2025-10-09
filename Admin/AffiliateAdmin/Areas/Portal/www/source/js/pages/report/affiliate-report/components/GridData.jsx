@@ -9,7 +9,7 @@ import { format, formatDecimal } from '../../../../modules/numberFormat';
 import { setPagingOption, setViewLevel, setParam, fetchData } from '../actions';
 import { toggleLoader } from '../../../../actions/loaderAction';
 import { globalResource } from '../../../../modules/globalResource';
-import { getFirstDayOfMonth, getAdjustedDateFromNow } from '../../../../modules/utils';
+import { getFirstDayOfMonth, getAdjustedDateFromNow, openUrlOnNewWindow } from '../../../../modules/utils';
 import { getMaxHeight } from '../../libs/constants';
 import { viewLevel, sortByMonthOnMonthView, sortDirectionType, totalText, headerText, reportKey, paymentCPAManagementSetting } from '../libs/constants';
 import { AggregateHeaderColumn, HeaderRow } from '../libs/headerConfigs';
@@ -118,6 +118,7 @@ export class GridData extends PureComponent {
                 {mainHeader[reportKey.FDM_TotalDeposit].isShowable && (<th width={65} rowSpan="3" title={headerText.FDM_TotalDeposit}>{headerText.FDM_TotalDeposit}</th>)}
                 {mainHeader[reportKey.ActivePlayer].isShowable && (<th width={55} rowSpan="3" title={headerText.ActivePlayer}>{headerText.ActivePlayer}</th>)}
                 {mainHeader[reportKey.QualifiedMember].isShowable && (<th width={70} rowSpan="3" title={headerText.QualifiedMember}>{headerText.QualifiedMember}</th>)}
+                {mainHeader[reportKey.QualifiedCPAMember].isShowable && (<th width={70} rowSpan="3" title={headerText.QualifiedCPAMember}>{headerText.QualifiedCPAMember}</th>)}
                 {mainHeader[reportKey.NoOfSubAff].isShowable && (<th width={65} rowSpan="3" title={headerText.NoOfSubAff}>{headerText.NoOfSubAff}</th>)}
                 {mainHeader[reportKey.TotalDeposit].isShowable && (<th width={65} rowSpan="3" title={headerText.TotalDeposit}>{headerText.TotalDeposit}</th>)}
                 {mainHeader[reportKey.Deposit].isShowable && (<th width={65} rowSpan="3" title={headerText.Deposit}>{headerText.Deposit}</th>)}
@@ -217,7 +218,8 @@ export class GridData extends PureComponent {
         const fdmAmt = formatDecimal(dataItem.Fdm_Amount);
         const FDMTotalDeposit = formatDecimal(dataItem.FDM_TotalDeposit);
         const activeMember = format(dataItem.ActivePlayer);
-        const qualifiedMember = this.props.isCheckedDatePicker ? format(dataItem.QualifiedMember) : format(dataItem.QualifiedCPAMember);
+        const qualifiedMember = format(dataItem.QualifiedMember);
+        const qualifiedCPAMember = format(dataItem.QualifiedCPAMember);
         const noOfSubAff = format(dataItem.NoOfSubAff);
         const totalDeposit = format(dataItem.TotalDeposit);
         const deposit = formatDecimal(dataItem.Deposit);
@@ -264,6 +266,7 @@ export class GridData extends PureComponent {
                 {header[reportKey.FDM_TotalDeposit].isShowable && (<td className="text-right" title={FDMTotalDeposit}>{FDMTotalDeposit}</td>)}
                 {header[reportKey.ActivePlayer].isShowable && (<td className="text-right" title={activeMember}>{activeMember}</td>)}
                 {header[reportKey.QualifiedMember].isShowable && (<td className="text-right" title={qualifiedMember}>{qualifiedMember}</td>)}
+                {header[reportKey.QualifiedCPAMember].isShowable && (<td className="text-right" title={qualifiedCPAMember}>{qualifiedCPAMember}</td>)}
                 {header[reportKey.NoOfSubAff].isShowable && (<td className="text-right" title={noOfSubAff}>{noOfSubAff}</td>)}
                 {header[reportKey.TotalDeposit].isShowable && (<td className="text-right" title={totalDeposit}>{totalDeposit}</td>)}
                 {header[reportKey.Deposit].isShowable && (<td className="text-right" title={deposit}>{deposit}</td>)}
@@ -360,7 +363,7 @@ export class GridData extends PureComponent {
             productIds: param.ProductIds
         };
 
-        this._openReportWindow(relativePath.playerGgrReport, paramFromAffReport, 'paramFromAffReport');
+        openUrlOnNewWindow(relativePath.playerGgrReport, paramFromAffReport, 'paramFromAffReport');
     }
 
     handleViewApprovedCpaReport = (userName, groupId, monthDate) => {
@@ -374,7 +377,7 @@ export class GridData extends PureComponent {
     handleOpenPaymentCPAManagement = (userName, groupId, monthDate, cpaSetting) => {
         const paramForPaymentCPAManagement = this._buildPaymentCPAManagementParams(userName, groupId, monthDate, cpaSetting);
         
-        this._openReportWindow(relativePath.redepositCpaReport, paramForPaymentCPAManagement, 'paramForPaymentCPAManagement');
+        openUrlOnNewWindow(relativePath.redepositCpaReport, paramForPaymentCPAManagement, 'paramForPaymentCPAManagement');
     }
 
     _buildPaymentCPAManagementParams = (userName, groupId, monthDate, cpaSetting) => {
@@ -391,11 +394,6 @@ export class GridData extends PureComponent {
             fromDate: isMainView ? param.FromDate : getFirstDayOfMonth(referenceDate),
             toDate: getAdjustedDateFromNow(referenceDate, now)
         };
-    }
-
-    _openReportWindow = (path, params, cookieName) => {
-        document.cookie = `${cookieName}=${JSON.stringify(params)}; path=${path}`;
-        window.open(path, '_blank');
     }
 
     handlePaging = (index, size) => {

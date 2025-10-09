@@ -1,4 +1,4 @@
-import { defaultBaseCurrency, minMonthDate } from '../../../../modules/constants';
+import { defaultBaseCurrency, minMonthDate, CPAViewBySettings } from '../../../../modules/constants';
 
 export { defaultBaseCurrency, minMonthDate };
 
@@ -34,18 +34,13 @@ export const sortDirectionType = {
     descending: 1
 }
 
-const viewBy = {
-    AutoApprovedDate: 2,
-    AdjustmentDate: 3,
-}
-
 export const paymentCPAManagementSetting = {
     Approved: {
-        ViewBy: viewBy.AutoApprovedDate,
+        ViewBy: CPAViewBySettings.AutoApprovedDate,
         Status: "Qualified"
     },
     Adjustment: {
-        ViewBy: viewBy.AdjustmentDate,
+        ViewBy: CPAViewBySettings.AdjustmentDate,
         Status: "Qualified,NotQualified"
     }
 }
@@ -82,6 +77,7 @@ export const reportKey = {
     FDM_TotalDeposit: 'FDM_TotalDeposit',
     ActivePlayer: 'ActivePlayer',
     QualifiedMember: 'QualifiedMember',
+    QualifiedCPAMember: 'QualifiedCPAMember',
     NoOfSubAff: 'NoOfSubAff',
     TotalDeposit: 'TotalDeposit',
     Deposit: 'Deposit',
@@ -128,7 +124,8 @@ export const headerText = {
     [reportKey.Fdm_Amount]: 'FTD Amount',
     [reportKey.FDM_TotalDeposit]: "FTD's Total Deposit",
     [reportKey.ActivePlayer]: 'Active Player',
-    [reportKey.QualifiedMember]: 'Qualified Player',
+    [reportKey.QualifiedMember]: 'Qualified RevShare Players',
+    [reportKey.QualifiedCPAMember]: 'Qualified CPA Players',
     [reportKey.NoOfSubAff]: 'Sub-Affiliate',
     [reportKey.TotalDeposit]: 'Total Deposit Count',
     [reportKey.Deposit]: 'Total Deposit Amount',
@@ -176,6 +173,7 @@ export const headerConfig = {
     [reportKey.FDM_TotalDeposit]: { label: headerText[reportKey.FDM_TotalDeposit], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
     [reportKey.ActivePlayer]: { label: headerText[reportKey.ActivePlayer] },
     [reportKey.QualifiedMember]: { label: headerText[reportKey.QualifiedMember] },
+    [reportKey.QualifiedCPAMember]: { label: headerText[reportKey.QualifiedCPAMember], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
     [reportKey.NoOfSubAff]: { label: headerText[reportKey.NoOfSubAff] },
     [reportKey.TotalDeposit]: { label: headerText[reportKey.TotalDeposit] },
     [reportKey.Deposit]: { label: headerText[reportKey.Deposit] },

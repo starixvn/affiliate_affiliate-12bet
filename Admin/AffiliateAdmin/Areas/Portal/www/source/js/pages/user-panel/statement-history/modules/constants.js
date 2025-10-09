@@ -1,5 +1,5 @@
-﻿import { globalResource } from '../../../../modules/globalResource';
-import { selectedAllProduct, maxWidth, minDate } from '../../../../modules/constants';
+﻿import { globalResource } from '@/modules/globalResource';
+import { selectedAllProduct, maxWidth, minDate, CPAViewBySettings } from '@/modules/constants';
 
 export { globalResource, selectedAllProduct, maxWidth, minDate }
 
@@ -13,11 +13,31 @@ export const headerText = {
     Description: 'Description',
 }
 
-export const CalculatedMonth = 2;
+export const CALCULATED_MONTH = 2;
 export const MONTHLY_TOTAL = 0;
-export const MONTHLY_EARNING = 201;
-export const PAYMENT_REQUEST = 202;
-export const ADJUSTMENT = 203;
-export const SUBAFFILIATE = 204;
-export const CPA_EARNING = 206;
+
+export const transTypeSettings = {
+    MonthlyEarning: 201,
+    PaymentRequest: 202,    
+    Adjustment: 203,
+    SubAffiliate: 204,
+    CpaEarning: 206,
+    SubCpaEarning: 207,
+    CpaAdjustment: 208,
+}
+
+export const paymentCPAManagementSettings = {
+    Tentative: {
+        ViewBy: CPAViewBySettings.HoldingQualifiedDate,
+        Status: "Monitoring"
+    },
+    Approved: {
+        ViewBy: CPAViewBySettings.AutoApprovedDate,
+        Status: "Qualified"
+    },
+    Adjustment: {
+        ViewBy: CPAViewBySettings.AdjustmentDate,
+        Status: "NotQualified"
+    }
+}
 

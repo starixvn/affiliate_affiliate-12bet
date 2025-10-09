@@ -4,12 +4,13 @@ import { bindActionCreators } from 'redux';
 import { Table, Row, Cell } from '@9softstudio/react-fixed-table-header';
 import { Button } from 'reactstrap';
 
-import { htmlDecode } from '../../../../modules/htmlHelper';
-import { formatDecimalWithCurrencySymbol } from '../../../../modules/numberFormat';
-import { resolveClientUrl, formatDateTime } from '../../../../modules/utils';
+import { htmlDecode } from '@/modules/htmlHelper';
+import { formatDecimalWithCurrencySymbol } from '@/modules/numberFormat';
+import { getFirstDayOfMonth, getAdjustedDateFromNow, getDayOfMonth, getSixMonthAgoFromNow, openUrlOnNewWindow } from '@/modules/utils';
 import { setPagingOption, toggleLoaderUserPanel, fetchData, setTransactionId, redirectToDailyEarning, setExpandMonthDateList, redirectToSubAffiliate } from '../actions';
-import { headerText, globalResource, monthlyEarning, MONTHLY_TOTAL, MONTHLY_EARNING, PAYMENT_REQUEST, SUBAFFILIATE, selectedAllProduct, maxWidth, CalculatedMonth, CPA_EARNING } from '../modules/constants';
+import { headerText, globalResource, MONTHLY_TOTAL, CALCULATED_MONTH, transTypeSettings, selectedAllProduct, maxWidth, paymentCPAManagementSettings} from '../modules/constants';
 import { getScrollTopPosition, setScrollTop } from '../modules/utils';
+import { relativePath } from '@/pages/report/libs/constants';
 
 export class Content extends PureComponent {
     constructor(props) {
@@ -114,37 +115,95 @@ export class Content extends PureComponent {
         return this.props.redirectToSubAffiliate(subAffiliateParam);
     }
 
-    _handleRedirectToPlayerCpa = (dataItem) => {
-        const { affName } = this.props;
-        const itemDate = new Date(dataItem.MonthDate);
-        const startDate = formatDateTime(new Date(itemDate.getFullYear(), itemDate.getMonth(), 1));
-        const endDate = formatDateTime(new Date(itemDate.getFullYear(), itemDate.getMonth() + 1, 0));
-        const playerCpaParams = {
-            "userName": affName,
-            "custName": "",
-            "dealName": "",
-            "statusId": -1,
-            "viewBy": "3",
-            "fromDate": startDate,
-            "toDate": endDate,
+    _buildCpaAdjustmentParams = (itemDate) => {
+        const adjustedDate = getDayOfMonth(itemDate);
+        const adjustmentSetting = paymentCPAManagementSettings.Adjustment;
+
+        return {
+            fromDate: adjustedDate,
+            toDate: adjustedDate,
+            statusId: adjustmentSetting.Status,
+            viewBy: adjustmentSetting.ViewBy
         };
-        const playerCpaUrl = resolveClientUrl('Portal/PlayerCpaReport');
+    }
 
-        const queryString = Object.keys(playerCpaParams)
-            .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(playerCpaParams[key])}`)
-            .join('&');
+    _buildApprovedCpaParams = (today) => {
+        const approvedSetting = paymentCPAManagementSettings.Approved;
+        const fromDate = getSixMonthAgoFromNow(today);
+        const toDate = getDayOfMonth(new Date(today));
 
-        window.location = `${playerCpaUrl}?${queryString}`;
+        return {
+            fromDate,
+            toDate,
+            statusId: approvedSetting.Status,
+            viewBy: approvedSetting.ViewBy
+        };
+    }
+
+    _buildTentativeCpaParams = (itemDate, today) => {
+        const tentativeSetting = paymentCPAManagementSettings.Tentative;
+        const fromDate = getFirstDayOfMonth(itemDate);
+        const toDate = getAdjustedDateFromNow(itemDate, new Date(today));
+
+        return {
+            fromDate,
+            toDate,
+            statusId: tentativeSetting.Status,
+            viewBy: tentativeSetting.ViewBy
+        };
+    }
+
+    _isApprovedCpaTypeFromDescription = (description) => {
+        return description.includes('Approved');
+    }
+
+    _buildPaymentCpaParams = (dataItem, isCpaAdjustment) => {
+        const { affName, today } = this.props;
+        
+        if (!dataItem || !dataItem.MonthDate) {
+            alert('Invalid data item: missing required MonthDate property');
+        }
+
+        const itemDate = new Date(dataItem.MonthDate);
+        const baseParams = { affName };
+
+        if (isCpaAdjustment) {
+            return {
+                ...baseParams,
+                ...this._buildCpaAdjustmentParams(itemDate)
+            };
+        }
+
+        const isApprovedCpaType = this._isApprovedCpaTypeFromDescription(dataItem.Description);
+        
+        if (isApprovedCpaType) {
+            return {
+                ...baseParams,
+                ...this._buildApprovedCpaParams(today)
+            };
+        }
+
+        return {
+            ...baseParams,
+            ...this._buildTentativeCpaParams(itemDate, today)
+        };
+    }
+
+    _handleRedirectToPaymentCPAManagement = (dataItem, isCpaAdjustment = false) => {
+        const paramForPaymentCPAManagement = this._buildPaymentCpaParams(dataItem, isCpaAdjustment);
+
+        openUrlOnNewWindow(relativePath.redepositCpaReport, paramForPaymentCPAManagement, 'paramForPaymentCPAManagement');
     }
 
     _getClickHandlerByTransType() {
         return {
-            [PAYMENT_REQUEST]: (dataItem) => () => {
+            [transTypeSettings.PaymentRequest]: (dataItem) => () => {
                 return this.handleSetTransactionId(dataItem.TransId);
             },
-            [MONTHLY_EARNING]: (dataItem) => () => this._handleRedirectToDailyEarning(dataItem),
-            [SUBAFFILIATE]: (dataItem) => () => this._handleRedirectToSubAffiliate(dataItem),
-            [CPA_EARNING]: (dataItem) => () => this._handleRedirectToPlayerCpa(dataItem),
+            [transTypeSettings.MonthlyEarning]: (dataItem) => () => this._handleRedirectToDailyEarning(dataItem),
+            [transTypeSettings.SubAffiliate]: (dataItem) => () => this._handleRedirectToSubAffiliate(dataItem),
+            [transTypeSettings.CpaEarning]: (dataItem) => () => this._handleRedirectToPaymentCPAManagement(dataItem),
+            [transTypeSettings.CpaAdjustment]: (dataItem) => () => this._handleRedirectToPaymentCPAManagement(dataItem, true),
         }
     }
 
@@ -168,7 +227,7 @@ export class Content extends PureComponent {
         const creator = htmlDecode(dataItem.Creator);
         const description = htmlDecode(dataItem.DescriptionDisplay);
         const isTotalRow = transType === MONTHLY_TOTAL;
-        const transTypeString = isTotalRow && dataItem.CalculatedType == CalculatedMonth ? 'Monthly Total' : dataItem.TransTypeDisplayText;
+        const transTypeString = isTotalRow && dataItem.CalculatedType == CALCULATED_MONTH ? 'Monthly Total' : dataItem.TransTypeDisplayText;
 
         return (
             <React.Fragment key={`dataRow-${dataItem.TransId}-${dataItem.DateText}-${dataItem.TransType}`}>
@@ -184,7 +243,7 @@ export class Content extends PureComponent {
                             </Button>
                         ) : dataItem.DateText
                     }</Cell>
-                    <Cell title={transTypeString || monthlyEarning} className="text-center">{transTypeString || monthlyEarning}</Cell>
+                    <Cell title={transTypeString || MONTHLY_EARNING} className="text-center">{transTypeString || MONTHLY_EARNING}</Cell>
                     <Cell title={amount} className="text-right">
                         {clickHandler ?
                             (<Button className="p-0" color="link" onClick={clickHandler(dataItem)}>
@@ -244,12 +303,12 @@ export class Content extends PureComponent {
 }
 
 
-function mapStateToProps({ affCommonInfo, statementHistory }) {
+function mapStateToProps({ today, affCommonInfo, statementHistory }) {
     const { pagingOption, param, expandMonthDateList } = statementHistory;
 
     const { affId, affName } = affCommonInfo;
 
-    return Object.assign({}, { affId, affName, pagingOption, param, expandMonthDateList });
+    return Object.assign({}, { today, affId, affName, pagingOption, param, expandMonthDateList });
 }
 
 function mapDispatchToProps(dispatch) {

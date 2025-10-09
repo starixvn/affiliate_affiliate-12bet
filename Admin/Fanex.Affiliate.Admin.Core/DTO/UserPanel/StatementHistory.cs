@@ -59,11 +59,9 @@ namespace Fanex.Affiliate.Admin.Core.DTO.UserPanel
                     case Constants.TransType.CpaEarning:
                         return "CPA Earning";
                     case Constants.TransType.SubCpaEarning:
-                        return "Sub-Affiliate CPA" +
-                            "" +
-                            "" +
-                            "" +
-                            "";
+                        return "Sub-Affiliate CPA";
+                    case Constants.TransType.CpaAdjustment:
+                        return "CPA Adjustment";
                     default:
                         return "Monthly Earning";
                 }

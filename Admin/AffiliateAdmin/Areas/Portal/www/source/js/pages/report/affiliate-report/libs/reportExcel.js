@@ -89,7 +89,12 @@ const colConfig =
     [fields.QualifiedMember]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.number,
         [TOTAL_SECTION_STYLE]: totalCellStyle.number,
-        [COL_WIDTH]: 120
+        [COL_WIDTH]: 175
+    },
+    [fields.QualifiedCPAMember]: {
+        [MAIN_SECTION_STYLE]: bodyCellStyle.number,
+        [TOTAL_SECTION_STYLE]: totalCellStyle.number,
+        [COL_WIDTH]: 175
     },
     [fields.NoOfSubAff]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.number,
@@ -459,10 +464,6 @@ export default class ReportExcel {
 
         if (columnConfig.field === fields.PreferredLanguage) {
             value = this.languageList[value] || '';
-        }
-
-        if (columnConfig.field === fields.QualifiedMember) {
-            value = this.isCheckedDatePicker ? value : item.QualifiedCPAMember;
         }
 
         return {
