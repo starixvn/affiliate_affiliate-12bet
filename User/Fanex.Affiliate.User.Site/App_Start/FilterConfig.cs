@@ -15,6 +15,7 @@ namespace Fanex.Affiliate.User.Site
             }
 
             filters.Add(new JsonHandlerAttribute());
+            filters.Add(new GeoDomainRedirectFilterAttribute());
         }
     }
 }

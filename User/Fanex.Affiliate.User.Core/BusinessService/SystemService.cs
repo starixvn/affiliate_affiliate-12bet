@@ -190,10 +190,12 @@
         public IEnumerable<Language> GetSupportedLanguages()
         {
             var isInternal = _sessionService.IsInternal;
-            var cacheKey = isInternal ? CacheKey.InternalSupportedLanguageList : CacheKey.SupportedLanguageList;
+            var cacheKey = (isInternal 
+                               ? CacheKey.InternalSupportedLanguageList 
+                               : CacheKey.SupportedLanguageList) 
+                           + GetCountryCodeKey();
 
             var supportedLanguageList = _cacheService.Get<IEnumerable<Language>>(cacheKey);
-
             if (supportedLanguageList == null)
             {
                 supportedLanguageList = GetLanguageList().Where(l => !l.ShortedCode.MatchWith(SystemLanguage.ShortedTeluguCode));
@@ -206,10 +208,12 @@
         public IEnumerable<Language> GetLanguageList()
         {
             var isInternal = _sessionService.IsInternal;
-            var cacheKey = isInternal ? CacheKey.InternalLanguageList : CacheKey.LanguageList;
+            var cacheKey = (isInternal
+                               ? CacheKey.InternalLanguageList
+                               : CacheKey.LanguageList)
+                           + GetCountryCodeKey();
 
             var languageList = _cacheService.Get<IEnumerable<Language>>(cacheKey);
-
             if (languageList == null)
             {
                 languageList = GetAllLanguages(isInternal).Where(l => !l.ShortedCode.MatchWith(SystemLanguage.ShortedChineseSimplifiedInMalaysia));
@@ -221,13 +225,12 @@
 
         public IEnumerable<Language> GetLanguageByTargetCountry(string targetCountry = "")
         {
-            var cacheKey = (_sessionService.IsInternal
-                ? CacheKey.InternalLanguageListByTargetCountry
-                : CacheKey.LanguageListByTargetCountry) 
-                + targetCountry;
+            var cacheKey = (_sessionService.IsInternal 
+                               ? CacheKey.InternalLanguageListByTargetCountry 
+                               : CacheKey.LanguageListByTargetCountry) 
+                           + targetCountry;
 
             var languageListByTargetCountry = _cacheService.Get<IEnumerable<Language>>(cacheKey);
-
             if (languageListByTargetCountry == null)
             {
                 languageListByTargetCountry = GetTargetCountries(targetCountry, false)
@@ -249,13 +252,18 @@
 
         private IEnumerable<Language> GetAllLanguages(bool isForInternal)
         {
-            return FetchTData<Language>(new GetLanguageListCriteria(isForInternal));
+            var countryCode = GetCountryCode();
+            return FetchTData<Language>(new GetLanguageListCriteria(isForInternal))
+                .FilterLanguageByCountry(l => l.Code, countryCode);
         }
 
         public IEnumerable<TargetCountryLanguage> GetSystemTargetCountries()
         {
             var isInternal = _sessionService.IsInternal;
-            var cacheKey = isInternal ? CacheKey.InternalTargetCountryList : CacheKey.TargetCountryList;
+            var cacheKey = (isInternal
+                               ? CacheKey.InternalTargetCountryList
+                               : CacheKey.TargetCountryList)
+                           + GetCountryCodeKey();
 
             var targetCountryList = _cacheService.Get<IEnumerable<TargetCountryLanguage>>(cacheKey);
             if (targetCountryList == null)
@@ -284,12 +292,15 @@
 
         public IEnumerable<Currency> GetBaseCurrencyList()
         {
-            var baseCurrencyList = _cacheService.Get<IEnumerable<Currency>>(CacheKey.BaseCurrencyList);
+            var countryCode = GetCountryCode();
+            var cacheKey = CacheKey.BaseCurrencyList + GetCountryCodeKey();
 
+            var baseCurrencyList = _cacheService.Get<IEnumerable<Currency>>(cacheKey);
             if (baseCurrencyList == null)
             {
-                baseCurrencyList = FetchTData<Currency>(new GetBaseCurrencyListCriteria());
-                _cacheService.Set(CacheKey.BaseCurrencyList, baseCurrencyList);
+                baseCurrencyList = FetchTData<Currency>(new GetBaseCurrencyListCriteria())
+                    .FilterCurrencyByCountry(x=> x.Code, countryCode);
+                _cacheService.Set(cacheKey, baseCurrencyList);
             }
 
             return baseCurrencyList;
@@ -298,12 +309,19 @@
         private IEnumerable<TargetCountryLanguage> GetTargetCountries(string targetCountryCode = "", bool isDefault = true)
         {
             var isInternal = _sessionService.IsInternal;
-            return FetchTData<TargetCountryLanguage>(new GetTargetCountryCriteria(isInternal, targetCountryCode, isDefault));
+            var countryCode = GetCountryCode();
+
+            var targetCountries = FetchTData<TargetCountryLanguage>(new GetTargetCountryCriteria(isInternal, targetCountryCode, isDefault));
+            return targetCountries.FilterSpecialCountry(c => c.TargetCountryCode, countryCode);
         }
 
         public Dictionary<string, List<TargetCountryLanguage>> GetTargetCountryLanguages()
         {
-            var cacheKey = _sessionService.IsInternal ? CacheKey.InternalTargetCountryLanguages : CacheKey.TargetCountryLanguages;
+            var cacheKey = (_sessionService.IsInternal
+                               ? CacheKey.InternalTargetCountryLanguages
+                               : CacheKey.TargetCountryLanguages)
+                           + GetCountryCodeKey();
+
             var targetCountryLanguages = _cacheService.Get<IEnumerable<TargetCountryLanguage>>(cacheKey);
             if (targetCountryLanguages == null)
             {
@@ -321,6 +339,21 @@
                 );
 
             return result;
+        }
+
+        private string GetCountryCode() 
+            => _sessionService.UserSession?.TargetCountryCode 
+               ?? _sessionService.CountryByIp;
+
+        private string GetCountryCodeKey()
+        {
+            var countryCode = GetCountryCode();
+            if (SystemLanguage.SpecialCountry.ContainsKey(countryCode))
+            {
+                return $"_{countryCode}";
+            }
+
+            return "_";
         }
     }
 }

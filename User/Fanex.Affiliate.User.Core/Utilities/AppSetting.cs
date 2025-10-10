@@ -83,6 +83,10 @@ namespace Fanex.Affiliate.User.Core.Utilities
 
         public string SubAffTextLinkTemplate => GetValue("SubAffTextLinkTemplate");
 
+        public string DefaultDomainSite => GetValue("DefaultDomainSite");
+
+        public string DefaultDomainSiteByCountry(string countryCode) => GetValue("DefaultDomainSite:" + countryCode) ?? DefaultDomainSite;
+
         public string GetValue(string key) => ConfigurationManager.AppSettings[key];
     }
 }

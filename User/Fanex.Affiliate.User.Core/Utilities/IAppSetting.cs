@@ -80,5 +80,9 @@ namespace Fanex.Affiliate.User.Core.Utilities
         bool IsApiDataModifiable { get; }
 
         string SubAffTextLinkTemplate { get; }
+
+        string DefaultDomainSite { get; }
+
+        string DefaultDomainSiteByCountry(string countryCode);
     }
 }

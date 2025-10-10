@@ -14,5 +14,7 @@
         internal const string VerificationSessionKey = "Affiliate12B.VerificationSessionKey";
 
         internal const string CurrentCountryKey = "Affiliate12B.CurrentCountryKey";
+
+        internal const string CountryByIpKey = "Affiliate12B.CountryByIpKey";
     }
 }

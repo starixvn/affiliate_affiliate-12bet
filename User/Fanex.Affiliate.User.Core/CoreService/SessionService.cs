@@ -62,6 +62,24 @@ namespace Fanex.Affiliate.User.Core.CoreService
             set => HttpContext.Current.Session[CurrentCountryKey] = value;
         }
 
+        public string CountryByIp
+        {
+            get
+            {
+                var session = HttpContext.Current.Session;
+
+                if (session == null)
+                {
+                    return SystemLanguage.DefaultCountryByIp;
+                }
+
+                var countryIp = session[CountryByIpKey] as string;
+
+                return string.IsNullOrWhiteSpace(countryIp) ? SystemLanguage.DefaultCountryByIp : countryIp;
+            }
+            set => HttpContext.Current.Session[CountryByIpKey] = value;
+        }
+
         public bool IsInternal
         {
             get { return (bool)(HttpContext.Current.Session[IsInternalKey] ?? false); }
@@ -102,7 +120,8 @@ namespace Fanex.Affiliate.User.Core.CoreService
                 IsMaxSubLevel = authorizedUser.IsMaxSubLevel,
                 IsDepositFeePercent = authorizedUser.IsDepositFeePercent,
                 IsWithdrawalFeePercent = authorizedUser.IsWithdrawalFeePercent,
-                DisabledTransfer = true //authorizedUser.DisabledTransfer //Hide Transfer Player
+                DisabledTransfer = true, //authorizedUser.DisabledTransfer //Hide Transfer Player
+                TargetCountryCode = authorizedUser.TargetCountryCode
             };
 
             HttpContext.Current.Session[UserSessionKey] = userSession;

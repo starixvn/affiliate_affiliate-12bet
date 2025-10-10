@@ -1,4 +1,8 @@
-﻿using Fanex.Affiliate.User.Core.BusinessService;
+﻿using System;
+using System.Web.Mvc;
+using System.Web.UI;
+using Fanex.Affiliate.User.Core.BusinessService;
+using Fanex.Affiliate.User.Core.Constants;
 using Fanex.Affiliate.User.Core.CoreService;
 using Fanex.Affiliate.User.Core.DTO;
 using Fanex.Affiliate.User.Core.DTO.VerificationAccount;
@@ -8,9 +12,6 @@ using Fanex.Affiliate.User.Core.MetalModels;
 using Fanex.Affiliate.User.Core.Resources;
 using Fanex.Affiliate.User.Core.Utilities;
 using Fanex.Affiliate.User.Core.ViewModels;
-using System;
-using System.Web.Mvc;
-using System.Web.UI;
 
 namespace Fanex.Affiliate.User.Core.Controllers
 {
@@ -84,6 +85,11 @@ namespace Fanex.Affiliate.User.Core.Controllers
             var userInfo = loginResult.UserInfo;
             if (userInfo != null)
             {
+                if (IsInvalidCountryAccess(userInfo.TargetCountryCode, countryCode, AppSetting.SiteName))
+                {
+                    return Json(GetErrorResult(Lang.NotAllowOnCountry));
+                }
+
                 if (!IsValidDomain(userInfo.AffType))
                 {
                     return Json(GetErrorResult(Lang.NotAllowOnDomain));
@@ -107,6 +113,7 @@ namespace Fanex.Affiliate.User.Core.Controllers
         }
 
         [HttpGet]
+        [SkipGeoDomainRedirect]
         public ActionResult AdminLogin(InternalLoginModel loginParam)
         {
             if (ModelState.IsValid)
@@ -189,6 +196,30 @@ namespace Fanex.Affiliate.User.Core.Controllers
         {
             Session.Clear();
             AuthService.SignOut();
+        }
+
+        private bool IsInvalidCountryAccess(string targetCountryCode, string countryByIp)
+        {
+            bool isCountryShortEmpty = string.IsNullOrEmpty(countryByIp) || countryByIp == SystemLanguage.DefaultCountryByIp;
+            bool isTargetCountrySpecial = SystemLanguage.SpecialCountry.ContainsKey(targetCountryCode);
+
+            // Case 1: IP country not detected
+            if (isCountryShortEmpty)
+            {
+                // Invalid only if target is special (restricted access)
+                return isTargetCountrySpecial;
+            }
+
+            bool isCountryShortSpecial = SystemLanguage.SpecialCountry.ContainsKey(countryByIp);
+
+            // Case 2: IP country is special → only valid if target matches
+            if (isCountryShortSpecial)
+            {
+                return targetCountryCode != countryByIp;
+            }
+
+            // Case 3: IP country is normal → valid if both are normal (not special)
+            return isTargetCountrySpecial;
         }
     }
 }

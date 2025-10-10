@@ -1,6 +1,7 @@
-﻿using Fanex.Affiliate.User.Core.Resources;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using Fanex.Affiliate.User.Core.Resources;
 
 namespace Fanex.Affiliate.User.Core.Constants
 {
@@ -165,7 +166,20 @@ namespace Fanex.Affiliate.User.Core.Constants
 
         public static IReadOnlyDictionary<string, IList<KeyValuePair<string, string>>> SupportedAlternateLanguages => _supportedAlternateLanguages;
 
+        public static Dictionary<string, List<(string Language, string Currency)>> SpecialCountry
+            => new Dictionary<string, List<(string Language, string Currency)>>(StringComparer.OrdinalIgnoreCase)
+            {
+                { PhilippinesCountryCode, new List<(string, string)>
+                    {
+                        (EnglishLanguageCode, PhilippinesCurrency),
+                        (EnglishLanguageCode, DefaultCurrencyCode)
+                    }
+                }
+            };
+
         public static IList<string> UnsupportedP2pProductLanguages => _unsupportedP2pProductLanguages;
+
+        public const string DefaultCurrencyCode = "USD";
 
         public const string DefaultLanguageCode = _English_LanguageCode;
 
@@ -199,7 +213,11 @@ namespace Fanex.Affiliate.User.Core.Constants
 
         public const string ShortedChineseSimplifiedInMalaysia = "mycs";
 
-        public const string SelectedAllLanguages = "";
+        public const string PhilippinesCountryCode = "PH";
+
+        public const string PhilippinesCurrency = "PHP";
+
+        public const string DefaultCountryByIp = "-";
 
         public static string GetShortedCodeForTracking(string currentLanguage)
         {
@@ -242,8 +260,8 @@ namespace Fanex.Affiliate.User.Core.Constants
 
         public static string GetLanguageText(string value)
         {
-            return (value.Contains("(") 
-                           ? Lang.ResourceManager.GetString(value.Replace(" (", "").Replace(")", "")) 
+            return (value.Contains("(")
+                           ? Lang.ResourceManager.GetString(value.Replace(" (", "").Replace(")", ""))
                            : Lang.ResourceManager.GetString(value.Replace(" ", "")))
                    ?? value;
         }

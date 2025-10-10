@@ -13,6 +13,8 @@ namespace Fanex.Affiliate.User.Core.CoreService
 
         string CurrentCountry { get; set; }
 
+        string CountryByIp { get; set; }
+
         bool IsInternal { get; set; }
 
         bool IsUnauthorized { get; }
