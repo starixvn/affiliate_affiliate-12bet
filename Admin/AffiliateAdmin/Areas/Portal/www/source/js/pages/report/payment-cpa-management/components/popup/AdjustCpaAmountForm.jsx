@@ -1,12 +1,26 @@
 import React, { useState, useMemo } from 'react';
 
 import { Form, FormGroup, Label, Col, Input, Button } from 'reactstrap';
-import { format, formatDecimal } from '../../../../../modules/numberFormat';
+import { formatDecimal } from '../../../../../modules/numberFormat';
 import { money } from '../../../../../modules/constants';
+import { useFormattedNumberInput } from '../../hooks/useFormattedNumberInput';
 
 export const AdjustCpaAmountForm = ({ adjustAmountParam, setAdjustAmountParam, onSubmit }) => {
     const { estimatedAmount, approvedAmount, newAmount, transDesc, isApproved } = adjustAmountParam;
-    const [displayValue, setDisplayValue] = useState('');
+
+    // Use custom hook for number input
+    const { displayValue, inputRef, handleChange: handleAmountChange } = useFormattedNumberInput('', {
+        maxValue: money.AllowedMaxValue,
+        minValue: 0,
+        allowDecimal: true,
+        decimalPlaces: 2,
+        onValueChange: (value) => {
+            setAdjustAmountParam({
+                newAmount: value,
+                adjustAmount: value - +approvedAmount
+            });
+        }
+    });
 
     const [formState, setFormState] = useState({
         message: '',
@@ -69,38 +83,9 @@ export const AdjustCpaAmountForm = ({ adjustAmountParam, setAdjustAmountParam, o
         setFieldTouched(fieldName);
     };
 
-    const parseValue = (value) => value.replace(/,/g, '').trim();
-
-    const isValidDecimalNumber = (inputValue) => {
-        const regex = /^\d*\.?\d{0,2}$/;
-        return regex.test(inputValue);
-    };
-
-
     const handleChangeAmount = (e) => {
-        const { value } = e.target;
         setFieldTouched('newAmount');
-
-        const parsedValue = parseValue(value);
-        if (isValidDecimalNumber(parsedValue)
-            && Number(parsedValue) >= 0
-            && Number(parsedValue) <= money.AllowedMaxValue) {
-
-            const hasDecimal = value.includes('.');
-            const [integerPart, decimalPart] = hasDecimal ? value.split('.') : [value, null];
-            const numValue = Number(parseValue(integerPart));
-
-            let formattedDisplayValue = format(numValue);
-            if (hasDecimal) {
-                formattedDisplayValue += decimalPart !== null ? `.${decimalPart}` : '.';
-            }
-
-            setDisplayValue(formattedDisplayValue);
-            setAdjustAmountParam({
-                newAmount: Number(parsedValue),
-                adjustAmount: Number(parsedValue) - +approvedAmount
-            });
-        }
+        handleAmountChange(e);
     };
 
     const handleChangeTransDesc = (e) => {
@@ -143,6 +128,7 @@ export const AdjustCpaAmountForm = ({ adjustAmountParam, setAdjustAmountParam, o
                         </Label>
                         <Col sm={5}>
                             <Input
+                                innerRef={inputRef}
                                 className='text-left'
                                 type='text'
                                 name='newAmount'
@@ -189,6 +175,7 @@ export const AdjustCpaAmountForm = ({ adjustAmountParam, setAdjustAmountParam, o
                         </Label>
                         <Col sm={5}>
                             <Input
+                                innerRef={inputRef}
                                 className='text-left'
                                 type='text'
                                 name='newAmount'
