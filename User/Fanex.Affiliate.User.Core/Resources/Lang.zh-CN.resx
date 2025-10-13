@@ -120,6 +120,9 @@
   <data name="AccInfo" xml:space="preserve">
     <value>帐户资料</value>
   </data>
+  <data name="AccountNumber" xml:space="preserve">
+    <value>银行账号</value>
+  </data>
   <data name="AccOverview" xml:space="preserve">
     <value>帐户概要</value>
   </data>
@@ -215,6 +218,12 @@
   </data>
   <data name="BankAddress" xml:space="preserve">
     <value>银行地址</value>
+  </data>
+  <data name="BankCity" xml:space="preserve">
+    <value>城市／乡镇</value>
+  </data>
+  <data name="BankCountry" xml:space="preserve">
+    <value>省</value>
   </data>
   <data name="BankName" xml:space="preserve">
     <value>银行名</value>
@@ -339,6 +348,12 @@
   <data name="ChinaPeoplesRep" xml:space="preserve">
     <value>中国大陆</value>
   </data>
+  <data name="ChineseSimplified" xml:space="preserve">
+    <value>简体中文</value>
+  </data>
+  <data name="ChineseTraditional" xml:space="preserve">
+    <value>繁体中文</value>
+  </data>
   <data name="City" xml:space="preserve">
     <value>城市</value>
   </data>
@@ -350,6 +365,9 @@
   </data>
   <data name="Comm" xml:space="preserve">
     <value>佣金比例</value>
+  </data>
+  <data name="CommShorted" xml:space="preserve">
+    <value>佣金</value>
   </data>
   <data name="Comment" xml:space="preserve">
     <value>意见</value>
@@ -446,6 +464,9 @@
   </data>
   <data name="DescWebsite" xml:space="preserve">
     <value>如您没有网站，请详细描述 您将如何推广壹贰博网站。</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>设备</value>
   </data>
   <data name="DominicaCommonwealthof" xml:space="preserve">
     <value>多米尼克</value>
@@ -551,6 +572,9 @@
   </data>
   <data name="Finland" xml:space="preserve">
     <value>芬兰</value>
+  </data>
+  <data name="FirstDepositDate" xml:space="preserve">
+    <value>首次注册日期</value>
   </data>
   <data name="FirstNameIsRequired" xml:space="preserve">
     <value>请填写您的名</value>
@@ -801,11 +825,22 @@
   <data name="MessageHistory" xml:space="preserve">
     <value>最新消息</value>
   </data>
+  <data name="MessageSentReview" xml:space="preserve">
+    <value>感谢您与我们联系. &lt;br /&gt;
+您的信息已经发送。我们将尽快答复您的申请。 &lt;br /&gt;
+如有任何问题，欢迎随时致电1-34354-3454 &lt;br /&gt;&lt;br /&gt;
+祝您好运！ &lt;br /&gt;&lt;br /&gt;
+致以敬意， &lt;br /&gt;&lt;br /&gt;
+12BET合作伙伴团队</value>
+  </data>
   <data name="Mexico" xml:space="preserve">
     <value>墨西哥</value>
   </data>
   <data name="MinWithdraw" xml:space="preserve">
     <value>最低提款金额为</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>手机号码</value>
   </data>
   <data name="Moldova" xml:space="preserve">
     <value>摩尔多瓦</value>
@@ -855,6 +890,9 @@
   <data name="CompanyNetWin" xml:space="preserve">
     <value>每月盈亏总额 (CNW)($)</value>
   </data>
+  <data name="NewWithExclamationPoint" xml:space="preserve">
+    <value>全新！</value>
+  </data>
   <data name="NewCaledonia" xml:space="preserve">
     <value>新喀里多尼亚</value>
   </data>
@@ -863,6 +901,9 @@
   </data>
   <data name="NewPasswordisre" xml:space="preserve">
     <value>请填写新密码</value>
+  </data>
+  <data name="NewSignupAndDeposited" xml:space="preserve">
+    <value>新注册 / 存款 会员</value>
   </data>
   <data name="NewZealand" xml:space="preserve">
     <value>新西兰</value>
@@ -879,11 +920,17 @@
   <data name="none" xml:space="preserve">
     <value>无</value>
   </data>
+  <data name="Non_Deposit" xml:space="preserve">
+    <value>无存款纪录</value>
+  </data>
   <data name="Normal" xml:space="preserve">
     <value>普通</value>
   </data>
   <data name="Norway" xml:space="preserve">
     <value>挪威</value>
+  </data>
+  <data name="NotAllowOnDomain" xml:space="preserve">
+    <value>很抱歉！您无法在此网域登录。</value>
   </data>
   <data name="November" xml:space="preserve">
     <value>十一月</value>
@@ -905,6 +952,9 @@
   </data>
   <data name="Oman" xml:space="preserve">
     <value>阿曼</value>
+  </data>
+  <data name="Original" xml:space="preserve">
+    <value>最初</value>
   </data>
   <data name="OwnWebsite" xml:space="preserve">
     <value>我有网站</value>
@@ -1027,6 +1077,9 @@
 致以敬意，&lt;br /&gt;
 12Bet合作伙伴团队。&lt;br /&gt;
 如您未收到任何邮件，请检查您的垃圾邮件或&lt;a href='{0}'&gt;联系在线客服&lt;/a&gt;寻找协助。</value>
+  </data>
+  <data name="RegisteredDate" xml:space="preserve">
+    <value>注册日期</value>
   </data>
   <data name="Rejected" xml:space="preserve">
     <value>拒绝</value>
@@ -1244,6 +1297,9 @@
   <data name="Transaction" xml:space="preserve">
     <value>交易</value>
   </data>
+  <data name="TransactionID" xml:space="preserve">
+    <value>交易代码</value>
+  </data>
   <data name="TrinidadandTobago" xml:space="preserve">
     <value>特立尼达和多巴哥</value>
   </data>
@@ -1292,6 +1348,9 @@
   <data name="USD" xml:space="preserve">
     <value>美元</value>
   </data>
+  <data name="USDEqv" xml:space="preserve">
+    <value>USD 价值</value>
+  </data>
   <data name="Username" xml:space="preserve">
     <value>用户名</value>
   </data>
@@ -1309,6 +1368,9 @@
   </data>
   <data name="Vietnamese" xml:space="preserve">
     <value>越南语</value>
+  </data>
+  <data name="VirtualSports" xml:space="preserve">
+    <value>虚拟运动</value>
   </data>
   <data name="WebsiteInfor" xml:space="preserve">
     <value>网站资料</value>
@@ -1328,11 +1390,17 @@
   <data name="Winlost" xml:space="preserve">
     <value>輸贏</value>
   </data>
+  <data name="Withdrawal" xml:space="preserve">
+    <value>提款</value>
+  </data>
   <data name="Year" xml:space="preserve">
     <value>年</value>
   </data>
   <data name="Yemen" xml:space="preserve">
     <value>也门</value>
+  </data>
+  <data name="YourCustomers" xml:space="preserve">
+    <value>顾客信息</value>
   </data>
   <data name="YourEmail" xml:space="preserve">
     <value>您的电邮:</value>
@@ -1355,6 +1423,33 @@
   <data name="_12BETPlayerAcc" xml:space="preserve">
     <value>12BET玩家帐户</value>
   </data>
+  <data name="CommissionStructure" xml:space="preserve">
+    <value>佣金结构</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>产品</value>
+  </data>
+  <data name="AllProducts" xml:space="preserve">
+    <value>所有产品</value>
+  </data>
+  <data name="ESports" xml:space="preserve">
+    <value>电子竞技</value>
+  </data>
+  <data name="RngKeno" xml:space="preserve">
+    <value>快乐彩</value>
+  </data>
+  <data name="Lottery" xml:space="preserve">
+    <value>彩票</value>
+  </data>
+  <data name="MoreDetailProduct" xml:space="preserve">
+    <value>更多有关12BET产品信息</value>
+  </data>
+  <data name="TermAndCondition" xml:space="preserve">
+    <value>条款与规则</value>
+  </data>
+  <data name="JoinNowHeader" xml:space="preserve">
+    <value>立即加入</value>
+  </data>
   <data name="EmailTitleNewPassword" xml:space="preserve">
     <value>您的新密码</value>
   </data>
@@ -1366,6 +1461,36 @@
   </data>
   <data name="EmailTitleSignUp" xml:space="preserve">
     <value>已收到申请 </value>
+  </data>
+  <data name="CommissionReport" xml:space="preserve">
+    <value>佣金报表</value>
+  </data>
+  <data name="Temporary" xml:space="preserve">
+    <value>暂时</value>
+  </data>
+  <data name="Uncalculated" xml:space="preserve">
+    <value>尚未计算</value>
+  </data>
+  <data name="BankingFee" xml:space="preserve">
+    <value>存款手续费</value>
+  </data>
+  <data name="CommRate" xml:space="preserve">
+    <value>子代理佣金比例</value>
+  </data>
+  <data name="GrossWinLoss" xml:space="preserve">
+    <value>总盈亏</value>
+  </data>
+  <data name="OperationalFee" xml:space="preserve">
+    <value>营运费</value>
+  </data>
+  <data name="PlatformFee" xml:space="preserve">
+    <value>平台手续费</value>
+  </data>
+  <data name="NoteCommissionCalculation" xml:space="preserve">
+    <value>佣金 = （总盈亏—平台费—营运费—银行手续费—红利）x 佣金比例</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>在处理您的请求时发生问题，请与管理员联系。</value>
   </data>
   <data name="CasinoClubs" xml:space="preserve">
     <value>12BET 娱乐城</value>
@@ -1412,12 +1537,6 @@
   <data name="Product12AMBER" xml:space="preserve">
     <value>琥珀厅 (BETSOFT)</value>
   </data>
-  <data name="AllProducts" xml:space="preserve">
-    <value>所有产品</value>
-  </data>
-  <data name="MoreDetailProduct" xml:space="preserve">
-    <value>更多有关12BET产品信息</value>
-  </data>
   <data name="SupportTime" xml:space="preserve">
     <value>8.00 AM - 5.00 PM&lt;br /&gt;(GMT +8)</value>
   </data>
@@ -1439,32 +1558,8 @@
   <data name="ValidationCodeLabel" xml:space="preserve">
     <value>验证码</value>
   </data>
-  <data name="TermAndCondition" xml:space="preserve">
-    <value>条款与规则</value>
-  </data>
-  <data name="CommissionStructure" xml:space="preserve">
-    <value>佣金结构</value>
-  </data>
-  <data name="Product" xml:space="preserve">
-    <value>产品</value>
-  </data>
-  <data name="VirtualSports" xml:space="preserve">
-    <value>虚拟运动</value>
-  </data>
-  <data name="ESports" xml:space="preserve">
-    <value>电子竞技</value>
-  </data>
-  <data name="RngKeno" xml:space="preserve">
-    <value>快乐彩</value>
-  </data>
-  <data name="Lottery" xml:space="preserve">
-    <value>彩票</value>
-  </data>
   <data name="SignUpAffiliateProgramNow" xml:space="preserve">
     <value>立即注册为合作伙伴！</value>
-  </data>
-  <data name="JoinNowHeader" xml:space="preserve">
-    <value>立即加入</value>
   </data>
   <data name="ApplyOneTwoBetAffiliate" xml:space="preserve">
     <value>申请12BET合作伙伴</value>
@@ -1477,9 +1572,6 @@
   </data>
   <data name="OneTwoBetAffiliateNews" xml:space="preserve">
     <value>12BET合作伙伴资讯</value>
-  </data>
-  <data name="NewWithExclamationPoint" xml:space="preserve">
-    <value>全新！</value>
   </data>
   <data name="NewBannerIsNowAvailable" xml:space="preserve">
     <value>新横幅广告上线</value>
@@ -1505,80 +1597,11 @@
   <data name="ContactNow" xml:space="preserve">
     <value>联系我们！</value>
   </data>
-  <data name="CommissionReport" xml:space="preserve">
-    <value>佣金报表</value>
-  </data>
-  <data name="GrossWinLoss" xml:space="preserve">
-    <value>总盈亏</value>
-  </data>
-  <data name="PlatformFee" xml:space="preserve">
-    <value>平台手续费</value>
-  </data>
-  <data name="OperationalFee" xml:space="preserve">
-    <value>营运费</value>
-  </data>
-  <data name="BankingFee" xml:space="preserve">
-    <value>存款手续费</value>
-  </data>
-  <data name="CommRate" xml:space="preserve">
-    <value>子代理佣金比例</value>
-  </data>
-  <data name="CommShorted" xml:space="preserve">
-    <value>佣金</value>
-  </data>
-  <data name="NoteCommissionCalculation" xml:space="preserve">
-    <value>佣金 = （总盈亏—平台费—营运费—银行手续费—红利）x 佣金比例</value>
-  </data>
-  <data name="Temporary" xml:space="preserve">
-    <value>暂时</value>
-  </data>
-  <data name="Uncalculated" xml:space="preserve">
-    <value>尚未计算</value>
-  </data>
-  <data name="ServerError" xml:space="preserve">
-    <value>在处理您的请求时发生问题，请与管理员联系。</value>
-  </data>
-  <data name="AccountNumber" xml:space="preserve">
-    <value>银行账号</value>
-  </data>
-  <data name="BankCity" xml:space="preserve">
-    <value>城市／乡镇</value>
-  </data>
-  <data name="BankCountry" xml:space="preserve">
-    <value>省</value>
-  </data>
-  <data name="TransactionID" xml:space="preserve">
-    <value>交易代码</value>
-  </data>
-  <data name="Original" xml:space="preserve">
-    <value>最初</value>
-  </data>
-  <data name="USDEqv" xml:space="preserve">
-    <value>USD 价值</value>
-  </data>
-  <data name="Device" xml:space="preserve">
-    <value>设备</value>
-  </data>
   <data name="PCDevice" xml:space="preserve">
     <value>台式机电脑／笔记本电脑</value>
   </data>
-  <data name="YourCustomers" xml:space="preserve">
-    <value>顾客信息</value>
-  </data>
-  <data name="FirstDepositDate" xml:space="preserve">
-    <value>首次注册日期</value>
-  </data>
-  <data name="MobileNumber" xml:space="preserve">
+  <data name="MobileDevice" xml:space="preserve">
     <value>手机号码</value>
-  </data>
-  <data name="RegisteredDate" xml:space="preserve">
-    <value>注册日期</value>
-  </data>
-  <data name="Non_Deposit" xml:space="preserve">
-    <value>无存款纪录</value>
-  </data>
-  <data name="NotAllowOnDomain" xml:space="preserve">
-    <value>很抱歉！您无法在此网域登录。</value>
   </data>
   <data name="Statistics" xml:space="preserve">
     <value>统计数据</value>
@@ -1604,12 +1627,6 @@
   <data name="ForgotLoginDetail" xml:space="preserve">
     <value>忘记登录信息？</value>
   </data>
-  <data name="Withdrawal" xml:space="preserve">
-    <value>提款</value>
-  </data>
-  <data name="MobileDevice" xml:space="preserve">
-    <value>手机号码</value>
-  </data>
   <data name="NonDeposited" xml:space="preserve">
     <value>仅限未存款玩家</value>
   </data>
@@ -1624,6 +1641,12 @@
   </data>
   <data name="Language" xml:space="preserve">
     <value>语言</value>
+  </data>
+  <data name="IN" xml:space="preserve">
+    <value>IN</value>
+  </data>
+  <data name="Player" xml:space="preserve">
+    <value>玩家</value>
   </data>
   <data name="MetaTitle" xml:space="preserve">
     <value>成为12BET代理 | 12BET合作伙伴</value>
@@ -1657,6 +1680,18 @@
   </data>
   <data name="TableCardGames" xml:space="preserve">
     <value>桌面/纸牌游戏</value>
+  </data>
+  <data name="EmailTittleVerificationAccount" xml:space="preserve">
+    <value>验证码</value>
+  </data>
+  <data name="SubjectVerificationAccount" xml:space="preserve">
+    <value>12B 合作伙伴—验证码</value>
+  </data>
+  <data name="ErrmsgEntryCaptcha" xml:space="preserve">
+    <value>请输入验证码</value>
+  </data>
+  <data name="ErrmsgEntryVerificationCode" xml:space="preserve">
+    <value>请输入验证码</value>
   </data>
   <data name="DearCustomer" xml:space="preserve">
     <value>敬爱的顾客，</value>
@@ -1742,6 +1777,9 @@
   <data name="SuffixProduct12AMBER" xml:space="preserve">
     <value>(BETSOFT)</value>
   </data>
+  <data name="MKK" xml:space="preserve">
+    <value>MMK</value>
+  </data>
   <data name="_12BetExchange" xml:space="preserve">
     <value>12BET EXCHANGE &lt;br /&gt;
 (仅适用于INR和IN.USD会员）</value>
@@ -1760,6 +1798,12 @@
   </data>
   <data name="Product12GOLD" xml:space="preserve">
     <value>黄金厅 (SA GAMING)</value>
+  </data>
+  <data name="PrefixProduct12JADE" xml:space="preserve">
+    <value>玉石厅</value>
+  </data>
+  <data name="SuffixProduct12JADE" xml:space="preserve">
+    <value>(AE SEXY)</value>
   </data>
   <data name="Product12JADE" xml:space="preserve">
     <value>玉石厅 (AE SEXY)</value>
@@ -1791,8 +1835,11 @@
   <data name="Product12JASPER" xml:space="preserve">
     <value>碧玉厅 (N2 LIVE)</value>
   </data>
-  <data name="PrefixProduct12JADE" xml:space="preserve">
-    <value>玉石厅</value>
+  <data name="AndarBahar" xml:space="preserve">
+    <value>Andar Bahar</value>
+  </data>
+  <data name="Teenpatti" xml:space="preserve">
+    <value>Teenpatti</value>
   </data>
   <data name="Promotion" xml:space="preserve">
     <value>优惠活动</value>
@@ -1818,11 +1865,11 @@
   <data name="WeWouldLove" xml:space="preserve">
     <value>期待您反馈的意见，以改善我们的服务。</value>
   </data>
-  <data name="PleaseLeaveYourFeedback" xml:space="preserve">
-    <value>请在下面留下您的意见反馈：</value>
-  </data>
   <data name="WhatIsYourOpinion" xml:space="preserve">
     <value>您对12BET的合作伙伴有何看法？</value>
+  </data>
+  <data name="PleaseLeaveYourFeedback" xml:space="preserve">
+    <value>请在下面留下您的意见反馈：</value>
   </data>
   <data name="ThankYou" xml:space="preserve">
     <value>非常感谢您提供的宝贵意见。</value>
@@ -1836,79 +1883,20 @@
   <data name="CambodiaSupport" xml:space="preserve">
     <value>柬埔寨客服</value>
   </data>
-  <data name="SuffixProduct12JADE" xml:space="preserve">
-    <value>(AE SEXY)</value>
-  </data>
-  <data name="AndarBahar" xml:space="preserve">
-    <value>Andar Bahar</value>
-  </data>
-  <data name="Teenpatti" xml:space="preserve">
-    <value>Teenpatti</value>
-  </data>
-  <data name="ChineseTraditional" xml:space="preserve">
-    <value>繁体中文</value>
-  </data>
-  <data name="ChineseSimplified" xml:space="preserve">
-    <value>简体中文</value>
-  </data>
-  <data name="IN" xml:space="preserve">
-    <value>IN</value>
-  </data>
-  <data name="MKK" xml:space="preserve">
-    <value>MMK</value>
-  </data>
-  <data name="NewSignUp" xml:space="preserve">
-    <value>新的注册</value>
-  </data>
-  <data name="MessageSentReview" xml:space="preserve">
-    <value>感谢您与我们联系. &lt;br /&gt;
-您的信息已经发送。我们将尽快答复您的申请。 &lt;br /&gt;
-如有任何问题，欢迎随时致电1-34354-3454 &lt;br /&gt;&lt;br /&gt;
-祝您好运！ &lt;br /&gt;&lt;br /&gt;
-致以敬意， &lt;br /&gt;&lt;br /&gt;
-12BET合作伙伴团队</value>
-  </data>
-  <data name="ErrmsgEntryVerificationCode" xml:space="preserve">
-    <value>请输入验证码</value>
-  </data>
-  <data name="ErrmsgEntryCaptcha" xml:space="preserve">
-    <value>请输入验证码</value>
-  </data>
-  <data name="Summary" xml:space="preserve">
-    <value>摘要</value>
-  </data>
-  <data name="AffiliateLink" xml:space="preserve">
-    <value>合作伙伴链接</value>
-  </data>
-  <data name="LastLogin" xml:space="preserve">
-    <value>最后一次登录</value>
-  </data>
-  <data name="LastLoginIpAddress" xml:space="preserve">
-    <value>最后登录的IP地址</value>
-  </data>
-  <data name="Overview" xml:space="preserve">
-    <value>概述</value>
-  </data>
-  <data name="PlayersDetails" xml:space="preserve">
-    <value>基本信息</value>
+  <data name="ActivePlayersAndQualified" xml:space="preserve">
+    <value>活跃玩家 / 符合资格</value>
   </data>
   <data name="TotalTurnover" xml:space="preserve">
     <value>总投注额</value>
   </data>
-  <data name="EmailTittleVerificationAccount" xml:space="preserve">
-    <value>验证码</value>
+  <data name="PlayersDetails" xml:space="preserve">
+    <value>基本信息</value>
   </data>
-  <data name="Player" xml:space="preserve">
-    <value>玩家</value>
+  <data name="Overview" xml:space="preserve">
+    <value>概述</value>
   </data>
-  <data name="SubjectVerificationAccount" xml:space="preserve">
-    <value>12B 合作伙伴—验证码</value>
-  </data>
-  <data name="NewSignupAndDeposited" xml:space="preserve">
-    <value>新注册 / 存款 会员</value>
-  </data>
-  <data name="ActivePlayersAndQualified" xml:space="preserve">
-    <value>活跃玩家 / 符合资格</value>
+  <data name="NewSignUp" xml:space="preserve">
+    <value>新的注册</value>
   </data>
   <data name="DepositedMembers" xml:space="preserve">
     <value>已存款会员</value>
@@ -1925,14 +1913,11 @@
   <data name="Copied" xml:space="preserve">
     <value>复制</value>
   </data>
-  <data name="No" xml:space="preserve">
-    <value>序号</value>
-  </data>
   <data name="Dimension" xml:space="preserve">
     <value>规模</value>
   </data>
-  <data name="CopyBannerCode" xml:space="preserve">
-    <value>复制横幅广告代码</value>
+  <data name="No" xml:space="preserve">
+    <value>序号</value>
   </data>
   <data name="ShareBanner" xml:space="preserve">
     <value>分享横幅广告给朋友</value>
@@ -1940,17 +1925,32 @@
   <data name="CopyLink" xml:space="preserve">
     <value>复制链接</value>
   </data>
-  <data name="CopyQR" xml:space="preserve">
-    <value>复制二维码</value>
-  </data>
   <data name="SaveQR" xml:space="preserve">
     <value>保存二维码</value>
+  </data>
+  <data name="CopyQR" xml:space="preserve">
+    <value>复制二维码</value>
   </data>
   <data name="Copy" xml:space="preserve">
     <value>复制</value>
   </data>
   <data name="YouDoNotHaveEmail" xml:space="preserve">
     <value>如果您没有电邮，请联系管理员。</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>摘要</value>
+  </data>
+  <data name="AffiliateLink" xml:space="preserve">
+    <value>合作伙伴链接</value>
+  </data>
+  <data name="LastLogin" xml:space="preserve">
+    <value>最后一次登录</value>
+  </data>
+  <data name="LastLoginIpAddress" xml:space="preserve">
+    <value>最后登录的IP地址</value>
+  </data>
+  <data name="CopyBannerCode" xml:space="preserve">
+    <value>复制横幅广告代码</value>
   </data>
   <data name="ReportBy" xml:space="preserve">
     <value>筛选类型</value>
@@ -2078,20 +2078,23 @@
   <data name="BDT" xml:space="preserve">
     <value>BDT</value>
   </data>
+  <data name="BangladeshSupport" xml:space="preserve">
+    <value>孟加拉客服</value>
+  </data>
   <data name="FdmDeposit" xml:space="preserve">
     <value>首次存款新会员存款金额</value>
   </data>
-  <data name="TransactionInReport" xml:space="preserve">
-    <value>交易</value>
+  <data name="FdmExtraComm" xml:space="preserve">
+    <value>首次存款新会员额外佣金</value>
   </data>
-  <data name="NewFTD" xml:space="preserve">
-    <value>首次存款新会员</value>
+  <data name="MonthlyEarning" xml:space="preserve">
+    <value>每月收入</value>
   </data>
   <data name="MonthlyTotal" xml:space="preserve">
     <value>每月总计</value>
   </data>
-  <data name="MonthlyEarning" xml:space="preserve">
-    <value>每月收入</value>
+  <data name="TransactionInReport" xml:space="preserve">
+    <value>交易</value>
   </data>
   <data name="UncalculatedMonthlyEarning" xml:space="preserve">
     <value>未计算月收入</value>
@@ -2099,14 +2102,14 @@
   <data name="CurrentMonthlyEarning" xml:space="preserve">
     <value>当月收入</value>
   </data>
-  <data name="CurrentNewFdmCommBonus" xml:space="preserve">
-    <value>当前首次存款新会员佣金</value>
-  </data>
   <data name="NewFdmCommBonus" xml:space="preserve">
     <value>首次存款新会员佣金</value>
   </data>
   <data name="UncalculatedNewFdmCommBonus" xml:space="preserve">
     <value>未计算首次存款新会员佣金</value>
+  </data>
+  <data name="CurrentNewFdmCommBonus" xml:space="preserve">
+    <value>当前首次存款新会员佣金</value>
   </data>
   <data name="UncalculatedMonth" xml:space="preserve">
     <value>未计算月份</value>
@@ -2114,8 +2117,26 @@
   <data name="CurrentMonthStatistics" xml:space="preserve">
     <value>当月统计</value>
   </data>
-  <data name="FdmExtraComm" xml:space="preserve">
-    <value>首次存款新会员额外佣金</value>
+  <data name="NewFTD" xml:space="preserve">
+    <value>首次存款新会员</value>
+  </data>
+  <data name="AffCountLanguage" xml:space="preserve">
+    <value>合作伙伴帐户语言</value>
+  </data>
+  <data name="TargetCountryErr" xml:space="preserve">
+    <value>合作夥伴帳戶語言</value>
+  </data>
+  <data name="TargetCountry" xml:space="preserve">
+    <value>目标国家</value>
+  </data>
+  <data name="GenerateYourUniqueLink" xml:space="preserve">
+    <value>生成您的专属链接！</value>
+  </data>
+  <data name="TargetProduct" xml:space="preserve">
+    <value>目标产品</value>
+  </data>
+  <data name="GetBannerForYourTargetMarket" xml:space="preserve">
+    <value>目标市场专属横幅广告！</value>
   </data>
   <data name="Hindi" xml:space="preserve">
     <value>印地语</value>
@@ -2135,18 +2156,6 @@
   <data name="China" xml:space="preserve">
     <value>中国</value>
   </data>
-  <data name="GenerateYourUniqueLink" xml:space="preserve">
-    <value>生成您的专属链接！</value>
-  </data>
-  <data name="TargetCountry" xml:space="preserve">
-    <value>目标国家</value>
-  </data>
-  <data name="TargetProduct" xml:space="preserve">
-    <value>目标产品</value>
-  </data>
-  <data name="GetBannerForYourTargetMarket" xml:space="preserve">
-    <value>目标市场专属横幅广告！</value>
-  </data>
   <data name="Sports" xml:space="preserve">
     <value>体育</value>
   </data>
@@ -2165,14 +2174,14 @@
   <data name="Keno" xml:space="preserve">
     <value>快乐彩</value>
   </data>
-  <data name="BangladeshSupport" xml:space="preserve">
-    <value>孟加拉客服</value>
-  </data>
   <data name="TermAndConditionPageTitle" xml:space="preserve">
     <value>12BET合作伙伴条款与规则</value>
   </data>
   <data name="OurProducts" xml:space="preserve">
     <value>产品</value>
+  </data>
+  <data name="Telegram" xml:space="preserve">
+    <value>纸飞机(Telegram)</value>
   </data>
   <data name="_12BetIsPremireOnline" xml:space="preserve">
     <value>12体育是市场知名的体育博彩，提供广泛的赛事活动，涵盖世界各地的各种体育赛事。作为体育博彩爱好者的理想选择，12BET这是客户梦寐以求的顶级平台。</value>
@@ -2204,17 +2213,8 @@
   <data name="NetProfit" xml:space="preserve">
     <value>净盈利</value>
   </data>
-  <data name="Telegram" xml:space="preserve">
-    <value>纸飞机(Telegram)</value>
-  </data>
   <data name="AffiliateEarnsRevenueShare" xml:space="preserve">
     <value>合作伙伴根据佣金结构表赚取净收入的分成。</value>
-  </data>
-  <data name="AffCountLanguage" xml:space="preserve">
-    <value>合作伙伴帐户语言</value>
-  </data>
-  <data name="TargetCountryErr" xml:space="preserve">
-    <value>合作夥伴帳戶語言</value>
   </data>
   <data name="BecomeA12BetAff" xml:space="preserve">
     <value>成为12BET合作伙伴</value>
@@ -2243,9 +2243,6 @@
   <data name="SignupEnglandCalling" xml:space="preserve">
     <value>注册</value>
   </data>
-  <data name="FdmEnglandCalling" xml:space="preserve">
-    <value>首次存款新会员</value>
-  </data>
   <data name="WinlossInUSD" xml:space="preserve">
     <value>盈亏（$）</value>
   </data>
@@ -2255,20 +2252,23 @@
   <data name="SignedLCFCJersey" xml:space="preserve">
     <value>莱斯特城签名球衣+足球+ $4,000</value>
   </data>
-  <data name="SignedLCFCJersey1000" xml:space="preserve">
-    <value>莱斯特城签名球衣+ $1,000</value>
-  </data>
   <data name="MacbookPro" xml:space="preserve">
     <value>MACBOOK PRO 16' M3 PRO</value>
   </data>
   <data name="IPhone16Pro" xml:space="preserve">
     <value>IPHONE 16 PRO MAX 1TB</value>
   </data>
+  <data name="SignedLCFCJersey1000" xml:space="preserve">
+    <value>莱斯特城签名球衣+ $1,000</value>
+  </data>
   <data name="SignedLCFCFootball" xml:space="preserve">
     <value>莱斯特城签名足球+ $1,000</value>
   </data>
   <data name="ContactAffManager" xml:space="preserve">
     <value>联系合作伙伴经理</value>
+  </data>
+  <data name="FdmEnglandCalling" xml:space="preserve">
+    <value>首次存款新会员</value>
   </data>
   <data name="Aff274TestimonialTitle" xml:space="preserve">
     <value>付款及时&lt;br/&gt;客服专业</value>
@@ -2354,36 +2354,6 @@
 而且佣金支付一直都很稳定。&lt;br/&gt;
 这是一个稳固的合作伙伴关系。</value>
   </data>
-  <data name="GGR" xml:space="preserve">
-    <value>博彩收入（GGR）</value>
-  </data>
-  <data name="FdmDate" xml:space="preserve">
-    <value>首存日期</value>
-  </data>
-  <data name="TotalGGR" xml:space="preserve">
-    <value>博彩总收入</value>
-  </data>
-  <data name="Commission" xml:space="preserve">
-    <value>佣金盈利</value>
-  </data>
-  <data name="SubAffCommRate" xml:space="preserve">
-    <value>次级合作伙伴佣金占比</value>
-  </data>
-  <data name="TheHighestShare" xml:space="preserve">
-    <value>在多组中所占比例最高的%</value>
-  </data>
-  <data name="CurrencyLabel" xml:space="preserve">
-    <value>USD</value>
-  </data>
-  <data name="VerifyEmailAddressIsRequired" xml:space="preserve">
-    <value>需要验证电子邮件地址</value>
-  </data>
-  <data name="Category" xml:space="preserve">
-    <value>类别</value>
-  </data>
-  <data name="SubCategory" xml:space="preserve">
-    <value>子类别</value>
-  </data>
   <data name="ActivePlayers" xml:space="preserve">
     <value>活跃玩家</value>
   </data>
@@ -2396,8 +2366,14 @@
   <data name="SubAffiliate" xml:space="preserve">
     <value>次级合作伙伴</value>
   </data>
+  <data name="GGR" xml:space="preserve">
+    <value>博彩收入（GGR）</value>
+  </data>
   <data name="MinRequired" xml:space="preserve">
     <value>最低需求</value>
+  </data>
+  <data name="FdmDate" xml:space="preserve">
+    <value>首存日期</value>
   </data>
   <data name="Rebate" xml:space="preserve">
     <value>返利</value>
@@ -2423,6 +2399,9 @@
   <data name="SuspensionSatus" xml:space="preserve">
     <value>暂停状态</value>
   </data>
+  <data name="TotalGGR" xml:space="preserve">
+    <value>博彩总收入</value>
+  </data>
   <data name="SubAffDetail" xml:space="preserve">
     <value>次级合作伙伴详情</value>
   </data>
@@ -2438,11 +2417,17 @@
   <data name="RevenueShareByWinloss" xml:space="preserve">
     <value>按输赢结果计算收入占比</value>
   </data>
+  <data name="Commission" xml:space="preserve">
+    <value>佣金盈利</value>
+  </data>
   <data name="UncalculatedCommission" xml:space="preserve">
     <value>未计算的收入占比</value>
   </data>
   <data name="CurrentCommission" xml:space="preserve">
     <value>当前收入占比</value>
+  </data>
+  <data name="CurrencyLabel" xml:space="preserve">
+    <value>USD</value>
   </data>
   <data name="AffiliateCurrency" xml:space="preserve">
     <value>合作伙伴货币</value>
@@ -2459,8 +2444,14 @@
   <data name="P2pRevenueShare" xml:space="preserve">
     <value>点对点收入占比</value>
   </data>
+  <data name="SubAffCommRate" xml:space="preserve">
+    <value>次级合作伙伴佣金占比</value>
+  </data>
   <data name="RoyaltyFee" xml:space="preserve">
     <value>权利金</value>
+  </data>
+  <data name="TheHighestShare" xml:space="preserve">
+    <value>在多组中所占比例最高的%</value>
   </data>
   <data name="Winloss" xml:space="preserve">
     <value>输赢结果</value>
@@ -2482,6 +2473,9 @@
   </data>
   <data name="IncludeInActiveLink" xml:space="preserve">
     <value>包含无效的跟踪链接</value>
+  </data>
+  <data name="VerifyEmailAddressIsRequired" xml:space="preserve">
+    <value>需要验证电子邮件地址</value>
   </data>
   <data name="SubAffiliateLink" xml:space="preserve">
     <value>次级合作伙伴链接</value>
@@ -2522,6 +2516,12 @@
   <data name="SaveQRCode" xml:space="preserve">
     <value>保存二维码</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>类别</value>
+  </data>
+  <data name="SubCategory" xml:space="preserve">
+    <value>子类别</value>
+  </data>
   <data name="SearchAndGenQR" xml:space="preserve">
     <value>搜索和生成</value>
   </data>
@@ -2546,12 +2546,12 @@
   <data name="SubscribeToOur" xml:space="preserve">
     <value>订阅我们的 {0}，掌握12BET合作成功的最新动态与优惠活动。</value>
   </data>
-  <data name="TelegramChannel" xml:space="preserve">
-    <value>Telegram 频道</value>
-  </data>
   <data name="ForInquiries" xml:space="preserve">
     <value>如有任何疑问，可通过 Telegram 联系我们：{0}。&lt;br /&gt;
 亦可发送邮件至：{1}，或直接填写下方表单联系。</value>
+  </data>
+  <data name="TelegramChannel" xml:space="preserve">
+    <value>Telegram 频道</value>
   </data>
   <data name="VietnamCountry" xml:space="preserve">
     <value>越南</value>
@@ -2570,5 +2570,8 @@
   </data>
   <data name="NetRevenue" xml:space="preserve">
     <value>净收入</value>
+  </data>
+  <data name="NotAllowOnCountry" xml:space="preserve">
+    <value />
   </data>
 </root>

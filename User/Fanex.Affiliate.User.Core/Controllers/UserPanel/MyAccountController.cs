@@ -28,7 +28,9 @@
         public MyAccountController(
             ISessionService sessionService,
             ISystemService systemsService,
-            IAccountService accountService) : base(sessionService, systemsService)
+            IAccountService accountService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             _accountService = accountService;
         }

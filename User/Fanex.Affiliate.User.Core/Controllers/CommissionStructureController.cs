@@ -8,8 +8,11 @@
     public class CommissionStructureController : BaseController
     {
 
-        public CommissionStructureController(ISessionService sessionService,
-            ISystemService systemsService) : base(sessionService, systemsService)
+        public CommissionStructureController(
+            ISessionService sessionService,
+            ISystemService systemsService,
+            IIpLocationService ipLocationService) 
+            : base(sessionService, systemsService, ipLocationService)
         {
         }
 

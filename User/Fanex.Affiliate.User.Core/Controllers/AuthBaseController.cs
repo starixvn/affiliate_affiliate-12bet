@@ -22,7 +22,8 @@ namespace Fanex.Affiliate.User.Core.Controllers
             IAppSetting appSetting,
             ICaptchaService captchaService,
             IAuthService authService,
-            IAccountService accountService) : base(sessionService, systemsService)
+            IAccountService accountService,
+            IIpLocationService ipLocationService) : base(sessionService, systemsService, ipLocationService)
         {
             CaptchaService = captchaService;
             AppSetting = appSetting;

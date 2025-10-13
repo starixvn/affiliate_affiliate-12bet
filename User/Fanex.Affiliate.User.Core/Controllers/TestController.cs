@@ -50,9 +50,14 @@
         private readonly string _mailContact;
         private readonly string _userName;
 
-        public TestController(ISessionService sessionService,
-            ISystemService languageService, IAppSetting appSetting,
-            IMailProcessor mailProcessor, ILicenseeApi licenseeApi) : base(sessionService, languageService)
+        public TestController(
+            ISessionService sessionService,
+            ISystemService systemsService, 
+            IAppSetting appSetting,
+            IMailProcessor mailProcessor, 
+            ILicenseeApi licenseeApi,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             _mailProcessor = mailProcessor;
             _appSetting = appSetting;

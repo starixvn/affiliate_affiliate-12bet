@@ -14,8 +14,9 @@
         public AccountOverviewController(
             ISessionService sessionService,
             ISystemService systemsService,
-            IAccountOverviewService accountOverviewService)
-            : base(sessionService, systemsService)
+            IAccountOverviewService accountOverviewService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             _accountOverviewService = accountOverviewService;
         }

@@ -8,8 +8,11 @@ namespace Fanex.Affiliate.User.Core.Controllers
     public class TermAndConditionController : BaseController
     {
 
-        public TermAndConditionController(ISessionService sessionService, ISystemService systemsService) :
-            base(sessionService, systemsService)
+        public TermAndConditionController(
+            ISessionService sessionService, 
+            ISystemService systemsService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
         }
 

@@ -26,8 +26,9 @@
             ISessionService sessionService,
             IAppSetting appSetting,
             ISystemService systemsService,
-            IMarketingService marketingService)
-            : base(sessionService, systemsService)
+            IMarketingService marketingService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             MarketingService = marketingService;
             AppSetting = appSetting;

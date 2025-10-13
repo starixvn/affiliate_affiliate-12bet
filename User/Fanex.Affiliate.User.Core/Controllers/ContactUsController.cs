@@ -19,16 +19,18 @@
         private readonly IAccountService _accountService;
 
         private readonly ICaptchaService _captchaService;
+
         private readonly IAppSetting _appSetting;
 
         public ContactUsController(
             ISessionService sessionService,
-            ISystemService languageService,
+            ISystemService systemsService,
             IAppSetting appSetting,
             IContactService contactService,
             IAccountService accountService,
-            ICaptchaService captchaService)
-            : base(sessionService, languageService)
+            ICaptchaService captchaService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             _contactService = contactService;
             _accountService = accountService;

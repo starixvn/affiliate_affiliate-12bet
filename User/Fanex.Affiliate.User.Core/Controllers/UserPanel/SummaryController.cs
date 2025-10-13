@@ -16,10 +16,12 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
     {
         private readonly IAccountOverviewService _accountOverviewService;
 
-        public SummaryController(ISessionService sessionService,
+        public SummaryController(
+            ISessionService sessionService,
             ISystemService systemsService,
-            IAccountOverviewService accountOverviewService
-            ) : base(sessionService, systemsService)
+            IAccountOverviewService accountOverviewService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             _accountOverviewService = accountOverviewService;
         }

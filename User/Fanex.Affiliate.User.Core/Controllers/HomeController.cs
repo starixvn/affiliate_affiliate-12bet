@@ -15,7 +15,9 @@ namespace Fanex.Affiliate.User.Core.Controllers
         public HomeController(
             ISessionService sessionService,
             IAppSetting appSetting,
-            ISystemService systemsService) : base(sessionService, systemsService)
+            ISystemService systemsService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
 
         {
             _appSetting = appSetting;

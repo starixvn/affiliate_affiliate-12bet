@@ -24,7 +24,9 @@
         public PaymentRequestController(ISessionService sessionService,
             IAppSetting appSetting,
             ISystemService systemsService,
-            IPaymentService paymentService) : base(sessionService, systemsService)
+            IPaymentService paymentService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             _paymentService = paymentService;
             _appSetting = appSetting;

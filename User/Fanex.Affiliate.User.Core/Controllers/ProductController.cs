@@ -7,8 +7,11 @@
 
     public class ProductController : BaseController
     {
-        public ProductController(ISessionService sessionService, ISystemService systemsService)
-            : base(sessionService, systemsService)
+        public ProductController(
+            ISessionService sessionService, 
+            ISystemService systemsService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
         }
 

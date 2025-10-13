@@ -9,8 +9,10 @@ namespace Fanex.Affiliate.User.Core.Controllers
     {
 
         public NotifyController(
-            ISessionService sessionService, ISystemService systemsService)
-            : base(sessionService, systemsService)
+            ISessionService sessionService, 
+            ISystemService systemsService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
         }
 

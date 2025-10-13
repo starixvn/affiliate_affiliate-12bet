@@ -120,6 +120,9 @@
   <data name="AccInfo" xml:space="preserve">
     <value>Informasi Akun</value>
   </data>
+  <data name="AccountNumber" xml:space="preserve">
+    <value>Nomor Rekening</value>
+  </data>
   <data name="AccOverview" xml:space="preserve">
     <value>Dashboard</value>
   </data>
@@ -215,6 +218,12 @@
   </data>
   <data name="BankAddress" xml:space="preserve">
     <value>Alamat Bank</value>
+  </data>
+  <data name="BankCity" xml:space="preserve">
+    <value>Kota</value>
+  </data>
+  <data name="BankCountry" xml:space="preserve">
+    <value>Negara</value>
   </data>
   <data name="BankName" xml:space="preserve">
     <value>Nama Bank</value>
@@ -339,6 +348,12 @@
   <data name="ChinaPeoplesRep" xml:space="preserve">
     <value>China (Rep. Rakyat) </value>
   </data>
+  <data name="ChineseSimplified" xml:space="preserve">
+    <value>Cina (Simplified)</value>
+  </data>
+  <data name="ChineseTraditional" xml:space="preserve">
+    <value>Cina (Tradisional)</value>
+  </data>
   <data name="City" xml:space="preserve">
     <value>Kota/Kabupaten</value>
   </data>
@@ -350,6 +365,9 @@
   </data>
   <data name="Comm" xml:space="preserve">
     <value>Komisi</value>
+  </data>
+  <data name="CommShorted" xml:space="preserve">
+    <value>Comm.</value>
   </data>
   <data name="Comment" xml:space="preserve">
     <value>Komentar</value>
@@ -446,6 +464,9 @@
   </data>
   <data name="DescWebsite" xml:space="preserve">
     <value>Mohon jelaskan bagaimana Anda mempromosikan 12BET meskipun Anda tidak punya situs web (website)?</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Device</value>
   </data>
   <data name="DominicaCommonwealthof" xml:space="preserve">
     <value>Dominika (Commonwealth) </value>
@@ -551,6 +572,9 @@
   </data>
   <data name="Finland" xml:space="preserve">
     <value>Finlandia </value>
+  </data>
+  <data name="FirstDepositDate" xml:space="preserve">
+    <value>First Deposit Date</value>
   </data>
   <data name="FirstNameIsRequired" xml:space="preserve">
     <value>Nama Depan diperlukan</value>
@@ -815,6 +839,9 @@ Tim Dukungan Afiliasi 12BET</value>
   <data name="MinWithdraw" xml:space="preserve">
     <value>Minimal Penarikan (USD)</value>
   </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>Nomor Ponsel</value>
+  </data>
   <data name="Moldova" xml:space="preserve">
     <value>Moldova </value>
   </data>
@@ -863,6 +890,9 @@ Tim Dukungan Afiliasi 12BET</value>
   <data name="CompanyNetWin" xml:space="preserve">
     <value>PENDAPATAN BERSIH DALAM SEBULAN (CNW) ($)</value>
   </data>
+  <data name="NewWithExclamationPoint" xml:space="preserve">
+    <value>BARU!</value>
+  </data>
   <data name="NewCaledonia" xml:space="preserve">
     <value>Kaledonia Baru </value>
   </data>
@@ -871,6 +901,9 @@ Tim Dukungan Afiliasi 12BET</value>
   </data>
   <data name="NewPasswordisre" xml:space="preserve">
     <value>Kata Sandi Baru diperlukan</value>
+  </data>
+  <data name="NewSignupAndDeposited" xml:space="preserve">
+    <value>Daftar/Deposit terbaru</value>
   </data>
   <data name="NewZealand" xml:space="preserve">
     <value>Selandia Baru </value>
@@ -887,11 +920,17 @@ Tim Dukungan Afiliasi 12BET</value>
   <data name="none" xml:space="preserve">
     <value>Tidak ada</value>
   </data>
+  <data name="Non_Deposit" xml:space="preserve">
+    <value>Non-Deposit</value>
+  </data>
   <data name="Normal" xml:space="preserve">
     <value>Normal</value>
   </data>
   <data name="Norway" xml:space="preserve">
     <value>Norwegia </value>
+  </data>
+  <data name="NotAllowOnDomain" xml:space="preserve">
+    <value>Maaf! Anda tidak diijinkan masuk dengan domain ini.</value>
   </data>
   <data name="November" xml:space="preserve">
     <value>November</value>
@@ -913,6 +952,9 @@ Tim Dukungan Afiliasi 12BET</value>
   </data>
   <data name="Oman" xml:space="preserve">
     <value>Oman </value>
+  </data>
+  <data name="Original" xml:space="preserve">
+    <value>Original</value>
   </data>
   <data name="OwnWebsite" xml:space="preserve">
     <value>Ya, saya punya situs web (website)</value>
@@ -1035,6 +1077,9 @@ Dalam 5 hari kami akan memberitahu mengenai keputusan atas permohonan Anda. Jika
 Salam Hormat,&lt;br /&gt;
 Tim Afiliasi 12Bet.&lt;br/&gt;
 Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;Hubungi Kami&lt;/a&gt; untuk bantuan lebih lanjut. </value>
+  </data>
+  <data name="RegisteredDate" xml:space="preserve">
+    <value>Tanggal Registrasi</value>
   </data>
   <data name="Rejected" xml:space="preserve">
     <value>Ditolak</value>
@@ -1252,6 +1297,9 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="Transaction" xml:space="preserve">
     <value>Transaksi</value>
   </data>
+  <data name="TransactionID" xml:space="preserve">
+    <value>ID Transaksi</value>
+  </data>
   <data name="TrinidadandTobago" xml:space="preserve">
     <value>Trinidad dan Tobago </value>
   </data>
@@ -1300,6 +1348,9 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="USD" xml:space="preserve">
     <value>USD (Dollar Amerika Serikat)</value>
   </data>
+  <data name="USDEqv" xml:space="preserve">
+    <value>USD Eqv</value>
+  </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>
   </data>
@@ -1317,6 +1368,9 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   </data>
   <data name="Vietnamese" xml:space="preserve">
     <value>Vietnam</value>
+  </data>
+  <data name="VirtualSports" xml:space="preserve">
+    <value>Virtual Sports</value>
   </data>
   <data name="WebsiteInfor" xml:space="preserve">
     <value>Informasi Situs Web (Website)</value>
@@ -1336,11 +1390,17 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="Winlost" xml:space="preserve">
     <value>Winlost</value>
   </data>
+  <data name="Withdrawal" xml:space="preserve">
+    <value>Penarikan</value>
+  </data>
   <data name="Year" xml:space="preserve">
     <value>Tahun</value>
   </data>
   <data name="Yemen" xml:space="preserve">
     <value>Yaman </value>
+  </data>
+  <data name="YourCustomers" xml:space="preserve">
+    <value>Your Customers</value>
   </data>
   <data name="YourEmail" xml:space="preserve">
     <value>Email Anda:</value>
@@ -1363,6 +1423,33 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="_12BETPlayerAcc" xml:space="preserve">
     <value>Melalui Akun 12BET</value>
   </data>
+  <data name="CommissionStructure" xml:space="preserve">
+    <value>STRUKTUR KOMISI</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>PRODUK/PERMAINAN</value>
+  </data>
+  <data name="AllProducts" xml:space="preserve">
+    <value>Semua Produk</value>
+  </data>
+  <data name="ESports" xml:space="preserve">
+    <value>E-Sports</value>
+  </data>
+  <data name="RngKeno" xml:space="preserve">
+    <value>RNG KENO</value>
+  </data>
+  <data name="Lottery" xml:space="preserve">
+    <value>Lotere</value>
+  </data>
+  <data name="MoreDetailProduct" xml:space="preserve">
+    <value>Info Lengkap mengenai Produk 12BET</value>
+  </data>
+  <data name="TermAndCondition" xml:space="preserve">
+    <value>SYARAT DAN KETENTUAN</value>
+  </data>
+  <data name="JoinNowHeader" xml:space="preserve">
+    <value>DAFTAR SEKARANG</value>
+  </data>
   <data name="EmailTitleNewPassword" xml:space="preserve">
     <value>Kata sandi baru Anda</value>
   </data>
@@ -1374,6 +1461,36 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   </data>
   <data name="EmailTitleSignUp" xml:space="preserve">
     <value>Aplikasi Diterima</value>
+  </data>
+  <data name="CommissionReport" xml:space="preserve">
+    <value>Laporan Komisi</value>
+  </data>
+  <data name="Temporary" xml:space="preserve">
+    <value>Temporary</value>
+  </data>
+  <data name="Uncalculated" xml:space="preserve">
+    <value>Uncalculated</value>
+  </data>
+  <data name="BankingFee" xml:space="preserve">
+    <value>BIAYA BANK</value>
+  </data>
+  <data name="CommRate" xml:space="preserve">
+    <value>Rate Komisi Sub-Afiliasi </value>
+  </data>
+  <data name="GrossWinLoss" xml:space="preserve">
+    <value>Gross Win Loss</value>
+  </data>
+  <data name="OperationalFee" xml:space="preserve">
+    <value>Operational Fee</value>
+  </data>
+  <data name="PlatformFee" xml:space="preserve">
+    <value>BIAYA PLATFORM</value>
+  </data>
+  <data name="NoteCommissionCalculation" xml:space="preserve">
+    <value>Commission = (Gross Win Loss - Platform Fee - Operational Fee - Banking Fees - Bonus) x Comm. Rate</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>Kesalahan terjadi saat memproses permintaan Anda! Silakan hubungi Administrator.</value>
   </data>
   <data name="CasinoClubs" xml:space="preserve">
     <value>12BET CASINO CLUBS</value>
@@ -1420,12 +1537,6 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="Product12AMBER" xml:space="preserve">
     <value>12AMBER (BETSOFT)</value>
   </data>
-  <data name="AllProducts" xml:space="preserve">
-    <value>Semua Produk</value>
-  </data>
-  <data name="MoreDetailProduct" xml:space="preserve">
-    <value>Info Lengkap mengenai Produk 12BET</value>
-  </data>
   <data name="SupportTime" xml:space="preserve">
     <value>08:00 - 17:00 (WIB)</value>
   </data>
@@ -1447,29 +1558,8 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="ValidationCodeLabel" xml:space="preserve">
     <value>Kode Validasi</value>
   </data>
-  <data name="TermAndCondition" xml:space="preserve">
-    <value>SYARAT DAN KETENTUAN</value>
-  </data>
-  <data name="CommissionStructure" xml:space="preserve">
-    <value>STRUKTUR KOMISI</value>
-  </data>
-  <data name="Product" xml:space="preserve">
-    <value>PRODUK/PERMAINAN</value>
-  </data>
-  <data name="ESports" xml:space="preserve">
-    <value>E-Sports</value>
-  </data>
-  <data name="RngKeno" xml:space="preserve">
-    <value>RNG KENO</value>
-  </data>
-  <data name="Lottery" xml:space="preserve">
-    <value>Lotere</value>
-  </data>
   <data name="SignUpAffiliateProgramNow" xml:space="preserve">
     <value>DAFTAR PROGRAM AFILIASI 12BET SEKARANG!</value>
-  </data>
-  <data name="JoinNowHeader" xml:space="preserve">
-    <value>DAFTAR SEKARANG</value>
   </data>
   <data name="ApplyOneTwoBetAffiliate" xml:space="preserve">
     <value>Pendaftaran Afiliasi 12BET</value>
@@ -1482,9 +1572,6 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   </data>
   <data name="OneTwoBetAffiliateNews" xml:space="preserve">
     <value>Berita Afiliasi 12BET</value>
-  </data>
-  <data name="NewWithExclamationPoint" xml:space="preserve">
-    <value>BARU!</value>
   </data>
   <data name="NewBannerIsNowAvailable" xml:space="preserve">
     <value>Banner baru sudah tersedia!</value>
@@ -1510,80 +1597,11 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="ContactNow" xml:space="preserve">
     <value>HUBUNGI SEKARANG!</value>
   </data>
-  <data name="CommissionReport" xml:space="preserve">
-    <value>Laporan Komisi</value>
-  </data>
-  <data name="GrossWinLoss" xml:space="preserve">
-    <value>Gross Win Loss</value>
-  </data>
-  <data name="PlatformFee" xml:space="preserve">
-    <value>BIAYA PLATFORM</value>
-  </data>
-  <data name="OperationalFee" xml:space="preserve">
-    <value>Operational Fee</value>
-  </data>
-  <data name="BankingFee" xml:space="preserve">
-    <value>BIAYA BANK</value>
-  </data>
-  <data name="CommRate" xml:space="preserve">
-    <value>Rate Komisi Sub-Afiliasi </value>
-  </data>
-  <data name="CommShorted" xml:space="preserve">
-    <value>Comm.</value>
-  </data>
-  <data name="NoteCommissionCalculation" xml:space="preserve">
-    <value>Commission = (Gross Win Loss - Platform Fee - Operational Fee - Banking Fees - Bonus) x Comm. Rate</value>
-  </data>
-  <data name="Temporary" xml:space="preserve">
-    <value>Temporary</value>
-  </data>
-  <data name="Uncalculated" xml:space="preserve">
-    <value>Uncalculated</value>
-  </data>
-  <data name="ServerError" xml:space="preserve">
-    <value>Kesalahan terjadi saat memproses permintaan Anda! Silakan hubungi Administrator.</value>
-  </data>
-  <data name="AccountNumber" xml:space="preserve">
-    <value>Nomor Rekening</value>
-  </data>
-  <data name="BankCity" xml:space="preserve">
-    <value>Kota</value>
-  </data>
-  <data name="BankCountry" xml:space="preserve">
-    <value>Negara</value>
-  </data>
-  <data name="TransactionID" xml:space="preserve">
-    <value>ID Transaksi</value>
-  </data>
-  <data name="Original" xml:space="preserve">
-    <value>Original</value>
-  </data>
-  <data name="USDEqv" xml:space="preserve">
-    <value>USD Eqv</value>
-  </data>
-  <data name="Device" xml:space="preserve">
-    <value>Device</value>
-  </data>
   <data name="PCDevice" xml:space="preserve">
     <value>PC / Laptop</value>
   </data>
-  <data name="YourCustomers" xml:space="preserve">
-    <value>Your Customers</value>
-  </data>
-  <data name="FirstDepositDate" xml:space="preserve">
-    <value>First Deposit Date</value>
-  </data>
-  <data name="MobileNumber" xml:space="preserve">
-    <value>Nomor Ponsel</value>
-  </data>
-  <data name="RegisteredDate" xml:space="preserve">
-    <value>Tanggal Registrasi</value>
-  </data>
-  <data name="Non_Deposit" xml:space="preserve">
-    <value>Non-Deposit</value>
-  </data>
-  <data name="NotAllowOnDomain" xml:space="preserve">
-    <value>Maaf! Anda tidak diijinkan masuk dengan domain ini.</value>
+  <data name="MobileDevice" xml:space="preserve">
+    <value>Mobile</value>
   </data>
   <data name="Statistics" xml:space="preserve">
     <value>Statistik</value>
@@ -1608,12 +1626,6 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   </data>
   <data name="ForgotLoginDetail" xml:space="preserve">
     <value>Lupa Detail Masuk?</value>
-  </data>
-  <data name="Withdrawal" xml:space="preserve">
-    <value>Penarikan</value>
-  </data>
-  <data name="MobileDevice" xml:space="preserve">
-    <value>Mobile</value>
   </data>
   <data name="NonDeposited" xml:space="preserve">
     <value>akun non-deposit - jika sudah pernah Deposit, silakan buat baru khusus Afiliasi</value>
@@ -1668,6 +1680,18 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   </data>
   <data name="TableCardGames" xml:space="preserve">
     <value>Table/Card Games</value>
+  </data>
+  <data name="EmailTittleVerificationAccount" xml:space="preserve">
+    <value>Kode Verifikasi</value>
+  </data>
+  <data name="SubjectVerificationAccount" xml:space="preserve">
+    <value>12B Afiliasi - Kode Verifikasi</value>
+  </data>
+  <data name="ErrmsgEntryCaptcha" xml:space="preserve">
+    <value>Masukkan captcha!</value>
+  </data>
+  <data name="ErrmsgEntryVerificationCode" xml:space="preserve">
+    <value>Masukkan Kode Verifikasi.</value>
   </data>
   <data name="DearCustomer" xml:space="preserve">
     <value>YTH Member 12BET,</value>
@@ -1753,6 +1777,9 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="SuffixProduct12AMBER" xml:space="preserve">
     <value>(BETSOFT)</value>
   </data>
+  <data name="MKK" xml:space="preserve">
+    <value>MMK</value>
+  </data>
   <data name="_12BetExchange" xml:space="preserve">
     <value>12BET EXCHANGE &lt;br /&gt;
 (Hanya untuk INR &amp; IN.USD)</value>
@@ -1771,6 +1798,12 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   </data>
   <data name="Product12GOLD" xml:space="preserve">
     <value>12GOLD (SA GAMING)</value>
+  </data>
+  <data name="PrefixProduct12JADE" xml:space="preserve">
+    <value>12JADE</value>
+  </data>
+  <data name="SuffixProduct12JADE" xml:space="preserve">
+    <value>(AE SEXY)</value>
   </data>
   <data name="Product12JADE" xml:space="preserve">
     <value>12JADE (AE SEXY)</value>
@@ -1802,6 +1835,12 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="Product12JASPER" xml:space="preserve">
     <value>12JASPER (N2 LIVE)</value>
   </data>
+  <data name="AndarBahar" xml:space="preserve">
+    <value>Andar Bahar</value>
+  </data>
+  <data name="Teenpatti" xml:space="preserve">
+    <value>Teenpatti</value>
+  </data>
   <data name="Promotion" xml:space="preserve">
     <value>PROMOSI</value>
   </data>
@@ -1826,11 +1865,11 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="WeWouldLove" xml:space="preserve">
     <value>Kami senang menerima saran Anda untuk meningkatkan pelayanan kami. </value>
   </data>
-  <data name="PleaseLeaveYourFeedback" xml:space="preserve">
-    <value>Silakan isi saran Anda disini:</value>
-  </data>
   <data name="WhatIsYourOpinion" xml:space="preserve">
     <value>Berikan pendapat Anda tentang Program Afiliasi kami.</value>
+  </data>
+  <data name="PleaseLeaveYourFeedback" xml:space="preserve">
+    <value>Silakan isi saran Anda disini:</value>
   </data>
   <data name="ThankYou" xml:space="preserve">
     <value>Terimakasih untuk saran Anda yang berharga. </value>
@@ -1841,71 +1880,23 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="RevenueShare" xml:space="preserve">
     <value>Bagi Hasil</value>
   </data>
-  <data name="VirtualSports" xml:space="preserve">
-    <value>Virtual Sports</value>
-  </data>
-  <data name="PrefixProduct12JADE" xml:space="preserve">
-    <value>12JADE</value>
-  </data>
-  <data name="SuffixProduct12JADE" xml:space="preserve">
-    <value>(AE SEXY)</value>
-  </data>
-  <data name="AndarBahar" xml:space="preserve">
-    <value>Andar Bahar</value>
-  </data>
-  <data name="Teenpatti" xml:space="preserve">
-    <value>Teenpatti</value>
-  </data>
-  <data name="ChineseTraditional" xml:space="preserve">
-    <value>Cina (Tradisional)</value>
-  </data>
-  <data name="ChineseSimplified" xml:space="preserve">
-    <value>Cina (Simplified)</value>
-  </data>
-  <data name="MKK" xml:space="preserve">
-    <value>MMK</value>
-  </data>
   <data name="CambodiaSupport" xml:space="preserve">
     <value>Bantuan Dalam Bahasa Kambodia</value>
   </data>
-  <data name="NewSignUp" xml:space="preserve">
-    <value>Member yang daftar</value>
-  </data>
-  <data name="ErrmsgEntryVerificationCode" xml:space="preserve">
-    <value>Masukkan Kode Verifikasi.</value>
-  </data>
-  <data name="ErrmsgEntryCaptcha" xml:space="preserve">
-    <value>Masukkan captcha!</value>
-  </data>
-  <data name="Summary" xml:space="preserve">
-    <value>Ringkasan</value>
-  </data>
-  <data name="AffiliateLink" xml:space="preserve">
-    <value>Tautan Afiliasi</value>
-  </data>
-  <data name="LastLogin" xml:space="preserve">
-    <value>Login terakhir</value>
-  </data>
-  <data name="LastLoginIpAddress" xml:space="preserve">
-    <value>Alamat IP Login terakhir</value>
-  </data>
-  <data name="Overview" xml:space="preserve">
-    <value>Tinjauan</value>
-  </data>
-  <data name="PlayersDetails" xml:space="preserve">
-    <value>Data Pemain</value>
+  <data name="ActivePlayersAndQualified" xml:space="preserve">
+    <value>Pemain Aktif / Terkualifikasi</value>
   </data>
   <data name="TotalTurnover" xml:space="preserve">
     <value>Total turnover</value>
   </data>
-  <data name="EmailTittleVerificationAccount" xml:space="preserve">
-    <value>Kode Verifikasi</value>
+  <data name="PlayersDetails" xml:space="preserve">
+    <value>Data Pemain</value>
   </data>
-  <data name="SubjectVerificationAccount" xml:space="preserve">
-    <value>12B Afiliasi - Kode Verifikasi</value>
+  <data name="Overview" xml:space="preserve">
+    <value>Tinjauan</value>
   </data>
-  <data name="NewSignupAndDeposited" xml:space="preserve">
-    <value>Daftar/Deposit terbaru</value>
+  <data name="NewSignUp" xml:space="preserve">
+    <value>Member yang daftar</value>
   </data>
   <data name="DepositedMembers" xml:space="preserve">
     <value>Member Deposit</value>
@@ -1922,14 +1913,11 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="Copied" xml:space="preserve">
     <value>Salinan</value>
   </data>
-  <data name="No" xml:space="preserve">
-    <value>No.</value>
-  </data>
   <data name="Dimension" xml:space="preserve">
     <value>Dimensi</value>
   </data>
-  <data name="CopyBannerCode" xml:space="preserve">
-    <value>Salin kode Banner</value>
+  <data name="No" xml:space="preserve">
+    <value>No.</value>
   </data>
   <data name="ShareBanner" xml:space="preserve">
     <value>Bagikan banner ke teman Anda</value>
@@ -1937,17 +1925,32 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="CopyLink" xml:space="preserve">
     <value>Salin Link</value>
   </data>
-  <data name="CopyQR" xml:space="preserve">
-    <value>Salin Kode QR</value>
-  </data>
   <data name="SaveQR" xml:space="preserve">
     <value>Simpan Kode QR</value>
+  </data>
+  <data name="CopyQR" xml:space="preserve">
+    <value>Salin Kode QR</value>
   </data>
   <data name="Copy" xml:space="preserve">
     <value>Salin</value>
   </data>
   <data name="YouDoNotHaveEmail" xml:space="preserve">
     <value>Anda tidak memiliki alamat email ini. Mohon hubungi administrator.</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Ringkasan</value>
+  </data>
+  <data name="AffiliateLink" xml:space="preserve">
+    <value>Tautan Afiliasi</value>
+  </data>
+  <data name="LastLogin" xml:space="preserve">
+    <value>Login terakhir</value>
+  </data>
+  <data name="LastLoginIpAddress" xml:space="preserve">
+    <value>Alamat IP Login terakhir</value>
+  </data>
+  <data name="CopyBannerCode" xml:space="preserve">
+    <value>Salin kode Banner</value>
   </data>
   <data name="ReportBy" xml:space="preserve">
     <value> Dibuat Oleh</value>
@@ -2075,20 +2078,23 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="BDT" xml:space="preserve">
     <value>BDT</value>
   </data>
+  <data name="BangladeshSupport" xml:space="preserve">
+    <value>Bantuan Dalam Bahasa Bangladesh</value>
+  </data>
   <data name="FdmDeposit" xml:space="preserve">
     <value>Member baru deposit (FTD)</value>
   </data>
-  <data name="TransactionInReport" xml:space="preserve">
-    <value>Transaksi</value>
+  <data name="FdmExtraComm" xml:space="preserve">
+    <value>Komisi Ekstra FTD</value>
   </data>
-  <data name="NewFTD" xml:space="preserve">
-    <value>Member deposit baru (FTD)</value>
+  <data name="MonthlyEarning" xml:space="preserve">
+    <value>Pendapatan Bulanan</value>
   </data>
   <data name="MonthlyTotal" xml:space="preserve">
     <value>Total Bulanan</value>
   </data>
-  <data name="MonthlyEarning" xml:space="preserve">
-    <value>Pendapatan Bulanan</value>
+  <data name="TransactionInReport" xml:space="preserve">
+    <value>Transaksi</value>
   </data>
   <data name="UncalculatedMonthlyEarning" xml:space="preserve">
     <value>Penghasilan Bulanan yang Tidak Dihitung</value>
@@ -2096,14 +2102,14 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="CurrentMonthlyEarning" xml:space="preserve">
     <value>Penghasilan Bulanan Saat Ini</value>
   </data>
-  <data name="CurrentNewFdmCommBonus" xml:space="preserve">
-    <value>Bonus Komisi FTD Baru Saat Ini</value>
-  </data>
   <data name="NewFdmCommBonus" xml:space="preserve">
     <value>Bonus Komisi FTD baru</value>
   </data>
   <data name="UncalculatedNewFdmCommBonus" xml:space="preserve">
     <value>Bonus Komisi FTD Baru yang Belum Dihitung</value>
+  </data>
+  <data name="CurrentNewFdmCommBonus" xml:space="preserve">
+    <value>Bonus Komisi FTD Baru Saat Ini</value>
   </data>
   <data name="UncalculatedMonth" xml:space="preserve">
     <value>Bulan yang Tidak Dihitung</value>
@@ -2111,8 +2117,26 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="CurrentMonthStatistics" xml:space="preserve">
     <value>Statistik Bulan Ini</value>
   </data>
-  <data name="FdmExtraComm" xml:space="preserve">
-    <value>Komisi Ekstra FTD</value>
+  <data name="NewFTD" xml:space="preserve">
+    <value>Member deposit baru (FTD)</value>
+  </data>
+  <data name="AffCountLanguage" xml:space="preserve">
+    <value>Bahasa Akun Afiliasi</value>
+  </data>
+  <data name="TargetCountryErr" xml:space="preserve">
+    <value>Pilih Negara Target</value>
+  </data>
+  <data name="TargetCountry" xml:space="preserve">
+    <value>Target Negara</value>
+  </data>
+  <data name="GenerateYourUniqueLink" xml:space="preserve">
+    <value>Buat link khusus Anda!</value>
+  </data>
+  <data name="TargetProduct" xml:space="preserve">
+    <value>Sasaran Produk</value>
+  </data>
+  <data name="GetBannerForYourTargetMarket" xml:space="preserve">
+    <value>Dapatkan banner untuk target Anda!</value>
   </data>
   <data name="Hindi" xml:space="preserve">
     <value>Hindi</value>
@@ -2132,18 +2156,6 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="China" xml:space="preserve">
     <value>China</value>
   </data>
-  <data name="GenerateYourUniqueLink" xml:space="preserve">
-    <value>Buat link khusus Anda!</value>
-  </data>
-  <data name="TargetCountry" xml:space="preserve">
-    <value>Target Negara</value>
-  </data>
-  <data name="TargetProduct" xml:space="preserve">
-    <value>Sasaran Produk</value>
-  </data>
-  <data name="GetBannerForYourTargetMarket" xml:space="preserve">
-    <value>Dapatkan banner untuk target Anda!</value>
-  </data>
   <data name="Sports" xml:space="preserve">
     <value>Olahraga</value>
   </data>
@@ -2161,9 +2173,6 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   </data>
   <data name="Keno" xml:space="preserve">
     <value>Keno</value>
-  </data>
-  <data name="BangladeshSupport" xml:space="preserve">
-    <value>Bantuan Dalam Bahasa Bangladesh</value>
   </data>
   <data name="TermAndConditionPageTitle" xml:space="preserve">
     <value>Syarat dan Ketentuan Afiliasi 12BET</value>
@@ -2207,12 +2216,6 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="AffiliateEarnsRevenueShare" xml:space="preserve">
     <value>Afiliasi  mendapatkan sebagian penghasilan dari Pendapatan Bersih berdasarkan Tabel Struktur Komisi.</value>
   </data>
-  <data name="AffCountLanguage" xml:space="preserve">
-    <value>Bahasa Akun Afiliasi</value>
-  </data>
-  <data name="TargetCountryErr" xml:space="preserve">
-    <value>Pilih Negara Target</value>
-  </data>
   <data name="BecomeA12BetAff" xml:space="preserve">
     <value>Jadilah Afiliasi 12BET</value>
   </data>
@@ -2240,9 +2243,6 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="SignupEnglandCalling" xml:space="preserve">
     <value>REGISTRASI</value>
   </data>
-  <data name="FdmEnglandCalling" xml:space="preserve">
-    <value>FTD</value>
-  </data>
   <data name="WinlossInUSD" xml:space="preserve">
     <value>WINLOSS ($)</value>
   </data>
@@ -2252,20 +2252,23 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="SignedLCFCJersey" xml:space="preserve">
     <value>JERSEY + BOLA LCFC BERTANDA TANGAN + $4,000</value>
   </data>
-  <data name="SignedLCFCJersey1000" xml:space="preserve">
-    <value>JERSEY LCFC BERTANDA TANGAN + $1,000</value>
-  </data>
   <data name="MacbookPro" xml:space="preserve">
     <value>MACBOOK PRO 16' M3 PRO</value>
   </data>
   <data name="IPhone16Pro" xml:space="preserve">
     <value>IPHONE 16 PRO MAX 1TB</value>
   </data>
+  <data name="SignedLCFCJersey1000" xml:space="preserve">
+    <value>JERSEY LCFC BERTANDA TANGAN + $1,000</value>
+  </data>
   <data name="SignedLCFCFootball" xml:space="preserve">
     <value>BOLA LCFC BERTANDA TANGAN + $1,000</value>
   </data>
   <data name="ContactAffManager" xml:space="preserve">
     <value>Hubungi Manajer Afiliasi</value>
+  </data>
+  <data name="FdmEnglandCalling" xml:space="preserve">
+    <value>FTD</value>
   </data>
   <data name="Aff274TestimonialTitle" xml:space="preserve">
     <value>PEMBAYARAN KOMISI &amp; BANTUAN&lt;br/&gt;YANG TEPAT WAKTU</value>
@@ -2330,35 +2333,8 @@ PEMBAYARAN KONSISTEN</value>
   <data name="Aff286TestimonialContent" xml:space="preserve">
     <value>"Bagi saya bergabung dengan 12BET adalah keputusan tepat. Join program afiliasinya gampang, dan pembayaran komisinya konsisten. Ini adalah kemitraan yang solid."</value>
   </data>
-  <data name="GGR" xml:space="preserve">
-    <value>GGR</value>
-  </data>
-  <data name="FdmDate" xml:space="preserve">
-    <value>Tanggal FTD</value>
-  </data>
-  <data name="TotalGGR" xml:space="preserve">
-    <value>Total GGR</value>
-  </data>
-  <data name="Commission" xml:space="preserve">
-    <value>Bagi Hasil</value>
-  </data>
-  <data name="SubAffCommRate" xml:space="preserve">
-    <value>Rate Komisi Sub-Afiliasi </value>
-  </data>
-  <data name="TheHighestShare" xml:space="preserve">
-    <value>Persentase pembagian tertinggi dari beberapa grup</value>
-  </data>
-  <data name="CurrencyLabel" xml:space="preserve">
-    <value>USD</value>
-  </data>
-  <data name="VerifyEmailAddressIsRequired" xml:space="preserve">
-    <value>Verifikasi e-mail diperlukan</value>
-  </data>
-  <data name="Category" xml:space="preserve">
-    <value>Kategori</value>
-  </data>
-  <data name="SubCategory" xml:space="preserve">
-    <value>Sub Kategori</value>
+  <data name="ActivePlayers" xml:space="preserve">
+    <value>Pemain Aktif</value>
   </data>
   <data name="SubAffDownline" xml:space="preserve">
     <value>Downline Sub-Afiliasi</value>
@@ -2369,8 +2345,14 @@ PEMBAYARAN KONSISTEN</value>
   <data name="SubAffiliate" xml:space="preserve">
     <value>Sub-Afiliasi</value>
   </data>
+  <data name="GGR" xml:space="preserve">
+    <value>GGR</value>
+  </data>
   <data name="MinRequired" xml:space="preserve">
     <value>Syarat Minimal</value>
+  </data>
+  <data name="FdmDate" xml:space="preserve">
+    <value>Tanggal FTD</value>
   </data>
   <data name="Rebate" xml:space="preserve">
     <value>Rebate</value>
@@ -2396,6 +2378,9 @@ PEMBAYARAN KONSISTEN</value>
   <data name="SuspensionSatus" xml:space="preserve">
     <value>Status Penangguhan</value>
   </data>
+  <data name="TotalGGR" xml:space="preserve">
+    <value>Total GGR</value>
+  </data>
   <data name="SubAffDetail" xml:space="preserve">
     <value>Rincian Sub-Afiliasi</value>
   </data>
@@ -2411,11 +2396,17 @@ PEMBAYARAN KONSISTEN</value>
   <data name="RevenueShareByWinloss" xml:space="preserve">
     <value>Hitung Pembagian Pendapatan berdasarkan Kemenangan/Kerugian</value>
   </data>
+  <data name="Commission" xml:space="preserve">
+    <value>Bagi Hasil</value>
+  </data>
   <data name="UncalculatedCommission" xml:space="preserve">
     <value>Pembagian Pendapatan yang Belum Dihitung</value>
   </data>
   <data name="CurrentCommission" xml:space="preserve">
     <value>Pembagian Pendapatan Saat Ini</value>
+  </data>
+  <data name="CurrencyLabel" xml:space="preserve">
+    <value>USD</value>
   </data>
   <data name="AffiliateCurrency" xml:space="preserve">
     <value>Mata Uang Afiliasi</value>
@@ -2432,8 +2423,14 @@ PEMBAYARAN KONSISTEN</value>
   <data name="P2pRevenueShare" xml:space="preserve">
     <value>Pembagian Pendapatan P2P</value>
   </data>
+  <data name="SubAffCommRate" xml:space="preserve">
+    <value>Rate Komisi Sub-Afiliasi </value>
+  </data>
   <data name="RoyaltyFee" xml:space="preserve">
     <value>Biaya Royalti</value>
+  </data>
+  <data name="TheHighestShare" xml:space="preserve">
+    <value>Persentase pembagian tertinggi dari beberapa grup</value>
   </data>
   <data name="Winloss" xml:space="preserve">
     <value>Kemenangan/Kerugian</value>
@@ -2455,6 +2452,9 @@ PEMBAYARAN KONSISTEN</value>
   </data>
   <data name="IncludeInActiveLink" xml:space="preserve">
     <value>Sertakan Tautan Pelacakan Tidak Aktif</value>
+  </data>
+  <data name="VerifyEmailAddressIsRequired" xml:space="preserve">
+    <value>Verifikasi e-mail diperlukan</value>
   </data>
   <data name="SubAffiliateLink" xml:space="preserve">
     <value>Tautan Sub-Afiliasi</value>
@@ -2495,6 +2495,12 @@ PEMBAYARAN KONSISTEN</value>
   <data name="SaveQRCode" xml:space="preserve">
     <value>Simpan Kode QR</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>Kategori</value>
+  </data>
+  <data name="SubCategory" xml:space="preserve">
+    <value>Sub Kategori</value>
+  </data>
   <data name="SearchAndGenQR" xml:space="preserve">
     <value>Cari dan Hasilkan</value>
   </data>
@@ -2516,22 +2522,16 @@ PEMBAYARAN KONSISTEN</value>
   <data name="QualifiedActivePlayers" xml:space="preserve">
     <value>PEMAIN AKTIF TERKUALIFIKASI</value>
   </data>
-  <data name="ActivePlayersAndQualified" xml:space="preserve">
-    <value>Pemain Aktif / Terkualifikasi</value>
-  </data>
-  <data name="ActivePlayers" xml:space="preserve">
-    <value>Pemain Aktif</value>
-  </data>
   <data name="SubscribeToOur" xml:space="preserve">
     <value>Berlangganan {0}&lt;br /&gt;
 Kami untuk Update dan Promosi Terbaru</value>
   </data>
-  <data name="TelegramChannel" xml:space="preserve">
-    <value>Saluran Telegram</value>
-  </data>
   <data name="ForInquiries" xml:space="preserve">
     <value>Untuk pertanyaan, Anda dapat langsung menghubungi Telegram kami di {0}&lt;br /&gt;
 Anda juga bisa mengirim email ke {1} atau cukup isi formulir di bawah ini.</value>
+  </data>
+  <data name="TelegramChannel" xml:space="preserve">
+    <value>Saluran Telegram</value>
   </data>
   <data name="VietnamCountry" xml:space="preserve">
     <value>Viet Nam </value>
@@ -2550,5 +2550,8 @@ Anda juga bisa mengirim email ke {1} atau cukup isi formulir di bawah ini.</valu
   </data>
   <data name="NetRevenue" xml:space="preserve">
     <value>Pendapatan Bersih</value>
+  </data>
+  <data name="NotAllowOnCountry" xml:space="preserve">
+    <value />
   </data>
 </root>

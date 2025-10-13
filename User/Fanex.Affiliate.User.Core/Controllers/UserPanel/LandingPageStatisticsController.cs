@@ -21,13 +21,15 @@
 
         public LandingPageStatisticsController(
             ISessionService sessionService,
-            ISystemService systemService,
+            ISystemService systemsService,
             IStatisticsService statisticsService,
-            IMarketingService marketingService) : base(sessionService, systemService)
+            IMarketingService marketingService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             _statisticsService = statisticsService;
             _marketingService = marketingService;
-            _systemService = systemService;
+            _systemService = systemsService;
         }
 
 

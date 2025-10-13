@@ -18,8 +18,9 @@
             IAppSetting appSetting,
             ISystemService systemsService,
             IMarketingService marketingService,
-            IAccountService accountService)
-            : base(sessionService, appSetting, systemsService, marketingService)
+            IAccountService accountService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, appSetting, systemsService, marketingService, ipLocationService)
         {
             _accountService = accountService;
         }

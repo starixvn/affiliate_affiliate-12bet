@@ -26,8 +26,9 @@ namespace Fanex.Affiliate.User.Core.Controllers
             ISystemService systemsService,
             IAuthService authService,
             ICaptchaService captchaService,
-            IAccountService accountService)
-            : base(sessionService, systemsService, appSetting, captchaService, authService, accountService)
+            IAccountService accountService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, appSetting, captchaService, authService, accountService, ipLocationService)
         {
         }
 
@@ -85,7 +86,7 @@ namespace Fanex.Affiliate.User.Core.Controllers
             var userInfo = loginResult.UserInfo;
             if (userInfo != null)
             {
-                if (IsInvalidCountryAccess(userInfo.TargetCountryCode, countryCode, AppSetting.SiteName))
+                if (IsInvalidCountryAccess(userInfo.TargetCountryCode, SessionService.CountryByIp))
                 {
                     return Json(GetErrorResult(Lang.NotAllowOnCountry));
                 }

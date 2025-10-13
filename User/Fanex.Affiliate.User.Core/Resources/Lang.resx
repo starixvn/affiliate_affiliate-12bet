@@ -2666,4 +2666,7 @@ You can also email us to {1} or simply fill the form below.</value>
   <data name="NetRevenue" xml:space="preserve">
     <value>Net Revenue</value>
   </data>
+  <data name="NotAllowOnCountry" xml:space="preserve">
+    <value>Your account is not available in this country.</value>
+  </data>
 </root>

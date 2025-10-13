@@ -29,8 +29,9 @@ namespace Fanex.Affiliate.User.Core.Controllers
             ICaptchaService captchaService,
             IAuthService authService,
             IVerificationService verificationService,
-            IAccountService accountService)
-            : base(sessionService, systemsService, appSetting, captchaService, authService, accountService)
+            IAccountService accountService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, appSetting, captchaService, authService, accountService, ipLocationService)
         {
             _verificationService = verificationService;
         }

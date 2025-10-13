@@ -17,7 +17,9 @@
         public DailyEarningController(
             ISessionService sessionService,
             ISystemService systemsService,
-            IStatementHistoryService statementHistoryService) : base(sessionService, systemsService)
+            IStatementHistoryService statementHistoryService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             _statementHistoryService = statementHistoryService;
         }

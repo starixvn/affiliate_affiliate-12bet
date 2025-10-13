@@ -17,8 +17,10 @@
 
         public SubAffEarningController(
             ISessionService sessionService,
-            ISystemService systemService,
-            IStatementHistoryService statementHistoryService) : base(sessionService, systemService)
+            ISystemService systemsService,
+            IStatementHistoryService statementHistoryService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             _statementHistoryService = statementHistoryService;
         }

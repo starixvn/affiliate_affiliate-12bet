@@ -11,10 +11,12 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
     {
         private INewsLetterService Service { get; }
 
-        public NewsLetterController(INewsLetterService service,
+        public NewsLetterController(
+            INewsLetterService service,
             ISessionService sessionService,
-            ISystemService systemsService)
-            : base(sessionService, systemsService)
+            ISystemService systemsService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             Service = service;
         }

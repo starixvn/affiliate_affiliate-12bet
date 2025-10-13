@@ -8,8 +8,11 @@
     [CustomAuthorize]
     public class MainController : BaseController
     {
-        public MainController(ISessionService sessionService,
-            ISystemService systemsService) : base(sessionService, systemsService)
+        public MainController(
+            ISessionService sessionService,
+            ISystemService systemsService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
 
         }

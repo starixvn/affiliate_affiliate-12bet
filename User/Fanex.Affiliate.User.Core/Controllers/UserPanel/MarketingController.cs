@@ -33,8 +33,9 @@
             ISystemService systemsService,
             IMarketingService marketingService,
             IQrCodeGeneratorService qrCodeGeneratorService,
-            IFileSystem fileSystem) 
-            : base(sessionService, appSetting, systemsService, marketingService)
+            IFileSystem fileSystem,
+            IIpLocationService ipLocationService) 
+            : base(sessionService, appSetting, systemsService, marketingService, ipLocationService)
         {
             _appSetting = appSetting;
             _qrCodeGeneratorService = qrCodeGeneratorService;

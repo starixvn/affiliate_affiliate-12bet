@@ -16,8 +16,9 @@
         public RevenueReportController(
             ISessionService sessionService,
             ISystemService systemsService,
-            ICommissionReportService commissionReportService
-            ) : base(sessionService, systemsService)
+            ICommissionReportService commissionReportService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             _commissionReportService = commissionReportService;
         }

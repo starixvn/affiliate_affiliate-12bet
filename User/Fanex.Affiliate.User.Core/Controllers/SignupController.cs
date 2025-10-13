@@ -32,7 +32,9 @@
             IAccountService accountService,
             ISystemService systemsService,
             ICaptchaService captchaService,
-            ISecurityQuestionService securityQuestionService) : base(sessionService, systemsService)
+            ISecurityQuestionService securityQuestionService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             _accountService = accountService;
             _captchaService = captchaService;

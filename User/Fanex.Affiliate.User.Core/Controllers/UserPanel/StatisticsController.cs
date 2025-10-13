@@ -14,8 +14,9 @@
         public StatisticsController(
             ISessionService sessionService,
             ISystemService systemsService,
-            IStatisticsService statisticsService
-            ) : base(sessionService, systemsService)
+            IStatisticsService statisticsService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             _statisticsService = statisticsService;
         }

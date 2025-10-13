@@ -15,9 +15,12 @@
     public class ReferrersStatisticsController : BaseController
     {
         private readonly IStatisticsService _statisticsService;
-        public ReferrersStatisticsController(ISessionService sessionService, ISystemService systemsService,
-            IStatisticsService statisticsService
-            ) : base(sessionService, systemsService)
+        public ReferrersStatisticsController(
+            ISessionService sessionService, 
+            ISystemService systemsService,
+            IStatisticsService statisticsService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             _statisticsService = statisticsService;
         }

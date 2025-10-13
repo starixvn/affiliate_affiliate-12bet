@@ -14,8 +14,9 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
         public OffersForMeController(
             IOfferService offerService,
             ISessionService sessionService,
-            ISystemService systemsService)
-            : base(sessionService, systemsService)
+            ISystemService systemsService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             _offerService = offerService;
         }

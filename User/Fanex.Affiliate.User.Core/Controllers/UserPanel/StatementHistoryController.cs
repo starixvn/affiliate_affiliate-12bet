@@ -23,8 +23,9 @@
         public StatementHistoryController(ISessionService sessionService,
             ISystemService systemsService,
             IAppSetting appSetting,
-            IStatementHistoryService statementHistoryService
-            ) : base(sessionService, systemsService)
+            IStatementHistoryService statementHistoryService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             _appSetting = appSetting;
             _statementHistoryService = statementHistoryService;

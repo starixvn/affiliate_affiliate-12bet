@@ -348,6 +348,12 @@
   <data name="ChinaPeoplesRep" xml:space="preserve">
     <value>중국(인민화)</value>
   </data>
+  <data name="ChineseSimplified" xml:space="preserve">
+    <value>중국어(간체)</value>
+  </data>
+  <data name="ChineseTraditional" xml:space="preserve">
+    <value>중국어</value>
+  </data>
   <data name="City" xml:space="preserve">
     <value>도시</value>
   </data>
@@ -358,6 +364,9 @@
     <value>콜롬비아</value>
   </data>
   <data name="Comm" xml:space="preserve">
+    <value>커미션</value>
+  </data>
+  <data name="CommShorted" xml:space="preserve">
     <value>커미션</value>
   </data>
   <data name="Comment" xml:space="preserve">
@@ -448,11 +457,17 @@
   <data name="Denmark" xml:space="preserve">
     <value>덴마크</value>
   </data>
+  <data name="Deposit" xml:space="preserve">
+    <value>입금</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>설명</value>
   </data>
   <data name="DescWebsite" xml:space="preserve">
     <value>현재 URL이 없으신경우, 12bet  향후 업무계획을 간략히 설명해주십시오.</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>디바이스</value>
   </data>
   <data name="DominicaCommonwealthof" xml:space="preserve">
     <value>도미니카 연방</value>
@@ -573,6 +588,9 @@
   </data>
   <data name="Football" xml:space="preserve">
     <value>축구</value>
+  </data>
+  <data name="ForAnyReason" xml:space="preserve">
+    <value>확인 이메일을 받지 못한 경우 스팸 메일함 또는 &lt;a href='{0}'&gt;고객센터&lt;/a&gt;로 문의하시기 바랍니다.</value>
   </data>
   <data name="ForgetPassword" xml:space="preserve">
     <value>비밀번호 찾기</value>
@@ -880,6 +898,9 @@
   <data name="NewPasswordisre" xml:space="preserve">
     <value>새 비밀번호가 필요합니다.</value>
   </data>
+  <data name="NewSignupAndDeposited" xml:space="preserve">
+    <value>신규 가입 / 입금</value>
+  </data>
   <data name="NewZealand" xml:space="preserve">
     <value>뉴질렌드</value>
   </data>
@@ -903,6 +924,9 @@
   </data>
   <data name="Norway" xml:space="preserve">
     <value>노르웨이</value>
+  </data>
+  <data name="NotAllowOnDomain" xml:space="preserve">
+    <value>죄송합니다! 현재 도메인을 이용할 수 없습니다.</value>
   </data>
   <data name="November" xml:space="preserve">
     <value>11월</value>
@@ -1242,6 +1266,9 @@
   <data name="Thisisasystemau" xml:space="preserve">
     <value>이 시스템은 이메일을 자동적으로 생성하며, 본 이메일에 즉시 회신하지 마십시오.</value>
   </data>
+  <data name="Tier" xml:space="preserve">
+    <value>Tier</value>
+  </data>
   <data name="TitelForgetPass" xml:space="preserve">
     <value>새로운 비밀번호는 고객의 이메일로 보내집니다. 문의사항 및 어려움이 있을시, 본 사로 연락 바랍니다.</value>
   </data>
@@ -1335,6 +1362,9 @@
   <data name="Vietnamese" xml:space="preserve">
     <value>베트남어</value>
   </data>
+  <data name="VirtualSports" xml:space="preserve">
+    <value>가상 스포츠 </value>
+  </data>
   <data name="WebsiteInfor" xml:space="preserve">
     <value>웹사이트 정보</value>
   </data>
@@ -1386,6 +1416,33 @@
   <data name="_12BETPlayerAcc" xml:space="preserve">
     <value>12BET 플레이어 계정</value>
   </data>
+  <data name="CommissionStructure" xml:space="preserve">
+    <value>커미션 구조</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>제공중인 게임사</value>
+  </data>
+  <data name="AllProducts" xml:space="preserve">
+    <value>모든 제품</value>
+  </data>
+  <data name="ESports" xml:space="preserve">
+    <value>E-스포츠</value>
+  </data>
+  <data name="RngKeno" xml:space="preserve">
+    <value>키노</value>
+  </data>
+  <data name="Lottery" xml:space="preserve">
+    <value>로또</value>
+  </data>
+  <data name="MoreDetailProduct" xml:space="preserve">
+    <value>자세한 12BET 제품</value>
+  </data>
+  <data name="TermAndCondition" xml:space="preserve">
+    <value>이용약관</value>
+  </data>
+  <data name="JoinNowHeader" xml:space="preserve">
+    <value>제휴 가입</value>
+  </data>
   <data name="EmailTitleNewPassword" xml:space="preserve">
     <value>새 비밀번호</value>
   </data>
@@ -1397,6 +1454,33 @@
   </data>
   <data name="EmailTitleSignUp" xml:space="preserve">
     <value>신청 접수</value>
+  </data>
+  <data name="CommissionReport" xml:space="preserve">
+    <value>커미션 리포트</value>
+  </data>
+  <data name="Temporary" xml:space="preserve">
+    <value>임시</value>
+  </data>
+  <data name="Uncalculated" xml:space="preserve">
+    <value>미정산</value>
+  </data>
+  <data name="BankingFee" xml:space="preserve">
+    <value>은행 사용료</value>
+  </data>
+  <data name="GrossWinLoss" xml:space="preserve">
+    <value>총 윈/로스</value>
+  </data>
+  <data name="OperationalFee" xml:space="preserve">
+    <value>운영비</value>
+  </data>
+  <data name="PlatformFee" xml:space="preserve">
+    <value>플랫폼 사용료</value>
+  </data>
+  <data name="NoteCommissionCalculation" xml:space="preserve">
+    <value>총 커미션 = (총 윈/로스 - 플랫폼사용료 - 운영비 -뱅킹수수료 - 보너스 x 커미션(%)</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>요청을 처리하는 동안 오류가 발생했습니다! 관리자에게 문의주시기 바랍니다.</value>
   </data>
   <data name="CasinoClubs" xml:space="preserve">
     <value>12BET 카지노 클럽</value>
@@ -1443,15 +1527,6 @@
   <data name="Product12AMBER" xml:space="preserve">
     <value>12엠버(벳소프트)</value>
   </data>
-  <data name="Tier" xml:space="preserve">
-    <value>Tier</value>
-  </data>
-  <data name="AllProducts" xml:space="preserve">
-    <value>모든 제품</value>
-  </data>
-  <data name="MoreDetailProduct" xml:space="preserve">
-    <value>자세한 12BET 제품</value>
-  </data>
   <data name="SupportTime" xml:space="preserve">
     <value>오전 9시 ~ 오후 6시&lt;br /&gt;(한국시간) </value>
   </data>
@@ -1473,32 +1548,8 @@
   <data name="ValidationCodeLabel" xml:space="preserve">
     <value>보안문자</value>
   </data>
-  <data name="TermAndCondition" xml:space="preserve">
-    <value>이용약관</value>
-  </data>
-  <data name="CommissionStructure" xml:space="preserve">
-    <value>커미션 구조</value>
-  </data>
-  <data name="Product" xml:space="preserve">
-    <value>제공중인 게임사</value>
-  </data>
-  <data name="VirtualSports" xml:space="preserve">
-    <value>가상 스포츠 </value>
-  </data>
-  <data name="ESports" xml:space="preserve">
-    <value>E-스포츠</value>
-  </data>
-  <data name="RngKeno" xml:space="preserve">
-    <value>키노</value>
-  </data>
-  <data name="Lottery" xml:space="preserve">
-    <value>로또</value>
-  </data>
   <data name="SignUpAffiliateProgramNow" xml:space="preserve">
     <value>12BET 제휴 프로그램 가입!</value>
-  </data>
-  <data name="JoinNowHeader" xml:space="preserve">
-    <value>제휴 가입</value>
   </data>
   <data name="ApplyOneTwoBetAffiliate" xml:space="preserve">
     <value>12BET 제휴사 등록 방법</value>
@@ -1536,44 +1587,11 @@
   <data name="ContactNow" xml:space="preserve">
     <value>지금 연결하세요!</value>
   </data>
-  <data name="CommissionReport" xml:space="preserve">
-    <value>커미션 리포트</value>
-  </data>
-  <data name="GrossWinLoss" xml:space="preserve">
-    <value>총 윈/로스</value>
-  </data>
-  <data name="PlatformFee" xml:space="preserve">
-    <value>플랫폼 사용료</value>
-  </data>
-  <data name="OperationalFee" xml:space="preserve">
-    <value>운영비</value>
-  </data>
-  <data name="BankingFee" xml:space="preserve">
-    <value>은행 사용료</value>
-  </data>
-  <data name="CommShorted" xml:space="preserve">
-    <value>커미션</value>
-  </data>
-  <data name="NoteCommissionCalculation" xml:space="preserve">
-    <value>총 커미션 = (총 윈/로스 - 플랫폼사용료 - 운영비 -뱅킹수수료 - 보너스 x 커미션(%)</value>
-  </data>
-  <data name="Temporary" xml:space="preserve">
-    <value>임시</value>
-  </data>
-  <data name="Uncalculated" xml:space="preserve">
-    <value>미정산</value>
-  </data>
-  <data name="ServerError" xml:space="preserve">
-    <value>요청을 처리하는 동안 오류가 발생했습니다! 관리자에게 문의주시기 바랍니다.</value>
-  </data>
-  <data name="Device" xml:space="preserve">
-    <value>디바이스</value>
-  </data>
   <data name="PCDevice" xml:space="preserve">
     <value>PC / 랜탑</value>
   </data>
-  <data name="NotAllowOnDomain" xml:space="preserve">
-    <value>죄송합니다! 현재 도메인을 이용할 수 없습니다.</value>
+  <data name="MobileDevice" xml:space="preserve">
+    <value>모바일</value>
   </data>
   <data name="Statistics" xml:space="preserve">
     <value>통계</value>
@@ -1599,9 +1617,6 @@
   <data name="ForgotLoginDetail" xml:space="preserve">
     <value> 로그인 정보 찾기</value>
   </data>
-  <data name="MobileDevice" xml:space="preserve">
-    <value>모바일</value>
-  </data>
   <data name="NonDeposited" xml:space="preserve">
     <value>본사로 입금한 내역이 없는 계정</value>
   </data>
@@ -1616,6 +1631,12 @@
   </data>
   <data name="Language" xml:space="preserve">
     <value>언어</value>
+  </data>
+  <data name="IN" xml:space="preserve">
+    <value>IN</value>
+  </data>
+  <data name="Player" xml:space="preserve">
+    <value>플레이어</value>
   </data>
   <data name="MetaTitle" xml:space="preserve">
     <value>12BET 제휴프로그램 | 12BET 사업파트너가 되십시오.</value>
@@ -1649,6 +1670,18 @@
   </data>
   <data name="TableCardGames" xml:space="preserve">
     <value>테이블/카드 게임</value>
+  </data>
+  <data name="EmailTittleVerificationAccount" xml:space="preserve">
+    <value>확인 코드</value>
+  </data>
+  <data name="SubjectVerificationAccount" xml:space="preserve">
+    <value>12B 제휴사 - 확인 코드</value>
+  </data>
+  <data name="ErrmsgEntryCaptcha" xml:space="preserve">
+    <value>보안문자를 입력하세요!</value>
+  </data>
+  <data name="ErrmsgEntryVerificationCode" xml:space="preserve">
+    <value>인증 코드를 입력하세요.</value>
   </data>
   <data name="DearCustomer" xml:space="preserve">
     <value>xxx 제휴사님께,</value>
@@ -1734,12 +1767,12 @@
   <data name="SuffixProduct12AMBER" xml:space="preserve">
     <value>(벳소프트)</value>
   </data>
+  <data name="MKK" xml:space="preserve">
+    <value>MMK</value>
+  </data>
   <data name="_12BetExchange" xml:space="preserve">
     <value>12BET익스체인지 &lt;br /&gt;
 (INR &amp; IN.USD 회원전용)</value>
-  </data>
-  <data name="ForAnyReason" xml:space="preserve">
-    <value>확인 이메일을 받지 못한 경우 스팸 메일함 또는 &lt;a href='{0}'&gt;고객센터&lt;/a&gt;로 문의하시기 바랍니다.</value>
   </data>
   <data name="AConfirmationEmail" xml:space="preserve">
     <value>확인 이메일 전송 중입니다.</value>
@@ -1755,6 +1788,12 @@
   </data>
   <data name="Product12GOLD" xml:space="preserve">
     <value>12GOLD (SA GAMING)</value>
+  </data>
+  <data name="PrefixProduct12JADE" xml:space="preserve">
+    <value>12제이드</value>
+  </data>
+  <data name="SuffixProduct12JADE" xml:space="preserve">
+    <value>(AE SEXY)</value>
   </data>
   <data name="Product12JADE" xml:space="preserve">
     <value>12제이드 (AE SEXY)</value>
@@ -1786,8 +1825,11 @@
   <data name="Product12JASPER" xml:space="preserve">
     <value>12JASPER (N2 LIVE)</value>
   </data>
-  <data name="PrefixProduct12JADE" xml:space="preserve">
-    <value>12제이드</value>
+  <data name="AndarBahar" xml:space="preserve">
+    <value>Andar Bahar</value>
+  </data>
+  <data name="Teenpatti" xml:space="preserve">
+    <value>Teenpatti</value>
   </data>
   <data name="Promotion" xml:space="preserve">
     <value>이벤트</value>
@@ -1813,11 +1855,11 @@
   <data name="WeWouldLove" xml:space="preserve">
     <value>보다 나은 서비스를 위해 제휴사의 의견을 수렴합니다</value>
   </data>
-  <data name="PleaseLeaveYourFeedback" xml:space="preserve">
-    <value>아래의 빈칸에 피드백을 남겨주세요.</value>
-  </data>
   <data name="WhatIsYourOpinion" xml:space="preserve">
     <value>제휴 프로그램에 대한 의견을 보내주시기 바랍니다.</value>
+  </data>
+  <data name="PleaseLeaveYourFeedback" xml:space="preserve">
+    <value>아래의 빈칸에 피드백을 남겨주세요.</value>
   </data>
   <data name="ThankYou" xml:space="preserve">
     <value>피드백주셔서 대단히 감사합니다. </value>
@@ -1828,74 +1870,23 @@
   <data name="RevenueShare" xml:space="preserve">
     <value>수익 공유</value>
   </data>
-  <data name="SuffixProduct12JADE" xml:space="preserve">
-    <value>(AE SEXY)</value>
-  </data>
-  <data name="AndarBahar" xml:space="preserve">
-    <value>Andar Bahar</value>
-  </data>
-  <data name="Teenpatti" xml:space="preserve">
-    <value>Teenpatti</value>
-  </data>
-  <data name="ChineseTraditional" xml:space="preserve">
-    <value>중국어</value>
-  </data>
-  <data name="ChineseSimplified" xml:space="preserve">
-    <value>중국어(간체)</value>
-  </data>
-  <data name="IN" xml:space="preserve">
-    <value>IN</value>
-  </data>
-  <data name="MKK" xml:space="preserve">
-    <value>MMK</value>
-  </data>
   <data name="CambodiaSupport" xml:space="preserve">
     <value>캄보디아 지원</value>
   </data>
-  <data name="NewSignUp" xml:space="preserve">
-    <value>신규가입</value>
-  </data>
-  <data name="ErrmsgEntryVerificationCode" xml:space="preserve">
-    <value>인증 코드를 입력하세요.</value>
-  </data>
-  <data name="ErrmsgEntryCaptcha" xml:space="preserve">
-    <value>보안문자를 입력하세요!</value>
-  </data>
-  <data name="Summary" xml:space="preserve">
-    <value>요약</value>
-  </data>
-  <data name="AffiliateLink" xml:space="preserve">
-    <value>제휴 링크</value>
-  </data>
-  <data name="LastLogin" xml:space="preserve">
-    <value>마지막 로그인</value>
-  </data>
-  <data name="LastLoginIpAddress" xml:space="preserve">
-    <value>마지막 로그인 IP 주소</value>
-  </data>
-  <data name="Overview" xml:space="preserve">
-    <value>개요</value>
-  </data>
-  <data name="PlayersDetails" xml:space="preserve">
-    <value>플레이어 세부 정보</value>
+  <data name="ActivePlayersAndQualified" xml:space="preserve">
+    <value>액티브 회원 / 요건 충족</value>
   </data>
   <data name="TotalTurnover" xml:space="preserve">
     <value>총 매출액</value>
   </data>
-  <data name="EmailTittleVerificationAccount" xml:space="preserve">
-    <value>확인 코드</value>
+  <data name="PlayersDetails" xml:space="preserve">
+    <value>플레이어 세부 정보</value>
   </data>
-  <data name="Player" xml:space="preserve">
-    <value>플레이어</value>
+  <data name="Overview" xml:space="preserve">
+    <value>개요</value>
   </data>
-  <data name="SubjectVerificationAccount" xml:space="preserve">
-    <value>12B 제휴사 - 확인 코드</value>
-  </data>
-  <data name="NewSignupAndDeposited" xml:space="preserve">
-    <value>신규 가입 / 입금</value>
-  </data>
-  <data name="ActivePlayersAndQualified" xml:space="preserve">
-    <value>액티브 회원 / 요건 충족</value>
+  <data name="NewSignUp" xml:space="preserve">
+    <value>신규가입</value>
   </data>
   <data name="DepositedMembers" xml:space="preserve">
     <value>입금한 회원</value>
@@ -1912,14 +1903,11 @@
   <data name="Copied" xml:space="preserve">
     <value>복사됨</value>
   </data>
-  <data name="No" xml:space="preserve">
-    <value>아니오</value>
-  </data>
   <data name="Dimension" xml:space="preserve">
     <value>규모</value>
   </data>
-  <data name="CopyBannerCode" xml:space="preserve">
-    <value>배너 코드 복사</value>
+  <data name="No" xml:space="preserve">
+    <value>아니오</value>
   </data>
   <data name="ShareBanner" xml:space="preserve">
     <value>친구에게 배너 공유</value>
@@ -1927,17 +1915,32 @@
   <data name="CopyLink" xml:space="preserve">
     <value>링크 복사</value>
   </data>
-  <data name="CopyQR" xml:space="preserve">
-    <value>QR 코드 복사</value>
-  </data>
   <data name="SaveQR" xml:space="preserve">
     <value>QR 코드 저장</value>
+  </data>
+  <data name="CopyQR" xml:space="preserve">
+    <value>QR 코드 복사</value>
   </data>
   <data name="Copy" xml:space="preserve">
     <value>복사</value>
   </data>
   <data name="YouDoNotHaveEmail" xml:space="preserve">
     <value>이메일 주소가 없습니다. 관리자에게 문의하세요!</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>요약</value>
+  </data>
+  <data name="AffiliateLink" xml:space="preserve">
+    <value>제휴 링크</value>
+  </data>
+  <data name="LastLogin" xml:space="preserve">
+    <value>마지막 로그인</value>
+  </data>
+  <data name="LastLoginIpAddress" xml:space="preserve">
+    <value>마지막 로그인 IP 주소</value>
+  </data>
+  <data name="CopyBannerCode" xml:space="preserve">
+    <value>배너 코드 복사</value>
   </data>
   <data name="ReportBy" xml:space="preserve">
     <value>필터 유형</value>
@@ -2065,20 +2068,23 @@
   <data name="BDT" xml:space="preserve">
     <value>BDT</value>
   </data>
+  <data name="BangladeshSupport" xml:space="preserve">
+    <value>방글라데시 지원</value>
+  </data>
   <data name="FdmDeposit" xml:space="preserve">
     <value>FTD 입금</value>
   </data>
-  <data name="TransactionInReport" xml:space="preserve">
-    <value>거래</value>
+  <data name="FdmExtraComm" xml:space="preserve">
+    <value>FTD 추가 커미션</value>
   </data>
-  <data name="NewFTD" xml:space="preserve">
-    <value>새로운 FTD</value>
+  <data name="MonthlyEarning" xml:space="preserve">
+    <value>월 수익</value>
   </data>
   <data name="MonthlyTotal" xml:space="preserve">
     <value>월별 합계</value>
   </data>
-  <data name="MonthlyEarning" xml:space="preserve">
-    <value>월 수익</value>
+  <data name="TransactionInReport" xml:space="preserve">
+    <value>거래</value>
   </data>
   <data name="UncalculatedMonthlyEarning" xml:space="preserve">
     <value>미계산 월 수입</value>
@@ -2086,14 +2092,14 @@
   <data name="CurrentMonthlyEarning" xml:space="preserve">
     <value>현재 월별 수입</value>
   </data>
-  <data name="CurrentNewFdmCommBonus" xml:space="preserve">
-    <value>현재 신규 FTD 커미션 보너스</value>
-  </data>
   <data name="NewFdmCommBonus" xml:space="preserve">
     <value>새로운 FTD 커미션 보너스</value>
   </data>
   <data name="UncalculatedNewFdmCommBonus" xml:space="preserve">
     <value>계산되지 않은 새 FTD 커미션 보너스</value>
+  </data>
+  <data name="CurrentNewFdmCommBonus" xml:space="preserve">
+    <value>현재 신규 FTD 커미션 보너스</value>
   </data>
   <data name="UncalculatedMonth" xml:space="preserve">
     <value>계산되지 않은 월</value>
@@ -2101,8 +2107,26 @@
   <data name="CurrentMonthStatistics" xml:space="preserve">
     <value>현재 월 통계</value>
   </data>
-  <data name="FdmExtraComm" xml:space="preserve">
-    <value>FTD 추가 커미션</value>
+  <data name="NewFTD" xml:space="preserve">
+    <value>새로운 FTD</value>
+  </data>
+  <data name="AffCountLanguage" xml:space="preserve">
+    <value>제휴 계정 언어</value>
+  </data>
+  <data name="TargetCountryErr" xml:space="preserve">
+    <value>대상 국가를 선택해주세요</value>
+  </data>
+  <data name="TargetCountry" xml:space="preserve">
+    <value>해당 국가</value>
+  </data>
+  <data name="GenerateYourUniqueLink" xml:space="preserve">
+    <value>고유 링크를 생성하세요!</value>
+  </data>
+  <data name="TargetProduct" xml:space="preserve">
+    <value>해당 제품</value>
+  </data>
+  <data name="GetBannerForYourTargetMarket" xml:space="preserve">
+    <value>해당 타겟에 배너를 거세요</value>
   </data>
   <data name="Hindi" xml:space="preserve">
     <value>흰디어</value>
@@ -2122,18 +2146,6 @@
   <data name="China" xml:space="preserve">
     <value>중국</value>
   </data>
-  <data name="GenerateYourUniqueLink" xml:space="preserve">
-    <value>고유 링크를 생성하세요!</value>
-  </data>
-  <data name="TargetCountry" xml:space="preserve">
-    <value>해당 국가</value>
-  </data>
-  <data name="TargetProduct" xml:space="preserve">
-    <value>해당 제품</value>
-  </data>
-  <data name="GetBannerForYourTargetMarket" xml:space="preserve">
-    <value>해당 타겟에 배너를 거세요</value>
-  </data>
   <data name="Sports" xml:space="preserve">
     <value>스포츠</value>
   </data>
@@ -2152,14 +2164,14 @@
   <data name="Keno" xml:space="preserve">
     <value>키노</value>
   </data>
-  <data name="BangladeshSupport" xml:space="preserve">
-    <value>방글라데시 지원</value>
-  </data>
   <data name="TermAndConditionPageTitle" xml:space="preserve">
     <value>12BET 제휴사 이용 약관</value>
   </data>
   <data name="OurProducts" xml:space="preserve">
     <value>제공중인 게임사</value>
+  </data>
+  <data name="Telegram" xml:space="preserve">
+    <value>Telegram</value>
   </data>
   <data name="_12BetIsPremireOnline" xml:space="preserve">
     <value>12BET은 스포츠 팬을 위한 최고의 온라인 스포츠 베팅 사이트로, 전 세계 다양한 스포츠 이벤트에서 가장 높은 배당률을 자랑합니다.전세계 수백만명의 베터들이 선호하는 주력 배당과 최고의 경험을 선사해 드리기 위한 스포츠 게임을 제공합니다.</value>
@@ -2194,17 +2206,8 @@
   <data name="AffiliateEarnsRevenueShare" xml:space="preserve">
     <value>제휴사는 수수료 구조표에 따라 순이익에서 수익을 얻습니다.</value>
   </data>
-  <data name="AffCountLanguage" xml:space="preserve">
-    <value>제휴 계정 언어</value>
-  </data>
-  <data name="TargetCountryErr" xml:space="preserve">
-    <value>대상 국가를 선택해주세요</value>
-  </data>
   <data name="BecomeA12BetAff" xml:space="preserve">
     <value>12Bet 제휴사가 되어보세요</value>
-  </data>
-  <data name="Telegram" xml:space="preserve">
-    <value>Telegram</value>
   </data>
   <data name="JapanSupport" xml:space="preserve">
     <value>일본 지원</value>
@@ -2230,9 +2233,6 @@
   <data name="SignupEnglandCalling" xml:space="preserve">
     <value>가입</value>
   </data>
-  <data name="FdmEnglandCalling" xml:space="preserve">
-    <value>FTD</value>
-  </data>
   <data name="WinlossInUSD" xml:space="preserve">
     <value>승리손실 ($)</value>
   </data>
@@ -2242,20 +2242,23 @@
   <data name="SignedLCFCJersey" xml:space="preserve">
     <value>LCFC 사인 유니폼 + 축구공 + $4,000</value>
   </data>
-  <data name="SignedLCFCJersey1000" xml:space="preserve">
-    <value>LCFC 사인 유니폼 + $1,000</value>
-  </data>
   <data name="MacbookPro" xml:space="preserve">
     <value>맥북 프로 16' M3 프로</value>
   </data>
   <data name="IPhone16Pro" xml:space="preserve">
     <value>아이폰 16 프로 맥스 1TB</value>
   </data>
+  <data name="SignedLCFCJersey1000" xml:space="preserve">
+    <value>LCFC 사인 유니폼 + $1,000</value>
+  </data>
   <data name="SignedLCFCFootball" xml:space="preserve">
     <value>LCFC 사인 축구공 + $1,000</value>
   </data>
   <data name="ContactAffManager" xml:space="preserve">
     <value>제휴 관리자에게 문의하세요</value>
+  </data>
+  <data name="FdmEnglandCalling" xml:space="preserve">
+    <value>FTD</value>
   </data>
   <data name="Aff274TestimonialTitle" xml:space="preserve">
     <value>적시 결제 및&lt;br/&gt;지원</value>
@@ -2319,12 +2322,6 @@
   </data>
   <data name="Aff286TestimonialContent" xml:space="preserve">
     <value>"12BET에 가입한 것은 제게 훌륭한 결정이었습니다. 제휴 프로그램은 가입이 쉬우며, 커미션 지급이 항상 일관됩니다. 아주 견고한 파트너십입니다."</value>
-  </data>
-  <data name="CurrencyLabel" xml:space="preserve">
-    <value>USD</value>
-  </data>
-  <data name="Deposit" xml:space="preserve">
-    <value>입금</value>
   </data>
   <data name="ActivePlayers" xml:space="preserve">
     <value>액티브 회원</value>
@@ -2394,6 +2391,9 @@
   </data>
   <data name="CurrentCommission" xml:space="preserve">
     <value>현재 수익 공유</value>
+  </data>
+  <data name="CurrencyLabel" xml:space="preserve">
+    <value>USD</value>
   </data>
   <data name="AffiliateCurrency" xml:space="preserve">
     <value>제휴 통화</value>
@@ -2512,17 +2512,20 @@
   <data name="SubscribeToOur" xml:space="preserve">
     <value>최신 업데이트 및 프로모션을 받으시려면 {0}을 구독해 주세요.</value>
   </data>
-  <data name="TelegramChannel" xml:space="preserve">
-    <value>텔레그램 채널</value>
-  </data>
   <data name="ForInquiries" xml:space="preserve">
     <value>문의사항이 있으시면 텔레그램 {0} 으로 직접 연락주시거나,&lt;br /&gt;
 {1} 으로 이메일을 보내주시거나 아래 양식을 작성해 주세요.</value>
+  </data>
+  <data name="TelegramChannel" xml:space="preserve">
+    <value>텔레그램 채널</value>
   </data>
   <data name="VietnamCountry" xml:space="preserve">
     <value>베트남</value>
   </data>
   <data name="NetRevenue" xml:space="preserve">
     <value>순수익</value>
+  </data>
+  <data name="NotAllowOnCountry" xml:space="preserve">
+    <value />
   </data>
 </root>

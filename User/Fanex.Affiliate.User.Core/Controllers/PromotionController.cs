@@ -9,8 +9,11 @@
     public class PromotionController : BaseController
     {
 
-        public PromotionController(ISessionService sessionService, ISystemService systemsService)
-            : base(sessionService, systemsService)
+        public PromotionController(
+            ISessionService sessionService, 
+            ISystemService systemsService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
         }
 

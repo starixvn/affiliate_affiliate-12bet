@@ -7,6 +7,7 @@
     using CoreService;
     using DTO;
     using Extensions;
+    using Resources;
     using Utilities;
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
@@ -45,7 +46,7 @@
                             Data = new ResultInfo
                             {
                                 IsOk = false,
-                                Message = "Your account is not available in this country."
+                                Message = Lang.NotAllowOnCountry
                             },
                             JsonRequestBehavior = JsonRequestBehavior.AllowGet
                         };

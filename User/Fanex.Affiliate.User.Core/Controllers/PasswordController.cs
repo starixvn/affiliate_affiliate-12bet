@@ -29,8 +29,9 @@
             IAccountService accountService,
             ICryptographyService cryptographyService,
             ISystemService systemsService,
-            IEmailService mailService)
-            : base(sessionService, systemsService)
+            IEmailService mailService,
+            IIpLocationService ipLocationService)
+            : base(sessionService, systemsService, ipLocationService)
         {
             _accountService = accountService;
             _cryptographyService = cryptographyService;
