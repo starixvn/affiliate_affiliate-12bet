@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Fanex.Affiliate.User.Core.Utilities
+﻿namespace Fanex.Affiliate.User.Core.Utilities
 {
+    using System;
+    using System.Collections.Generic;
+
     public interface IAppSetting
     {
         string GetValue(string key);
@@ -18,8 +18,6 @@ namespace Fanex.Affiliate.User.Core.Utilities
         IEnumerable<string> AllowedAffiliateTypes { get; }
 
         int ServerId { get; }
-
-        string JsVersion { get; }
 
         string Promotion12BetLink { get; }
 

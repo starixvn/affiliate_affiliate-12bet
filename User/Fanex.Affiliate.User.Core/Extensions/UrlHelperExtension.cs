@@ -1,9 +1,11 @@
-﻿using Fanex.Affiliate.User.Core.BusinessService;
-using Fanex.Affiliate.User.Core.Utilities;
-using System.Web.Mvc;
-
-namespace Fanex.Affiliate.User.Core.Extensions
+﻿namespace Fanex.Affiliate.User.Core.Extensions
 {
+    using System.IO;
+    using System.Web.Hosting;
+    using System.Web.Mvc;
+    using BusinessService;
+    using Utilities;
+
     public static class UrlHelperExtension
     {
         private static readonly IAppSetting appSetting = DependencyResolver.Current.GetService<IAppSetting>();
@@ -11,10 +13,9 @@ namespace Fanex.Affiliate.User.Core.Extensions
 
         public static string RenderLink(this UrlHelper urlHelper, string bundleVirtualPath)
         {
-            var link = appSetting.IsLocal ? urlHelper.Content(bundleVirtualPath) :
-                                            urlHelper.Content(RegexHelper.Replace(bundleVirtualPath, @"\.(js|css)$", ".min.$1"));
-
-            return link + "?v=" + appSetting.JsVersion;
+            var link =  urlHelper.Content(appSetting.IsLocal ? bundleVirtualPath : RegexHelper.Replace(bundleVirtualPath, @"\.(js|css)$", ".min.$1"));
+            var version = GenerateContentVersion(bundleVirtualPath);
+            return $"{link}?v={version}";
         }
 
         public static string RenderLanguageContent(this UrlHelper urlHelper, string bundleVirtualPath)
@@ -22,6 +23,14 @@ namespace Fanex.Affiliate.User.Core.Extensions
             var favoriteShortedLanguage = systemService.GetFavoriteShortedLanguage();
 
             return urlHelper.Content(RegexHelper.Replace(bundleVirtualPath, @"^\~/", $"~/{favoriteShortedLanguage}/"));
+        }
+
+        private static string GenerateContentVersion(string contentPath)
+        {
+            const string format = "MMddyyyy_HHmm";
+            var fullPathFile = HostingEnvironment.MapPath(contentPath);
+            var version = File.GetLastWriteTime(fullPathFile).ToString(format);
+            return version;
         }
     }
 }
