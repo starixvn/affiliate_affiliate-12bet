@@ -592,6 +592,30 @@
     }
 }
 
+.shape-fishing {
+    height: 400px;
+
+    @include Tablet {
+        height: 293px;
+    }
+
+    @include MobileLandscape {
+        height: 199px;
+    }
+}
+
+.shape-e-bingo {
+    height: 390px;
+
+    @include Tablet {
+        height: 293px;
+    }
+
+    @include MobileLandscape {
+        height: 199px;
+    }
+}
+
 .imgs-slot {
     left: -120px !important;
     top: -30px !important;
@@ -628,6 +652,51 @@
 
     img {
         height: 463px;
+
+        @include Tablet {
+            height: auto;
+        }
+    }
+}
+
+.imgs-fishing {
+    right: -160px !important;
+    top: -27px !important;
+
+    @include Tablet {
+        top: -42px !important;
+        right: -188px !important;
+    }
+
+    @include MobileLandscape {
+        right: -197px !important;
+    }
+
+    img {
+        height: 460px;
+        width: 600px;
+
+        @include Tablet {
+            height: auto;
+        }
+    }
+}
+
+.imgs-e-bingo {
+    left: -80px !important;
+    top: 14px !important;
+
+    @include Tablet {
+        top: -42px !important;
+        right: -188px !important;
+    }
+
+    @include MobileLandscape {
+        right: -197px !important;
+    }
+
+    img {
+        height: 400px;
 
         @include Tablet {
             height: auto;

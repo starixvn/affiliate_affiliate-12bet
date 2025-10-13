@@ -11,14 +11,14 @@
   //  "outputFileName": "www/build/js/lib/jsencrypt-2.3.1.min.js",
   //  "inputFiles": [ "www/source/js/lib/jsencrypt-2.3.1.min.js" ]
   //},
-  {
-    "outputFileName": "www/build/js/pages/home.js",
-    "inputFiles": [
-      "www/source/js/lib/swiper.min.js",
-      "www/source/js/components/pagetracking.js",
-      "www/source/js/pages/home.js"
-    ]
-  },
+  //{
+  //  "outputFileName": "www/build/js/pages/home.js",
+  //  "inputFiles": [
+  //    "www/source/js/lib/swiper.min.js",
+  //    "www/source/js/components/pagetracking.js",
+  //    "www/source/js/pages/home.js"
+  //  ]
+  //},
   //{
   //  "outputFileName": "www/build/js/pages/commission-structure.js",
   //  "inputFiles": [
@@ -34,14 +34,14 @@
   //    "www/source/js/pages/products.js"
   //  ]
   //},
-  {
-    "outputFileName": "www/build/js/pages/promotion.js",
-    "inputFiles": [
-      "www/source/js/lib/swiper.min.js",
-      "www/source/js/components/pagetracking.js",
-      "www/source/js/pages/promotion.js"
-    ]
-  },
+  //{
+  //  "outputFileName": "www/build/js/pages/promotion.js",
+  //  "inputFiles": [
+  //    "www/source/js/lib/swiper.min.js",
+  //    "www/source/js/components/pagetracking.js",
+  //    "www/source/js/pages/promotion.js"
+  //  ]
+  //},
   //{
   //  "outputFileName": "www/build/js/summary.js",
   //  "inputFiles": [
@@ -49,85 +49,85 @@
   //    "www/source/js/pages/account-overview/summary.js"
   //  ]
   //},
-  {
-    "outputFileName": "www/build/js/player-detail.js",
-    "inputFiles": [
-      "www/source/js/components/pager.js",
-      "www/source/js/pages/account-overview/player-detail.js"
-    ]
-  },
-  {
-    "outputFileName": "www/build/js/overview.js",
-    "inputFiles": [
-      "www/source/js/pages/account-overview/overview.js"
-    ]
-  },
-  {
-    "outputFileName": "www/build/js/mediagallery.js",
-    "inputFiles": [
-      "www/source/js/components/clipboard.js",
-      "www/source/js/components/pager.js",
-      "www/source/js/pages/account-overview/marketingbase.js",
-      "www/source/js/pages/account-overview/mediagallery.js"
-    ]
-  },
-  {
-    "outputFileName": "www/build/js/affiliate-link.js",
-    "inputFiles": [
-      "www/source/js/components/pager.js",
-      "www/source/js/components/clipboard.js",
-      "www/source/js/pages/account-overview/marketingbase.js",
-      "www/source/js/pages/account-overview/affiliate-link.js"
-    ]
-  },
-  {
-    "outputFileName": "www/build/js/statistics/referrerstatistics.js",
-    "inputFiles": [
-      "www/source/js/lib/pikaday.js",
-      "www/source/js/components/pager.js",
-      "www/source/js/components/multiple-select.js",
-      "www/source/js/pages/statistics/referrerstatistics.js"
-    ]
-  },
-  {
-    "outputFileName": "www/build/js/statistics/landingpagestatistics.js",
-    "inputFiles": [
-      "www/source/js/lib/pikaday.js",
-      "www/source/js/components/pager.js",
-      "www/source/js/components/multiple-select.js",
-      "www/source/js/pages/statistics/landingpagestatistics.js"
-    ]
-  },
-  {
-    "outputFileName": "www/build/js/marketing-statistics.js",
-    "inputFiles": [
-      "www/source/js/lib/pikaday.js",
-      "www/source/js/components/pager.js",
-      "www/source/js/pages/statistics/marketing-statistics.js"
-    ]
-  },
-  {
-    "outputFileName": "www/build/js/statement-history.js",
-    "inputFiles": [
-      "www/source/js/components/pager.js",
-      "www/source/js/pages/statement-history.js"
-    ]
-  },
-  {
-    "outputFileName": "www/build/js/messagehistory.js",
-    "inputFiles": [
-      "www/source/js/lib/pikaday.js",
-      "www/source/js/components/pager.js",
-      "www/source/js/pages/messagehistory.js"
-    ]
-  },
-  {
-    "outputFileName": "www/build/js/signup.js",
-    "inputFiles": [
-      "www/source/js/components/website.js",
-      "www/source/js/pages/signup.js"
-    ]
-  },
+  //{
+  //  "outputFileName": "www/build/js/player-detail.js",
+  //  "inputFiles": [
+  //    "www/source/js/components/pager.js",
+  //    "www/source/js/pages/account-overview/player-detail.js"
+  //  ]
+  //},
+  //{
+  //  "outputFileName": "www/build/js/overview.js",
+  //  "inputFiles": [
+  //    "www/source/js/pages/account-overview/overview.js"
+  //  ]
+  //},
+  //{
+  //  "outputFileName": "www/build/js/mediagallery.js",
+  //  "inputFiles": [
+  //    "www/source/js/components/clipboard.js",
+  //    "www/source/js/components/pager.js",
+  //    "www/source/js/pages/account-overview/marketingbase.js",
+  //    "www/source/js/pages/account-overview/mediagallery.js"
+  //  ]
+  //},
+  //{
+  //  "outputFileName": "www/build/js/affiliate-link.js",
+  //  "inputFiles": [
+  //    "www/source/js/components/pager.js",
+  //    "www/source/js/components/clipboard.js",
+  //    "www/source/js/pages/account-overview/marketingbase.js",
+  //    "www/source/js/pages/account-overview/affiliate-link.js"
+  //  ]
+  //},
+  //{
+  //  "outputFileName": "www/build/js/statistics/referrerstatistics.js",
+  //  "inputFiles": [
+  //    "www/source/js/lib/pikaday.js",
+  //    "www/source/js/components/pager.js",
+  //    "www/source/js/components/multiple-select.js",
+  //    "www/source/js/pages/statistics/referrerstatistics.js"
+  //  ]
+  //},
+  //{
+  //  "outputFileName": "www/build/js/statistics/landingpagestatistics.js",
+  //  "inputFiles": [
+  //    "www/source/js/lib/pikaday.js",
+  //    "www/source/js/components/pager.js",
+  //    "www/source/js/components/multiple-select.js",
+  //    "www/source/js/pages/statistics/landingpagestatistics.js"
+  //  ]
+  //},
+  //{
+  //  "outputFileName": "www/build/js/marketing-statistics.js",
+  //  "inputFiles": [
+  //    "www/source/js/lib/pikaday.js",
+  //    "www/source/js/components/pager.js",
+  //    "www/source/js/pages/statistics/marketing-statistics.js"
+  //  ]
+  //},
+  //{
+  //  "outputFileName": "www/build/js/statement-history.js",
+  //  "inputFiles": [
+  //    "www/source/js/components/pager.js",
+  //    "www/source/js/pages/statement-history.js"
+  //  ]
+  //},
+  //{
+  //  "outputFileName": "www/build/js/messagehistory.js",
+  //  "inputFiles": [
+  //    "www/source/js/lib/pikaday.js",
+  //    "www/source/js/components/pager.js",
+  //    "www/source/js/pages/messagehistory.js"
+  //  ]
+  //},
+  //{
+  //  "outputFileName": "www/build/js/signup.js",
+  //  "inputFiles": [
+  //    "www/source/js/components/website.js",
+  //    "www/source/js/pages/signup.js"
+  //  ]
+  //},
   //{
   //  "outputFileName": "www/build/js/member.js",
   //  "inputFiles": [
@@ -181,22 +181,22 @@
   //    "www/source/styles/fonts/nokora/font.css"
   //  ]
   //},
-  {
-    "outputFileName": "www/build/js/pages/verification-account.js",
-    "inputFiles": [
-      "www/source/js/lib/hmac-sha256.js",
-      "www/source/js/components/authhelper.js",
-      "www/source/js/pages/verification-account.js"
-    ]
-  },
-  {
-    "outputFileName": "www/build/js/pages/login.js",
-    "inputFiles": [
-      "www/source/js/components/authhelper.js",
-      "www/source/js/components/pagetracking.js",
-      "www/source/js/pages/login.js"
-    ]
-  },
+  //{
+  //  "outputFileName": "www/build/js/pages/verification-account.js",
+  //  "inputFiles": [
+  //    "www/source/js/lib/hmac-sha256.js",
+  //    "www/source/js/components/authhelper.js",
+  //    "www/source/js/pages/verification-account.js"
+  //  ]
+  //},
+  //{
+  //  "outputFileName": "www/build/js/pages/login.js",
+  //  "inputFiles": [
+  //    "www/source/js/components/authhelper.js",
+  //    "www/source/js/components/pagetracking.js",
+  //    "www/source/js/pages/login.js"
+  //  ]
+  //},
   //{
   //  "outputFileName": "www/build/js/pages/changepassword.js",
   //  "inputFiles": [
@@ -208,14 +208,14 @@
   //  "outputFileName": "www/build/styles/css/bootstrap-3.3.7.min.css",
   //  "inputFiles": [ "www/source/styles/scss/vendors/bootstrap-3.3.7.min.css" ]
   //},
-  {
-    "outputFileName": "www/build/js/generated-qrcode.js",
-    "inputFiles": [
-      "www/source/js/pages/account-overview/marketingbase.js"
-    ]
-  },
-  {
-    "outputFileName": "www/build/js/lib/bootstrap2-toggle.js",
-    "inputFiles": [ "www/source/js/lib/bootstrap2-toggle.js" ]
-  }
+  //{
+  //  "outputFileName": "www/build/js/generated-qrcode.js",
+  //  "inputFiles": [
+  //    "www/source/js/pages/account-overview/marketingbase.js"
+  //  ]
+  //},
+  //{
+  //  "outputFileName": "www/build/js/lib/bootstrap2-toggle.js",
+  //  "inputFiles": [ "www/source/js/lib/bootstrap2-toggle.js" ]
+  //}
 ]

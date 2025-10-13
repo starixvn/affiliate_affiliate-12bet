@@ -6,15 +6,16 @@
     ViewBag.HeaderTitle = Lang.CommissionStructureHeaderTitle;
 }
 
-@model string
-
 @{
-    var bannerSrc = Url.Content($"~/www/build/styles/Images/commission/top-banner/item/desktop.{Model}");
-    var mobileBannerSrc = Url.Content($"~/www/build/styles/Images/commission/top-banner/item/mobile.{Model}");
+    string language = ViewBag.Language;
+    string country = ViewBag.Country;
+
+    var bannerSrc = Url.Content($"~/www/build/styles/Images/commission/top-banner/item/desktop.{language}");
+    var mobileBannerSrc = Url.Content($"~/www/build/styles/Images/commission/top-banner/item/mobile.{language}");
 }
 
 @section alternateAndCanonicalTags{
-    @RazorHelper.RenderAlternateAndCanonicalLinks("CommissionStructure", Model)
+    @RazorHelper.RenderAlternateAndCanonicalLinks("CommissionStructure", language)
 }
 
 @section styles{
@@ -51,6 +52,6 @@
         </div>
         <div class="swiper-pagination"></div>
     </div>
-    @Html.RenderPartialByLanguage("~/Views/CommissionStructure/Partial/_Content", Model)
+    @Html.RenderPartialBySpecialCountry("~/Views/CommissionStructure/Partial/_Content", country, language)
     @RazorHelper.RenderMovingTopButton()
 </div>

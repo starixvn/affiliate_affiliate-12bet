@@ -2669,4 +2669,25 @@ You can also email us to {1} or simply fill the form below.</value>
   <data name="NotAllowOnCountry" xml:space="preserve">
     <value>Your account is not available in this country.</value>
   </data>
+  <data name="Games" xml:space="preserve">
+    <value>Games</value>
+  </data>
+  <data name="Fishing" xml:space="preserve">
+    <value>Fishing</value>
+  </data>
+  <data name="EBingo" xml:space="preserve">
+    <value>E-Bingo</value>
+  </data>
+  <data name="JollySports" xml:space="preserve">
+    <value>Jolly Sports</value>
+  </data>
+  <data name="DiveIntoTheWorldOfActionPackedFishingGames" xml:space="preserve">
+    <value>Dive into the world of action-packed Fishing Games, where entertainment meets reward. Aim, shoot, and reel in a wide variety of colorful marine creatures while experiencing smooth gameplay, engaging features, and exciting bonus rounds. With stunning underwater visuals and the chance to score big prizes, our Fishing Games offer an unforgettable adventure for both casual players and seasoned hunters.</value>
+  </data>
+  <data name="GamesSection" xml:space="preserve">
+    <value>Games section is designed to deliver non-stop fun and excitement across a wide range of titles. From arcade-style favorites to interactive mini-games, every option is crafted to provide engaging gameplay and rewarding experiences. Whether you’re seeking quick entertainment or a fresh challenge, our diverse game collection ensures there’s always something new and exciting to enjoy.</value>
+  </data>
+  <data name="StepIntoTheThrillingWorldOfE_Bingo" xml:space="preserve">
+    <value>Step into the thrilling world of E-Bingo, where classic bingo is transformed into a modern, digital experience. Enjoy a variety of bingo rooms and game patterns that combine tradition with innovation, creating an entertaining atmosphere for players of all levels. With vibrant graphics, smooth gameplay, and the chance to win fantastic rewards, our E-Bingo is the perfect choice for anyone looking for fast-paced and enjoyable gaming.</value>
+  </data>
 </root>

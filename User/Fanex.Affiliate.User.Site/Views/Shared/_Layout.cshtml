@@ -15,6 +15,15 @@
     var shouldApplyGoogleTag = HttpContext.Current.Request.Url.Host.MatchWith("www.12betaffiliate.com");
 
     var targetCountryLanguages = systemsService.GetTargetCountryLanguages();
+
+    var currentCountry = sessionService.CurrentCountry;
+    var isSpecialCountry = SystemLanguage.SpecialCountry.ContainsKey(currentCountry);
+
+    var year = DateTimeHelper.Gmt8CurrentYear;
+    var ageText = isSpecialCountry ? "21+" : "18+";
+    var copyright = Lang.Copyright
+        .Replace("{0}", year.ToString())
+        .Replace("18+", ageText);
 }
 
 <!DOCTYPE html>
@@ -238,29 +247,32 @@
                         <img width="250" src="~/www/build/styles/Images/footer/cr-nosponsor.png?v=012" alt="cr-nosponsor" />
                     </a>
                 </div>
-                <div class="img-bottom">
-                    <a class="item">
-                        <img width="28" src="@Url.Content("~/www/build/styles/Images/footer/cr-18.png")" alt="cr-18-logo" />
-                    </a>
-                    <a class="item">
-                        <img src="@Url.Content("~/www/build/styles/Images/footer/cr-gamleaware.png")" alt="cr-gamleaware-logo" />
-                    </a>
-                    <a class="item">
-                        <img src="@Url.Content("~/www/build/styles/Images/footer/cr-tst.png")" alt="cr-tst-logo" />
-                    </a>
-                    <a class="item">
-                        <img src="@Url.Content("~/www/build/styles/Images/footer/cr-thawte.png")" alt="cr-thawte-logo" />
-                    </a>
-                    <a class="item">
-                        <img src="@Url.Content("~/www/build/styles/Images/footer/cr-playtech.png")" alt="cr-playtech-logo" />
-                    </a>
-                    <a class="item">
-                        <img src="@Url.Content("~/www/build/styles/Images/footer/cr-safe&secure.png")" alt="cr-safe&secure-logo" />
-                    </a>
-                </div>
+                @if (!isSpecialCountry)
+                {
+                    <div class="img-bottom">
+                        <a class="item">
+                            <img width="28" src="@Url.Content("~/www/build/styles/Images/footer/cr-18.png")" alt="cr-18-logo" />
+                        </a>
+                        <a class="item">
+                            <img src="@Url.Content("~/www/build/styles/Images/footer/cr-gamleaware.png")" alt="cr-gamleaware-logo" />
+                        </a>
+                        <a class="item">
+                            <img src="@Url.Content("~/www/build/styles/Images/footer/cr-tst.png")" alt="cr-tst-logo" />
+                        </a>
+                        <a class="item">
+                            <img src="@Url.Content("~/www/build/styles/Images/footer/cr-thawte.png")" alt="cr-thawte-logo" />
+                        </a>
+                        <a class="item">
+                            <img src="@Url.Content("~/www/build/styles/Images/footer/cr-playtech.png")" alt="cr-playtech-logo" />
+                        </a>
+                        <a class="item">
+                            <img src="@Url.Content("~/www/build/styles/Images/footer/cr-safe&secure.png")" alt="cr-safe&secure-logo" />
+                        </a>
+                    </div>
+                }
             </div>
             <div class="footer-text">
-                @Lang.Copyright.Replace("{0}", DateTimeHelper.Gmt8CurrentYear.ToString())
+                @copyright
             </div>
         </div>
     </div>

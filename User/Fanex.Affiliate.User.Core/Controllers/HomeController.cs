@@ -35,7 +35,8 @@ namespace Fanex.Affiliate.User.Core.Controllers
                 Language = SessionService.CurrentLanguage,
                 SignUpLink = isAuthenticated ? Url.RenderLanguageContent("~/UserPanel/Main/#AccountOverView") : Url.RenderLanguageContent("~/SignUp"),
                 BannerLink = isAuthenticated ? Url.RenderLanguageContent("~/UserPanel/Main/#MediaGallery") : "javascript:;",
-                Promotion12BetLink = GetPromotionLink()
+                Promotion12BetLink = GetPromotionLink(),
+                CurrentCountry = SessionService.CurrentCountry
             };
 
             return View(viewModel);

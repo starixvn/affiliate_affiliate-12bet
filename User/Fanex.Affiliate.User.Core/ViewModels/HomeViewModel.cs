@@ -17,5 +17,7 @@ namespace Fanex.Affiliate.User.Core.ViewModels
         public string Language { get; set; }
 
         public string ShortedLanguageCode => SystemLanguage.GetShortedCodeForTracking(Language);
+
+        public string CurrentCountry { get; set; }
     }
 }

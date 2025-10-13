@@ -6,10 +6,13 @@
     Layout = "~/Views/Shared/_LayoutBeforeLogin.cshtml";
 }
 
-@model string
+@{
+    string language = ViewBag.Language;
+    string country = ViewBag.Country;
+}
 
 @section alternateAndCanonicalTags{
-    @RazorHelper.RenderAlternateAndCanonicalLinks("TermAndCondition", Model)
+    @RazorHelper.RenderAlternateAndCanonicalLinks("TermAndCondition", language)
 }
 
 @section styles{
@@ -38,6 +41,6 @@
             </div>
         </div>*@
 
-    @Html.RenderPartialByLanguage("~/Views/TermAndCondition/Partial/_Content", Model)
+    @Html.RenderPartialBySpecialCountry("~/Views/TermAndCondition/Partial/_Content", country, language)
     @RazorHelper.RenderMovingTopButton()
 </div>

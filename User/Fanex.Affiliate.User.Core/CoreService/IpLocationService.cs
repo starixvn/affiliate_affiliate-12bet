@@ -12,6 +12,8 @@
 
         public IpLocationInfo GetCountryFromIp(string ip)
         {
+            return new IpLocationInfo { CountryShort = "PH" };
+
             return GetTData<IpLocationInfo>(new GetIpInfoCriteria(ip));
         }
     }

@@ -1,8 +1,9 @@
-﻿using Fanex.Affiliate.User.Core.Constants;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Web.Optimization;
+using Fanex.Affiliate.User.Core.Constants;
+using Fanex.Affiliate.User.Core.Utilities;
 
 namespace Fanex.Affiliate.User.Core.Extensions
 {
@@ -26,6 +27,21 @@ namespace Fanex.Affiliate.User.Core.Extensions
             try
             {
                 return htmlHelper.Partial($"{viewName}.{language}.cshtml", model);
+            }
+            catch
+            {
+                return htmlHelper.Partial($"{viewName}.{SystemLanguage.DefaultLanguageCode}.cshtml", model);
+            }
+        }
+
+        public static MvcHtmlString RenderPartialBySpecialCountry(this HtmlHelper htmlHelper, string viewName, string country, string language, object model = null)
+        {
+            try
+            {
+                return SystemLanguage.SpecialCountry.ContainsKey(country)
+                    ? htmlHelper.Partial($"{viewName}.{country}.{language}.cshtml", model)
+                    : RenderPartialByLanguage(htmlHelper, viewName, language, model);
+
             }
             catch
             {

@@ -20,7 +20,10 @@ namespace Fanex.Affiliate.User.Core.Controllers
         [LanguageRouteChecking]
         public ActionResult Index()
         {
-            return View("~/Views/TermAndCondition/Index.cshtml", model: SessionService.CurrentLanguage);
+            ViewBag.Language = SessionService.CurrentLanguage;
+            ViewBag.Country = SessionService.CurrentCountry;
+
+            return View("~/Views/TermAndCondition/Index.cshtml");
         }
 
         [HttpGet]

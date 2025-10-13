@@ -2069,6 +2069,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dive into the world of action-packed Fishing Games, where entertainment meets reward. Aim, shoot, and reel in a wide variety of colorful marine creatures while experiencing smooth gameplay, engaging features, and exciting bonus rounds. With stunning underwater visuals and the chance to score big prizes, our Fishing Games offer an unforgettable adventure for both casual players and seasoned hunters..
+        /// </summary>
+        public static string DiveIntoTheWorldOfActionPackedFishingGames {
+            get {
+                return ResourceManager.GetString("DiveIntoTheWorldOfActionPackedFishingGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dominica (Commonwealth of) .
         /// </summary>
         public static string DominicaCommonwealthof {
@@ -2110,6 +2119,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string EarningBy {
             get {
                 return ResourceManager.GetString("EarningBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-Bingo.
+        /// </summary>
+        public static string EBingo {
+            get {
+                return ResourceManager.GetString("EBingo", resourceCulture);
             }
         }
         
@@ -2654,6 +2672,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fishing.
+        /// </summary>
+        public static string Fishing {
+            get {
+                return ResourceManager.GetString("Fishing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 5 to 11.
         /// </summary>
         public static string FiveToEleven {
@@ -2777,6 +2804,24 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string Gabon {
             get {
                 return ResourceManager.GetString("Gabon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Games.
+        /// </summary>
+        public static string Games {
+            get {
+                return ResourceManager.GetString("Games", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Games section is designed to deliver non-stop fun and excitement across a wide range of titles. From arcade-style favorites to interactive mini-games, every option is crafted to provide engaging gameplay and rewarding experiences. Whether you’re seeking quick entertainment or a fresh challenge, our diverse game collection ensures there’s always something new and exciting to enjoy..
+        /// </summary>
+        public static string GamesSection {
+            get {
+                return ResourceManager.GetString("GamesSection", resourceCulture);
             }
         }
         
@@ -3290,6 +3335,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string JoinNowHeader {
             get {
                 return ResourceManager.GetString("JoinNowHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jolly Sports.
+        /// </summary>
+        public static string JollySports {
+            get {
+                return ResourceManager.GetString("JollySports", resourceCulture);
             }
         }
         
@@ -6009,6 +6063,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step into the thrilling world of E-Bingo, where classic bingo is transformed into a modern, digital experience. Enjoy a variety of bingo rooms and game patterns that combine tradition with innovation, creating an entertaining atmosphere for players of all levels. With vibrant graphics, smooth gameplay, and the chance to win fantastic rewards, our E-Bingo is the perfect choice for anyone looking for fast-paced and enjoyable gaming..
+        /// </summary>
+        public static string StepIntoTheThrillingWorldOfE_Bingo {
+            get {
+                return ResourceManager.GetString("StepIntoTheThrillingWorldOfE_Bingo", resourceCulture);
             }
         }
         

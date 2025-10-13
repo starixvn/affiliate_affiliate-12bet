@@ -7,7 +7,6 @@
 
     public class FaqController : BaseController
     {
-
         public FaqController(
             ISessionService sessionService,
             ISystemService systemsService,
@@ -20,7 +19,10 @@
         [LanguageRouteChecking]
         public ActionResult Index()
         {
-            return View("~/Views/Faq/Index.cshtml", model: SessionService.CurrentLanguage);
+            ViewBag.Language = SessionService.CurrentLanguage;
+            ViewBag.Country = SessionService.CurrentCountry;
+
+            return View("~/Views/Faq/Index.cshtml");
         }
     }
 }

@@ -19,7 +19,10 @@
         [LanguageRouteChecking]
         public ActionResult Index()
         {
-            return View("~/Views/Product/Index.cshtml", model: SessionService.CurrentLanguage);
+            ViewBag.Language = SessionService.CurrentLanguage;
+            ViewBag.Country = SessionService.CurrentCountry;
+
+            return View("~/Views/Product/Index.cshtml");
         }
     }
 }
