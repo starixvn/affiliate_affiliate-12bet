@@ -41,7 +41,7 @@
             if (affId >= Validation.MinId)
             {
                 var dealTypeList = _commonDealService.GetDealTypes();
-                var param = new GetNormalDealParam { AffId = affId, IsOnlyRevenue = false };
+                var param = new GetNormalDealParam { AffId = affId };
                 var dealList = _commonDealService.GetNormalDealList(param);
 
                 viewModel = new AssignDealViewModel

@@ -88,9 +88,7 @@
         {
             var criteria = new GetAssignDealCriteria
             {
-                AffId = param.AffId,
-                //GroupTypeId = param.GroupTypeId,
-                IsOnlyRevenue = param.IsOnlyRevenue
+                AffId = param.AffId
             };
 
             var normalDeals = FetchTData<NormalDeal>(criteria);

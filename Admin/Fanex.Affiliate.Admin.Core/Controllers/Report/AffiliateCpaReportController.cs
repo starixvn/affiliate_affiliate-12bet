@@ -36,7 +36,7 @@
         [HttpGet]
         public ActionResult Index()
         {
-            var dealList = _commonDealService.GetNormalDealList(new GetNormalDealParam { IsOnlyRevenue = false });
+            var dealList = _commonDealService.GetNormalDealList(new GetNormalDealParam());
             ViewBag.Deals = dealList.Where(d => d.GroupTypeId != DealType.RevenueShare);
 
             return View("~/Areas/Portal/Views/Report/AffiliateCpaReport.cshtml");
