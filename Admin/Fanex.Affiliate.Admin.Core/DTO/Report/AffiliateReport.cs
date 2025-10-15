@@ -86,6 +86,8 @@ namespace Fanex.Affiliate.Admin.Core.DTO.Report
 
         public int GroupId { get; set; }
 
+        public byte GroupTypeId { get; set; }
+
         public string CommGroupName { get; set; }
 
         public decimal ApprovedCPAAmount { get; set; }

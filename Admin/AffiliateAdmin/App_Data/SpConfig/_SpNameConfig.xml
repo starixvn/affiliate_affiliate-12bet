@@ -5,4 +5,5 @@
 	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_Admin_AffiliateReport_Sel" Suffix="_xpre"></item>
 	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_Admin_AffiliateReport_Detail_Sel" Suffix="_xpre"></item>
 	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_Admin_StatementHistory_Sel" Suffix="_xpre"></item>
+	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_Admin_Report_PaymentCPA" Suffix="_xpre"></item>
 </Root>

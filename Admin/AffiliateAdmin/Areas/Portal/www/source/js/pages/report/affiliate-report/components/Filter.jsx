@@ -169,7 +169,6 @@ export class Filter extends Component {
     }
 
     handleChangeDeals = (newSelection) => {
-        console.log('handleChangeDeals called', newSelection);
         this.setState({ selectedDealIds: newSelection });
     };
 

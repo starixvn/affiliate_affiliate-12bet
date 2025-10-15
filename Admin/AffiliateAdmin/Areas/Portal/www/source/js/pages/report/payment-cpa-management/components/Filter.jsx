@@ -8,7 +8,7 @@ import MultipleSelect from '../../../../components/multiple-select';
 import { DatePicker } from '@9softstudio/react-datepicker';
 
 import { setParams, toggleSubmit } from '../actions';
-import { formatUnit, getCookie, handleAfterChangeFromDate, handleAfterChangeToDate, handleChangeMultipleSelected } from '../../../../modules/utils';
+import { getCookie, handleAfterChangeFromDate, handleAfterChangeToDate, handleChangeMultipleSelected, getFirstDayOfMonth } from '../../../../modules/utils';
 import { globalResource } from '../../../../modules/globalResource';
 import { defaultPagingOption, minDate, sixMonth } from '../../../../modules/constants';
 import { statusList, viewByList } from '../libs/constants';
@@ -20,38 +20,37 @@ export const Filter = ({ params, setParams, today, deals, toggleSubmit }) => {
 
     useEffect(() => {
         const now = new Date(today);
-        const currentMonth = now.getMonth() + 1;
-        const currentMonthString = formatUnit(currentMonth);
-        const currentYear = now.getFullYear();
 
         let dealIds = '';
         if (deals && deals.length > 0) {
             dealIds = deals.map(deal => deal.key).join(',');
         }
 
-        let statusIds = '';
+        let selectedStatus = '';
         if (status && status.length > 0) {
-            statusIds = status.map(status => status.key).join(',');
+            selectedStatus = status.map(status => status.key).join(',');
         }
 
-        setParams({
-            fromDate: `${currentMonthString}/01/${currentYear}`,
+        let initialParams = {
+            fromDate: getFirstDayOfMonth(now),
             toDate: today,
             dealIds,
-            statusIds
-        });
+            status: selectedStatus
+        }
 
         const paramFromOtherReport = getCookie('paramForPaymentCPAManagement');
         if (paramFromOtherReport) {
             const param = JSON.parse(paramFromOtherReport);
-            setParams({
+
+            initialParams = {
+                ...initialParams,
                 userName: param.affName,
-                statusIds: param.status,
+                status: param.status,
                 viewBy: param.viewBy,
                 dealIds: `${param.dealIds}` || dealIds,
                 fromDate: param.fromDate,
                 toDate: param.toDate
-            });
+            };
 
             setStatus(handleChangeMultipleSelected(status, `${param.status}`));
             if (param.dealIds) {
@@ -59,8 +58,10 @@ export const Filter = ({ params, setParams, today, deals, toggleSubmit }) => {
             }
 
             document.cookie = `paramForPaymentCPAManagement=; path=${relativePath.paymentCpaManagement}`;
-            handleClickSearch();
         }
+
+        setParams(initialParams);
+        paramFromOtherReport && handleClickSearch();
     }, []);
 
     const handleChange = (e) => {
@@ -80,7 +81,7 @@ export const Filter = ({ params, setParams, today, deals, toggleSubmit }) => {
     const handleChangeStatus = (item, selectedStatus) => {
         setStatus(handleChangeMultipleSelected(status, selectedStatus));
         setParams({
-            statusIds: selectedStatus
+            status: selectedStatus
         })
     }
 

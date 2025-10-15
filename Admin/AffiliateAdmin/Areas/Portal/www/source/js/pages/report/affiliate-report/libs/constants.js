@@ -1,6 +1,6 @@
-import { defaultBaseCurrency, minMonthDate, CPAViewBySettings } from '../../../../modules/constants';
+import { defaultBaseCurrency, minMonthDate, CPAViewBySettings, DealGroupTypeSettings } from '../../../../modules/constants';
 
-export { defaultBaseCurrency, minMonthDate };
+export { defaultBaseCurrency, minMonthDate, DealGroupTypeSettings };
 
 const sortByCommon = {
     Turnover: 2,

@@ -433,6 +433,7 @@ export default class ReportExcel {
         if (totalData) {
             const commonTotalData = {
                 [fields.CommGroupName]: '',
+                [fields.PaymentFrequency]: '',
                 [fields.CommissionRate]: "N/A"
             };
 

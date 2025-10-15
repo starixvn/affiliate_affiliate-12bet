@@ -19,14 +19,14 @@ import { relativePath } from '../../libs/constants';
 
 const Filter = ({
     params,
+    pagingOption,
     setParams,
     setPlayerCpaData,
     setPagingOption,
     today,
     deals,
     toggleLoader,
-    setReportTitle,
-    shouldTriggerSearch
+    setReportTitle
 }) => {
     const [nowString, setNowString] = useState('');
     const [dealList, setDealList] = useState(deals);
@@ -36,40 +36,41 @@ const Filter = ({
         const nowStr = getDayOfMonth(now);
         setNowString(nowStr);
 
-        let initialParams = {
-            fromDate: getFirstDayOfMonth(now),
-            toDate: nowStr
+        let dealIds = '';
+        if (deals && deals.length > 0) {
+            dealIds = deals.map(deal => deal.key).join(',');
         }
 
-        const paramFromPlayerCpaReport = getCookie('paramForPlayerCpaReport');
-        if (paramFromPlayerCpaReport !== '') {
-            const param = JSON.parse(paramFromPlayerCpaReport);
+        let initialParams = {
+            ...defaultParams,
+            fromDate: getFirstDayOfMonth(now),
+            toDate: nowStr,
+            dealIds
+        }
+
+        const paramForPlayerCpaReport = getCookie('paramForPlayerCpaReport');
+        if (paramForPlayerCpaReport) {
+            const param = JSON.parse(paramForPlayerCpaReport);
 
             initialParams = {
                 ...initialParams,
-                custName: param.affName,
+                userName: param.custName,
                 fromDate: param.fromDate,
                 toDate: param.toDate,
                 dealName: param.dealName,
-                viewBy: param.viewBy
+                viewBy: param.viewBy,
+                pageIndex: 1,
+                pageSize: pagingOption.PageSize,
             }
-        } if (deals && deals.length > 0) {
-            const dealIds = deals.map(deal => deal.key).join(',');
-            initialParams = {
-                ...initialParams,
-                dealName: dealIds
-            };
+
+            setDealList(handleChangeMultipleSelected(dealList, `${param.dealName}`));
+
+            document.cookie = `paramForPlayerCpaReport=; path=${relativePath.playerCPA}`;
         }
 
         setParams(initialParams);
-        document.cookie = `paramForPlayerCpaReport=; path=${relativePath.playerCPA}`;
+        paramForPlayerCpaReport && fetchData(initialParams);
     }, []);
-
-    useEffect(() => {
-        if (shouldTriggerSearch) {
-            handleClickSearch();
-        }
-    }, [shouldTriggerSearch]);
 
     const handleChange = (e) => {
         setParams({
@@ -102,6 +103,8 @@ const Filter = ({
     const handleClickSearch = () => {
         const newParams = {
             ...params,
+            pageIndex: 1,
+            pageSize: pagingOption.PageSize,
             sortColumn: defaultParams.sortColumn,
             isAscending: defaultParams.isAscending
         };
@@ -180,13 +183,13 @@ const Filter = ({
         </div>
     )
 }
-function mapStateToProps({ playerCpaData, params, deals, today, shouldTriggerSearch }) {
+function mapStateToProps({ playerCpaData, params, deals, today, pagingOption }) {
     return Object.assign({}, {
         playerCpaData,
         params,
         today,
         deals,
-        shouldTriggerSearch
+        pagingOption
     });
 }
 

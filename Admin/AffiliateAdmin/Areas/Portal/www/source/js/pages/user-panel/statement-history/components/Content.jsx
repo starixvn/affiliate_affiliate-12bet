@@ -122,7 +122,7 @@ export class Content extends PureComponent {
         return {
             fromDate: adjustedDate,
             toDate: adjustedDate,
-            statusId: adjustmentSetting.Status,
+            status: adjustmentSetting.Status,
             viewBy: adjustmentSetting.ViewBy
         };
     }
@@ -135,7 +135,7 @@ export class Content extends PureComponent {
         return {
             fromDate,
             toDate,
-            statusId: approvedSetting.Status,
+            status: approvedSetting.Status,
             viewBy: approvedSetting.ViewBy
         };
     }
@@ -148,7 +148,7 @@ export class Content extends PureComponent {
         return {
             fromDate,
             toDate,
-            statusId: tentativeSetting.Status,
+            status: tentativeSetting.Status,
             viewBy: tentativeSetting.ViewBy
         };
     }
@@ -158,14 +158,14 @@ export class Content extends PureComponent {
     }
 
     _buildPaymentCpaParams = (dataItem, isCpaAdjustment) => {
-        const { affName, today } = this.props;
+        const { affName, today, groupId } = this.props;
         
         if (!dataItem || !dataItem.MonthDate) {
             alert('Invalid data item: missing required MonthDate property');
         }
 
         const itemDate = new Date(dataItem.MonthDate);
-        const baseParams = { affName };
+        const baseParams = { affName, dealIds: groupId };
 
         if (isCpaAdjustment) {
             return {
@@ -306,9 +306,9 @@ export class Content extends PureComponent {
 function mapStateToProps({ today, affCommonInfo, statementHistory }) {
     const { pagingOption, param, expandMonthDateList } = statementHistory;
 
-    const { affId, affName } = affCommonInfo;
+    const { affId, affName, groupId } = affCommonInfo;
 
-    return Object.assign({}, { today, affId, affName, pagingOption, param, expandMonthDateList });
+    return Object.assign({}, { today, affId, affName, pagingOption, param, expandMonthDateList, groupId });
 }
 
 function mapDispatchToProps(dispatch) {

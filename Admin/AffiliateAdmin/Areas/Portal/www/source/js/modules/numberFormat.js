@@ -1,10 +1,14 @@
-export function formatDecimal(value) {
+export function formatDecimal(value, isShouldFormat = true) {
+    if (!isShouldFormat) {
+        return "-";
+    }
+
     return format(value, 2)
 }
 
-export function format(value, digits = 0) {
-    if (typeof value !== "number" || isNaN(value)) {
-        return "";
+export function format(value, digits = 0, isShouldFormat = true) {
+    if (typeof value !== "number" || isNaN(value) || !isShouldFormat) {
+        return isShouldFormat ? "" : "-";
     }
 
     const roundedValue = round(value, digits);

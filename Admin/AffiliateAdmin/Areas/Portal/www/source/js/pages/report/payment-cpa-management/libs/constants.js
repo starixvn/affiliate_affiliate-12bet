@@ -23,7 +23,7 @@ export const defaultParams = {
     dealIds: '',
     fromDate: '',
     toDate: '',
-    statusIds: '',
+    status: '',
     viewBy: 1,
     pageIndex: 1,
     pageSize: 20,

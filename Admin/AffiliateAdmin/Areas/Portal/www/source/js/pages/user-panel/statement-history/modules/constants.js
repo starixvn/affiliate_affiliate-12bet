@@ -28,7 +28,7 @@ export const transTypeSettings = {
 
 export const paymentCPAManagementSettings = {
     Tentative: {
-        ViewBy: CPAViewBySettings.HoldingQualifiedDate,
+        ViewBy: CPAViewBySettings.AutoApprovedDate,
         Status: "Monitoring"
     },
     Approved: {
@@ -37,7 +37,7 @@ export const paymentCPAManagementSettings = {
     },
     Adjustment: {
         ViewBy: CPAViewBySettings.AdjustmentDate,
-        Status: "NotQualified"
+        Status: "Not Qualified"
     }
 }
 

@@ -1,15 +1,25 @@
-﻿using Fanex.Affiliate.Admin.Core.Configurations;
+﻿using System.IO;
+using System.Web.Hosting;
 using System.Web.Mvc;
 
 namespace Fanex.Affiliate.Admin.Core.Extensions
 {
     public static class UrlHelperExtension
     {
-        private static readonly IAppSetting appSetting = DependencyResolver.Current.GetService<IAppSetting>();
-
         public static string VersionedLink(this UrlHelper urlHelper, string virtualPath)
         {
-            return urlHelper.Content(virtualPath) + "?v=" + appSetting.JsVersion;
+            var link = urlHelper.Content(virtualPath);
+
+            var version = GenerateContentVersion(link);
+            return $"{link}?v={version}";
+        }
+
+        private static string GenerateContentVersion(string contentPath)
+        {
+            const string format = "MMddyyyy_HHmmss";
+            var fullPathFile = HostingEnvironment.MapPath(contentPath);
+            var version = File.GetLastWriteTime(fullPathFile).ToString(format);
+            return version;
         }
     }
 }
