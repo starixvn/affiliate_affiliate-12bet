@@ -182,9 +182,9 @@
             var contactApp = EmailHelper.GetContactAppInfo(param.ContactAppList);
             return new EmailSignUpParam
             {
-                MailContact = _appSetting.MailContact,
+                MailContact = _appSetting.MailContactByCountry(param.TargetCountryCode),
                 RootDomain = SiteDomainHelper.GetRootUrl(this, _appSetting),
-                MailTo = _appSetting.MailContact,
+                MailTo = _appSetting.MailContactByCountry(param.TargetCountryCode),
                 IMName = contactApp.Name,
                 IMValue = contactApp.Value,
                 UserNumberContact = param.Phone,

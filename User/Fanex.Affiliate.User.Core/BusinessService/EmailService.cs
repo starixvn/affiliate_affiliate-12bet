@@ -124,7 +124,27 @@ namespace Fanex.Affiliate.User.Core.BusinessService
 
         private string GetEmailTextContent(string templateName, string preferredLanguage, object model)
         {
-            var viewPath = string.Format(TemplateString.EmailTemplatePath, templateName, preferredLanguage);
+            return BuildEmailTextContent(templateName, preferredLanguage, null, model);
+        }
+
+        private string GetEmailContactTextContent(string templateName, string preferredLanguage, string countryCode, object model)
+        {
+            return BuildEmailTextContent(templateName, preferredLanguage, countryCode, model);
+        }
+
+        private string BuildEmailTextContent(string templateName, string preferredLanguage, string countryCode, object model)
+        {
+            string viewPath;
+
+            if (!string.IsNullOrEmpty(countryCode) && SystemLanguage.SpecialCountry.ContainsKey(countryCode))
+            {
+                viewPath = string.Format(TemplateString.EmailTemplatePathWithSpecialCountry, templateName, preferredLanguage, countryCode);
+            }
+            else
+            {
+                viewPath = string.Format(TemplateString.EmailTemplatePath, templateName, preferredLanguage);
+            }
+
             var viewPathBackup = string.Format(TemplateString.EmailTemplatePath, templateName, SystemLanguage.DefaultLanguageCode);
             var physicalPath = HttpContext.Current.Server.MapPath(viewPath);
             var physicalPathBackup = HttpContext.Current.Server.MapPath(viewPathBackup);
@@ -156,7 +176,7 @@ namespace Fanex.Affiliate.User.Core.BusinessService
 
         public string GetContactInfoContent(EmailBaseParam param)
         {
-            return EmailHelper.GetContactInfoContent(param, GetEmailTextContent, _appSetting.EmailBackgroundUrl);
+            return EmailHelper.GetContactInfoContent(param, GetEmailContactTextContent, _appSetting.EmailBackgroundUrl);
         }
     }
 }

@@ -76,7 +76,7 @@
 
                 var emailParam = new PaymentEmailParam
                 {
-                    MailContact = _appSetting.MailContact,
+                    MailContact = _appSetting.MailContactByCountry(SessionService.UserSession?.TargetCountryCode ?? SystemLanguage.DefaultCountryCode),
                     RootDomain = SiteDomainHelper.GetRootUrl(this, _appSetting),
                     CurrentLanguage = SessionService.CurrentLanguage
                 };
@@ -110,7 +110,7 @@
 
                 var emailParam = new PaymentEmailParam
                 {
-                    MailContact = _appSetting.MailContact,
+                    MailContact = _appSetting.MailContactByCountry(SessionService.UserSession?.TargetCountryCode ?? SystemLanguage.DefaultCountryCode),
                     RootDomain = SiteDomainHelper.GetRootUrl(this, _appSetting),
                     Amount = cancelParam.Amount,
                     RequestDate = cancelParam.RequestDate,

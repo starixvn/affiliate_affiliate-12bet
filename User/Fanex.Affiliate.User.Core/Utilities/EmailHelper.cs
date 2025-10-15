@@ -34,7 +34,7 @@ namespace Fanex.Affiliate.User.Core.Utilities
             return newEmailName + "@" + emailSuffix;
         }
 
-        public static string GetContactInfoContent(EmailBaseParam param, Func<string, string, object, string> getEmailTextContent, string emailBackgroundUrl)
+        public static string GetContactInfoContent(EmailBaseParam param, Func<string, string, string, object, string> getEmailContactTextContent, string emailBackgroundUrl)
         {
             if (param?.User is null)
             {
@@ -42,7 +42,7 @@ namespace Fanex.Affiliate.User.Core.Utilities
             }
 
             var contactInfoTemplateName = param.User.MailOption ? ContactInfoText : ContactInfoHtml;
-            return getEmailTextContent(contactInfoTemplateName, param.User.PreferredLanguage, emailBackgroundUrl);
+            return getEmailContactTextContent(contactInfoTemplateName, param.User.PreferredLanguage, param.User.TargetCountryCode, emailBackgroundUrl);
         }
 
         public static ContactApp GetContactAppInfo(IEnumerable<ContactApp> contactAppList)

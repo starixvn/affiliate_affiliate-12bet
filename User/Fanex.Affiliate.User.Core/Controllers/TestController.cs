@@ -1,19 +1,19 @@
 ﻿namespace Fanex.Affiliate.User.Core.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using System.Web.Mvc;
+    using Apis;
     using BusinessService;
     using Constants;
     using CoreService;
     using DTO;
     using Enum;
-    using Fanex.Affiliate.User.Core.Apis;
     using Filters;
     using MetalModels.Email;
     using ONEbook.UM.AspNetMVC.Filters;
     using Resources;
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using System.Web.Mvc;
     using Utilities;
     using ViewModels;
 
@@ -185,7 +185,7 @@
             var content = string.Empty;
 
             var model = GetModelByFunction(criteria.Function, rootUrl, criteria.Language, isText) as EmailBaseParam;
-            model.ContactInfo = EmailHelper.GetContactInfoContent(model, GetEmailTextContent, _appSetting.EmailBackgroundUrl);
+            model.ContactInfo = EmailHelper.GetContactInfoContent(model, GetEmailContactTextContent, _appSetting.EmailBackgroundUrl);
 
             content = GetEmailTextContent(criteria.Function, criteria.Language, model);
 
@@ -194,7 +194,27 @@
 
         private string GetEmailTextContent(string templateName, string preferredLanguage, object model)
         {
-            var viewPath = string.Format(TemplateString.EmailTemplatePath, templateName, preferredLanguage);
+            return BuildEmailTextContent(templateName, preferredLanguage, null, model);
+        }
+
+        private string GetEmailContactTextContent(string templateName, string preferredLanguage, string countryCode, object model)
+        {
+            return BuildEmailTextContent(templateName, preferredLanguage, countryCode, model);
+        }
+
+        private string BuildEmailTextContent(string templateName, string preferredLanguage, string countryCode, object model)
+        {
+            string viewPath;
+
+            if (!string.IsNullOrEmpty(countryCode) && SystemLanguage.SpecialCountry.ContainsKey(countryCode))
+            {
+                viewPath = string.Format(TemplateString.EmailTemplatePathWithSpecialCountry, templateName, preferredLanguage, countryCode);
+            }
+            else
+            {
+                viewPath = string.Format(TemplateString.EmailTemplatePath, templateName, preferredLanguage);
+            }
+
             var viewPathBackup = string.Format(TemplateString.EmailTemplatePath, templateName, SystemLanguage.DefaultLanguageCode);
             var physicalPath = Server.MapPath(viewPath);
             var physicalPathBackup = Server.MapPath(viewPathBackup);

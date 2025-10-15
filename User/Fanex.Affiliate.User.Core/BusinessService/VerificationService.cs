@@ -22,6 +22,7 @@
         private readonly IEmailService _mailService;
         private readonly ICryptographyService _cryptographyService;
         private readonly IWrapperUtility _wrapperUtility;
+        private readonly IAppSetting _appSetting;
 
         public VerificationService(
             IDynamicRepository dynamicRepository,
@@ -29,13 +30,15 @@
             IEmailService mailService,
             ICryptographyService cryptographyService,
             IWrapperUtility wrapperUtility,
-            IAccountService accountService) : base(dynamicRepository)
+            IAccountService accountService,
+            IAppSetting appSetting) : base(dynamicRepository)
         {
             _twoFactorAuthService = twoFactorAuthService;
             _accountService = accountService;
             _mailService = mailService;
             _cryptographyService = cryptographyService;
             _wrapperUtility = wrapperUtility;
+            _appSetting = appSetting;
         }
 
         public SendCodeResult SendCode(SendCodeParam param)
@@ -60,7 +63,7 @@
                 var verificationAccountEmailParam = new VerificationAccountEmailParam
                 {
                     User = userInfo,
-                    MailContact = emailParam.MailContact,
+                    MailContact = _appSetting.MailContactByCountry(userInfo.TargetCountryCode),
                     MailTo = userInfo.Email,
                     RootDomain = emailParam.RootDomain,
                     Code = otp,

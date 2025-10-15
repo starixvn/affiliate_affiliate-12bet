@@ -1411,6 +1411,8 @@
     <Content Include="Views\Faq\Partial\_Content.PH.en-US.cshtml" />
     <Content Include="Views\TermAndCondition\Partial\_Content.PH.en-US.cshtml" />
     <Content Include="Views\CommissionStructure\Partial\_Content.PH.en-US.cshtml" />
+    <Content Include="Views\Shared\Email\ContactInfo\Html\Content.PH.en-US.cshtml" />
+    <Content Include="Views\Shared\Email\ContactInfo\Text\Content.PH.en-US.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

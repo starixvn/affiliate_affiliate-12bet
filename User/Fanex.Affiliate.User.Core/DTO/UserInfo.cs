@@ -17,5 +17,7 @@
         public string LastName { get; set; }
 
         public string SecretKey { get; set; }
+
+        public string TargetCountryCode { get; set; }
     }
 }

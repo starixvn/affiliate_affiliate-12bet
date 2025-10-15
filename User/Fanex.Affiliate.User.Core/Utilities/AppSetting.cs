@@ -33,6 +33,8 @@
 
         public string MailContact => GetValue("MailContact");
 
+        public string MailContactByCountry(string countryCode) => GetValue("MailContact:" + countryCode) ?? MailContact;
+
         public string MailCc => GetValue("MailCc");
 
         public string MailBcc => GetValue("MailBcc");

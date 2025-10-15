@@ -89,14 +89,14 @@
                 param.Affiliate = Server.HtmlEncode(param.Affiliate);
                 param.Subject = Server.HtmlEncode(param.Subject);
                 param.Content = Server.HtmlEncode(param.Content);
-                param.Creator = SessionService.UserSession == null ? -1 : SessionService.UserSession.AffId;
+                param.Creator = SessionService.UserSession?.AffId ?? -1;
                 param.Ip = clientIP;
                 param.SessionId = Session.SessionID;
                 param.Browser = Request.Browser.Browser;
 
                 var emailParam = new EmailBaseParam
                 {
-                    MailTo = _appSetting.MailContact
+                    MailTo = _appSetting.MailContactByCountry(SessionService.CurrentCountry)
                 };
 
                 result = _contactService.SendRequest(param, emailParam);

@@ -31,6 +31,8 @@
 
         string MailContact { get; }
 
+        string MailContactByCountry(string countryCode);
+
         string MailCc { get; }
 
         string MailBcc { get; }
