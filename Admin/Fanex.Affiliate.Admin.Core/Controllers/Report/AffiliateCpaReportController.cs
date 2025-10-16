@@ -44,7 +44,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryHeader]
-        public ActionResult GetData(AffiliateCpaRequest request)
+        public ActionResult GetData(AffiliateCpaParam request)
         {
             if (!ModelState.IsValid)
             {

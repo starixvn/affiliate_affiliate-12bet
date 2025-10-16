@@ -1,7 +1,9 @@
 ﻿namespace Fanex.Affiliate.Admin.Core.Services.Report
 {
+    using Fanex.Affiliate.Admin.Core.Criterias.Report;
     using Fanex.Affiliate.Admin.Core.DTO;
     using Fanex.Affiliate.Admin.Core.DTO.Report;
+    using Fanex.Affiliate.Admin.Core.Extensions;
     using Fanex.Affiliate.Admin.Core.MetaModels.Report;
     using Fanex.Data.Repository;
     using Utilities;
@@ -10,14 +12,14 @@
     {
         public AffiliateCpaReportService(IDynamicRepository dynamicRepository) : base(dynamicRepository) { }
 
-        public EntityResult<AffiliateCpaReport> GetData(AffiliateCpaRequest request)
+        public EntityResult<AffiliateCpaReport> GetData(AffiliateCpaParam param)
         {
-            if (!DateTimeHelper.IsValidDateRange(request.FromDate, request.ToDate))
+            if (!DateTimeHelper.IsValidDateRange(param.FromDate, param.ToDate))
             {
                 return new EntityResult<AffiliateCpaReport>();
             }
 
-            var criteria = request.CreateCriteria();
+            var criteria = param.MapTo<AffiliateCpaParam, AffiliateCpaReportCriteria>();
             return FetchEntityResultHasItemTotal<AffiliateCpaReport>(criteria);
         }
     }

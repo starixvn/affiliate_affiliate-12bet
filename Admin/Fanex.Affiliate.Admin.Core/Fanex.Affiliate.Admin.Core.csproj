@@ -703,7 +703,6 @@
     <Compile Include="MetaModels\Operation\DealSettingParam.cs" />
     <Compile Include="MetaModels\Operation\DeleteDealParam.cs" />
     <Compile Include="MetaModels\Operation\GetNormalDealParam.cs" />
-    <Compile Include="MetaModels\PaginationRequest.cs" />
     <Compile Include="MetaModels\PagingParam.cs" />
     <Compile Include="MetaModels\ParamFromHome.cs" />
     <Compile Include="MetaModels\Payment\PaymentRequestParam.cs" />
@@ -711,8 +710,8 @@
     <Compile Include="MetaModels\Payment\PaymentRequestParamFromHome.cs" />
     <Compile Include="MetaModels\Report\AdjustmentAmountParam.cs" />
     <Compile Include="MetaModels\Report\AffiliateReportParam.cs" />
-    <Compile Include="MetaModels\Report\AffiliateCpaRequest.cs" />
-    <Compile Include="MetaModels\Report\PlayerCpaReportRequest.cs" />
+    <Compile Include="MetaModels\Report\AffiliateCpaParam.cs" />
+    <Compile Include="MetaModels\Report\PlayerCpaReportParam.cs" />
     <Compile Include="MetaModels\Report\PlayerGgrReportParam.cs" />
     <Compile Include="MetaModels\Report\PaymentCpaManagementParam.cs" />
     <Compile Include="MetaModels\Report\TransferReportParam.cs" />

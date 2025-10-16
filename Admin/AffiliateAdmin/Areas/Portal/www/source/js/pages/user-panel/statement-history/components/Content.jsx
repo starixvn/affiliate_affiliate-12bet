@@ -127,7 +127,7 @@ export class Content extends PureComponent {
         };
     }
 
-    _buildApprovedCpaParams = (today) => {
+    _buildApprovedCpaEarningParams = (today) => {
         const approvedSetting = paymentCPAManagementSettings.Approved;
         const fromDate = getSixMonthAgoFromNow(today);
         const toDate = getDayOfMonth(new Date(today));
@@ -138,23 +138,6 @@ export class Content extends PureComponent {
             status: approvedSetting.Status,
             viewBy: approvedSetting.ViewBy
         };
-    }
-
-    _buildTentativeCpaParams = (itemDate, today) => {
-        const tentativeSetting = paymentCPAManagementSettings.Tentative;
-        const fromDate = getFirstDayOfMonth(itemDate);
-        const toDate = getAdjustedDateFromNow(itemDate, new Date(today));
-
-        return {
-            fromDate,
-            toDate,
-            status: tentativeSetting.Status,
-            viewBy: tentativeSetting.ViewBy
-        };
-    }
-
-    _isApprovedCpaTypeFromDescription = (description) => {
-        return description.includes('Approved');
     }
 
     _buildPaymentCpaParams = (dataItem, isCpaAdjustment) => {
@@ -174,18 +157,9 @@ export class Content extends PureComponent {
             };
         }
 
-        const isApprovedCpaType = this._isApprovedCpaTypeFromDescription(dataItem.Description);
-        
-        if (isApprovedCpaType) {
-            return {
-                ...baseParams,
-                ...this._buildApprovedCpaParams(today)
-            };
-        }
-
         return {
             ...baseParams,
-            ...this._buildTentativeCpaParams(itemDate, today)
+            ...this._buildApprovedCpaEarningParams(today)
         };
     }
 
@@ -202,7 +176,7 @@ export class Content extends PureComponent {
             },
             [transTypeSettings.MonthlyEarning]: (dataItem) => () => this._handleRedirectToDailyEarning(dataItem),
             [transTypeSettings.SubAffiliate]: (dataItem) => () => this._handleRedirectToSubAffiliate(dataItem),
-            [transTypeSettings.CpaEarning]: (dataItem) => () => this._handleRedirectToPaymentCPAManagement(dataItem),
+            [transTypeSettings.ApprovedCpaEarning]: (dataItem) => () => this._handleRedirectToPaymentCPAManagement(dataItem),
             [transTypeSettings.CpaAdjustment]: (dataItem) => () => this._handleRedirectToPaymentCPAManagement(dataItem, true),
         }
     }

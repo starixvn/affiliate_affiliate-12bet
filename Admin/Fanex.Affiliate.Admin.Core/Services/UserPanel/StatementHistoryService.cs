@@ -143,8 +143,14 @@ namespace Fanex.Affiliate.Admin.Core.Services.UserPanel
         {
             return transType == TransType.MonthlyEarning 
                 || transType == TransType.SubAffiliateRevenueShare
-                || transType == TransType.CpaEarning
+                || IsCPAEarningGroup(transType)
                 || transType == TransType.SubCpaEarning;
+        }
+
+        private static bool IsCPAEarningGroup(int transType)
+        {
+            return transType == TransType.AprrovedCpaEarning
+                || transType == TransType.TentativeCpaEarning;
         }
 
         private static DailyEarningCriteria GetDailyEarningCriteria(string spKey, DailyEarningParam param)

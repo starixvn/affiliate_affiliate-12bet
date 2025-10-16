@@ -11,12 +11,12 @@ import { setParams, toggleSubmit } from '../actions';
 import { getCookie, handleAfterChangeFromDate, handleAfterChangeToDate, handleChangeMultipleSelected, getFirstDayOfMonth } from '../../../../modules/utils';
 import { globalResource } from '../../../../modules/globalResource';
 import { defaultPagingOption, minDate, sixMonth } from '../../../../modules/constants';
-import { statusList, viewByList } from '../libs/constants';
+import { statusOptions, viewByOptions } from '../libs/constants';
 import { relativePath } from '../../libs/constants';
 
 export const Filter = ({ params, setParams, today, deals, toggleSubmit }) => {
     const [dealList, setDealList] = useState(deals);
-    const [status, setStatus] = useState(statusList);
+    const [statusList, setStatusList] = useState(statusOptions);
 
     useEffect(() => {
         const now = new Date(today);
@@ -27,8 +27,8 @@ export const Filter = ({ params, setParams, today, deals, toggleSubmit }) => {
         }
 
         let selectedStatus = '';
-        if (status && status.length > 0) {
-            selectedStatus = status.map(status => status.key).join(',');
+        if (statusList && statusList.length > 0) {
+            selectedStatus = statusList.map(status => status.key).join(',');
         }
 
         let initialParams = {
@@ -52,7 +52,7 @@ export const Filter = ({ params, setParams, today, deals, toggleSubmit }) => {
                 toDate: param.toDate
             };
 
-            setStatus(handleChangeMultipleSelected(status, `${param.status}`));
+            setStatusList(handleChangeMultipleSelected(statusList, `${param.status}`));
             if (param.dealIds) {
                 setDealList(handleChangeMultipleSelected(dealList, `${param.dealIds}`));
             }
@@ -79,7 +79,7 @@ export const Filter = ({ params, setParams, today, deals, toggleSubmit }) => {
     }
 
     const handleChangeStatus = (item, selectedStatus) => {
-        setStatus(handleChangeMultipleSelected(status, selectedStatus));
+        setStatusList(handleChangeMultipleSelected(statusList, selectedStatus));
         setParams({
             status: selectedStatus
         })
@@ -140,7 +140,7 @@ export const Filter = ({ params, setParams, today, deals, toggleSubmit }) => {
                     <FormGroup className="my-sm-2 mr-sm-4">
                         <Label className="mr-sm-2">Status</Label>
                         <MultipleSelect
-                            dataSource={status}
+                            dataSource={statusList}
                             keyField="key"
                             valueField="name"
                             statusField="checked"
@@ -153,7 +153,7 @@ export const Filter = ({ params, setParams, today, deals, toggleSubmit }) => {
                     <FormGroup className="my-sm-1 mr-sm-4">
                         <Label className="mr-sm-2">View By</Label>
                         <Input type="select" name="viewBy" id="ViewBy" value={params.viewBy} onChange={handleChange}>
-                            {Object.entries(viewByList).map(([key, value]) => (
+                            {Object.entries(viewByOptions).map(([key, value]) => (
                                 <option key={`view-by-${key}`} value={key}>
                                     {value}
                                 </option>

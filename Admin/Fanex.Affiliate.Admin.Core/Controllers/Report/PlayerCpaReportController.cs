@@ -46,7 +46,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryHeader]
-        public async Task<ActionResult> GetData(PlayerCpaReportRequest request)
+        public async Task<ActionResult> GetData(PlayerCpaReportParam request)
         {
             return new JsonNetResult
             {

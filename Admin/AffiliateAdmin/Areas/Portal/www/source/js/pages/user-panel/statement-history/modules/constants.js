@@ -21,9 +21,10 @@ export const transTypeSettings = {
     PaymentRequest: 202,    
     Adjustment: 203,
     SubAffiliate: 204,
-    CpaEarning: 206,
+    ApprovedCpaEarning: 206,
     SubCpaEarning: 207,
     CpaAdjustment: 208,
+    TentativeCpaEarning: 209,
 }
 
 export const paymentCPAManagementSettings = {

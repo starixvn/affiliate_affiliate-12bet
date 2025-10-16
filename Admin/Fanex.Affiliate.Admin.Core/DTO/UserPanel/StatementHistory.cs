@@ -56,7 +56,7 @@ namespace Fanex.Affiliate.Admin.Core.DTO.UserPanel
                         return "Adjustment";
                     case Constants.TransType.SubAffiliateRevenueShare:
                         return "Sub-Affiliate Revenue Share";
-                    case Constants.TransType.CpaEarning:
+                    case Constants.TransType.AprrovedCpaEarning: case Constants.TransType.TentativeCpaEarning:
                         return "CPA Earning";
                     case Constants.TransType.SubCpaEarning:
                         return "Sub-Affiliate CPA";

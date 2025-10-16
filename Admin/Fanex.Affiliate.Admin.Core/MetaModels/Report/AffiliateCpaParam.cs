@@ -5,7 +5,7 @@
     using System.ComponentModel.DataAnnotations;
     using Fanex.Affiliate.Admin.Core.Criterias.Report;
 
-    public class AffiliateCpaRequest : PaginationRequest
+    public class AffiliateCpaParam : PagingParam
     {
         [MaxLength(Validation.MaxLengthInputString, ErrorMessage = "Affiliate must shorter than 30 characters!")]
         public string Username { get; set; }

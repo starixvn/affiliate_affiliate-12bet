@@ -1,13 +1,12 @@
 export const reportName = 'PLAYER CPA REPORT';
 
 export const statusOptions = [
-    { value: -1, label: 'All Statuses' },
-    { value: 2, label: 'Eligible' },
-    { value: 3, label: 'Settled' },
-    { value: 1, label: 'Ineligible' },
-    { value: 4, label: 'Rejected' },
-    { value: 5, label: 'Quota Exceeded' },
-    { value: 0, label: 'Pending' },
+    { key: 2, name: 'Eligible', checked: true },
+    { key: 3, name: 'Settled', checked: true },
+    { key: 1, name: 'Ineligible', checked: true },
+    { key: 4, name: 'Rejected', checked: true },
+    { key: 5, name: 'Quota Exceeded', checked: true },
+    { key: 0, name: 'Pending', checked: true },
 ]
 
 export const viewByOptions = [
@@ -21,10 +20,12 @@ export const defaultParams = {
     userName: '',
     custName: '',
     dealName: '',
-    statusId: -1,
+    statusId: '',
     viewBy: '1',
     fromDate: '',
     toDate: '',
+    pageIndex: 1,
+    pageSize: 20,
     sortColumn: 'affUserName',
     isAscending: true
 }

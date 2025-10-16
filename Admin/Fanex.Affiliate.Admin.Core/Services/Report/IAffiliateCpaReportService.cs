@@ -6,6 +6,6 @@
 
     public interface IAffiliateCpaReportService
     {
-        EntityResult<AffiliateCpaReport> GetData(AffiliateCpaRequest request);
+        EntityResult<AffiliateCpaReport> GetData(AffiliateCpaParam param);
     }
 }

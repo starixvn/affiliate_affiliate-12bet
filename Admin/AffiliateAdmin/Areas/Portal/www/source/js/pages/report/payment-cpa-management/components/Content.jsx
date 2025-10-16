@@ -7,7 +7,7 @@ import ReportExcel from '../libs/reportExcel';
 import { getPaymentCpaManagementData } from '../libs/service';
 
 import { toggleLoader } from '../../../../actions/loaderAction';
-import { resource, viewByList } from '../libs/constants';
+import { resource, viewByOptions } from '../libs/constants';
 
 const Title = ({ params, isSubmit, toggleLoader }) => {
     const [reportTitle, setReportTitle] = useState('');
@@ -16,7 +16,7 @@ const Title = ({ params, isSubmit, toggleLoader }) => {
         if (isSubmit) {
             let title = resource.reportName;
 
-            title += `${resource.space}View By ${viewByList[params.viewBy]}`
+            title += `${resource.space}View By ${viewByOptions[params.viewBy]}`
             title += `${resource.space}From ${params.fromDate} To ${params.toDate}`;
 
             setReportTitle(title);

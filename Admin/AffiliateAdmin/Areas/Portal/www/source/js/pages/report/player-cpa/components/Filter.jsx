@@ -30,6 +30,7 @@ const Filter = ({
 }) => {
     const [nowString, setNowString] = useState('');
     const [dealList, setDealList] = useState(deals);
+    const [statusList, setStatusList] = useState(statusOptions);
 
     useEffect(() => {
         const now = new Date(today);
@@ -41,11 +42,17 @@ const Filter = ({
             dealIds = deals.map(deal => deal.key).join(',');
         }
 
+        let selectedStatus = '';
+        if (statusList && statusList.length > 0) {
+            selectedStatus = statusList.map(status => status.key).join(',');
+        }
+
         let initialParams = {
             ...defaultParams,
             fromDate: getFirstDayOfMonth(now),
             toDate: nowStr,
-            dealIds
+            dealName: dealIds,
+            statusId: selectedStatus
         }
 
         const paramForPlayerCpaReport = getCookie('paramForPlayerCpaReport');
@@ -89,6 +96,13 @@ const Filter = ({
         setDealList(handleChangeMultipleSelected(dealList, selectedDeals));
         setParams({
             dealName: selectedDeals
+        });
+    }
+
+    const handleChangeStatuses = (item, selectedStatuses) => {
+        setStatusList(handleChangeMultipleSelected(statusList, selectedStatuses));
+        setParams({
+            statusId: selectedStatuses
         });
     }
 
@@ -156,7 +170,19 @@ const Filter = ({
                         hasInputOption={true}
                         onChange={handleChangeDeals} />
                 </FormGroup>
-                <Field className="my-sm-1 mr-sm-2" name="statusId" selectedValue={params.statusId} onChange={handleChange} label="Status" selectOptions={statusOptions} type='select' />
+                <FormGroup className="my-sm-1 mr-sm-4">
+                    <Label htmlFor="Status" className="mr-sm-2">Status</Label>
+                    <MultipleSelect
+                        dataSource={statusList}
+                        keyField="key"
+                        valueField="name"
+                        statusField="checked"
+                        maxDisplayItemCount={1}
+                        noneSelectedLabel="None Select"
+                        selectedAllLabel="All Statuses"
+                        hasInputOption={true}
+                        onChange={handleChangeStatuses} />
+                </FormGroup>
                 <Field className="my-sm-1 mr-sm-2" name="viewBy" selectedValue={params.viewBy} onChange={handleChange} label="View By" selectOptions={viewByOptions} type='select' />
                 <FormGroup className="my-sm-1 mr-sm-2">
                     <Label className="mr-sm-2">{globalResource.From}</Label>
@@ -183,6 +209,7 @@ const Filter = ({
         </div>
     )
 }
+
 function mapStateToProps({ playerCpaData, params, deals, today, pagingOption }) {
     return Object.assign({}, {
         playerCpaData,

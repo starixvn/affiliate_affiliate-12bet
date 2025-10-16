@@ -5,14 +5,14 @@ export const totalText = 'Total (all pages)';
 export const NOT_QUALIFIED = 2;
 export const QUALIFIED = 3;
 
-export const statusList = [
+export const statusOptions = [
     { key: 'Monitoring', name: 'Monitoring', checked: true },
     { key: 'Not Qualified', name: 'Not Qualified', checked: true },
     { key: 'Qualified', name: 'Qualified', checked: true },
     { key: 'Empty', name: 'Empty', checked: true },
 ]
 
-export const viewByList = {
+export const viewByOptions = {
     1: 'Schedule End Date',
     2: 'Auto Approved CPA',
     3: 'Adjustment Date',
