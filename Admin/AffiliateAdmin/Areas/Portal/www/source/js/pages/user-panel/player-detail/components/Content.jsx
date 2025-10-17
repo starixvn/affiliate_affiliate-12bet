@@ -73,6 +73,7 @@ export class Content extends PureComponent {
                 <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'FirstDepositAmount'} title={headerText.FirstDepositAmount} handleClickHeader={this.handleClickHeader} />
                 <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Turnover'} title={headerText.Turnover} handleClickHeader={this.handleClickHeader} />
                 <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Ggr'} title={headerText.Ggr} handleClickHeader={this.handleClickHeader} />
+                <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'DepositCount'} title={headerText.DepositCount} handleClickHeader={this.handleClickHeader} />
                 <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Deposit'} title={headerText.Deposit} handleClickHeader={this.handleClickHeader} />
                 <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Withdrawal'} title={headerText.Withdrawal} handleClickHeader={this.handleClickHeader} />
                 <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Bonus'} title={headerText.Bonus} handleClickHeader={this.handleClickHeader} />
@@ -99,7 +100,7 @@ export class Content extends PureComponent {
             }
         }
         else {
-            const colSpan = 12 + (isDepositFeePercent ? 1 : 0) + (isWithdrawalFeePercent ? 1 : 0)
+            const colSpan = 13 + (isDepositFeePercent ? 1 : 0) + (isWithdrawalFeePercent ? 1 : 0)
             dataRows.push(<Row key="no-info">
                 <Cell className="text-center" colSpan={colSpan}>{globalResource.NoInfo}</Cell>
             </Row>);
@@ -130,6 +131,7 @@ export class Content extends PureComponent {
                 <Cell className="text-right" title={firstDepositAmount}>{firstDepositAmount}</Cell>
                 <Cell className={productColumnClassName} title={turnover}>{turnover}</Cell>
                 <Cell className={productColumnClassName} title={ggr}>{ggr}</Cell>
+                <Cell className="text-right" title={dataItem.DepositCount}>{dataItem.DepositCount}</Cell>
                 <Cell className="text-right" title={deposit}>{deposit}</Cell>
                 <Cell className="text-right" title={withdrawal}>{withdrawal}</Cell>
                 <Cell className="text-right" title={bonus}>{bonus}</Cell>

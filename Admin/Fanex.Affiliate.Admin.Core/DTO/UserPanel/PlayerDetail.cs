@@ -13,6 +13,8 @@ namespace Fanex.Affiliate.Admin.Core.DTO.UserPanel
 
         public decimal Deposit { get; set; }
 
+        public decimal DepositCount { get; set; }
+
         public decimal Withdrawal { get; set; }
 
         public decimal DepositFee { get; set; }
