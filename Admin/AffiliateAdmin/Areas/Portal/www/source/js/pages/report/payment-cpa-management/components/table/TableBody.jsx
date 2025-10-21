@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button } from 'reactstrap';
 
-import { format, formatDecimal } from '../../../../../modules/numberFormat';
+import { formatDecimal } from '../../../../../modules/numberFormat';
 import { globalResource } from '../../../../../modules/globalResource';
 import { groupData } from '../../libs/service';
 import { NOT_QUALIFIED, QUALIFIED } from '../../libs/constants';
@@ -19,8 +19,8 @@ const SubEntryRow = ({
     setAdjustAmountParam }) => {
 
     const statusClassName = `status-${subEntry.Status?.toLowerCase().replace(' ', '-')}`;
-    const totalEligiblePlayers = format(subEntry.TotalEligiblePlayers);
-    const redepositDays = subEntry.RedepositDays ? `${format(subEntry.RedepositDays)} days` : '-';
+    const totalEligiblePlayers = subEntry.TotalEligiblePlayers;
+    const redepositDays = subEntry.RedepositDays ? `${subEntry.RedepositDays} days` : '-';
     const redepositRate = subEntry.RedepositRate ? `${formatDecimal(subEntry.RedepositRate * 100)}%` : '-';
     const description = htmlDecode(subEntry.Description);
     const estimateAmount = formatDecimal(subEntry.EstimateAmount);
@@ -71,7 +71,10 @@ const SubEntryRow = ({
             <td title={subEntry.StartScheduleStr} className="text-center">{subEntry.StartScheduleStr}</td>
             <td title={subEntry.EndScheduleStr} className="text-center">{subEntry.EndScheduleStr}</td>
             <td title={totalEligiblePlayers} className="text-center">
-                <span className='btn-link' onClick={_handleUrlRedirectToPlayerCpa}>{totalEligiblePlayers}</span>
+                {
+                    !subEntry.TotalEligiblePlayers ? totalEligiblePlayers :
+                        <span className='btn-link' onClick={_handleUrlRedirectToPlayerCpa}>{totalEligiblePlayers}</span>
+                }
             </td>
             {isFirst && (
                 <td title={redepositDays} className="text-center" rowSpan={rowSpan}>

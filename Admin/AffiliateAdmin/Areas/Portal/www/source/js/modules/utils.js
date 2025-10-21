@@ -223,11 +223,13 @@ export const getDayOfMonth = (date) => {
 }
 
 export const getLastDayOfMonth = (date) => {
-    return new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    const lastDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+    return `${lastDate.getMonth() + 1}/${lastDate.getDate()}/${lastDate.getFullYear()}`;
 }
 
 export const getAdjustedDateFromNow = (date, now) => {
-    const maxDateOfMonth = getLastDayOfMonth(date);
+    const maxDateOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
     if (maxDateOfMonth < now) {
         return getDayOfMonth(maxDateOfMonth);

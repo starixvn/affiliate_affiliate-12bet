@@ -6,7 +6,7 @@ import { Button } from 'reactstrap';
 
 import { htmlDecode } from '@/modules/htmlHelper';
 import { formatDecimalWithCurrencySymbol } from '@/modules/numberFormat';
-import { getFirstDayOfMonth, getAdjustedDateFromNow, getDayOfMonth, getSixMonthAgoFromNow, openUrlOnNewWindow } from '@/modules/utils';
+import { getFirstDayOfMonth, getDayOfMonth, getLastDayOfMonth, openUrlOnNewWindow } from '@/modules/utils';
 import { setPagingOption, toggleLoaderUserPanel, fetchData, setTransactionId, redirectToDailyEarning, setExpandMonthDateList, redirectToSubAffiliate } from '../actions';
 import { headerText, globalResource, MONTHLY_TOTAL, CALCULATED_MONTH, transTypeSettings, selectedAllProduct, maxWidth, paymentCPAManagementSettings} from '../modules/constants';
 import { getScrollTopPosition, setScrollTop } from '../modules/utils';
@@ -127,10 +127,35 @@ export class Content extends PureComponent {
         };
     }
 
-    _buildApprovedCpaEarningParams = (today) => {
+    _buildApprovedCpaEarningParams = (itemDate) => {
+        const { param } = this.props;
         const approvedSetting = paymentCPAManagementSettings.Approved;
-        const fromDate = getSixMonthAgoFromNow(today);
-        const toDate = getDayOfMonth(new Date(today));
+        
+        const itemMonth = itemDate.getMonth();
+        const itemYear = itemDate.getFullYear();
+        
+        const paramFromDate = new Date(param.fromDate);
+        const paramToDate = new Date(param.toDate);
+        
+        const fromMonth = paramFromDate.getMonth();
+        const fromYear = paramFromDate.getFullYear();
+        const toMonth = paramToDate.getMonth();
+        const toYear = paramToDate.getFullYear();
+        
+        let fromDate, toDate;
+        
+        if (itemMonth === fromMonth && itemYear === fromYear) {
+            fromDate = getDayOfMonth(paramFromDate);
+            toDate = getLastDayOfMonth(new Date(itemDate));
+        }
+        else if (itemMonth === toMonth && itemYear === toYear) {
+            fromDate = getFirstDayOfMonth(new Date(itemDate));
+            toDate = getDayOfMonth(paramToDate);
+        }
+        else {
+            fromDate = getFirstDayOfMonth(new Date(itemDate));
+            toDate = getLastDayOfMonth(new Date(itemDate));
+        }
 
         return {
             fromDate,
@@ -141,7 +166,7 @@ export class Content extends PureComponent {
     }
 
     _buildPaymentCpaParams = (dataItem, isCpaAdjustment) => {
-        const { affName, today, groupId } = this.props;
+        const { affName, groupId } = this.props;
         
         if (!dataItem || !dataItem.MonthDate) {
             alert('Invalid data item: missing required MonthDate property');
@@ -159,7 +184,7 @@ export class Content extends PureComponent {
 
         return {
             ...baseParams,
-            ...this._buildApprovedCpaEarningParams(today)
+            ...this._buildApprovedCpaEarningParams(itemDate)
         };
     }
 
@@ -278,7 +303,7 @@ export class Content extends PureComponent {
 
 
 function mapStateToProps({ today, affCommonInfo, statementHistory }) {
-    const { pagingOption, param, expandMonthDateList } = statementHistory;
+    const { pagingOption, param, expandMonthDateList,  } = statementHistory;
 
     const { affId, affName, groupId } = affCommonInfo;
 

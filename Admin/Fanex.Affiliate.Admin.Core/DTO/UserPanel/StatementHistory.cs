@@ -86,7 +86,8 @@ namespace Fanex.Affiliate.Admin.Core.DTO.UserPanel
         private static bool ShouldDisplayFullDate(int transType)
         {
             return transType == Constants.TransType.PaymentRequest
-                || transType == Constants.TransType.Adjustment;
+                || transType == Constants.TransType.Adjustment
+                || transType == Constants.TransType.CpaAdjustment;
         }
     }
 }
