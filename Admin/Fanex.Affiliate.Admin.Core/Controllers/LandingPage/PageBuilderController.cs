@@ -11,7 +11,7 @@ using Fanex.Affiliate.Admin.Core.DTO.LandingPage;
 
 namespace Fanex.Affiliate.Admin.Core.Controllers.LandingPage
 {
-    [FunctionAuthorize(FunctionName = Function.LandingPage)]
+    [FunctionAuthorize(FunctionName = Function.PageManagement)]
     [AllowLandingPageFrame]
     public class PageBuilderController : ReadOnlySessionBaseController
     {
@@ -84,7 +84,7 @@ namespace Fanex.Affiliate.Admin.Core.Controllers.LandingPage
 
         [HttpPost]
         [ValidateAntiForgeryHeader]
-        [FunctionAuthorize(FunctionName = Function.LandingPage, IsHost = true)]
+        [FunctionAuthorize(FunctionName = Function.PageManagement, IsHost = true)]
         public ActionResult InsertLandingPageDeal(InsertLandingPageDealParam param)
         {
             if (ModelState.IsValid)
@@ -113,7 +113,7 @@ namespace Fanex.Affiliate.Admin.Core.Controllers.LandingPage
 
         [HttpPost]
         [ValidateAntiForgeryHeader]
-        [FunctionAuthorize(FunctionName = Function.LandingPage, IsHost = true)]
+        [FunctionAuthorize(FunctionName = Function.PageManagement, IsHost = true)]
         public ActionResult InsertPageBuilder(InsertUpdatePageBuilderParam param)
         {
             if (ModelState.IsValid)
@@ -127,7 +127,7 @@ namespace Fanex.Affiliate.Admin.Core.Controllers.LandingPage
 
         [HttpPost]
         [ValidateAntiForgeryHeader]
-        [FunctionAuthorize(FunctionName = Function.LandingPage, IsHost = true)]
+        [FunctionAuthorize(FunctionName = Function.PageManagement, IsHost = true)]
         public ActionResult UpdatePageBuilder(InsertUpdatePageBuilderParam param)
         {
             if (ModelState.IsValid && param.PageId > 0)

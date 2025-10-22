@@ -8,36 +8,61 @@
     var sessionService = DependencyResolver.Current.GetService<ISessionService>();
     var claims = sessionService.ClaimIdentities.SelectMany(i => i.Claims);
     var menus = new Dictionary<string, string>
-{
-        {"Customer",Function.Affiliate },
-        {"Affiliate",Function.Affiliate },
-        {"Operation", Function.Deal },
-        {"Player",Function.Player },
-        {"Report",Function.AffReport },
-        {"MediaGallery",Function.Media },
-        {"Message",Function.HotNews },
-        {"Administrator",Function.UserControl },
-        {"Domain",Function.Domain },
+    {
+        {"Customer", Function.Affiliate},
+        {"Affiliate", Function.Affiliate},
+        {"Operation", Function.Deal},
+        {"Player", Function.Player},
+        {"Report", Function.AffReport},
+        {"MediaGallery", Function.Media},
+        {"Message", Function.HotNews},
+        {"Administrator", Function.UserControl},
+        {"Domain", Function.Domain}
     };
 
-    // Marketing Tools submenu structure with permissions
-    var marketingToolsSubmenus = new Dictionary<string, object>
+    var marketingToolsSubmenus = new Dictionary<string, object>();
+    
+    if (claims.Any(p => p.Type == Function.PageManagement))
     {
-        {"LandingPageContentManagement", new { Functions = new string[] { Function.PageManagement, Function.AssetUploader, Function.RegistrationFormUploader }, Controller = "LandingPage", Action = "Index", DisplayName = "Landing Page Management" }},
-        //{"LinkGenerator", new { Functions = new string[] { Function.LinkGenerator}, Controller = "LinkGenerator", Action = "Index", DisplayName = "Link Generator" }},
-        {"CampaignManagement", new { Functions = new string[] { Function.AllCampaigns /*, Function.ComponentManagement */ }, Controller = "CampaignManagement", Action = "Index", DisplayName = "Campaign Management" }},
-    };
+        marketingToolsSubmenus.Add("LandingPageManagement", new { 
+            Controller = "LandingPage", 
+            Action = "Index", 
+            DisplayName = "Landing Page Management" 
+        });
+    }
+    else if (claims.Any(p => p.Type == Function.AssetUploader))
+    {
+        marketingToolsSubmenus.Add("LandingPageManagement", new { 
+            Controller = "AssetUploader", 
+            Action = "Index", 
+            DisplayName = "Landing Page Management" 
+        });
+    }
+    else if (claims.Any(p => p.Type == Function.RegistrationFormUploader))
+    {
+        marketingToolsSubmenus.Add("LandingPageManagement", new { 
+            Controller = "FormManagement", 
+            Action = "Index", 
+            DisplayName = "Landing Page Management" 
+        });
+    }
+    
+    // Campaign Management
+    if (claims.Any(p => p.Type == Function.AllCampaigns))
+    {
+        marketingToolsSubmenus.Add("CampaignManagement", new { 
+            Functions = new string[] { Function.AllCampaigns }, 
+            Controller = "CampaignManagement", 
+            Action = "Index", 
+            DisplayName = "Campaign Management" 
+        });
+    }
 
-    // Check which marketing tools submenus the user has access to
-    var availableMarketingTools = marketingToolsSubmenus.Where(submenu =>
-    {
-        var functions = ((string[])((dynamic)submenu.Value).Functions);
-        return functions.Any(function => claims.Any(p => p.Type == function));
-    }).ToList();
+    var availableMarketingTools = marketingToolsSubmenus.ToList();
 
     if (availableMarketingTools.Any())
     {
-        menus.Add("MarketingTools", Function.LandingPage); // Use any function as placeholder since we check submenus individually
+        menus.Add("MarketingTools", Function.LandingPage);
     }
 
     var displayMenus = menus.Where(m =>
@@ -46,13 +71,11 @@
         {
             return claims.Any(p => p.Type == m.Value || p.Type == Function.TransferPlayerReport);
         }
-
-        if (claims.Any(p => p.Type == m.Value))
+        if (string.Equals("MarketingTools", m.Key, StringComparison.OrdinalIgnoreCase))
         {
-            return true;
+            return availableMarketingTools.Any();
         }
-
-        return false;
+        return claims.Any(p => p.Type == m.Value);
     }).Select(m => m.Key);
 }
 
@@ -99,7 +122,7 @@
                         var submenuDisplayName = submenuData.DisplayName;
                         var submenuActive = controllerName == submenuController ? "active" : string.Empty;
                         
-                        <a class="dropdown-item @submenuActive" id="submenu-@submenuData.Controller" href="@Url.Content("~/Portal/" + submenuController)">
+                        <a class="dropdown-item @submenuActive" id="submenu-@submenuController" href="@Url.Content("~/Portal/" + submenuController)">
                             @submenuDisplayName
                         </a>
                     }
@@ -110,7 +133,7 @@
         {
             var active = "nav-link " + (controllerName == item ? "active" : string.Empty);
             <li class="nav-item">
-                <a class="@active" id="@item" href="@Url.Content("~/Portal/"+item)">
+                <a class="@active" id="@item" href="@Url.Content("~/Portal/" + item)">
                     @GetMenuName(item)
                 </a>
             </li>
@@ -119,13 +142,13 @@
 </ul>
 <script type="text/javascript">
     window.globalVariables = {
-        claims: @Html.Raw(claims.ToJson()),
-    }
+        claims: @Html.Raw(claims.ToJson())
+    };
     var controllerName = '@controllerName';
     let element;
 
     switch(controllerName) {
-        case 'PaymentRequest': case 'PaymentRequest': case 'RevenueGroup': case 'EmailHistory': case 'MarketingAccount':
+        case 'PaymentRequest': case 'RevenueGroup': case 'EmailHistory': case 'MarketingAccount':
             element = document.getElementById('Affiliate');
             break;
         case 'Report': case 'PlayerGgrReport': case 'TransferReport': case 'AffiliateCpaReport': case 'PlayerCpaReport': case 'RedepositCpaReport':

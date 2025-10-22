@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Fanex.Affiliate.Admin.Core.Controllers.LandingPage
 {
-    [FunctionAuthorize(FunctionName = Function.LandingPage)]
+    [FunctionAuthorize(FunctionName = Function.PageManagement)]
     public class PageManagementController : ReadOnlySessionBaseController
     {
         private readonly IPageManagementService _pageManagementService;
