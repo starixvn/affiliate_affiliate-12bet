@@ -48,6 +48,7 @@ namespace Fanex.Affiliate.Admin.Core.Services.ThirdPartyLicensee
                 Status = affInfo.Status,
                 CustId = affInfo.PlayerCustId == 0 ? _Marketing_Cust_ID : affInfo.PlayerCustId,
                 ParentAffiliate = affInfo.ParentAffName,
+                DealVerifyFlags = affInfo.DealVerifyFlags,
                 SiteId = _appSetting.MemberSiteId
             };
             var (Id, Result) = _jobTrackerService.InsertDataTracker(new InsertJobTrackerCommand

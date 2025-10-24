@@ -41,5 +41,7 @@
         public int AffCategoryId { get; set; }
 
         public int GroupTypeId { get; set; }
+
+        public int DealVerifyFlags { get; set; }
     }
 }

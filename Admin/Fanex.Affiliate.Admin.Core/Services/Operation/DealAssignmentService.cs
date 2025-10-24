@@ -75,6 +75,11 @@
                 return await ProcessApproveAffiliate(param, affInfo, emailParam);
             }
 
+            if (assignResult.IsSuccessful)
+            {
+                await SendAffiliateInfoToLicensee(affInfo);
+            }    
+
             return assignResult;
         }
 
