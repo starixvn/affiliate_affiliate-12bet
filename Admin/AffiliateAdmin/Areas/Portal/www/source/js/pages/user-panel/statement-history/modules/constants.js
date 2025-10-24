@@ -37,8 +37,8 @@ export const paymentCPAManagementSettings = {
         Status: "Qualified"
     },
     Adjustment: {
-        ViewBy: CPAViewBySettings.AdjustmentDate,
-        Status: "Not Qualified"
+        ViewBy: CPAViewBySettings.ScheduleEndDate,
+        Status: ""
     }
 }
 

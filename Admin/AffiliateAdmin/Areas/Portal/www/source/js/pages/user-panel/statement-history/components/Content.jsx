@@ -122,7 +122,6 @@ export class Content extends PureComponent {
         return {
             fromDate: adjustedDate,
             toDate: adjustedDate,
-            status: adjustmentSetting.Status,
             viewBy: adjustmentSetting.ViewBy
         };
     }
@@ -172,10 +171,11 @@ export class Content extends PureComponent {
             alert('Invalid data item: missing required MonthDate property');
         }
 
-        const itemDate = new Date(dataItem.MonthDate);
         const baseParams = { affName, dealIds: groupId };
 
         if (isCpaAdjustment) {
+            const itemDate = new Date(dataItem.Description.slice(-10));
+            
             return {
                 ...baseParams,
                 ...this._buildCpaAdjustmentParams(itemDate)
@@ -184,7 +184,7 @@ export class Content extends PureComponent {
 
         return {
             ...baseParams,
-            ...this._buildApprovedCpaEarningParams(itemDate)
+            ...this._buildApprovedCpaEarningParams(new Date(dataItem.MonthDate))
         };
     }
 

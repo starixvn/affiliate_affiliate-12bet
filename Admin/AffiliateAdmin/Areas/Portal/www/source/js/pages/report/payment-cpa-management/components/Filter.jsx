@@ -45,17 +45,15 @@ export const Filter = ({ params, setParams, today, deals, toggleSubmit }) => {
             initialParams = {
                 ...initialParams,
                 userName: param.affName,
-                status: param.status,
+                status: param.status || selectedStatus,
                 viewBy: param.viewBy,
                 dealIds: `${param.dealIds}` || dealIds,
                 fromDate: param.fromDate,
                 toDate: param.toDate
             };
 
-            setStatusList(handleChangeMultipleSelected(statusList, `${param.status}`));
-            if (param.dealIds) {
-                setDealList(handleChangeMultipleSelected(dealList, `${param.dealIds}`));
-            }
+            param.status && setStatusList(handleChangeMultipleSelected(statusList, `${param.status}`));
+            param.dealIds && setDealList(handleChangeMultipleSelected(dealList, `${param.dealIds}`));
 
             document.cookie = `paramForPaymentCPAManagement=; path=${relativePath.paymentCpaManagement}`;
         }
