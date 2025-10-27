@@ -165,25 +165,23 @@ export class Content extends PureComponent {
     }
 
     _buildPaymentCpaParams = (dataItem, isCpaAdjustment) => {
-        const { affName, groupId } = this.props;
+        const { affName } = this.props;
         
         if (!dataItem || !dataItem.MonthDate) {
             alert('Invalid data item: missing required MonthDate property');
         }
 
-        const baseParams = { affName, dealIds: groupId };
-
         if (isCpaAdjustment) {
             const itemDate = new Date(dataItem.Description.slice(-10));
             
             return {
-                ...baseParams,
+                affName,
                 ...this._buildCpaAdjustmentParams(itemDate)
             };
         }
 
         return {
-            ...baseParams,
+            affName,
             ...this._buildApprovedCpaEarningParams(new Date(dataItem.MonthDate))
         };
     }
@@ -305,9 +303,9 @@ export class Content extends PureComponent {
 function mapStateToProps({ today, affCommonInfo, statementHistory }) {
     const { pagingOption, param, expandMonthDateList,  } = statementHistory;
 
-    const { affId, affName, groupId } = affCommonInfo;
+    const { affId, affName } = affCommonInfo;
 
-    return Object.assign({}, { today, affId, affName, pagingOption, param, expandMonthDateList, groupId });
+    return Object.assign({}, { today, affId, affName, pagingOption, param, expandMonthDateList });
 }
 
 function mapDispatchToProps(dispatch) {
