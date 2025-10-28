@@ -8,19 +8,18 @@ export const PERCENTAGE_MAX_VALUE = 100;
 export const DEAL_REVENUE_SHARE = 1;
 export const DEAL_CPA = 3;
 export const DEAL_HYBRID = 4;
-export const MONTHLY_SCHEDULE_ID = 5;
 export const DEAL_HYBRID_CPA_SECTION = 'CPA:';
 export const DEAL_HYBRID_REVENUE_SHARE_SECTION = 'Revenue Share:';
 
 const _subAffRateValueList = () => {
-    let min = 0.0,
-        max = 20.0;
+    let min = 1.0,
+        max = 10.0;
 
-    const subAffRateList = { 0.05: '5.0%' };
+    const subAffRateList = {};
 
-    while (min < max) {
-        min = min + 10;
+    while (min <= max) {
         subAffRateList[format(min / 100, 3)] = format(min, 1) + '%';
+        min = min + 1;
     }
 
     return subAffRateList;
@@ -28,7 +27,7 @@ const _subAffRateValueList = () => {
 
 export const subAffRateValueList = _subAffRateValueList();
 
-export const defaultSubAffRate = 5.0;
+export const defaultSubAffRate = 0.05;
 
 export const mappingFields = {
     MinFdm: 'Min FTD',
@@ -57,6 +56,7 @@ export const messages = {
     addDealSuccessfully: 'Add Deal Successfully.',
     updateDealSuccessfully: 'Update Deal Successfully.',
     requireGroupName: 'Deal name cannot be empty.',
+    requireSubCommRate: 'Sub-Affiliate Rate must be selected.',
     requireMinValue: `{0} must be greater than 0.`,
     requireMaxValue: `{0} must be less than ${format(INFINITY_MONEY)}.`,
     requireCountryCodes: 'At least one Target Country must be selected.',
@@ -96,4 +96,9 @@ export const cpaTierSettingDefault = {
 export const productGroupDefault = {
     ProductIds: '',
     GroupProductId: 1,
+}
+
+export const copyRevenueDealDefault = {
+    RsDealId: 0,
+    RsDealList: [],
 }

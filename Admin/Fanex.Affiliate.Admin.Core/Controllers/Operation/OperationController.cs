@@ -1,5 +1,6 @@
 ﻿namespace Fanex.Affiliate.Admin.Core.Controllers.Operation
 {
+    using System.Linq;
     using System.Web.Mvc;
     using Extensions;
     using Fanex.Affiliate.Admin.Core.Attributes;
@@ -114,6 +115,16 @@
             return GenerateJsonNetResult(viewModel);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryHeader]
+        public ActionResult GetRevenueDealList()
+        {
+            var deals = _commonDealService.GetNormalDealList(new GetNormalDealParam());
+            var revenueDeals = deals.Where(d => d.GroupTypeId == DealType.RevenueShare);
+
+            return GenerateJsonNetResult(revenueDeals);
+        }
+
         private OperationViewModel GetOperationViewModel()
         {
             return new OperationViewModel
@@ -121,7 +132,7 @@
                 DealTypes = _commonDealService.GetDealTypes(),
                 PaymentFrequencies = _commonDealService.GetPaymentFrequency(),
                 Deductions = _commonDealService.GetDeductionList(),
-                TargetCountries = _systemService.GetTargetCountryList(),
+                TargetCountries = _commonDealService.GetPlayerTargetCountry(),
                 Products = _systemService.GetProductList()
             };
         }

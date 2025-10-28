@@ -2,10 +2,8 @@ import * as types from './types';
 import { toggleLoader } from '../../../../actions/loaderAction';
 import { setPagingOption } from '../../../../actions/pagingAction';
 import { post } from '../../../../modules/ajaxRequest';
-import { formatDecimal } from '../../../../modules/numberFormat';
-import { MONTHLY_SCHEDULE_ID } from '../libs/constants';
-import { productGroupDefault } from '../libs/constants';
-import { isCheckedField } from '../libs/service';
+import { _buildDetailDealInfo } from '../libs/service';
+import { getDealDetailInfo } from '../libs/apiService';
 
 export { toggleLoader, setPagingOption };
 
@@ -44,6 +42,13 @@ export const setIsEdit = (data) => {
     };
 }
 
+export const setCopyRevenueDeal = (data) => {
+    return {
+        type: types.SET_COPY_REVENUE_DEAL,
+        data
+    };
+}
+
 export const fetchData = (param) => async (dispatch) => {
     dispatch(toggleLoader(true));
 
@@ -62,79 +67,14 @@ export const fetchData = (param) => async (dispatch) => {
 export const getDealDetail = (groupId) => async (dispatch) => {
     dispatch(toggleLoader(true));
 
-    const url = 'Portal/Operation/GetDealDetail';
-    const response = await post(url, { groupId });
+    try {
+        const response = await getDealDetailInfo(groupId);
+        const data = response?.status === 200 ? _buildDetailDealInfo(response.data) : null;
 
-    let data = response && response.status === 200 ? _buildDealInfo(response.data) : null;
-
-    dispatch(setDealInfo(data));
-
-    dispatch(toggleLoader(false));
-}
-
-const _buildDealInfo = (dealInfo) => {
-    if (!dealInfo) {
-        return null;
+        dispatch(setDealInfo(data));
+    } finally {
+        dispatch(toggleLoader(false));
     }
-
-    const {
-        HoldingDays,
-        HoldingTickets,
-        Quota,
-        RedepositRate,
-        RedepositDays,
-        ProductGroup,
-        CPATierSetting,
-        DepositFeeSetting,
-        WithdrawalFeeSetting,
-        ScheduleId,
-        StartDate,
-        StartDateString,
-        IsInstant,
-        ...rest
-    } = dealInfo;
-
-    const isActivePlayerHoldingPeriod = HoldingDays > 0 && HoldingTickets > 0;
-    const isQuota = Quota > 0;
-    const isRedeposit = RedepositRate > 0 && RedepositDays > 0;
-    const productGroup = !ProductGroup || ProductGroup.length === 0 ? [productGroupDefault] : ProductGroup;
-
-    const firstGroupProductId = productGroup?.[0]?.GroupProductId;
-    const firstTier = CPATierSetting.filter(t => t.GroupProductId === firstGroupProductId);
-
-    if (WithdrawalFeeSetting) {
-        WithdrawalFeeSetting.DeductedAmount = WithdrawalFeeSetting.IsDeductedPercent
-            ? ''
-            : WithdrawalFeeSetting.DeductedAmount;
-    }
-
-    if (DepositFeeSetting) {
-        DepositFeeSetting.DeductedAmount = DepositFeeSetting.IsDeductedPercent
-            ? ''
-            : DepositFeeSetting.DeductedAmount;
-    }
-
-    return {
-        ...rest,
-        RedepositRate: RedepositRate === 0 ? 0 : formatDecimal(RedepositRate * 100) || 0,
-        RedepositDays: RedepositDays || 0,
-        HoldingDays: HoldingDays || 0,
-        HoldingTickets: HoldingTickets || 0,
-        Quota: Quota || 0,
-        ProductGroup: productGroup,
-        CPATierSetting,
-        DepositFeeSetting,
-        WithdrawalFeeSetting,
-        IsActivePlayerHoldingPeriod: isActivePlayerHoldingPeriod,
-        IsQuota: isQuota,
-        IsRedeposit: isRedeposit,
-        CheckedMinFdm: isCheckedField(firstTier, 'MinFdm'),
-        CheckedMinTotalDeposit: isCheckedField(firstTier, 'MinTotalDeposit'),
-        CheckedMinTurnover: isCheckedField(firstTier, 'MinTO'),
-        StartDate: StartDateString,
-        ScheduleId,
-        IsInstant: ScheduleId !== MONTHLY_SCHEDULE_ID && ScheduleId !== 0
-    };
 };
 
 export const addDeal = (param) => async () => {

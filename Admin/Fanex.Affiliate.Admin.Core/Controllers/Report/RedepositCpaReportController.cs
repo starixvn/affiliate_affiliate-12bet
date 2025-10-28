@@ -28,7 +28,7 @@
         [HttpGet]
         public ActionResult Index()
         {
-            var deals = _commonDealService.GetNormalDealList(new GetNormalDealParam { IsOnlyRevenue = false });
+            var deals = _commonDealService.GetNormalDealList(new GetNormalDealParam ());
             ViewBag.Deals = deals.Where(d => d.GroupTypeId != DealType.RevenueShare);
 
             return View("~/Areas/Portal/Views/Report/RedepositCpaReport.cshtml");

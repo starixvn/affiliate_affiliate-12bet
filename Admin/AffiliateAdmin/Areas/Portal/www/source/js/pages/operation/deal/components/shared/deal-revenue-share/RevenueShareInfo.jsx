@@ -7,6 +7,8 @@ import { setDealInfo } from '../../../actions';
 import PlatformFeeSetting from './tier-deduction/PlatformFeeSetting';
 import FeeSettingItem from './tier-deduction/FeeSettingItem';
 import QmTurnoverSetting from './qp-turnover/QmTurnoverSetting';
+import CopyRevenueDealSetting from './copy-revenue-setting/CopyRevenueDealSetting';
+import { DEAL_HYBRID } from '../../../libs/constants';
 
 export class RevenueShareInfo extends PureComponent {
     constructor(props) {
@@ -33,12 +35,13 @@ export class RevenueShareInfo extends PureComponent {
     }
 
     render() {
-        const { defaultCurrency } = this.props;
+        const { defaultCurrency, dealInfo } = this.props;
         const { isInitialDepositFee, isInitialWithdrawalFee } = this.state;
         const { DepositFeeSetting, WithdrawalFeeSetting } = this.props.dealInfo;
 
         return (
             <Fragment>
+                {dealInfo.DealType === DEAL_HYBRID && <CopyRevenueDealSetting />}
                 <QmTurnoverSetting />
                 <fieldset className="tier-setting-group">
                     <legend><h6 className="font-weight-bold">Tier Rated Products Deduction</h6></legend>

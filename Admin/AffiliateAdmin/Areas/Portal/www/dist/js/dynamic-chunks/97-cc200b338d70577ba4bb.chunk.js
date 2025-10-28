@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[97],{1085:function(e,n,t){"use strict";t.r(n);var a=t(0),m=t.n(a);n.default=function(){return m.a.createElement("div",{className:"component-management"},m.a.createElement("h2",null,"Component Management"),m.a.createElement("p",null,"Component management functionality will be implemented here."))}}}]);

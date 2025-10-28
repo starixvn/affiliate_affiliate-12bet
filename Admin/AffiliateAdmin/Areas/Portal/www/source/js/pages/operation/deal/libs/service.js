@@ -8,9 +8,11 @@ import {
     DEAL_CPA,
     DEAL_REVENUE_SHARE,
     DEAL_HYBRID_CPA_SECTION,
-    DEAL_HYBRID_REVENUE_SHARE_SECTION
+    DEAL_HYBRID_REVENUE_SHARE_SECTION,
+    defaultSubAffRate
 } from './constants';
 
+import { formatDecimal } from '../../../../modules/numberFormat';
 import { buildDefaultRevenueShare, validateRevenueShareInfo } from './revenue-share-service';
 
 const commonDealInfo = {
@@ -18,14 +20,14 @@ const commonDealInfo = {
     DealName: '',
     DealType: 3,
     Description: '',
-    SubCommRate: 0.05,
+    IsSubCommRate: false,
+    SubCommRate: 0,
     CountryCodes: '',
     ActiveDays: '',
     IsActivePlayerHoldingPeriod: false,
     HoldingTickets: 0,
     HoldingDays: 0,
     IsQuota: false,
-    IsInstant: false,
     IsRedeposit: false,
     RedepositRate: 0,
     RedepositDays: 0,
@@ -54,12 +56,104 @@ export const buildDefaultDealInfo = (targetCountryList, dealName = '', dealType 
     newDealInfo.DealName = dealName;
 
     if (dealType !== DEAL_CPA) {
+        if (dealType === DEAL_REVENUE_SHARE) {
+            newDealInfo.IsSubCommRate = true;
+            newDealInfo.SubCommRate = defaultSubAffRate;
+        }
+
         const revenueShareInfo = buildDefaultRevenueShare(deductionList, productList);
         return { ...newDealInfo, ...revenueShareInfo };
     }
 
     return newDealInfo;
 }
+
+export const _buildDetailDealInfo = (dealInfo) => {
+    if (!dealInfo) {
+        return null;
+    }
+
+    const {
+        HoldingDays,
+        HoldingTickets,
+        Quota,
+        RedepositRate,
+        RedepositDays,
+        ProductGroup,
+        CPATierSetting,
+        DepositFeeSetting,
+        WithdrawalFeeSetting,
+        ScheduleId,
+        StartDate,
+        StartDateString,
+        ...rest
+    } = dealInfo;
+
+    const isActivePlayerHoldingPeriod = HoldingDays > 0 && HoldingTickets > 0;
+    const isQuota = Quota > 0;
+    const isRedeposit = RedepositRate > 0 && RedepositDays > 0;
+    const productGroup = !ProductGroup || ProductGroup.length === 0 ? [productGroupDefault] : ProductGroup;
+
+    const firstGroupProductId = productGroup?.[0]?.GroupProductId;
+    const firstTier = CPATierSetting.filter(t => t.GroupProductId === firstGroupProductId);
+
+    if (WithdrawalFeeSetting) {
+        WithdrawalFeeSetting.DeductedAmount = WithdrawalFeeSetting.IsDeductedPercent
+            ? ''
+            : WithdrawalFeeSetting.DeductedAmount;
+    }
+
+    if (DepositFeeSetting) {
+        DepositFeeSetting.DeductedAmount = DepositFeeSetting.IsDeductedPercent
+            ? ''
+            : DepositFeeSetting.DeductedAmount;
+    }
+
+    return {
+        ...rest,
+        RedepositRate: RedepositRate === 0 ? 0 : formatDecimal(RedepositRate * 100) || 0,
+        RedepositDays: RedepositDays || 0,
+        HoldingDays: HoldingDays || 0,
+        HoldingTickets: HoldingTickets || 0,
+        Quota: Quota || 0,
+        ProductGroup: productGroup,
+        CPATierSetting,
+        DepositFeeSetting,
+        WithdrawalFeeSetting,
+        IsActivePlayerHoldingPeriod: isActivePlayerHoldingPeriod,
+        IsQuota: isQuota,
+        IsRedeposit: isRedeposit,
+        CheckedMinFdm: isCheckedField(firstTier, 'MinFdm'),
+        CheckedMinTotalDeposit: isCheckedField(firstTier, 'MinTotalDeposit'),
+        CheckedMinTurnover: isCheckedField(firstTier, 'MinTO'),
+        StartDate: StartDateString,
+        ScheduleId
+    };
+};
+
+export const _buildOnlyRevenueDealInfo = (dealInfo) => {
+    if (!dealInfo) return null;
+
+    return {
+        QmTurnover: dealInfo.QmTurnover,
+        IsActivePlayerSum: dealInfo.IsActivePlayerSum,
+        RevenueTierSetting: dealInfo.RevenueTierSetting,
+        PlatformFeeSetting: dealInfo.PlatformFeeSetting,
+        DepositFeeSetting: dealInfo.DepositFeeSetting
+            ? {
+                ...dealInfo.DepositFeeSetting,
+                DeductedAmount: dealInfo.DepositFeeSetting.IsDeductedPercent ? '' : dealInfo.DepositFeeSetting.DeductedAmount
+            }
+            : null,
+        WithdrawalFeeSetting: dealInfo.WithdrawalFeeSetting
+            ? {
+                ...dealInfo.WithdrawalFeeSetting,
+                DeductedAmount: dealInfo.WithdrawalFeeSetting.IsDeductedPercent ? '' : dealInfo.WithdrawalFeeSetting.DeductedAmount
+            }
+            : null,
+    };
+};
+
 
 export const isCheckedField = (list, field) => {
     return list && list.some(item => item[field] !== 0);
@@ -124,10 +218,11 @@ export const _handleSaveParam = (dealInfo) => {
 
 // Start validate deal info
 export const validateDealInfo = (dealInfo, today, isAdd = true) => {
-    const { DealType, DealName } = dealInfo;
+    const { DealType, DealName, IsSubCommRate, SubCommRate } = dealInfo;
     let validateResult = { isValid: false, messageList: [] };
 
     const groupNameValidation = validateGroupName(DealName);
+    const subCommRateValidation = validateSubCommRate(IsSubCommRate, SubCommRate);
 
     if (DealType === DEAL_CPA) {
         validateResult = validateCPAInfo(dealInfo, today, isAdd);
@@ -137,8 +232,8 @@ export const validateDealInfo = (dealInfo, today, isAdd = true) => {
         validateResult = validateHybridInfo(dealInfo, today, isAdd);
     }
 
-    const isValid = groupNameValidation.isValid && validateResult.isValid;
-    const messageList = [...groupNameValidation.messageList, ...validateResult.messageList];
+    const isValid = groupNameValidation.isValid && subCommRateValidation.isValid && validateResult.isValid;
+    const messageList = [...groupNameValidation.messageList, ...subCommRateValidation.messageList, ...validateResult.messageList];
 
     return { isValid, messageList };
 }
@@ -194,6 +289,14 @@ export const validateGroupName = (groupName) => {
     }
 
     return { isValid, messageList };
+}
+
+export const validateSubCommRate = (isSubCommRate, subCommRate) => {
+    if (!!isSubCommRate && (subCommRate <= 0 || subCommRate > 0.1)) {
+        return { isValid: false, messageList: [messages.requireSubCommRate] };
+    }
+
+    return { isValid: true, messageList: [] }
 }
 
 export const validateGeneralDealInfo = (dealInfo, today, isAdd = true) => {

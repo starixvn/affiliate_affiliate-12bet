@@ -12,6 +12,8 @@
 
         public string Description { get; set; }
 
+        public bool IsSubCommRate { get; set; }
+
         public decimal SubCommRate { get; set; }
 
         public decimal QmTurnover { get; set; }

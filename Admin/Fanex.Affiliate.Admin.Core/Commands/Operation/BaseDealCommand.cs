@@ -6,6 +6,8 @@
 
         public string GroupName { get; set; }
 
+        public bool IsSubCommRate { get; set; }
+
         public decimal SubCommRate { get; set; }
 
         public string Description { get; set; }

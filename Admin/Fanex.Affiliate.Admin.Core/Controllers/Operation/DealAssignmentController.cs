@@ -47,7 +47,7 @@
                 viewModel = new AssignDealViewModel
                 {
                     DealList = dealList,
-                    DealTypeList = dealTypeList.Where(dt => dt.GroupTypeId == DealType.RevenueShare),
+                    DealTypeList = dealTypeList,
                     AffInfo = _affiliateService.GetAffiliateBasicInfo(affId)
                 };
             }
