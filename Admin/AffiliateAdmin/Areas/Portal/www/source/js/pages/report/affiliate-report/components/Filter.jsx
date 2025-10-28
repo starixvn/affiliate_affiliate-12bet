@@ -7,7 +7,7 @@ import MultipleSelect from '@/components/multiple-select';
 import MonthPicker from '@9softstudio/react-monthpicker';
 import { defaultSortBy, sortByMainView, sortByMonthOnMonthView, viewLevel, sortDirectionType, defaultBaseCurrency, minMonthDate, resource, statusFilter, allStatuses, dealFilterData } from '../libs/constants';
 import { setReportTitle, setParam, setCurrencyList, setProductList, setPaymentCurrencyList, setIsCheckedDatePicker } from '../actions';
-import { formatUnit, handleAfterChangeFromDate, handleAfterChangeToDate, handleChangeMultipleSelected } from '@/modules/utils';
+import { formatUnit, handleAfterChangeFromDate, handleAfterChangeToDate, handleChangeMultipleSelected, getAdjustedDateFromNow, getFirstDayOfMonth, getDayOfMonth } from '@/modules/utils';
 import { globalResource } from '@/modules/globalResource';
 import { minDate, sixMonth } from '@/modules/constants';
 import { DatePicker } from '@9softstudio/react-datepicker';
@@ -20,9 +20,8 @@ export class Filter extends Component {
         const { today, productList, baseCurrencyList, currencyList, dealList } = this.props;
         this.now = new Date(today);
         const currentMonth = this.now.getMonth() + 1;
-        const currentMonthString = formatUnit(currentMonth);
         const currentYear = this.now.getFullYear();
-        this.nowString = `${currentMonthString}/${formatUnit(this.now.getDate())}/${currentYear}`;
+        this.nowString = getDayOfMonth(this.now);
 
         const defaultMonth = { month: currentMonth, year: currentYear };
 
@@ -42,7 +41,7 @@ export class Filter extends Component {
             selectedCurrencyList: currencyList.filter(item => item.checked).map(item => item.key).join(',') || '',
             selectedPaymentCurrencyList: 'all',
             isCheckedDatePicker: false,
-            fromDate: `${currentMonthString}/01/${currentYear}`,
+            fromDate: getFirstDayOfMonth(this.now),
             toDate: this.nowString,
             selectedStatus: statusFilter.Approved
         }
@@ -226,8 +225,8 @@ export class Filter extends Component {
         const param = {
             UserName: userName,
             IsGetMonthly: !isCheckedDatePicker,
-            FromDate: isCheckedDatePicker ? fromDate : `${fromMonth.month}/1/${fromMonth.year}`,
-            ToDate: isCheckedDatePicker ? toDate : `${toMonth.month}/1/${toMonth.year}`,
+            FromDate: isCheckedDatePicker ? fromDate : getFirstDayOfMonth(new Date(fromMonth.year, fromMonth.month - 1, 1)),
+            ToDate: isCheckedDatePicker ? toDate : getAdjustedDateFromNow(new Date(toMonth.year, toMonth.month - 1, 1), new Date(this.props.today)),
             PreferredLanguage: selectedLanguage,
             BaseCurrencyId: Number(selectedBaseCurrency),
             GroupIds: isSelectAllDealIds ? 'all' : selectedDealIds.join(','),

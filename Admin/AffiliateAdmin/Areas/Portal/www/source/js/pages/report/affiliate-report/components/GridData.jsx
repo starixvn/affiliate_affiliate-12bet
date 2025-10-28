@@ -338,10 +338,11 @@ export class GridData extends PureComponent {
     }
 
     handleViewMonthOnMonth = (userName) => {
-        const { param, pagingOption } = this.props;
+        const { param, pagingOption, today } = this.props;
 
         const postParam = Object.assign({}, param, {
             UserName: userName,
+            ToDate: getAdjustedDateFromNow(new Date(param.ToDate), new Date(today)),
             SortType: sortByMonthOnMonthView.Month,
             SortDirectionType: sortDirectionType.descending,
             PageIndex: 1,
