@@ -293,7 +293,7 @@ export class GridData extends PureComponent {
                     <td className="text-right" title={approvedCpaAmount}>
                         {isTotalRow || isRevenueAff ? approvedCpaAmount : (
                             <Button color="link"
-                                onClick={() => this.handleViewApprovedCpaReport(dataItem.UserName, dataItem.GroupId, dataItem.MonthDate)}>
+                                onClick={() => this.handleViewApprovedCpaReport(dataItem.UserName, dataItem.MonthDate)}>
                                 {approvedCpaAmount}
                             </Button>
                         )}
@@ -303,7 +303,7 @@ export class GridData extends PureComponent {
                     <td className="text-right" title={adjustedCpaAmount}>
                         {isTotalRow || isRevenueAff ? adjustedCpaAmount : (
                             <Button color="link"
-                                onClick={() => this.handleViewAdjustedCpaReport(dataItem.UserName, dataItem.GroupId, dataItem.MonthDate)}>
+                                onClick={() => this.handleViewAdjustedCpaReport(dataItem.UserName, dataItem.MonthDate)}>
                                 {adjustedCpaAmount}
                             </Button>
                         )}
@@ -368,21 +368,21 @@ export class GridData extends PureComponent {
         openUrlOnNewWindow(relativePath.playerGgrReport, paramFromAffReport, 'paramFromAffReport');
     }
 
-    handleViewApprovedCpaReport = (userName, groupId, monthDate) => {
-        this.handleOpenPaymentCPAManagement(userName, groupId, monthDate, paymentCPAManagementSetting.Approved);
+    handleViewApprovedCpaReport = (userName, monthDate) => {
+        this.handleOpenPaymentCPAManagement(userName, monthDate, paymentCPAManagementSetting.Approved);
     }
 
-    handleViewAdjustedCpaReport = (userName, groupId, monthDate) => {
-        this.handleOpenPaymentCPAManagement(userName, groupId, monthDate, paymentCPAManagementSetting.Adjustment);
+    handleViewAdjustedCpaReport = (userName, monthDate) => {
+        this.handleOpenPaymentCPAManagement(userName, monthDate, paymentCPAManagementSetting.Adjustment);
     }
 
-    handleOpenPaymentCPAManagement = (userName, groupId, monthDate, cpaSetting) => {
-        const paramForPaymentCPAManagement = this._buildPaymentCPAManagementParams(userName, groupId, monthDate, cpaSetting);
+    handleOpenPaymentCPAManagement = (userName, monthDate, cpaSetting) => {
+        const paramForPaymentCPAManagement = this._buildPaymentCPAManagementParams(userName, monthDate, cpaSetting);
         
         openUrlOnNewWindow(relativePath.paymentCpaManagement, paramForPaymentCPAManagement, 'paramForPaymentCPAManagement');
     }
 
-    _buildPaymentCPAManagementParams = (userName, groupId, monthDate, cpaSetting) => {
+    _buildPaymentCPAManagementParams = (userName, monthDate, cpaSetting) => {
         const { param, today } = this.props;
         const now = new Date(today);
         const isMainView = this._isMainView();
@@ -392,7 +392,6 @@ export class GridData extends PureComponent {
             affName: isMainView ? userName : param.UserName,
             viewBy: cpaSetting.ViewBy,
             status: cpaSetting.Status,
-            dealIds: groupId,
             fromDate: isMainView ? param.FromDate : getFirstDayOfMonth(referenceDate),
             toDate: getAdjustedDateFromNow(referenceDate, now)
         };
