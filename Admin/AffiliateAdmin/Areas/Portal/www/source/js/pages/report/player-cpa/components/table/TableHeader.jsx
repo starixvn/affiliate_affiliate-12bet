@@ -29,7 +29,9 @@ const RowHeader = ({ index, row, sortColumn, isAscending, handleClickHeader }) =
                                         {cell.title}
                                         {
                                             cell.tooltipTitle && (
-                                                <span className="oi icon-info ml-1" title={cell.tooltipTitle}></span>
+                                                <span title={cell.tooltipTitle} className='align-top'>
+                                                    <span className="oi icon-info mx-2 mb-2"></span>
+                                                </span>
                                             )
                                         }
                                     </div>

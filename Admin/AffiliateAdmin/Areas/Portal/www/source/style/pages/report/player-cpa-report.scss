@@ -1,6 +1,6 @@
 $left0: 0px;
-$left1: 60px;
-$left2: 210px;
+$left1: 50px;
+$left2: 170px;
 $outline: 0.5px solid #cccccc;
 
 .filter-container {
@@ -127,6 +127,34 @@ $outline: 0.5px solid #cccccc;
         tbody {
             tr td {
                 border-top: none;
+
+                .status-eligibled {
+                    color: #7030a0; // Purple color
+                }
+                
+                .status-settled {
+                    color: #2e7d32; // Green color
+                }
+                
+                .status-ineligibled {
+                    color: #f57c00; // Orange/Amber color
+                }
+                
+                .status-rejected {
+                    color: #d32f2f; // Red color
+                }
+                
+                .status-quota-exceeded {
+                    color: #3b82f6; // Blue color
+                }
+
+                .status-pending {
+                    color: #596666; // Gray color
+                }
+
+                .status-redeposit-failed {
+                    color: #000000; // Black color
+                }
             }
 
             .freeze-column {

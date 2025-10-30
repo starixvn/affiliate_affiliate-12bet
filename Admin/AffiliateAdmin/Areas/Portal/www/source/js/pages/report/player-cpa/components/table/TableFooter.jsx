@@ -36,8 +36,6 @@ export default function TableFooter({
                 <td className="text-right font-weight-bold"></td>
                 <td className="text-right font-weight-bold"></td>
                 <td className="text-right font-weight-bold"></td>
-                <td className="text-right font-weight-bold"></td>
-                <td className="text-right font-weight-bold"></td>
             </tr>
         </tfoot>
     )

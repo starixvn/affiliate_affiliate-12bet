@@ -279,3 +279,7 @@ export const resizeWidthHeight = (realWidth, realHeight, size = 500) => {
 
     return { width, height }
 }
+
+export const getCSSClassName = (prefix, text) => {
+    return `${prefix}-${text.toLowerCase().replace(/ /g, '-')}`;
+}

@@ -3,7 +3,7 @@
 .payment-cpa-management-content-container {
     .payment-cpa-management-table-container {
         .freeze-table {
-            min-width: 3000px;
+            //min-width: 3000px;
             border-collapse: separate;
             border-spacing: 0;
 
@@ -47,7 +47,7 @@
                 }
 
                 &-header-2 {
-                    left: 200px;
+                    left: 170px;
                     z-index: 9;
                 }
                 // Body sticky columns
@@ -67,7 +67,7 @@
                 }
 
                 &-2 {
-                    left: 200px;
+                    left: 170px;
                 }
                 // Footer
                 &-footer {

@@ -91,7 +91,7 @@ export const dataKey = {
 export const row1 = [
     {
         title: headerText.No,
-        width: 60,
+        width: 50,
         sortable: false,
         rowSpan: 2,
         startCol: 0,
@@ -99,7 +99,7 @@ export const row1 = [
     },
     {
         title: headerText.Affiliate,
-        width: 150,
+        width: 120,
         sortable: true,
         sortColumn: dataKey.Affiliate,
         rowSpan: 2,
@@ -117,7 +117,7 @@ export const row1 = [
     },
     {
         title: headerText.RegistrationDate,
-        width: 150,
+        width: 100,
         sortable: true,
         sortColumn: dataKey.RegistrationDate,
         rowSpan: 2,
@@ -135,7 +135,7 @@ export const row1 = [
     },
     {
         title: headerText.PaymentFrequency,
-        width: 120,
+        width: 100,
         sortable: true,
         sortColumn: dataKey.PaymentFrequency,
         rowSpan: 2,
@@ -146,26 +146,26 @@ export const row1 = [
         title: "Active Period",
         sortable: false,
         columnSpan: 5,
-        width: 150 * 5,
+        width: 85 * 5,
         startCol: 6,
     },
     {
         title: "Holding Period",
         sortable: false,
         columnSpan: 4,
-        width: 150 * 4,
+        width: 85 * 4,
         startCol: 11,
     },
     {
         title: "Redeposit Qualified Period",
         sortable: false,
         columnSpan: 4,
-        width: 150 * 4,
+        width: 85 * 4,
         startCol: 15,
     },
     {
         title: headerText.CPAStatus,
-        width: 120,
+        width: 85,
         sortable: true,
         sortColumn: dataKey.CPAStatus,
         rowSpan: 2,

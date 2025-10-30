@@ -65,11 +65,12 @@ export const reportKey = {
     AutomaticallyApprovedCpa: 'AutomaticallyApprovedCpa',
     ApprovedAmount: 'ApprovedAmount',
     ApprovedDateStr: 'ApprovedDateStr',
-    ManualAdjustedCpa: 'ManualAdjustedCpa',
-    AdjustedAmount: 'AdjustedAmount',
-    AdjustedDateStr: 'AdjustedDateStr',
+    ManuallyApproved: 'ManuallyApproved',
+    ManuallyApprovedAmount: 'ManuallyApprovedAmount',
+    ManuallyApprovedDateStr: 'ManuallyApprovedDateStr',
     Description: 'Description',
     Action: 'Action',
+    AdjustedAmount: 'AdjustedAmount',
     FinalCpaAmount: 'FinalCpaAmount',
 }
 
@@ -78,69 +79,75 @@ export const headerText = {
     [reportKey.AffUserName]: 'Affiliate',
     [reportKey.DealName]: 'Deal Name',
     [reportKey.PaymentFrequency]: 'Payment Frequency',
-    [reportKey.CpaPaymentSchedule]: 'CPA Payment Schedule',
-    [reportKey.StartScheduleStr]: 'Schedule Start Date',
-    [reportKey.EndScheduleStr]: 'Schedule End Date',
-    [reportKey.TotalEligiblePlayers]: 'Eligible CPA Players',
+    [reportKey.CpaPaymentSchedule]: 'Payment Schedule',
+    [reportKey.StartScheduleStr]: 'Start Date',
+    [reportKey.EndScheduleStr]: 'End Date',
+    [reportKey.TotalEligiblePlayers]: 'Eligible Player',
     [reportKey.RedepositStatistics]: 'Redeposit Statistics',
     [reportKey.RedepositDays]: 'Re-check Days',
     [reportKey.ExpiredRedepositDateStr]: 'Expired Redeposit Date',
     [reportKey.RedepositRate]: 'Redeposit %',
     [reportKey.NoOfRedepositPlayers]: 'No. of Player Redeposit',
-    [reportKey.EstimateAmount]: 'Estimated CPA Amount',
+    [reportKey.EstimateAmount]: 'Estimated Amount',
     [reportKey.Status]: 'Status',
-    [reportKey.AutomaticallyApprovedCpa]: 'Automatically Approved CPA',
+    [reportKey.AutomaticallyApprovedCpa]: 'Automatically Approved',
     [reportKey.ApprovedAmount]: 'Amount',
     [reportKey.ApprovedDateStr]: 'Date',
-    [reportKey.ManualAdjustedCpa]: 'Manual Adjusted CPA',
-    [reportKey.AdjustedAmount]: 'Amount',
-    [reportKey.AdjustedDateStr]: 'Date',
+    [reportKey.ManuallyApproved]: 'Manually Approved',
+    [reportKey.ManuallyApprovedAmount]: 'Amount',
+    [reportKey.ManuallyApprovedDateStr]: 'Date',
     [reportKey.Description]: 'Description',
     [reportKey.Action]: 'Action',
-    [reportKey.FinalCpaAmount]: 'Final CPA Amount',
+    [reportKey.AdjustedAmount]: 'Adjustment Amount',
+    [reportKey.FinalCpaAmount]: 'Final Amount',
 }
 
 export const headerConfigs = {
     [reportKey.RowIdx]: { label: headerText[reportKey.RowIdx], width: 50 },
-    [reportKey.AffUserName]: { label: headerText[reportKey.AffUserName], width: 150 },
-    [reportKey.DealName]: { label: headerText[reportKey.DealName], width: 250 },
+    [reportKey.AffUserName]: { label: headerText[reportKey.AffUserName], width: 120 },
+    [reportKey.DealName]: { label: headerText[reportKey.DealName], width: 200 },
     [reportKey.CpaPaymentSchedule]: {
         label: headerText[reportKey.CpaPaymentSchedule],
         cols: {
-            [reportKey.PaymentFrequency]: { label: headerText[reportKey.PaymentFrequency], width: 150 },
-            [reportKey.StartScheduleStr]: { label: headerText[reportKey.StartScheduleStr], width: 120 },
-            [reportKey.EndScheduleStr]: { label: headerText[reportKey.EndScheduleStr], width: 120 },
-            [reportKey.TotalEligiblePlayers]: { label: headerText[reportKey.TotalEligiblePlayers], width: 120 }
-        }
+            [reportKey.PaymentFrequency]: { label: headerText[reportKey.PaymentFrequency], width: 80 },
+            [reportKey.StartScheduleStr]: { label: headerText[reportKey.StartScheduleStr], width: 80 },
+            [reportKey.EndScheduleStr]: { label: headerText[reportKey.EndScheduleStr], width: 80 },
+            [reportKey.TotalEligiblePlayers]: { label: headerText[reportKey.TotalEligiblePlayers], width: 80 }
+        },
+        width: 320
     },
     [reportKey.RedepositStatistics]: {
         label: headerText[reportKey.RedepositStatistics],
         cols: {
-            [reportKey.RedepositDays]: { label: headerText[reportKey.RedepositDays], width: 120 },
-            [reportKey.ExpiredRedepositDateStr]: { label: headerText[reportKey.ExpiredRedepositDateStr], width: 120 },
-            [reportKey.RedepositRate]: { label: headerText[reportKey.RedepositRate], width: 120 },
-            [reportKey.NoOfRedepositPlayers]: { label: headerText[reportKey.NoOfRedepositPlayers], width: 120 },
-        }
+            [reportKey.RedepositDays]: { label: headerText[reportKey.RedepositDays], width: 80 },
+            [reportKey.ExpiredRedepositDateStr]: { label: headerText[reportKey.ExpiredRedepositDateStr], width: 80 },
+            [reportKey.RedepositRate]: { label: headerText[reportKey.RedepositRate], width: 80 },
+            [reportKey.NoOfRedepositPlayers]: { label: headerText[reportKey.NoOfRedepositPlayers], width: 80 },
+        },
+        width: 320
     },
-    [reportKey.EstimateAmount]: { label: headerText[reportKey.EstimateAmount], width: 120 },
-    [reportKey.Status]: { label: headerText[reportKey.Status], width: 150 },
+    [reportKey.EstimateAmount]: { label: headerText[reportKey.EstimateAmount], width: 80 },
+    [reportKey.Status]: { label: headerText[reportKey.Status], width: 100 },
     [reportKey.AutomaticallyApprovedCpa]: {
         label: headerText[reportKey.AutomaticallyApprovedCpa],
         cols: {
-            [reportKey.ApprovedAmount]: { label: headerText[reportKey.ApprovedAmount], width: 120 },
-            [reportKey.ApprovedDateStr]: { label: headerText[reportKey.ApprovedDateStr], width: 120 },
-        }
+            [reportKey.ApprovedAmount]: { label: headerText[reportKey.ApprovedAmount], width: 80 },
+            [reportKey.ApprovedDateStr]: { label: headerText[reportKey.ApprovedDateStr], width: 80 },
+        },
+        width: 160
     },
-    [reportKey.ManualAdjustedCpa]: {
-        label: headerText[reportKey.ManualAdjustedCpa],
+    [reportKey.ManuallyApproved]: {
+        label: headerText[reportKey.ManuallyApproved],
         cols: {
-            [reportKey.AdjustedAmount]: { label: headerText[reportKey.AdjustedAmount], width: 120 },
-            [reportKey.AdjustedDateStr]: { label: headerText[reportKey.AdjustedDateStr], width: 120 },
-            [reportKey.Description]: { label: headerText[reportKey.Description], width: 120 },
-        }
+            [reportKey.ManuallyApprovedAmount]: { label: headerText[reportKey.ManuallyApprovedAmount], width: 85 },
+            [reportKey.ManuallyApprovedDateStr]: { label: headerText[reportKey.ManuallyApprovedDateStr], width: 85 },
+            [reportKey.Description]: { label: headerText[reportKey.Description], width: 85 },
+        },
+        width: 275
     },
-    [reportKey.Action]: { label: headerText[reportKey.Action], width: 120, isShowable: (isExportExcel, isAdjustable) => !isExportExcel && isAdjustable },
-    [reportKey.FinalCpaAmount]: { label: headerText[reportKey.FinalCpaAmount], width: 120 },
+    [reportKey.Action]: { label: headerText[reportKey.Action], width: 80, isShowable: (isExportExcel, isAdjustable) => !isExportExcel && isAdjustable },
+    [reportKey.AdjustedAmount]: { label: headerText[reportKey.AdjustedAmount], width: 85 },
+    [reportKey.FinalCpaAmount]: { label: headerText[reportKey.FinalCpaAmount], width: 85 },
 }
 
 export const resource = {

@@ -2,11 +2,12 @@ import React from 'react';
 
 import { Button } from 'reactstrap';
 
-import { formatDecimal } from '../../../../../modules/numberFormat';
-import { globalResource } from '../../../../../modules/globalResource';
+import { formatDecimal } from '@/modules/numberFormat';
+import { globalResource } from '@/modules/globalResource';
+import { getCSSClassName } from '@/modules/utils';
 import { groupData } from '../../libs/service';
 import { NOT_QUALIFIED, QUALIFIED } from '../../libs/constants';
-import { htmlDecode } from './../../../../../modules/htmlHelper';
+import { htmlDecode } from '@/modules/htmlHelper';
 import { relativePath } from '../../../libs/constants';
 
 const SubEntryRow = ({
@@ -18,13 +19,15 @@ const SubEntryRow = ({
     toggleAdjustAmountModal,
     setAdjustAmountParam }) => {
 
-    const statusClassName = `status-${subEntry.Status?.toLowerCase().replace(' ', '-')}`;
+    const statusClassName = getCSSClassName('status', subEntry.Status);
+    const paymentFrequencyClassName = getCSSClassName('payment-frequency', subEntry.PaymentFrequency);
     const totalEligiblePlayers = subEntry.TotalEligiblePlayers;
     const redepositDays = subEntry.RedepositDays ? `${subEntry.RedepositDays} days` : '-';
     const redepositRate = subEntry.RedepositRate ? `${formatDecimal(subEntry.RedepositRate * 100)}%` : '-';
     const description = htmlDecode(subEntry.Description);
     const estimateAmount = formatDecimal(subEntry.EstimateAmount);
     const approvedAmount = formatDecimal(subEntry.ApprovedAmount);
+    const manuallyApprovedAmount = formatDecimal(subEntry.ManuallyApprovedAmount);
     const adjustedAmount = formatDecimal(subEntry.AdjustedAmount);
     const finalCpaAmount = formatDecimal(subEntry.FinalCpaAmount);
 
@@ -65,7 +68,11 @@ const SubEntryRow = ({
                     <td title={rowNumber} className="text-center freeze-column-0" rowSpan={rowSpan}>{rowNumber}</td>
                     <td title={subEntry.AffUserName} className="text-left freeze-column-1" rowSpan={rowSpan}>{subEntry.AffUserName}</td>
                     <td title={subEntry.DealName} className="text-left freeze-column-2" rowSpan={rowSpan}>{subEntry.DealName}</td>
-                    <td title={subEntry.PaymentFrequency} className="text-center" rowSpan={rowSpan}>{subEntry.PaymentFrequency}</td>
+                    <td title={subEntry.PaymentFrequency} className="text-center" rowSpan={rowSpan}>
+                        <span className={paymentFrequencyClassName}>
+                            {subEntry.PaymentFrequency}
+                        </span>
+                    </td>
                 </>
             )}
             <td title={subEntry.StartScheduleStr} className="text-center">{subEntry.StartScheduleStr}</td>
@@ -96,8 +103,8 @@ const SubEntryRow = ({
             </td>
             <td title={approvedAmount} className="text-right">{approvedAmount}</td>
             <td title={subEntry.ApprovedDateStr} className="text-center">{subEntry.ApprovedDateStr}</td>
-            <td title={adjustedAmount} className="text-right">{adjustedAmount}</td>
-            <td title={subEntry.AdjustedDateStr} className="text-center">{subEntry.AdjustedDateStr}</td>
+            <td title={manuallyApprovedAmount} className="text-right">{manuallyApprovedAmount}</td>
+            <td title={subEntry.ManuallyApprovedDateStr} className="text-center">{subEntry.ManuallyApprovedDateStr}</td>
             <td title={description} className="text-left">{description}</td>
             {isAdjustable && (
                 <td title='Adjust' className='text-center'>
@@ -111,6 +118,7 @@ const SubEntryRow = ({
                     }
                 </td>
             )}
+            <td title={adjustedAmount} className="text-right">{adjustedAmount}</td>
             <td title={finalCpaAmount} className="text-right">{finalCpaAmount}</td>
         </tr>
     );

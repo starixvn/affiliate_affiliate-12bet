@@ -111,7 +111,7 @@ namespace Fanex.Affiliate.Admin.Core.Services.UserPanel
         private static StatementHistory CreateMonthlyTotal(DateTime monthDate, IEnumerable<StatementHistory> statementHistoryList)
         {
             var children = statementHistoryList.Where(s => s.MonthDate == monthDate)
-                .Where(s => IsUnderMonthlyGroup(s.TransType));
+                .Where(s => IsUnderMonthlyGroup(s.TransType)).OrderBy(s => s.TransTypeDisplayText);
 
             var monthlyCom = children.FirstOrDefault(s => s.TransType == TransType.MonthlyEarning);
 

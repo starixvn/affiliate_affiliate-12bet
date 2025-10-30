@@ -1,9 +1,10 @@
-import Excel from '../../../../modules/excel';
-import { titleCellStyle, headerCellStyle, bodyCellStyle, totalCellStyle } from '../../../../modules/excelStyleConstant';
-import { formatDateTime } from '../../../../modules/utils';
-import { formatDecimal } from '../../../../modules/numberFormat';
+import Excel from '@/modules/excel';
+import { titleCellStyle, headerCellStyle, bodyCellStyle, totalCellStyle } from '@/modules/excelStyleConstant';
+import { formatDateTime } from '@/modules/utils';
+import { formatDecimal } from '@/modules/numberFormat';
 import { reportName, row1, row2, TotalText } from './constants';
 import { dataKey } from './constants';
+import { getPlayerCPAStatusStyle, getPaymentFrequencyStyle } from '../../libs/utils';
 
 const resource = {
     reportName: reportName,
@@ -304,10 +305,11 @@ export default class ExportExcel {
                 value = hasSettingRedeposit ? (value ? "Yes" : "No") : "-";
             }
 
+            const cellStyle = this._getCellStyle(columnConfig.field, value, columnConfig);
             return {
                 t: Excel.getCellType(value),
                 v: value,
-                s: columnConfig[sectionStyleName]
+                s: cellStyle
             };
         }
 
@@ -373,6 +375,16 @@ export default class ExportExcel {
         this.worksheet['!cols'] = this.columnConfigs.map(item => {
             return { [COL_WIDTH]: item[COL_WIDTH] };
         });
+    }
+
+    _getCellStyle(field, value, config) {
+        if (field === dataKey.CPAStatus) {
+            return getPlayerCPAStatusStyle(value);
+        }
+        if (field === dataKey.PaymentFrequency) {
+            return getPaymentFrequencyStyle(value);
+        }
+        return config[MAIN_SECTION_STYLE];
     }
 
     _getColumnConfigs() {

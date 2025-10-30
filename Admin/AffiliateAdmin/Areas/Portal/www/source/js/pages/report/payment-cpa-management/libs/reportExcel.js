@@ -1,6 +1,7 @@
 import Excel from '../../../../modules/excel';
 import { titleCellStyle, headerCellStyle, bodyCellStyle, totalCellStyle } from '../../../../modules/excelStyleConstant';
 import { totalText, resource, reportKey as fields, headerText, headerConfigs } from './constants';
+import { getPaymentCPAStatusStyle, getPaymentFrequencyStyle } from '../../libs/utils';
 import { formatDecimal } from '../../../../modules/numberFormat';
 import { formatDateTime } from '../../../../modules/utils';
 import { groupData } from './service';
@@ -26,7 +27,7 @@ const columnConfig = {
     },
     [fields.DealName]: {
         style: bodyCellStyle.left,
-        width: 120,
+        width: 200,
         header: headerText[fields.DealName]
     },
     [fields.PaymentFrequency]: {
@@ -89,20 +90,25 @@ const columnConfig = {
         width: 120,
         header: headerText[fields.ApprovedDateStr]
     },
-    [fields.AdjustedAmount]: {
+    [fields.ManuallyApprovedAmount]: {
         style: bodyCellStyle.decimal,
         width: 120,
-        header: headerText[fields.AdjustedAmount]
+        header: headerText[fields.ManuallyApprovedAmount]
     },
-    [fields.AdjustedDateStr]: {
+    [fields.ManuallyApprovedDateStr]: {
         style: bodyCellStyle.center,
         width: 120,
-        header: headerText[fields.AdjustedDateStr]
+        header: headerText[fields.ManuallyApprovedDateStr]
     },
     [fields.Description]: {
         style: bodyCellStyle.left,
         width: 120,
         header: headerText[fields.Description]
+    },
+    [fields.AdjustedAmount]: {
+        style: bodyCellStyle.decimal,
+        width: 120,
+        header: headerText[fields.AdjustedAmount]
     },
     [fields.FinalCpaAmount]: {
         style: bodyCellStyle.decimal,
@@ -410,44 +416,12 @@ export default class ReportExcel {
      */
     _getCellStyle(field, value, config) {
         if (field === fields.Status) {
-            return this._getStatusStyle(value);
+            return getPaymentCPAStatusStyle(value);
+        }
+        if (field === fields.PaymentFrequency) {
+            return getPaymentFrequencyStyle(value);
         }
         return config.style;
-    }
-
-    /**
-     * Gets status-specific style with text colors only
-     * @private
-     * @param {string} status - Status value
-     * @returns {Object} Status style with text color
-     */
-    _getStatusStyle(status) {
-        const baseStyle = { ...bodyCellStyle.center };
-
-        switch (status?.toLowerCase()) {
-            case 'monitoring':
-                return {
-                    ...baseStyle,
-                    font: { ...baseStyle.font, color: { rgb: 'f57c00' } } // Orange/Amber
-                };
-            case 'not qualified':
-                return {
-                    ...baseStyle,
-                    font: { ...baseStyle.font, color: { rgb: 'd32f2f' } } // Red
-                };
-            case 'qualified':
-                return {
-                    ...baseStyle,
-                    font: { ...baseStyle.font, color: { rgb: '2e7d32' } } // Green
-                };
-            case 'empty':
-                return {
-                    ...baseStyle,
-                    font: { ...baseStyle.font, color: { rgb: '7030a0' } } // Purple
-                };
-            default:
-                return baseStyle;
-        }
     }
 
     /**
@@ -474,6 +448,10 @@ export default class ReportExcel {
             },
             [fields.ApprovedAmount]: {
                 getValue: (data) => data[fields.ApprovedAmount] || 0,
+                style: totalCellStyle.decimal
+            },
+            [fields.ManuallyApprovedAmount]: {
+                getValue: (data) => data[fields.ManuallyApprovedAmount] || 0,
                 style: totalCellStyle.decimal
             },
             [fields.AdjustedAmount]: {

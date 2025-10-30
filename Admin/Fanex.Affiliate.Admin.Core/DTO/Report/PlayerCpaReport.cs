@@ -19,7 +19,7 @@
 
         public DateTime? RegisteredDate { get; set; }
 
-        public string RegisteredDateStr => RegisteredDate?.ToString(DATE_FORMAT + " HH:mm:ss") ?? HYPHEN;
+        public string RegisteredDateStr => RegisteredDate?.ToString(DATE_FORMAT) ?? HYPHEN;
 
         public int GroupId { get; set; }
 

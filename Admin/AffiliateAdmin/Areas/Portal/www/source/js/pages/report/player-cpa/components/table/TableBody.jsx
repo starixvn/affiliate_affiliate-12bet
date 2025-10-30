@@ -1,5 +1,6 @@
 import React from 'react'
-import { globalResource } from '../../../../../modules/globalResource';
+import { globalResource } from '@/modules/globalResource';
+import { getCSSClassName } from '@/modules/utils';
 import { connect } from 'react-redux';
 import { setMemberCpaId, setDealId, toggleDealPopup, setAffName } from '../../actions';
 
@@ -23,6 +24,8 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
     const hedStr = data.isHolding ? data.hedStr : '-';
     const reDepositDays = hasSettingRedeposit ? data.reDepositDays : '-';
     const isRedeposit = hasSettingRedeposit ? (data.isRedeposit ? 'Yes' : 'No') : '-';
+    const statusClassName = getCSSClassName('status', data.cpaStatus);
+    const paymentFrequencyClassName = getCSSClassName('payment-frequency', data.scheduleName);
 
     return (
         <tr key={`dataRow-${rowNumber}`}>
@@ -42,7 +45,9 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
                 <span className="btn-link" onClick={handleClickDeal}>{data.dealName}</span>
             </td>
             <td title={data.scheduleName} className="text-center">
-                {data.scheduleName}
+                <span className={paymentFrequencyClassName}>
+                    {data.scheduleName}
+                </span>
             </td>
             <td title={ftd} className="text-right">
                 {ftd}
@@ -93,9 +98,15 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
                 {isRedeposit}
             </td>
             <td title={data.cpaStatus} className="text-center">
-                {data.cpaStatus}
+                <span className={statusClassName}>
+                    {data.cpaStatus}
+                </span>
                 {
-                    data.isAbnormal && <span title={data.description} className="ml-1 oi icon-info"></span>
+                    data.isAbnormal && (
+                        <span title={data.description}>
+                            <span className="oi icon-info mx-2"></span>
+                        </span>
+                    )
                 }
             </td>
         </tr>

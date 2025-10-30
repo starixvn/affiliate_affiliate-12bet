@@ -104,26 +104,26 @@ export class GridData extends PureComponent {
 
         return [
             <tr className="freeze-row freeze-row-h1" key="thead-1">
-                <th className="freeze-column-header" width={110} rowSpan="3" title={firstColName}>{firstColName}</th>
+                <th className="freeze-column-header" width={120} rowSpan="3" title={firstColName}>{firstColName}</th>
                 {mainHeader[reportKey.Status].isShowable && (<th width={80} rowSpan="3" title={headerText.Status}>{headerText.Status}</th>)}
                 {mainHeader[reportKey.PreferredLanguage].isShowable && <th header={true} colWidth={80} rowSpan="3" title={headerText.PreferredLanguage}>{headerText.PreferredLanguage}</th>}
                 {mainHeader[reportKey.PaymentCurrency].isShowable && (<th width={70} rowSpan="3" title={headerText.PaymentCurrency}>{headerText.PaymentCurrency}</th>)}
-                {mainHeader[reportKey.CommGroupName].isShowable && (<th width={100} rowSpan="3" title={headerText.CommGroupName}>{headerText.CommGroupName}</th>)}
-                {mainHeader[reportKey.PaymentFrequency].isShowable && (<th width={100} rowSpan="3" title={headerText.PaymentFrequency}>{headerText.PaymentFrequency}</th>)}
+                {mainHeader[reportKey.CommGroupName].isShowable && (<th width={150} rowSpan="3" title={headerText.CommGroupName}>{headerText.CommGroupName}</th>)}
+                {mainHeader[reportKey.PaymentFrequency].isShowable && (<th width={120} rowSpan="3" title={headerText.PaymentFrequency}>{headerText.PaymentFrequency}</th>)}
                 {mainHeader[reportKey.TotalClick].isShowable && (<th width={60} rowSpan="3" title={headerText.TotalClick}>{headerText.TotalClick}</th>)}
                 {mainHeader[reportKey.UniqueClick].isShowable && (<th width={60} rowSpan="3" title={headerText.UniqueClick}>{headerText.UniqueClick}</th>)}
                 {mainHeader[reportKey.Signup].isShowable && (<th width={55} rowSpan="3" title={headerText.Signup}>{headerText.Signup}</th>)}
-                {mainHeader[reportKey.Fdm].isShowable && (<th width={55} rowSpan="3" title={headerText.Fdm}>{headerText.Fdm}</th>)}
-                {mainHeader[reportKey.Fdm_Amount].isShowable && (<th width={65} rowSpan="3" title={headerText.Fdm_Amount}>{headerText.Fdm_Amount}</th>)}
-                {mainHeader[reportKey.FDM_TotalDeposit].isShowable && (<th width={65} rowSpan="3" title={headerText.FDM_TotalDeposit}>{headerText.FDM_TotalDeposit}</th>)}
-                {mainHeader[reportKey.ActivePlayer].isShowable && (<th width={55} rowSpan="3" title={headerText.ActivePlayer}>{headerText.ActivePlayer}</th>)}
-                {mainHeader[reportKey.QualifiedMember].isShowable && (<th width={70} rowSpan="3" title={headerText.QualifiedMember}>{headerText.QualifiedMember}</th>)}
-                {mainHeader[reportKey.QualifiedCPAMember].isShowable && (<th width={70} rowSpan="3" title={headerText.QualifiedCPAMember}>{headerText.QualifiedCPAMember}</th>)}
+                {mainHeader[reportKey.Fdm].isShowable && this._renderHeaderTooltipCell(headerText.Fdm, 55, 3, "The number of Players who made their First Deposit under this Affiliate.")}
+                {mainHeader[reportKey.Fdm_Amount].isShowable && this._renderHeaderTooltipCell(headerText.Fdm_Amount, 70, 3, "The total value of all First Deposits made by Players under this Affiliate.")}
+                {mainHeader[reportKey.FDM_TotalDeposit].isShowable && this._renderHeaderTooltipCell(headerText.FDM_TotalDeposit, 70, 3, " The total deposit amount in the month from Players who made their First Deposit within the selected period.")}
+                {mainHeader[reportKey.ActivePlayer].isShowable && this._renderHeaderTooltipCell(headerText.ActivePlayer, 55, 3, "Players who placed at least one bet during the selected month.")}
+                {mainHeader[reportKey.QualifiedMember].isShowable && this._renderHeaderTooltipCell(headerText.QualifiedMember, 70, 3, "Players who met the Turnover requirement of their Revenue Share Deal during the month.")}
+                {mainHeader[reportKey.QualifiedCPAMember].isShowable && this._renderHeaderTooltipCell(headerText.QualifiedCPAMember, 70, 3, "Includes all settled players and eligible ones within the remaining quota up to To Date for the current month. Past months show only settled players.")}
                 {mainHeader[reportKey.NoOfSubAff].isShowable && (<th width={65} rowSpan="3" title={headerText.NoOfSubAff}>{headerText.NoOfSubAff}</th>)}
                 {mainHeader[reportKey.TotalDeposit].isShowable && (<th width={65} rowSpan="3" title={headerText.TotalDeposit}>{headerText.TotalDeposit}</th>)}
-                {mainHeader[reportKey.Deposit].isShowable && (<th width={65} rowSpan="3" title={headerText.Deposit}>{headerText.Deposit}</th>)}
-                {mainHeader[reportKey.MemberStatistics].isShowable && (<th colSpan={mainHeader[reportKey.MemberStatistics].totalShowableCol} height={28} title={headerText.MemberStatistics}>{headerText.MemberStatistics}</th>)}
-                {mainHeader[reportKey.AffiliateStatistics].isShowable && (<th colSpan={mainHeader[reportKey.AffiliateStatistics].totalShowableCol} title={headerText.AffiliateStatistics}>{headerText.AffiliateStatistics}</th>)}
+                {mainHeader[reportKey.Deposit].isShowable && (<th width={70} rowSpan="3" title={headerText.Deposit}>{headerText.Deposit}</th>)}
+                {mainHeader[reportKey.MemberStatistics].isShowable && (<th width={630} colSpan={mainHeader[reportKey.MemberStatistics].totalShowableCol} height={28} title={headerText.MemberStatistics}>{headerText.MemberStatistics}</th>)}
+                {mainHeader[reportKey.AffiliateStatistics].isShowable && (<th width={845} colSpan={mainHeader[reportKey.AffiliateStatistics].totalShowableCol} title={headerText.AffiliateStatistics}>{headerText.AffiliateStatistics}</th>)}
                 {isMainView && !isCheckedDatePicker && (<th width={55} rowSpan="3" title={headerText.MonthOnMonth}>{headerText.MonthOnMonth}</th>)}
                 {isMainView && (<th width={55} rowSpan="3" title={headerText.PlayerGgr}>{headerText.PlayerGgr}</th>)}
             </tr>,
@@ -143,8 +143,8 @@ export class GridData extends PureComponent {
                 {childHeader[reportKey.TotalEarning].isShowable && (<th width={75} rowSpan="2" title={headerText.TotalEarning}>{headerText.TotalEarning}</th>)}
                 {childHeader[reportKey.AffWithdrawal].isShowable && (<th width={75} rowSpan="2" title={headerText.AffWithdrawal}>{headerText.AffWithdrawal}</th>)}
                 {childHeader[reportKey.AffAdjustment].isShowable && (<th width={75} rowSpan="2" title={headerText.AffAdjustment}>{headerText.AffAdjustment}</th>)}
-                {childHeader[reportKey.BalanceBf].isShowable && (<th width={80} rowSpan="2" title={headerText.BalanceBf}>{headerText.BalanceBf}</th>)}
-                {childHeader[reportKey.CurrentBBF].isShowable && (<th width={80} rowSpan="2" title={headerText.CurrentBBF}>{headerText.CurrentBBF}</th>)}
+                {childHeader[reportKey.BalanceBf].isShowable && this._renderHeaderTooltipCell(headerText.BalanceBf, 80, 2, "The total balance carried forward up to the selected To Date.")}
+                {childHeader[reportKey.CurrentBBF].isShowable && this._renderHeaderTooltipCell(headerText.CurrentBBF, 80, 2, "The total balance carried forward up to the current date.")}
             </tr>,
             subChildHeader && <tr className="freeze-row freeze-row-h3" key="thead-3">
                 {subChildHeader[reportKey.CommissionRate].isShowable && (<th width={65} title={headerText.CommissionRate}>{headerText.CommissionRate}</th>)}
@@ -155,6 +155,17 @@ export class GridData extends PureComponent {
                 {subChildHeader[reportKey.SubAffEarning].isShowable && (<th width={95} title={headerText.SubAffEarning}>{headerText.SubAffEarning}</th>)}
             </tr>
         ];
+    }
+
+    _renderHeaderTooltipCell(title, width, rowSpan, tooltipTitle) {
+        return (
+            <th width={width} rowSpan={rowSpan} title={title}>
+                {title}
+                <span title={tooltipTitle} className='align-top'>
+                    <span className="oi icon-info mx-2 mb-2"></span>
+                </span>
+            </th>
+        )
     }
 
     _renderDataSection(dataList) {
@@ -423,7 +434,7 @@ export class GridData extends PureComponent {
         return gridData && (
             <Fragment>
                 <div className="table-responsive aff-report-table-container" style={{ maxHeight }} ref={this.tableRef}>
-                    <Table className="freeze-table" style={style}>
+                    <Table className="freeze-table">
                         <thead>
                             {
                                 this._renderHeader()

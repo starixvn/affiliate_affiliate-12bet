@@ -50,20 +50,22 @@
 
         public DateTime? ApprovedDate { get; set; }
 
-        public string ApprovedDateStr => EndSchedule?.ToString(DATE_FORMAT) ?? "";
+        public string ApprovedDateStr => ApprovedDate?.ToString(DATE_FORMAT) ?? "";
+
+        public decimal ManuallyApprovedAmount { get; set; }
+
+        public int ManuallyApprovedDateBy { get; set; }
+
+        public DateTime? ManuallyApprovedDate { get; set; }
+
+        public string ManuallyApprovedDateStr => ManuallyApprovedDate?.ToString(DATE_FORMAT) ?? "";
 
         public decimal AdjustedAmount { get; set; }
-
-        public DateTime? AdjustedDate { get; set; }
-
-        public string AdjustedDateStr => AdjustedDate?.ToString(DATE_FORMAT) ?? "";
 
         public string Description { get; set; }
 
         public decimal FinalCpaAmount { get; set; }
 
         public bool IsEnabled { get; set; }
-
-        public int AdjustedBy { get; set; }
     }
 }

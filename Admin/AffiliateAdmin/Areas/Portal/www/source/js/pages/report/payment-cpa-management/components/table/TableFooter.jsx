@@ -15,6 +15,7 @@ export const TableFooter = ({
     const totalEligiblePlayers = format(total.TotalEligiblePlayers);
     const estimateAmount = formatDecimal(total.EstimateAmount);
     const approvedAmount = formatDecimal(total.ApprovedAmount);
+    const manuallyApprovedAmount = formatDecimal(total.ManuallyApprovedAmount);
     const adjustedAmount = formatDecimal(total.AdjustedAmount);
     const finalCpaAmount = formatDecimal(total.FinalCpaAmount);
 
@@ -34,12 +35,13 @@ export const TableFooter = ({
                 <td className="text-right font-weight-bold"></td>
                 <td title={approvedAmount} className="text-right font-weight-bold">{approvedAmount}</td>
                 <td className="text-right font-weight-bold"></td>
-                <td title={adjustedAmount} className="text-right font-weight-bold">{adjustedAmount}</td>
+                <td title={manuallyApprovedAmount} className="text-right font-weight-bold">{manuallyApprovedAmount}</td>
                 <td className="text-right font-weight-bold"></td>
                 <td className="text-right font-weight-bold"></td>
                 {isAdjustable && (
                     <td className="text-right font-weight-bold"></td>
                 )}
+                <td title={adjustedAmount} className="text-right font-weight-bold">{adjustedAmount}</td>
                 <td title={finalCpaAmount} className="text-right font-weight-bold">{finalCpaAmount}</td>
             </tr>
         </tfoot>
