@@ -8,7 +8,6 @@ namespace Fanex.Affiliate.Admin.Core.DTO.UserPanel
 
         public string UserName { get; set; }
 
-
         public DateTime? RegisteredDate { get; set; }
 
         public decimal Deposit { get; set; }

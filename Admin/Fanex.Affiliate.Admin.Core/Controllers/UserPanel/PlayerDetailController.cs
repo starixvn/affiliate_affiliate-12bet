@@ -4,6 +4,7 @@ using Fanex.Affiliate.Admin.Core.Extensions;
 using Fanex.Affiliate.Admin.Core.MetaModels.UserPanel;
 using Fanex.Affiliate.Admin.Core.Services.Common;
 using Fanex.Affiliate.Admin.Core.Services.UserPanel;
+using Fanex.Affiliate.Admin.Core.ViewModels.Customer;
 using System.Web.Mvc;
 
 namespace Fanex.Affiliate.Admin.Core.Controllers.UserPanel
@@ -26,7 +27,14 @@ namespace Fanex.Affiliate.Admin.Core.Controllers.UserPanel
         {
             if (ModelState.IsValid)
             {
-                return GenerateJsonNetResult(_playerDetailService.GetPlayerDetailList(param));
+                var (isCPADealOnly, data) = _playerDetailService.GetPlayerDetailList(param);
+                var model = new PlayerDetailViewModel
+                {
+                    IsCPADealOnly = isCPADealOnly,
+                    Data = data
+                };
+
+                return GenerateJsonNetResult(model);
             }
 
             return new JsonNetResult();

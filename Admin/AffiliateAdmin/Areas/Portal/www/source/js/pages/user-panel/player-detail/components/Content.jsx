@@ -14,7 +14,8 @@ export class Content extends PureComponent {
         super(props);
 
         this.state = {
-            data: null
+            data: null,
+            isCPADealOnly: false
         }
     }
 
@@ -39,14 +40,18 @@ export class Content extends PureComponent {
         const postData = { ...param, affId };
         const data = await this.props.fetchData(postData);
 
-        this.setState({ data: data ? data.MainData : null });
-        this.props.setPagingOption({ TotalItem: data ? data.TotalItem : 0, PageIndex: param.pageIndex, PageSize: param.pageSize });
+        if (data) {
+            this.setState({ data: data.Data.MainData, isCPADealOnly: data.IsCPADealOnly });
+            this.props.setPagingOption({ TotalItem: data.Data.TotalItem, PageIndex: param.pageIndex, PageSize: param.pageSize });
+        } else {
+            this.setState({ data: null, isCPADealOnly: false });
+            this.props.setPagingOption({ TotalItem: 0, PageIndex: param.pageIndex, PageSize: param.pageSize });
+        }
 
         this.props.toggleLoaderUserPanel(false);
     }
 
     handleClickHeader = (selectedColumn) => {
-
         const { param, pagingOption, sortingColumn } = this.props;
         const postParam = { ...param, pageIndex: pagingOption.PageIndex, pageSize: pagingOption.PageSize, sortById: SortByIdList[sortingColumn.ColumnName] };
 
@@ -61,7 +66,10 @@ export class Content extends PureComponent {
         }
     }
     _renderHeader() {
-        const { sortingColumn, isDepositFeePercent, isWithdrawalFeePercent } = this.props;
+        const { isCPADealOnly } = this.state;
+        const { sortingColumn } = this.props;
+        const isDepositFeePercent = !isCPADealOnly && this.props.isDepositFeePercent;
+        const isWithdrawalFeePercent = !isCPADealOnly && this.props.isWithdrawalFeePercent;
 
         return (
             <Row>
@@ -86,6 +94,7 @@ export class Content extends PureComponent {
 
     _renderDataSection(dataList) {
         const { param, isDepositFeePercent, isWithdrawalFeePercent } = this.props;
+        const { isCPADealOnly } = this.state;
         const productColumnClassName = param.productId === selectedAllProduct ? 'text-right' : 'text-right highlight';
         const dataRows = [];
 
@@ -96,11 +105,11 @@ export class Content extends PureComponent {
             for (let i = 0; i < dataList.length; i++) {
                 const dataItem = dataList[i];
 
-                dataRows.push(this._buildDataRow(dataItem, startIndex + i, productColumnClassName, isDepositFeePercent, isWithdrawalFeePercent));
+                dataRows.push(this._buildDataRow(dataItem, startIndex + i, productColumnClassName, !isCPADealOnly && isDepositFeePercent, !isCPADealOnly && isWithdrawalFeePercent));
             }
         }
         else {
-            const colSpan = 13 + (isDepositFeePercent ? 1 : 0) + (isWithdrawalFeePercent ? 1 : 0)
+            const colSpan = 13 + (!isCPADealOnly && isDepositFeePercent ? 1 : 0) + (!isCPADealOnly && isWithdrawalFeePercent ? 1 : 0)
             dataRows.push(<Row key="no-info">
                 <Cell className="text-center" colSpan={colSpan}>{globalResource.NoInfo}</Cell>
             </Row>);

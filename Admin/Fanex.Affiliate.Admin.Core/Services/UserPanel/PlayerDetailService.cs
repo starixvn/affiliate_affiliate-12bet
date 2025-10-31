@@ -3,6 +3,7 @@ using Fanex.Affiliate.Admin.Core.DTO;
 using Fanex.Affiliate.Admin.Core.DTO.UserPanel;
 using Fanex.Affiliate.Admin.Core.MetaModels.UserPanel;
 using Fanex.Data.Repository;
+using System.Linq;
 
 namespace Fanex.Affiliate.Admin.Core.Services.UserPanel
 {
@@ -11,7 +12,7 @@ namespace Fanex.Affiliate.Admin.Core.Services.UserPanel
         public PlayerDetailService(
             IDynamicRepository dynamicRepository) : base(dynamicRepository) { }
 
-        public EntityResult<PlayerDetail> GetPlayerDetailList(PlayerDetailParam param)
+        public (bool, EntityResult<PlayerDetail>) GetPlayerDetailList(PlayerDetailParam param)
         {
             var criteria = new PlayerDetailCriteria
             {
@@ -29,7 +30,13 @@ namespace Fanex.Affiliate.Admin.Core.Services.UserPanel
                 IsIncludeRemovedPlayer = param.IsIncludeRemovedPlayer
             };
 
-            return FetchEntityResult<PlayerDetail>(criteria);
+            var dataItems = DynamicRepository.FetchMultiple<bool, PlayerDetail>(criteria);
+
+            return (dataItems.Item1.FirstOrDefault(), new EntityResult<PlayerDetail>
+            {
+                MainData = dataItems.Item2,
+                TotalItem = criteria.TotalItem,
+            });
         }
     }
 }

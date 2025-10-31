@@ -30,11 +30,11 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Customer
             // Action
             var service = new PlayerDetailService(dynamicRepository.Object);
             var result = service.GetPlayerDetailList(new PlayerDetailParam());
-            var item = result.MainData.FirstOrDefault();
+            var item = result.Item2.MainData.FirstOrDefault();
 
             // Assert
             dynamicRepository.Verify(d => d.Fetch<PlayerDetail>(It.Is<PlayerDetailCriteria>(c => !string.IsNullOrEmpty(c.GetSettingKey()) && !c.IsValid()), It.IsAny<string>()));
-            Assert.Single(result.MainData);
+            Assert.Single(result.Item2.MainData);
             Assert.Equal("11/24/2019 00:00:00", item.RegisteredDateText);
             Assert.Equal("11/24/2019 00:00:00", item.FirstDepositDateText);
         }
@@ -52,11 +52,11 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Customer
             // Action
             var service = new PlayerDetailService(dynamicRepository.Object);
             var result = service.GetPlayerDetailList(new PlayerDetailParam());
-            var item = result.MainData.FirstOrDefault();
+            var item = result.Item2.MainData.FirstOrDefault();
 
             // Assert
             dynamicRepository.Verify(d => d.Fetch<PlayerDetail>(It.Is<PlayerDetailCriteria>(c => !string.IsNullOrEmpty(c.GetSettingKey()) && !c.IsValid()), It.IsAny<string>()));
-            Assert.Single(result.MainData);
+            Assert.Single(result.Item2.MainData);
             Assert.Equal(string.Empty, item.RegisteredDateText);
             Assert.Equal(string.Empty, item.FirstDepositDateText);
         }

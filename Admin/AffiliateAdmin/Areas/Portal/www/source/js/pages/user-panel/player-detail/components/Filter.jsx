@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Form, FormGroup, Input, Label, Button } from 'reactstrap';
 import { DatePicker } from '@9softstudio/react-datepicker';
 
-import { globalResource, selectedAllProduct, minMonthDate, SortByIdList, SortingColumnDefault, defaultBaseCurrency } from '../modules/constants';
+import { globalResource, selectedAllProduct, SortByIdList, SortingColumnDefault, defaultBaseCurrency } from '../modules/constants';
 import { setParam, fetchData, setSortingColumn } from '../actions';
 import ReportExcel from '../modules/reportExcel';
 import { htmlDecode } from '../../../../modules/htmlHelper';
@@ -103,7 +103,7 @@ export class Filter extends PureComponent {
 
         if (data) {
             const title = this._getReportTitle();
-            const reportExcel = new ReportExcel(data, title, isDepositFeePercent, isWithdrawalFeePercent);
+            const reportExcel = new ReportExcel(data.Data, title, !data.IsCPADealOnly && isDepositFeePercent, !data.IsCPADealOnly && isWithdrawalFeePercent);
             reportExcel.export();
         }
     }
@@ -205,7 +205,7 @@ export class Filter extends PureComponent {
 }
 
 function mapStateToProps({ today, affCommonInfo, playerDetail, productList, currencyList, baseCurrencyList, isProduction }) {
-    const { param, sortingColumn } = playerDetail;
+    const { param, sortingColumn, isCPADealOnly } = playerDetail;
     const { affId, isDepositFeePercent, isWithdrawalFeePercent } = affCommonInfo;
 
     return Object.assign({}, {
@@ -214,7 +214,7 @@ function mapStateToProps({ today, affCommonInfo, playerDetail, productList, curr
         today,
         sortingColumn,
         productList, currencyList, baseCurrencyList, isProduction,
-        isDepositFeePercent, isWithdrawalFeePercent
+        isDepositFeePercent: !isCPADealOnly && isDepositFeePercent, isWithdrawalFeePercent: !isCPADealOnly && isWithdrawalFeePercent
     });
 }
 
