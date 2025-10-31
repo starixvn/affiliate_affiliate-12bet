@@ -63,5 +63,7 @@ namespace Fanex.Affiliate.Admin.Core.DTO.Affiliate
         public string ApprovedBy { get; set; }
 
         public string ApprovedByText => string.IsNullOrEmpty(ApprovedBy) ? "N/A" : ApprovedBy;
+
+        public int DealVerifyFlags { get; set; }
     }
 }
