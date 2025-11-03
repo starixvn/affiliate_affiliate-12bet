@@ -231,7 +231,7 @@ export class Content extends PureComponent {
                 <Row className={status && status.toLowerCase()}>
                     <Cell title={index} className="text-center">{index}</Cell>
                     <Cell title={dataItem.DateText} className="text-center">{
-                        isTotalRow ? (
+                        isTotalRow && !!dataItem.Children.length ? (
                             <Button className="p-0 th-wrapper" color="link" onClick={() => this._handleShow(dataItem.NormalizeDateText)}>
                                 <div className="icon-container">
                                     <span className={`caret ${isExpand ? 'expand current' : 'collapsed'}`}></span>

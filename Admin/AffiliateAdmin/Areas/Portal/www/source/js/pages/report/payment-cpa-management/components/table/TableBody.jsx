@@ -109,7 +109,7 @@ const SubEntryRow = ({
             {isAdjustable && (
                 <td title='Adjust' className='text-center'>
                     {subEntry.StatusId === NOT_QUALIFIED || subEntry.StatusId === QUALIFIED
-                        ? subEntry.IsEnabled && subEntry.AdjustedBy === 0 ?
+                        ? subEntry.IsEnabled ?
                             <Button outline color="primary" type="button" onClick={_handleShowModal}>
                                 Adjust
                             </Button> :
@@ -157,7 +157,7 @@ export function TableBody({
         return (
             <tbody>
                 <tr>
-                    <td className="text-center" colSpan={isAdjustable ? 20 : 19}>{globalResource.NoInfo}</td>
+                    <td className="text-center" colSpan={isAdjustable ? 21 : 20}>{globalResource.NoInfo}</td>
                 </tr>
             </tbody>
         )

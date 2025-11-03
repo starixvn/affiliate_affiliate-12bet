@@ -15,7 +15,7 @@ const RowHeader = ({ index, row, sortColumn, isAscending, handleClickHeader }) =
                         <Cell
                             key={index}
                             header={true}
-                            style={{ width: cell.width, maxWidth: cell.width }}
+                            style={{ width: cell.width, maxWidth: cell.width, background: cell.color }}
                             className={`freeze-column-${index}`}
                             rowSpan={cell.rowSpan}
                             colSpan={cell.columnSpan}

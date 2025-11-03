@@ -127,14 +127,14 @@ export const headerConfigs = {
         width: 320
     },
     [reportKey.EstimateAmount]: { label: headerText[reportKey.EstimateAmount], width: 80 },
-    [reportKey.Status]: { label: headerText[reportKey.Status], width: 100 },
+    [reportKey.Status]: { label: headerText[reportKey.Status], width: 90 },
     [reportKey.AutomaticallyApprovedCpa]: {
         label: headerText[reportKey.AutomaticallyApprovedCpa],
         cols: {
-            [reportKey.ApprovedAmount]: { label: headerText[reportKey.ApprovedAmount], width: 80 },
-            [reportKey.ApprovedDateStr]: { label: headerText[reportKey.ApprovedDateStr], width: 80 },
+            [reportKey.ApprovedAmount]: { label: headerText[reportKey.ApprovedAmount], width: 85 },
+            [reportKey.ApprovedDateStr]: { label: headerText[reportKey.ApprovedDateStr], width: 85 },
         },
-        width: 160
+        width: 170
     },
     [reportKey.ManuallyApproved]: {
         label: headerText[reportKey.ManuallyApproved],
