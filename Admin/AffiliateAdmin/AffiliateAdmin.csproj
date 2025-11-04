@@ -71,8 +71,8 @@
     <Reference Include="Fanex.Caching, Version=2.2.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Caching.2.2.6\lib\net472\Fanex.Caching.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Data.ProxyClient, Version=1.0.3.6, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.Data.ProxyClient.1.0.3.6\lib\net472\Fanex.Data.ProxyClient.dll</HintPath>
+    <Reference Include="Fanex.Data.ProxyClient, Version=1.0.6.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Data.ProxyClient.1.0.6.1\lib\net472\Fanex.Data.ProxyClient.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Logging, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Logging.2.0.1.1\lib\net461\Fanex.Logging.dll</HintPath>
