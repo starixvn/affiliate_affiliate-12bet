@@ -67,7 +67,7 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
                         return Resources.Lang.PaymentRequest;
                     case Constants.TransType.SubAffiliateRevenueShare:
                         return Resources.Lang.SubAffiliateRevenueShare;
-                    case Constants.TransType.CpaEarning:
+                    case Constants.TransType.AprrovedCpaEarning: case Constants.TransType.TentativeCpaEarning:
                         return Resources.Lang.CpaEarning;
                     case Constants.TransType.SubCpaEarning:
                         return Resources.Lang.CpaEarning;
@@ -100,8 +100,10 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
                         return GetAdjustmentDescription(Description);
                     case Constants.TransType.SubAffiliateRevenueShare:
                         return GetSubAffiliateRevenueShareDescription(CalculatedType);
-                    case Constants.TransType.CpaEarning:
+                    case Constants.TransType.AprrovedCpaEarning:
                         return Resources.Lang.ApprovedCpaEarning;
+                    case Constants.TransType.TentativeCpaEarning:
+                        return Resources.Lang.TentativeCpaEarning;
                     case Constants.TransType.SubCpaEarning:
                         return Resources.Lang.ApprovedSubAffCpaEarning;
                     default:

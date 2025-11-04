@@ -14,8 +14,6 @@
 
         public string LanguageCode { get; set; }
 
-        public int TotalPages { get; set; }
-
         public override string GetSettingKey() => DbSettingHelper.BuildSpKey(IsInternal, SpKey);
 
         public override bool IsValid() => AffId > 0;

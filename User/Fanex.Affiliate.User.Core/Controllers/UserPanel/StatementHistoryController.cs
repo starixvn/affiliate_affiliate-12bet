@@ -140,8 +140,14 @@
         {
             return transType == TransType.MonthlyEarning
                 || transType == TransType.SubAffiliateRevenueShare
-                || transType == TransType.CpaEarning
+                || IsCPAEarningGroup(transType)
                 || transType == TransType.SubCpaEarning;
+        }
+
+        private static bool IsCPAEarningGroup(int transType)
+        {
+            return transType == TransType.AprrovedCpaEarning
+                || transType == TransType.TentativeCpaEarning;
         }
 
         private static StatementHistoryViewModel CreateViewModelFromStatementHistoryItem(StatementHistory item)

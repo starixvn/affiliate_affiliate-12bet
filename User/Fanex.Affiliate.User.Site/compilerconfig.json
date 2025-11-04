@@ -164,12 +164,11 @@
   //  "inputFile": "www/source/js/pages/account-overview/channel-link-statistic.js"
   //},
   {
-    "outputFile": "www/build/styles/css/pages/cpa-report/redeposit-cpa-report.css",
-    "inputFile": "www/source/styles/pages/cpa-report/redeposit-cpa-report.scss",
-
+    "outputFile": "www/build/styles/css/pages/cpa-report/payment-cpa-report.css",
+    "inputFile": "www/source/styles/pages/cpa-report/payment-cpa-report.scss"
   },
   {
-    "outputFile": "www/build/styles/css/affiliate-cpa-report.css",
-    "inputFile": "www/source/styles/pages/affiliatecpareport.scss"
+    "outputFile": "www/build/styles/css/cpa-report/player-cpa-report.css",
+    "inputFile": "www/source/styles/pages/cpa-report/player-cpa-report.scss"
   }
 ]

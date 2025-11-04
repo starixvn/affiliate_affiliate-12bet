@@ -1252,7 +1252,7 @@
     <value>토고</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>총</value>
+    <value>합계</value>
   </data>
   <data name="TotalClick" xml:space="preserve">
     <value>총 클릭횟수</value>
@@ -2528,9 +2528,6 @@
   <data name="CPAReport" xml:space="preserve">
     <value>CPA 보고서</value>
   </data>
-  <data name="AffiliateCPAReport" xml:space="preserve">
-    <value>제휴 CPA 보고서</value>
-  </data>
   <data name="CPAAmount" xml:space="preserve">
     <value>CPA 금액</value>
   </data>
@@ -2600,9 +2597,6 @@
   <data name="ActivePeriod" xml:space="preserve">
     <value>활성 기간</value>
   </data>
-  <data name="ApprovalPeriod" xml:space="preserve">
-    <value>승인 기간</value>
-  </data>
   <data name="HoldingExpiredDate" xml:space="preserve">
     <value>보류 만료일</value>
   </data>
@@ -2611,9 +2605,6 @@
   </data>
   <data name="HoldingPeriod" xml:space="preserve">
     <value>보류 기간</value>
-  </data>
-  <data name="RedepositCPAReport" xml:space="preserve">
-    <value>입금 CPA 보고서</value>
   </data>
   <data name="ActiveQualifiedDate" xml:space="preserve">
     <value>활성 자격 날짜</value>
@@ -2629,5 +2620,41 @@
   </data>
   <data name="Eligible" xml:space="preserve">
     <value>적격</value>
+  </data>
+  <data name="TentativeCpaEarning" xml:space="preserve">
+    <value>예상 CPA 수익</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>보기 기준</value>
+  </data>
+  <data name="CpaEarning" xml:space="preserve">
+    <value>CPA 수익</value>
+  </data>
+  <data name="SubAffiliateRevenueShare" xml:space="preserve">
+    <value>하위 제휴사 매출 배분</value>
+  </data>
+  <data name="ApprovedSubAffCpaEarning" xml:space="preserve">
+    <value>승인된 하위 제휴사 CPA 수익</value>
+  </data>
+  <data name="ApprovedCpaEarning" xml:space="preserve">
+    <value>승인된 CPA 수익</value>
+  </data>
+  <data name="SubCpaEarning" xml:space="preserve">
+    <value>하위 제휴사 CPA</value>
+  </data>
+  <data name="Commission" xml:space="preserve">
+    <value>收益分成</value>
+  </data>
+  <data name="CommRate" xml:space="preserve">
+    <value>하위 에이전트 수수료율</value>
+  </data>
+  <data name="AllStatuses" xml:space="preserve">
+    <value>모든 상태</value>
+  </data>
+  <data name="TurnoverCPADetail" xml:space="preserve">
+    <value>매출 CPA 세부 정보</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>그룹 {0}</value>
   </data>
 </root>

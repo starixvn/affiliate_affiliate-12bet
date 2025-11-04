@@ -19,9 +19,7 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
         {
             // Arrange
             var param = new StatisticsDetailBySiteParam
-            {
-                TotalPages = 10
-            };
+            {};
             var referrersStatisticsList = new List<ReferrerStatistics> { new ReferrerStatistics() };
 
             var statisticsRepository = new Mock<IStatisticsService>();

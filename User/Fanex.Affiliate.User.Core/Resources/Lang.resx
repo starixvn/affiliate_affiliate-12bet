@@ -2651,29 +2651,17 @@ You can also email us to {1} or simply fill the form below.</value>
   <data name="VietnamCountry" xml:space="preserve">
     <value>Viet Nam</value>
   </data>
-  <data name="ActiveReferredPlayers" xml:space="preserve">
-    <value>Active Referred Players</value>
-  </data>
-  <data name="NetWinLoss" xml:space="preserve">
-    <value>Company Net Win ($)</value>
-  </data>
-  <data name="YourRevenueShare" xml:space="preserve">
-    <value>Your Revenue Share</value>
-  </data>
-  <data name="RevenueSharePayoutExample" xml:space="preserve">
-    <value>Revenue Share Payout Example</value>
-  </data>
   <data name="NetRevenue" xml:space="preserve">
     <value>Net Revenue</value>
   </data>
   <data name="CPAReport" xml:space="preserve">
     <value>CPA Report</value>
   </data>
-  <data name="AffiliateCPAReport" xml:space="preserve">
-    <value>Affiliate CPA Report</value>
+  <data name="PlayerCPAReport" xml:space="preserve">
+    <value>Player CPA Report</value>
   </data>
-  <data name="RedepositCPAReport" xml:space="preserve">
-    <value>Redeposit CPA Report</value>
+  <data name="PaymentCPAReport" xml:space="preserve">
+    <value>Payment CPA Report</value>
   </data>
   <data name="StartFrom" xml:space="preserve">
     <value>Start From</value>
@@ -2738,9 +2726,6 @@ You can also email us to {1} or simply fill the form below.</value>
   <data name="HoldingPeriod" xml:space="preserve">
     <value>Holding Period</value>
   </data>
-  <data name="ApprovalPeriod" xml:space="preserve">
-    <value>Approval Period</value>
-  </data>
   <data name="ActiveQualifiedDate" xml:space="preserve">
     <value>Active Qualified Date</value>
   </data>
@@ -2785,5 +2770,68 @@ You can also email us to {1} or simply fill the form below.</value>
   </data>
   <data name="ApprovedSubAffCpaEarning" xml:space="preserve">
     <value>Approved Sub-Affiliate CPA Earning</value>
+  </data>
+  <data name="TentativeCpaEarning" xml:space="preserve">
+    <value>Tentative CPA Earning</value>
+  </data>
+  <data name="ScheduleEndDate" xml:space="preserve">
+    <value>Schedule End Date</value>
+  </data>
+  <data name="AutoApprovedCPA" xml:space="preserve">
+    <value>Auto Approved CPA</value>
+  </data>
+  <data name="AdjustmentDate" xml:space="preserve">
+    <value>Adjustment Date</value>
+  </data>
+  <data name="Empty" xml:space="preserve">
+    <value>Empty</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>View By</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="PaymentSchedule" xml:space="preserve">
+    <value>Payment Schedule</value>
+  </data>
+  <data name="EligiblePlayers" xml:space="preserve">
+    <value>Eligible Players</value>
+  </data>
+  <data name="AutomaticallyApproved" xml:space="preserve">
+    <value>Automatically Approved</value>
+  </data>
+  <data name="ManuallyApproved" xml:space="preserve">
+    <value>Manually Approved</value>
+  </data>
+  <data name="AdjustmentAmount" xml:space="preserve">
+    <value>Adjustment Amount</value>
+  </data>
+  <data name="FinalCPAAmount" xml:space="preserve">
+    <value>Final CPA Amount</value>
+  </data>
+  <data name="RedepositFailed" xml:space="preserve">
+    <value>Redeposit Failed</value>
+  </data>
+  <data name="AllStatuses" xml:space="preserve">
+    <value>All Statuses</value>
+  </data>
+  <data name="RedepositQualifiedPeriod" xml:space="preserve">
+    <value>Redeposit Qualified Period</value>
+  </data>
+  <data name="ExpiredDate" xml:space="preserve">
+    <value>Expired Date</value>
+  </data>
+  <data name="IsRedeposit" xml:space="preserve">
+    <value>Is Redeposit</value>
+  </data>
+  <data name="TurnoverCPADetail" xml:space="preserve">
+    <value>Turnover CPA Detail</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group {0}</value>
   </data>
 </root>

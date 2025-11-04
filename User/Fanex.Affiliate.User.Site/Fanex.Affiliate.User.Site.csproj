@@ -72,8 +72,8 @@
     <Reference Include="Fanex.Common, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Common.1.1.0.1\lib\net40\Fanex.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Data.ProxyClient, Version=1.0.3.6, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.Data.ProxyClient.1.0.3.6\lib\net472\Fanex.Data.ProxyClient.dll</HintPath>
+    <Reference Include="Fanex.Data.ProxyClient, Version=1.0.6.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Data.ProxyClient.1.0.6.1\lib\net472\Fanex.Data.ProxyClient.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Logging, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Logging.2.0.1.1\lib\net461\Fanex.Logging.dll</HintPath>
@@ -385,6 +385,8 @@
       <DependentUpon>bootstrap2-toggle.js</DependentUpon>
     </Content>
     <Content Include="www\build\js\lib\jquery-3.3.1.min.js" />
+    <Content Include="www\build\js\marketing-statistics.js" />
+    <Content Include="www\build\js\marketing-statistics.min.js" />
     <Content Include="www\build\js\mediagallery.js" />
     <Content Include="www\build\js\mediagallery.min.js">
       <DependentUpon>mediagallery.js</DependentUpon>
@@ -392,19 +394,14 @@
     <Content Include="www\build\js\overview.min.js">
       <DependentUpon>overview.js</DependentUpon>
     </Content>
-    <Content Include="www\build\js\pages\affiliate-cpa-report.js" />
-    <Content Include="www\build\js\pages\affiliate-cpa-report.js.js" />
-    <Content Include="www\build\js\pages\affiliate-cpa-report.min.js">
-      <DependentUpon>affiliate-cpa-report.js</DependentUpon>
-    </Content>
     <Content Include="www\build\js\pages\commission-structure.js" />
     <Content Include="www\build\js\pages\commission-structure.min.js">
       <DependentUpon>commission-structure.js</DependentUpon>
     </Content>
-    <Content Include="www\build\js\pages\cpa-report\redeposit-cpa-report.js" />
-    <Content Include="www\build\js\pages\cpa-report\redeposit-cpa-report.min.js">
-      <DependentUpon>redeposit-cpa-report.js</DependentUpon>
-    </Content>
+    <Content Include="www\build\js\pages\cpa-report\payment-cpa-report.js" />
+    <Content Include="www\build\js\pages\cpa-report\payment-cpa-report.min.js" />
+    <Content Include="www\build\js\pages\cpa-report\player-cpa-report.js" />
+    <Content Include="www\build\js\pages\cpa-report\player-cpa-report.min.js" />
     <Content Include="www\build\js\pages\home.js" />
     <Content Include="www\build\js\pages\home.min.js">
       <DependentUpon>home.js</DependentUpon>
@@ -448,9 +445,17 @@
     <Content Include="www\build\styles\css\commission-structure.min.css">
       <DependentUpon>commission-structure.css</DependentUpon>
     </Content>
+    <Content Include="www\build\styles\css\cpa-report\player-cpa-report.css" />
+    <Content Include="www\build\styles\css\cpa-report\player-cpa-report.min.css">
+      <DependentUpon>player-cpa-report.css</DependentUpon>
+    </Content>
     <Content Include="www\build\styles\css\forgot-password.css" />
     <Content Include="www\build\styles\css\forgot-password.min.css">
       <DependentUpon>forgot-password.css</DependentUpon>
+    </Content>
+    <Content Include="www\build\styles\css\pages\cpa-report\payment-cpa-report.css" />
+    <Content Include="www\build\styles\css\pages\cpa-report\payment-cpa-report.min.css">
+      <DependentUpon>payment-cpa-report.css</DependentUpon>
     </Content>
     <Content Include="www\build\styles\css\pages\cpa-report\redeposit-cpa-report.css" />
     <Content Include="www\build\styles\css\pages\cpa-report\redeposit-cpa-report.min.css">
@@ -755,10 +760,10 @@
     <Content Include="www\source\js\lib\jquery-3.3.1.min.js" />
     <Content Include="www\source\js\lib\swiper.min.js" />
     <Content Include="www\source\js\pages\account-overview\channel-link-statistic.js" />
-    <Content Include="www\source\js\pages\affiliate-cpa-report.js" />
+    <Content Include="www\source\js\pages\cpa-report\player-cpa-report.js" />
     <Content Include="www\source\js\pages\commission-structure.js" />
     <Content Include="www\source\js\pages\contactus.js" />
-    <Content Include="www\source\js\pages\cpa-report\redeposit-cpa-report.js" />
+    <Content Include="www\source\js\pages\cpa-report\payment-cpa-report.js" />
     <Content Include="www\source\js\pages\products.js" />
     <Content Include="www\source\js\pages\statistics\marketing-statistics.js" />
     <Content Include="www\source\js\pages\sub-affiliate-earning.js" />
@@ -1395,11 +1400,10 @@
     <Content Include="www\build\styles\Images\home\top-banner\item\mobile.ja-JP.webp" />
     <Content Include="www\build\styles\Images\home\top-banner\item\mobile.en-PH.webp" />
     <Content Include="www\build\styles\Images\home\top-banner\item\desktop.en-IN.webp" />
-    <Content Include="Views\UserPanel\CPAReport\RedepositCPAReport\Index.cshtml" />
-    <Content Include="Views\UserPanel\CPAReport\AffiliateCPAReport\Index.cshtml" />
-    <Content Include="Views\UserPanel\AffiliateCPAReport\Index.cshtml" />
-    <Content Include="www\source\styles\pages\affiliatecpareport.scss" />
-    <Content Include="www\source\styles\pages\cpa-report\redeposit-cpa-report.scss" />
+    <Content Include="Views\UserPanel\CPAReport\PaymentCPAReport\Index.cshtml" />
+    <Content Include="Views\UserPanel\CPAReport\PlayerCPAReport\Index.cshtml" />
+    <Content Include="www\source\styles\pages\cpa-report\player-cpa-report.scss" />
+    <Content Include="www\source\styles\pages\cpa-report\payment-cpa-report.scss" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

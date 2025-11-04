@@ -1233,7 +1233,7 @@
     <value>多哥</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>总数</value>
+    <value>总计</value>
   </data>
   <data name="TotalClick" xml:space="preserve">
     <value>總點擊量</value>
@@ -2556,26 +2556,11 @@
   <data name="VietnamCountry" xml:space="preserve">
     <value>越南</value>
   </data>
-  <data name="ActiveReferredPlayers" xml:space="preserve">
-    <value>活跃推荐玩家</value>
-  </data>
-  <data name="NetWinLoss" xml:space="preserve">
-    <value>公司净赢额 ($)</value>
-  </data>
-  <data name="YourRevenueShare" xml:space="preserve">
-    <value>您的佣金盈利</value>
-  </data>
-  <data name="RevenueSharePayoutExample" xml:space="preserve">
-    <value>佣金盈利计算示例</value>
-  </data>
   <data name="NetRevenue" xml:space="preserve">
     <value>净收入</value>
   </data>
   <data name="CPAReport" xml:space="preserve">
     <value>CPA 报告</value>
-  </data>
-  <data name="AffiliateCPAReport" xml:space="preserve">
-    <value>CPA 合作伙伴报告</value>
   </data>
   <data name="CPAAmount" xml:space="preserve">
     <value>CPA 金额</value>
@@ -2646,9 +2631,6 @@
   <data name="ActivePeriod" xml:space="preserve">
     <value>活跃期间</value>
   </data>
-  <data name="ApprovalPeriod" xml:space="preserve">
-    <value>审核期间</value>
-  </data>
   <data name="HoldingExpiredDate" xml:space="preserve">
     <value>观察期截止日期</value>
   </data>
@@ -2657,9 +2639,6 @@
   </data>
   <data name="HoldingPeriod" xml:space="preserve">
     <value>观察期间</value>
-  </data>
-  <data name="RedepositCPAReport" xml:space="preserve">
-    <value>CPA 存款报告</value>
   </data>
   <data name="ActiveQualifiedDate" xml:space="preserve">
     <value>激活达标日期</value>
@@ -2675,5 +2654,35 @@
   </data>
   <data name="Eligible" xml:space="preserve">
     <value>符合资格</value>
+  </data>
+  <data name="TentativeCpaEarning" xml:space="preserve">
+    <value>暂定 CPA 收入</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>查看方式</value>
+  </data>
+  <data name="CpaEarning" xml:space="preserve">
+    <value>CPA 收入</value>
+  </data>
+  <data name="SubAffiliateRevenueShare" xml:space="preserve">
+    <value>下级合作伙伴收益分成</value>
+  </data>
+  <data name="ApprovedSubAffCpaEarning" xml:space="preserve">
+    <value>下级合作伙伴经批准的 CPA 收入</value>
+  </data>
+  <data name="ApprovedCpaEarning" xml:space="preserve">
+    <value>经批准的 CPA 收入</value>
+  </data>
+  <data name="SubCpaEarning" xml:space="preserve">
+    <value>下级合作伙伴 CPA 收入</value>
+  </data>
+  <data name="AllStatuses" xml:space="preserve">
+    <value>全部状态</value>
+  </data>
+  <data name="TurnoverCPADetail" xml:space="preserve">
+    <value>CPA 有效流水明细</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>第 {0} 组</value>
   </data>
 </root>

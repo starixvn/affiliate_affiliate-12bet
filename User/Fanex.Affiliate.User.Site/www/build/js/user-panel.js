@@ -44,7 +44,7 @@ function handleResize() {
 
 var UserPanel = (function ($) {
     var DEFAULT_ACTION = 'AccountOverview';
-    var allowedActionList = ["AccountOverview", "StatementHistory", "MyAccount", "PaymentRequest", "ReferrersStatistics", "LandingPageStatistics", "MarketingLinkStatistics", "DailyEarning", "SubAffEarning", "RevenueReport", "RedepositCPAReport", "AffiliateCPAReport"];
+    var allowedActionList = ["AccountOverview", "StatementHistory", "MyAccount", "PaymentRequest", "ReferrersStatistics", "LandingPageStatistics", "MarketingLinkStatistics", "DailyEarning", "SubAffEarning", "RevenueReport", "PaymentCPAReport", "PlayerCPAReport"];
 
     var _ajaxRequest = null;
 

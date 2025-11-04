@@ -75,15 +75,15 @@
             };
         }
 
-        public EntityResult<T> FetchEntityResultWithPaging<T>(PagingCriteria criteria, object param) where T : class
+        public EntityResult<T> FetchEntityResultWithPaging<T>(PagingCriteria criteria) where T : class
         {
             var (dataList, totalItem) = _dynamicRepository.FetchMultiple<T, T>(criteria);
-            var paramType = param.GetType();
-            SetPagingProperty(paramType, param, "NRows", criteria.NRows);
+
             return new EntityResult<T>
             {
                 MainDataList = dataList,
-                Total = totalItem.FirstOrDefault()
+                Total = totalItem.FirstOrDefault(),
+                TotalItem = criteria.NRows
             };
         }
 

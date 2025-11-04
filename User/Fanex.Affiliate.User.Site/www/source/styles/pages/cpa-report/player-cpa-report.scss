@@ -1,0 +1,276 @@
+﻿@import "../../scss/abstracts/mixins";
+@import "../../scss/components/pager";
+@import "../../scss/components/pikaday";
+@import "../../scss/components/multiple-select";
+
+.custom-panel {
+    background-color: #F5F5F5;
+    border: 1px solid #A6A6A6;
+    border-radius: 0px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+
+    .panel-body {
+        padding: 8px;
+    }
+
+    .form-filter {
+        margin-bottom: 0;
+
+        .form-control {
+            width: 150px;
+            margin-bottom: 0;
+            display: inline-block;
+        }
+
+        .view-by-select {
+            width: 190px !important;
+        }
+
+        @media(max-width: 576px) {
+            label {
+                width: 110px;
+            }
+        }
+    }
+}
+
+.report-container {
+    position: relative;
+
+    .player-cpa-turnover {
+        position: fixed;
+        border: unset;
+
+        &.modal-dialog {
+            max-width: 480px;
+        }
+
+        .modal-content {
+            border-radius: 10px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+
+            .modal-header {
+                color: #fff;
+                padding: 10px 20px;
+                border-radius: 8px 8px 0 0;
+                border-bottom: none;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                background-color: #c95f4d;
+
+                .modal-title {
+                    font-size: 1.6rem;
+                    font-weight: bold;
+                    margin: 0;
+                }
+
+                .close {
+                    position: absolute;
+                    right: 8px;
+                    top: 8px;
+                    opacity: 1;
+                
+                    &:hover {
+                        opacity: 1;
+                    }
+                
+                    .show-pc {
+                        display: block;
+                
+                        @include Mobile {
+                            display: none;
+                        }
+                    }
+                
+                    .show-mobile {
+                        display: none;
+                
+                        @include Mobile {
+                            display: block;
+                        }
+                    }
+                }
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+        }
+    }
+}
+
+.parent-group {
+    font-weight: bold;
+}
+
+.table {
+    .th {
+        cursor: pointer;
+    }
+    // Header category row styling
+    .header-category-row {
+        .th {
+            background-color: #CD5C5C !important;
+            color: white !important;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #B85450;
+            padding: 8px 4px;
+            font-size: 14px;
+        }
+
+        .category-header {
+            background-color: #CD5C5C !important;
+            color: white !important;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #B85450;
+            padding: 8px 4px;
+            font-size: 14px;
+        }
+    }
+    // Header column row styling
+    .header-column-row {
+        .th {
+            background-color: #CD5C5C !important;
+            color: white !important;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #B85450;
+            padding: 6px 4px;
+            font-size: 13px;
+        }
+    }
+    // Left-aligned columns styling
+    .header-category-row {
+        .th:first-child,
+        .th:nth-child(2),
+        .th:nth-child(3) {
+            text-align: left !important;
+        }
+    }
+
+    .th-wrapper {
+        position: relative;
+        padding-right: 15px;
+        font-size: 13px;
+
+        .icon-container {
+            position: absolute;
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            top: calc(50% - 5px);
+            right: -6px;
+
+            .caret {
+                display: block;
+                border-width: 4px;
+
+                &.current {
+                    border-top-color: #FD0302;
+                }
+            }
+
+            > .asc {
+                transform: rotate(180deg);
+                margin-bottom: 3px;
+            }
+        }
+
+        &.col-comm {
+            .info-container {
+                position: absolute;
+                display: inline-block;
+                top: calc(50% - 8px);
+                right: 11px;
+
+                > .glyphicon-info-sign {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            > td {
+                background: #fff;
+
+                .row-wrapper {
+                    position: relative;
+
+                    .chevron {
+                        cursor: pointer;
+                        position: absolute;
+                        top: 3px;
+                        right: 2px;
+                        width: 20px;
+                        height: 20px;
+                        line-height: 11px;
+                        text-align: center;
+
+                        &.left {
+                            top: 5px;
+                        }
+                    }
+                }
+
+                &.status-eligibled {
+                    font-weight: bold;
+                    color: #7030a0; // Purple color
+                }
+                
+                &.status-settled {
+                    font-weight: bold;
+                    color: #2e7d32; // Green color
+                }
+                
+                &.status-ineligibled {
+                    font-weight: bold;
+                    color: #f57c00; // Orange/Amber color
+                }
+                
+                &.status-rejected {
+                    font-weight: bold;
+                    color: #d32f2f; // Red color
+                }
+                
+                &.status-quota-exceeded {
+                    font-weight: bold;
+                    color: #3b82f6; // Blue color
+                }
+
+                &.status-pending {
+                    font-weight: bold;
+                    color: #596666; // Gray color
+                }
+
+                &.status-redeposit-failed {
+                    font-weight: bold;
+                    color: #000000; // Black color
+                }
+            }
+            
+            &.total {
+                display: table-row;
+
+                > td {
+                    background: #F8D8D1;
+                    color: #000;
+                    font-weight: bold;
+                }
+            }
+
+            &.noInfo {
+                display: table-row;
+            }
+
+            &.player-cpa-report {
+                margin-top: 20px;
+            }
+        }
+    }
+}

@@ -2538,26 +2538,11 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   <data name="VietnamCountry" xml:space="preserve">
     <value>Việt Nam </value>
   </data>
-  <data name="ActiveReferredPlayers" xml:space="preserve">
-    <value>Người Chơi Đủ Điều Kiện</value>
-  </data>
-  <data name="NetWinLoss" xml:space="preserve">
-    <value>Lãi Thực Công Ty ($)</value>
-  </data>
-  <data name="YourRevenueShare" xml:space="preserve">
-    <value>Hoa Hồng Của Bạn</value>
-  </data>
-  <data name="RevenueSharePayoutExample" xml:space="preserve">
-    <value>Ví dụ về cách tính tiền hoa hồng</value>
-  </data>
   <data name="NetRevenue" xml:space="preserve">
     <value>Doanh thu thuần</value>
   </data>
   <data name="CPAReport" xml:space="preserve">
     <value>Báo cáo CPA</value>
-  </data>
-  <data name="AffiliateCPAReport" xml:space="preserve">
-    <value>Báo cáo CPA Đại lý</value>
   </data>
   <data name="CPAAmount" xml:space="preserve">
     <value>Số tiền CPA</value>
@@ -2628,9 +2613,6 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   <data name="ActivePeriod" xml:space="preserve">
     <value>Thời gian hoạt động</value>
   </data>
-  <data name="ApprovalPeriod" xml:space="preserve">
-    <value>Thời gian duyệt</value>
-  </data>
   <data name="HoldingExpiredDate" xml:space="preserve">
     <value>Ngày hết hạn giữ</value>
   </data>
@@ -2639,9 +2621,6 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   </data>
   <data name="HoldingPeriod" xml:space="preserve">
     <value>Thời gian giữ / Thời gian duy trì</value>
-  </data>
-  <data name="RedepositCPAReport" xml:space="preserve">
-    <value>Báo cáo CPA tái nạp</value>
   </data>
   <data name="ActiveQualifiedDate" xml:space="preserve">
     <value>Ngày đủ điều kiện (hoạt động)</value>
@@ -2657,5 +2636,38 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   </data>
   <data name="Eligible" xml:space="preserve">
     <value>Đủ điều kiện</value>
+  </data>
+  <data name="TentativeCpaEarning" xml:space="preserve">
+    <value>Thu nhập CPA tạm tính</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>Xem theo</value>
+  </data>
+  <data name="CpaEarning" xml:space="preserve">
+    <value>Thu nhập CPA</value>
+  </data>
+  <data name="SubAffiliateRevenueShare" xml:space="preserve">
+    <value>Chia sẻ doanh thu của cộng tác viên cấp dưới</value>
+  </data>
+  <data name="ApprovedSubAffCpaEarning" xml:space="preserve">
+    <value>Thu nhập CPA của cộng tác viên cấp dưới đã được duyệt</value>
+  </data>
+  <data name="ApprovedCpaEarning" xml:space="preserve">
+    <value>Thu nhập CPA đã được duyệt</value>
+  </data>
+  <data name="SubCpaEarning" xml:space="preserve">
+    <value>CPA của cộng tác viên cấp dưới</value>
+  </data>
+  <data name="MacbookPro" xml:space="preserve">
+    <value>MACBOOK PRO 16' M3 PRO</value>
+  </data>
+  <data name="AllStatuses" xml:space="preserve">
+    <value>Tất cả trạng thái</value>
+  </data>
+  <data name="TurnoverCPADetail" xml:space="preserve">
+    <value>Chi tiết doanh thu CPA</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Nhóm {0}</value>
   </data>
 </root>

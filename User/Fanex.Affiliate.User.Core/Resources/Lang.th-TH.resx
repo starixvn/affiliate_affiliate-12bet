@@ -1241,7 +1241,7 @@
     <value>ยอดรวม</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>ยอดรวม</value>
+    <value>รวม</value>
   </data>
   <data name="TotalClick" xml:space="preserve">
     <value>จำนวนรวมครั้งของการคลิ๊กทั้งหมด</value>
@@ -2560,26 +2560,11 @@
   <data name="VietnamCountry" xml:space="preserve">
     <value>เวียดนาม</value>
   </data>
-  <data name="ActiveReferredPlayers" xml:space="preserve">
-    <value>ผู้เล่นที่แนะนำมาที่ยัง Active</value>
-  </data>
-  <data name="NetWinLoss" xml:space="preserve">
-    <value>รายได้ทั้งหมดของบริษัท ($)</value>
-  </data>
-  <data name="YourRevenueShare" xml:space="preserve">
-    <value>ส่วนแบ่งรายได้ของคุณ</value>
-  </data>
-  <data name="RevenueSharePayoutExample" xml:space="preserve">
-    <value>ตัวอย่างการจ่ายส่วนแบ่งรายได้</value>
-  </data>
   <data name="NetRevenue" xml:space="preserve">
     <value>รายได้สุทธิ</value>
   </data>
   <data name="CPAReport" xml:space="preserve">
     <value>รายงาน CPA</value>
-  </data>
-  <data name="AffiliateCPAReport" xml:space="preserve">
-    <value>รายงานพันธมิตร CPA</value>
   </data>
   <data name="CPAAmount" xml:space="preserve">
     <value>จำนวนเงิน CPA</value>
@@ -2650,9 +2635,6 @@
   <data name="ActivePeriod" xml:space="preserve">
     <value>ช่วงใช้งาน</value>
   </data>
-  <data name="ApprovalPeriod" xml:space="preserve">
-    <value>ช่วงเวลาอนุมัติ</value>
-  </data>
   <data name="HoldingExpiredDate" xml:space="preserve">
     <value>วันที่หมดช่วงพักสถานะ</value>
   </data>
@@ -2661,9 +2643,6 @@
   </data>
   <data name="HoldingPeriod" xml:space="preserve">
     <value>ช่วงพักสถานะ (Holding)</value>
-  </data>
-  <data name="RedepositCPAReport" xml:space="preserve">
-    <value>รายงาน CPA ฝากซ้ำ*</value>
   </data>
   <data name="ActiveQualifiedDate" xml:space="preserve">
     <value>วันที่ผ่านเงื่อนไขและเปิดใช้งาน</value>
@@ -2679,5 +2658,35 @@
   </data>
   <data name="Eligible" xml:space="preserve">
     <value>ที่เข้าเงื่อนไข</value>
+  </data>
+  <data name="TentativeCpaEarning" xml:space="preserve">
+    <value>รายได้ CPA (โดยประมาณ)</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>แสดงตาม</value>
+  </data>
+  <data name="CpaEarning" xml:space="preserve">
+    <value>รายได้แบบ CPA</value>
+  </data>
+  <data name="SubAffiliateRevenueShare" xml:space="preserve">
+    <value>ส่วนแบ่งรายได้ของพันธมิตรย่อย</value>
+  </data>
+  <data name="ApprovedSubAffCpaEarning" xml:space="preserve">
+    <value>รายได้ CPA ของพันธมิตรย่อยที่อนุมัติแล้ว</value>
+  </data>
+  <data name="ApprovedCpaEarning" xml:space="preserve">
+    <value>รายได้ CPA ที่อนุมัติแล้ว</value>
+  </data>
+  <data name="SubCpaEarning" xml:space="preserve">
+    <value>CPA ของพันธมิตรย่อย</value>
+  </data>
+  <data name="AllStatuses" xml:space="preserve">
+    <value>สถานะทั้งหมด</value>
+  </data>
+  <data name="TurnoverCPADetail" xml:space="preserve">
+    <value>รายละเอียด CPA เทิร์นโอเวอร์</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>กลุ่ม {0}</value>
   </data>
 </root>

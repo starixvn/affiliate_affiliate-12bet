@@ -53,8 +53,8 @@ var UserPanel = (function ($) {
         "DailyEarning",
         "SubAffEarning",
         "RevenueReport",
-        "RedepositCPAReport",
-        "AffiliateCPAReport"];
+        "PaymentCPAReport",
+        "PlayerCPAReport"];
 
     var _ajaxRequest = null;
 

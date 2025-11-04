@@ -54,8 +54,8 @@
     <Reference Include="Fanex.Common, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Common.1.1.0.1\lib\net40\Fanex.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Data.ProxyClient, Version=1.0.3.6, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.Data.ProxyClient.1.0.3.6\lib\net472\Fanex.Data.ProxyClient.dll</HintPath>
+    <Reference Include="Fanex.Data.ProxyClient, Version=1.0.6.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Data.ProxyClient.1.0.6.1\lib\net472\Fanex.Data.ProxyClient.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Logging, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Logging.2.0.1.1\lib\net461\Fanex.Logging.dll</HintPath>
@@ -266,13 +266,13 @@
     <Compile Include="Apis\ILicenseeApi.cs" />
     <Compile Include="Apis\ITokenApi.cs" />
     <Compile Include="BusinessService\AccountOverviewService.cs" />
-    <Compile Include="BusinessService\IAffiliateCPAReportService.cs" />
-    <Compile Include="BusinessService\AffiliateCPAReportService.cs" />
+    <Compile Include="BusinessService\CPAReport\IPlayerCPAReportService.cs" />
+    <Compile Include="BusinessService\CPAReport\PlayerCPAReportService.cs" />
     <Compile Include="BusinessService\ContactService.cs" />
-    <Compile Include="BusinessService\CPAReportService.cs" />
+    <Compile Include="BusinessService\CPAReport\PaymentCPAReportService.cs" />
     <Compile Include="BusinessService\IAccountOverviewService.cs" />
     <Compile Include="BusinessService\IContactService.cs" />
-    <Compile Include="BusinessService\ICPAReportService.cs" />
+    <Compile Include="BusinessService\CPAReport\IPaymentCPAReportService.cs" />
     <Compile Include="BusinessService\IStatementHistoryService.cs" />
     <Compile Include="BusinessService\StatementHistoryService.cs" />
     <Compile Include="Commands\Account\CreateAffiliateCommand.cs" />
@@ -290,9 +290,10 @@
     <Compile Include="Commands\Verification\InsertUserDeviceInfoCommand.cs" />
     <Compile Include="Commands\Verification\UpdateVerificationInfoCommand.cs" />
     <Compile Include="Constants\AffCategory.cs" />
-    <Compile Include="Constants\RedepositCPAStatus.cs" />
-    <Compile Include="Controllers\UserPanel\AffiliateCPAReportController.cs" />
-    <Compile Include="Controllers\UserPanel\RedepositCPAReportController.cs" />
+    <Compile Include="Constants\DateTimeFormat.cs" />
+    <Compile Include="Constants\PaymentCPAStatus.cs" />
+    <Compile Include="Controllers\UserPanel\PlayerCPAReportController.cs" />
+    <Compile Include="Controllers\UserPanel\PaymentCPAReportController.cs" />
     <Compile Include="CoreService\BaseDynamicService.cs" />
     <Compile Include="CoreService\IIpLocationService.cs" />
     <Compile Include="CoreService\IpLocationService.cs" />
@@ -310,10 +311,9 @@
     <Compile Include="Criterias\AffPagingCriteria.cs" />
     <Compile Include="Criterias\BaseCriteria.cs" />
     <Compile Include="Criterias\Comm\GetAffiliateCommissionCriteria.cs" />
-    <Compile Include="Criterias\CPAReport\GetRedepositCPAReportCriteria.cs" />
-    <Compile Include="Criterias\CPAReport\AffiliatePlayerCPATurnOverCriteria.cs" />
-    <Compile Include="Criterias\CPAReport\AffiliatePlayerCPACriteria.cs" />
-    <Compile Include="Criterias\CPAReport\AffiliateCPACriteria.cs" />
+    <Compile Include="Criterias\CPAReport\GetPaymenttCPAReportCriteria.cs" />
+    <Compile Include="Criterias\CPAReport\GetPlayerCPATurnOverCriteria.cs" />
+    <Compile Include="Criterias\CPAReport\GetPlayerCPAReportCriteria.cs" />
     <Compile Include="Criterias\Currency\GetBaseCurrencyListCriteria.cs" />
     <Compile Include="Criterias\Language\GetLanguageListCriteria.cs" />
     <Compile Include="Criterias\Marketing\GetAffDomainListCriteria.cs" />
@@ -434,7 +434,7 @@
     <Compile Include="DTO\PaymentRequestInfo.cs" />
     <Compile Include="DTO\Systems\TargetCountry.cs" />
     <Compile Include="DTO\Systems\TargetCountryLanguage.cs" />
-    <Compile Include="DTO\UserPanel\CPAReport\RedepositCPAReportItem.cs" />
+    <Compile Include="DTO\UserPanel\CPAReport\PaymentCPAReportItem.cs" />
     <Compile Include="DTO\UserPanel\Currency.cs" />
     <Compile Include="DTO\UserPanel\MarketingItem.cs" />
     <Compile Include="DTO\UserPanel\MarketingPageStatistics.cs" />
@@ -442,10 +442,9 @@
     <Compile Include="DTO\UserPanel\MediaGallery\CategoryType.cs" />
     <Compile Include="DTO\UserPanel\MediaGallery\CurrencyType.cs" />
     <Compile Include="DTO\UserPanel\MediaGallery\MappingDomainInfo.cs" />
-    <Compile Include="DTO\UserPanel\MonthlyCPA.cs" />
-    <Compile Include="DTO\UserPanel\PlayerCPA.cs" />
-    <Compile Include="DTO\UserPanel\PlayerCPATurnOverGroup.cs" />
-    <Compile Include="DTO\UserPanel\PlayerCPATurnOverItem.cs" />
+    <Compile Include="DTO\UserPanel\CPAReport\PlayerCPAReport.cs" />
+    <Compile Include="DTO\UserPanel\CPAReport\PlayerCPAReportGroup.cs" />
+    <Compile Include="DTO\UserPanel\CPAReport\PlayerCPAReportItem.cs" />
     <Compile Include="DTO\UserPanel\SubAffComInfo.cs" />
     <Compile Include="DTO\UserPanel\SubAffDetail.cs" />
     <Compile Include="Enum\AffiliateLinkType.cs" />
@@ -457,16 +456,16 @@
     <Compile Include="MetalModels\MarketingLinkParam.cs" />
     <Compile Include="MetalModels\UserPanel\AvalableDomainParam.cs" />
     <Compile Include="MetalModels\UserPanel\CommissionReportParam.cs" />
-    <Compile Include="MetalModels\UserPanel\CPAReportParam.cs" />
+    <Compile Include="MetalModels\UserPanel\CPAReport\PlayerCPAReportParam.cs" />
     <Compile Include="MetalModels\UserPanel\LandingPageParam.cs" />
     <Compile Include="MetalModels\UserPanel\LinkGeneratingParam.cs" />
     <Compile Include="MetalModels\UserPanel\LinkToParam.cs" />
     <Compile Include="MetalModels\UserPanel\MarketingFilterParam.cs" />
     <Compile Include="MetalModels\UserPanel\MarketingPageStatisticsParam.cs" />
     <Compile Include="MetalModels\UserPanel\MediaCategoryParam.cs" />
-    <Compile Include="MetalModels\UserPanel\PlayerCPATurnOverParam.cs" />
+    <Compile Include="MetalModels\UserPanel\CPAReport\PlayerCPATurnOverParam.cs" />
     <Compile Include="MetalModels\UserPanel\QrCodeParam.cs" />
-    <Compile Include="MetalModels\UserPanel\RedepositCPAReportParam.cs" />
+    <Compile Include="MetalModels\UserPanel\CPAReport\PaymentCPAReportParam.cs" />
     <Compile Include="MetalModels\UserPanel\SubAffComParam.cs" />
     <Compile Include="MetalModels\UserPanel\SubAffDetailParam.cs" />
     <Compile Include="Utilities\AppContactHelper.cs" />
@@ -480,18 +479,15 @@
     <Compile Include="Utilities\RegexHelper.cs" />
     <Compile Include="ViewModels\UserPanel\AccountOverviewViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\BreadcumViewModel.cs" />
-    <Compile Include="ViewModels\UserPanel\CPAReport\RedepositCPAReportDataViewModel.cs" />
-    <Compile Include="ViewModels\UserPanel\CPAReportViewModel.cs" />
-    <Compile Include="ViewModels\UserPanel\CPAReport\RedepositCPAReportViewModel.cs" />
+    <Compile Include="ViewModels\UserPanel\CPAReport\PaymentCPAReportDataViewModel.cs" />
+    <Compile Include="ViewModels\UserPanel\CPAReport\CPAReportViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\Marketing\ChangedFilterFormViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\Marketing\CommonSearchFormViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\Marketing\LanguageLinkViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\Marketing\MarketingLinkViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\Marketing\MediaGallerySearchFormViewModel.cs" />
-    <Compile Include="ViewModels\UserPanel\MonthlyCPAViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\MyAccountViewModel.cs" />
-    <Compile Include="ViewModels\UserPanel\PlayerCPATurnOverViewModel.cs" />
-    <Compile Include="ViewModels\UserPanel\PlayerCPAViewModel.cs" />
+    <Compile Include="ViewModels\UserPanel\CPAReport\PlayerCPATurnOverViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\PlayerDetailViewModel.cs" />
     <Compile Include="Controllers\UserPanel\StatementHistoryController.cs" />
     <Compile Include="Controllers\UserPanel\ReferrersStatisticsController.cs" />
@@ -574,7 +570,6 @@
     <Compile Include="DTO\UserPanel\MediaGallery\Banner.cs" />
     <Compile Include="DTO\UserPanel\MediaGallery\Domain.cs" />
     <Compile Include="DTO\UserPanel\MessageHistory.cs" />
-    <Compile Include="DTO\UserPanel\PlayerAccountCheckingResult.cs" />
     <Compile Include="DTO\UserPanel\Statistics\ReferrerStatistics.cs" />
     <Compile Include="DTO\UserPanel\StatementHistory.cs" />
     <Compile Include="DTO\UserPanel\Statistics\StatisticsBase.cs" />

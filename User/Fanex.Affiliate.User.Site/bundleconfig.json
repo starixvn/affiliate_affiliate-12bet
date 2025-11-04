@@ -219,21 +219,21 @@
   //  "inputFiles": [ "www/source/js/lib/bootstrap2-toggle.js" ]
   //},
   {
-    "outputFileName": "www/build/js/pages/cpa-report/redeposit-cpa-report.js",
+    "outputFileName": "www/build/js/pages/cpa-report/payment-cpa-report.js",
     "inputFiles": [
       "www/source/js/lib/pikaday.js",
       "www/source/js/components/pager.js",
       //"www/source/js/components/multiple-select.js",
-      "www/source/js/pages/cpa-report/redeposit-cpa-report.js"
+      "www/source/js/pages/cpa-report/payment-cpa-report.js"
     ]
   },
   {
-    "outputFileName": "www/build/js/pages/affiliate-cpa-report.js",
+    "outputFileName": "www/build/js/pages/cpa-report/player-cpa-report.js",
     "inputFiles": [
       "www/source/js/lib/pikaday.js",
       "www/source/js/components/pager.js",
       "www/source/js/components/multiple-select.js",
-      "www/source/js/pages/affiliate-cpa-report.js"
+      "www/source/js/pages/cpa-report/player-cpa-report.js"
     ]
   }
 ]

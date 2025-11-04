@@ -244,7 +244,7 @@ var StatementHistory = (function ($) {
             getParams: getDefaultParams
         },
         206: {
-            url: "UserPanel/Main/#AffiliateCPAReport",
+            url: "UserPanel/Main/#PlayerCPAReport",
             getParams: getDateRangeParams
         }
     };

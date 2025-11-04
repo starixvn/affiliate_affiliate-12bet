@@ -23,9 +23,6 @@ namespace Fanex.Affiliate.User.Core.MetalModels.UserPanel
 
         public AffiliateLinkType TargetId { get; set; } = AffiliateLinkType.AffiliateLink;
 
-        [SpParam(Ignored = true)]
-        public int TotalPages { get; set; }
-
         public int NRows { get; set; }
 
         [SpParam(Ignored = true)]

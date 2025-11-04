@@ -370,8 +370,7 @@
                 SelectedPage = "SignUp",
                 Size = "1020x90",
                 SubCategory = "sub",
-                TextLinkTemplate = "{scheme}://{domain}/{custid}/{target}/{lang}/index.html",
-                TotalPages = 30
+                TextLinkTemplate = "{scheme}://{domain}/{custid}/{target}/{lang}/index.html"
             };
 
         private IEnumerable<MarketingItem> CreateMarketingItemList(string language)

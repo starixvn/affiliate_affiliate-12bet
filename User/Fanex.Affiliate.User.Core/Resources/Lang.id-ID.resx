@@ -2536,26 +2536,11 @@ Anda juga bisa mengirim email ke {1} atau cukup isi formulir di bawah ini.</valu
   <data name="VietnamCountry" xml:space="preserve">
     <value>Viet Nam </value>
   </data>
-  <data name="ActiveReferredPlayers" xml:space="preserve">
-    <value>Pemain aktif yang direferensikan</value>
-  </data>
-  <data name="NetWinLoss" xml:space="preserve">
-    <value>Kemenangan bersih Perusahaan ($)</value>
-  </data>
-  <data name="YourRevenueShare" xml:space="preserve">
-    <value>Pembagian Penghasilan Anda</value>
-  </data>
-  <data name="RevenueSharePayoutExample" xml:space="preserve">
-    <value>Contoh Pembayaran Pembagian Hasil</value>
-  </data>
   <data name="NetRevenue" xml:space="preserve">
     <value>Pendapatan Bersih</value>
   </data>
   <data name="CPAReport" xml:space="preserve">
     <value>Laporan CPA</value>
-  </data>
-  <data name="AffiliateCPAReport" xml:space="preserve">
-    <value>Laporan Afiliasi CPA</value>
   </data>
   <data name="CPAAmount" xml:space="preserve">
     <value>Jumlah CPA</value>
@@ -2626,9 +2611,6 @@ Anda juga bisa mengirim email ke {1} atau cukup isi formulir di bawah ini.</valu
   <data name="ActivePeriod" xml:space="preserve">
     <value>Periode Aktif</value>
   </data>
-  <data name="ApprovalPeriod" xml:space="preserve">
-    <value>Periode Disetujui</value>
-  </data>
   <data name="HoldingExpiredDate" xml:space="preserve">
     <value>Tanggal Kadaluwarsa Ditahan</value>
   </data>
@@ -2637,9 +2619,6 @@ Anda juga bisa mengirim email ke {1} atau cukup isi formulir di bawah ini.</valu
   </data>
   <data name="HoldingPeriod" xml:space="preserve">
     <value>Periode Ditahan</value>
-  </data>
-  <data name="RedepositCPAReport" xml:space="preserve">
-    <value>Laporan Redeposit CPA</value>
   </data>
   <data name="ActiveQualifiedDate" xml:space="preserve">
     <value>Tanggal Terkualifikasi Aktif</value>
@@ -2655,5 +2634,35 @@ Anda juga bisa mengirim email ke {1} atau cukup isi formulir di bawah ini.</valu
   </data>
   <data name="Eligible" xml:space="preserve">
     <value>Memenuhi Syarat</value>
+  </data>
+  <data name="TentativeCpaEarning" xml:space="preserve">
+    <value>Pendapatan CPA Tentatif</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>Lihat Berdasarkan</value>
+  </data>
+  <data name="CpaEarning" xml:space="preserve">
+    <value>Pendapatan CPA</value>
+  </data>
+  <data name="SubAffiliateRevenueShare" xml:space="preserve">
+    <value>Bagi Hasil Sub-Afiliasi</value>
+  </data>
+  <data name="ApprovedSubAffCpaEarning" xml:space="preserve">
+    <value>Pendapatan CPA Sub-Afiliasi yang Disetujui</value>
+  </data>
+  <data name="ApprovedCpaEarning" xml:space="preserve">
+    <value>Pendapatan CPA yang Disetujui</value>
+  </data>
+  <data name="SubCpaEarning" xml:space="preserve">
+    <value>CPA Sub-Afiliasi</value>
+  </data>
+  <data name="AllStatuses" xml:space="preserve">
+    <value>Semua Status</value>
+  </data>
+  <data name="TurnoverCPADetail" xml:space="preserve">
+    <value>Detail Turnover CPA</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Grup {0}</value>
   </data>
 </root>
