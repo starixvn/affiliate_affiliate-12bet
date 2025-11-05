@@ -23,6 +23,7 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
     const hqdStr = data.isHolding ? data.hqdStr : '-';
     const hedStr = data.isHolding ? data.hedStr : '-';
     const reDepositDays = hasSettingRedeposit ? data.reDepositDays : '-';
+    const firstDepositDate = hasSettingRedeposit ? data.firstDepositDateStr : '-';
     const isRedeposit = hasSettingRedeposit ? (data.isRedeposit ? 'Yes' : 'No') : '-';
     const statusClassName = getCSSClassName('status', data.cpaStatus);
     const paymentFrequencyClassName = getCSSClassName('payment-frequency', data.scheduleName);
@@ -86,7 +87,7 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
                 {data.estimatedCPAAmount}
             </td>
             <td title={data.firstDepositDateStr} className="text-center">
-                {data.firstDepositDateStr}
+                {firstDepositDate}
             </td>
             <td title={reDepositDays} className="text-center">
                 {reDepositDays}
