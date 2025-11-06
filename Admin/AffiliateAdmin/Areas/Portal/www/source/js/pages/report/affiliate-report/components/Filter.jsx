@@ -3,28 +3,27 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import MultipleSelect from '../../../../components/multiple-select';
+import MultipleSelect from '@/components/multiple-select';
 import MonthPicker from '@9softstudio/react-monthpicker';
-import { defaultSortBy, sortByMainView, sortByMonthOnMonthView, viewLevel, sortDirectionType, defaultBaseCurrency, minMonthDate, resource, statusFilter, allStatuses } from '../libs/constants';
-import { setReportTitle, setParam, setCurrencyList, setCommGroupList, setProductList, setPaymentCurrencyList, setIsCheckedDatePicker } from '../actions';
-import { formatUnit, handleAfterChangeFromDate, handleAfterChangeToDate, handleChangeMultipleSelected } from '../../../../modules/utils';
-import { globalResource } from '../../../../modules/globalResource';
-import { minDate, sixMonth } from '../../../../modules/constants';
+import { defaultSortBy, sortByMainView, sortByMonthOnMonthView, viewLevel, sortDirectionType, defaultBaseCurrency, minMonthDate, resource, statusFilter, allStatuses, dealFilterData } from '../libs/constants';
+import { setReportTitle, setParam, setCurrencyList, setProductList, setPaymentCurrencyList, setIsCheckedDatePicker } from '../actions';
+import { formatUnit, handleAfterChangeFromDate, handleAfterChangeToDate, handleChangeMultipleSelected, getAdjustedDateFromNow, getFirstDayOfMonth, getDayOfMonth } from '@/modules/utils';
+import { globalResource } from '@/modules/globalResource';
+import { minDate, sixMonth } from '@/modules/constants';
 import { DatePicker } from '@9softstudio/react-datepicker';
+import HierarchicalFilterDropdown from '@/components/HierarchicalFilterDropdown';   
 
 export class Filter extends Component {
     constructor(props) {
         super(props);
 
-        const { today, productList, baseCurrencyList, currencyList, paymentCurrencyList } = this.props;
+        const { today, productList, baseCurrencyList, currencyList, dealList } = this.props;
         this.now = new Date(today);
         const currentMonth = this.now.getMonth() + 1;
-        const currentMonthString = formatUnit(currentMonth);
         const currentYear = this.now.getFullYear();
-        this.nowString = `${currentMonthString}/${formatUnit(this.now.getDate())}/${currentYear}`;
+        this.nowString = getDayOfMonth(this.now);
 
         const defaultMonth = { month: currentMonth, year: currentYear };
-
 
         this.state = {
             userName: '',
@@ -34,7 +33,7 @@ export class Filter extends Component {
             sortBy: defaultSortBy,
             isSortAscending: true,
             selectedProductList: productList.filter(item => item.checked).map(item => item.key).join(',') || '',
-            selectedCommGroupList: 'all',
+            selectedDealIds: dealList.map(item => item.GroupId),
             isGetAll: false,
             isExcludeNegvBBF: false,
             isExcludeNegvCurrentBBF: false,
@@ -42,7 +41,7 @@ export class Filter extends Component {
             selectedCurrencyList: currencyList.filter(item => item.checked).map(item => item.key).join(',') || '',
             selectedPaymentCurrencyList: 'all',
             isCheckedDatePicker: false,
-            fromDate: `${currentMonthString}/01/${currentYear}`,
+            fromDate: getFirstDayOfMonth(this.now),
             toDate: this.nowString,
             selectedStatus: statusFilter.Approved
         }
@@ -66,7 +65,7 @@ export class Filter extends Component {
                 this.setState({
                     userName: UserName,
                     selectedLanguage: PreferredLanguage,
-                    selectedCommGroupList: GroupIds,
+                    selectedDealIds: GroupIds.split(','),
                     fromMonth: { month: from.getMonth() + 1, year: from.getFullYear() },
                     toMonth: { month: to.getMonth() + 1, year: to.getFullYear() },
                     sortBy: SortType,
@@ -98,6 +97,12 @@ export class Filter extends Component {
                 }, callback);
             }
         }
+    }
+
+    isSelectedAllDealIds = (selectedDeals) => {
+        return selectedDeals.length === this.props.hierarchicalDealList.flatMap(group => 
+            group.items?.map(item => item.GroupId) || []
+        ).length;
     }
 
     _isMainView() {
@@ -162,11 +167,9 @@ export class Filter extends Component {
         this.props.setPaymentCurrencyList(handleChangeMultipleSelected(this.props.paymentCurrencyList, selectedPaymentCurrencyList));
     }
 
-    handleChangeCommGroup = (item, selectedCommGroupList) => {
-        this.setState({ selectedCommGroupList });
-
-        this.props.setCommGroupList(handleChangeMultipleSelected(this.props.commGroupList, selectedCommGroupList));
-    }
+    handleChangeDeals = (newSelection) => {
+        this.setState({ selectedDealIds: newSelection });
+    };
 
     handleChangeProduct = (item, selectedProductList) => {
         this.setState({ selectedProductList });
@@ -197,7 +200,7 @@ export class Filter extends Component {
         this._updateReportTitle();
         const {
             selectedLanguage,
-            selectedCommGroupList,
+            selectedDealIds,
             selectedBaseCurrency,
             selectedCurrencyList,
             selectedPaymentCurrencyList,
@@ -216,17 +219,17 @@ export class Filter extends Component {
         } = this.state;
         const { pagingOption } = this.props;
 
-        const isSelectAllCommGroup = this.props.commGroupList.every(c => c.checked);
+        const isSelectAllDealIds = this.isSelectedAllDealIds(selectedDealIds);
         const isSelectAllPaymentCurrency = this.props.paymentCurrencyList.every(c => c.checked);
 
         const param = {
             UserName: userName,
             IsGetMonthly: !isCheckedDatePicker,
-            FromDate: isCheckedDatePicker ? fromDate : `${fromMonth.month}/1/${fromMonth.year}`,
-            ToDate: isCheckedDatePicker ? toDate : `${toMonth.month}/1/${toMonth.year}`,
+            FromDate: isCheckedDatePicker ? fromDate : getFirstDayOfMonth(new Date(fromMonth.year, fromMonth.month - 1, 1)),
+            ToDate: isCheckedDatePicker ? toDate : getAdjustedDateFromNow(new Date(toMonth.year, toMonth.month - 1, 1), new Date(this.props.today)),
             PreferredLanguage: selectedLanguage,
             BaseCurrencyId: Number(selectedBaseCurrency),
-            GroupIds: isSelectAllCommGroup ? 'all' : selectedCommGroupList,
+            GroupIds: isSelectAllDealIds ? 'all' : selectedDealIds.join(','),
             CurrencyIds: selectedCurrencyList,
             PaymentCurrencyIds: isSelectAllPaymentCurrency ? 'all' : selectedPaymentCurrencyList,
             ProductIds: selectedProductList,
@@ -242,7 +245,7 @@ export class Filter extends Component {
 
         if (this._isMainView()) {
             this.props.setIsCheckedDatePicker(isCheckedDatePicker);
-            this.cachedMainReportParam = Object.assign({}, param);
+            this.cachedMainReportParam = Object.assign({}, param, { GroupIds: selectedDealIds.join(',') });
         }
 
         this.props.setParam(param);
@@ -258,12 +261,12 @@ export class Filter extends Component {
     }
 
     _buildMainReportTitle(isCheckedAllProduct) {
-        const { productList, languageList, baseCurrencyList, commGroupList, paymentCurrencyList } = this.props;
-        const { selectedLanguage, fromMonth, toMonth, userName, selectedBaseCurrency, fromDate, toDate, isCheckedDatePicker, selectedStatus } = this.state;
+        const { productList, languageList, baseCurrencyList, dealList, paymentCurrencyList } = this.props;
+        const { selectedLanguage, fromMonth, toMonth, userName, selectedDealIds, selectedBaseCurrency, fromDate, toDate, isCheckedDatePicker, selectedStatus } = this.state;
 
         const userNameTitle = `${userName && ' - Affiliate contains \'' + userName + '\''}`;
         const language = languageList[selectedLanguage] || 'All languages';
-        const commGroup = commGroupList.every(c => c.checked) ? 'All Revenue Group' : commGroupList.filter(c => c.checked).map(c => c.name).join(',');
+        const deal = this.isSelectedAllDealIds(selectedDealIds) ? 'All Deals' : dealList.filter(d => selectedDealIds.includes(d.GroupId)).map(d => d.GroupName).join(',');
         const paymentCurrency = paymentCurrencyList.every(c => c.checked) ? 'All Linked Acc. Currencies' : paymentCurrencyList.filter(c => c.checked).map(c => c.name).join(',');
 
         const productName = isCheckedAllProduct ? 'All Products' : productList.filter(p => p.checked).map(p => p.name).join(',');
@@ -272,7 +275,7 @@ export class Filter extends Component {
         const baseCurrency = baseCurrencyList.filter(x => x.ExchangeId == selectedBaseCurrency).map(b => b.Code).join(',');
         const status = statusFilter[selectedStatus];
 
-        return `${resource.reportName}${userNameTitle} - Base Currency ${baseCurrency} - ${paymentCurrency} - ${language} - ${productName} - ${commGroup} - ${status} - ${fromToTitle}`;
+        return `${resource.reportName}${userNameTitle} - Base Currency ${baseCurrency} - ${paymentCurrency} - ${language} - ${productName} - ${deal} - ${status} - ${fromToTitle}`;
     }
 
     _buildMonthOnMonthReportTile(isCheckedAllProduct) {
@@ -325,6 +328,7 @@ export class Filter extends Component {
     render() {
         const {
             selectedLanguage,
+            selectedDealIds,
             selectedBaseCurrency,
             fromMonth, toMonth,
             sortBy, isSortAscending,
@@ -345,10 +349,11 @@ export class Filter extends Component {
             baseCurrencyList,
             paymentCurrencyList,
             isProduction,
-            commGroupList
+            hierarchicalDealList
         } = this.props;
 
         const isValidSelectedProduct = !!selectedProductList;
+        const isValidSelectedDeal = !!selectedDealIds.length;
 
         const toMonthRange = this._getToMonthRange(fromMonth);
         const isMainView = this._isMainView();
@@ -435,15 +440,25 @@ export class Filter extends Component {
                     </FormGroup>
                     {
                         isMainView &&
-                        <FormGroup className="my-sm-1 mr-sm-2 comm-group">
-                            <MultipleSelect
-                                dataSource={commGroupList}
-                                keyField="key"
-                                valueField="name"
-                                statusField="checked"
-                                maxDisplayItemCount={1}
-                                selectedAllLabel="All Revenue Groups"
-                                onChange={this.handleChangeCommGroup} />
+                        <FormGroup className="my-sm-1 mr-sm-2">
+                            <HierarchicalFilterDropdown
+                                value={selectedDealIds}
+                                onSelectionChange={this.handleChangeDeals}
+                                data={{ groups: hierarchicalDealList }}
+                                placeholder="Please Select"
+                                searchPlaceholder="Search Data"
+                                showSelectAll={true}
+                                showGroupCounts={true}
+                                allLabel="All Deals"
+                                maxHeight={350}
+                                className="deal-filter"
+                                allowGroupCollapse={true}
+                                defaultExpanded={true}
+                                defaultSelectAll={true}
+                                groupKeyField="GroupTypeId"
+                                groupLabelField="GroupTypeName"
+                                itemKeyField="GroupId"
+                                itemLabelField="GroupName" />
                         </FormGroup>
                     }
                     {
@@ -559,7 +574,7 @@ export class Filter extends Component {
                             </FormGroup>
                         )
                     }
-                    <Button outline color="primary" type="button" onClick={this.handleClickSearch} disabled={!isValidSelectedProduct}>
+                    <Button outline color="primary" type="button" onClick={this.handleClickSearch} disabled={!isValidSelectedProduct || !isValidSelectedDeal}>
                         <span className="oi oi-magnifying-glass"></span> Search
                     </Button>
                 </Form>
@@ -580,12 +595,13 @@ function mapStateToProps(state) {
         today: state.today,
         currentViewLevel: state.currentViewLevel,
         param: state.param,
-        commGroupList: state.commGroupList
+        dealList: state.dealList,
+        hierarchicalDealList: state.hierarchicalDealList
     });
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ setReportTitle, setParam, setCurrencyList, setCommGroupList, setProductList, setPaymentCurrencyList, setIsCheckedDatePicker }, dispatch);
+    return bindActionCreators({ setReportTitle, setParam, setCurrencyList, setProductList, setPaymentCurrencyList, setIsCheckedDatePicker }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);

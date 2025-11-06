@@ -16,12 +16,15 @@ import { toggleLoader } from '../../../../actions/loaderAction';
 
 export const GridData = ({ params, pagingOption, playerCpaData, setParams, setPagingOption, toggleLoader }) => {
     const [gridData, setGridData] = useState(null);
+    const [sortedData, setSortedData] = useState(null);
 
     useEffect(() => {
         if (playerCpaData) {
-            const data = paginate(playerCpaData?.mainData, pagingOption?.PageIndex, pagingOption?.PageSize);
+            const sortedData = sortBy(playerCpaData?.mainData, params.sortColumn, params.isAscending);
+            const data = paginate(sortedData, pagingOption?.PageIndex, pagingOption?.PageSize);
 
             setGridData(data);
+            setSortedData(sortedData);
         }
     }, [playerCpaData]);
 
@@ -34,7 +37,9 @@ export const GridData = ({ params, pagingOption, playerCpaData, setParams, setPa
                 PageIndex: pageIndex,
                 PageSize: pageSize
             });
-            const data = paginate(playerCpaData?.mainData, pageIndex, pageSize);
+
+            const data = paginate(sortedData, pageIndex, pageSize);
+            
             setGridData(data);
             toggleLoader(false);
         }, 100);
@@ -47,13 +52,13 @@ export const GridData = ({ params, pagingOption, playerCpaData, setParams, setPa
             if (!sortColumnSelected) return;
 
             const isAscending = params?.sortColumn === sortColumnSelected ? !params?.isAscending : true;
-            const sortedData = sortBy(
+            const newSortedData = sortBy(
                 playerCpaData?.mainData,
                 sortColumnSelected,
                 isAscending
             );
 
-            const pagingData = paginate(sortedData, pagingOption.PageIndex, pagingOption.PageSize);
+            const pagingData = paginate(newSortedData, pagingOption.PageIndex, pagingOption.PageSize);
 
             setParams({
                 sortColumn: sortColumnSelected,
@@ -61,6 +66,7 @@ export const GridData = ({ params, pagingOption, playerCpaData, setParams, setPa
             });
 
             setGridData(pagingData);
+            setSortedData(newSortedData);
             toggleLoader(false);
         }, 100);
     }
@@ -69,7 +75,7 @@ export const GridData = ({ params, pagingOption, playerCpaData, setParams, setPa
         return null
     }
 
-    const maxHeight = getMaxHeight()
+    const maxHeight = getMaxHeight();
 
     return (
         <Fragment>

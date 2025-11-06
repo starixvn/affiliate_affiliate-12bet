@@ -5,7 +5,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { DatePicker } from '@9softstudio/react-datepicker';
 
 import { globalResource, minDate } from '../modules/constants';
-import { getDateRange } from '../../../../modules/utils';
+import { getDateRange, getSixMonthAgoFromNow } from '@/modules/utils';
 import { setParam } from '../actions';
 
 export class Filter extends PureComponent {
@@ -17,12 +17,11 @@ export class Filter extends PureComponent {
 
         this.nowString = `${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()}`;
 
-        const sixMonthAgo = new Date(today);
-        sixMonthAgo.setMonth(sixMonthAgo.getMonth() - 6);
+        const fromDate = getSixMonthAgoFromNow(today);
 
         this.state = param || {
             isGetAll: false,
-            fromDate: sixMonthAgo < minDate ? '01/01/2020' : `${sixMonthAgo.getMonth() + 1}/${sixMonthAgo.getDate()}/${sixMonthAgo.getFullYear()}`,
+            fromDate,
             toDate: this.nowString,
         }
     }

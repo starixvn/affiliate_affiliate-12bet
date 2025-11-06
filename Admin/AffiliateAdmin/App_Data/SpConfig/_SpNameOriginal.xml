@@ -72,7 +72,7 @@
 		<Setting Key="Aff_Admin_Report_AffiliateCPA" SpName="Aff_Admin_Report_AffiliateCPA" DbName="" />
 		<Setting Key="Aff_Admin_Report_PlayerCPA" SpName="Aff_Admin_Report_PlayerCPA" DbName="" />
 		<Setting Key="Aff_Admin_Report_PlayerCPA_TO_Detail" SpName="Aff_Admin_Report_PlayerCPA_TO_Detail" DbName="" />
-		<Setting Key="Aff_Admin_Report_RedepositCPA" SpName="Aff_Admin_Report_RedepositCPA" DbName="" />
+		<Setting Key="Aff_Admin_Report_PaymentCPA" SpName="Aff_Admin_Report_PaymentCPA" DbName="" />
 	</Function>
 	<Function Name="Info">
 		<Setting Key="Aff_Admin_Affiliate_Sel" SpName="Aff_Admin_Affiliate_Sel" DbName="" >
@@ -96,6 +96,7 @@
 		</Setting>
 		<Setting Key="Aff_Admin_AffiliatePaymentRequest_Upd" SpName="Aff_Admin_AffiliatePaymentRequest_Upd" DbName="" />
 		<Setting Key="Aff_PaymentMethod_Sel" SpName="Aff_PaymentMethod_Sel" DbName=""/>
+		<Setting Key="Aff_Admin_PaymentCPA_Adjustment_Ins" SpName="Aff_Admin_PaymentCPA_Adjustment_Ins" DbName=""/>
 	</Function>
 	<Function Name="StatementHistory">
 		<Setting Key="Aff_Admin_StatementHistory_Sel" SpName="Aff_Admin_StatementHistory_Sel" DbName="" />

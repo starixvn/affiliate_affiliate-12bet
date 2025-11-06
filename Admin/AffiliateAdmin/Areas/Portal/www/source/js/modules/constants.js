@@ -52,3 +52,16 @@ export const targetCountryStatus = {
     Normal: 0,
     Blocked: 1
 }
+
+export const CPAViewBySettings = {
+    ActiveQualifiedDate: 1,
+    ScheduleEndDate: 1,
+    AutoApprovedDate: 2,
+    AdjustmentDate: 3,
+}
+
+export const DealGroupTypeSettings = {
+    RevenueShare: 1,
+    CPA: 3,
+    Hybrid: 4,
+}

@@ -13,7 +13,9 @@ namespace Fanex.Affiliate.Admin.Core.ViewModels.Report
 
         public IEnumerable<Currency> PaymentCurrencyList { get; set; }
 
-        public IEnumerable<NormalDeal> CommGroupList { get; set; }
+        public IEnumerable<DealType> DealTypeList { get; set; }
+
+        public IEnumerable<NormalDeal> DealList { get; set; }
 
         public DateTime ReportCutOffDate { get; set; }
     }

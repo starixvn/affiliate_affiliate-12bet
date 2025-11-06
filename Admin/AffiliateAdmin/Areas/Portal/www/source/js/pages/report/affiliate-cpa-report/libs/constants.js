@@ -27,8 +27,12 @@ export const viewByOptions = [
         value: 2
     },
     {
-        label: 'Approval Date',
+        label: 'Auto Approved Date',
         value: 3
+    },
+    {
+        label: 'Adjustment Date',
+        value: 4
     }
 ]
 

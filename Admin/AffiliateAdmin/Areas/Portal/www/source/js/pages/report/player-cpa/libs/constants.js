@@ -1,19 +1,18 @@
 export const reportName = 'PLAYER CPA REPORT';
 
 export const statusOptions = [
-    { value: -1, label: 'All Statuses' },
-    { value: 2, label: 'Eligible' },
-    { value: 3, label: 'Approved' },
-    { value: 1, label: 'Ineligible' },
-    { value: 4, label: 'Rejected' },
-    { value: 5, label: 'Quota Exceeded' },
-    { value: 0, label: 'Pending' },
+    { key: 2, name: 'Eligible', checked: true },
+    { key: 3, name: 'Settled', checked: true },
+    { key: 1, name: 'Ineligible', checked: true },
+    { key: 4, name: 'Rejected', checked: true },
+    { key: 5, name: 'Quota Exceeded', checked: true },
+    { key: 0, name: 'Pending', checked: true },
+    { key: 6, name: 'Redeposit Failed', checked: true },
 ]
 
 export const viewByOptions = [
     { value: '1', label: 'Active Qualified Date' },
-    { value: '2', label: 'Holding Qualified Date' },
-    { value: '3', label: 'Approval Date' },
+    { value: '2', label: 'Holding Qualified Date' }
 ]
 
 export const DATE_FORMAT = 'MM/DD/YYYY';
@@ -22,10 +21,12 @@ export const defaultParams = {
     userName: '',
     custName: '',
     dealName: '',
-    statusId: -1,
+    statusId: '',
     viewBy: '1',
     fromDate: '',
     toDate: '',
+    pageIndex: 1,
+    pageSize: 20,
     sortColumn: 'affUserName',
     isAscending: true
 }
@@ -57,9 +58,11 @@ export const headerText = {
     HoldingQualifiedDate: 'Holding Qualified Date',
     HoldingExpiredDate: 'Holding Expired Date',
     EstimatedCPAAmount: 'Estimated CPA Amount',
-    ApprovedCPAAmount: 'Approved CPA Amount',
-    CPAStatus: 'CPA Status',
-    ApprovalDate: 'Approval Date'
+    FirstDepositDate: 'First Deposit Date',
+    ReDepositDays: 'Re-check days',
+    ExpiredRedepositDate: 'Expired Date',
+    IsRedeposit: 'Is Redeposit',
+    CPAStatus: 'CPA Status'
 };
 
 export const dataKey = {
@@ -78,27 +81,39 @@ export const dataKey = {
     HoldingQualifiedDate: 'hqdStr',
     HoldingExpiredDate: 'hedStr',
     EstimatedCPAAmount: 'estimatedCPAAmount',
-    ApprovedCPAAmount: 'approvedCPAAmount',
+    FirstDepositDate: 'firstDepositDateStr',
+    ReDepositDays: 'reDepositDays',
+    ExpiredRedepositDate: 'expiredRedepositDateStr',
+    IsRedeposit: 'isRedeposit',
     CPAStatus: 'cpaStatus',
-    ApprovalDate: 'cpaDateStr',
-    HoldingTickets: 'holdingTickets'
+    HoldingTickets: 'holdingTickets',
+    HoldingBetTickets: 'holdingBetTickets'
 };
+
+const DefaultColor = '#FFEDE1';
+const ActivePeriodColor = '#ECFDF5';
+const HoldingPeriodColor = '#F5F3FF';
+const RedipositPeriodColor = '#ECFEFF';
 
 export const row1 = [
     {
         title: headerText.No,
-        width: 60,
+        width: 50,
         sortable: false,
         rowSpan: 2,
-        field: dataKey.No
+        startCol: 0,
+        field: dataKey.No,
+        color: DefaultColor
     },
     {
         title: headerText.Affiliate,
-        width: 150,
+        width: 115,
         sortable: true,
         sortColumn: dataKey.Affiliate,
         rowSpan: 2,
-        field: dataKey.Affiliate
+        startCol: 1,
+        field: dataKey.Affiliate,
+        color: DefaultColor
     },
     {
         title: headerText.Player,
@@ -106,15 +121,19 @@ export const row1 = [
         sortable: true,
         sortColumn: dataKey.Player,
         rowSpan: 2,
-        field: dataKey.Player
+        startCol: 2,
+        field: dataKey.Player,
+        color: DefaultColor
     },
     {
         title: headerText.RegistrationDate,
-        width: 150,
+        width: 105,
         sortable: true,
         sortColumn: dataKey.RegistrationDate,
         rowSpan: 2,
-        field: dataKey.RegistrationDate
+        startCol: 3,
+        field: dataKey.RegistrationDate,
+        color: DefaultColor
     },
     {
         title: headerText.DealName,
@@ -122,34 +141,54 @@ export const row1 = [
         sortable: true,
         sortColumn: dataKey.DealName,
         rowSpan: 2,
-        field: dataKey.DealName
+        startCol: 4,
+        field: dataKey.DealName,
+        color: DefaultColor
     },
     {
         title: headerText.PaymentFrequency,
-        width: 120,
+        width: 95,
         sortable: true,
         sortColumn: dataKey.PaymentFrequency,
         rowSpan: 2,
-        field: dataKey.PaymentFrequency
+        startCol: 5,
+        field: dataKey.PaymentFrequency,
+        color: DefaultColor
     },
     {
         title: "Active Period",
         sortable: false,
         columnSpan: 5,
-        width: 150 * 5,
+        width: 86 * 5,
+        startCol: 6,
+        color: ActivePeriodColor
     },
     {
         title: "Holding Period",
         sortable: false,
         columnSpan: 4,
-        width: 150 * 4,
+        width: 85 * 4,
+        startCol: 11,
+        color: HoldingPeriodColor
     },
     {
-        title: "Approval Period",
+        title: "Redeposit Qualified Period",
         sortable: false,
-        columnSpan: 3,
-        width: 150 * 3
-    }
+        columnSpan: 4,
+        width: 91 * 4,
+        startCol: 15,
+        color: RedipositPeriodColor
+    },
+    {
+        title: headerText.CPAStatus,
+        width: 80,
+        sortable: true,
+        sortColumn: dataKey.CPAStatus,
+        rowSpan: 2,
+        startCol: 19,
+        field: dataKey.CPAStatus,
+        color: DefaultColor
+    },
 ];
 
 export const row2 = [
@@ -158,101 +197,138 @@ export const row2 = [
         width: 100,
         sortable: true,
         sortColumn: dataKey.FTD,
-        field: dataKey.FTD
+        field: dataKey.FTD,
+        color: ActivePeriodColor
     },
     {
         title: headerText.TotalDeposit,
         width: 150,
         sortable: true,
         sortColumn: dataKey.TotalDeposit,
-        field: dataKey.TotalDeposit
+        field: dataKey.TotalDeposit,
+        color: ActivePeriodColor
     },
     {
         title: headerText.Turnover,
         width: 150,
         sortable: true,
         sortColumn: dataKey.Turnover,
-        field: dataKey.Turnover
+        field: dataKey.Turnover,
+        color: ActivePeriodColor
     },
     {
         title: headerText.ActiveQualifiedDate,
         width: 150,
         sortable: true,
         sortColumn: dataKey.ActiveQualifiedDate,
-        field: dataKey.ActiveQualifiedDate
+        field: dataKey.ActiveQualifiedDate,
+        tooltipTitle: 'Date when player meets required actions (e.g., Min FTD, Deposit, or Turnover).',
+        color: ActivePeriodColor
     },
     {
         title: headerText.CPAAmount,
         width: 150,
         sortable: true,
         sortColumn: dataKey.CPAAmount,
-        field: dataKey.CPAAmount
+        field: dataKey.CPAAmount,
+        tooltipTitle: 'Click to view Turnover CPA Detail.',
+        color: ActivePeriodColor
     },
     {
         title: headerText.BetTicket,
         width: 150,
         sortable: true,
         sortColumn: dataKey.HoldingTickets,
-        field: dataKey.BetTicket
+        field: dataKey.BetTicket,
+        tooltipTitle: 'Total bet tickets placed during holding period.',
+        color: HoldingPeriodColor
     },
     {
         title: headerText.HoldingQualifiedDate,
         width: 150,
         sortable: true,
         sortColumn: dataKey.HoldingQualifiedDate,
-        field: dataKey.HoldingQualifiedDate
+        field: dataKey.HoldingQualifiedDate,
+        tooltipTitle: 'Date when minimum bet tickets are met.',
+        color: HoldingPeriodColor
     },
     {
         title: headerText.HoldingExpiredDate,
         width: 150,
         sortable: true,
         sortColumn: dataKey.HoldingExpiredDate,
-        field: dataKey.HoldingExpiredDate
+        field: dataKey.HoldingExpiredDate,
+        tooltipTitle: 'End date of the holding period.',
+        color: HoldingPeriodColor
     },
     {
         title: headerText.EstimatedCPAAmount,
         width: 150,
         sortable: true,
         sortColumn: dataKey.EstimatedCPAAmount,
-        field: dataKey.EstimatedCPAAmount
+        field: dataKey.EstimatedCPAAmount,
+        color: HoldingPeriodColor
     },
     {
-        title: headerText.ApprovedCPAAmount,
+        title: headerText.FirstDepositDate,
         width: 150,
         sortable: true,
-        sortColumn: dataKey.ApprovedCPAAmount,
-        field: dataKey.ApprovedCPAAmount
+        sortColumn: dataKey.FirstDepositDate,
+        field: dataKey.FirstDepositDate,
+        color: RedipositPeriodColor
     },
     {
-        title: headerText.CPAStatus,
+        title: headerText.ReDepositDays,
         width: 150,
         sortable: true,
-        sortColumn: dataKey.CPAStatus,
-        field: dataKey.CPAStatus
+        sortColumn: dataKey.ReDepositDays,
+        field: dataKey.ReDepositDays,
+        color: RedipositPeriodColor
     },
     {
-        title: headerText.ApprovalDate,
+        title: headerText.ExpiredRedepositDate,
         width: 150,
         sortable: true,
-        sortColumn: dataKey.ApprovalDate,
-        field: dataKey.ApprovalDate
+        sortColumn: dataKey.ExpiredRedepositDate,
+        field: dataKey.ExpiredRedepositDate,
+        tooltipTitle: 'Last day for player to redeposit.',
+        color: RedipositPeriodColor
+    },
+    {
+        title: headerText.IsRedeposit,
+        width: 150,
+        sortable: true,
+        sortColumn: dataKey.IsRedeposit,
+        field: dataKey.IsRedeposit,
+        tooltipTitle: 'Shows if the player has redeposited.',
+        color: RedipositPeriodColor
     }
 ]
 
 export const headerRows = [row1, row2]
 
-export const decimalFields = [
+export const decimalNullableFields = [
     dataKey.FTD,
     dataKey.TotalDeposit,
     dataKey.CPAAmount,
-    dataKey.EstimatedCPAAmount,
-    dataKey.ApprovedCPAAmount
+    dataKey.EstimatedCPAAmount
 ]
 
-export const dateFields = [
+export const dateNullableFields = [
     dataKey.RegistrationDate,
     dataKey.ActiveQualifiedDate,
     dataKey.HoldingQualifiedDate,
     dataKey.HoldingExpiredDate,
-    dataKey.ApprovalDate
+    dataKey.FirstDepositDate,
+    dataKey.ExpiredRedepositDate
+]
+
+export const numberNullableFields = [
+    dataKey.HoldingTickets,
+    dataKey.ReDepositDays
+]
+
+
+export const booleanNullableFields = [
+    dataKey.IsRedeposit
 ]

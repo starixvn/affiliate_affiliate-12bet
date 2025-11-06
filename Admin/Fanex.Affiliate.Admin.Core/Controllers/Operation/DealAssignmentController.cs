@@ -1,6 +1,5 @@
 ﻿namespace Fanex.Affiliate.Admin.Core.Controllers.Operation
 {
-    using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Mvc;
     using Fanex.Affiliate.Admin.Core.Attributes;

@@ -77,7 +77,17 @@ export class AggregateHeaderColumn extends HeaderColumn {
     }
 
     get totalShowableCol() {
-        return this.childHeader.filter(item => item.isShowable).length;
+        return this.childHeader.reduce((totalCols, item) => {
+            if (item instanceof AggregateHeaderColumn && item.isShowable) {
+                return totalCols + item.totalShowableCol;
+            }
+
+            if (item.isShowable) {
+                return totalCols + 1;
+            }
+
+            return totalCols;
+        }, 0);
     }
 }
 

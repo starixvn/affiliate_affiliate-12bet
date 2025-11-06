@@ -19,7 +19,7 @@
 
         public DateTime? RegisteredDate { get; set; }
 
-        public string RegisteredDateStr => RegisteredDate?.ToString(DATE_FORMAT + " HH:mm:ss") ?? HYPHEN;
+        public string RegisteredDateStr => RegisteredDate?.ToString(DATE_FORMAT) ?? HYPHEN;
 
         public int GroupId { get; set; }
 
@@ -31,7 +31,11 @@
 
         public decimal? FTD { get; set; }
 
-        public decimal TotalDeposit { get; set; }
+        public bool IsFTD { get; set; }
+
+        public decimal? TotalDeposit { get; set; }
+
+        public bool IsTotalDeposit { get; set; }
 
         public bool IsTO { get; set; }
 
@@ -43,32 +47,42 @@
 
         public decimal CPAAmount { get; set; }
 
-        public int HoldingBetTickets { get; set; }
+        public int? HoldingBetTickets { get; set; }
 
-        public int HoldingTickets { get; set; }
+        public int? HoldingTickets { get; set; }
+
+        public bool IsHolding { get; set; }
 
         public DateTime? HQD { get; set; }
 
-        public string HqdStr => HQD?.ToString(DATE_FORMAT) ?? HYPHEN;
+        public string HqdStr => IsHolding && HQD.HasValue ? HQD.Value.ToString(DATE_FORMAT) : HYPHEN;
 
         public DateTime? HED { get; set; }
 
-        public string HedStr => HED?.ToString(DATE_FORMAT) ?? HYPHEN;
+        public string HedStr => IsHolding && HED.HasValue ? HED.Value.ToString(DATE_FORMAT) : HYPHEN;
 
         public decimal? EstimatedCPAAmount { get; set; }
 
         public decimal? ApprovedCPAAmount { get; set; }
 
+        public DateTime? FirstDepositDate { get; set; }
+
+        public string FirstDepositDateStr => ExpiredRedepositDate.HasValue && FirstDepositDate.HasValue ? FirstDepositDate.Value.ToString(DATE_FORMAT) : HYPHEN;
+
+        public int? ReDepositDays { get; set; }
+
+        public DateTime? ExpiredRedepositDate { get; set; }
+
+        public string ExpiredRedepositDateStr => ExpiredRedepositDate?.ToString(DATE_FORMAT) ?? HYPHEN;
+
+        public bool? IsRedeposit { get; set; }
+
         public string CPAStatus { get; set; }
-
-        public DateTime? CPADate { get; set; }
-
-        public string CpaDateStr => CPADate?.ToString(DATE_FORMAT) ?? HYPHEN;
 
         public bool IsAbnormal { get; set; }
 
         public string Description { get; set; }
 
-        public string BetTicket => HoldingBetTickets == 0 && HoldingTickets == 0 ? HYPHEN : $"{HoldingBetTickets}/{HoldingTickets}";
+        public string BetTicket => IsHolding && HoldingBetTickets.HasValue && HoldingTickets.HasValue ? $"{HoldingBetTickets}/{HoldingTickets}" : HYPHEN;
     }
 }

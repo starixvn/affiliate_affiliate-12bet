@@ -4,11 +4,13 @@ import { bindActionCreators } from 'redux';
 import { Table, Row, Cell } from '@9softstudio/react-fixed-table-header';
 import { Button } from 'reactstrap';
 
-import { htmlDecode } from '../../../../modules/htmlHelper';
-import { formatDecimalWithCurrencySymbol } from '../../../../modules/numberFormat';
+import { htmlDecode } from '@/modules/htmlHelper';
+import { formatDecimalWithCurrencySymbol } from '@/modules/numberFormat';
+import { getFirstDayOfMonth, getDayOfMonth, getLastDayOfMonth, openUrlOnNewWindow } from '@/modules/utils';
 import { setPagingOption, toggleLoaderUserPanel, fetchData, setTransactionId, redirectToDailyEarning, setExpandMonthDateList, redirectToSubAffiliate } from '../actions';
-import { headerText, globalResource, transTypeList, monthlyEarning, MONTHLY_TOTAL, MONTHLY_EARNING, PAYMENT_REQUEST, SUBAFFILIATE, selectedAllProduct, maxWidth, CalculatedMonth } from '../modules/constants';
+import { headerText, globalResource, MONTHLY_TOTAL, CALCULATED_MONTH, transTypeSettings, selectedAllProduct, maxWidth, paymentCPAManagementSettings} from '../modules/constants';
 import { getScrollTopPosition, setScrollTop } from '../modules/utils';
+import { relativePath } from '@/pages/report/libs/constants';
 
 export class Content extends PureComponent {
     constructor(props) {
@@ -37,7 +39,7 @@ export class Content extends PureComponent {
         const { affId } = this.props;
         const { isGetAll, fromDate, toDate, pageIndex, pageSize } = param;
 
-        const postParam = isGetAll ? { fromDate: null, toDate: null, affId, pageIndex, pageSize } : { fromDate, toDate, affId, pageIndex, pageSize  };
+        const postParam = isGetAll ? { fromDate: null, toDate: null, affId, pageIndex, pageSize } : { fromDate, toDate, affId, pageIndex, pageSize };
 
         const data = await this.props.fetchData(postParam);
 
@@ -113,13 +115,92 @@ export class Content extends PureComponent {
         return this.props.redirectToSubAffiliate(subAffiliateParam);
     }
 
+    _buildCpaAdjustmentParams = (itemDate) => {
+        const adjustedDate = getDayOfMonth(itemDate);
+        const adjustmentSetting = paymentCPAManagementSettings.Adjustment;
+
+        return {
+            fromDate: adjustedDate,
+            toDate: adjustedDate,
+            viewBy: adjustmentSetting.ViewBy
+        };
+    }
+
+    _buildApprovedCpaEarningParams = (itemDate) => {
+        const { param } = this.props;
+        const approvedSetting = paymentCPAManagementSettings.Approved;
+        
+        const itemMonth = itemDate.getMonth();
+        const itemYear = itemDate.getFullYear();
+        
+        const paramFromDate = new Date(param.fromDate);
+        const paramToDate = new Date(param.toDate);
+        
+        const fromMonth = paramFromDate.getMonth();
+        const fromYear = paramFromDate.getFullYear();
+        const toMonth = paramToDate.getMonth();
+        const toYear = paramToDate.getFullYear();
+        
+        let fromDate, toDate;
+        
+        if (itemMonth === fromMonth && itemYear === fromYear) {
+            fromDate = getDayOfMonth(paramFromDate);
+            toDate = getLastDayOfMonth(new Date(itemDate));
+        }
+        else if (itemMonth === toMonth && itemYear === toYear) {
+            fromDate = getFirstDayOfMonth(new Date(itemDate));
+            toDate = getDayOfMonth(paramToDate);
+        }
+        else {
+            fromDate = getFirstDayOfMonth(new Date(itemDate));
+            toDate = getLastDayOfMonth(new Date(itemDate));
+        }
+
+        return {
+            fromDate,
+            toDate,
+            status: approvedSetting.Status,
+            viewBy: approvedSetting.ViewBy
+        };
+    }
+
+    _buildPaymentCpaParams = (dataItem, isCpaAdjustment) => {
+        const { affName } = this.props;
+        
+        if (!dataItem || !dataItem.MonthDate) {
+            alert('Invalid data item: missing required MonthDate property');
+        }
+
+        if (isCpaAdjustment) {
+            const itemDate = new Date(dataItem.Description.slice(-10));
+            
+            return {
+                affName,
+                ...this._buildCpaAdjustmentParams(itemDate)
+            };
+        }
+
+        return {
+            affName,
+            ...this._buildApprovedCpaEarningParams(new Date(dataItem.MonthDate))
+        };
+    }
+
+    _handleRedirectToPaymentCPAManagement = (dataItem, isCpaAdjustment = false) => {
+        const paramForPaymentCPAManagement = this._buildPaymentCpaParams(dataItem, isCpaAdjustment);
+
+        openUrlOnNewWindow(relativePath.paymentCpaManagement, paramForPaymentCPAManagement, 'paramForPaymentCPAManagement');
+    }
+
     _getClickHandlerByTransType() {
         return {
-            [PAYMENT_REQUEST]: (dataItem) => () => {
+            [transTypeSettings.PaymentRequest]: (dataItem) => () => {
                 return this.handleSetTransactionId(dataItem.TransId);
             },
-            [MONTHLY_EARNING]: (dataItem) => () => this._handleRedirectToDailyEarning(dataItem),
-            [SUBAFFILIATE]: (dataItem) => () => this._handleRedirectToSubAffiliate(dataItem)
+            [transTypeSettings.MonthlyEarning]: (dataItem) => () => this._handleRedirectToDailyEarning(dataItem),
+            [transTypeSettings.SubAffiliate]: (dataItem) => () => this._handleRedirectToSubAffiliate(dataItem),
+            [transTypeSettings.ApprovedCpaEarning]: (dataItem) => () => this._handleRedirectToPaymentCPAManagement(dataItem),
+            [transTypeSettings.CpaAdjustment]: (dataItem) => () => this._handleRedirectToPaymentCPAManagement(dataItem, true),
         }
     }
 
@@ -143,14 +224,14 @@ export class Content extends PureComponent {
         const creator = htmlDecode(dataItem.Creator);
         const description = htmlDecode(dataItem.DescriptionDisplay);
         const isTotalRow = transType === MONTHLY_TOTAL;
-        const transTypeString = isTotalRow && dataItem.CalculatedType == CalculatedMonth ? 'Monthly Total' : transTypeList[transType];
+        const transTypeString = isTotalRow && dataItem.CalculatedType == CALCULATED_MONTH ? 'Monthly Total' : dataItem.TransTypeDisplayText;
 
         return (
             <React.Fragment key={`dataRow-${dataItem.TransId}-${dataItem.DateText}-${dataItem.TransType}`}>
                 <Row className={status && status.toLowerCase()}>
                     <Cell title={index} className="text-center">{index}</Cell>
                     <Cell title={dataItem.DateText} className="text-center">{
-                        isTotalRow ? (
+                        isTotalRow && !!dataItem.Children.length ? (
                             <Button className="p-0 th-wrapper" color="link" onClick={() => this._handleShow(dataItem.NormalizeDateText)}>
                                 <div className="icon-container">
                                     <span className={`caret ${isExpand ? 'expand current' : 'collapsed'}`}></span>
@@ -159,7 +240,7 @@ export class Content extends PureComponent {
                             </Button>
                         ) : dataItem.DateText
                     }</Cell>
-                    <Cell title={transTypeString || monthlyEarning} className="text-center">{transTypeString || monthlyEarning}</Cell>
+                    <Cell title={transTypeString || MONTHLY_EARNING} className="text-center">{transTypeString || MONTHLY_EARNING}</Cell>
                     <Cell title={amount} className="text-right">
                         {clickHandler ?
                             (<Button className="p-0" color="link" onClick={clickHandler(dataItem)}>
@@ -219,16 +300,24 @@ export class Content extends PureComponent {
 }
 
 
-function mapStateToProps({ affCommonInfo, statementHistory }) {
-    const { pagingOption, param, expandMonthDateList } = statementHistory;
+function mapStateToProps({ today, affCommonInfo, statementHistory }) {
+    const { pagingOption, param, expandMonthDateList,  } = statementHistory;
 
-    const { affId } = affCommonInfo;
+    const { affId, affName } = affCommonInfo;
 
-    return Object.assign({}, { affId, pagingOption, param, expandMonthDateList });
+    return Object.assign({}, { today, affId, affName, pagingOption, param, expandMonthDateList });
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ setPagingOption, toggleLoaderUserPanel, fetchData, setTransactionId, redirectToDailyEarning, setExpandMonthDateList, redirectToSubAffiliate }, dispatch);
+    return bindActionCreators({
+        setPagingOption,
+        toggleLoaderUserPanel,
+        fetchData,
+        setTransactionId,
+        redirectToDailyEarning,
+        setExpandMonthDateList,
+        redirectToSubAffiliate,
+    }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Content);

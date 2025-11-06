@@ -6,7 +6,7 @@ export const menuKey = {
     transferReport: 'transferReport',
     affiliateCpaReport: 'affiliateCpaReport',
     playerCPA: 'playerCPA',
-    redepositCpaReport: 'redepositCpaReport',
+    paymentCpaManagement: 'paymentCpaManagement',
 }
 
 export const relativePath = {
@@ -15,10 +15,10 @@ export const relativePath = {
     transferReport: resolveClientUrl('Portal/TransferReport'),
     affiliateCpaReport: resolveClientUrl('Portal/AffiliateCpaReport'),
     playerCPA: resolveClientUrl('Portal/PlayerCpaReport'),
-    redepositCpaReport: resolveClientUrl('Portal/RedepositCpaReport'),
+    paymentCpaManagement: resolveClientUrl('Portal/PaymentCpaManagement'),
 }
 
-export const getMaxHeight = () => {
-    const height = window.innerHeight - 350;
+export const getMaxHeight = (isMultiRowFilters = false) => {
+    const height = window.innerHeight - (isMultiRowFilters ? 325 : 295);
     return height > 300 ? height : 300;
 }

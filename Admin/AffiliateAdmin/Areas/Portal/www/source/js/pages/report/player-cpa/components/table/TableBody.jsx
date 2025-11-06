@@ -1,5 +1,6 @@
 import React from 'react'
-import { globalResource } from '../../../../../modules/globalResource';
+import { globalResource } from '@/modules/globalResource';
+import { getCSSClassName } from '@/modules/utils';
 import { connect } from 'react-redux';
 import { setMemberCpaId, setDealId, toggleDealPopup, setAffName } from '../../actions';
 
@@ -14,6 +15,12 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
         setAffName(data.affUserName)
         toggleDealPopup()
     }
+
+    const ftd = data.isFTD ? data.ftd : '-';
+    const totalDeposit = data.isTotalDeposit ? data.totalDeposit : '-';
+    const isRedeposit = data.isRedeposit === '-' ? '-' : (!data.isRedeposit ? 'No' : 'Yes');
+    const statusClassName = getCSSClassName('status', data.cpaStatus);
+    const paymentFrequencyClassName = getCSSClassName('payment-frequency', data.scheduleName);
 
     return (
         <tr key={`dataRow-${rowNumber}`}>
@@ -33,13 +40,15 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
                 <span className="btn-link" onClick={handleClickDeal}>{data.dealName}</span>
             </td>
             <td title={data.scheduleName} className="text-center">
-                {data.scheduleName}
+                <span className={paymentFrequencyClassName}>
+                    {data.scheduleName}
+                </span>
             </td>
-            <td title={data.ftd} className="text-right">
-                {data.ftd}
+            <td title={ftd} className="text-right">
+                {ftd}
             </td>
-            <td title={data.totalDeposit} className="text-right">
-                {data.totalDeposit}
+            <td title={totalDeposit} className="text-right">
+                {totalDeposit}
             </td>
             <td className="text-center">
                 {
@@ -71,17 +80,29 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
             <td title={data.estimatedCPAAmount} className="text-right">
                 {data.estimatedCPAAmount}
             </td>
-            <td title={data.approvedCPAAmount} className="text-right">
-                {data.approvedCPAAmount}
+            <td title={data.firstDepositDateStr} className="text-center">
+                {data.firstDepositDateStr}
+            </td>
+            <td title={data.reDepositDays} className="text-center">
+                {data.reDepositDays}
+            </td>
+            <td title={data.expiredRedepositDateStr} className="text-center">
+                {data.expiredRedepositDateStr}
+            </td>
+            <td title={isRedeposit} className="text-center">
+                {isRedeposit}
             </td>
             <td title={data.cpaStatus} className="text-center">
-                {data.cpaStatus}
+                <span className={statusClassName}>
+                    {data.cpaStatus}
+                </span>
                 {
-                    data.isAbnormal && <span title={data.description} className="ml-1 oi icon-info"></span>
+                    data.isAbnormal && (
+                        <span title={data.description}>
+                            <span className="oi icon-info mx-2 mb-1"></span>
+                        </span>
+                    )
                 }
-            </td>
-            <td title={data.cpaDateStr} className="text-center">
-                {data.cpaDateStr}
             </td>
         </tr>
     )
@@ -99,7 +120,7 @@ export function TableBody({
         return (
             <tbody>
                 <tr>
-                    <td title={globalResource.NoInfo} className="text-center" colSpan={18}>{globalResource.NoInfo}</td>
+                    <td title={globalResource.NoInfo} className="text-center" colSpan={20}>{globalResource.NoInfo}</td>
                 </tr>
             </tbody>
         )

@@ -5,8 +5,8 @@
 }
 
 @section pagecss{
-    <link href="@Url.VersionedLink("~/Areas/Portal/www/dist/style/pages/report.css?v="+DateTimeHelper.UtcNow.Ticks)" rel="stylesheet" />
-    <link href="@Url.VersionedLink("~/Areas/Portal/www/dist/style/pages/operation/deal.css?v="+DateTimeHelper.UtcNow.Ticks)" rel="stylesheet" />
+    <link href="@Url.VersionedLink("~/Areas/Portal/www/dist/style/pages/report.css")" rel="stylesheet" />
+    <link href="@Url.VersionedLink("~/Areas/Portal/www/dist/style/pages/operation/deal.css")" rel="stylesheet" />
 }
 
 @section pagejs{
@@ -16,5 +16,5 @@
             today: '@DateTimeHelper.Gmt8NowString'
         }
     </script>
-    <script type="text/javascript" src="@Url.VersionedLink("~/Areas/Portal/www/dist/js/pages/report.js?v="+DateTimeHelper.UtcNow.Ticks)"></script>
+    <script type="text/javascript" src="@Url.VersionedLink("~/Areas/Portal/www/dist/js/pages/report.js")"></script>
 }

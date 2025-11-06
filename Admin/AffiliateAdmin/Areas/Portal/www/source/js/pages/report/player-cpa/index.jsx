@@ -6,8 +6,8 @@ import AppContainer from './components/AppContainer'
 import { convertListToMutilpleSelected } from '../../../modules/utils';
 
 export default function App() {
-    const { deals} = window.initialState;
-    const newDeals = convertListToMutilpleSelected(deals, 'GroupId', 'GroupName');
+    const { deals } = window.initialState;
+    let newDeals = convertListToMutilpleSelected(deals, 'GroupId', 'GroupName');
 
     const store = configureStore({
         ...window.initialState,

@@ -13,7 +13,7 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
 
-    [FunctionAuthorize(FunctionName = Function.AffReport)]
+    [FunctionAuthorize(FunctionName = Function.DisabledFunction)]
     public class AffiliateCpaReportController : ReadOnlySessionBaseController
     {
         private readonly IAffiliateCpaReportService _affiliateCpaReportService;
@@ -44,7 +44,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryHeader]
-        public ActionResult GetData(AffiliateCpaRequest request)
+        public ActionResult GetData(AffiliateCpaParam request)
         {
             if (!ModelState.IsValid)
             {

@@ -39,13 +39,6 @@ export const setCurrencyList = (data) => {
     }
 }
 
-export const setCommGroupList = (data) => {
-    return {
-        type: types.SET_COMM_GROUP_LIST,
-        data
-    }
-}
-
 export const setPaymentCurrencyList = (data) => {
     return {
         type: types.SET_PAYMENT_CURRENCY_LIST,

@@ -16,11 +16,8 @@ const now = new Date();
 const defaultToday = `${now.getMonth()}/${now.getDate()}/${now.getFullYear()}`;
 const today = createReducer(defaultToday, {});
 
-export const commGroupList = createReducer([], {
-    [types.SET_COMM_GROUP_LIST](prevState, action) {
-        return action.data;
-    }
-});
+export const dealList = createReducer([], {});
+export const hierarchicalDealList = createReducer([], {});
 
 export const productList = createReducer([], {
     [types.SET_PRODUCT_LIST](prevState, action) {
@@ -70,7 +67,8 @@ export default combineReducers({
     isShowLoader,
     reportCutOffDate,
     productList,
-    commGroupList,
+    dealList,
+    hierarchicalDealList,
     pagingOption,
     languageList,
     currencyList,

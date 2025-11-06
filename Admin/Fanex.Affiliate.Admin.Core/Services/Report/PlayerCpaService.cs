@@ -5,6 +5,7 @@
     using Fanex.Affiliate.Admin.Core.Criterias.Report;
     using Fanex.Affiliate.Admin.Core.DTO;
     using Fanex.Affiliate.Admin.Core.DTO.Report;
+    using Fanex.Affiliate.Admin.Core.Extensions;
     using Fanex.Affiliate.Admin.Core.MetaModels.Report;
     using Fanex.Data.Repository;
 
@@ -17,11 +18,9 @@
             _dynamicRepository = dynamicRepository;
         }
 
-        public async Task<EntityResult<PlayerCpaReport>> GetDataAsync(PlayerCpaReportRequest request)
+        public async Task<EntityResult<PlayerCpaReport>> GetDataAsync(PlayerCpaReportParam request)
         {
-            var result = await FetchFromDatabaseAsync(request);
-
-            return result;
+            return await FetchFromDatabaseAsync(request);
         }
 
         public async Task<TurnoverDetailModel> GetTurnoverDetailAsync(int memberCpaId)
@@ -47,9 +46,9 @@
             };
         }
 
-        private async Task<EntityResult<PlayerCpaReport>> FetchFromDatabaseAsync(PlayerCpaReportRequest request)
+        private async Task<EntityResult<PlayerCpaReport>> FetchFromDatabaseAsync(PlayerCpaReportParam param)
         {
-            var criteria = request.CreateCriteria();
+            var criteria = param.MapTo<PlayerCpaReportParam, PlayerCpaReportCriteria>();
             var (reports, total) =
                 await _dynamicRepository.FetchMultipleAsync<PlayerCpaReport, PlayerCpaReport>(criteria);
 

@@ -10,6 +10,8 @@ namespace Fanex.Affiliate.Admin.Core.DTO.Report
 
         public string PaymentCurrency { get; set; }
 
+        public string PaymentFrequency { get; set; }
+
         public DateTime? MonthDate { get; set; }
 
         public string Description { get; set; }
@@ -31,6 +33,8 @@ namespace Fanex.Affiliate.Admin.Core.DTO.Report
         public int ActivePlayer { get; set; }
 
         public int QualifiedMember { get; set; }
+
+        public int QualifiedCPAMember { get; set; }
 
         public decimal Deposit { get; set; }
 
@@ -70,7 +74,7 @@ namespace Fanex.Affiliate.Admin.Core.DTO.Report
 
         public decimal SubAffEarning { get; set; }
 
-        public decimal TotalEarning => Earning + SubAffEarning;
+        public decimal TotalEarning { get; set; }
 
         public bool IsMultiGroupProduct { get; set; }
 
@@ -80,6 +84,16 @@ namespace Fanex.Affiliate.Admin.Core.DTO.Report
 
         public string Status { get; set; }
 
+        public int GroupId { get; set; }
+
+        public byte GroupTypeId { get; set; }
+
         public string CommGroupName { get; set; }
+
+        public decimal ApprovedCPAAmount { get; set; }
+
+        public decimal AdjustedCPAAmount { get; set; }
+
+        public decimal TotalMainEarning { get; set; }
     }
 }

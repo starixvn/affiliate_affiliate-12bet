@@ -10,40 +10,73 @@ import MultipleSelect from '../../../../components/multiple-select';
 
 import { setReportTitle, setParams, setPlayerCpaData, setPagingOption } from '../actions';
 import { reportName, statusOptions, viewByOptions, defaultParams } from '../libs/constants';
-import { formatUnit, handleAfterChangeFromDate, handleAfterChangeToDate, handleChangeMultipleSelected } from '../../../../modules/utils';
+import { handleAfterChangeFromDate, handleAfterChangeToDate, handleChangeMultipleSelected, getDayOfMonth, getFirstDayOfMonth, getCookie } from '@/modules/utils';
 import { globalResource } from '../../../../modules/globalResource';
 import { defaultPagingOption, minDate, sixMonth } from '../../../../modules/constants';
 import { getPlayerCpaData } from '../libs/service';
 import { toggleLoader } from '../../../../actions/loaderAction';
+import { relativePath } from '../../libs/constants';
 
-const Filter = ({ params, setParams, setPlayerCpaData, setPagingOption, today, deals, toggleLoader, setReportTitle }) => {
-
+const Filter = ({
+    params,
+    pagingOption,
+    setParams,
+    setPlayerCpaData,
+    setPagingOption,
+    today,
+    deals,
+    toggleLoader,
+    setReportTitle
+}) => {
     const [nowString, setNowString] = useState('');
     const [dealList, setDealList] = useState(deals);
+    const [statusList, setStatusList] = useState(statusOptions);
 
     useEffect(() => {
         const now = new Date(today);
-        const currentMonth = now.getMonth() + 1;
-        const currentMonthString = formatUnit(currentMonth);
-        const currentYear = now.getFullYear();
+        const nowStr = getDayOfMonth(now);
+        setNowString(nowStr);
 
-        const nowString = `${currentMonthString}/${formatUnit(now.getDate())}/${currentYear}`;
-        setNowString(nowString);
-
-        // Set initial date params
-        setParams({
-            fromDate: `${currentMonthString}/01/${currentYear}`,
-            toDate: nowString
-        });
-    }, []);
-
-    useEffect(() => {
+        let dealIds = '';
         if (deals && deals.length > 0) {
-            const dealIds = deals.map(deal => deal.key).join(',');
-            setParams({
-                dealName: dealIds
-            });
+            dealIds = deals.map(deal => deal.key).join(',');
         }
+
+        let selectedStatus = '';
+        if (statusList && statusList.length > 0) {
+            selectedStatus = statusList.map(status => status.key).join(',');
+        }
+
+        let initialParams = {
+            ...defaultParams,
+            fromDate: getFirstDayOfMonth(now),
+            toDate: nowStr,
+            dealName: dealIds,
+            statusId: selectedStatus
+        }
+
+        const paramForPlayerCpaReport = getCookie('paramForPlayerCpaReport');
+        if (paramForPlayerCpaReport) {
+            const param = JSON.parse(paramForPlayerCpaReport);
+
+            initialParams = {
+                ...initialParams,
+                userName: param.custName,
+                fromDate: param.fromDate,
+                toDate: param.toDate,
+                dealName: param.dealName,
+                viewBy: param.viewBy,
+                pageIndex: 1,
+                pageSize: pagingOption.PageSize,
+            }
+
+            setDealList(handleChangeMultipleSelected(dealList, `${param.dealName}`));
+
+            document.cookie = `paramForPlayerCpaReport=; path=${relativePath.playerCPA}`;
+        }
+
+        setParams(initialParams);
+        paramForPlayerCpaReport && fetchData(initialParams);
     }, []);
 
     const handleChange = (e) => {
@@ -66,6 +99,13 @@ const Filter = ({ params, setParams, setPlayerCpaData, setPagingOption, today, d
         });
     }
 
+    const handleChangeStatuses = (item, selectedStatuses) => {
+        setStatusList(handleChangeMultipleSelected(statusList, selectedStatuses));
+        setParams({
+            statusId: selectedStatuses
+        });
+    }
+
     const handlePressEnter = (event) => {
         if (event.charCode === 13) {
             event.preventDefault();
@@ -75,22 +115,22 @@ const Filter = ({ params, setParams, setPlayerCpaData, setPagingOption, today, d
     }
 
     const handleClickSearch = () => {
-        resetParams();
-        fetchData();
-    }
-
-
-    const resetParams = () => {
-        setParams({
+        const newParams = {
+            ...params,
+            pageIndex: 1,
+            pageSize: pagingOption.PageSize,
             sortColumn: defaultParams.sortColumn,
             isAscending: defaultParams.isAscending
-        });
-    }
+        };
 
-    const fetchData = async () => {
+        setParams(newParams);
+        fetchData(newParams);
+    };
+
+    const fetchData = async (currentParams = params) => {
         toggleLoader(true);
 
-        const data = await getPlayerCpaData(params);
+        const data = await getPlayerCpaData(currentParams);
         if (data) {
             setPagingOption({
                 PageIndex: defaultPagingOption.PageIndex,
@@ -102,7 +142,7 @@ const Filter = ({ params, setParams, setPlayerCpaData, setPagingOption, today, d
         }
 
         toggleLoader(false);
-    }
+    };
 
     const getTitle = () => {
         let title = reportName;
@@ -130,9 +170,21 @@ const Filter = ({ params, setParams, setPlayerCpaData, setPagingOption, today, d
                         hasInputOption={true}
                         onChange={handleChangeDeals} />
                 </FormGroup>
-                <Field className="my-sm-1 mr-sm-4" name="statusId" value={params.status} onChange={handleChange} label="Status" selectOptions={statusOptions} type='select' />
-                <Field className="my-sm-1 mr-sm-4" name="viewBy" value={params.viewBy} onChange={handleChange} label="View By" selectOptions={viewByOptions} type='select' />
                 <FormGroup className="my-sm-1 mr-sm-4">
+                    <Label htmlFor="Status" className="mr-sm-2">Status</Label>
+                    <MultipleSelect
+                        dataSource={statusList}
+                        keyField="key"
+                        valueField="name"
+                        statusField="checked"
+                        maxDisplayItemCount={1}
+                        noneSelectedLabel="None Select"
+                        selectedAllLabel="All Statuses"
+                        hasInputOption={true}
+                        onChange={handleChangeStatuses} />
+                </FormGroup>
+                <Field className="my-sm-1 mr-sm-2" name="viewBy" selectedValue={params.viewBy} onChange={handleChange} label="View By" selectOptions={viewByOptions} type='select' />
+                <FormGroup className="my-sm-1 mr-sm-2">
                     <Label className="mr-sm-2">{globalResource.From}</Label>
                     <DatePicker
                         minDate={minDate}
@@ -157,12 +209,14 @@ const Filter = ({ params, setParams, setPlayerCpaData, setPagingOption, today, d
         </div>
     )
 }
-function mapStateToProps({ playerCpaData, params, today, deals }) {
+
+function mapStateToProps({ playerCpaData, params, deals, today, pagingOption }) {
     return Object.assign({}, {
         playerCpaData,
         params,
         today,
-        deals
+        deals,
+        pagingOption
     });
 }
 

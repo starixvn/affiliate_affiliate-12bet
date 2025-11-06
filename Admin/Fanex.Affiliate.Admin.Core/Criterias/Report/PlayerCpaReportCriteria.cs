@@ -11,7 +11,7 @@
 
         public string DealName { get; set; }
 
-        public int StatusId { get; set; }
+        public string StatusId { get; set; }
 
         public int ViewBy { get; set; }
 

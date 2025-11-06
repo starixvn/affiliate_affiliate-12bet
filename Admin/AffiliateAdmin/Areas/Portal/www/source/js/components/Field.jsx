@@ -5,6 +5,8 @@ export default function Field({
     label,
     name,
     value,
+    selectedValue,
+    defaultValue,
     onChange,
     type = 'text',
     placeholder,
@@ -22,7 +24,8 @@ export default function Field({
                 id={label}
                 maxLength={maxLength}
                 onChange={onChange}
-                value={value}
+                value={selectedValue !== undefined ? selectedValue : value}
+                defaultValue={defaultValue}
                 placeholder={placeholder}
                 onKeyPress={onPressEnter}
             >

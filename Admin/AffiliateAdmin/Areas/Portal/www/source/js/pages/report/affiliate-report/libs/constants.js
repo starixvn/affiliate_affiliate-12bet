@@ -1,6 +1,6 @@
-import { defaultBaseCurrency, minMonthDate } from '../../../../modules/constants';
+import { defaultBaseCurrency, minMonthDate, CPAViewBySettings, DealGroupTypeSettings } from '../../../../modules/constants';
 
-export { defaultBaseCurrency, minMonthDate };
+export { defaultBaseCurrency, minMonthDate, DealGroupTypeSettings };
 
 const sortByCommon = {
     Turnover: 2,
@@ -34,6 +34,17 @@ export const sortDirectionType = {
     descending: 1
 }
 
+export const paymentCPAManagementSetting = {
+    Approved: {
+        ViewBy: CPAViewBySettings.AutoApprovedDate,
+        Status: "Qualified"
+    },
+    Adjustment: {
+        ViewBy: CPAViewBySettings.AdjustmentDate,
+        Status: "Qualified,Not Qualified"
+    }
+}
+
 export const totalText = 'Total (all pages)';
 
 export const resource = {
@@ -57,6 +68,7 @@ export const reportKey = {
     PreferredLanguage: 'PreferredLanguage',
     PaymentCurrency: 'PaymentCurrency',
     CommGroupName: 'CommGroupName',
+    PaymentFrequency: 'PaymentFrequency',
     TotalClick: 'TotalClick',
     UniqueClick: 'UniqueClick',
     Signup: 'Signup',
@@ -65,6 +77,7 @@ export const reportKey = {
     FDM_TotalDeposit: 'FDM_TotalDeposit',
     ActivePlayer: 'ActivePlayer',
     QualifiedMember: 'QualifiedMember',
+    QualifiedCPAMember: 'QualifiedCPAMember',
     NoOfSubAff: 'NoOfSubAff',
     TotalDeposit: 'TotalDeposit',
     Deposit: 'Deposit',
@@ -79,7 +92,9 @@ export const reportKey = {
     TotalFee: 'TotalFee',
     CommissionRate: 'CommissionRate',
     Earning: 'Earning',
-    EarningBy: 'EarningBy',
+    ApprovedCPAAmount: 'ApprovedCPAAmount',
+    AdjustedCPAAmount: 'AdjustedCPAAmount',
+    TotalMainEarning: "TotalMainEarning",
     SubAffEarning: 'SubAffEarning',
     TotalEarning: 'TotalEarning',
     AffWithdrawal: 'AffWithdrawal',
@@ -88,6 +103,8 @@ export const reportKey = {
     CurrentBBF: 'CurrentBBF',
     MemberStatistics: 'MemberStatistics',
     AffiliateStatistics: 'AffiliateStatistics',
+    AffiliateEarning: 'AffiliateEarning',
+    SubAffiliateEarning: 'SubAffiliateEarning',
     MonthOnMonth: 'MonthOnMonth',
     PlayerGgr: 'PlayerGgr'
 }
@@ -98,18 +115,20 @@ export const headerText = {
     [reportKey.PreferredLanguage]: 'Language',
     [reportKey.MonthDateString]: 'Month',
     [reportKey.PaymentCurrency]: 'Linked Account Currency',
-    [reportKey.CommGroupName]: 'Revenue Group',
+    [reportKey.CommGroupName]: 'Deal Name',
+    [reportKey.PaymentFrequency]: 'Payment Frequency',
     [reportKey.TotalClick]: 'Total Click',
     [reportKey.UniqueClick]: 'Unique Click',
     [reportKey.Signup]: 'Signup',
-    [reportKey.Fdm]: 'FTD',
-    [reportKey.Fdm_Amount]: 'FTD Amt',
+    [reportKey.Fdm]: 'FTD Count',
+    [reportKey.Fdm_Amount]: 'FTD Amount',
     [reportKey.FDM_TotalDeposit]: "FTD's Total Deposit",
     [reportKey.ActivePlayer]: 'Active Player',
-    [reportKey.QualifiedMember]: 'Qualified Player',
+    [reportKey.QualifiedMember]: 'Qualified RevShare Players',
+    [reportKey.QualifiedCPAMember]: 'Qualified CPA Players',
     [reportKey.NoOfSubAff]: 'Sub-Affiliate',
-    [reportKey.TotalDeposit]: 'Total Deposit',
-    [reportKey.Deposit]: 'Deposit',
+    [reportKey.TotalDeposit]: 'Total Deposit Count',
+    [reportKey.Deposit]: 'Total Deposit Amount',
     [reportKey.Withdrawal]: 'Withdrawal',
     [reportKey.Turnover]: 'Turnover',
     [reportKey.Ggr]: 'GGR',
@@ -119,10 +138,12 @@ export const headerText = {
     [reportKey.DepositFee]: 'Deposit Fee',
     [reportKey.WithdrawalFee]: 'Withdrawal Fee',
     [reportKey.TotalFee]: 'Total Fee',
-    [reportKey.CommissionRate]: 'Share%',
-    [reportKey.Earning]: 'Earning',
-    [reportKey.EarningBy]: 'Earning By',
-    [reportKey.SubAffEarning]: 'Sub-Affiliate Earning',
+    [reportKey.CommissionRate]: 'Revenue Share%',
+    [reportKey.Earning]: 'Revenue Share',
+    [reportKey.ApprovedCPAAmount]: 'Auto Approved CPA Amount',
+    [reportKey.AdjustedCPAAmount]: 'Adjusted CPA Amount',
+    [reportKey.TotalMainEarning]: 'Total',
+    [reportKey.SubAffEarning]: 'Revenue Share',
     [reportKey.TotalEarning]: 'Total Earning',
     [reportKey.AffWithdrawal]: 'Withdrawal',
     [reportKey.AffAdjustment]: 'Adjustment',
@@ -130,6 +151,8 @@ export const headerText = {
     [reportKey.CurrentBBF]: 'Current Balance B/F',
     [reportKey.MemberStatistics]: 'Player Statistics',
     [reportKey.AffiliateStatistics]: 'Affiliate Statistics',
+    [reportKey.AffiliateEarning]: 'Earning',
+    [reportKey.SubAffiliateEarning]: 'Sub-Affiliate Earning',
     [reportKey.MonthOnMonth]: 'Month on Month',
     [reportKey.PlayerGgr]: 'Player GGR'
 }
@@ -141,6 +164,7 @@ export const headerConfig = {
     [reportKey.MonthDateString]: { label: headerText[reportKey.MonthDateString], isShowable: (claimPrincipal, isMainView) => !isMainView },
     [reportKey.PaymentCurrency]: { label: headerText[reportKey.PaymentCurrency], isShowable: (claimPrincipal, isMainView) => isMainView },
     [reportKey.CommGroupName]: { label: headerText[reportKey.CommGroupName] },
+    [reportKey.PaymentFrequency]: { label: headerText[reportKey.PaymentFrequency], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
     [reportKey.TotalClick]: { label: headerText[reportKey.TotalClick] },
     [reportKey.UniqueClick]: { label: headerText[reportKey.UniqueClick] },
     [reportKey.Signup]: { label: headerText[reportKey.Signup] },
@@ -149,12 +173,13 @@ export const headerConfig = {
     [reportKey.FDM_TotalDeposit]: { label: headerText[reportKey.FDM_TotalDeposit], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
     [reportKey.ActivePlayer]: { label: headerText[reportKey.ActivePlayer] },
     [reportKey.QualifiedMember]: { label: headerText[reportKey.QualifiedMember] },
+    [reportKey.QualifiedCPAMember]: { label: headerText[reportKey.QualifiedCPAMember], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
     [reportKey.NoOfSubAff]: { label: headerText[reportKey.NoOfSubAff] },
     [reportKey.TotalDeposit]: { label: headerText[reportKey.TotalDeposit] },
+    [reportKey.Deposit]: { label: headerText[reportKey.Deposit] },
     [reportKey.MemberStatistics]: {
         label: headerText[reportKey.MemberStatistics],
         cols: {
-            [reportKey.Deposit]: { label: headerText[reportKey.Deposit] },
             [reportKey.Withdrawal]: { label: headerText[reportKey.Withdrawal] },
             [reportKey.Turnover]: { label: headerText[reportKey.Turnover] },
             [reportKey.Ggr]: { label: headerText[reportKey.Ggr] },
@@ -169,10 +194,25 @@ export const headerConfig = {
     [reportKey.AffiliateStatistics]: {
         label: headerText[reportKey.AffiliateStatistics],
         cols: {
-            [reportKey.CommissionRate]: { label: headerText[reportKey.CommissionRate], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
-            [reportKey.Earning]: { label: headerText[reportKey.Earning], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
-            [reportKey.EarningBy]: { label: headerText[reportKey.EarningBy], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isMainView },
-            [reportKey.SubAffEarning]: { label: headerText[reportKey.SubAffEarning], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
+            [reportKey.AffiliateEarning]: {
+                label: headerText[reportKey.AffiliateEarning],
+                cols: {
+                    [reportKey.CommissionRate]: { label: headerText[reportKey.CommissionRate], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
+                    [reportKey.Earning]: { label: headerText[reportKey.Earning], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
+                    [reportKey.ApprovedCPAAmount]: { label: headerText[reportKey.ApprovedCPAAmount], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
+                    [reportKey.AdjustedCPAAmount]: { label: headerText[reportKey.AdjustedCPAAmount], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
+                    [reportKey.TotalMainEarning]: { label: headerText[reportKey.TotalMainEarning], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker }
+                },
+                isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker
+            },
+            [reportKey.SubAffiliateEarning]: {
+                label: headerText[reportKey.SubAffiliateEarning],
+                cols: {
+                    [reportKey.SubAffEarning]: { label: headerText[reportKey.SubAffEarning], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker }
+                },
+                isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker
+            },
+
             [reportKey.TotalEarning]: { label: headerText[reportKey.TotalEarning], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
             [reportKey.AffWithdrawal]: { label: headerText[reportKey.AffWithdrawal] },
             [reportKey.AffAdjustment]: { label: headerText[reportKey.AffAdjustment] },

@@ -4,7 +4,7 @@ import { Cell } from '@9softstudio/react-fixed-table-header';
 import { connect } from 'react-redux';
 import { setParams, setPlayerCpaData } from '../../actions';
 import { bindActionCreators } from 'redux';
-import { headerRows, dataKey } from '../../libs/constants';
+import { headerRows } from '../../libs/constants';
 
 const RowHeader = ({ index, row, sortColumn, isAscending, handleClickHeader }) => {
     return (
@@ -15,7 +15,7 @@ const RowHeader = ({ index, row, sortColumn, isAscending, handleClickHeader }) =
                         <Cell
                             key={index}
                             header={true}
-                            style={{ width: cell.width, maxWidth: cell.width }}
+                            style={{ width: cell.width, maxWidth: cell.width, background: cell.color }}
                             className={`freeze-column-${index}`}
                             rowSpan={cell.rowSpan}
                             colSpan={cell.columnSpan}
@@ -25,12 +25,16 @@ const RowHeader = ({ index, row, sortColumn, isAscending, handleClickHeader }) =
                                     className="th-wrapper"
                                     color="link"
                                     onClick={() => handleClickHeader(cell.sortColumn)}>
-                                    {cell.title}
-                                    {
-                                        cell.field === dataKey.CPAAmount && (
-                                            <span className="oi icon-info ml-1" title='Click to view Turnover CPA Detail'></span>
-                                        )
-                                    }
+                                    <div className='px-2'>
+                                        {cell.title}
+                                        {
+                                            cell.tooltipTitle && (
+                                                <span title={cell.tooltipTitle} className='align-top'>
+                                                    <span className="oi icon-info mx-2 mb-2"></span>
+                                                </span>
+                                            )
+                                        }
+                                    </div>
                                     <div className="icon-container">
                                         <span className={`caret asc ${sortColumn === cell.sortColumn && isAscending ? "current" : ''}`}></span>
                                         <span className={`caret desc ${sortColumn === cell.sortColumn && !isAscending ? "current" : ''}`}></span>

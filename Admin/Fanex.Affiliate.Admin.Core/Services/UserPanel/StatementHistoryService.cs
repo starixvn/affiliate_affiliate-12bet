@@ -87,7 +87,7 @@ namespace Fanex.Affiliate.Admin.Core.Services.UserPanel
 
             foreach (var item in result.MainData)
             {
-                if (item.TransType == TransType.MonthlyEarning || item.TransType == TransType.SubAffiliate)
+                if (IsUnderMonthlyGroup(item.TransType))
                 {
                     if (CheckIfExistMonthlyTotal(item.MonthDate, vms))
                     {
@@ -111,7 +111,7 @@ namespace Fanex.Affiliate.Admin.Core.Services.UserPanel
         private static StatementHistory CreateMonthlyTotal(DateTime monthDate, IEnumerable<StatementHistory> statementHistoryList)
         {
             var children = statementHistoryList.Where(s => s.MonthDate == monthDate)
-                .Where(s => s.TransType == TransType.SubAffiliate || s.TransType == TransType.MonthlyEarning);
+                .Where(s => IsUnderMonthlyGroup(s.TransType)).OrderBy(s => s.TransTypeDisplayText);
 
             var monthlyCom = children.FirstOrDefault(s => s.TransType == TransType.MonthlyEarning);
 
@@ -137,6 +137,20 @@ namespace Fanex.Affiliate.Admin.Core.Services.UserPanel
         private static bool CheckIfExistMonthlyTotal(DateTime monthDate, List<StatementHistory> vms)
         {
             return vms.Exists(m => m.MonthDate == monthDate && m.TransType == TransType.MonthlyTotal);
+        }
+
+        private static bool IsUnderMonthlyGroup(int transType)
+        {
+            return transType == TransType.MonthlyEarning 
+                || transType == TransType.SubAffiliateRevenueShare
+                || IsCPAEarningGroup(transType)
+                || transType == TransType.SubCpaEarning;
+        }
+
+        private static bool IsCPAEarningGroup(int transType)
+        {
+            return transType == TransType.AprrovedCpaEarning
+                || transType == TransType.TentativeCpaEarning;
         }
 
         private static DailyEarningCriteria GetDailyEarningCriteria(string spKey, DailyEarningParam param)

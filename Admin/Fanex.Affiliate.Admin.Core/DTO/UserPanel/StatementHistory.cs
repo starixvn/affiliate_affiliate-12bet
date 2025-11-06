@@ -19,13 +19,11 @@ namespace Fanex.Affiliate.Admin.Core.DTO.UserPanel
 
         public string Creator { get; set; }
 
-
         public string Description { get; set; }
 
         public byte? CalculatedType { get; set; }
 
-        public string DateText => (TransType == Constants.TransType.MonthlyEarning || TransType == Constants.TransType.MonthlyTotal
-            || TransType == Constants.TransType.SubAffiliate) ? MonthDate.ToString("MMM-yyyy") : MonthDate.ToString("dd-MMM-yyyy");
+        public string DateText => ShouldDisplayFullDate(TransType) ? MonthDate.ToString("dd-MMM-yyyy") : MonthDate.ToString("MMM-yyyy");
 
         public string NormalizeDateText => MonthDate.ToString("yyyy-MM-dd");
 
@@ -42,6 +40,34 @@ namespace Fanex.Affiliate.Admin.Core.DTO.UserPanel
             }
         }
 
+        public string TransTypeDisplayText
+        {
+            get
+            {
+                switch (TransType)
+                {
+                    case Constants.TransType.MonthlyTotal:
+                        return "Transaction";
+                    case Constants.TransType.MonthlyEarning:
+                        return "Revenue Share";
+                    case Constants.TransType.PaymentRequest:
+                        return "Payment Request";
+                    case Constants.TransType.Adjustment:
+                        return "Adjustment";
+                    case Constants.TransType.SubAffiliateRevenueShare:
+                        return "Sub-Affiliate Revenue Share";
+                    case Constants.TransType.AprrovedCpaEarning: case Constants.TransType.TentativeCpaEarning:
+                        return "CPA Earning";
+                    case Constants.TransType.SubCpaEarning:
+                        return "Sub-Affiliate CPA";
+                    case Constants.TransType.CpaAdjustment:
+                        return "CPA Adjustment";
+                    default:
+                        return "Monthly Earning";
+                }
+            }
+        }
+
         public IEnumerable<StatementHistory> Children { get; set; } = new List<StatementHistory>();
 
         private static string GetMonthlyTotalDescription(byte? calculatedType)
@@ -55,6 +81,13 @@ namespace Fanex.Affiliate.Admin.Core.DTO.UserPanel
                 default:
                     return "Current Month Statistics";
             }
+        }
+
+        private static bool ShouldDisplayFullDate(int transType)
+        {
+            return transType == Constants.TransType.PaymentRequest
+                || transType == Constants.TransType.Adjustment
+                || transType == Constants.TransType.CpaAdjustment;
         }
     }
 }

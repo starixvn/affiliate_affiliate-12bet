@@ -1,4 +1,4 @@
-import moment from "moment";
+import { minDate, sixMonth } from './constants';
 
 const _rootUrl = document.getElementById('RootUrl') ? document.getElementById('RootUrl').value : '/';
 
@@ -136,6 +136,19 @@ export const convertListToMutilpleSelected = (initialList, key, name, checked = 
     }) : [];
 }
 
+export const convertListToHierarchicalFilterDropdown = (typeList, itemsList, keyTypeId) => {
+    return typeList ? typeList.map(type => {
+        return {
+            ...type,
+            items: itemsList.filter(item => item[keyTypeId] === type[keyTypeId]).map(item => {
+                return {
+                    ...item
+                };
+            }),
+        };
+    }) : [];
+}
+
 export const handleChangeMultipleSelected = (initialList, selectedKey) => {
     const selectedList = typeof (selectedKey) === "string" ? selectedKey.split(',').filter(p => !!p) : selectedKey;
 
@@ -201,21 +214,41 @@ function getFromDate(fromDate, selectedToDateString, fromDateString, maxRangeDat
     return sixMonthAgo < fromDate ? fromDateString : `${formatUnit(sixMonthAgo.getMonth() + 1)}/${formatUnit(sixMonthAgo.getDate())}/${sixMonthAgo.getFullYear()}`;
 }
 
-export const getFirstDayOfMonth = () => {
-    const now = new Date();
-    return `${now.getMonth() + 1}/01/${now.getFullYear()}`;
+export const getFirstDayOfMonth = (date) => {
+    return `${date.getMonth() + 1}/01/${date.getFullYear()}`;
 }
 
-export const getToDay = () => {
-    const now = new Date();
-    return `${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()}`;
+export const getDayOfMonth = (date) => {
+    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
 }
 
-export const getLastDayOfThisMonth = () => {
-    const today = moment()
-    return today.endOf('month').format('MM/DD/YYYY');
+export const getLastDayOfMonth = (date) => {
+    const lastDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+    return `${lastDate.getMonth() + 1}/${lastDate.getDate()}/${lastDate.getFullYear()}`;
 }
 
+export const getAdjustedDateFromNow = (date, now) => {
+    const maxDateOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+    if (maxDateOfMonth < now) {
+        return getDayOfMonth(maxDateOfMonth);
+    }
+
+    return getDayOfMonth(now);
+}
+
+export const getSixMonthAgoFromNow = (today) => {
+    const sixMonthAgo = new Date(today);
+    sixMonthAgo.setMonth(sixMonthAgo.getMonth() - sixMonth);
+
+    return sixMonthAgo < minDate ? '01/01/2020' : `${sixMonthAgo.getMonth() + 1}/${sixMonthAgo.getDate()}/${sixMonthAgo.getFullYear()}`;
+}
+
+export const openUrlOnNewWindow = (path, params, cookieName) => {
+    document.cookie = `${cookieName}=${JSON.stringify(params)}; path=${path}`;
+    window.open(path, '_blank');
+}
 
 
 let _xsrfToken = null;
@@ -245,4 +278,8 @@ export const resizeWidthHeight = (realWidth, realHeight, size = 500) => {
     }
 
     return { width, height }
+}
+
+export const getCSSClassName = (prefix, text) => {
+    return `${prefix}-${text.toLowerCase().replace(/ /g, '-')}`;
 }

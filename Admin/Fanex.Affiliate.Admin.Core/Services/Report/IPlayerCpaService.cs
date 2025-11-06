@@ -7,7 +7,7 @@
 
     public interface IPlayerCpaService
     {
-        Task<EntityResult<PlayerCpaReport>> GetDataAsync(PlayerCpaReportRequest request);
+        Task<EntityResult<PlayerCpaReport>> GetDataAsync(PlayerCpaReportParam request);
 
         Task<TurnoverDetailModel> GetTurnoverDetailAsync(int memberCpaId);
     }

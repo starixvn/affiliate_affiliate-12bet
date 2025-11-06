@@ -4,13 +4,13 @@ import { Provider } from "react-redux";
 import reducer from './reducers';
 import AppContainer from "./components/AppContainer";
 import { configureStore } from '../../../modules/store';
-import { convertListToMutilpleSelected } from '../../../modules/utils';
+import { convertListToMutilpleSelected, convertListToHierarchicalFilterDropdown } from '../../../modules/utils';
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
 
-        const { productList, languageList, currencyList, baseCurrencyList, paymentCurrencyList, isProduction, today, commGroupList, reportCutOffDate } = window.initialState;
+        const { productList, languageList, currencyList, baseCurrencyList, paymentCurrencyList, isProduction, today, dealTypeList, dealList, reportCutOffDate } = window.initialState;
 
         const language = {};
         for (let languageItem of languageList) {
@@ -20,11 +20,12 @@ export default class App extends React.Component {
         const newProductList = convertListToMutilpleSelected(productList, 'ProductId', 'ProductName')
         const newCurrencyList = convertListToMutilpleSelected(currencyList, 'ExchangeId', 'Code')
         const newPaymentCurrencyList = convertListToMutilpleSelected(paymentCurrencyList, 'ExchangeId', 'Code')
-        const newCommGroupList = convertListToMutilpleSelected(commGroupList, 'GroupId', 'GroupName')
+        const hierarchicalDealList = convertListToHierarchicalFilterDropdown(dealTypeList, dealList, 'GroupTypeId')
 
         this.store = configureStore({
             productList: newProductList,
-            commGroupList: newCommGroupList,
+            dealList,
+            hierarchicalDealList,
             languageList: language,
             today,
             currencyList: newCurrencyList,
