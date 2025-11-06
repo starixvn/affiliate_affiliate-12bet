@@ -263,7 +263,6 @@
     <Compile Include="Controllers\Report\ReportControllerTest.cs" />
     <Compile Include="Controllers\UnderMaintenanceControllerTest.cs" />
     <Compile Include="Extensions\DataReaderExtensionTest.cs" />
-    <Compile Include="Extensions\UrlHelperExtensionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Customer\LandingPageStatisticsServiceTest.cs" />
     <Compile Include="Services\Customer\ReferrersStatisticsServiceTest.cs" />
