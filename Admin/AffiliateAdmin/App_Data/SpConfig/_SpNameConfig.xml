@@ -1,10 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Root>
 	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Test" Suffix="_xtest"></item>
-	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_Admin_Report_PlayerCPA" Suffix="_xpre"></item>
-	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_Admin_AffiliateReport_Sel" Suffix="_xpre"></item>
-	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_Admin_AffiliateReport_Detail_Sel" Suffix="_xpre"></item>
-	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_Admin_StatementHistory_Sel" Suffix="_xpre"></item>
-	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_Admin_Report_PaymentCPA" Suffix="_xpre"></item>
-	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_Admin_PaymentCPA_Adjustment_Ins" Suffix="_xpre"></item>
 </Root>

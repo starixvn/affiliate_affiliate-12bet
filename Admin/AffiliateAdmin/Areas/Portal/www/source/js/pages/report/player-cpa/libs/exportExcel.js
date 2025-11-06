@@ -293,16 +293,8 @@ export default class ExportExcel {
                 value = item.isTotalDeposit ? value : "-";
             }
 
-            if (columnConfig.field === dataKey.HoldingQualifiedDate
-                || columnConfig.field === dataKey.HoldingExpiredDate || columnConfig.field === dataKey.BetTicket) {
-                value = item.isHolding ? value : "-";
-            }
-
-            if (columnConfig.field === dataKey.ReDepositDays) {
-                value = hasSettingRedeposit ? value : "-";
-            }
             if (columnConfig.field === dataKey.IsRedeposit) {
-                value = hasSettingRedeposit ? (value ? "Yes" : "No") : "-";
+                value = value === "-" ? "-" : (!value ? "No" : "Yes");
             }
 
             const cellStyle = this._getCellStyle(columnConfig.field, value, columnConfig);

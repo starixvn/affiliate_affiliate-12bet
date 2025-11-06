@@ -86,7 +86,8 @@ export const dataKey = {
     ExpiredRedepositDate: 'expiredRedepositDateStr',
     IsRedeposit: 'isRedeposit',
     CPAStatus: 'cpaStatus',
-    HoldingTickets: 'holdingTickets'
+    HoldingTickets: 'holdingTickets',
+    HoldingBetTickets: 'holdingBetTickets'
 };
 
 const DefaultColor = '#FFEDE1';
@@ -106,7 +107,7 @@ export const row1 = [
     },
     {
         title: headerText.Affiliate,
-        width: 120,
+        width: 115,
         sortable: true,
         sortColumn: dataKey.Affiliate,
         rowSpan: 2,
@@ -126,7 +127,7 @@ export const row1 = [
     },
     {
         title: headerText.RegistrationDate,
-        width: 100,
+        width: 105,
         sortable: true,
         sortColumn: dataKey.RegistrationDate,
         rowSpan: 2,
@@ -146,7 +147,7 @@ export const row1 = [
     },
     {
         title: headerText.PaymentFrequency,
-        width: 100,
+        width: 95,
         sortable: true,
         sortColumn: dataKey.PaymentFrequency,
         rowSpan: 2,
@@ -158,7 +159,7 @@ export const row1 = [
         title: "Active Period",
         sortable: false,
         columnSpan: 5,
-        width: 85 * 5,
+        width: 86 * 5,
         startCol: 6,
         color: ActivePeriodColor
     },
@@ -174,13 +175,13 @@ export const row1 = [
         title: "Redeposit Qualified Period",
         sortable: false,
         columnSpan: 4,
-        width: 85 * 4,
+        width: 91 * 4,
         startCol: 15,
         color: RedipositPeriodColor
     },
     {
         title: headerText.CPAStatus,
-        width: 85,
+        width: 80,
         sortable: true,
         sortColumn: dataKey.CPAStatus,
         rowSpan: 2,
@@ -306,18 +307,28 @@ export const row2 = [
 
 export const headerRows = [row1, row2]
 
-export const decimalFields = [
+export const decimalNullableFields = [
     dataKey.FTD,
     dataKey.TotalDeposit,
     dataKey.CPAAmount,
     dataKey.EstimatedCPAAmount
 ]
 
-export const dateFields = [
+export const dateNullableFields = [
     dataKey.RegistrationDate,
     dataKey.ActiveQualifiedDate,
     dataKey.HoldingQualifiedDate,
     dataKey.HoldingExpiredDate,
     dataKey.FirstDepositDate,
     dataKey.ExpiredRedepositDate
+]
+
+export const numberNullableFields = [
+    dataKey.HoldingTickets,
+    dataKey.ReDepositDays
+]
+
+
+export const booleanNullableFields = [
+    dataKey.IsRedeposit
 ]

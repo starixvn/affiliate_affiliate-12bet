@@ -2,7 +2,7 @@
 import { get, post } from '../../../../modules/ajaxRequest';
 import { minDate } from '../../../../modules/constants';
 import { formatDecimal } from '../../../../modules/numberFormat';
-import { decimalFields, dateFields } from './constants';
+import { decimalNullableFields, dateNullableFields, numberNullableFields, booleanNullableFields, dataKey } from './constants';
 
 export const getPlayerCpaData = async (params) => {
     const url = 'Portal/PlayerCpaReport/GetData';
@@ -17,7 +17,7 @@ const transformData = (data) => {
         value == null ? '-' : formatDecimal(value);
 
     const transformField = (key, value) =>
-        decimalFields.includes(key) ? transformDecimal(value) : (value ?? '-');
+        decimalNullableFields.includes(key) ? transformDecimal(value) : (value ?? '-');
 
     const transformData = data.mainData.map(item =>
         Object.fromEntries(
@@ -53,26 +53,52 @@ export const sortBy = (list, prop = 'affUserName', isAscending = true) => {
 
     const normalizer = getNormalizer(prop);
 
-    return [...list].sort((a, b) => {
-        const valueA = normalizer(a[prop]);
-        const valueB = normalizer(b[prop]);
+    if (prop !== dataKey.HoldingTickets) {
+        return [...list].sort((a, b) => {
+            const valueA = normalizer(a[prop]);
+            const valueB = normalizer(b[prop]);
 
-        if (valueA < valueB) return isAscending ? -1 : 1;
-        if (valueA > valueB) return isAscending ? 1 : -1;
+            if (valueA < valueB) return isAscending ? -1 : 1;
+            if (valueA > valueB) return isAscending ? 1 : -1;
+            return 0;
+        });
+    }
+
+    return [...list].sort((a, b) => {
+        const holdingTicketsA = normalizer(a[prop]);
+        const holdingBetTicketsA = normalizer(a[dataKey.HoldingBetTickets]);
+
+        const holdingTicketsB = normalizer(b[prop]);
+        const holdingBetTicketsB = normalizer(b[dataKey.HoldingBetTickets]);
+
+        if (holdingTicketsA == holdingTicketsB) {
+            if (holdingBetTicketsA < holdingBetTicketsB) return isAscending ? -1 : 1;
+            if (holdingBetTicketsA > holdingBetTicketsB) return isAscending ? 1 : -1;
+        }
+
+        if (holdingTicketsA < holdingTicketsB) return isAscending ? -1 : 1;
+        if (holdingTicketsA > holdingTicketsB) return isAscending ? 1 : -1;
+
         return 0;
     });
 };
 
 const getNormalizer = (prop) => {
-    if (decimalFields.includes(prop)) {
+    if (decimalNullableFields.includes(prop)) {
         return (val) => val === '-' ? 0 : Number(String(val).replace(/,/g, ''));
     }
-    if (dateFields.includes(prop)) {
+    if (dateNullableFields.includes(prop)) {
         return (val) => {
             if (val === '-') return minDate;
             const d = new Date(val);
             return isNaN(d) ? minDate : d;
         };
+    }
+    if (numberNullableFields.includes(prop)) {
+        return (val) => val === '-' ? -1 : Number(val);
+    }
+    if (booleanNullableFields.includes(prop)) {
+        return (val) => val === '-' ? -1 : (!val ? 0 : 1);
     }
     return (val) => val ?? '';
 };

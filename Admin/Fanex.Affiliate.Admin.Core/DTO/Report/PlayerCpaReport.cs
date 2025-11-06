@@ -47,19 +47,19 @@
 
         public decimal CPAAmount { get; set; }
 
-        public int HoldingBetTickets { get; set; }
+        public int? HoldingBetTickets { get; set; }
 
-        public int HoldingTickets { get; set; }
+        public int? HoldingTickets { get; set; }
 
         public bool IsHolding { get; set; }
 
         public DateTime? HQD { get; set; }
 
-        public string HqdStr => HQD?.ToString(DATE_FORMAT) ?? HYPHEN;
+        public string HqdStr => IsHolding && HQD.HasValue ? HQD.Value.ToString(DATE_FORMAT) : HYPHEN;
 
         public DateTime? HED { get; set; }
 
-        public string HedStr => HED?.ToString(DATE_FORMAT) ?? HYPHEN;
+        public string HedStr => IsHolding && HED.HasValue ? HED.Value.ToString(DATE_FORMAT) : HYPHEN;
 
         public decimal? EstimatedCPAAmount { get; set; }
 
@@ -67,15 +67,15 @@
 
         public DateTime? FirstDepositDate { get; set; }
 
-        public string FirstDepositDateStr => FirstDepositDate?.ToString(DATE_FORMAT) ?? HYPHEN;
+        public string FirstDepositDateStr => ExpiredRedepositDate.HasValue && FirstDepositDate.HasValue ? FirstDepositDate.Value.ToString(DATE_FORMAT) : HYPHEN;
 
-        public int ReDepositDays { get; set; }
+        public int? ReDepositDays { get; set; }
 
         public DateTime? ExpiredRedepositDate { get; set; }
 
         public string ExpiredRedepositDateStr => ExpiredRedepositDate?.ToString(DATE_FORMAT) ?? HYPHEN;
 
-        public bool IsRedeposit { get; set; }
+        public bool? IsRedeposit { get; set; }
 
         public string CPAStatus { get; set; }
 
@@ -83,6 +83,6 @@
 
         public string Description { get; set; }
 
-        public string BetTicket => HoldingBetTickets == 0 && HoldingTickets == 0 ? HYPHEN : $"{HoldingBetTickets}/{HoldingTickets}";
+        public string BetTicket => IsHolding && HoldingBetTickets.HasValue && HoldingTickets.HasValue ? $"{HoldingBetTickets}/{HoldingTickets}" : HYPHEN;
     }
 }

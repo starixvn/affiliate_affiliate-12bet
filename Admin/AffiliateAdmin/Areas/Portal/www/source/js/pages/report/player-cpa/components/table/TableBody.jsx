@@ -16,15 +16,9 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
         toggleDealPopup()
     }
 
-    const hasSettingRedeposit = data.expiredRedepositDate !== "-";
     const ftd = data.isFTD ? data.ftd : '-';
     const totalDeposit = data.isTotalDeposit ? data.totalDeposit : '-';
-    const betTicket = data.isHolding ? data.betTicket : '-';
-    const hqdStr = data.isHolding ? data.hqdStr : '-';
-    const hedStr = data.isHolding ? data.hedStr : '-';
-    const reDepositDays = hasSettingRedeposit ? data.reDepositDays : '-';
-    const firstDepositDate = hasSettingRedeposit ? data.firstDepositDateStr : '-';
-    const isRedeposit = hasSettingRedeposit ? (data.isRedeposit ? 'Yes' : 'No') : '-';
+    const isRedeposit = data.isRedeposit === '-' ? '-' : (!data.isRedeposit ? 'No' : 'Yes');
     const statusClassName = getCSSClassName('status', data.cpaStatus);
     const paymentFrequencyClassName = getCSSClassName('payment-frequency', data.scheduleName);
 
@@ -74,23 +68,23 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
                         </span> : data.cpaAmount
                 }
             </td>
-            <td title={betTicket} className="text-center">
-                {betTicket}
+            <td title={data.betTicket} className="text-center">
+                {data.betTicket}
             </td>
-            <td title={hqdStr} className="text-center">
-                {hqdStr}
+            <td title={data.hqdStr} className="text-center">
+                {data.hqdStr}
             </td>
-            <td title={hedStr} className="text-center">
-                {hedStr}
+            <td title={data.hedStr} className="text-center">
+                {data.hedStr}
             </td>
             <td title={data.estimatedCPAAmount} className="text-right">
                 {data.estimatedCPAAmount}
             </td>
             <td title={data.firstDepositDateStr} className="text-center">
-                {firstDepositDate}
+                {data.firstDepositDateStr}
             </td>
-            <td title={reDepositDays} className="text-center">
-                {reDepositDays}
+            <td title={data.reDepositDays} className="text-center">
+                {data.reDepositDays}
             </td>
             <td title={data.expiredRedepositDateStr} className="text-center">
                 {data.expiredRedepositDateStr}
@@ -105,7 +99,7 @@ const RowData = ({ data, rowNumber, setMemberCpaId, setDealId, toggleDealPopup, 
                 {
                     data.isAbnormal && (
                         <span title={data.description}>
-                            <span className="oi icon-info mx-2"></span>
+                            <span className="oi icon-info mx-2 mb-1"></span>
                         </span>
                     )
                 }
