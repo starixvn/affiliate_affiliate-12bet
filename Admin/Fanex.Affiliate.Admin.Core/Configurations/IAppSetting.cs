@@ -28,8 +28,6 @@
 
         string BccMail { get; }
 
-        string JsVersion { get; }
-
         string SentryDsn { get; }
 
         string LoggingCategory { get; }

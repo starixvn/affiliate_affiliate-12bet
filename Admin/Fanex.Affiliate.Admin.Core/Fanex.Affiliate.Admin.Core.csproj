@@ -901,6 +901,7 @@
     <Compile Include="Utilities\TargetCountryHelper.cs" />
     <Compile Include="ViewModels\Affiliate\AffiliateInfoViewModel.cs" />
     <Compile Include="ViewModels\Affiliate\MarketingAccountViewModel.cs" />
+    <Compile Include="ViewModels\Customer\PlayerDetailViewModel.cs" />
     <Compile Include="ViewModels\LandingPage\AssetUploaderViewModel.cs" />
     <Compile Include="ViewModels\LandingPage\PageManagementViewModel.cs" />
     <Compile Include="ViewModels\LandingPage\PageBuilderViewModel.cs" />

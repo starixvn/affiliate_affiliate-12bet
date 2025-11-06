@@ -21,7 +21,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Customer
             var param = new PlayerDetailParam();
             PlayerDetailParam passedParam = null;
             var playerDetailService = new Mock<IPlayerDetailService>();
-            playerDetailService.Setup(s => s.GetPlayerDetailList(param)).Returns(new EntityResult<PlayerDetail> { MainData = new List<PlayerDetail> { new PlayerDetail() }, TotalItem = 1 }).Callback<PlayerDetailParam>(p => passedParam = p);
+            playerDetailService.Setup(s => s.GetPlayerDetailList(param)).Returns((true, new EntityResult<PlayerDetail> { MainData = new List<PlayerDetail> { new PlayerDetail() }, TotalItem = 1 })).Callback<PlayerDetailParam>(p => passedParam = p);
             var controller = CreatePlayerDetailController(playerDetailService: playerDetailService.Object);
 
             // Action

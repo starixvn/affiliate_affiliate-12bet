@@ -24,8 +24,6 @@ namespace Fanex.Affiliate.Admin.Core.Configurations
 
         public string AsianAffSiteUrl => GetValue("AsianAffiliateURL");
 
-        public string JsVersion => GetValue("JsVersion");
-
         public bool IsDev => Environment.Equals("DEV", StringComparison.OrdinalIgnoreCase);
 
         public string GetValue(string key) => ConfigurationManager.AppSettings[key];

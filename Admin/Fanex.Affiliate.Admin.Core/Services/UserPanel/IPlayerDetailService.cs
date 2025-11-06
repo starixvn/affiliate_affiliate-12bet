@@ -6,6 +6,6 @@ namespace Fanex.Affiliate.Admin.Core.Services.UserPanel
 {
     public interface IPlayerDetailService
     {
-        EntityResult<PlayerDetail> GetPlayerDetailList(PlayerDetailParam param);
+        (bool, EntityResult<PlayerDetail>) GetPlayerDetailList(PlayerDetailParam param);
     }
 }

@@ -12,12 +12,13 @@ export const headerText = {
     FirstDepositAmount: 'FTD Amt',
     Turnover: 'Turnover',
     Ggr: 'GGR',
-    Deposit: 'Deposit',
+    Deposit: 'Deposit Amt',
     Withdrawal: 'Withdrawal',
     Bonus: 'Bonus',
     Rebate: 'Rebate',
     DepositFee: 'Deposit Fee',
-    WithdrawalFee: 'Withdrawal Fee'
+    WithdrawalFee: 'Withdrawal Fee',
+    DepositCount: 'Deposit Count',
 }
 
 export const resource = {
@@ -38,6 +39,7 @@ export const SortByIdList = {
     IbcUsername: 11,
     FirstDepositDate: 12,
     FirstDepositAmount: 13,
+    DepositCount: 14,
 };
 
 export const SortingColumnDefault = {
