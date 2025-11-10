@@ -12,6 +12,8 @@ namespace Fanex.Affiliate.User.Core.Criterias.CPAReport
 
         public int ViewBy { get; set; }
 
+        public int GroupId { get; set; }
+
         public DateTime FromDate { get; set; }
 
         public DateTime ToDate { get; set; }

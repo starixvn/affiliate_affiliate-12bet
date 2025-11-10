@@ -292,6 +292,7 @@
     <Compile Include="Constants\AffCategory.cs" />
     <Compile Include="Constants\DateTimeFormat.cs" />
     <Compile Include="Constants\PaymentCPAStatus.cs" />
+    <Compile Include="Constants\PlayerCpaStatus.cs" />
     <Compile Include="Controllers\UserPanel\PlayerCPAReportController.cs" />
     <Compile Include="Controllers\UserPanel\PaymentCPAReportController.cs" />
     <Compile Include="CoreService\BaseDynamicService.cs" />

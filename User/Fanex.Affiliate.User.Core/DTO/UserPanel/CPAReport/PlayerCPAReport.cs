@@ -9,6 +9,7 @@ namespace Fanex.Affiliate.User.Core.DTO.UserPanel.CPAReport
 
         public int RowNum { get; set; }
         public int MemberCPA_ID { get; set; }
+        public int GroupId { get; set; }
         public string Player { get; set; }
         public DateTime? RegisteredDate { get; set; }
 
@@ -34,27 +35,29 @@ namespace Fanex.Affiliate.User.Core.DTO.UserPanel.CPAReport
 
         public string BetTicket { get; set; }
 
+        public string DisplayBetTicket => IsHolding ? BetTicket : HYPHEN;
+
         public DateTime? HoldingQualifiedDate { get; set; }
 
-        public string DisplayHoldingQualifiedDate => HoldingQualifiedDate?.ToString(DateTimeFormat.MM_dd_yyyy) ?? HYPHEN;
+        public string DisplayHoldingQualifiedDate => IsHolding && HoldingQualifiedDate.HasValue ? HoldingQualifiedDate?.ToString(DateTimeFormat.MM_dd_yyyy) : HYPHEN;
 
         public DateTime? HoldingExpiredDate { get; set; }
 
-        public string DisplayHoldingExpiredDate => HoldingExpiredDate?.ToString(DateTimeFormat.MM_dd_yyyy) ?? HYPHEN;
+        public string DisplayHoldingExpiredDate => IsHolding && HoldingExpiredDate.HasValue ? HoldingExpiredDate?.ToString(DateTimeFormat.MM_dd_yyyy) : HYPHEN;
 
-        public decimal EstimatedCPAAmount { get; set; }
+        public decimal? EstimatedCPAAmount { get; set; }
 
         public DateTime? FirstDepositDate { get; set; }
 
-        public string DisplayFirstDepositDate => FirstDepositDate?.ToString(DateTimeFormat.MM_dd_yyyy) ?? HYPHEN;
+        public string DisplayFirstDepositDate => ExpiredRedepositDate.HasValue && FirstDepositDate.HasValue ? FirstDepositDate?.ToString(DateTimeFormat.MM_dd_yyyy) : HYPHEN;
 
-        public int RecheckDays { get; set; }
+        public int? RecheckDays { get; set; }
 
         public DateTime? ExpiredRedepositDate { get; set; }
 
         public string DisplayExpiredRedepositDate => ExpiredRedepositDate?.ToString(DateTimeFormat.MM_dd_yyyy) ?? HYPHEN;
 
-        public bool IsRedeposit { get; set; }
+        public bool? IsRedeposit { get; set; }
 
         public string CPAStatus { get; set; }
 

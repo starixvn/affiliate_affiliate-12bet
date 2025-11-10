@@ -18,7 +18,7 @@
         margin-bottom: 0;
 
         .form-control {
-            width: 150px;
+            width: 190px;
             margin-bottom: 0;
             display: inline-block;
         }
@@ -107,7 +107,7 @@
 
 .table {
     .th {
-        cursor: pointer;
+        //cursor: pointer;
     }
     // Header category row styling
     .header-category-row {
@@ -140,7 +140,6 @@
             text-align: center;
             border: 1px solid #B85450;
             padding: 6px 4px;
-            font-size: 13px;
         }
     }
     // Left-aligned columns styling
@@ -155,7 +154,6 @@
     .th-wrapper {
         position: relative;
         padding-right: 15px;
-        font-size: 13px;
 
         .icon-container {
             position: absolute;
@@ -222,22 +220,22 @@
                     font-weight: bold;
                     color: #7030a0; // Purple color
                 }
-                
+
                 &.status-settled {
                     font-weight: bold;
                     color: #2e7d32; // Green color
                 }
-                
+
                 &.status-ineligibled {
                     font-weight: bold;
                     color: #f57c00; // Orange/Amber color
                 }
-                
+
                 &.status-rejected {
                     font-weight: bold;
                     color: #d32f2f; // Red color
                 }
-                
+
                 &.status-quota-exceeded {
                     font-weight: bold;
                     color: #3b82f6; // Blue color
@@ -253,7 +251,7 @@
                     color: #000000; // Black color
                 }
             }
-            
+
             &.total {
                 display: table-row;
 

@@ -845,11 +845,11 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto Approved CPA.
+        ///   Looks up a localized string similar to Auto Approved Date.
         /// </summary>
-        public static string AutoApprovedCPA {
+        public static string AutoApprovedDate {
             get {
-                return ResourceManager.GetString("AutoApprovedCPA", resourceCulture);
+                return ResourceManager.GetString("AutoApprovedDate", resourceCulture);
             }
         }
         
@@ -4667,6 +4667,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to None Select.
+        /// </summary>
+        public static string NoneSelect {
+            get {
+                return ResourceManager.GetString("NoneSelect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Normal.
         /// </summary>
         public static string Normal {
@@ -6090,6 +6099,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string SearchAndGenQR {
             get {
                 return ResourceManager.GetString("SearchAndGenQR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} selected.
+        /// </summary>
+        public static string Selected {
+            get {
+                return ResourceManager.GetString("Selected", resourceCulture);
             }
         }
         

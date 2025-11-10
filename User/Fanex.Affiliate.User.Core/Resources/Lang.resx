@@ -2777,8 +2777,8 @@ You can also email us to {1} or simply fill the form below.</value>
   <data name="ScheduleEndDate" xml:space="preserve">
     <value>Schedule End Date</value>
   </data>
-  <data name="AutoApprovedCPA" xml:space="preserve">
-    <value>Auto Approved CPA</value>
+  <data name="AutoApprovedDate" xml:space="preserve">
+    <value>Auto Approved Date</value>
   </data>
   <data name="AdjustmentDate" xml:space="preserve">
     <value>Adjustment Date</value>
@@ -2833,5 +2833,11 @@ You can also email us to {1} or simply fill the form below.</value>
   </data>
   <data name="Group" xml:space="preserve">
     <value>Group {0}</value>
+  </data>
+  <data name="NoneSelect" xml:space="preserve">
+    <value>None Select</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>{0} selected</value>
   </data>
 </root>

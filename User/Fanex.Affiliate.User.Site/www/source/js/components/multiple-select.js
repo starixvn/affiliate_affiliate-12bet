@@ -50,14 +50,25 @@
 
             if (!selectedItems) {
                 $(`${_id}`).addClass("multiple-select-wrapper is-invalid");
-                $(`${_id}-text-display`).html("Please Select");
+                $(`${_id}-text-display`).html(langResource.noneSelect);
             } else {
                 $(`${_id}`).removeClass("multiple-select-wrapper is-invalid");
-                $(`${_id}-text-display`).html(`${selectedItems} selected`);
+
+                let isCheckAll = $(`${_class}-option-checkbox:checked`).length == $(`${_class}-option-checkbox`).length
+                $(`${_id}-text-display`).html(isCheckAll ? langResource.allSelected : langResource.selected.replace('{0}', selectedItems));
             }
         },
         getSelectedValues: function () {
             return $(`${_class}-option-checkbox:checked`).map((index, el) => el.value).get().join(',');
+        },
+        setSelectedValues: function (value) {
+            var selectedValues = value.split(',');
+            $(`${_class}-option-checkbox`).each(function () {
+                var isSelected = selectedValues.includes($(this).val());
+                $(this).prop("checked", isSelected);
+            });
+
+            _me.handleUpdateLabel();
         }
     };
 

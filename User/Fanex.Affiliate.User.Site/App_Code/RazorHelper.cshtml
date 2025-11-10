@@ -71,16 +71,18 @@
     </div>
 }
 
+
 @helper RenderMultipleSelect(string id, string label, IEnumerable<System.Web.Mvc.SelectListItem> dataList, bool hasAllOption = true, System.Web.Mvc.SelectListItem itemDefaultOption = null, string className = null)
 {
-    var displayText = "Please select";
+    var displayText = Fanex.Affiliate.User.Core.Resources.Lang.NoneSelect;
     var selectedValues = dataList.Where(d => d.Selected).Select(d => d.Value);
     var selectedItemCount = selectedValues.Count();
     var hasSelectedItem = selectedItemCount >= 1;
 
     if (hasSelectedItem)
     {
-        displayText = $"{selectedItemCount} selected";
+        var selected = Fanex.Affiliate.User.Core.Resources.Lang.Selected.Replace("{0}", selectedItemCount.ToString());
+        displayText = selectedItemCount == dataList.Count() ? itemDefaultOption?.Text ?? selected : selected;
     }
     <div class="form-group @className" id="@($"{id}")">
         <label>@label</label>
@@ -118,7 +120,7 @@
                            class="multiple-select-option-checkbox"
                            checked="@checkedAll" />
                     <label class="multiple-select-option-label" for="@(id)-multiple-select-option-all">
-                        All
+                        @Fanex.Affiliate.User.Core.Resources.Lang.All
                     </label>
                 </li>
             }
@@ -146,9 +148,7 @@
                class="multiple-select-option-checkbox @($"{id}-multiple-select-option-checkbox")"
                value="@item.Value"
                checked="@item.Selected" />
-        <label class="multiple-select-option-label" for="@($"{id}-{item.Value}")">
-            @item.Text
-        </label>
+        <label class="multiple-select-option-label mx-1" for="@($"{id}-{item.Value}")">@item.Text</label>
     </li>
 }
 

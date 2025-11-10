@@ -1530,14 +1530,25 @@
 
             if (!selectedItems) {
                 $(`${_id}`).addClass("multiple-select-wrapper is-invalid");
-                $(`${_id}-text-display`).html("Please Select");
+                $(`${_id}-text-display`).html(langResource.noneSelect);
             } else {
                 $(`${_id}`).removeClass("multiple-select-wrapper is-invalid");
-                $(`${_id}-text-display`).html(`${selectedItems} selected`);
+
+                let isCheckAll = $(`${_class}-option-checkbox:checked`).length == $(`${_class}-option-checkbox`).length
+                $(`${_id}-text-display`).html(isCheckAll ? langResource.allSelected : langResource.selected.replace('{0}', selectedItems));
             }
         },
         getSelectedValues: function () {
             return $(`${_class}-option-checkbox:checked`).map((index, el) => el.value).get().join(',');
+        },
+        setSelectedValues: function (value) {
+            var selectedValues = value.split(',');
+            $(`${_class}-option-checkbox`).each(function () {
+                var isSelected = selectedValues.includes($(this).val());
+                $(this).prop("checked", isSelected);
+            });
+
+            _me.handleUpdateLabel();
         }
     };
 
@@ -1558,6 +1569,14 @@ var affiliatePCAReport = (function ($) {
     var _month = "";
     var _totalItem = 0;
     var _isSubmited = false;
+    var _fromDate = '';
+    var _toDate = '';
+    var _viewBy = '';
+    var _groupId = 0;
+
+    function initStatusSelector() {
+        statusSelector = $('#Status').multipleSelector();
+    }
 
     function initPager() {
         $("#playerCPAPager").pager({
@@ -1631,6 +1650,7 @@ var affiliatePCAReport = (function ($) {
             initDatePicker('FromDate', 'fromPicker');
             initDatePicker('ToDate', 'toPicker');
             initPager();
+            initStatusSelector();
             _me.togglePager();
             _me.toggleTable();
             _me.initEvent();
@@ -1659,14 +1679,15 @@ var affiliatePCAReport = (function ($) {
         },
 
         handleUrlParameters: function () {
-            const fromDate = _me.getUrlParameter('fromDate');
-            const toDate = _me.getUrlParameter('toDate');
-            const viewBy = _me.getUrlParameter('viewBy');
+            _fromDate = _me.getUrlParameter('fromDate');
+            _toDate = _me.getUrlParameter('toDate');
+            _viewBy = _me.getUrlParameter('viewBy');
+            _groupId = _me.getUrlParameter('groupId');
 
-            if (!fromDate || !toDate) return;
+            if (!_fromDate || !_toDate) return;
 
-            const convertedFromDate = _me.convertDateFormat(fromDate);
-            const convertedToDate = _me.convertDateFormat(toDate);
+            const convertedFromDate = _me.convertDateFormat(_fromDate);
+            const convertedToDate = _me.convertDateFormat(_toDate);
 
             if (!convertedFromDate || !convertedToDate) {
                 alert($("<div/>").html(langResource.isInvalid).text());
@@ -1675,7 +1696,7 @@ var affiliatePCAReport = (function ($) {
 
             $('#FromDate').val(convertedFromDate);
             $('#ToDate').val(convertedToDate);
-            $('#ViewBy').val(viewBy);
+            $('#ViewBy').val(_viewBy);
 
             setTimeout(function () {
                 _me.getPlayerCPAReport();
@@ -1783,7 +1804,6 @@ var affiliatePCAReport = (function ($) {
         },
 
         buildPlayerRow: function (dataRow) {
-            var hasSettingRedeposit = dataRow.ExpiredRedepositDate !== "-";
             var statusClass = getStatusClass(dataRow.CPAStatus);
 
             var rowItems = [];
@@ -1799,14 +1819,14 @@ var affiliatePCAReport = (function ($) {
             } else {
                 rowItems.push(_me.buildCell(formatDecimal(dataRow.CPAAmount)));
             }
-            rowItems.push('<td class="text-center">' + (dataRow.IsHolding ? dataRow.BetTicket : '-') + '</td>');
-            rowItems.push('<td class="text-center">' + (dataRow.IsHolding ? dataRow.DisplayHoldingQualifiedDate : '-') + '</td>');
-            rowItems.push('<td class="text-center">' + (dataRow.IsHolding ? dataRow.DisplayHoldingExpiredDate : '-') + '</td>');
+            rowItems.push('<td class="text-center">' + dataRow.DisplayBetTicket + '</td>');
+            rowItems.push('<td class="text-center">' + dataRow.DisplayHoldingQualifiedDate + '</td>');
+            rowItems.push('<td class="text-center">' + dataRow.DisplayHoldingExpiredDate + '</td>');
             rowItems.push(_me.buildCell(formatDecimal(dataRow.EstimatedCPAAmount)));
-            rowItems.push('<td class="text-center">' + (hasSettingRedeposit ? dataRow.DisplayFirstDepositDate : '-') + '</td>');
-            rowItems.push('<td class="text-center">' + (hasSettingRedeposit ? dataRow.RecheckDays : '-') + '</td>');
+            rowItems.push('<td class="text-center">' + dataRow.DisplayFirstDepositDate + '</td>');
+            rowItems.push('<td class="text-center">' + dataRow.RecheckDays + '</td>');
             rowItems.push('<td class="text-center">' + dataRow.DisplayExpiredRedepositDate + '</td>');
-            rowItems.push('<td class="text-center">' + (hasSettingRedeposit ? (dataRow.IsRedeposit ? 'Yes' : 'No') : '-') + '</td>');
+            rowItems.push('<td class="text-center">' + (dataRow.IsRedeposit !== undefined ? (dataRow.IsRedeposit ? 'Yes' : 'No') : '-') + '</td>');
 
             if (dataRow.IsAbnormal) {
                 rowItems.push('<td class="text-center ' + statusClass + '">' + dataRow.CPAStatus + '<span title="' + dataRow.Description + '" class="glyphicon glyphicon-info-sign"></span></td>');
@@ -1916,12 +1936,20 @@ var affiliatePCAReport = (function ($) {
         },
 
         getParams: function () {
+            var fromDate = $('#FromDate').val();
+            var toDate = $('#ToDate').val();
+            var viewBy = $('#ViewBy').val();
+
+            var isResetGroupId = fromDate !== _fromDate || toDate !== _toDate || viewBy !== _viewBy;
+            _groupId = isResetGroupId ? 0 : _groupId;
+
             var params = {
                 player: $('#Player').val().trim(),
-                fromDate: $('#FromDate').val(),
-                toDate: $('#ToDate').val(),
-                status: $('#Status').val(),
-                viewBy: $('#ViewBy').val(),
+                fromDate: fromDate,
+                toDate: toDate,
+                status: statusSelector.getSelectedValues(),
+                viewBy: viewBy,
+                groupId: _groupId,
                 pageSize: _pageSize,
                 pageIndex: _pageIndex + 1,
                 sortType: _sortType,

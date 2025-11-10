@@ -79,6 +79,9 @@ $indexNormal: 1;
         text-indent: 4px;
         -webkit-user-select: none;
         user-select: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
 
         input[type=checkbox] {
             cursor: pointer;

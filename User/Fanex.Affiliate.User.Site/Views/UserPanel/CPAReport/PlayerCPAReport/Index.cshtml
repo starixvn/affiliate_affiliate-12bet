@@ -1,11 +1,9 @@
 @{
     Layout = null;
-    var currentYear = DateTimeHelper.Gmt8CurrentYear;
-    var fromDate = ViewBag.FromDate;
-    var toDate = ViewBag.ToDate;
 }
 
 
+@model Fanex.Affiliate.User.Core.ViewModels.UserPanel.CPAReport.CPAReportViewModel
 @Html.InlineStyles("~/www/build/styles/css/cpa-report/player-cpa-report.css")
 
 <div class="page-title">
@@ -18,21 +16,9 @@
             <form class="form-inline form-filter">
                 <div class="form-group">
                     <label for="Player">@Lang.Player:</label>
-                    <input class="form-control" type="text" id="Player"/>
+                    <input class="form-control" type="text" id="Player" />
                 </div>
-                <div class="form-group">
-                    <label for="Status" >@Lang.CPAStatus:</label>
-                    <select id="Status" class="form-control">
-                        <option value="-1">@Lang.AllStatuses</option>
-                        <option value="2">@Lang.Eligible</option>
-                        <option value="3">@Lang.Approved</option>
-                        <option value="1">@Lang.Ineligible</option>
-                        <option value="4">@Lang.Rejected</option>
-                        <option value="5">@Lang.QuotaExceeded</option>
-                        <option value="0">@Lang.Pending</option>
-                        <option value="6">@Lang.RedepositFailed</option>
-                    </select>
-                </div>
+                @RazorHelper.RenderMultipleSelect("Status", $"{Lang.CPAStatus}:", Model.StatusList, true, new SelectListItem { Value = "-1", Text = Lang.AllStatuses, Selected = true })
                 <div class="form-group">
                     <label for="ViewBy">@Lang.ViewBy:</label>
                     <select id="ViewBy" class="form-control view-by-select">
@@ -70,26 +56,26 @@
                 <tr>
                     <th rowspan="2" width="3%" class="th">#</th>
                     <th rowspan="2" width="10%" class="th">@Lang.Player</th>
-                    <th rowspan="2" width="8%" class="th">@Lang.RegistrationDate</th>
-                    <th colspan="4" class="th ">@Lang.ActivePeriod</th>
+                    <th rowspan="2" width="6%" class="th">@Lang.RegistrationDate</th>
+                    <th colspan="4" class="th">@Lang.ActivePeriod</th>
                     <th colspan="4" class="th">@Lang.HoldingPeriod</th>
                     <th colspan="4" class="th">@Lang.RedepositQualifiedPeriod</th>
-                    <th rowspan="2" class="th">@Lang.CPAStatus</th>
+                    <th rowspan="2" class="th" width="6%">@Lang.CPAStatus</th>
                 </tr>
                 <!-- Column header row -->
                 <tr>
-                    <th class="th">@Lang.FTD</th>
-                    <th class="th">@Lang.TotalDeposit</th>
-                    <th class="th">@Lang.ActiveQualifiedDate</th>
-                    <th class="th">@Lang.CPAAmount</th>
-                    <th class="th">@Lang.BetTicket</th>
-                    <th class="th">@Lang.HoldingQualifiedDate</th>
-                    <th class="th">@Lang.HoldingExpiredDate</th>
-                    <th class="th">@Lang.EstimatedCPAAmount</th>
-                    <th class="th">@Lang.FirstDepositDate</th>
-                    <th class="th">@Lang.RecheckDay</th>
-                    <th class="th">@Lang.ExpiredDate</th>
-                    <th class="th">@Lang.IsRedeposit</th>
+                    <th class="th" width="7%">@Lang.FTD</th>
+                    <th class="th" width="7%">@Lang.TotalDeposit</th>
+                    <th class="th" width="6%">@Lang.ActiveQualifiedDate</th>
+                    <th class="th" width="7%">@Lang.CPAAmount</th>
+                    <th class="th" width="5%">@Lang.BetTicket</th>
+                    <th class="th" width="6%">@Lang.HoldingQualifiedDate</th>
+                    <th class="th" width="6%">@Lang.HoldingExpiredDate</th>
+                    <th class="th" width="7%">@Lang.EstimatedCPAAmount</th>
+                    <th class="th" width="6%">@Lang.FirstDepositDate</th>
+                    <th class="th" width="5%">@Lang.RecheckDay</th>
+                    <th class="th" width="6%">@Lang.ExpiredDate</th>
+                    <th class="th" width="5%">@Lang.IsRedeposit</th>
                 </tr>
             </thead>
             <tbody id="playerCPAReportTbody"></tbody>
@@ -125,12 +111,14 @@
 
 <script>
     var langResource = {
+        allSelected: '@Lang.AllStatuses',
+        selected: '@Lang.Selected',
+        noneSelect: '@Lang.NoneSelect',
         noInfo: '@Lang.NoInfo',
         totalAllPages: '@Lang.TotalAllPages',
         group: '@Lang.Group',
         total: '@Lang.Total',
         theHighestShare: '@Lang.TheHighestShare',
-        isMaxLevel: '@Model'.toLowerCase() === 'true',
         isInvalid: '@Error.IsInvalid'
     }
 </script>

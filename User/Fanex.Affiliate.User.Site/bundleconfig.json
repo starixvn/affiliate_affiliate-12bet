@@ -223,7 +223,7 @@
     "inputFiles": [
       "www/source/js/lib/pikaday.js",
       "www/source/js/components/pager.js",
-      //"www/source/js/components/multiple-select.js",
+      "www/source/js/components/multiple-select.js",
       "www/source/js/pages/cpa-report/payment-cpa-report.js"
     ]
   },

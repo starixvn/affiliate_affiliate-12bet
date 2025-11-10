@@ -7,6 +7,14 @@
     var _month = "";
     var _totalItem = 0;
     var _isSubmited = false;
+    var _fromDate = '';
+    var _toDate = '';
+    var _viewBy = '';
+    var _groupId = 0;
+
+    function initStatusSelector() {
+        statusSelector = $('#Status').multipleSelector();
+    }
 
     function initPager() {
         $("#playerCPAPager").pager({
@@ -80,6 +88,7 @@
             initDatePicker('FromDate', 'fromPicker');
             initDatePicker('ToDate', 'toPicker');
             initPager();
+            initStatusSelector();
             _me.togglePager();
             _me.toggleTable();
             _me.initEvent();
@@ -108,14 +117,15 @@
         },
 
         handleUrlParameters: function () {
-            const fromDate = _me.getUrlParameter('fromDate');
-            const toDate = _me.getUrlParameter('toDate');
-            const viewBy = _me.getUrlParameter('viewBy');
+            _fromDate = _me.getUrlParameter('fromDate');
+            _toDate = _me.getUrlParameter('toDate');
+            _viewBy = _me.getUrlParameter('viewBy');
+            _groupId = _me.getUrlParameter('groupId');
 
-            if (!fromDate || !toDate) return;
+            if (!_fromDate || !_toDate) return;
 
-            const convertedFromDate = _me.convertDateFormat(fromDate);
-            const convertedToDate = _me.convertDateFormat(toDate);
+            const convertedFromDate = _me.convertDateFormat(_fromDate);
+            const convertedToDate = _me.convertDateFormat(_toDate);
 
             if (!convertedFromDate || !convertedToDate) {
                 alert($("<div/>").html(langResource.isInvalid).text());
@@ -124,7 +134,7 @@
 
             $('#FromDate').val(convertedFromDate);
             $('#ToDate').val(convertedToDate);
-            $('#ViewBy').val(viewBy);
+            $('#ViewBy').val(_viewBy);
 
             setTimeout(function () {
                 _me.getPlayerCPAReport();
@@ -232,7 +242,6 @@
         },
 
         buildPlayerRow: function (dataRow) {
-            var hasSettingRedeposit = dataRow.ExpiredRedepositDate !== "-";
             var statusClass = getStatusClass(dataRow.CPAStatus);
 
             var rowItems = [];
@@ -248,14 +257,14 @@
             } else {
                 rowItems.push(_me.buildCell(formatDecimal(dataRow.CPAAmount)));
             }
-            rowItems.push('<td class="text-center">' + (dataRow.IsHolding ? dataRow.BetTicket : '-') + '</td>');
-            rowItems.push('<td class="text-center">' + (dataRow.IsHolding ? dataRow.DisplayHoldingQualifiedDate : '-') + '</td>');
-            rowItems.push('<td class="text-center">' + (dataRow.IsHolding ? dataRow.DisplayHoldingExpiredDate : '-') + '</td>');
+            rowItems.push('<td class="text-center">' + dataRow.DisplayBetTicket + '</td>');
+            rowItems.push('<td class="text-center">' + dataRow.DisplayHoldingQualifiedDate + '</td>');
+            rowItems.push('<td class="text-center">' + dataRow.DisplayHoldingExpiredDate + '</td>');
             rowItems.push(_me.buildCell(formatDecimal(dataRow.EstimatedCPAAmount)));
-            rowItems.push('<td class="text-center">' + (hasSettingRedeposit ? dataRow.DisplayFirstDepositDate : '-') + '</td>');
-            rowItems.push('<td class="text-center">' + (hasSettingRedeposit ? dataRow.RecheckDays : '-') + '</td>');
+            rowItems.push('<td class="text-center">' + dataRow.DisplayFirstDepositDate + '</td>');
+            rowItems.push('<td class="text-center">' + dataRow.RecheckDays + '</td>');
             rowItems.push('<td class="text-center">' + dataRow.DisplayExpiredRedepositDate + '</td>');
-            rowItems.push('<td class="text-center">' + (hasSettingRedeposit ? (dataRow.IsRedeposit ? 'Yes' : 'No') : '-') + '</td>');
+            rowItems.push('<td class="text-center">' + (dataRow.IsRedeposit !== undefined ? (dataRow.IsRedeposit ? 'Yes' : 'No') : '-') + '</td>');
 
             if (dataRow.IsAbnormal) {
                 rowItems.push('<td class="text-center ' + statusClass + '">' + dataRow.CPAStatus + '<span title="' + dataRow.Description + '" class="glyphicon glyphicon-info-sign"></span></td>');
@@ -365,12 +374,20 @@
         },
 
         getParams: function () {
+            var fromDate = $('#FromDate').val();
+            var toDate = $('#ToDate').val();
+            var viewBy = $('#ViewBy').val();
+
+            var isResetGroupId = fromDate !== _fromDate || toDate !== _toDate || viewBy !== _viewBy;
+            _groupId = isResetGroupId ? 0 : _groupId;
+
             var params = {
                 player: $('#Player').val().trim(),
-                fromDate: $('#FromDate').val(),
-                toDate: $('#ToDate').val(),
-                status: $('#Status').val(),
-                viewBy: $('#ViewBy').val(),
+                fromDate: fromDate,
+                toDate: toDate,
+                status: statusSelector.getSelectedValues(),
+                viewBy: viewBy,
+                groupId: _groupId,
                 pageSize: _pageSize,
                 pageIndex: _pageIndex + 1,
                 sortType: _sortType,

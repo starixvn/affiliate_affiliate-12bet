@@ -94,10 +94,11 @@ var PaymentCPAReport = (function ($) {
 
             $('#report-data').on('click', '.eligible-player-link', function () {
                 let viewBy = $(this).data("view-by");
+                let groupId = $(this).data("group-id");
                 let fromDate = $(this).data("from");
                 let toDate = $(this).data("to");
 
-                window.open(Site.resolveRelativeLangUrl(`UserPanel/Main/#PlayerCPAReport?viewBy=${viewBy}&fromDate=${fromDate}&toDate=${toDate}`));
+                window.open(Site.resolveRelativeLangUrl(`UserPanel/Main/#PlayerCPAReport?viewBy=${viewBy}&groupId=${groupId}&fromDate=${fromDate}&toDate=${toDate}`));
             });
         },
 
@@ -186,7 +187,7 @@ var PaymentCPAReport = (function ($) {
             }
             rowItems.push('<td class="text-center">' + dataRow.DisplayExpiredRedepositDate + '</td>');
             if (dataRow.EligiblePlayers) {
-                rowItems.push(`<td class="text-center"><a href="javascript:;" class="eligible-player-link" data-view-by="2" data-from="${dataRow.DisplayStartDate}" data-to="${dataRow.DisplayEndDate}">${dataRow.EligiblePlayers}</a></td>`);
+                rowItems.push(`<td class="text-center"><a href="javascript:;" class="eligible-player-link" data-view-by="2" data-group-id="${dataRow.GroupId}" data-from="${dataRow.DisplayStartDate}" data-to="${dataRow.DisplayEndDate}">${dataRow.EligiblePlayers}</a></td>`);
             } else {
                 rowItems.push('<td class="text-center">' + dataRow.EligiblePlayers + '</td>');
             }

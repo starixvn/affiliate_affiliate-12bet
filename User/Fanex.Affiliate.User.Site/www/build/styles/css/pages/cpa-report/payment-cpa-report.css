@@ -324,10 +324,6 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 .payment-cpa-report .glyphicon-calendar {
   top: 5px; }
 
-.payment-cpa-report thead tr th {
-  font-weight: bold;
-  font-size: 13px; }
-
 .payment-cpa-report tbody tr {
   background: #FFFFFF; }
   .payment-cpa-report tbody tr td.status-monitoring {

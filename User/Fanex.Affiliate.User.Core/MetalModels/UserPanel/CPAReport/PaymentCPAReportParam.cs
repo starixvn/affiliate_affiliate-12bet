@@ -34,7 +34,7 @@
                     case PaymentCPAStatus.Empty:
                         return "Empty";
                     default:
-                        return "Monitoring,NotQualified,Qualified,Empty";
+                        return "Monitoring,Not Qualified,Qualified,Empty";
                 }
             }
         }

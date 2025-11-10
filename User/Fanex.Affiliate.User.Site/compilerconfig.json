@@ -1,8 +1,8 @@
 ﻿[
-  //{
-  //  "outputFile": "www/build/styles/css/main.css",
-  //  "inputFile": "www/source/styles/scss/main.scss"
-  //},
+  {
+    "outputFile": "www/build/styles/css/main.css",
+    "inputFile": "www/source/styles/scss/main.scss"
+  },
   //{
   //  "outputFile": "www/build/styles/css/home.css",
   //  "inputFile": "www/source/styles/pages/home.scss"
@@ -79,10 +79,10 @@
   //  "outputFile": "www/build/styles/css/pages/commissionreport.css",
   //  "inputFile": "www/source/styles/pages/commissionreport.scss"
   //},
-  //{
-  //  "outputFile": "www/build/js/pages/commission-report.js",
-  //  "inputFile": "www/source/js/pages/commission-report.js"
-  //},
+  {
+    "outputFile": "www/build/js/pages/commission-report.js",
+    "inputFile": "www/source/js/pages/commission-report.js"
+  },
   //{
   //  "outputFile": "www/build/styles/css/pages/payment-request.css",
   //  "inputFile": "www/source/styles/pages/payment-request.scss"

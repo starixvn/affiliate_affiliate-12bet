@@ -1,10 +1,14 @@
 ﻿using Fanex.Affiliate.User.Core.BusinessService;
 using Fanex.Affiliate.User.Core.BusinessService.CPAReport;
+using Fanex.Affiliate.User.Core.Constants;
 using Fanex.Affiliate.User.Core.CoreService;
+using Fanex.Affiliate.User.Core.DTO;
+using Fanex.Affiliate.User.Core.DTO.UserPanel.CPAReport;
 using Fanex.Affiliate.User.Core.Filters;
 using Fanex.Affiliate.User.Core.MetalModels.UserPanel.CPAReport;
 using Fanex.Affiliate.User.Core.Utilities;
 using Fanex.Affiliate.User.Core.ViewModels.UserPanel.CPAReport;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
@@ -29,7 +33,8 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
             var viewModel = new CPAReportViewModel
             {
                 FromDate = DateTimeHelper.CreateDateTime(now.Year, now.Month, 1),
-                ToDate = now
+                ToDate = now,
+                StatusList = PlayerCpaStatus.StattusList
             };
 
             return View("~/Views/UserPanel/CPAReport/PlayerCPAReport/Index.cshtml", viewModel);
@@ -39,10 +44,18 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
         [AjaxOnly]
         public ActionResult GetPlayerCPAReport(PlayerCPAReportParam param)
         {
-            param.AffId = SessionService.UserSession.AffId;
-            var viewModel = _reportService.GetPlayerCPAData(param);
+            if (ModelState.IsValid)
+            {
+                param.AffId = SessionService.UserSession.AffId;
+                var viewModel = _reportService.GetPlayerCPAData(param);
 
-            return Json(viewModel);
+                return Json(viewModel);
+            }
+
+            return Json(new EntityResult<PlayerCPA>
+            {
+                MainDataList = new List<PlayerCPA>()
+            });
         }
 
         [HttpPost]

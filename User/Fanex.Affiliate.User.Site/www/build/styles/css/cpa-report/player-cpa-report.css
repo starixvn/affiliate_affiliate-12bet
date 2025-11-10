@@ -341,7 +341,10 @@ http://nicolasgallagher.com/micro-clearfix-hack/
   padding: 3px;
   text-indent: 4px;
   -webkit-user-select: none;
-  user-select: none; }
+  user-select: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
   .multiple-select-item input[type=checkbox] {
     cursor: pointer; }
   .multiple-select-item input[type=checkbox] + label {
@@ -380,7 +383,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
   .custom-panel .form-filter {
     margin-bottom: 0; }
     .custom-panel .form-filter .form-control {
-      width: 150px;
+      width: 190px;
       margin-bottom: 0;
       display: inline-block; }
     .custom-panel .form-filter .view-by-select {
@@ -435,9 +438,6 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 .parent-group {
   font-weight: bold; }
 
-.table .th {
-  cursor: pointer; }
-
 .table .header-category-row .th {
   background-color: #CD5C5C !important;
   color: white !important;
@@ -462,8 +462,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
   font-weight: bold;
   text-align: center;
   border: 1px solid #B85450;
-  padding: 6px 4px;
-  font-size: 13px; }
+  padding: 6px 4px; }
 
 .table .header-category-row .th:first-child,
 .table .header-category-row .th:nth-child(2),
@@ -472,8 +471,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 
 .table .th-wrapper {
   position: relative;
-  padding-right: 15px;
-  font-size: 13px; }
+  padding-right: 15px; }
   .table .th-wrapper .icon-container {
     position: absolute;
     display: inline-block;
