@@ -124,7 +124,7 @@ export const headerText = {
     [reportKey.Fdm_Amount]: 'FTD Amount',
     [reportKey.FDM_TotalDeposit]: "FTD's Total Deposit",
     [reportKey.ActivePlayer]: 'Active Player',
-    [reportKey.QualifiedMember]: 'Qualified RevShare Players',
+    [reportKey.QualifiedMember]: 'Qualified Rev. Share Player',
     [reportKey.QualifiedCPAMember]: 'Qualified CPA Players',
     [reportKey.NoOfSubAff]: 'Sub-Affiliate',
     [reportKey.TotalDeposit]: 'Total Deposit Count',
