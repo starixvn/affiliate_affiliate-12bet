@@ -93,7 +93,5 @@ namespace Fanex.Affiliate.Admin.Core.DTO.Report
         public decimal ApprovedCPAAmount { get; set; }
 
         public decimal AdjustedCPAAmount { get; set; }
-
-        public decimal TotalMainEarning { get; set; }
     }
 }

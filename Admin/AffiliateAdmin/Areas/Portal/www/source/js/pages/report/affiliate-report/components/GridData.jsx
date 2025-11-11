@@ -123,7 +123,7 @@ export class GridData extends PureComponent {
                 {mainHeader[reportKey.TotalDeposit].isShowable && (<th width={65} rowSpan="3" title={headerText.TotalDeposit}>{headerText.TotalDeposit}</th>)}
                 {mainHeader[reportKey.Deposit].isShowable && (<th width={70} rowSpan="3" title={headerText.Deposit}>{headerText.Deposit}</th>)}
                 {mainHeader[reportKey.MemberStatistics].isShowable && (<th width={630} colSpan={mainHeader[reportKey.MemberStatistics].totalShowableCol} height={28} title={headerText.MemberStatistics}>{headerText.MemberStatistics}</th>)}
-                {mainHeader[reportKey.AffiliateStatistics].isShowable && (<th width={845} colSpan={mainHeader[reportKey.AffiliateStatistics].totalShowableCol} title={headerText.AffiliateStatistics}>{headerText.AffiliateStatistics}</th>)}
+                {mainHeader[reportKey.AffiliateStatistics].isShowable && (<th width={770} colSpan={mainHeader[reportKey.AffiliateStatistics].totalShowableCol} title={headerText.AffiliateStatistics}>{headerText.AffiliateStatistics}</th>)}
                 {isMainView && !isCheckedDatePicker && (<th width={55} rowSpan="3" title={headerText.MonthOnMonth}>{headerText.MonthOnMonth}</th>)}
                 {isMainView && (<th width={55} rowSpan="3" title={headerText.PlayerGgr}>{headerText.PlayerGgr}</th>)}
             </tr>,
@@ -151,7 +151,6 @@ export class GridData extends PureComponent {
                 {subChildHeader[reportKey.Earning].isShowable && (<th width={75} title={headerText.Earning}>{headerText.Earning}</th>)}
                 {subChildHeader[reportKey.ApprovedCPAAmount].isShowable && (<th width={75} title={headerText.ApprovedCPAAmount}>{headerText.ApprovedCPAAmount}</th>)}
                 {subChildHeader[reportKey.AdjustedCPAAmount].isShowable && (<th width={75} title={headerText.AdjustedCPAAmount}>{headerText.AdjustedCPAAmount}</th>)}
-                {subChildHeader[reportKey.TotalMainEarning].isShowable && (<th width={75} title={headerText.TotalMainEarning}>{headerText.TotalMainEarning}</th>)}
                 {subChildHeader[reportKey.SubAffEarning].isShowable && (<th width={95} title={headerText.SubAffEarning}>{headerText.SubAffEarning}</th>)}
             </tr>
         ];
@@ -261,7 +260,6 @@ export class GridData extends PureComponent {
         const earning = formatDecimal(dataItem.Earning);
         const approvedCpaAmount = formatDecimal(dataItem.ApprovedCPAAmount, !isRevenueAff);
         const adjustedCpaAmount = formatDecimal(dataItem.AdjustedCPAAmount, !isRevenueAff);
-        const totalMainEarning = formatDecimal(dataItem.TotalMainEarning);
         const subAffEarning = formatDecimal(dataItem.SubAffEarning);
 
         return (
@@ -320,7 +318,6 @@ export class GridData extends PureComponent {
                         )}
                     </td>
                 )}
-                {header[reportKey.TotalMainEarning].isShowable && (<td className="text-right" title={totalMainEarning}>{totalMainEarning}</td>)}
                 {header[reportKey.SubAffEarning].isShowable && (<td className="text-right" title={subAffEarning}>{subAffEarning}</td>)}
                 
                 {header[reportKey.TotalEarning].isShowable && (<td className="text-right" title={totalEarning}>{totalEarning}</td>)}

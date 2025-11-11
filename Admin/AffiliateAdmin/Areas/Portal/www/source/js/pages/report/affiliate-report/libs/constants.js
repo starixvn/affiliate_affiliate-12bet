@@ -200,8 +200,7 @@ export const headerConfig = {
                     [reportKey.CommissionRate]: { label: headerText[reportKey.CommissionRate], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
                     [reportKey.Earning]: { label: headerText[reportKey.Earning], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
                     [reportKey.ApprovedCPAAmount]: { label: headerText[reportKey.ApprovedCPAAmount], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
-                    [reportKey.AdjustedCPAAmount]: { label: headerText[reportKey.AdjustedCPAAmount], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
-                    [reportKey.TotalMainEarning]: { label: headerText[reportKey.TotalMainEarning], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker }
+                    [reportKey.AdjustedCPAAmount]: { label: headerText[reportKey.AdjustedCPAAmount], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker }
                 },
                 isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker
             },
