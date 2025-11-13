@@ -10,8 +10,12 @@
             getParams: getDefaultParams
         },
         206: {
-            url: "UserPanel/Main/#PlayerCPAReport",
-            getParams: getDateRangeParams
+            url: "UserPanel/Main/#PaymentCPAReport",
+            getParams: getApprovedCpaEarningParams
+        },
+        208: {
+            url: "UserPanel/Main/#PaymentCPAReport",
+            getParams: getCpaAdjustmentParams
         }
     };
 
@@ -50,7 +54,7 @@
         $(children).toggleClass("display-none");
     }
 
-    function getDefaultParams(clickedDate) {
+    function getDefaultParams(clickedDate, _) {
         return {
             monthDate: clickedDate,
             requestPage: _currentPage,
@@ -59,14 +63,39 @@
         };
     }
 
-    function getDateRangeParams(clickedDate) {
+    function getCpaAdjustmentParams(_, description) {
+        const date = new Date(description.slice(-10));
+        let adjustedDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        return {
+            fromDate: _me.formatDate(adjustedDate),
+            toDate: _me.formatDate(adjustedDate),
+            status: 0,
+            viewBy: 1
+        };
+    }
+
+    function getApprovedCpaEarningParams(clickedDate, _) {
         let date = new Date(clickedDate);
+        let today = new Date($("#today").val());
+
+        const itemMonth = date.getMonth();
+        const itemYear = date.getFullYear();
+
+        const toMonth = today.getMonth();
+        const toYear = today.getFullYear();
+
         let firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
         let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+        if (itemMonth === toMonth && itemYear === toYear) {
+            lastDay = new Date(toYear, toMonth, today.getDate());
+        }
+
         return {
             fromDate: _me.formatDate(firstDay),
             toDate: _me.formatDate(lastDay),
-            viewBy: 3
+            status: 3,
+            viewBy: 2
         };
     }
 
@@ -95,10 +124,11 @@
                 let transtype = Number($(this).data("transtype"));
                 let mapping = urlMapping[transtype];
                 let clickedDate = $(this).data("date");
+                let description = $(this).data("description");
 
                 if (mapping) {
                     let url = mapping.url;
-                    let params = mapping.getParams(clickedDate);
+                    let params = mapping.getParams(clickedDate, description);
 
                     _me.setStatementHistoryParamIntoStorage();
                     Site.redirect(Site.resolveRelativeLangUrl(`${url}?${$.param(params)}`));

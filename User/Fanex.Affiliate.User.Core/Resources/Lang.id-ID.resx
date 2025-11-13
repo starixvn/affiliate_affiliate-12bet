@@ -2412,10 +2412,10 @@ PEMBAYARAN KONSISTEN</value>
     <value>Hitung Pembagian Pendapatan berdasarkan Kemenangan/Kerugian</value>
   </data>
   <data name="UncalculatedCommission" xml:space="preserve">
-    <value>Pembagian Pendapatan yang Belum Dihitung</value>
+    <value>Bagi Hasil Sub-Afiliasi Tentatif yang Belum Dihitung</value>
   </data>
-  <data name="CurrentCommission" xml:space="preserve">
-    <value>Pembagian Pendapatan Saat Ini</value>
+  <data name="TentativeCommission" xml:space="preserve">
+    <value>Bagi Hasil Sub-Afiliasi Tentatif</value>
   </data>
   <data name="AffiliateCurrency" xml:space="preserve">
     <value>Mata Uang Afiliasi</value>

@@ -2,9 +2,10 @@
 
 @helper RenderItem(Fanex.Affiliate.User.Core.ViewModels.UserPanel.StatementHistoryViewModel item, int id, int? parentId = null, int? index = null)
 {
-    var isLink = item.TransType != (byte)Fanex.Affiliate.User.Core.Enum.TransType.Payment
-                 && item.TransType != (byte)Fanex.Affiliate.User.Core.Enum.TransType.Adjustment
-                 && item.TransType != (byte)Fanex.Affiliate.User.Core.Enum.TransType.MonthlyTotal
+    var isLink = (item.TransType == (byte)Fanex.Affiliate.User.Core.Enum.TransType.SubAffiliate
+                 || item.TransType == (byte)Fanex.Affiliate.User.Core.Enum.TransType.ApprovedCpaEarning
+                 || item.TransType == (byte)Fanex.Affiliate.User.Core.Enum.TransType.CpaAdjustment
+                 || item.TransType == (byte)Fanex.Affiliate.User.Core.Enum.TransType.MonthlyEarning)
                  && DateTime.Compare(item.MonthDate, ViewBag.AvailableFromDate) > 0;
 
     var hasChildren = item.Children == null || item.Children.Any();
@@ -29,7 +30,7 @@
         <td class="text-right">
             @if (isLink)
             {
-                <a class="amountItem" data-date="@item.MonthDate.ToString("yyyy-MM-dd")" data-transtype="@item.TransType" href="javascript:;">
+                <a class="amountItem" data-date="@item.MonthDate.ToString("yyyy-MM-dd")" data-transtype="@item.TransType" data-description="@item.Description" href="javascript:;">
                     @item.Amount.ToStringMoneyWithSymbol()
                 </a>
             }

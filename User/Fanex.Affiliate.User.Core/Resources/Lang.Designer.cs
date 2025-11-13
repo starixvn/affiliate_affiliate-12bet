@@ -233,6 +233,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date when player meets required actions (e.g., Min FTD, Deposit, or Turnover)..
+        /// </summary>
+        public static string ActiveQualifiedDateDescription {
+            get {
+                return ResourceManager.GetString("ActiveQualifiedDateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add channel succeeded.
         /// </summary>
         public static string AddChannelSuccess {
@@ -1124,6 +1133,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total bet tickets placed during holding period..
+        /// </summary>
+        public static string BetTicketDescription {
+            get {
+                return ResourceManager.GetString("BetTicketDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 12BET User Name is required.
         /// </summary>
         public static string BETUserNameIsRequired {
@@ -1898,11 +1916,29 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CPA Adjustment.
+        /// </summary>
+        public static string CpaAdjustment {
+            get {
+                return ResourceManager.GetString("CpaAdjustment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CPA Amount.
         /// </summary>
         public static string CPAAmount {
             get {
                 return ResourceManager.GetString("CPAAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click to view Turnover CPA Detail..
+        /// </summary>
+        public static string CPAAmountDescription {
+            get {
+                return ResourceManager.GetString("CPAAmountDescription", resourceCulture);
             }
         }
         
@@ -1993,15 +2029,6 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string Current {
             get {
                 return ResourceManager.GetString("Current", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Current Temporary Sub-Affiliate Revenue Share.
-        /// </summary>
-        public static string CurrentCommission {
-            get {
-                return ResourceManager.GetString("CurrentCommission", resourceCulture);
             }
         }
         
@@ -2726,6 +2753,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Last day for player to redeposit..
+        /// </summary>
+        public static string ExpiredDateDescription {
+            get {
+                return ResourceManager.GetString("ExpiredDateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Expired Redeposit Date.
         /// </summary>
         public static string ExpiredRedepositDate {
@@ -3231,6 +3267,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to End date of the holding period..
+        /// </summary>
+        public static string HoldingExpiredDateDescription {
+            get {
+                return ResourceManager.GetString("HoldingExpiredDateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Holding Period.
         /// </summary>
         public static string HoldingPeriod {
@@ -3245,6 +3290,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string HoldingQualifiedDate {
             get {
                 return ResourceManager.GetString("HoldingQualifiedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date when minimum bet tickets are met..
+        /// </summary>
+        public static string HoldingQualifiedDateDescription {
+            get {
+                return ResourceManager.GetString("HoldingQualifiedDateDescription", resourceCulture);
             }
         }
         
@@ -3506,6 +3560,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string IsRedeposit {
             get {
                 return ResourceManager.GetString("IsRedeposit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shows if the player has redeposited..
+        /// </summary>
+        public static string IsRedepositDescription {
+            get {
+                return ResourceManager.GetString("IsRedepositDescription", resourceCulture);
             }
         }
         
@@ -6914,6 +6977,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tentative Sub-Affiliate Revenue Share.
+        /// </summary>
+        public static string TentativeCommission {
+            get {
+                return ResourceManager.GetString("TentativeCommission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tentative CPA Earning.
         /// </summary>
         public static string TentativeCpaEarning {
@@ -7121,6 +7193,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total deposits made by the Player during the Activity Period. Deposits after this period are excluded..
+        /// </summary>
+        public static string TotalDepositsDescription {
+            get {
+                return ResourceManager.GetString("TotalDepositsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TOTAL FTD&apos;s DEPOSIT ($).
         /// </summary>
         public static string TotalFdmDeposit {
@@ -7292,7 +7373,7 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uncalculated Temporary Sub-Affiliate Revenue Share.
+        ///   Looks up a localized string similar to Uncalculated Tentative Sub-Affiliate Revenue Share.
         /// </summary>
         public static string UncalculatedCommission {
             get {

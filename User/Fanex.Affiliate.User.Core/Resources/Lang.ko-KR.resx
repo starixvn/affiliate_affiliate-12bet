@@ -2390,10 +2390,10 @@
     <value>손익에 따른 수익 공유 계산</value>
   </data>
   <data name="UncalculatedCommission" xml:space="preserve">
-    <value>계산되지 않은 수익 공유</value>
+    <value>계산되지 않은 예상 하위 제휴사 매출 배분</value>
   </data>
-  <data name="CurrentCommission" xml:space="preserve">
-    <value>현재 수익 공유</value>
+  <data name="TentativeCommission" xml:space="preserve">
+    <value>예상 하위 제휴사 매출 배분</value>
   </data>
   <data name="AffiliateCurrency" xml:space="preserve">
     <value>제휴 통화</value>
@@ -2656,5 +2656,77 @@
   </data>
   <data name="Group" xml:space="preserve">
     <value>그룹 {0}</value>
+  </data>
+  <data name="IsRedepositDescription" xml:space="preserve">
+    <value>플레이어가 재입금했는지 여부를 표시합니다.</value>
+  </data>
+  <data name="PlayerCPAReport" xml:space="preserve">
+    <value>플레이어 CPA 보고서</value>
+  </data>
+  <data name="CpaAdjustment" xml:space="preserve">
+    <value>CPA 조정</value>
+  </data>
+  <data name="TotalDepositsDescription" xml:space="preserve">
+    <value>활동 기간 동안 플레이어가 입금한 총 금액입니다. 이 기간 이후의 입금은 제외됩니다.</value>
+  </data>
+  <data name="ActiveQualifiedDateDescription" xml:space="preserve">
+    <value>플레이어가 필요한 조치(예: 최소 FTD, 입금 또는 매출)를 충족한 날짜</value>
+  </data>
+  <data name="BetTicketDescription" xml:space="preserve">
+    <value>보류 기간 동안 베팅된 총 베팅 티켓</value>
+  </data>
+  <data name="HoldingQualifiedDateDescription" xml:space="preserve">
+    <value>최소 베팅 티켓이 충족된 날짜</value>
+  </data>
+  <data name="HoldingExpiredDateDescription" xml:space="preserve">
+    <value>보류 기간 종료일</value>
+  </data>
+  <data name="ExpiredDateDescription" xml:space="preserve">
+    <value>플레이어가 재입금할 수 있는 마지막 날짜</value>
+  </data>
+  <data name="PaymentCPAReport" xml:space="preserve">
+    <value>지불 CPA 보고서</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>시작일</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>종료일</value>
+  </data>
+  <data name="AdjustmentAmount" xml:space="preserve">
+    <value>조정 금액</value>
+  </data>
+  <data name="ManuallyApproved" xml:space="preserve">
+    <value>수동 승인</value>
+  </data>
+  <data name="AffilateLink" xml:space="preserve">
+    <value>제휴사 링크</value>
+  </data>
+  <data name="RedepositQualifiedPeriod" xml:space="preserve">
+    <value>재입금 적격 기간</value>
+  </data>
+  <data name="ExpiredDate" xml:space="preserve">
+    <value>만료일</value>
+  </data>
+  <data name="IsRedeposit" xml:space="preserve">
+    <value>재입금 여부</value>
+  </data>
+  <data name="AutoApprovedDate" xml:space="preserve">
+    <value>자동 승인된 CPA</value>
+  </data>
+  <data name="AdjustmentDate" xml:space="preserve">
+    <value>조정일</value>
+  </data>
+  <data name="Empty" xml:space="preserve">
+    <value>비어 있음</value>
+  </data>
+  <data name="PaymentSchedule" xml:space="preserve">
+    <value>지급 일정</value>
+  </data>
+  <data name="EligiblePlayers" xml:space="preserve">
+    <value>적격 플레이어</value>
+  </data>
+  <data name="AutomaticallyApproved" xml:space="preserve">
+    <value>자동 승인</value>
   </data>
 </root>

@@ -1478,136 +1478,7 @@
         }
     };
 })(jQuery);
-(function ($) {
-    let _id = null;
-    let _class = null;
-
-    var _me = {
-        initEvent: function (idName) {
-            _id = `#${idName}-multiple-select`;
-            _class = `.${idName}-multiple-select`;
-
-            $(`${_id}-label`).on('click', function () {
-                $(`${_id}-options-container`).toggle();
-
-                document.addEventListener('click', _me.handleDocumentClick);
-            });
-
-            $(`${_id}-option-all`).on('change', function (event) {
-                $(`${_class}-option-checkbox`).prop("checked", $(this).is(":checked"));
-
-                _me.handleUpdateLabel();
-            });
-
-            $(`${_class}-option-checkbox`).on('change', function (event) {
-                if (!$(this).is(":checked")) {
-                    $(`${_id}-option-all`).prop("checked", false);
-                } else {
-                    let isCheckAll = $(`${_class}-option-checkbox:checked`).length == $(`${_class}-option-checkbox`).length
-
-                    $(`${_id}-option-all`).prop("checked", isCheckAll);
-                }
-
-                _me.handleUpdateLabel();
-            });
-        },
-        handleDocumentClick: function (event) {
-            if (!$(`${_id}`).length) {
-                _me.removeEventListener();
-            } else {
-                if (!$(`${_id}`).find(event.target).length) {
-                    _me.removeEventListener();
-
-                    $(`${_id}-options-container`).hide();
-                }
-            }
-        },
-        removeEventListener: function () {
-            document.removeEventListener('click', _me.handleDocumentClick)
-        },
-        handleUpdateLabel: function () {
-            var selectedItems = $(`${_class}-option-checkbox:checked`).length;
-
-            if (!selectedItems) {
-                $(`${_id}`).addClass("multiple-select-wrapper is-invalid");
-                $(`${_id}-text-display`).html(langResource.noneSelect);
-            } else {
-                $(`${_id}`).removeClass("multiple-select-wrapper is-invalid");
-
-                let isCheckAll = $(`${_class}-option-checkbox:checked`).length == $(`${_class}-option-checkbox`).length
-                $(`${_id}-text-display`).html(isCheckAll ? langResource.allSelected : langResource.selected.replace('{0}', selectedItems));
-            }
-        },
-        getSelectedValues: function () {
-            return $(`${_class}-option-checkbox:checked`).map((index, el) => el.value).get().join(',');
-        },
-        setSelectedValues: function (value) {
-            var selectedValues = value.split(',');
-            $(`${_class}-option-checkbox`).each(function () {
-                var isSelected = selectedValues.includes($(this).val());
-                $(this).prop("checked", isSelected);
-            });
-
-            _me.handleUpdateLabel();
-        }
-    };
-
-    $.fn.multipleSelector = function () {
-        _me.initEvent(this.prop('id'));
-
-        return {
-            getSelectedValues: _me.getSelectedValues
-        }
-    };
-})(jQuery);
-var PaymentCPAReport = (function ($) {
-    var _reportData = null;
-    var _pageSize = 20;
-    var _pageIndex = 0;
-    var _totalItem = 0;
-    var _isSubmited = false;
-
-    function initPager() {
-        $("#payment-CPA-report-pager").pager({
-            totalItems: _totalItem,
-            pageSize: _pageSize,
-            pageIndex: _pageIndex,
-            onChange: function (pageIndex, pageSize) {
-                var isChangePageSize = _pageSize !== pageSize;
-                _pageIndex = pageIndex;
-                _pageSize = pageSize;
-
-                if (isChangePageSize) {
-                    _me.submit(initPager);
-                } else {
-                    _me.submit();
-                }
-            }
-        });
-    }
-
-    function formatDateUnit(value) {
-        return value < 10 ? '0' + value : value;
-    }
-
-    function initDatePicker(id, triggerId) {
-        UserPanel.datepicker.push(new Pikaday({
-            field: document.getElementById(id),
-            trigger: document.getElementById(triggerId),
-            yearRange: [2015, new Date().getFullYear()],
-            toString: function (date, format) {
-                var day = date.getDate();
-                var month = date.getMonth() + 1;
-                var year = date.getFullYear();
-                return formatDateUnit(month) + "/" + formatDateUnit(day) + "/" + year;
-            }
-        }));
-    }
-
-    function formatDecimal(value) {
-        return format(value, 2)
-    }
-
+var BasePCAReport = (function ($) {
     function format(value, digits) {
         if (typeof value !== "number" || isNaN(value)) {
             return "";
@@ -1626,6 +1497,69 @@ var PaymentCPAReport = (function ($) {
         return sign * rounded;
     }
 
+    function formatDateUnit(value) {
+        return value < 10 ? '0' + value : value;
+    }
+
+    function getDateString(date) {
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        return formatDateUnit(month) + "/" + formatDateUnit(day) + "/" + year;
+    }
+
+    var _me = {
+        initialize: function () {
+        },
+
+        initDatePicker: function (id, triggerId) {
+            UserPanel.datepicker.push(new Pikaday({
+                field: document.getElementById(id),
+                trigger: document.getElementById(triggerId),
+                yearRange: [2015, new Date().getFullYear()],
+                toString: function (date, format) {
+                    return getDateString(date);
+                }
+            }));
+        },
+
+        getUrlParameter: function (name) {
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            let results = regex.exec(location.search);
+
+            if (!results && location.hash) {
+                results = regex.exec(location.hash);
+            }
+
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        },
+
+        convertDateFormat: function (dateStr) {
+            const date = new Date(dateStr);
+
+            if (isNaN(date.getTime())) {
+                return '';
+            }
+
+            return getDateString(date);
+        },
+
+        formatDecimal: function (value) {
+            return format(value, 2)
+        }
+    };
+
+    return _me;
+})(jQuery)
+
+BasePCAReport.initialize();
+var PaymentCPAReport = (function ($) {
+    var _reportData = null;
+    var _pageSize = 20;
+    var _pageIndex = 0;
+    var _totalItem = 0;
+    var _isSubmited = false;
+
     function getStatusClass(statusId) {
         switch (statusId) {
             case 1: return 'status-monitoring'; // Monitoring
@@ -1636,14 +1570,61 @@ var PaymentCPAReport = (function ($) {
         }
     }
 
+    function initPager() {
+        $("#payment-CPA-report-pager").pager({
+            totalItems: _totalItem,
+            pageSize: _pageSize,
+            pageIndex: _pageIndex,
+            languageCode: Site.getCurrentLanguage(),
+            onChange: function (pageIndex, pageSize) {
+                var isChangePageSize = _pageSize !== pageSize;
+                _pageIndex = pageIndex;
+                _pageSize = pageSize;
+
+                if (isChangePageSize) {
+                    _me.submit(initPager);
+                } else {
+                    _me.submit();
+                }
+            }
+        });
+    }
+
     var _me = {
         initialize: function () {
-            initDatePicker('FromDate', 'fromPicker');
-            initDatePicker('ToDate', 'toPicker');
+            BasePCAReport.initDatePicker('FromDate', 'fromPicker');
+            BasePCAReport.initDatePicker('ToDate', 'toPicker');
             initPager();
             _me.togglePager();
             _me.toggleTable();
             _me.initEvent();
+            _me.handleUrlParameters();
+        },
+
+        handleUrlParameters: function () {
+            _fromDate = BasePCAReport.getUrlParameter('fromDate');
+            _toDate = BasePCAReport.getUrlParameter('toDate');
+            _status = BasePCAReport.getUrlParameter('status');
+            _viewBy = BasePCAReport.getUrlParameter('viewBy');
+
+            if (!_fromDate || !_toDate) return;
+
+            const convertedFromDate = BasePCAReport.convertDateFormat(_fromDate);
+            const convertedToDate = BasePCAReport.convertDateFormat(_toDate);
+
+            if (!convertedFromDate || !convertedToDate) {
+                alert($("<div/>").html(langResource.isInvalid).text());
+                return;
+            }
+
+            $('#FromDate').val(convertedFromDate);
+            $('#ToDate').val(convertedToDate);
+            $('#Status').val(_status);
+            $('#ViewBy').val(_viewBy);
+
+            setTimeout(function () {
+                _me.submit();
+            }, 100);
         },
 
         initEvent: function () {
@@ -1758,15 +1739,15 @@ var PaymentCPAReport = (function ($) {
                 rowItems.push('<td class="text-center" rowspan=' + length + '>' + dataRow.RedepositPercentage + ' %' + '</td>');
             }
             rowItems.push('<td class="text-center">' + dataRow.NoOfPlayerRedeposit + '</td>');
-            rowItems.push(_me.buildCell(formatDecimal(dataRow.EstimatedCPAAmount)));
+            rowItems.push(_me.buildCell(BasePCAReport.formatDecimal(dataRow.EstimatedCPAAmount)));
             rowItems.push('<td class="text-center ' + className + '">' + dataRow.Status + '</td>');
-            rowItems.push(_me.buildCell(formatDecimal(dataRow.AutomaticallyApprovedAmount)));
+            rowItems.push(_me.buildCell(BasePCAReport.formatDecimal(dataRow.AutomaticallyApprovedAmount)));
             rowItems.push('<td class="text-center">' + dataRow.DisplayAutomaticallyApprovedDate + '</td>');
-            rowItems.push(_me.buildCell(formatDecimal(dataRow.ManuallyApprovedAmount)));
+            rowItems.push(_me.buildCell(BasePCAReport.formatDecimal(dataRow.ManuallyApprovedAmount)));
             rowItems.push('<td class="text-center">' + dataRow.DisplayManuallyApprovedDate + '</td>');
             rowItems.push('<td class="text-center">' + dataRow.DisplayDescription + '</td>');
-            rowItems.push(_me.buildCell(formatDecimal(dataRow.AdjustedAmount)));
-            rowItems.push(_me.buildCell(formatDecimal(dataRow.FinalCPAAmount)));
+            rowItems.push(_me.buildCell(BasePCAReport.formatDecimal(dataRow.AdjustedAmount)));
+            rowItems.push(_me.buildCell(BasePCAReport.formatDecimal(dataRow.FinalCPAAmount)));
             rowItems.push('</tr>');
 
             return rowItems.join("");
@@ -1780,15 +1761,15 @@ var PaymentCPAReport = (function ($) {
                     '<td class="text-center">' + dataRow.EligiblePlayers + '</td>' +
                     _me.buildCell('') +
                     _me.buildCell('') +
-                    _me.buildCell(formatDecimal(dataRow.EstimatedCPAAmount)) +
+                    _me.buildCell(BasePCAReport.formatDecimal(dataRow.EstimatedCPAAmount)) +
                     _me.buildCell('') +
-                    _me.buildCell(formatDecimal(dataRow.AutomaticallyApprovedAmount)) +
+                    _me.buildCell(BasePCAReport.formatDecimal(dataRow.AutomaticallyApprovedAmount)) +
                     _me.buildCell('') +
-                    _me.buildCell(formatDecimal(dataRow.ManuallyApprovedAmount)) +
+                    _me.buildCell(BasePCAReport.formatDecimal(dataRow.ManuallyApprovedAmount)) +
                     _me.buildCell('') +
                     _me.buildCell('') +
-                    _me.buildCell(formatDecimal(dataRow.AdjustedAmount)) +
-                    _me.buildCell(formatDecimal(dataRow.FinalCPAAmount)) +
+                    _me.buildCell(BasePCAReport.formatDecimal(dataRow.AdjustedAmount)) +
+                    _me.buildCell(BasePCAReport.formatDecimal(dataRow.FinalCPAAmount)) +
                     '</tr>';
             }
 

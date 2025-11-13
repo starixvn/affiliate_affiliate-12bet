@@ -27,24 +27,28 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="Status">@Lang.Status:</label>
-                        <select id="Status" class="form-control">
-                            <option value="0">@Lang.All</option>
-                            <option value="1">@Lang.Monitoring</option>
-                            <option value="2">@Lang.NotQualified</option>
-                            <option value="3">@Lang.Qualified</option>
-                            <option value="4">@Lang.Empty</option>
-                        </select>
+                        <div class="form-group">
+                            <label for="Status">@Lang.Status:</label>
+                            <select id="Status" class="form-control">
+                                <option value="0">@Lang.All</option>
+                                <option value="1">@Lang.Monitoring</option>
+                                <option value="2">@Lang.NotQualified</option>
+                                <option value="3">@Lang.Qualified</option>
+                                <option value="4">@Lang.Empty</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ViewBy">@Lang.ViewBy:</label>
+                            <select id="ViewBy" class="form-control view-by-select">
+                                <option value="1">@Lang.ScheduleEndDate</option>
+                                <option value="2">@Lang.AutoApprovedDate</option>
+                                <option value="3">@Lang.AdjustmentDate</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-submit btn-payment-cpa-report" id="btnSubmit">@Lang.Submit</button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="ViewBy">@Lang.ViewBy:</label>
-                        <select id="ViewBy" class="form-control view-by-select">
-                            <option value="1">@Lang.ScheduleEndDate</option>
-                            <option value="2">@Lang.AutoApprovedDate</option>
-                            <option value="3">@Lang.AdjustmentDate</option>
-                        </select>
-                    </div>
-                    <button type="button" class="btn btn-submit btn-payment-cpa-report" id="btnSubmit">@Lang.Submit</button>
                 </form>
             </div>
         </div>
@@ -89,7 +93,8 @@
     var langResource = {
         noInfo: '@Lang.NoInfo',
         totalAllPages: '@Lang.TotalAllPages',
-        days: '@Lang.Days'
+        days: '@Lang.Days',
+        isInvalid: '@Error.IsInvalid'
     }
 </script>
 

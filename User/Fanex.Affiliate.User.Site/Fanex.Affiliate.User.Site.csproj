@@ -760,6 +760,7 @@
     <Content Include="www\source\js\lib\jquery-3.3.1.min.js" />
     <Content Include="www\source\js\lib\swiper.min.js" />
     <Content Include="www\source\js\pages\account-overview\channel-link-statistic.js" />
+    <Content Include="www\source\js\pages\cpa-report\base-cpa-report.js" />
     <Content Include="www\source\js\pages\cpa-report\player-cpa-report.js" />
     <Content Include="www\source\js\pages\commission-structure.js" />
     <Content Include="www\source\js\pages\contactus.js" />

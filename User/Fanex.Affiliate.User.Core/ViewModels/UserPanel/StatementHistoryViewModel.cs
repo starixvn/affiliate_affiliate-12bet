@@ -18,7 +18,7 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
 
         public byte? CalculatedType { get; set; }
 
-        public string DateString => TransType == Constants.TransType.Payment || TransType == Constants.TransType.Adjustment
+        public string DateString => ShouldDisplayFullDate(TransType)
                 ? MonthDate.ToString("MM-dd-yyyy")
                 : MonthDate.ToString("MMMM-yyyy");
 
@@ -70,15 +70,12 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
                     case Constants.TransType.AprrovedCpaEarning: case Constants.TransType.TentativeCpaEarning:
                         return Resources.Lang.CpaEarning;
                     case Constants.TransType.SubCpaEarning:
-                        return Resources.Lang.CpaEarning;
+                        return Resources.Lang.SubCpaEarning;
+                    case Constants.TransType.CpaAdjustment:
+                        return Resources.Lang.CpaAdjustment;
                     case Constants.TransType.MonthlyTotal:
                         {
-                            if (CalculatedType == Constants.CalculatedType.CalculatedMonth || CalculatedType == Constants.CalculatedType.UnCalculatedMonth)
-                            {
-                                return Resources.Lang.MonthlyTotal;
-                            }
-
-                            return Resources.Lang.Transaction;
+                            return GetMonthlyTotalTransType(CalculatedType);
                         }
                     default:
                         return Resources.Lang.Transaction;
@@ -114,6 +111,17 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
 
         public IEnumerable<StatementHistoryViewModel> Children { get; set; } = new List<StatementHistoryViewModel>();
 
+        private static string GetMonthlyTotalTransType(byte? calculatedType)
+        {
+            switch (calculatedType)
+            {
+                case Constants.CalculatedType.CalculatedMonth: case Constants.CalculatedType.UnCalculatedMonth:
+                    return Resources.Lang.MonthlyTotal;
+                default:
+                    return Resources.Lang.Transaction;
+            }
+        }
+
         private string GetCommissionDescription(byte? calculatedType)
         {
             var description = new StringBuilder();
@@ -147,7 +155,7 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
                 case Constants.CalculatedType.UnCalculatedMonth:
                     return Resources.Lang.UncalculatedCommission;
                 default:
-                    return Resources.Lang.CurrentCommission;
+                    return Resources.Lang.TentativeCommission;
             }
         }
 
@@ -171,6 +179,13 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
             return description.Trim().Equals(desc, StringComparison.InvariantCultureIgnoreCase)
                 ? Resources.Lang.PreviousSystemBalanceDescription
                 : string.Empty;
+        }
+
+        private static bool ShouldDisplayFullDate(int transType)
+        {
+            return transType == Constants.TransType.Payment
+                || transType == Constants.TransType.Adjustment
+                || transType == Constants.TransType.CpaAdjustment;
         }
     }
 }

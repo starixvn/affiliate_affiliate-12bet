@@ -1,12 +1,12 @@
-﻿var affiliatePCAReport = (function ($) {
+﻿var PlayerPCAReport = (function ($) {
     var _pageSize = 20;
     var _pageIndex = 0;
+    var _totalItem = 0;
+    var _isSubmited = false;
     var _sortingColumn = 'Month';
     var _isSortingAsc = false;
     var _sortType = 1;
     var _month = "";
-    var _totalItem = 0;
-    var _isSubmited = false;
     var _fromDate = '';
     var _toDate = '';
     var _viewBy = '';
@@ -14,6 +14,10 @@
 
     function initStatusSelector() {
         statusSelector = $('#Status').multipleSelector();
+    }
+
+    function getStatusClass(status) {
+        return `status-${status.toLowerCase().replace(/ /g, '-')}`;
     }
 
     function initPager() {
@@ -35,58 +39,11 @@
             }
         });
     }
-    function formatDecimal(value) {
-        return format(value, 2)
-    }
-
-    function format(value, digits) {
-        if (typeof value !== "number" || isNaN(value)) {
-            return "";
-        }
-
-        var roundedValue = round(value, digits);
-
-        return roundedValue.toFixed(digits).replace(/(\d)(?=(\d{3})+(\.|$))/g, "$1,");
-    }
-
-    function round(value, digits) {
-        var sign = value < 0 ? -1 : 1;
-        var absoluteValue = Math.abs(value);
-        var rounded = Number(Math.round(absoluteValue + 'e' + digits) + 'e-' + digits);
-
-        return sign * rounded;
-    }
-
-    function formatDateUnit(value) {
-        return value < 10 ? '0' + value : value;
-    }
-
-    function getStatusClass(status) {
-        return `status-${status.toLowerCase().replace(/ /g, '-')}`;
-    }
-
-    function initDatePicker(id, triggerId) {
-        UserPanel.datepicker.push(new Pikaday({
-            field: document.getElementById(id),
-            trigger: document.getElementById(triggerId),
-            yearRange: [2015, new Date().getFullYear()],
-            toString: function (date, format) {
-                return getDateString(date);
-            }
-        }));
-    }
-
-    function getDateString(date) {
-        var day = date.getDate();
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear();
-        return formatDateUnit(month) + "/" + formatDateUnit(day) + "/" + year;
-    }
 
     var _me = {
         initialize: function () {
-            initDatePicker('FromDate', 'fromPicker');
-            initDatePicker('ToDate', 'toPicker');
+            BasePCAReport.initDatePicker('FromDate', 'fromPicker');
+            BasePCAReport.initDatePicker('ToDate', 'toPicker');
             initPager();
             initStatusSelector();
             _me.togglePager();
@@ -95,37 +52,16 @@
             _me.handleUrlParameters();
         },
 
-        getUrlParameter: function (name) {
-            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            let results = regex.exec(location.search);
-
-            if (!results && location.hash) {
-                results = regex.exec(location.hash);
-            }
-
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        },
-
-        convertDateFormat: function (dateStr) {
-            const date = new Date(dateStr);
-
-            if (isNaN(date.getTime())) {
-                return '';
-            }
-
-            return getDateString(date);
-        },
-
         handleUrlParameters: function () {
-            _fromDate = _me.getUrlParameter('fromDate');
-            _toDate = _me.getUrlParameter('toDate');
-            _viewBy = _me.getUrlParameter('viewBy');
-            _groupId = _me.getUrlParameter('groupId');
+            _fromDate = BasePCAReport.getUrlParameter('fromDate');
+            _toDate = BasePCAReport.getUrlParameter('toDate');
+            _viewBy = BasePCAReport.getUrlParameter('viewBy');
+            _groupId = BasePCAReport.getUrlParameter('groupId');
 
             if (!_fromDate || !_toDate) return;
 
-            const convertedFromDate = _me.convertDateFormat(_fromDate);
-            const convertedToDate = _me.convertDateFormat(_toDate);
+            const convertedFromDate = BasePCAReport.convertDateFormat(_fromDate);
+            const convertedToDate = BasePCAReport.convertDateFormat(_toDate);
 
             if (!convertedFromDate || !convertedToDate) {
                 alert($("<div/>").html(langResource.isInvalid).text());
@@ -249,18 +185,18 @@
             rowItems.push('<td class="text-center">' + dataRow.RowNum + '</td>');
             rowItems.push('<td>' + dataRow.Player + '</td>');
             rowItems.push('<td class="text-center">' + dataRow.DisplayRegisteredDate + '</td>');
-            rowItems.push(_me.buildCell(dataRow.IsFTD ? formatDecimal(dataRow.FTD) : '-'));
-            rowItems.push(_me.buildCell(dataRow.IsTotalDeposit ? formatDecimal(dataRow.TotalDeposit) : '-'));
+            rowItems.push(_me.buildCell(dataRow.IsFTD ? BasePCAReport.formatDecimal(dataRow.FTD) : '-'));
+            rowItems.push(_me.buildCell(dataRow.IsTotalDeposit ? BasePCAReport.formatDecimal(dataRow.TotalDeposit) : '-'));
             rowItems.push('<td class="text-center">' + dataRow.DisplayActiveQualifiedDate + '</td>');
             if (dataRow.IsTO) {
-                rowItems.push('<td class="text-right"><a href="javascript:;" class="cpa-amount-link" data-cpa-id="' + dataRow.MemberCPA_ID + '">' + formatDecimal(dataRow.CPAAmount) + '</a></td>');
+                rowItems.push('<td class="text-right"><a href="javascript:;" class="cpa-amount-link" data-cpa-id="' + dataRow.MemberCPA_ID + '">' + BasePCAReport.formatDecimal(dataRow.CPAAmount) + '</a></td>');
             } else {
-                rowItems.push(_me.buildCell(formatDecimal(dataRow.CPAAmount)));
+                rowItems.push(_me.buildCell(BasePCAReport.formatDecimal(dataRow.CPAAmount)));
             }
             rowItems.push('<td class="text-center">' + dataRow.DisplayBetTicket + '</td>');
             rowItems.push('<td class="text-center">' + dataRow.DisplayHoldingQualifiedDate + '</td>');
             rowItems.push('<td class="text-center">' + dataRow.DisplayHoldingExpiredDate + '</td>');
-            rowItems.push(_me.buildCell(formatDecimal(dataRow.EstimatedCPAAmount)));
+            rowItems.push(_me.buildCell(BasePCAReport.formatDecimal(dataRow.EstimatedCPAAmount)));
             rowItems.push('<td class="text-center">' + dataRow.DisplayFirstDepositDate + '</td>');
             rowItems.push('<td class="text-center">' + dataRow.RecheckDays + '</td>');
             rowItems.push('<td class="text-center">' + dataRow.DisplayExpiredRedepositDate + '</td>');
@@ -284,11 +220,11 @@
                     '<td></td>' +
                     '<td></td>' +
                     '<td></td>' +
-                    _me.buildCell(formatDecimal(total.CPAAmount)) +
+                    _me.buildCell(BasePCAReport.formatDecimal(total.CPAAmount)) +
                     '<td></td>' +
                     '<td></td>' +
                     '<td></td>' +
-                    _me.buildCell(formatDecimal(total.EstimatedCPAAmount)) +
+                    _me.buildCell(BasePCAReport.formatDecimal(total.EstimatedCPAAmount)) +
                     '<td></td>' +
                     '<td></td>' +
                     '<td></td>' +
@@ -339,8 +275,8 @@
             var rowItems = [];
             rowItems.push('<tr class="parent-group">');
             rowItems.push('<td class="text-left">' + langResource.group.replace('{0}', dataRow.GroupProductId) + '</td>');
-            rowItems.push(_me.buildCell(formatDecimal(dataRow.Turnover)));
-            rowItems.push(_me.buildCell(formatDecimal(dataRow.CPAAmount)));
+            rowItems.push(_me.buildCell(BasePCAReport.formatDecimal(dataRow.Turnover)));
+            rowItems.push(_me.buildCell(BasePCAReport.formatDecimal(dataRow.CPAAmount)));
             rowItems.push('</tr>');
 
             return rowItems.join("");
@@ -350,7 +286,7 @@
             var rowItems = [];
             rowItems.push('<tr class="child-group">');
             rowItems.push('<td class="text-left">' + dataRow.ProductName + '</td>');
-            rowItems.push(_me.buildCell(formatDecimal(dataRow.Turnover)));
+            rowItems.push(_me.buildCell(BasePCAReport.formatDecimal(dataRow.Turnover)));
             rowItems.push('<td></td>');
             rowItems.push('</tr>');
 
@@ -361,8 +297,8 @@
             if (total) {
                 return '<tr class="total">' +
                     '<td class="text-right">' + langResource.total + '</td>' +
-                    _me.buildCell(formatDecimal(total.Turnover)) +
-                    _me.buildCell(formatDecimal(total.CPAAmount))
+                    _me.buildCell(BasePCAReport.formatDecimal(total.Turnover)) +
+                    _me.buildCell(BasePCAReport.formatDecimal(total.CPAAmount))
                 '</tr>';
             }
 
@@ -446,4 +382,4 @@
     return _me;
 })(jQuery)
 
-affiliatePCAReport.initialize();
+PlayerPCAReport.initialize();

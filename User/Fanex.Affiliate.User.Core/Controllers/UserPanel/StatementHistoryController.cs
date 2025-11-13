@@ -113,7 +113,7 @@
         private static StatementHistoryViewModel CreateMonthlyTotal(DateTime monthDate, IEnumerable<StatementHistory> statementHistoryList)
         {
             var transItems = statementHistoryList.Where(s => s.MonthDate == monthDate)
-                .Where(s => IsUnderMonthlyGroup(s.TransType));
+                .Where(s => IsUnderMonthlyGroup(s.TransType)).OrderByDescending(s => s.TransType);
 
             var monthlyCom = transItems.FirstOrDefault(s => s.TransType == TransType.MonthlyEarning);
             var children = transItems.Select(CreateViewModelFromStatementHistoryItem);

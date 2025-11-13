@@ -308,13 +308,16 @@ http://nicolasgallagher.com/micro-clearfix-hack/
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); }
   .payment-cpa-report .custom-panel .panel-body {
-    padding: 8px; }
+    padding: 5px 10px; }
   .payment-cpa-report .custom-panel .form-inline {
     margin-bottom: 0; }
     .payment-cpa-report .custom-panel .form-inline .form-control {
       width: 150px;
       margin-bottom: 0;
       display: inline-block; }
+    .payment-cpa-report .custom-panel .form-inline .form-group {
+      margin-top: 3px;
+      margin-bottom: 2px; }
     .payment-cpa-report .custom-panel .form-inline .btn {
       margin-right: 0; }
     @media (max-width: 576px) {

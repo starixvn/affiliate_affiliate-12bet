@@ -46,6 +46,25 @@
 
             isSuccess && window.setTimeout(() => $result.hide(), 3000);
         },
+        convertDateFormat: function (dateStr) {
+            const date = new Date(dateStr);
+
+            if (isNaN(date.getTime())) {
+                return '';
+            }
+
+            return getDateString(date);
+        },
+        getUrlParameter: function (name) {
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            let results = regex.exec(location.search);
+
+            if (!results && location.hash) {
+                results = regex.exec(location.hash);
+            }
+
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        },
         buildOptionList: function (dataList, value, text, hasAllOption) {
             var optionList = dataList.map(function (item) {
                 return "<option value='" + item[value] + "'>" + item[text] + "</option>"

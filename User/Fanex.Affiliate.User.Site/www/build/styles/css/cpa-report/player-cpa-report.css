@@ -379,13 +379,16 @@ http://nicolasgallagher.com/micro-clearfix-hack/
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); }
   .custom-panel .panel-body {
-    padding: 8px; }
+    padding: 5px 10px; }
   .custom-panel .form-filter {
     margin-bottom: 0; }
     .custom-panel .form-filter .form-control {
       width: 190px;
       margin-bottom: 0;
       display: inline-block; }
+    .custom-panel .form-filter .form-group {
+      margin-top: 3px;
+      margin-bottom: 2px; }
     .custom-panel .form-filter .view-by-select {
       width: 190px !important; }
     @media (max-width: 576px) {
@@ -492,8 +495,10 @@ http://nicolasgallagher.com/micro-clearfix-hack/
     display: inline-block;
     top: calc(50% - 8px);
     right: 11px; }
-    .table .th-wrapper.col-comm .info-container > .glyphicon-info-sign {
-      cursor: pointer; }
+
+.table .glyphicon-info-sign {
+  cursor: pointer;
+  padding: 3px 5px 5px 7px; }
 
 .table tbody tr > td {
   background: #fff; }

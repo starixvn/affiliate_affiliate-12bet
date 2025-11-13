@@ -2509,10 +2509,10 @@ CONSISTENT PAYMENT</value>
     <value>Revenue Share</value>
   </data>
   <data name="UncalculatedCommission" xml:space="preserve">
-    <value>Uncalculated Temporary Sub-Affiliate Revenue Share</value>
+    <value>Uncalculated Tentative Sub-Affiliate Revenue Share</value>
   </data>
-  <data name="CurrentCommission" xml:space="preserve">
-    <value>Current Temporary Sub-Affiliate Revenue Share</value>
+  <data name="TentativeCommission" xml:space="preserve">
+    <value>Tentative Sub-Affiliate Revenue Share</value>
   </data>
   <data name="CurrencyLabel" xml:space="preserve">
     <value>USD</value>
@@ -2839,5 +2839,32 @@ You can also email us to {1} or simply fill the form below.</value>
   </data>
   <data name="Selected" xml:space="preserve">
     <value>{0} selected</value>
+  </data>
+  <data name="CpaAdjustment" xml:space="preserve">
+    <value>CPA Adjustment</value>
+  </data>
+  <data name="TotalDepositsDescription" xml:space="preserve">
+    <value>Total deposits made by the Player during the Activity Period. Deposits after this period are excluded.</value>
+  </data>
+  <data name="ActiveQualifiedDateDescription" xml:space="preserve">
+    <value>Date when player meets required actions (e.g., Min FTD, Deposit, or Turnover).</value>
+  </data>
+  <data name="BetTicketDescription" xml:space="preserve">
+    <value>Total bet tickets placed during holding period.</value>
+  </data>
+  <data name="HoldingQualifiedDateDescription" xml:space="preserve">
+    <value>Date when minimum bet tickets are met.</value>
+  </data>
+  <data name="HoldingExpiredDateDescription" xml:space="preserve">
+    <value>End date of the holding period.</value>
+  </data>
+  <data name="ExpiredDateDescription" xml:space="preserve">
+    <value>Last day for player to redeposit.</value>
+  </data>
+  <data name="IsRedepositDescription" xml:space="preserve">
+    <value>Shows if the player has redeposited.</value>
+  </data>
+  <data name="CPAAmountDescription" xml:space="preserve">
+    <value>Click to view Turnover CPA Detail.</value>
   </data>
 </root>
