@@ -400,6 +400,7 @@ export default class ReportExcel {
         const mainData = this.data.MainData;
 
         for (let item of mainData) {
+            item.PaymentCurrency = item.PaymentCurrency || '';
             item.CommissionRate = formatDecimal(item.CommissionRate * 100) + '%';
 
             if (!this.isMainView) {
@@ -437,8 +438,7 @@ export default class ReportExcel {
                 [fields.Status]: '',
                 [fields.PaymentCurrency]: ''
             } : {
-                [fields.MonthDateString]: totalText,
-                [fields.EarningBy]: 'N/A'
+                [fields.MonthDateString]: totalText
             };
 
             const total = { ...totalData, ...customTotalData, ...commonTotalData };
@@ -461,6 +461,7 @@ export default class ReportExcel {
         if (columnConfig.field === fields.PreferredLanguage) {
             value = this.languageList[value] || '';
         }
+
 
         return {
             t: Excel.getCellType(value),

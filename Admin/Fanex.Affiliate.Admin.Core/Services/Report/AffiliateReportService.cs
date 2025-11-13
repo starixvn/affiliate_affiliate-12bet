@@ -9,7 +9,6 @@ namespace Fanex.Affiliate.Admin.Core.Services.Report
 {
     public class AffiliateReportService : BaseDynamicService, IAffiliateReportService
     {
-        private const int ValidMonthArrange = 5;
         private const int ValidDateArrange = 6;
 
         public AffiliateReportService(IDynamicRepository dynamicRepository) : base(dynamicRepository) { }
@@ -55,12 +54,12 @@ namespace Fanex.Affiliate.Admin.Core.Services.Report
 
         private static bool IsValidParam(AffiliateReportParam param)
         {
-            return !string.IsNullOrEmpty(param.ProductIds) && IsValidDateRange(param.FromDate, param.ToDate, param.IsGetMonthly);
+            return !string.IsNullOrEmpty(param.ProductIds) && IsValidDateRange(param.FromDate, param.ToDate);
         }
 
-        private static bool IsValidDateRange(DateTime from, DateTime to, bool isGetMonthly = true)
+        private static bool IsValidDateRange(DateTime from, DateTime to)
         {
-            var maxMonth = from.AddMonths(isGetMonthly ? ValidMonthArrange : ValidDateArrange);
+            var maxMonth = from.AddMonths(ValidDateArrange);
 
             return DateTime.Compare(maxMonth, to) >= 0;
         }
