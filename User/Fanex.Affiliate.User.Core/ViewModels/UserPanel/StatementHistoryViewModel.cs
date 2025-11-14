@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
 {
@@ -62,7 +61,7 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
                     case Constants.TransType.Adjustment:
                         return Resources.Lang.Adjustment;
                     case Constants.TransType.MonthlyEarning:
-                        return Resources.Lang.MonthlyEarning;
+                        return Resources.Lang.RevenueShare;
                     case Constants.TransType.Payment:
                         return Resources.Lang.PaymentRequest;
                     case Constants.TransType.SubAffiliateRevenueShare:
@@ -102,7 +101,7 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
                     case Constants.TransType.TentativeCpaEarning:
                         return Resources.Lang.TentativeCpaEarning;
                     case Constants.TransType.SubCpaEarning:
-                        return Resources.Lang.ApprovedSubAffCpaEarning;
+                        return Resources.Lang.SubCpaEarning;
                     default:
                         return Description;
                 }
@@ -124,26 +123,15 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
 
         private string GetCommissionDescription(byte? calculatedType)
         {
-            var description = new StringBuilder();
-
             switch (calculatedType)
             {
                 case Constants.CalculatedType.CalculatedMonth:
-                    description.Append(Resources.Lang.MonthlyEarning);
-                    break;
+                    return $"{Resources.Lang.MonthlyEarning} ({Resources.Lang.RevenueShare})";
                 case Constants.CalculatedType.UnCalculatedMonth:
-                    description.Append(Resources.Lang.UncalculatedMonthlyEarning);
-                    break;
+                    return $"{Resources.Lang.UncalculatedTentativeMonthlyEarning} ({Resources.Lang.RevenueShare})";
                 default:
-                    description.Append(Resources.Lang.CurrentMonthlyEarning);
-                    break;
+                    return $"{Resources.Lang.TentativeMonthlyEarning} ({Resources.Lang.RevenueShare})";
             }
-
-            description.Append(Description.Contains(Constants.CommByGroupType.Winloss)
-                ? $" ({Resources.Lang.RevenueShareByWinloss})"
-                : $" ({Resources.Lang.RevenueShareByTurnover})");
-
-            return description.ToString();
         }
 
         private static string GetSubAffiliateRevenueShareDescription(byte? calculatedType)
@@ -151,11 +139,11 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
             switch (calculatedType)
             {
                 case Constants.CalculatedType.CalculatedMonth:
-                    return Resources.Lang.Commission;
+                    return Resources.Lang.SubAffiliateRevenueShare;
                 case Constants.CalculatedType.UnCalculatedMonth:
-                    return Resources.Lang.UncalculatedCommission;
+                    return Resources.Lang.UncalculatedTentativeSubAffiliateRevenueShare;
                 default:
-                    return Resources.Lang.TentativeCommission;
+                    return Resources.Lang.TentativeSubAffiliateRevenueShare;
             }
         }
 

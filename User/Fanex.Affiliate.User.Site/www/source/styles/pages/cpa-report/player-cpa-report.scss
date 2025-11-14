@@ -28,15 +28,23 @@
             margin-bottom: 2px;
         }
 
-        .view-by-select {
-            width: 190px !important;
-        }
-
         @media(max-width: 576px) {
             label {
                 width: 110px;
             }
         }
+    }
+}
+
+.th-TH, .vi-VN {
+    .view-by-select {
+        width: 215px !important;
+    }
+}
+
+.id-ID {
+    .view-by-select {
+        width: 235px !important;
     }
 }
 

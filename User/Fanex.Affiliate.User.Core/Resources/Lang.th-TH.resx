@@ -2445,10 +2445,10 @@
   <data name="RevenueShareByWinloss" xml:space="preserve">
     <value>คำนวณส่วนแบ่งรายได้ตามอัตราแพ้/ชนะ</value>
   </data>
-  <data name="UncalculatedCommission" xml:space="preserve">
+  <data name="UncalculatedTentativeSubAffiliateRevenueShare" xml:space="preserve">
     <value>ส่วนแบ่งรายได้ของพันธมิตรย่อย (โดยประมาณ ยังไม่ถูกคำนวณ)</value>
   </data>
-  <data name="TentativeCommission" xml:space="preserve">
+  <data name="TentativeSubAffiliateRevenueShare" xml:space="preserve">
     <value>ส่วนแบ่งรายได้ของพันธมิิตรย่อย (โดยประมาณ)</value>
   </data>
   <data name="AffiliateCurrency" xml:space="preserve">
@@ -2608,14 +2608,8 @@
   <data name="ProductGroup" xml:space="preserve">
     <value>กลุ่มผลิตภัณฑ์</value>
   </data>
-  <data name="TotalSettledCPAAmount" xml:space="preserve">
-    <value>ยอดรวม CPA ที่ชำระเสร็จสิ้น</value>
-  </data>
   <data name="NumberOfPlayerRedeposit" xml:space="preserve">
     <value>จำนวนผู้เล่นที่ฝากซ้ำ</value>
-  </data>
-  <data name="ApprovedCPAPlayer" xml:space="preserve">
-    <value>ผู้เล่น CPA ที่ได้รับอนุมัติ</value>
   </data>
   <data name="ExpiredRedepositDate" xml:space="preserve">
     <value>วันที่หมดอายุการฝากซ้ำ</value>
@@ -2628,9 +2622,6 @@
   </data>
   <data name="Quota" xml:space="preserve">
     <value>โควตา</value>
-  </data>
-  <data name="ApprovedCPAAmount" xml:space="preserve">
-    <value>จำนวนเงิน CPA ที่อนุมัติแล้ว</value>
   </data>
   <data name="ActivePeriod" xml:space="preserve">
     <value>ช่วงใช้งาน</value>
@@ -2650,9 +2641,6 @@
   <data name="BetTicket" xml:space="preserve">
     <value>บิลเดิมพัน</value>
   </data>
-  <data name="CPAPaymentDetails" xml:space="preserve">
-    <value>รายละเอียดการจ่ายเงิน CPA</value>
-  </data>
   <data name="Ineligible" xml:space="preserve">
     <value>ไม่มีคุณสมบัติ</value>
   </data>
@@ -2670,9 +2658,6 @@
   </data>
   <data name="SubAffiliateRevenueShare" xml:space="preserve">
     <value>ส่วนแบ่งรายได้ของพันธมิตรย่อย</value>
-  </data>
-  <data name="ApprovedSubAffCpaEarning" xml:space="preserve">
-    <value>รายได้ CPA ของพันธมิตรย่อยที่อนุมัติแล้ว</value>
   </data>
   <data name="ApprovedCpaEarning" xml:space="preserve">
     <value>รายได้ CPA ที่อนุมัติแล้ว</value>
@@ -2760,5 +2745,29 @@
   </data>
   <data name="AutomaticallyApproved" xml:space="preserve">
     <value>อนุมัติโดยอัตโนมัติ</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>เลือกแล้ว {0} รายการ</value>
+  </data>
+  <data name="NoneSelect" xml:space="preserve">
+    <value>ยังไม่ได้เลือก</value>
+  </data>
+  <data name="CPAAmountDescription" xml:space="preserve">
+    <value>คลิกเพื่อดูรายละเอียดยอดเทิร์น CPA</value>
+  </data>
+  <data name="FdmAmt" xml:space="preserve">
+    <value>ยอดฝากครั้งแรก (FTD)</value>
+  </data>
+  <data name="RedepositFailed" xml:space="preserve">
+    <value>การฝากซ้ำไม่สำเร็จ</value>
+  </data>
+  <data name="ScheduleEndDate" xml:space="preserve">
+    <value>วันที่สิ้นสุดกำหนดการ</value>
+  </data>
+  <data name="FinalCPAAmount" xml:space="preserve">
+    <value>ยอด CPA สุดท้าย</value>
+  </data>
+  <data name="TotalCommission" xml:space="preserve">
+    <value>รวมส่วนแบ่งรายได้</value>
   </data>
 </root>

@@ -2508,10 +2508,10 @@ CONSISTENT PAYMENT</value>
   <data name="Commission" xml:space="preserve">
     <value>Revenue Share</value>
   </data>
-  <data name="UncalculatedCommission" xml:space="preserve">
+  <data name="UncalculatedTentativeSubAffiliateRevenueShare" xml:space="preserve">
     <value>Uncalculated Tentative Sub-Affiliate Revenue Share</value>
   </data>
-  <data name="TentativeCommission" xml:space="preserve">
+  <data name="TentativeSubAffiliateRevenueShare" xml:space="preserve">
     <value>Tentative Sub-Affiliate Revenue Share</value>
   </data>
   <data name="CurrencyLabel" xml:space="preserve">
@@ -2672,20 +2672,11 @@ You can also email us to {1} or simply fill the form below.</value>
   <data name="ExpiredRedepositDate" xml:space="preserve">
     <value>Expired Redeposit Date</value>
   </data>
-  <data name="ApprovedCPAPlayer" xml:space="preserve">
-    <value>Approved CPA Player</value>
-  </data>
   <data name="RedepositRate" xml:space="preserve">
     <value>Redeposit %</value>
   </data>
   <data name="NumberOfPlayerRedeposit" xml:space="preserve">
     <value>No. of Player Redeposit</value>
-  </data>
-  <data name="TotalSettledCPAAmount" xml:space="preserve">
-    <value>Total Settled CPA Amount</value>
-  </data>
-  <data name="CPAPaymentDetails" xml:space="preserve">
-    <value>CPA Payment Details</value>
   </data>
   <data name="RedepositStatistics" xml:space="preserve">
     <value>Redeposit Statistics</value>
@@ -2713,9 +2704,6 @@ You can also email us to {1} or simply fill the form below.</value>
   </data>
   <data name="EstimatedCPAAmount" xml:space="preserve">
     <value>Estimated CPA Amount</value>
-  </data>
-  <data name="ApprovedCPAAmount" xml:space="preserve">
-    <value>Approved CPA Amount</value>
   </data>
   <data name="ActivePeriod" xml:space="preserve">
     <value>Active Period</value>
@@ -2767,9 +2755,6 @@ You can also email us to {1} or simply fill the form below.</value>
   </data>
   <data name="ApprovedCpaEarning" xml:space="preserve">
     <value>Approved CPA Earning</value>
-  </data>
-  <data name="ApprovedSubAffCpaEarning" xml:space="preserve">
-    <value>Approved Sub-Affiliate CPA Earning</value>
   </data>
   <data name="TentativeCpaEarning" xml:space="preserve">
     <value>Tentative CPA Earning</value>
@@ -2866,5 +2851,11 @@ You can also email us to {1} or simply fill the form below.</value>
   </data>
   <data name="CPAAmountDescription" xml:space="preserve">
     <value>Click to view Turnover CPA Detail.</value>
+  </data>
+  <data name="UncalculatedTentativeMonthlyEarning" xml:space="preserve">
+    <value>Uncalculated Tentative Monthly Earning</value>
+  </data>
+  <data name="TentativeMonthlyEarning" xml:space="preserve">
+    <value>Tentative Monthly Earning</value>
   </data>
 </root>

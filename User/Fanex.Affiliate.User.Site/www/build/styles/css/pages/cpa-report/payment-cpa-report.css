@@ -289,18 +289,6 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 .payment-cpa-report .date-wrapper {
   display: inline-block; }
 
-.payment-cpa-report .form-filter {
-  margin-bottom: 0; }
-  .payment-cpa-report .form-filter .form-control {
-    width: 150px;
-    margin-bottom: 0;
-    display: inline-block; }
-  .payment-cpa-report .form-filter .view-by-select {
-    width: 170px !important; }
-  @media (max-width: 576px) {
-    .payment-cpa-report .form-filter label {
-      width: 110px; } }
-
 .payment-cpa-report .custom-panel {
   background-color: #F5F5F5;
   border: 1px solid #A6A6A6;
@@ -315,6 +303,8 @@ http://nicolasgallagher.com/micro-clearfix-hack/
       width: 150px;
       margin-bottom: 0;
       display: inline-block; }
+    .payment-cpa-report .custom-panel .form-inline .view-by-select {
+      width: 170px; }
     .payment-cpa-report .custom-panel .form-inline .form-group {
       margin-top: 3px;
       margin-bottom: 2px; }
@@ -350,3 +340,9 @@ http://nicolasgallagher.com/micro-clearfix-hack/
       font-weight: bold; }
   .payment-cpa-report tbody tr.noInfo {
     display: table-row; }
+
+.th-TH .view-by-select, .vi-VN .view-by-select {
+  width: 180px !important; }
+
+.id-ID .view-by-select {
+  width: 195px !important; }

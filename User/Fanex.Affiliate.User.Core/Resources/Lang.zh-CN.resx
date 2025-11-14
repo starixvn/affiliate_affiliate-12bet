@@ -2438,10 +2438,10 @@
   <data name="RevenueShareByWinloss" xml:space="preserve">
     <value>按输赢结果计算收入占比</value>
   </data>
-  <data name="UncalculatedCommission" xml:space="preserve">
+  <data name="UncalculatedTentativeSubAffiliateRevenueShare" xml:space="preserve">
     <value>下级合作伙伴尚未计算的暂定月收入</value>
   </data>
-  <data name="TentativeCommission" xml:space="preserve">
+  <data name="TentativeSubAffiliateRevenueShare" xml:space="preserve">
     <value>下级合作伙伴暂定月收入</value>
   </data>
   <data name="AffiliateCurrency" xml:space="preserve">
@@ -2604,14 +2604,8 @@
   <data name="ProductGroup" xml:space="preserve">
     <value>产品组</value>
   </data>
-  <data name="TotalSettledCPAAmount" xml:space="preserve">
-    <value>CPA 已结算总额</value>
-  </data>
   <data name="NumberOfPlayerRedeposit" xml:space="preserve">
     <value>再存款玩家数</value>
-  </data>
-  <data name="ApprovedCPAPlayer" xml:space="preserve">
-    <value>经批准的CPA玩家</value>
   </data>
   <data name="ExpiredRedepositDate" xml:space="preserve">
     <value>到期再存款日期</value>
@@ -2624,9 +2618,6 @@
   </data>
   <data name="Quota" xml:space="preserve">
     <value>配额</value>
-  </data>
-  <data name="ApprovedCPAAmount" xml:space="preserve">
-    <value>CPA 已核准金额</value>
   </data>
   <data name="ActivePeriod" xml:space="preserve">
     <value>活跃期间</value>
@@ -2646,9 +2637,6 @@
   <data name="BetTicket" xml:space="preserve">
     <value>投注单</value>
   </data>
-  <data name="CPAPaymentDetails" xml:space="preserve">
-    <value>CPA 结算明细</value>
-  </data>
   <data name="Ineligible" xml:space="preserve">
     <value>不符合资格</value>
   </data>
@@ -2666,9 +2654,6 @@
   </data>
   <data name="SubAffiliateRevenueShare" xml:space="preserve">
     <value>下级合作伙伴收益分成</value>
-  </data>
-  <data name="ApprovedSubAffCpaEarning" xml:space="preserve">
-    <value>下级合作伙伴经批准的 CPA 收入</value>
   </data>
   <data name="ApprovedCpaEarning" xml:space="preserve">
     <value>经批准的 CPA 收入</value>
@@ -2756,5 +2741,29 @@
   </data>
   <data name="AutomaticallyApproved" xml:space="preserve">
     <value>自动审核通过</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>已选择 {0} 项</value>
+  </data>
+  <data name="NoneSelect" xml:space="preserve">
+    <value>尚未选择</value>
+  </data>
+  <data name="CPAAmountDescription" xml:space="preserve">
+    <value>点击查看 CPA 流水明细</value>
+  </data>
+  <data name="FdmAmt" xml:space="preserve">
+    <value>首次存款金额</value>
+  </data>
+  <data name="RedepositFailed" xml:space="preserve">
+    <value>再次存款失败</value>
+  </data>
+  <data name="ScheduleEndDate" xml:space="preserve">
+    <value>日程结束日期</value>
+  </data>
+  <data name="FinalCPAAmount" xml:space="preserve">
+    <value>CPA 最终金额</value>
+  </data>
+  <data name="TotalCommission" xml:space="preserve">
+    <value>总收入份额</value>
   </data>
 </root>

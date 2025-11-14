@@ -2393,10 +2393,10 @@ THANH TOÁN ỔN ĐỊNH</value>
   <data name="Commission" xml:space="preserve">
     <value>Hoa hồng</value>
   </data>
-  <data name="UncalculatedCommission" xml:space="preserve">
+  <data name="UncalculatedTentativeSubAffiliateRevenueShare" xml:space="preserve">
     <value>Chia sẻ doanh thu tạm tính của cộng tác viên cấp dưới</value>
   </data>
-  <data name="TentativeCommission" xml:space="preserve">
+  <data name="TentativeSubAffiliateRevenueShare" xml:space="preserve">
     <value>Chia sẻ doanh thu tạm tính của cộng tác viên cấp dưới</value>
   </data>
   <data name="AffiliateCurrency" xml:space="preserve">
@@ -2586,14 +2586,8 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   <data name="ProductGroup" xml:space="preserve">
     <value>Nhóm sản phẩm</value>
   </data>
-  <data name="TotalSettledCPAAmount" xml:space="preserve">
-    <value>Tổng số tiền CPA đã thanh toán</value>
-  </data>
   <data name="NumberOfPlayerRedeposit" xml:space="preserve">
     <value>Số người chơi tái nạp</value>
-  </data>
-  <data name="ApprovedCPAPlayer" xml:space="preserve">
-    <value>Người chơi CPA đã được duy</value>
   </data>
   <data name="ExpiredRedepositDate" xml:space="preserve">
     <value>Ngày hết hạn tái nạp</value>
@@ -2606,9 +2600,6 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   </data>
   <data name="Quota" xml:space="preserve">
     <value>Chỉ tiêu</value>
-  </data>
-  <data name="ApprovedCPAAmount" xml:space="preserve">
-    <value>Số tiền CPA đã duyệt</value>
   </data>
   <data name="ActivePeriod" xml:space="preserve">
     <value>Thời gian hoạt động</value>
@@ -2628,9 +2619,6 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   <data name="BetTicket" xml:space="preserve">
     <value>Vé cược</value>
   </data>
-  <data name="CPAPaymentDetails" xml:space="preserve">
-    <value>Chi tiết thanh toán CPA</value>
-  </data>
   <data name="Ineligible" xml:space="preserve">
     <value>Không đủ điều kiện</value>
   </data>
@@ -2648,9 +2636,6 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   </data>
   <data name="SubAffiliateRevenueShare" xml:space="preserve">
     <value>Chia sẻ doanh thu của cộng tác viên cấp dưới</value>
-  </data>
-  <data name="ApprovedSubAffCpaEarning" xml:space="preserve">
-    <value>Thu nhập CPA của cộng tác viên cấp dưới đã được duyệt</value>
   </data>
   <data name="ApprovedCpaEarning" xml:space="preserve">
     <value>Thu nhập CPA đã được duyệt</value>
@@ -2738,5 +2723,26 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   </data>
   <data name="AutomaticallyApproved" xml:space="preserve">
     <value>Tự động phê duyệt</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>{0} đã chọn</value>
+  </data>
+  <data name="NoneSelect" xml:space="preserve">
+    <value>Không chọn</value>
+  </data>
+  <data name="CPAAmountDescription" xml:space="preserve">
+    <value>Nhấn để xem Chi tiết Doanh thu CPA</value>
+  </data>
+  <data name="FdmAmt" xml:space="preserve">
+    <value>Số tiền FTD</value>
+  </data>
+  <data name="RedepositFailed" xml:space="preserve">
+    <value>Nạp lại thất bại</value>
+  </data>
+  <data name="ScheduleEndDate" xml:space="preserve">
+    <value>Ngày kết thúc lịch trình</value>
+  </data>
+  <data name="FinalCPAAmount" xml:space="preserve">
+    <value>Số tiền CPA cuối cùng</value>
   </data>
 </root>

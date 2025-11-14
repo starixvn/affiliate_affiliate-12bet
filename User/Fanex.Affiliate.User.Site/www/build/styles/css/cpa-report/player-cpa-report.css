@@ -389,11 +389,15 @@ http://nicolasgallagher.com/micro-clearfix-hack/
     .custom-panel .form-filter .form-group {
       margin-top: 3px;
       margin-bottom: 2px; }
-    .custom-panel .form-filter .view-by-select {
-      width: 190px !important; }
     @media (max-width: 576px) {
       .custom-panel .form-filter label {
         width: 110px; } }
+
+.th-TH .view-by-select, .vi-VN .view-by-select {
+  width: 215px !important; }
+
+.id-ID .view-by-select {
+  width: 235px !important; }
 
 .report-container {
   position: relative; }

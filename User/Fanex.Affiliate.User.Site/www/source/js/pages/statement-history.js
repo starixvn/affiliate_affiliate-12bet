@@ -3,19 +3,23 @@
     const urlMapping = {
         201: {
             url: "UserPanel/Main/#DailyEarning",
-            getParams: getDefaultParams
+            getParams: getDefaultParams,
+            isNewTab: false
         },
         204: {
             url: "UserPanel/Main/#SubAffEarning",
-            getParams: getDefaultParams
+            getParams: getDefaultParams,
+            isNewTab: false
         },
         206: {
             url: "UserPanel/Main/#PaymentCPAReport",
-            getParams: getApprovedCpaEarningParams
+            getParams: getApprovedCpaEarningParams,
+            isNewTab: true
         },
         208: {
             url: "UserPanel/Main/#PaymentCPAReport",
-            getParams: getCpaAdjustmentParams
+            getParams: getCpaAdjustmentParams,
+            isNewTab: true
         }
     };
 
@@ -131,7 +135,9 @@
                     let params = mapping.getParams(clickedDate, description);
 
                     _me.setStatementHistoryParamIntoStorage();
-                    Site.redirect(Site.resolveRelativeLangUrl(`${url}?${$.param(params)}`));
+
+                    mapping.isNewTab ? window.open(Site.resolveRelativeLangUrl(`${url}?${$.param(params)}`)) :
+                        Site.redirect(Site.resolveRelativeLangUrl(`${url}?${$.param(params)}`));
                 }
             });
 
