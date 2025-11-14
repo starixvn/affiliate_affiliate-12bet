@@ -103,8 +103,6 @@ export const reportKey = {
     CurrentBBF: 'CurrentBBF',
     MemberStatistics: 'MemberStatistics',
     AffiliateStatistics: 'AffiliateStatistics',
-    AffiliateEarning: 'AffiliateEarning',
-    SubAffiliateEarning: 'SubAffiliateEarning',
     MonthOnMonth: 'MonthOnMonth',
     PlayerGgr: 'PlayerGgr'
 }
@@ -143,7 +141,7 @@ export const headerText = {
     [reportKey.ApprovedCPAAmount]: 'Auto Approved CPA Amount',
     [reportKey.AdjustedCPAAmount]: 'Adjusted CPA Amount',
     [reportKey.TotalMainEarning]: 'Total',
-    [reportKey.SubAffEarning]: 'Revenue Share',
+    [reportKey.SubAffEarning]: 'Sub-Affiliate Earning',
     [reportKey.TotalEarning]: 'Total Earning',
     [reportKey.AffWithdrawal]: 'Withdrawal',
     [reportKey.AffAdjustment]: 'Adjustment',
@@ -151,8 +149,6 @@ export const headerText = {
     [reportKey.CurrentBBF]: 'Current Balance B/F',
     [reportKey.MemberStatistics]: 'Player Statistics',
     [reportKey.AffiliateStatistics]: 'Affiliate Statistics',
-    [reportKey.AffiliateEarning]: 'Earning',
-    [reportKey.SubAffiliateEarning]: 'Sub-Affiliate Earning',
     [reportKey.MonthOnMonth]: 'Month on Month',
     [reportKey.PlayerGgr]: 'Player GGR'
 }
@@ -194,24 +190,11 @@ export const headerConfig = {
     [reportKey.AffiliateStatistics]: {
         label: headerText[reportKey.AffiliateStatistics],
         cols: {
-            [reportKey.AffiliateEarning]: {
-                label: headerText[reportKey.AffiliateEarning],
-                cols: {
-                    [reportKey.CommissionRate]: { label: headerText[reportKey.CommissionRate], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
-                    [reportKey.Earning]: { label: headerText[reportKey.Earning], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
-                    [reportKey.ApprovedCPAAmount]: { label: headerText[reportKey.ApprovedCPAAmount], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
-                    [reportKey.AdjustedCPAAmount]: { label: headerText[reportKey.AdjustedCPAAmount], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker }
-                },
-                isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker
-            },
-            [reportKey.SubAffiliateEarning]: {
-                label: headerText[reportKey.SubAffiliateEarning],
-                cols: {
-                    [reportKey.SubAffEarning]: { label: headerText[reportKey.SubAffEarning], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker }
-                },
-                isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker
-            },
-
+            [reportKey.CommissionRate]: { label: headerText[reportKey.CommissionRate], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
+            [reportKey.Earning]: { label: headerText[reportKey.Earning], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
+            [reportKey.ApprovedCPAAmount]: { label: headerText[reportKey.ApprovedCPAAmount], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
+            [reportKey.AdjustedCPAAmount]: { label: headerText[reportKey.AdjustedCPAAmount], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
+            [reportKey.SubAffEarning]: { label: headerText[reportKey.SubAffEarning], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
             [reportKey.TotalEarning]: { label: headerText[reportKey.TotalEarning], isShowable: (claimPrincipal, isMainView, isCheckedDatePicker) => !isCheckedDatePicker },
             [reportKey.AffWithdrawal]: { label: headerText[reportKey.AffWithdrawal] },
             [reportKey.AffAdjustment]: { label: headerText[reportKey.AffAdjustment] },

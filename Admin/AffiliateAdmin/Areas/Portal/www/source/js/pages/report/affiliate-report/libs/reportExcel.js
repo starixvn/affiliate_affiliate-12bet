@@ -44,7 +44,7 @@ const colConfig =
     [fields.CommGroupName]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.left,
         [TOTAL_SECTION_STYLE]: totalCellStyle.default,
-        [COL_WIDTH]: 175
+        [COL_WIDTH]: 225
     },
     [fields.PaymentFrequency]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.left,
@@ -401,6 +401,7 @@ export default class ReportExcel {
 
         for (let item of mainData) {
             item.PaymentCurrency = item.PaymentCurrency || '';
+            item.PaymentFrequency = item.PaymentFrequency || '';
             item.CommissionRate = formatDecimal(item.CommissionRate * 100) + '%';
 
             if (!this.isMainView) {
