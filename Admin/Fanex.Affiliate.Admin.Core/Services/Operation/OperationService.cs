@@ -146,6 +146,7 @@
         {
             command.GroupId = param.GroupId;
             command.GroupName = param.DealName;
+            command.DealVerifyFlags = DealInfoHelper.ConvertVerificationMethodsToDealVerifyFlags(param.VerificationMethods);
             command.IsSubCommRate = param.IsSubCommRate;
             command.SubCommRate = param.SubCommRate;
             command.Description = param.Description;

@@ -102,3 +102,7 @@ export const copyRevenueDealDefault = {
     RsDealId: 0,
     RsDealList: [],
 }
+
+export const verificationMethodOptions = [
+    { key: '1', name: 'OTP', checked: false },
+]

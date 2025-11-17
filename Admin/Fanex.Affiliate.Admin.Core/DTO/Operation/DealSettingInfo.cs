@@ -1,5 +1,6 @@
 ﻿namespace Fanex.Affiliate.Admin.Core.DTO.Operation
 {
+    using Fanex.Affiliate.Admin.Core.Utilities.Operation;
     using System;
 
     public class DealSettingInfo
@@ -9,6 +10,10 @@
         public string DealName { get; set; }
 
         public int DealType { get; set; }
+
+        public int DealVerifyFlags { get; set; }
+
+        public string VerificationMethods => DealInfoHelper.ConvertDealVerifyFlagsToVerificationMethods(DealVerifyFlags);
 
         public string Description { get; set; }
 

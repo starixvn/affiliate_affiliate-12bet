@@ -1,28 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const NO_SELECTION_LABEL = "No Selection";
+const NONE_SELECT_LABEL = "None Select";
 const MAX_SELECTED_ITEM_FOR_DISPLAY = 3;
 
 function getSelectedItemsString(props) {
     const { selectedItems, noneSelectedLabel, maxDisplayItemCount, isSelectedAll, selectedAllLabel } = props;
     const selectedValues = selectedItems.map(item => item.value);
 
-    let displayText = noneSelectedLabel;
     const selectedItemCount = selectedValues.length;
 
+    if (isSelectedAll) {
+        if (selectedItemCount == 1) {
+            return selectedValues[0];
+        }
+
+        return selectedAllLabel || "All";
+    }
+
     if (selectedItemCount > maxDisplayItemCount) {
-        displayText = `${selectedItemCount} selected`;
-    }
-    else if (selectedItemCount >= 1) {
-        displayText = selectedValues.join(", ");
+        return `${selectedItemCount} selected`;
     }
 
-    if (isSelectedAll && !!selectedAllLabel) {
-        displayText = selectedAllLabel
+    if (selectedItemCount >= 1) {
+        return selectedValues.join(", ");
     }
 
-    return displayText;
+    return noneSelectedLabel;
 }
 
 const MultipleSelectLabel = (props) => {
@@ -48,7 +52,7 @@ MultipleSelectLabel.propTypes = {
 MultipleSelectLabel.defaultProps = {
     isSelectedAll: false,
     selectedAllLabel: '',
-    noneSelectedLabel: NO_SELECTION_LABEL,
+    noneSelectedLabel: NONE_SELECT_LABEL,
     maxDisplayItemCount: MAX_SELECTED_ITEM_FOR_DISPLAY
 }
 

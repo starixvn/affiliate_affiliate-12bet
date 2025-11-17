@@ -9,6 +9,7 @@
     {
         private const string OPEN_ROOT = "<root>";
         private const string CLOSE_ROOT = "</root>";
+        private const int MAX_VERIFICATION_METHODS = 1;
 
         public static string BuildRevenueShareTierSettingXml(IEnumerable<RevenueTierSetting> tierSettingParamList, IEnumerable<RevenueDeductionSetting> platformFeeList)
         {
@@ -99,6 +100,42 @@
             result.Append(CLOSE_ROOT);
 
             return result.ToString();
+        }
+
+        public static string ConvertDealVerifyFlagsToVerificationMethods(int dealVerifyFlags)
+        {
+            var methods = new List<string>();
+            
+            for (int i = 0; i < MAX_VERIFICATION_METHODS; i++)
+            {
+                if ((dealVerifyFlags & (1 << i)) != 0)
+                {
+                    methods.Add((i + 1).ToString());
+                }
+            }
+            
+            return string.Join(",", methods);
+        }
+
+        public static int ConvertVerificationMethodsToDealVerifyFlags(string verificationMethods)
+        {
+            if (string.IsNullOrWhiteSpace(verificationMethods))
+            {
+                return 0;
+            }
+
+            var dealVerifyFlags = 0;
+            var methods = verificationMethods.Split(',');
+
+            foreach (var method in methods)
+            {
+                if (int.TryParse(method.Trim(), out int methodNumber) && methodNumber >= 1 && methodNumber <= MAX_VERIFICATION_METHODS)
+                {
+                    dealVerifyFlags |= (1 << (methodNumber - 1));
+                }
+            }
+
+            return dealVerifyFlags;
         }
     }
 }

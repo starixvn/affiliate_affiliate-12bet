@@ -6,6 +6,8 @@
 
         public string GroupName { get; set; }
 
+        public int DealVerifyFlags { get; set; }
+
         public bool IsSubCommRate { get; set; }
 
         public decimal SubCommRate { get; set; }

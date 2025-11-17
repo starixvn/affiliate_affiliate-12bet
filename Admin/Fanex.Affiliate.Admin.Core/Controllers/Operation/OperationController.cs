@@ -32,6 +32,7 @@
         public ActionResult Index()
         {
             var viewModel = GetOperationViewModel();
+
             return View("~/Areas/Portal/Views/Operation/Deal.cshtml", viewModel);
         }
 

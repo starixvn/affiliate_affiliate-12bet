@@ -14,7 +14,7 @@
 	</Function>
 	<Function Name="AffiliateInformation">
 		<Setting Key="Aff_Admin_Affiliate_Approved" SpName="Aff_Admin_Affiliate_Approved" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
-		<Setting Key="Aff_Admin_AffiliateInfo_Sel" SpName="Aff_Admin_AffiliateInfo_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" >
+		<Setting Key="Aff_Admin_AffiliateInfo_Sel" SpName="Aff_Admin_AffiliateInfo_Sel_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" >
 			<Mapping DataField="Username" ObjectProperty="AffName" />
 			<Mapping DataField="Postal" ObjectProperty="Postcode" />
 			<Mapping DataField="BankSwiftCode" ObjectProperty="BankCode" />
@@ -75,7 +75,7 @@
 		<Setting Key="Aff_Admin_Report_PaymentCPA" SpName="Aff_Admin_Report_PaymentCPA" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 	</Function>
 	<Function Name="Info">
-		<Setting Key="Aff_Admin_Affiliate_Sel" SpName="Aff_Admin_Affiliate_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" >
+		<Setting Key="Aff_Admin_Affiliate_Sel" SpName="Aff_Admin_Affiliate_Sel_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" >
 			<Mapping DataField="PreferredLanguage" ObjectProperty="Language" />
 			<Mapping DataField="RegisteredDate" ObjectProperty="RegistrationDate" />
 			<Mapping DataField="ApprovedDate" ObjectProperty="ApprovalDate" />
@@ -297,10 +297,10 @@
 	<Function Name="Operation">
 		<Setting Key="Aff_Admin_Deal_Sel" SpName="Aff_Admin_Deal_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_Admin_Deal_GroupType_Sel" SpName="Aff_Admin_Deal_GroupType_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
-		<Setting Key="Aff_Admin_Deal_Ins" SpName="Aff_Admin_Deal_Ins" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
-		<Setting Key="Aff_Admin_Deal_Del" SpName="Aff_Admin_Deal_Del" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
-		<Setting Key="Aff_Admin_Deal_Detail_Sel" SpName="Aff_Admin_Deal_Detail_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
-		<Setting Key="Aff_Admin_Deal_Upd" SpName="Aff_Admin_Deal_Upd" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_Admin_Deal_Ins" SpName="Aff_Admin_Deal_Ins_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_Admin_Deal_Del" SpName="Aff_Admin_Deal_Del_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_Admin_Deal_Detail_Sel" SpName="Aff_Admin_Deal_Detail_Sel_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_Admin_Deal_Upd" SpName="Aff_Admin_Deal_Upd_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_Admin_Deal_Schedule_Sel" SpName="Aff_Admin_Deal_Schedule_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_Admin_Assign_Deal" SpName="Aff_Admin_Assign_Deal" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_Admin_Assign_Deal_Sel" SpName="Aff_Admin_Assign_Deal_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />

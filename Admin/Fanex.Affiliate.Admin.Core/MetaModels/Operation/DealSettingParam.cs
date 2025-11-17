@@ -4,6 +4,8 @@
 
     public class DealSettingParam : DealSettingDetail
     {
+        public new string VerificationMethods { get; set; }
+
         public bool CheckedMinFdm { get; set; }
 
         public bool CheckedMinTotalDeposit { get; set; }
