@@ -7,7 +7,6 @@
     using DTO.UserPanel.AccountOverview;
     using Fanex.Affiliate.User.Core.MetalModels.UserPanel.AccountOverview;
     using MetalModels.UserPanel;
-    using System;
     using System.Collections.Generic;
     using Utilities;
 
@@ -21,32 +20,32 @@
             return GetTData<LastLoginInfo>(new GetLastLoginInfoCriteria(affId));
         }
 
-        public IEnumerable<PlayerDetail> GetPlayerDetailList(PlayerDetailParam param)
+        public (string, IEnumerable<PlayerDetail>) GetPlayerDetailList(PlayerDetailParam param)
         {
             var criteria = param.MapTo<PlayerDetailParam, GetPlayerDetailListCriteria>();
-            criteria.MonthDate = param.FromDate;
 
-            return FetchTDataWithPaging<PlayerDetail>(criteria, param);
+            return FetchMultipleTDataWithPaging<string, PlayerDetail>(criteria, param);
         }
 
-        public IEnumerable<OverviewDetail> GetUserOverviewDetailList(AccountOverviewParam param)
+        public (string, IEnumerable<OverviewDetail>) GetUserOverviewDetailList(AccountOverviewParam param)
         {
-            return FetchTData<OverviewDetail>(new GetUserOverviewDetailListCriteria(param.AffId, param.FromDate));
+            var criteria = param.MapTo<AccountOverviewParam, GetUserOverviewDetailListCriteria>();
+
+            return FetchMultipleTData<string, OverviewDetail>(criteria);
         }
 
         public OverviewSummary GetUserOverviewSummary(AccountOverviewParam param)
         {
-            var overviewInfo = GetTData<OverviewSummary>(param.MapTo<AccountOverviewParam, GetUserOverviewSummaryCriteria>());
+            var criteria = param.MapTo<AccountOverviewParam, GetUserOverviewSummaryCriteria>();
 
-            return overviewInfo;
+            return GetTData<OverviewSummary>(criteria);
         }
 
-        public IEnumerable<SubAffDetail> GetSubAffDetails(AccountOverviewParam param)
+        public (string, IEnumerable<SubAffDetail>) GetSubAffDetails(AccountOverviewParam param)
         {
             var criteria = param.MapTo<AccountOverviewParam, GetSubAffDetailsCriteria>();
-            criteria.MonthDate = param.FromDate;
 
-            return FetchTData<SubAffDetail>(criteria);
+            return FetchMultipleTData<string, SubAffDetail>(criteria);
         }
     }
 }

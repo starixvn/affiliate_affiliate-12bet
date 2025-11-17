@@ -2794,4 +2794,19 @@
   <data name="ApprovedCPAAmount" xml:space="preserve">
     <value>จำนวนเงิน CPA ที่อนุมัติแล้ว</value>
   </data>
+  <data name="MonthToDateTentativeAmount" xml:space="preserve">
+    <value>ยอดโดยประมาณเดือนนี้ถึงปัจจุบัน</value>
+  </data>
+  <data name="PlayersWhoPassed" xml:space="preserve">
+    <value>ผู้เล่นที่ผ่านช่วงรอคอย (Holding Period) แล้ว และยังไม่พลาดกำหนดฝากซ้ำ (อยู่ภายในโควตา)</value>
+  </data>
+  <data name="QualifiedPlayers" xml:space="preserve">
+    <value>ผู้เล่นที่ผ่านเกณฑ์สำหรับ</value>
+  </data>
+  <data name="TotalCPAAmountForEligiblePlayers" xml:space="preserve">
+    <value>ยอดรวม CPA สำหรับผู้เล่นที่เข้าเกณฑ์จนถึงโควตาที่เหลือ ตั้งแต่เริ่มต้นจนถึงวันสิ้นสุด (ไม่กำหนดวันเริ่มต้น)</value>
+  </data>
+  <data name="PlayersWhoPassedTheHoldingPeriod" xml:space="preserve">
+    <value>ผู้เล่นที่ผ่านช่วงรอคอย (Holding Period) แล้ว และยังไม่พลาดกำหนดฝากซ้ำ (อยู่ภายในโควตา)</value>
+  </data>
 </root>

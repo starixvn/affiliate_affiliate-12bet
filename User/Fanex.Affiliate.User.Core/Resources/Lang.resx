@@ -2894,7 +2894,16 @@ You can also email us to {1} or simply fill the form below.</value>
   <data name="MonthToDateTentativeAmount" xml:space="preserve">
     <value>Month-to-date tentative amount</value>
   </data>
-  <data name="PlayersMeetAllRequired" xml:space="preserve">
-    <value>Players meet all required action in Active and Holding period</value>
+  <data name="PlayersWhoPassed" xml:space="preserve">
+    <value>Players who passed the Holding Period and haven’t failed the Redeposit Period (within quota)</value>
+  </data>
+  <data name="QualifiedPlayers" xml:space="preserve">
+    <value>Qualified Players</value>
+  </data>
+  <data name="TotalCPAAmountForEligiblePlayers" xml:space="preserve">
+    <value>Total CPA amount for eligible players up to remaining quota, from start until To Date (ignores From Date)</value>
+  </data>
+  <data name="PlayersWhoPassedTheHoldingPeriod" xml:space="preserve">
+    <value>Players who passed the Holding Period and haven’t failed the Redeposit Period (within quota)</value>
   </data>
 </root>

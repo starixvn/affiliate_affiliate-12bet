@@ -7,7 +7,7 @@ using Fanex.Affiliate.User.Core.MetalModels.UserPanel;
 using Fanex.Affiliate.User.Core.MetalModels.UserPanel.AccountOverview;
 using Fanex.Affiliate.User.Core.UnitTests.TestHelper;
 using Fanex.Affiliate.User.Core.Utilities;
-using Fanex.Affiliate.User.Core.ViewModels.UserPanel;
+using Fanex.Affiliate.User.Core.ViewModels.UserPanel.AccountOverview;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -56,7 +56,7 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
         {
             // Arrange
             var accountOverviewService = new Mock<IAccountOverviewService>();
-            accountOverviewService.Setup(a => a.GetUserOverviewDetailList(It.IsAny<AccountOverviewParam>())).Returns(new List<OverviewDetail>());
+            accountOverviewService.Setup(a => a.GetUserOverviewDetailList(It.IsAny<AccountOverviewParam>())).Returns((string.Empty, new List<OverviewDetail>()));
             var controller = CreateController(accountOverviewService: accountOverviewService.Object);
 
             // Action
@@ -74,7 +74,7 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
             var param = new PlayerDetailParam { FromDate = monthDate, IsSortAsc = true };
             PlayerDetailParam passedParam = null;
             var accountOverviewService = new Mock<IAccountOverviewService>();
-            accountOverviewService.Setup(a => a.GetPlayerDetailList(param)).Returns(new List<PlayerDetail> { new PlayerDetail() }).Callback<PlayerDetailParam>(p => passedParam = p);
+            accountOverviewService.Setup(a => a.GetPlayerDetailList(param)).Returns((string.Empty, new List<PlayerDetail> { new PlayerDetail() })).Callback<PlayerDetailParam>(p => passedParam = p);
             var controller = CreateController(accountOverviewService: accountOverviewService.Object);
 
             // Action
@@ -94,7 +94,7 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
             var param = new PlayerDetailParam { ToDate = monthDate };
             PlayerDetailParam passedParam = null;
             var accountOverviewService = new Mock<IAccountOverviewService>();
-            accountOverviewService.Setup(a => a.GetPlayerDetailList(param)).Returns(new List<PlayerDetail> { new PlayerDetail() }).Callback<PlayerDetailParam>(p => passedParam = p);
+            accountOverviewService.Setup(a => a.GetPlayerDetailList(param)).Returns((string.Empty, new List<PlayerDetail> { new PlayerDetail() })).Callback<PlayerDetailParam>(p => passedParam = p);
             var controller = CreateController(accountOverviewService: accountOverviewService.Object);
 
             // Action
@@ -112,7 +112,7 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
         {
             // Arrange
             var accountOverviewService = new Mock<IAccountOverviewService>();
-            accountOverviewService.Setup(a => a.GetSubAffDetails(It.IsAny<AccountOverviewParam>())).Returns(new List<SubAffDetail> { new SubAffDetail() });
+            accountOverviewService.Setup(a => a.GetSubAffDetails(It.IsAny<AccountOverviewParam>())).Returns((string.Empty, new List<SubAffDetail> { new SubAffDetail() }));
             var controller = CreateController(accountOverviewService: accountOverviewService.Object);
 
             // Action

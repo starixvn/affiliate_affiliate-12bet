@@ -27,5 +27,7 @@ namespace Fanex.Affiliate.User.Core.DTO.UserPanel
         public int ActivePlayer { get; set; }
 
         public int QualifiedMember { get; set; }
+
+        public int QualifiedMemberCPA { get; set; }
     }
 }

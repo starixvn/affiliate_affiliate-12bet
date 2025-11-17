@@ -2,7 +2,7 @@
 using Fanex.Affiliate.User.Core.Controllers.UserPanel;
 using Fanex.Affiliate.User.Core.DTO.UserPanel.AccountOverview;
 using Fanex.Affiliate.User.Core.UnitTests.TestHelper;
-using Fanex.Affiliate.User.Core.ViewModels.UserPanel;
+using Fanex.Affiliate.User.Core.ViewModels.UserPanel.AccountOverview;
 using Moq;
 using Newtonsoft.Json;
 using System.Web.Mvc;

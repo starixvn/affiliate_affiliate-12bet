@@ -2,6 +2,9 @@
 <Root>
 	<item Environment="DEV,LOCAL,SIT,UAT" SpName="test" Suffix="_xtest"></item>
   	<item Environment="DEV,LOCAL,SIT,UAT" SpName="Aff_User_Overview_Summary_Sel" Suffix="_xpre"></item>
+  	<item Environment="DEV,LOCAL,SIT,UAT" SpName="Aff_User_Overview_Detail_Sel" Suffix="_xpre"></item>
+  	<item Environment="DEV,LOCAL,SIT,UAT" SpName="Aff_User_Overview_PlayersDetail_Sel" Suffix="_xpre"></item>
+  	<item Environment="DEV,LOCAL,SIT,UAT" SpName="Aff_User_Overview_SubAffiliate_Sel" Suffix="_xpre"></item>
 	<item Environment="DEV,LOCAL,SIT,UAT" SpName="Aff_Admin_Report_PlayerCPA_TO_Detail" Suffix="_xpre"></item>
 	<item Environment="DEV,LOCAL,SIT,UAT" SpName="Aff_User_Report_PlayerCPA" Suffix="_xpre"></item>
 	<item Environment="DEV,LOCAL,SIT,UAT" SpName="Aff_User_Report_PaymentCPA" Suffix="_xpre"></item>

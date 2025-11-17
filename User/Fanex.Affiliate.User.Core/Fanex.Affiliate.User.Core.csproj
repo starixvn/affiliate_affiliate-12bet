@@ -308,6 +308,7 @@
     <Compile Include="Criterias\Account\GetRecoverPasswordCriteria.cs" />
     <Compile Include="Criterias\Account\GetUserInfoByEmailCriteria.cs" />
     <Compile Include="Criterias\Account\GetUserInfoByIdCriteria.cs" />
+    <Compile Include="Criterias\AffByDateCriteria.cs" />
     <Compile Include="Criterias\AffPagingByDateCriteria.cs" />
     <Compile Include="Criterias\AffPagingCriteria.cs" />
     <Compile Include="Criterias\BaseCriteria.cs" />
@@ -469,7 +470,6 @@
     <Compile Include="MetalModels\UserPanel\QrCodeParam.cs" />
     <Compile Include="MetalModels\UserPanel\CPAReport\PaymentCPAReportParam.cs" />
     <Compile Include="MetalModels\UserPanel\SubAffComParam.cs" />
-    <Compile Include="MetalModels\UserPanel\SubAffDetailParam.cs" />
     <Compile Include="Utilities\AppContactHelper.cs" />
     <Compile Include="Utilities\DateTimeHelper.cs" />
     <Compile Include="Utilities\DbSettingHelper.cs" />
@@ -479,7 +479,8 @@
     <Compile Include="Utilities\IFileSystem.cs" />
     <Compile Include="Utilities\SystemHelper.cs" />
     <Compile Include="Utilities\RegexHelper.cs" />
-    <Compile Include="ViewModels\UserPanel\AccountOverviewViewModel.cs" />
+    <Compile Include="ViewModels\UserPanel\AccountOverview\AccountOverviewViewModel.cs" />
+    <Compile Include="ViewModels\UserPanel\AccountOverview\BaseOverviewViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\BreadcumViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\CPAReport\PaymentCPAReportDataViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\CPAReport\CPAReportViewModel.cs" />
@@ -490,7 +491,8 @@
     <Compile Include="ViewModels\UserPanel\Marketing\MediaGallerySearchFormViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\MyAccountViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\CPAReport\PlayerCPATurnOverViewModel.cs" />
-    <Compile Include="ViewModels\UserPanel\PlayerDetailViewModel.cs" />
+    <Compile Include="ViewModels\UserPanel\AccountOverview\OverviewDetailViewModel.cs" />
+    <Compile Include="ViewModels\UserPanel\AccountOverview\PlayerDetailViewModel.cs" />
     <Compile Include="Controllers\UserPanel\StatementHistoryController.cs" />
     <Compile Include="Controllers\UserPanel\ReferrersStatisticsController.cs" />
     <Compile Include="Controllers\UserPanel\LandingPageStatisticsController.cs" />
@@ -722,7 +724,8 @@
     <Compile Include="ViewModels\UserPanel\Statistics\MarketingPageStatisticsViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\Statistics\ReferrerStatisticsViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\SubAffComViewModel.cs" />
-    <Compile Include="ViewModels\UserPanel\Summary\SummaryViewModel.cs" />
+    <Compile Include="ViewModels\UserPanel\AccountOverview\SubAffDetailViewModel.cs" />
+    <Compile Include="ViewModels\UserPanel\AccountOverview\SummaryViewModel.cs" />
     <Compile Include="ViewModels\VerificationAccountViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

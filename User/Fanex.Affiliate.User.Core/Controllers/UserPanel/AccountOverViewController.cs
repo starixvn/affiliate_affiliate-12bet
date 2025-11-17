@@ -4,7 +4,7 @@
     using CoreService;
     using Filters;
     using System.Web.Mvc;
-    using ViewModels.UserPanel;
+    using ViewModels.UserPanel.AccountOverview;
 
     [CustomAuthorize]
     public class AccountOverviewController : BaseController

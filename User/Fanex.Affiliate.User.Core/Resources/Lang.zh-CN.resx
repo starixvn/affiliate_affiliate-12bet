@@ -2790,4 +2790,19 @@
   <data name="ApprovedCPAAmount" xml:space="preserve">
     <value>CPA 已核准金额</value>
   </data>
+  <data name="MonthToDateTentativeAmount" xml:space="preserve">
+    <value>本月迄今预估金额</value>
+  </data>
+  <data name="PlayersWhoPassed" xml:space="preserve">
+    <value>观察期间符合资格且再存期间未失效的玩家（额度内）</value>
+  </data>
+  <data name="QualifiedPlayers" xml:space="preserve">
+    <value>符合资格的 玩家</value>
+  </data>
+  <data name="TotalCPAAmountForEligiblePlayers" xml:space="preserve">
+    <value>从开始至今（不考虑起始日期），符合资格玩家的 CPA 总金额（按剩余额度计算）</value>
+  </data>
+  <data name="PlayersWhoPassedTheHoldingPeriod" xml:space="preserve">
+    <value>观察期间符合资格且再存期间未失效的玩家（额度内）</value>
+  </data>
 </root>

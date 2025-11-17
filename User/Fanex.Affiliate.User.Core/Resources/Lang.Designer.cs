@@ -5216,11 +5216,20 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Players meet all required action in Active and Holding period.
+        ///   Looks up a localized string similar to Players who passed the Holding Period and haven’t failed the Redeposit Period (within quota).
         /// </summary>
-        public static string PlayersMeetAllRequired {
+        public static string PlayersWhoPassed {
             get {
-                return ResourceManager.GetString("PlayersMeetAllRequired", resourceCulture);
+                return ResourceManager.GetString("PlayersWhoPassed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Players who passed the Holding Period and haven’t failed the Redeposit Period (within quota).
+        /// </summary>
+        public static string PlayersWhoPassedTheHoldingPeriod {
+            get {
+                return ResourceManager.GetString("PlayersWhoPassedTheHoldingPeriod", resourceCulture);
             }
         }
         
@@ -5680,6 +5689,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string QualifiedCPAPlayers {
             get {
                 return ResourceManager.GetString("QualifiedCPAPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Qualified Players.
+        /// </summary>
+        public static string QualifiedPlayers {
+            get {
+                return ResourceManager.GetString("QualifiedPlayers", resourceCulture);
             }
         }
         
@@ -7252,6 +7270,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string TotalCommission {
             get {
                 return ResourceManager.GetString("TotalCommission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total CPA amount for eligible players up to remaining quota, from start until To Date (ignores From Date).
+        /// </summary>
+        public static string TotalCPAAmountForEligiblePlayers {
+            get {
+                return ResourceManager.GetString("TotalCPAAmountForEligiblePlayers", resourceCulture);
             }
         }
         

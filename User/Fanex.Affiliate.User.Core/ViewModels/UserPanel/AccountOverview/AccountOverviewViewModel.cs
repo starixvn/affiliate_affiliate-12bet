@@ -1,4 +1,4 @@
-﻿namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
+﻿namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel.AccountOverview
 {
     using Fanex.Affiliate.User.Core.DTO.UserPanel.AccountOverview;
 

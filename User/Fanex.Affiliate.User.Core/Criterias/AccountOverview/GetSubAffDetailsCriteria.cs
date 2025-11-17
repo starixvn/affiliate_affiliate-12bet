@@ -1,14 +1,7 @@
 ﻿namespace Fanex.Affiliate.User.Core.Criterias
 {
-    using Data.Repository;
-    using System;
-
-    public class GetSubAffDetailsCriteria : CriteriaBase
+    public class GetSubAffDetailsCriteria : AffByDateCriteria
     {
-        public int AffId { get; set; }
-
-        public DateTime MonthDate { get; set; }
-
         public override string GetSettingKey() => "Aff_User_Overview_SubAffiliate_Sel";
 
         public override bool IsValid() => AffId > 0;

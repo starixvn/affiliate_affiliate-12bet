@@ -2769,4 +2769,19 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   <data name="ApprovedCPAAmount" xml:space="preserve">
     <value>Số tiền CPA đã duyệt</value>
   </data>
+  <data name="MonthToDateTentativeAmount" xml:space="preserve">
+    <value>Số tiền ước tính từ đầu tháng đến nay</value>
+  </data>
+  <data name="PlayersWhoPassed" xml:space="preserve">
+    <value>Người chơi đủ điều kiện là những người đã hoàn tất thời gian giữ (Holding Period) và tuân thủ yêu cầu tái nạp Redeposit Period (trong phạm vi hạn mức cho phép)</value>
+  </data>
+  <data name="QualifiedPlayers" xml:space="preserve">
+    <value>Người chơi đủ điều kiện</value>
+  </data>
+  <data name="TotalCPAAmountForEligiblePlayers" xml:space="preserve">
+    <value>Tổng CPA cho người chơi đủ điều kiện, tính theo hạn mức còn lại, dựa trên dữ liệu từ thời điểm bắt đầu đến ngày kết thúc (không tính ngày bắt đầu)</value>
+  </data>
+  <data name="PlayersWhoPassedTheHoldingPeriod" xml:space="preserve">
+    <value>Người chơi đủ điều kiện là những người đã hoàn tất thời gian giữ (Holding Period) và tuân thủ yêu cầu tái nạp Redeposit Period (trong phạm vi hạn mức cho phép)</value>
+  </data>
 </root>

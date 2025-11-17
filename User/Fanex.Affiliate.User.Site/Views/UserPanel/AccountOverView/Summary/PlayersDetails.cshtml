@@ -1,4 +1,4 @@
-﻿@model Fanex.Affiliate.User.Core.ViewModels.UserPanel.PlayerDetailViewModel
+﻿@model Fanex.Affiliate.User.Core.ViewModels.UserPanel.AccountOverview.PlayerDetailViewModel
 
 <div class="table player-detail-table">
     <table id="player-detail-table">
@@ -95,7 +95,7 @@
                         </div>
                     </div>
                 </th>
-                @if (Model.IsDepositFeePercent)
+                @if (Model.IsDepositFeePercent && !Model.IsCPAAff)
                 {
                     <th width="9%" class="th" data-name="DepositFee">
                         <div class="th-wrapper">
@@ -108,7 +108,7 @@
                     </th>
                 }
 
-                @if (Model.IsWithdrawalFeePercent)
+                @if (Model.IsWithdrawalFeePercent && !Model.IsCPAAff)
                 {
                     <th width="9%" class="th" data-name="WithdrawalFee">
                         <div class="th-wrapper">

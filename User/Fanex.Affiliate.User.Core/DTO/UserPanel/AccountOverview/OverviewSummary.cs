@@ -33,8 +33,7 @@
         public decimal ApprovedCPAAmount { get; set; }
         public decimal TentativeCPAAmount { get; set; }
         public decimal QualifiedMemberCPA { get; set; }
-        public bool IsHybridSetting { get; set; }
-        public string GroupType { get; set; }
+        public string GroupTypeName { get; set; }
         public bool IsGetMonthly { get; set; }
     }
 }

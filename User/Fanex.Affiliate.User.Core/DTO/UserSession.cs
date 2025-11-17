@@ -19,6 +19,8 @@ namespace Fanex.Affiliate.User.Core.DTO.Auth
 
         public string GroupName { get; set; }
 
+        public string GroupNameType { get; set; }
+
         public bool IsMaxSubLevel { get; set; }
 
         public bool IsDepositFeePercent { get; set; }

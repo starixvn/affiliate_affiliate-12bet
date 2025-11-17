@@ -1,9 +1,9 @@
-﻿namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
+﻿namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel.AccountOverview
 {
     using Fanex.Affiliate.User.Core.DTO.UserPanel.AccountOverview;
     using System.Collections.Generic;
 
-    public class PlayerDetailViewModel
+    public class PlayerDetailViewModel : BaseOverviewViewModel
     {
         public IEnumerable<PlayerDetail> PlayerDetailList { get; set; }
 

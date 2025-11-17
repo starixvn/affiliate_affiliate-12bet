@@ -20,7 +20,7 @@
 
         public string GroupName { get; set; }
 
-        public byte DealType { get; set; }
+        public string GroupNameType { get; set; }
 
         public bool IsMaxSubLevel { get; set; }
 

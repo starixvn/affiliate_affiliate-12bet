@@ -2762,4 +2762,19 @@
   <data name="ApprovedCPAAmount" xml:space="preserve">
     <value>승인된 CPA 금액</value>
   </data>
+  <data name="MonthToDateTentativeAmount" xml:space="preserve">
+    <value>월별 예상 금액</value>
+  </data>
+  <data name="PlayersWhoPassed" xml:space="preserve">
+    <value>보류 기간을 통과하고 재입금 기간을 통과하지 않은 플레이어 (할당량 이내)</value>
+  </data>
+  <data name="QualifiedPlayers" xml:space="preserve">
+    <value>적격 플레이어</value>
+  </data>
+  <data name="TotalCPAAmountForEligiblePlayers" xml:space="preserve">
+    <value>시작일부터 종료일까지 남은 할당량까지 적격 플레이어의 총 CPA 금액 (시작일은 무시)</value>
+  </data>
+  <data name="PlayersWhoPassedTheHoldingPeriod" xml:space="preserve">
+    <value>보류 기간을 통과하고 재입금 기간을 통과하지 않은 플레이어 (할당량 이내)</value>
+  </data>
 </root>

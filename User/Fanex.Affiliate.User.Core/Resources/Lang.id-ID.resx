@@ -2770,4 +2770,19 @@ Anda juga bisa mengirim email ke {1} atau cukup isi formulir di bawah ini.</valu
   <data name="ApprovedCPAAmount" xml:space="preserve">
     <value>Jumlah CPA yang Disetujui</value>
   </data>
+  <data name="MonthToDateTentativeAmount" xml:space="preserve">
+    <value>Jumlah perkiraan bulan berjalan</value>
+  </data>
+  <data name="PlayersWhoPassed" xml:space="preserve">
+    <value>Pemain yang melewati Periode Ditahan dan tidak gagal dalam Periode ReDeposit (dalam kuota)</value>
+  </data>
+  <data name="QualifiedPlayers" xml:space="preserve">
+    <value>Pemain Yang Memenuhi Syarat</value>
+  </data>
+  <data name="TotalCPAAmountForEligiblePlayers" xml:space="preserve">
+    <value>Total jumlah CPA untuk pemain yang memenuhi syarat hingga sisa kuota, dari awal hingga Tanggal (abaikan Tanggal Mulai)</value>
+  </data>
+  <data name="PlayersWhoPassedTheHoldingPeriod" xml:space="preserve">
+    <value>Pemain yang melewati Periode Ditahan dan tidak gagal dalam Periode ReDeposit (dalam kuota)</value>
+  </data>
 </root>
