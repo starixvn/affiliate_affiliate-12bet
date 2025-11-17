@@ -3,7 +3,7 @@
     using Fanex.Affiliate.User.Core.DTO.UserPanel.AccountOverview;
     using System.Collections.Generic;
 
-    public class PlayerDetailViewModel : BaseOverviewViewModel
+    public class PlayerDetailViewModel : BaseGroupTypeName
     {
         public IEnumerable<PlayerDetail> PlayerDetailList { get; set; }
 

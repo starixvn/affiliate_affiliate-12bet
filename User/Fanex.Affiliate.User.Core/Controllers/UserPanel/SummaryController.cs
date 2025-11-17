@@ -37,7 +37,7 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
                 IsMaxLevel = userSession.IsMaxSubLevel,
                 FromDate = DateTimeHelper.CreateDateTime(now.Year, now.Month, 1),
                 ToDate = now,
-                GroupTypeName = userSession.GroupNameType
+                GroupTypeName = userSession.GroupTypeName
             };
 
             return PartialView("~/Views/UserPanel/AccountOverView/Summary/Index.cshtml", viewModel);
@@ -50,6 +50,7 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
             param.AffId = SessionService.UserSession.AffId;
             var model = _accountOverviewService.GetUserOverviewSummary(param);
             ViewBag.IsCurrentMonth = IsCurrentMonth(param.ToDate);
+            model.IsGetMonthly = param.IsGetMonthly;
 
             return PartialView("~/Views/UserPanel/AccountOverView/Summary/Dashboard.cshtml", model);
         }

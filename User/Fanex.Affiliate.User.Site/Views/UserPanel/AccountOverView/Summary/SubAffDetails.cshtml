@@ -43,12 +43,12 @@
                             <td class="text-center">@item.GGR.FormatDecimal()</td>
                             @if (Model.IsGetMonthly)
                             {
-                                <td class="text-center">@(Model.IsCPAAff ? "-" : item.Commission.FormatDecimal())</td>
+                                <td class="text-center">@(item.IsCPAAff ? "-" : item.Commission.FormatDecimal())</td>
                             }
 
-                            <td class="text-center">@(Model.IsCPAAff ? "-" : item.ActivePlayer.ToString())</td>
-                            <td class="text-center">@(Model.IsCPAAff ? "-" : item.QualifiedMember.ToString())</td>
-                            <td class="text-center">@(Model.IsRevenueShareAff ? "-" : item.QualifiedMemberCPA.ToString())</td>
+                            <td class="text-center">@(item.IsCPAAff ? "-" : item.ActivePlayer.ToString())</td>
+                            <td class="text-center">@(item.IsCPAAff ? "-" : item.QualifiedMember.ToString())</td>
+                            <td class="text-center">@(item.IsRevenueShareAff ? "-" : item.QualifiedMemberCPA.ToString())</td>
                         </tr>
 
                         startRowNumber++;

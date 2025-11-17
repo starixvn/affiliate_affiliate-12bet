@@ -6,9 +6,9 @@
 
     var isCurrentMonth = ViewBag.IsCurrentMonth;
     var isGetMonthly = Model.IsGetMonthly;
-    var isHybridSetting = Model.GroupTypeName.StartsWith("Hybrid", StringComparison.OrdinalIgnoreCase);
-    var isCPAAff = string.Equals(Model.GroupTypeName, "CPA", StringComparison.OrdinalIgnoreCase);
-    var isRevenueShareAff = string.Equals(Model.GroupTypeName, "Revenue Share", StringComparison.OrdinalIgnoreCase);
+    var isHybridAff = Model.IsHybridAff;
+    var isCPAAff = Model.IsCPAAff;
+    var isRevenueShareAff = Model.IsRevenueShareAff;
 }
 
 <div class="dashboard-section-col">
@@ -51,7 +51,7 @@
             }
         }
     </div>
-    @if (isHybridSetting)
+    @if (isHybridAff)
     {
         <div class="group group-one">
             <div class="img-icon">
@@ -93,7 +93,7 @@
             }
             else
             {
-                <div class="info-panel">
+                <div class="info-panel w-100">
                     <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.ApprovedCPAAmount</span>
                     <span class="info-panel-content">@Model.ApprovedCPAAmount.ToStringMoneyWithSymbol("$")</span>
                 </div>
@@ -209,10 +209,13 @@
                     <span class="info-panel-content">@Model.SubAffCommission.ToStringMoneyWithSymbol("$")</span>
                 </div>
             }
-            <div class="info-panel w-100">
-                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.SubAffDownline</span>
-                <span class="info-panel-content">@Model.NoOfSubAff</span>
-            </div>
+            else
+            {
+                <div class="info-panel w-100">
+                    <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.SubAffDownline</span>
+                    <span class="info-panel-content">@Model.NoOfSubAff</span>
+                </div>
+            }
         </div>
     </div>
 }

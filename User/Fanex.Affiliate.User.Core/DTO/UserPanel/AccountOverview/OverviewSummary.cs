@@ -1,6 +1,6 @@
 ﻿namespace Fanex.Affiliate.User.Core.DTO.UserPanel.AccountOverview
 {
-    public class OverviewSummary
+    public class OverviewSummary : BaseGroupTypeName
     {
         public int Signups { get; set; }
 
@@ -33,7 +33,6 @@
         public decimal ApprovedCPAAmount { get; set; }
         public decimal TentativeCPAAmount { get; set; }
         public decimal QualifiedMemberCPA { get; set; }
-        public string GroupTypeName { get; set; }
         public bool IsGetMonthly { get; set; }
     }
 }

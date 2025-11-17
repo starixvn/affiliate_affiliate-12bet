@@ -2785,4 +2785,22 @@ Anda juga bisa mengirim email ke {1} atau cukup isi formulir di bawah ini.</valu
   <data name="PlayersWhoPassedTheHoldingPeriod" xml:space="preserve">
     <value>Pemain yang melewati Periode Ditahan dan tidak gagal dalam Periode ReDeposit (dalam kuota)</value>
   </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>Rentang Tanggal</value>
+  </data>
+  <data name="TentativeRevenueShareAndNetRevenue" xml:space="preserve">
+    <value>Perkiraan bagi hasil dan pendapatan bersih hanya akan ditampilkan saat melihat dalam tampilan bulanan.</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>Lihat Berdasarkan</value>
+  </data>
+  <data name="TotalCommission" xml:space="preserve">
+    <value>Total Bagi Hasil</value>
+  </data>
+  <data name="FdmAmt" xml:space="preserve">
+    <value>Jumlah FTD</value>
+  </data>
+  <data name="AffilateLink" xml:space="preserve">
+    <value>Tautan Afiliasi</value>
+  </data>
 </root>

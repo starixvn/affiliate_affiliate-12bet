@@ -7,24 +7,26 @@
 }
 
 <div class="summary" id="summary">
-    <form class="form-inline form-filter">
-        <div class="form-group">
+    <div class="form-inline form-filter">
+        <div class="form-group view-by-group">
             <label for="ViewBy">@Lang.ViewBy:</label>
-            <select id="ViewBy" class="form-control">
-                <option value="0">@Lang.Month</option>
-                <option value="1">@Lang.DateRange</option>
-            </select>
-            @if (!Model.IsCPAAff)
-            {
-                <div class="info-container col-sm-1">
-                    <span title="@Lang.TentativeRevenueShareAndNetRevenue" class="glyphicon glyphicon-info-sign"></span>
-                </div>
-            }
+            <div class="view-by-select-group">
+                <select id="ViewBy" class="form-control">
+                    <option value="0">@Lang.Month</option>
+                    <option value="1">@Lang.DateRange</option>
+                </select>
+                @if (!Model.IsCPAAff)
+                {
+                    <div class="info-container">
+                        <span title="@Lang.TentativeRevenueShareAndNetRevenue" class="glyphicon glyphicon-info-sign"></span>
+                    </div>
+                }
+            </div>
         </div>
 
         <div class="form-group month-picker-group">
             <div id="monthPicker" class="form-wrapper d-inline-block">
-                <input readonly id="MonthDate" data-original-date="@Model.FromDate.ToString("MM/dd/yyyy")" class="form-control d-inline-block" type="text" value="@Model.ToDate.ToString("MMM-yyyy")" />
+                <input readonly id="MonthDate" data-original-date="@Model.FromDate.ToString("MM/dd/yyyy")" class="form-control month-date" type="text" value="@Model.ToDate.ToString("MMM-yyyy")" />
                 <span class="glyphicon glyphicon-calendar" id="monthPickerTrigger"></span>
             </div>
         </div>
@@ -47,7 +49,7 @@
         </div>
 
         <button class="btn btn-submit" id="dashboardSubmit" type="button" style="margin-bottom: 5px;">@Lang.Submit</button>
-    </form>
+    </div>
     <div class="summary-content">
         <div class="dashboard-section @sessionService.CurrentLanguage" id="dashboard-section"></div>
 

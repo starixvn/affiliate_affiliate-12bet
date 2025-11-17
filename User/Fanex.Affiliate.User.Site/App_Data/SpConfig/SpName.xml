@@ -2,11 +2,11 @@
 <Functions SiteId="32" SiteName="12Bet">
 	<Function Name="Authorization">
 		<Setting Key="Aff_SessionIdSel" SpName="Aff_SessionIdSel" DbName="DBAFF12B.Affiliate_12B.wsv_afinetv" />
-		<Setting Key="Aff_User_Login_UserInfoSel" SpName="Aff_User_Login_UserInfoSel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet">
+		<Setting Key="Aff_User_Login_UserInfoSel" SpName="Aff_User_Login_UserInfoSel_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinet">
 			<Mapping DataField="Dep_IsDeductedPercent" ObjectProperty="IsDepositFeePercent" />
 			<Mapping DataField="Wit_IsDeductedPercent" ObjectProperty="IsWithdrawalFeePercent" />
 		</Setting>
-		<Setting Key="Aff_User_Login_UserInfoSel_view" SpName="Aff_User_Login_UserInfoSel" DbName="DBAFF12B.Affiliate_12B.wsv_afinetv">
+		<Setting Key="Aff_User_Login_UserInfoSel_view" SpName="Aff_User_Login_UserInfoSel_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinetv">
 			<Mapping DataField="Dep_IsDeductedPercent" ObjectProperty="IsDepositFeePercent" />
 			<Mapping DataField="Wit_IsDeductedPercent" ObjectProperty="IsWithdrawalFeePercent" />
 		</Setting>

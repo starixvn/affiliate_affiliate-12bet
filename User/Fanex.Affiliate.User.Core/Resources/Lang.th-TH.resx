@@ -2809,4 +2809,22 @@
   <data name="PlayersWhoPassedTheHoldingPeriod" xml:space="preserve">
     <value>ผู้เล่นที่ผ่านช่วงรอคอย (Holding Period) แล้ว และยังไม่พลาดกำหนดฝากซ้ำ (อยู่ภายในโควตา)</value>
   </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>ช่วงวันที่</value>
+  </data>
+  <data name="TentativeRevenueShareAndNetRevenue" xml:space="preserve">
+    <value>ยอดแบ่งรายได้โดยประมาณและรายได้สุทธิจะแสดงเฉพาะเมื่อดูในรูปแบบรายเดือนเท่านั้น</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>แสดงตาม</value>
+  </data>
+  <data name="TotalCommission" xml:space="preserve">
+    <value>ส่วนแบ่งรายได้รวม</value>
+  </data>
+  <data name="FdmAmt" xml:space="preserve">
+    <value>ยอดฝากครั้งแรก (FTD)</value>
+  </data>
+  <data name="AffilateLink" xml:space="preserve">
+    <value>ลิงก์พันธมิตร</value>
+  </data>
 </root>

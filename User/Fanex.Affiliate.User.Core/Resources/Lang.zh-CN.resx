@@ -2805,4 +2805,22 @@
   <data name="PlayersWhoPassedTheHoldingPeriod" xml:space="preserve">
     <value>观察期间符合资格且再存期间未失效的玩家（额度内）</value>
   </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>日期区间</value>
+  </data>
+  <data name="TentativeRevenueShareAndNetRevenue" xml:space="preserve">
+    <value>预估分成收入和净收入仅在按月查看时显示。</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>查看方式</value>
+  </data>
+  <data name="TotalCommission" xml:space="preserve">
+    <value>总收益分成</value>
+  </data>
+  <data name="FdmAmt" xml:space="preserve">
+    <value>首次存款金额</value>
+  </data>
+  <data name="AffilateLink" xml:space="preserve">
+    <value>合作伙伴链接</value>
+  </data>
 </root>

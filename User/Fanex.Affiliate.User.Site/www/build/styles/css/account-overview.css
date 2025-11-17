@@ -669,63 +669,73 @@ span.toggle-handle {
   border-left: 1px solid #bcbcbc;
   border-right: 1px solid #bcbcbc; }
   .summary .form-filter .form-wrapper .form-control {
-    width: 100px;
-    height: 24px;
-    text-align: center;
+    display: inline-block;
     background-color: #ffffff; }
   .summary .form-filter .form-wrapper .glyphicon-calendar {
     font-size: 14px;
     color: darkred;
     cursor: pointer; }
+  .summary .form-filter .view-by-select-group {
+    display: flex;
+    align-items: baseline; }
+    .summary .form-filter .view-by-select-group .info-container {
+      margin-left: 3px; }
   .summary .form-filter .date-picker-group {
-    display: inline-flex; }
+    display: inline-flex;
+    margin-right: 0px; }
 
 .summary-content {
   padding: 0 10px;
   border: 1px solid #BCBCBC;
   border-top: none; }
-  .summary-content .dashboard-section .my-account {
-    font-size: 2rem;
-    font-weight: bold;
-    line-height: 4rem; }
-  .summary-content .dashboard-section .group {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 70px;
-    width: 710px;
-    border-radius: 5px;
-    margin-bottom: 10px; }
-    .summary-content .dashboard-section .group-one {
-      background: -ms-linear-gradient(180deg, #1988A1 0%, #146A7D 99.99%, #156E82 100%);
-      background: -webkit-linear-gradient(180deg, #1988A1 0%, #146A7D 99.99%, #156E82 100%);
-      background: -moz-linear-gradient(180deg, #1988A1 0%, #146A7D 99.99%, #156E82 100%);
-      background: -o-linear-gradient(180deg, #1988A1 0%, #146A7D 99.99%, #156E82 100%);
-      background: linear-gradient(180deg, #1988A1 0%, #146A7D 99.99%, #156E82 100%); }
-    .summary-content .dashboard-section .group-two {
-      background: -ms-linear-gradient(180deg, #2268D1 0%, #1C56AD 100%);
-      background: -webkit-linear-gradient(180deg, #2268D1 0%, #1C56AD 100%);
-      background: -moz-linear-gradient(180deg, #2268D1 0%, #1C56AD 100%);
-      background: -o-linear-gradient(180deg, #2268D1 0%, #1C56AD 100%);
-      background: linear-gradient(180deg, #2268D1 0%, #1C56AD 100%); }
-    .summary-content .dashboard-section .group-three {
-      background: -ms-linear-gradient(180deg, #C26A17 0%, #9E5613 100%);
-      background: -webkit-linear-gradient(180deg, #C26A17 0%, #9E5613 100%);
-      background: -moz-linear-gradient(180deg, #C26A17 0%, #9E5613 100%);
-      background: -o-linear-gradient(180deg, #C26A17 0%, #9E5613 100%);
-      background: linear-gradient(180deg, #C26A17 0%, #9E5613 100%); }
-    .summary-content .dashboard-section .group-four {
-      background: -ms-linear-gradient(180deg, #158469 0%, #2C9078 100%);
-      background: -webkit-linear-gradient(180deg, #158469 0%, #2C9078 100%);
-      background: -moz-linear-gradient(180deg, #158469 0%, #2C9078 100%);
-      background: -o-linear-gradient(180deg, #158469 0%, #2C9078 100%);
-      background: linear-gradient(180deg, #158469 0%, #2C9078 100%); }
-    .summary-content .dashboard-section .group-five {
-      background: -ms-linear-gradient(180deg, #596174 0%, #303A52 100%);
-      background: -webkit-linear-gradient(180deg, #596174 0%, #303A52 100%);
-      background: -moz-linear-gradient(180deg, #596174 0%, #303A52 100%);
-      background: -o-linear-gradient(180deg, #596174 0%, #303A52 100%);
-      background: linear-gradient(180deg, #596174 0%, #303A52 100%); }
+  .summary-content .dashboard-section {
+    margin: 0 -10px; }
+    .summary-content .dashboard-section .dashboard-section-col {
+      padding: 0 10px; }
+    .summary-content .dashboard-section .my-account {
+      font-size: 2rem;
+      font-weight: bold;
+      line-height: 4rem; }
+    .summary-content .dashboard-section .group {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 70px;
+      max-width: 710px;
+      border-radius: 5px;
+      margin-bottom: 10px; }
+      .summary-content .dashboard-section .group-one {
+        background: -ms-linear-gradient(180deg, #1988A1 0%, #146A7D 99.99%, #156E82 100%);
+        background: -webkit-linear-gradient(180deg, #1988A1 0%, #146A7D 99.99%, #156E82 100%);
+        background: -moz-linear-gradient(180deg, #1988A1 0%, #146A7D 99.99%, #156E82 100%);
+        background: -o-linear-gradient(180deg, #1988A1 0%, #146A7D 99.99%, #156E82 100%);
+        background: linear-gradient(180deg, #1988A1 0%, #146A7D 99.99%, #156E82 100%); }
+      .summary-content .dashboard-section .group-two {
+        background: -ms-linear-gradient(180deg, #2268D1 0%, #1C56AD 100%);
+        background: -webkit-linear-gradient(180deg, #2268D1 0%, #1C56AD 100%);
+        background: -moz-linear-gradient(180deg, #2268D1 0%, #1C56AD 100%);
+        background: -o-linear-gradient(180deg, #2268D1 0%, #1C56AD 100%);
+        background: linear-gradient(180deg, #2268D1 0%, #1C56AD 100%); }
+      .summary-content .dashboard-section .group-three {
+        background: -ms-linear-gradient(180deg, #C26A17 0%, #9E5613 100%);
+        background: -webkit-linear-gradient(180deg, #C26A17 0%, #9E5613 100%);
+        background: -moz-linear-gradient(180deg, #C26A17 0%, #9E5613 100%);
+        background: -o-linear-gradient(180deg, #C26A17 0%, #9E5613 100%);
+        background: linear-gradient(180deg, #C26A17 0%, #9E5613 100%); }
+      .summary-content .dashboard-section .group-four {
+        background: -ms-linear-gradient(180deg, #158469 0%, #2C9078 100%);
+        background: -webkit-linear-gradient(180deg, #158469 0%, #2C9078 100%);
+        background: -moz-linear-gradient(180deg, #158469 0%, #2C9078 100%);
+        background: -o-linear-gradient(180deg, #158469 0%, #2C9078 100%);
+        background: linear-gradient(180deg, #158469 0%, #2C9078 100%); }
+      .summary-content .dashboard-section .group-five {
+        background: -ms-linear-gradient(180deg, #596174 0%, #303A52 100%);
+        background: -webkit-linear-gradient(180deg, #596174 0%, #303A52 100%);
+        background: -moz-linear-gradient(180deg, #596174 0%, #303A52 100%);
+        background: -o-linear-gradient(180deg, #596174 0%, #303A52 100%);
+        background: linear-gradient(180deg, #596174 0%, #303A52 100%); }
+        .summary-content .dashboard-section .group-five img {
+          max-width: 40px; }
   .summary-content .img-icon {
     padding: 10px;
     min-width: 60px; }
@@ -871,8 +881,8 @@ span.toggle-handle {
 
 @media (max-width: 767px) {
   .summary .form-filter .form-group {
-    display: inline-block; }
-  .summary .form-filter .date-picker-group {
+    display: block; }
+  .summary .form-filter .date-picker-group, .summary .form-filter .month-picker-group {
     display: inline-block; }
   .details-section-content .table {
     overflow-x: scroll; }

@@ -70,9 +70,7 @@
 
         .form-wrapper {
             .form-control {
-                width: 100px;
-                height: 24px;
-                text-align: center;
+                display: inline-block;
                 background-color: #ffffff;
             }
 
@@ -83,8 +81,18 @@
             }
         }
 
+        .view-by-select-group {
+            display: flex;
+            align-items: baseline;
+
+            .info-container {
+                margin-left: 3px;
+            }
+        }
+
         .date-picker-group {
             display: inline-flex;
+            margin-right: 0px;
         }
     }
 
@@ -94,6 +102,12 @@
         border-top: none;
 
         .dashboard-section {
+            margin: 0 -10px;
+
+            .dashboard-section-col {
+                padding: 0 10px;
+            }
+
             .my-account {
                 font-size: 2rem;
                 font-weight: bold;
@@ -105,7 +119,7 @@
                 justify-content: flex-start;
                 align-items: center;
                 height: 70px;
-                width: 710px;
+                max-width: 710px;
                 border-radius: 5px;
                 margin-bottom: 10px;
 
@@ -147,6 +161,10 @@
                     background: -moz-linear-gradient(180deg, #596174 0%, #303A52 100%);
                     background: -o-linear-gradient(180deg, #596174 0%, #303A52 100%);
                     background: linear-gradient(180deg, #596174 0%, #303A52 100%);
+
+                    img {
+                        max-width: 40px;
+                    }
                 }
             }
         }
@@ -402,10 +420,10 @@
     .summary {
         .form-filter {
             .form-group {
-                display: inline-block;
+                display: block;
             }
 
-            .date-picker-group {
+            .date-picker-group, .month-picker-group {
                 display: inline-block;
             }
         }

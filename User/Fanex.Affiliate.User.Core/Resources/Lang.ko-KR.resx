@@ -2777,4 +2777,22 @@
   <data name="PlayersWhoPassedTheHoldingPeriod" xml:space="preserve">
     <value>보류 기간을 통과하고 재입금 기간을 통과하지 않은 플레이어 (할당량 이내)</value>
   </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>날짜 범위</value>
+  </data>
+  <data name="TentativeRevenueShareAndNetRevenue" xml:space="preserve">
+    <value>예상 배분 수익과 순수익은 월별로 조회할 때만 표시됩니다.</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>보기 기준</value>
+  </data>
+  <data name="TotalCommission" xml:space="preserve">
+    <value>총 매출 배분</value>
+  </data>
+  <data name="FdmAmt" xml:space="preserve">
+    <value>FTD 금액</value>
+  </data>
+  <data name="AffilateLink" xml:space="preserve">
+    <value>제휴사 링크</value>
+  </data>
 </root>

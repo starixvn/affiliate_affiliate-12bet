@@ -19,7 +19,7 @@ namespace Fanex.Affiliate.User.Core.DTO.Auth
 
         public string GroupName { get; set; }
 
-        public string GroupNameType { get; set; }
+        public string GroupTypeName { get; set; }
 
         public bool IsMaxSubLevel { get; set; }
 

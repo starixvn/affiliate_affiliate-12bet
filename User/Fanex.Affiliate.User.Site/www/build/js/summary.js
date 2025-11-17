@@ -1386,6 +1386,13 @@ var Summary = (function ($) {
         return value < 10 ? '0' + value : value;
     }
 
+    function getDateString(date) {
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        return formatDateUnit(month) + "/" + formatDateUnit(day) + "/" + year;
+    }
+
     function initMonthPicker() {
         let today = $("#Today").val();
         const sixMonthAgo = new Date(today);
@@ -1407,10 +1414,7 @@ var Summary = (function ($) {
             trigger: document.getElementById(triggerId),
             yearRange: [2015, new Date().getFullYear()],
             toString: function (date, format) {
-                const day = date.getDate();
-                const month = date.getMonth() + 1;
-                const year = date.getFullYear();
-                return formatDateUnit(month) + "/" + formatDateUnit(day) + "/" + year;
+                return getDateString(date);
             }
         }));
     }
@@ -1525,14 +1529,14 @@ var Summary = (function ($) {
                 const todayVal = $("#Today").val();
                 const today = new Date(todayVal);
 
-                const toDateVal = $('#ToDate').val();
-                const toDate = new Date(toDateVal);
-                const maxDateOfMonth = new Date(toDate.getFullYear(), toDate.getMonth() + 1, 0);
+                const monthDate = $("#MonthDate").data("original-date");
+                const monthDateTime = new Date(monthDate);
+                const maxDateOfMonth = new Date(monthDateTime.getFullYear(), monthDateTime.getMonth() + 1, 0);
 
                 params = {
                     isGetMonthly,
-                    fromDate: $("#MonthDate").data("original-date"),
-                    toDate: maxDateOfMonth < today ? toDateVal : todayVal
+                    fromDate: monthDate,
+                    toDate: maxDateOfMonth < today ? getDateString(maxDateOfMonth) : todayVal
                 }
             }
 

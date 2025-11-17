@@ -2118,7 +2118,7 @@ Vì bất kỳ lý do gì, bạn không nhận được email, vui lòng kiểm 
     <value>Tiền thưởng hoa hồng FTD bổ sung</value>
   </data>
   <data name="TotalCommission" xml:space="preserve">
-    <value>Tổng hoa hồng</value>
+    <value>Tổng chia sẻ doanh thu</value>
   </data>
   <data name="Hindi" xml:space="preserve">
     <value>Tiếng Hindi</value>
@@ -2783,5 +2783,17 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   </data>
   <data name="PlayersWhoPassedTheHoldingPeriod" xml:space="preserve">
     <value>Người chơi đủ điều kiện là những người đã hoàn tất thời gian giữ (Holding Period) và tuân thủ yêu cầu tái nạp Redeposit Period (trong phạm vi hạn mức cho phép)</value>
+  </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>Khoảng thời gian</value>
+  </data>
+  <data name="TentativeRevenueShareAndNetRevenue" xml:space="preserve">
+    <value>Doanh thu chia sẻ tạm tính và doanh thu ròng chỉ được hiển thị khi xem theo tháng.</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>Xem theo</value>
+  </data>
+  <data name="FdmAmt" xml:space="preserve">
+    <value>Số tiền FTD</value>
   </data>
 </root>

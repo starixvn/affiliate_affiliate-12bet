@@ -1,7 +1,8 @@
 ﻿using System;
-namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel.AccountOverview
+
+namespace Fanex.Affiliate.User.Core.DTO.UserPanel.AccountOverview
 {
-    public class BaseOverviewViewModel
+    public class BaseGroupTypeName
     {
         public string GroupTypeName { get; set; }
 
