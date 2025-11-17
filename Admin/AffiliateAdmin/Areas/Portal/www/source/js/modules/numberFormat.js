@@ -6,9 +6,10 @@ export function formatDecimal(value, isShouldFormat = true) {
     return format(value, 2)
 }
 
-export function format(value, digits = 0, isShouldFormat = true) {
-    if (typeof value !== "number" || isNaN(value) || !isShouldFormat) {
-        return isShouldFormat ? "" : "-";
+
+export function format(value, digits = 0, isShouldFormat) {
+    if (typeof value !== "number" || isNaN(value)) {
+        return isShouldFormat ? "0" : "";
     }
 
     const roundedValue = round(value, digits);

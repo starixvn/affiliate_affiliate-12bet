@@ -11,7 +11,7 @@ import { toggleLoader } from '../../../../actions/loaderAction';
 import { globalResource } from '../../../../modules/globalResource';
 import { getFirstDayOfMonth, getAdjustedDateFromNow, openUrlOnNewWindow } from '../../../../modules/utils';
 import { getMaxHeight } from '../../libs/constants';
-import { viewLevel, sortByMonthOnMonthView, sortDirectionType, totalText, headerText, reportKey, paymentCPAManagementSetting, DealGroupTypeSettings } from '../libs/constants';
+import { viewLevel, sortByMonthOnMonthView, sortDirectionType, totalText, headerText, reportKey, paymentCPAManagementSetting } from '../libs/constants';
 import { AggregateHeaderColumn, HeaderRow } from '../libs/headerConfigs';
 import { relativePath } from '../../libs/constants';
 
@@ -100,59 +100,53 @@ export class GridData extends PureComponent {
 
         const mainHeader = AggregateHeaderColumn.convertColsToObject(headerRow.getHeaderCols(0));
         const childHeader = AggregateHeaderColumn.convertColsToObject(headerRow.getHeaderCols(1));
-        const subChildHeader = isCheckedDatePicker ? null : AggregateHeaderColumn.convertColsToObject(headerRow.getHeaderCols(2));
 
         return [
             <tr className="freeze-row freeze-row-h1" key="thead-1">
-                <th className="freeze-column-header" width={120} rowSpan="3" title={firstColName}>{firstColName}</th>
-                {mainHeader[reportKey.Status].isShowable && (<th width={80} rowSpan="3" title={headerText.Status}>{headerText.Status}</th>)}
-                {mainHeader[reportKey.PreferredLanguage].isShowable && <th header={true} colWidth={80} rowSpan="3" title={headerText.PreferredLanguage}>{headerText.PreferredLanguage}</th>}
-                {mainHeader[reportKey.PaymentCurrency].isShowable && (<th width={70} rowSpan="3" title={headerText.PaymentCurrency}>{headerText.PaymentCurrency}</th>)}
-                {mainHeader[reportKey.CommGroupName].isShowable && (<th width={150} rowSpan="3" title={headerText.CommGroupName}>{headerText.CommGroupName}</th>)}
-                {mainHeader[reportKey.PaymentFrequency].isShowable && (<th width={120} rowSpan="3" title={headerText.PaymentFrequency}>{headerText.PaymentFrequency}</th>)}
-                {mainHeader[reportKey.TotalClick].isShowable && (<th width={60} rowSpan="3" title={headerText.TotalClick}>{headerText.TotalClick}</th>)}
-                {mainHeader[reportKey.UniqueClick].isShowable && (<th width={60} rowSpan="3" title={headerText.UniqueClick}>{headerText.UniqueClick}</th>)}
-                {mainHeader[reportKey.Signup].isShowable && (<th width={55} rowSpan="3" title={headerText.Signup}>{headerText.Signup}</th>)}
-                {mainHeader[reportKey.Fdm].isShowable && this._renderHeaderTooltipCell(headerText.Fdm, 55, 3, "The number of Players who made their First Deposit under this Affiliate.")}
-                {mainHeader[reportKey.Fdm_Amount].isShowable && this._renderHeaderTooltipCell(headerText.Fdm_Amount, 70, 3, "The total value of all First Deposits made by Players under this Affiliate.")}
-                {mainHeader[reportKey.FDM_TotalDeposit].isShowable && this._renderHeaderTooltipCell(headerText.FDM_TotalDeposit, 70, 3, " The total deposit amount in the month from Players who made their First Deposit within the selected period.")}
-                {mainHeader[reportKey.ActivePlayer].isShowable && this._renderHeaderTooltipCell(headerText.ActivePlayer, 55, 3, "Players who placed at least one bet during the selected month.")}
-                {mainHeader[reportKey.QualifiedMember].isShowable && this._renderHeaderTooltipCell(headerText.QualifiedMember, 70, 3, "Players who met the Turnover requirement of their Revenue Share Deal during the month.")}
-                {mainHeader[reportKey.QualifiedCPAMember].isShowable && this._renderHeaderTooltipCell(headerText.QualifiedCPAMember, 70, 3, "Includes all settled players and eligible ones within the remaining quota up to To Date for the current month. Past months show only settled players.")}
-                {mainHeader[reportKey.NoOfSubAff].isShowable && (<th width={65} rowSpan="3" title={headerText.NoOfSubAff}>{headerText.NoOfSubAff}</th>)}
-                {mainHeader[reportKey.TotalDeposit].isShowable && (<th width={65} rowSpan="3" title={headerText.TotalDeposit}>{headerText.TotalDeposit}</th>)}
-                {mainHeader[reportKey.Deposit].isShowable && (<th width={70} rowSpan="3" title={headerText.Deposit}>{headerText.Deposit}</th>)}
-                {mainHeader[reportKey.MemberStatistics].isShowable && (<th width={630} colSpan={mainHeader[reportKey.MemberStatistics].totalShowableCol} height={28} title={headerText.MemberStatistics}>{headerText.MemberStatistics}</th>)}
-                {mainHeader[reportKey.AffiliateStatistics].isShowable && (<th width={845} colSpan={mainHeader[reportKey.AffiliateStatistics].totalShowableCol} title={headerText.AffiliateStatistics}>{headerText.AffiliateStatistics}</th>)}
-                {isMainView && !isCheckedDatePicker && (<th width={55} rowSpan="3" title={headerText.MonthOnMonth}>{headerText.MonthOnMonth}</th>)}
-                {isMainView && (<th width={55} rowSpan="3" title={headerText.PlayerGgr}>{headerText.PlayerGgr}</th>)}
+                <th className="freeze-column-header" width={120} rowSpan="2" title={firstColName}>{firstColName}</th>
+                {mainHeader[reportKey.Status].isShowable && (<th width={85} rowSpan="2" title={headerText.Status}>{headerText.Status}</th>)}
+                {mainHeader[reportKey.PreferredLanguage].isShowable && <th header={true} width={120} rowSpan="2" title={headerText.PreferredLanguage}>{headerText.PreferredLanguage}</th>}
+                {mainHeader[reportKey.PaymentCurrency].isShowable && (<th width={70} rowSpan="2" title={headerText.PaymentCurrency}>{headerText.PaymentCurrency}</th>)}
+                {mainHeader[reportKey.CommGroupName].isShowable && (<th width={175} rowSpan="2" title={headerText.CommGroupName}>{headerText.CommGroupName}</th>)}
+                {mainHeader[reportKey.PaymentFrequency].isShowable && (<th width={120} rowSpan="2" title={headerText.PaymentFrequency}>{headerText.PaymentFrequency}</th>)}
+                {mainHeader[reportKey.TotalClick].isShowable && (<th width={70} rowSpan="2" title={headerText.TotalClick}>{headerText.TotalClick}</th>)}
+                {mainHeader[reportKey.UniqueClick].isShowable && (<th width={70} rowSpan="2" title={headerText.UniqueClick}>{headerText.UniqueClick}</th>)}
+                {mainHeader[reportKey.Signup].isShowable && (<th width={70} rowSpan="2" title={headerText.Signup}>{headerText.Signup}</th>)}
+                {mainHeader[reportKey.Fdm].isShowable && this._renderHeaderTooltipCell(headerText.Fdm, 70, 2, "The number of Players who made their First Deposit under this Affiliate.")}
+                {mainHeader[reportKey.Fdm_Amount].isShowable && this._renderHeaderTooltipCell(headerText.Fdm_Amount, 90, 2, "The total value of all First Deposits made by Players under this Affiliate.")}
+                {mainHeader[reportKey.FDM_TotalDeposit].isShowable && this._renderHeaderTooltipCell(headerText.FDM_TotalDeposit, 90, 2, " The total deposit amount in the month from Players who made their First Deposit within the selected period.")}
+                {mainHeader[reportKey.ActivePlayer].isShowable && this._renderHeaderTooltipCell(headerText.ActivePlayer, 70, 2, "Players who placed at least one bet during the selected month.")}
+                {mainHeader[reportKey.QualifiedMember].isShowable && this._renderHeaderTooltipCell(headerText.QualifiedMember, 70, 2, "Players who met the Turnover requirement of their Revenue Share Deal during the month.")}
+                {mainHeader[reportKey.QualifiedCPAMember].isShowable && this._renderHeaderTooltipCell(headerText.QualifiedCPAMember, 70, 2, "Includes all settled players and eligible ones within the remaining quota up to To Date for the current month. Past months show only settled players.")}
+                {mainHeader[reportKey.NoOfSubAff].isShowable && (<th width={70} rowSpan="2" title={headerText.NoOfSubAff}>{headerText.NoOfSubAff}</th>)}
+                {mainHeader[reportKey.TotalDeposit].isShowable && (<th width={70} rowSpan="2" title={headerText.TotalDeposit}>{headerText.TotalDeposit}</th>)}
+                {mainHeader[reportKey.Deposit].isShowable && (<th width={90} rowSpan="2" title={headerText.Deposit}>{headerText.Deposit}</th>)}
+                {mainHeader[reportKey.MemberStatistics].isShowable && (<th width={855} colSpan={mainHeader[reportKey.MemberStatistics].totalShowableCol} height={28} title={headerText.MemberStatistics}>{headerText.MemberStatistics}</th>)}
+                {mainHeader[reportKey.AffiliateStatistics].isShowable && (<th width={950} colSpan={mainHeader[reportKey.AffiliateStatistics].totalShowableCol} title={headerText.AffiliateStatistics}>{headerText.AffiliateStatistics}</th>)}
+                {isMainView && !isCheckedDatePicker && (<th width={70} rowSpan="2" title={headerText.MonthOnMonth}>{headerText.MonthOnMonth}</th>)}
+                {isMainView && (<th width={70} rowSpan="2" title={headerText.PlayerGgr}>{headerText.PlayerGgr}</th>)}
             </tr>,
             <tr className="freeze-row freeze-row-h2" key="thead-2">
-                {childHeader[reportKey.Withdrawal].isShowable && (<th width={75} rowSpan="2" title={headerText.Withdrawal}>{headerText.Withdrawal}</th>)}
-                {childHeader[reportKey.Turnover].isShowable && (<th width={75} rowSpan="2" title={headerText.Turnover}>{headerText.Turnover}</th>)}
-                {childHeader[reportKey.Ggr].isShowable && (<th width={75} rowSpan="2" title={headerText.Ggr}>{headerText.Ggr}</th>)}
-                {childHeader[reportKey.Bonus].isShowable && (<th width={70} rowSpan="2" title={headerText.Bonus}>{headerText.Bonus}</th>)}
-                {childHeader[reportKey.Rebate].isShowable && (<th width={70} rowSpan="2" title={headerText.Rebate}>{headerText.Rebate}</th>)}
-                {childHeader[reportKey.PlatformFee].isShowable && (<th width={70} rowSpan="2" title={headerText.PlatformFee}>{headerText.PlatformFee}</th>)}
-                {childHeader[reportKey.DepositFee].isShowable && (<th width={70} rowSpan="2" title={headerText.DepositFee}>{headerText.DepositFee}</th>)}
-                {childHeader[reportKey.WithdrawalFee].isShowable && (<th width={70} rowSpan="2" title={headerText.WithdrawalFee}>{headerText.WithdrawalFee}</th>)}
-                {childHeader[reportKey.TotalFee].isShowable && (<th width={70} rowSpan="2" title={headerText.TotalFee}>{headerText.TotalFee}</th>)}
+                {childHeader[reportKey.Withdrawal].isShowable && (<th width={75} title={headerText.Withdrawal}>{headerText.Withdrawal}</th>)}
+                {childHeader[reportKey.Turnover].isShowable && (<th width={75} title={headerText.Turnover}>{headerText.Turnover}</th>)}
+                {childHeader[reportKey.Ggr].isShowable && (<th width={75} title={headerText.Ggr}>{headerText.Ggr}</th>)}
+                {childHeader[reportKey.Bonus].isShowable && (<th width={70} title={headerText.Bonus}>{headerText.Bonus}</th>)}
+                {childHeader[reportKey.Rebate].isShowable && (<th width={70} title={headerText.Rebate}>{headerText.Rebate}</th>)}
+                {childHeader[reportKey.PlatformFee].isShowable && (<th width={70} title={headerText.PlatformFee}>{headerText.PlatformFee}</th>)}
+                {childHeader[reportKey.DepositFee].isShowable && (<th width={70} title={headerText.DepositFee}>{headerText.DepositFee}</th>)}
+                {childHeader[reportKey.WithdrawalFee].isShowable && (<th width={70} title={headerText.WithdrawalFee}>{headerText.WithdrawalFee}</th>)}
+                {childHeader[reportKey.TotalFee].isShowable && (<th width={70} title={headerText.TotalFee}>{headerText.TotalFee}</th>)}
 
-                {childHeader[reportKey.AffiliateEarning].isShowable && (<th width={75} colSpan={childHeader[reportKey.AffiliateEarning].totalShowableCol} title={headerText.Earning}>{headerText.AffiliateEarning}</th>)}
-                {childHeader[reportKey.SubAffiliateEarning].isShowable && (<th width={95} colSpan={childHeader[reportKey.SubAffiliateEarning].totalShowableCol} title={headerText.SubAffiliateEarning}>{headerText.SubAffiliateEarning}</th>)}
-                {childHeader[reportKey.TotalEarning].isShowable && (<th width={75} rowSpan="2" title={headerText.TotalEarning}>{headerText.TotalEarning}</th>)}
-                {childHeader[reportKey.AffWithdrawal].isShowable && (<th width={75} rowSpan="2" title={headerText.AffWithdrawal}>{headerText.AffWithdrawal}</th>)}
-                {childHeader[reportKey.AffAdjustment].isShowable && (<th width={75} rowSpan="2" title={headerText.AffAdjustment}>{headerText.AffAdjustment}</th>)}
-                {childHeader[reportKey.BalanceBf].isShowable && this._renderHeaderTooltipCell(headerText.BalanceBf, 80, 2, "The total balance carried forward up to the selected To Date.")}
-                {childHeader[reportKey.CurrentBBF].isShowable && this._renderHeaderTooltipCell(headerText.CurrentBBF, 80, 2, "The total balance carried forward up to the current date.")}
-            </tr>,
-            subChildHeader && <tr className="freeze-row freeze-row-h3" key="thead-3">
-                {subChildHeader[reportKey.CommissionRate].isShowable && (<th width={65} title={headerText.CommissionRate}>{headerText.CommissionRate}</th>)}
-                {subChildHeader[reportKey.Earning].isShowable && (<th width={75} title={headerText.Earning}>{headerText.Earning}</th>)}
-                {subChildHeader[reportKey.ApprovedCPAAmount].isShowable && (<th width={75} title={headerText.ApprovedCPAAmount}>{headerText.ApprovedCPAAmount}</th>)}
-                {subChildHeader[reportKey.AdjustedCPAAmount].isShowable && (<th width={75} title={headerText.AdjustedCPAAmount}>{headerText.AdjustedCPAAmount}</th>)}
-                {subChildHeader[reportKey.TotalMainEarning].isShowable && (<th width={75} title={headerText.TotalMainEarning}>{headerText.TotalMainEarning}</th>)}
-                {subChildHeader[reportKey.SubAffEarning].isShowable && (<th width={95} title={headerText.SubAffEarning}>{headerText.SubAffEarning}</th>)}
+                {childHeader[reportKey.CommissionRate].isShowable && (<th width={65} title={headerText.CommissionRate}>{headerText.CommissionRate}</th>)}
+                {childHeader[reportKey.Earning].isShowable && (<th width={75} title={headerText.Earning}>{headerText.Earning}</th>)}
+                {childHeader[reportKey.ApprovedCPAAmount].isShowable && (<th width={75} title={headerText.ApprovedCPAAmount}>{headerText.ApprovedCPAAmount}</th>)}
+                {childHeader[reportKey.AdjustedCPAAmount].isShowable && (<th width={75} title={headerText.AdjustedCPAAmount}>{headerText.AdjustedCPAAmount}</th>)}
+                {childHeader[reportKey.SubAffEarning].isShowable && this._renderHeaderTooltipCell(headerText.SubAffEarning, 95, 1, "Calculated only based on the Revenue Share earnings generated by Sub-Affiliates.")}
+                {childHeader[reportKey.TotalEarning].isShowable && (<th width={75} title={headerText.TotalEarning}>{headerText.TotalEarning}</th>)}
+                {childHeader[reportKey.AffWithdrawal].isShowable && (<th width={75} title={headerText.AffWithdrawal}>{headerText.AffWithdrawal}</th>)}
+                {childHeader[reportKey.AffAdjustment].isShowable && (<th width={75} title={headerText.AffAdjustment}>{headerText.AffAdjustment}</th>)}
+                {childHeader[reportKey.BalanceBf].isShowable && this._renderHeaderTooltipCell(headerText.BalanceBf, 80, 1, "The total balance carried forward up to the selected To Date.")}
+                {childHeader[reportKey.CurrentBBF].isShowable && this._renderHeaderTooltipCell(headerText.CurrentBBF, 80, 1, "The total balance carried forward up to the current date.")}
             </tr>
         ];
     }
@@ -222,8 +216,6 @@ export class GridData extends PureComponent {
         const { headerRow, languageList } = this.props;
         const header = AggregateHeaderColumn.convertColsToObject(headerRow.getCols());
 
-        const isRevenueAff = dataItem.GroupTypeId === DealGroupTypeSettings.RevenueShare;
-        const isCPAAff = dataItem.GroupTypeId === DealGroupTypeSettings.CPA;
         const totalClick = format(dataItem.TotalClick);
         const uniqueClick = format(dataItem.UniqueClick);
         const signup = format(dataItem.Signup);
@@ -241,10 +233,10 @@ export class GridData extends PureComponent {
         const ggr = formatDecimal(dataItem.Ggr);
         const bonus = formatDecimal(dataItem.Bonus);
         const rebate = formatDecimal(dataItem.Rebate);
-        const platformFee = formatDecimal(dataItem.PlatformFee, !isCPAAff);
-        const depositFee = formatDecimal(dataItem.DepositFee, !isCPAAff);
-        const withdrawalFee = formatDecimal(dataItem.WithdrawalFee, !isCPAAff)
-        const totalFee = formatDecimal(dataItem.TotalFee, !isCPAAff);
+        const platformFee = formatDecimal(dataItem.PlatformFee, true);
+        const depositFee = formatDecimal(dataItem.DepositFee, true);
+        const withdrawalFee = formatDecimal(dataItem.WithdrawalFee, true)
+        const totalFee = formatDecimal(dataItem.TotalFee, true);
         const affWithdrawal = formatDecimal(dataItem.AffWithdrawal);
         const affAdjustment = formatDecimal(dataItem.AffAdjustment);
         const balanceBf = formatDecimal(dataItem.BalanceBf);
@@ -259,9 +251,8 @@ export class GridData extends PureComponent {
         
         const commRate = isTotalRow ? 'N/A' : formatDecimal(dataItem.CommissionRate * 100) + '%';
         const earning = formatDecimal(dataItem.Earning);
-        const approvedCpaAmount = formatDecimal(dataItem.ApprovedCPAAmount, !isRevenueAff);
-        const adjustedCpaAmount = formatDecimal(dataItem.AdjustedCPAAmount, !isRevenueAff);
-        const totalMainEarning = formatDecimal(dataItem.TotalMainEarning);
+        const approvedCpaAmount = formatDecimal(dataItem.ApprovedCPAAmount, true);
+        const adjustedCpaAmount = formatDecimal(dataItem.AdjustedCPAAmount, true);
         const subAffEarning = formatDecimal(dataItem.SubAffEarning);
 
         return (
@@ -302,7 +293,7 @@ export class GridData extends PureComponent {
                 {header[reportKey.Earning].isShowable && (<td className="text-right" title={earning}>{earning}</td>)}
                 {header[reportKey.ApprovedCPAAmount].isShowable && (
                     <td className="text-right" title={approvedCpaAmount}>
-                        {isTotalRow || isRevenueAff ? approvedCpaAmount : (
+                        {isTotalRow || !dataItem.ApprovedCPAAmount ? approvedCpaAmount : (
                             <Button color="link"
                                 onClick={() => this.handleViewApprovedCpaReport(dataItem.UserName, dataItem.MonthDate)}>
                                 {approvedCpaAmount}
@@ -312,7 +303,7 @@ export class GridData extends PureComponent {
                 )}
                 {header[reportKey.AdjustedCPAAmount].isShowable && (
                     <td className="text-right" title={adjustedCpaAmount}>
-                        {isTotalRow || isRevenueAff ? adjustedCpaAmount : (
+                        {isTotalRow || !dataItem.AdjustedCPAAmount ? adjustedCpaAmount : (
                             <Button color="link"
                                 onClick={() => this.handleViewAdjustedCpaReport(dataItem.UserName, dataItem.MonthDate)}>
                                 {adjustedCpaAmount}
@@ -320,7 +311,6 @@ export class GridData extends PureComponent {
                         )}
                     </td>
                 )}
-                {header[reportKey.TotalMainEarning].isShowable && (<td className="text-right" title={totalMainEarning}>{totalMainEarning}</td>)}
                 {header[reportKey.SubAffEarning].isShowable && (<td className="text-right" title={subAffEarning}>{subAffEarning}</td>)}
                 
                 {header[reportKey.TotalEarning].isShowable && (<td className="text-right" title={totalEarning}>{totalEarning}</td>)}

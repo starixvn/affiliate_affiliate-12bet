@@ -14,7 +14,7 @@ export const statusOptions = [
 
 export const viewByOptions = {
     1: 'Schedule End Date',
-    2: 'Auto Approved CPA',
+    2: 'Auto Approved Date',
     3: 'Adjustment Date',
 }
 

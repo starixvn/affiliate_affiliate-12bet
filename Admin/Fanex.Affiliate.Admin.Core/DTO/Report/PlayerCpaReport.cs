@@ -41,9 +41,9 @@
 
         public int? MemberCpaProductId { get; set; }
 
-        public DateTime AQD { get; set; }
+        public DateTime? AQD { get; set; }
 
-        public string AqdStr => AQD.ToString(DATE_FORMAT);
+        public string AqdStr => AQD?.ToString(DATE_FORMAT) ?? HYPHEN;
 
         public decimal CPAAmount { get; set; }
 
@@ -62,8 +62,6 @@
         public string HedStr => IsHolding && HED.HasValue ? HED.Value.ToString(DATE_FORMAT) : HYPHEN;
 
         public decimal? EstimatedCPAAmount { get; set; }
-
-        public decimal? ApprovedCPAAmount { get; set; }
 
         public DateTime? FirstDepositDate { get; set; }
 

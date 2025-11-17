@@ -44,7 +44,7 @@ const colConfig =
     [fields.CommGroupName]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.left,
         [TOTAL_SECTION_STYLE]: totalCellStyle.default,
-        [COL_WIDTH]: 175
+        [COL_WIDTH]: 225
     },
     [fields.PaymentFrequency]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.left,
@@ -176,11 +176,6 @@ const colConfig =
         [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
         [TOTAL_SECTION_STYLE]: totalCellStyle.decimal,
         [COL_WIDTH]: 150
-    },
-    [fields.TotalMainEarning]: {
-        [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
-        [TOTAL_SECTION_STYLE]: totalCellStyle.decimal,
-        [COL_WIDTH]: 120
     },
     [fields.SubAffEarning]: {
         [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
@@ -405,6 +400,8 @@ export default class ReportExcel {
         const mainData = this.data.MainData;
 
         for (let item of mainData) {
+            item.PaymentCurrency = item.PaymentCurrency || '';
+            item.PaymentFrequency = item.PaymentFrequency || '';
             item.CommissionRate = formatDecimal(item.CommissionRate * 100) + '%';
 
             if (!this.isMainView) {
@@ -442,8 +439,7 @@ export default class ReportExcel {
                 [fields.Status]: '',
                 [fields.PaymentCurrency]: ''
             } : {
-                [fields.MonthDateString]: totalText,
-                [fields.EarningBy]: 'N/A'
+                [fields.MonthDateString]: totalText
             };
 
             const total = { ...totalData, ...customTotalData, ...commonTotalData };
@@ -466,6 +462,7 @@ export default class ReportExcel {
         if (columnConfig.field === fields.PreferredLanguage) {
             value = this.languageList[value] || '';
         }
+
 
         return {
             t: Excel.getCellType(value),
