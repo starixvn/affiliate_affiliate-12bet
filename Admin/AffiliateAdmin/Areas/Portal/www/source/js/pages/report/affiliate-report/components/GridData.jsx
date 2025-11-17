@@ -11,7 +11,7 @@ import { toggleLoader } from '../../../../actions/loaderAction';
 import { globalResource } from '../../../../modules/globalResource';
 import { getFirstDayOfMonth, getAdjustedDateFromNow, openUrlOnNewWindow } from '../../../../modules/utils';
 import { getMaxHeight } from '../../libs/constants';
-import { viewLevel, sortByMonthOnMonthView, sortDirectionType, totalText, headerText, reportKey, paymentCPAManagementSetting, DealGroupTypeSettings } from '../libs/constants';
+import { viewLevel, sortByMonthOnMonthView, sortDirectionType, totalText, headerText, reportKey, paymentCPAManagementSetting } from '../libs/constants';
 import { AggregateHeaderColumn, HeaderRow } from '../libs/headerConfigs';
 import { relativePath } from '../../libs/constants';
 
@@ -216,8 +216,6 @@ export class GridData extends PureComponent {
         const { headerRow, languageList } = this.props;
         const header = AggregateHeaderColumn.convertColsToObject(headerRow.getCols());
 
-        const isRevenueAff = dataItem.GroupTypeId === DealGroupTypeSettings.RevenueShare;
-        const isCPAAff = dataItem.GroupTypeId === DealGroupTypeSettings.CPA;
         const totalClick = format(dataItem.TotalClick);
         const uniqueClick = format(dataItem.UniqueClick);
         const signup = format(dataItem.Signup);
@@ -235,10 +233,10 @@ export class GridData extends PureComponent {
         const ggr = formatDecimal(dataItem.Ggr);
         const bonus = formatDecimal(dataItem.Bonus);
         const rebate = formatDecimal(dataItem.Rebate);
-        const platformFee = formatDecimal(dataItem.PlatformFee, !isCPAAff);
-        const depositFee = formatDecimal(dataItem.DepositFee, !isCPAAff);
-        const withdrawalFee = formatDecimal(dataItem.WithdrawalFee, !isCPAAff)
-        const totalFee = formatDecimal(dataItem.TotalFee, !isCPAAff);
+        const platformFee = formatDecimal(dataItem.PlatformFee, true);
+        const depositFee = formatDecimal(dataItem.DepositFee, true);
+        const withdrawalFee = formatDecimal(dataItem.WithdrawalFee, true)
+        const totalFee = formatDecimal(dataItem.TotalFee, true);
         const affWithdrawal = formatDecimal(dataItem.AffWithdrawal);
         const affAdjustment = formatDecimal(dataItem.AffAdjustment);
         const balanceBf = formatDecimal(dataItem.BalanceBf);
@@ -253,8 +251,8 @@ export class GridData extends PureComponent {
         
         const commRate = isTotalRow ? 'N/A' : formatDecimal(dataItem.CommissionRate * 100) + '%';
         const earning = formatDecimal(dataItem.Earning);
-        const approvedCpaAmount = formatDecimal(dataItem.ApprovedCPAAmount, !isRevenueAff);
-        const adjustedCpaAmount = formatDecimal(dataItem.AdjustedCPAAmount, !isRevenueAff);
+        const approvedCpaAmount = formatDecimal(dataItem.ApprovedCPAAmount, true);
+        const adjustedCpaAmount = formatDecimal(dataItem.AdjustedCPAAmount, true);
         const subAffEarning = formatDecimal(dataItem.SubAffEarning);
 
         return (
@@ -295,7 +293,7 @@ export class GridData extends PureComponent {
                 {header[reportKey.Earning].isShowable && (<td className="text-right" title={earning}>{earning}</td>)}
                 {header[reportKey.ApprovedCPAAmount].isShowable && (
                     <td className="text-right" title={approvedCpaAmount}>
-                        {isTotalRow || isRevenueAff ? approvedCpaAmount : (
+                        {isTotalRow || !dataItem.ApprovedCPAAmount ? approvedCpaAmount : (
                             <Button color="link"
                                 onClick={() => this.handleViewApprovedCpaReport(dataItem.UserName, dataItem.MonthDate)}>
                                 {approvedCpaAmount}
@@ -305,7 +303,7 @@ export class GridData extends PureComponent {
                 )}
                 {header[reportKey.AdjustedCPAAmount].isShowable && (
                     <td className="text-right" title={adjustedCpaAmount}>
-                        {isTotalRow || isRevenueAff ? adjustedCpaAmount : (
+                        {isTotalRow || !dataItem.AdjustedCPAAmount ? adjustedCpaAmount : (
                             <Button color="link"
                                 onClick={() => this.handleViewAdjustedCpaReport(dataItem.UserName, dataItem.MonthDate)}>
                                 {adjustedCpaAmount}
