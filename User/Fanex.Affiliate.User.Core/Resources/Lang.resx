@@ -2888,8 +2888,8 @@ You can also email us to {1} or simply fill the form below.</value>
   <data name="ApprovedCPAAmount" xml:space="preserve">
     <value>Approved CPA Amount</value>
   </data>
-  <data name="TentativeRevenueShareAndNetRevenue" xml:space="preserve">
-    <value>Tentative Revenue Share and Net Revenue are displayed only when viewing by month</value>
+  <data name="RevenueShareAndNetRevenue" xml:space="preserve">
+    <value>Revenue Share and Net Revenue are displayed only when viewing by month</value>
   </data>
   <data name="MonthToDateTentativeAmount" xml:space="preserve">
     <value>Month-to-date tentative amount</value>

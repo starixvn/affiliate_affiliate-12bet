@@ -2788,8 +2788,8 @@ Anda juga bisa mengirim email ke {1} atau cukup isi formulir di bawah ini.</valu
   <data name="DateRange" xml:space="preserve">
     <value>Rentang Tanggal</value>
   </data>
-  <data name="TentativeRevenueShareAndNetRevenue" xml:space="preserve">
-    <value>Perkiraan bagi hasil dan pendapatan bersih hanya akan ditampilkan saat melihat dalam tampilan bulanan.</value>
+  <data name="RevenueShareAndNetRevenue" xml:space="preserve">
+    <value>Bagi Hasil dan Pendapatan Bersih hanya ditampilkan saat dilihat berdasarkan bulan</value>
   </data>
   <data name="ViewBy" xml:space="preserve">
     <value>Lihat Berdasarkan</value>

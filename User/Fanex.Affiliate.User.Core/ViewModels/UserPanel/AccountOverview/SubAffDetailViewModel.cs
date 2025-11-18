@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel.AccountOverview
 {
-    public class SubAffDetailViewModel : BaseGroupTypeName
+    public class SubAffDetailViewModel : BaseGroupTypeId
     {
         public IEnumerable<SubAffDetail> SubAffDetailList { get; set; }
 

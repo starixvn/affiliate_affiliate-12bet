@@ -2780,8 +2780,8 @@
   <data name="DateRange" xml:space="preserve">
     <value>날짜 범위</value>
   </data>
-  <data name="TentativeRevenueShareAndNetRevenue" xml:space="preserve">
-    <value>예상 배분 수익과 순수익은 월별로 조회할 때만 표시됩니다.</value>
+  <data name="RevenueShareAndNetRevenue" xml:space="preserve">
+    <value>수익 분배 및 순수익은 월별로 볼 때만 표시됩니다.</value>
   </data>
   <data name="ViewBy" xml:space="preserve">
     <value>보기 기준</value>

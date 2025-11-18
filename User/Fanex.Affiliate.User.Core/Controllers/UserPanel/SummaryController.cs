@@ -37,7 +37,7 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
                 IsMaxLevel = userSession.IsMaxSubLevel,
                 FromDate = DateTimeHelper.CreateDateTime(now.Year, now.Month, 1),
                 ToDate = now,
-                GroupTypeName = userSession.GroupTypeName
+                GroupTypeId = userSession.GroupTypeId
             };
 
             return PartialView("~/Views/UserPanel/AccountOverView/Summary/Index.cshtml", viewModel);
@@ -48,9 +48,14 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
         public ActionResult Dashboard(AccountOverviewParam param)
         {
             param.AffId = SessionService.UserSession.AffId;
-            var model = _accountOverviewService.GetUserOverviewSummary(param);
-            ViewBag.IsCurrentMonth = IsCurrentMonth(param.ToDate);
-            model.IsGetMonthly = param.IsGetMonthly;
+            var (groupTypeId, dataItem) = _accountOverviewService.GetUserOverviewSummary(param);
+            var model = new DashboardViewModel
+            {
+                GroupTypeId = groupTypeId,
+                IsCurrentMonth = IsCurrentMonth(param.ToDate),
+                IsGetMonthly = param.IsGetMonthly,
+                OverviewSummary = dataItem
+            };
 
             return PartialView("~/Views/UserPanel/AccountOverView/Summary/Dashboard.cshtml", model);
         }
@@ -60,7 +65,7 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
         public ActionResult Overview(AccountOverviewParam param)
         {
             param.AffId = SessionService.UserSession.AffId;
-            var (groupTypeName, dataList) = _accountOverviewService.GetUserOverviewDetailList(param);
+            var (groupTypeId, dataList) = _accountOverviewService.GetUserOverviewDetailList(param);
 
             var itemTotal = new OverviewDetail
             {
@@ -76,7 +81,7 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
 
             var model = new OverviewDetailViewModel
             {
-                GroupTypeName = groupTypeName,
+                GroupTypeId = groupTypeId,
                 OverviewDetailList = dataList.Concat(new List<OverviewDetail> { itemTotal })
             };
 
@@ -107,11 +112,11 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
         public ActionResult SubAffDetails(AccountOverviewParam param)
         {
             param.AffId = SessionService.UserSession.AffId;
-            var (groupTypeName, dataList) = _accountOverviewService.GetSubAffDetails(param);
+            var (groupTypeId, dataList) = _accountOverviewService.GetSubAffDetails(param);
 
             var model = new SubAffDetailViewModel
             {
-                GroupTypeName = groupTypeName,
+                GroupTypeId = groupTypeId,
                 IsGetMonthly = param.IsGetMonthly,
                 SubAffDetailList = dataList
             };
@@ -124,14 +129,14 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
             var userSession = SessionService.UserSession;
 
             param.AffId = userSession.AffId;
-            var (groupTypeName, playerDetailList) = _accountOverviewService.GetPlayerDetailList(param);
+            var (groupTypeId, playerDetailList) = _accountOverviewService.GetPlayerDetailList(param);
 
             return new PlayerDetailViewModel
             {
                 PlayerDetailList = playerDetailList,
                 TotalItem = param.NRows,
                 StartRowNumber = (param.PageIndex - 1) * param.PageSize + 1,
-                GroupTypeName = groupTypeName,
+                GroupTypeId = groupTypeId,
                 IsDepositFeePercent = userSession.IsDepositFeePercent,
                 IsWithdrawalFeePercent = userSession.IsWithdrawalFeePercent
             };

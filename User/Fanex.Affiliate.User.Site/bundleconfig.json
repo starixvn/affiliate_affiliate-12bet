@@ -46,67 +46,71 @@
     "outputFileName": "www/build/js/summary.js",
     "inputFiles": [
       "www/source/js/lib/pikaday.js",
+      "www/source/js/components/datepicker.js",
       "www/source/js/components/monthpicker.js",
       "www/source/js/pages/account-overview/summary.js"
     ]
   },
-  //{
-  //  "outputFileName": "www/build/js/player-detail.js",
-  //  "inputFiles": [
-  //    "www/source/js/components/pager.js",
-  //    "www/source/js/pages/account-overview/player-detail.js"
-  //  ]
-  //},
-  //{
-  //  "outputFileName": "www/build/js/overview.js",
-  //  "inputFiles": [
-  //    "www/source/js/pages/account-overview/overview.js"
-  //  ]
-  //},
-  //{
-  //  "outputFileName": "www/build/js/mediagallery.js",
-  //  "inputFiles": [
-  //    "www/source/js/components/clipboard.js",
-  //    "www/source/js/components/pager.js",
-  //    "www/source/js/pages/account-overview/marketingbase.js",
-  //    "www/source/js/pages/account-overview/mediagallery.js"
-  //  ]
-  //},
-  //{
-  //  "outputFileName": "www/build/js/affiliate-link.js",
-  //  "inputFiles": [
-  //    "www/source/js/components/pager.js",
-  //    "www/source/js/components/clipboard.js",
-  //    "www/source/js/pages/account-overview/marketingbase.js",
-  //    "www/source/js/pages/account-overview/affiliate-link.js"
-  //  ]
-  //},
-  //{
-  //  "outputFileName": "www/build/js/statistics/referrerstatistics.js",
-  //  "inputFiles": [
-  //    "www/source/js/lib/pikaday.js",
-  //    "www/source/js/components/pager.js",
-  //    "www/source/js/components/multiple-select.js",
-  //    "www/source/js/pages/statistics/referrerstatistics.js"
-  //  ]
-  //},
-  //{
-  //  "outputFileName": "www/build/js/statistics/landingpagestatistics.js",
-  //  "inputFiles": [
-  //    "www/source/js/lib/pikaday.js",
-  //    "www/source/js/components/pager.js",
-  //    "www/source/js/components/multiple-select.js",
-  //    "www/source/js/pages/statistics/landingpagestatistics.js"
-  //  ]
-  //},
-  //{
-  //  "outputFileName": "www/build/js/marketing-statistics.js",
-  //  "inputFiles": [
-  //    "www/source/js/lib/pikaday.js",
-  //    "www/source/js/components/pager.js",
-  //    "www/source/js/pages/statistics/marketing-statistics.js"
-  //  ]
-  //},
+  {
+    "outputFileName": "www/build/js/player-detail.js",
+    "inputFiles": [
+      "www/source/js/components/pager.js",
+      "www/source/js/pages/account-overview/player-detail.js"
+    ]
+  },
+  {
+    "outputFileName": "www/build/js/overview.js",
+    "inputFiles": [
+      "www/source/js/pages/account-overview/overview.js"
+    ]
+  },
+  {
+    "outputFileName": "www/build/js/mediagallery.js",
+    "inputFiles": [
+      "www/source/js/components/clipboard.js",
+      "www/source/js/components/pager.js",
+      "www/source/js/pages/account-overview/marketingbase.js",
+      "www/source/js/pages/account-overview/mediagallery.js"
+    ]
+  },
+  {
+    "outputFileName": "www/build/js/affiliate-link.js",
+    "inputFiles": [
+      "www/source/js/components/pager.js",
+      "www/source/js/components/clipboard.js",
+      "www/source/js/pages/account-overview/marketingbase.js",
+      "www/source/js/pages/account-overview/affiliate-link.js"
+    ]
+  },
+  {
+    "outputFileName": "www/build/js/statistics/referrerstatistics.js",
+    "inputFiles": [
+      "www/source/js/lib/pikaday.js",
+      "www/source/js/components/datepicker.js",
+      "www/source/js/components/pager.js",
+      "www/source/js/components/multiple-select.js",
+      "www/source/js/pages/statistics/referrerstatistics.js"
+    ]
+  },
+  {
+    "outputFileName": "www/build/js/statistics/landingpagestatistics.js",
+    "inputFiles": [
+      "www/source/js/lib/pikaday.js",
+      "www/source/js/components/datepicker.js",
+      "www/source/js/components/pager.js",
+      "www/source/js/components/multiple-select.js",
+      "www/source/js/pages/statistics/landingpagestatistics.js"
+    ]
+  },
+  {
+    "outputFileName": "www/build/js/marketing-statistics.js",
+    "inputFiles": [
+      "www/source/js/lib/pikaday.js",
+      "www/source/js/components/datepicker.js",
+      "www/source/js/components/pager.js",
+      "www/source/js/pages/statistics/marketing-statistics.js"
+    ]
+  },
   {
     "outputFileName": "www/build/js/statement-history.js",
     "inputFiles": [
@@ -114,21 +118,22 @@
       "www/source/js/pages/statement-history.js"
     ]
   },
-  //{
-  //  "outputFileName": "www/build/js/messagehistory.js",
-  //  "inputFiles": [
-  //    "www/source/js/lib/pikaday.js",
-  //    "www/source/js/components/pager.js",
-  //    "www/source/js/pages/messagehistory.js"
-  //  ]
-  //},
-  //{
-  //  "outputFileName": "www/build/js/signup.js",
-  //  "inputFiles": [
-  //    "www/source/js/components/website.js",
-  //    "www/source/js/pages/signup.js"
-  //  ]
-  //},
+  {
+    "outputFileName": "www/build/js/messagehistory.js",
+    "inputFiles": [
+      "www/source/js/lib/pikaday.js",
+      "www/source/js/components/datepicker.js",
+      "www/source/js/components/pager.js",
+      "www/source/js/pages/messagehistory.js"
+    ]
+  },
+  {
+    "outputFileName": "www/build/js/signup.js",
+    "inputFiles": [
+      "www/source/js/components/website.js",
+      "www/source/js/pages/signup.js"
+    ]
+  },
   //{
   //  "outputFileName": "www/build/js/member.js",
   //  "inputFiles": [

@@ -2,7 +2,7 @@
 
 namespace Fanex.Affiliate.User.Core.DTO.UserPanel.AccountOverview
 {
-    public class SubAffDetail : BaseGroupTypeName
+    public class SubAffDetail : BaseGroupTypeId
     {
         public int AffId { get; set; }
 

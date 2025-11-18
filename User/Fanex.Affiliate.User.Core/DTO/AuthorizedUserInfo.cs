@@ -20,7 +20,7 @@
 
         public string GroupName { get; set; }
 
-        public string GroupTypeName { get; set; }
+        public int GroupTypeId { get; set; }
 
         public bool IsMaxSubLevel { get; set; }
 

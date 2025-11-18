@@ -110,6 +110,8 @@ var UserPanel = (function ($) {
 
         clearEventListener: function(){
             $("#mainPanel *").off();
+            
+            // Destroy all registered date pickers
             if (_me.datepicker) {
                 for (var i = 0; i < _me.datepicker.length; i++) {
                     if (_me.datepicker[i]) {
@@ -118,6 +120,9 @@ var UserPanel = (function ($) {
                 }
                 _me.datepicker = [];
             }
+            
+            // Remove any lingering Pikaday elements from DOM
+            $('.pika-single').remove();
 
             window.removeEventListener("scroll", handleScroll);
             window.removeEventListener("resize", handleResize);

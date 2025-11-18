@@ -3,11 +3,11 @@
     using CoreService;
     using Criterias;
     using Data.Repository;
-    using DTO.UserPanel;
     using DTO.UserPanel.AccountOverview;
     using Fanex.Affiliate.User.Core.MetalModels.UserPanel.AccountOverview;
     using MetalModels.UserPanel;
     using System.Collections.Generic;
+    using System.Linq;
     using Utilities;
 
     public class AccountOverviewService : BaseDynamicService, IAccountOverviewService
@@ -20,32 +20,34 @@
             return GetTData<LastLoginInfo>(new GetLastLoginInfoCriteria(affId));
         }
 
-        public (string, IEnumerable<PlayerDetail>) GetPlayerDetailList(PlayerDetailParam param)
+        public (int, IEnumerable<PlayerDetail>) GetPlayerDetailList(PlayerDetailParam param)
         {
             var criteria = param.MapTo<PlayerDetailParam, GetPlayerDetailListCriteria>();
 
-            return FetchMultipleTDataWithPaging<string, PlayerDetail>(criteria, param);
+            return FetchMultipleTDataWithPaging<int, PlayerDetail>(criteria, param);
         }
 
-        public (string, IEnumerable<OverviewDetail>) GetUserOverviewDetailList(AccountOverviewParam param)
+        public (int, IEnumerable<OverviewDetail>) GetUserOverviewDetailList(AccountOverviewParam param)
         {
             var criteria = param.MapTo<AccountOverviewParam, GetUserOverviewDetailListCriteria>();
 
-            return FetchMultipleTData<string, OverviewDetail>(criteria);
+            return FetchMultipleTData<int, OverviewDetail>(criteria);
         }
 
-        public OverviewSummary GetUserOverviewSummary(AccountOverviewParam param)
+        public (int, OverviewSummary) GetUserOverviewSummary(AccountOverviewParam param)
         {
             var criteria = param.MapTo<AccountOverviewParam, GetUserOverviewSummaryCriteria>();
 
-            return GetTData<OverviewSummary>(criteria);
+            var dataItems = DynamicRepository.FetchMultiple<int, OverviewSummary>(criteria);
+
+            return (dataItems.Item1.FirstOrDefault(), dataItems.Item2.FirstOrDefault());
         }
 
-        public (string, IEnumerable<SubAffDetail>) GetSubAffDetails(AccountOverviewParam param)
+        public (int, IEnumerable<SubAffDetail>) GetSubAffDetails(AccountOverviewParam param)
         {
             var criteria = param.MapTo<AccountOverviewParam, GetSubAffDetailsCriteria>();
 
-            return FetchMultipleTData<string, SubAffDetail>(criteria);
+            return FetchMultipleTData<int, SubAffDetail>(criteria);
         }
     }
 }

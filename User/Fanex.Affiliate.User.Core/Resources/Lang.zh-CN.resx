@@ -2808,8 +2808,8 @@
   <data name="DateRange" xml:space="preserve">
     <value>日期区间</value>
   </data>
-  <data name="TentativeRevenueShareAndNetRevenue" xml:space="preserve">
-    <value>预估分成收入和净收入仅在按月查看时显示。</value>
+  <data name="RevenueShareAndNetRevenue" xml:space="preserve">
+    <value>收益分成和净收益仅在按月查看时显示。</value>
   </data>
   <data name="ViewBy" xml:space="preserve">
     <value>查看方式</value>

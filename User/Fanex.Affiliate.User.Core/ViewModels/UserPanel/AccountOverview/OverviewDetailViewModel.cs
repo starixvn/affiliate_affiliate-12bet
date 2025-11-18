@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel.AccountOverview
 {
-    public class OverviewDetailViewModel : BaseGroupTypeName
+    public class OverviewDetailViewModel : BaseGroupTypeId
     {
         public IEnumerable<OverviewDetail> OverviewDetailList { get; set; }
     }

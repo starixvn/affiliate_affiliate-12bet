@@ -99,7 +99,7 @@ namespace Fanex.Affiliate.User.Core.CoreService
                 OnUserId = authorizedUser.OnUserId,
                 AffType = authorizedUser.AffType,
                 GroupName = authorizedUser.GroupName,
-                GroupTypeName = authorizedUser.GroupTypeName,
+                GroupTypeId = authorizedUser.GroupTypeId,
                 IsMaxSubLevel = authorizedUser.IsMaxSubLevel,
                 IsDepositFeePercent = authorizedUser.IsDepositFeePercent,
                 IsWithdrawalFeePercent = authorizedUser.IsWithdrawalFeePercent,

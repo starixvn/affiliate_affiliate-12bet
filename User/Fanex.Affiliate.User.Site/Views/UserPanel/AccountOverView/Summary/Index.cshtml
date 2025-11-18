@@ -18,7 +18,7 @@
                 @if (!Model.IsCPAAff)
                 {
                     <div class="info-container">
-                        <span title="@Lang.TentativeRevenueShareAndNetRevenue" class="glyphicon glyphicon-info-sign"></span>
+                        <span title="@Lang.RevenueShareAndNetRevenue" class="glyphicon glyphicon-info-sign"></span>
                     </div>
                 }
             </div>
@@ -68,7 +68,5 @@
         </div>
     </div>
 </div>
-
-<input type="hidden" id="Today" value="@Model.ToDate.ToString("MM/dd/yyyy")" />
 
 <script src="@Url.RenderLink("~/www/build/js/summary.js")"></script>

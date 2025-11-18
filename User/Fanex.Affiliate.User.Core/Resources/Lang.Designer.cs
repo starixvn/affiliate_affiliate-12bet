@@ -6013,6 +6013,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Revenue Share and Net Revenue are displayed only when viewing by month.
+        /// </summary>
+        public static string RevenueShareAndNetRevenue {
+            get {
+                return ResourceManager.GetString("RevenueShareAndNetRevenue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Calculate Revenue Share by Turnover.
         /// </summary>
         public static string RevenueShareByTurnover {
@@ -7045,15 +7054,6 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string TentativeRevenueShare {
             get {
                 return ResourceManager.GetString("TentativeRevenueShare", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tentative Revenue Share and Net Revenue are displayed only when viewing by month.
-        /// </summary>
-        public static string TentativeRevenueShareAndNetRevenue {
-            get {
-                return ResourceManager.GetString("TentativeRevenueShareAndNetRevenue", resourceCulture);
             }
         }
         

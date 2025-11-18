@@ -2812,8 +2812,8 @@
   <data name="DateRange" xml:space="preserve">
     <value>ช่วงวันที่</value>
   </data>
-  <data name="TentativeRevenueShareAndNetRevenue" xml:space="preserve">
-    <value>ยอดแบ่งรายได้โดยประมาณและรายได้สุทธิจะแสดงเฉพาะเมื่อดูในรูปแบบรายเดือนเท่านั้น</value>
+  <data name="RevenueShareAndNetRevenue" xml:space="preserve">
+    <value>ส่วนแบ่งรายได้และรายได้สุทธิจะแสดงเฉพาะข้อมูลแบบรายเดือนเท่านั้น</value>
   </data>
   <data name="ViewBy" xml:space="preserve">
     <value>แสดงตาม</value>

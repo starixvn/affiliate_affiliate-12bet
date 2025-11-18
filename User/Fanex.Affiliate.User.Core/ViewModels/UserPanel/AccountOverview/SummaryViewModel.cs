@@ -3,7 +3,7 @@ using System;
 
 namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel.AccountOverview
 {
-    public class SummaryViewModel : BaseGroupTypeName
+    public class SummaryViewModel : BaseGroupTypeId
     {
         public bool IsMaxLevel { get; set; }
 

@@ -290,6 +290,7 @@
     <Compile Include="Commands\Verification\InsertUserDeviceInfoCommand.cs" />
     <Compile Include="Commands\Verification\UpdateVerificationInfoCommand.cs" />
     <Compile Include="Constants\AffCategory.cs" />
+    <Compile Include="Constants\GroupType.cs" />
     <Compile Include="Constants\DateTimeFormat.cs" />
     <Compile Include="Constants\PaymentCPAStatus.cs" />
     <Compile Include="Constants\PlayerCpaStatus.cs" />
@@ -437,7 +438,7 @@
     <Compile Include="DTO\Systems\TargetCountry.cs" />
     <Compile Include="DTO\Systems\TargetCountryLanguage.cs" />
     <Compile Include="DTO\UserPanel\CPAReport\PaymentCPAReportItem.cs" />
-    <Compile Include="DTO\UserPanel\AccountOverview\BaseGroupTypeName.cs" />
+    <Compile Include="DTO\UserPanel\AccountOverview\BaseGroupTypeId.cs" />
     <Compile Include="DTO\UserPanel\Currency.cs" />
     <Compile Include="DTO\UserPanel\MarketingItem.cs" />
     <Compile Include="DTO\UserPanel\MarketingPageStatistics.cs" />
@@ -481,6 +482,7 @@
     <Compile Include="Utilities\SystemHelper.cs" />
     <Compile Include="Utilities\RegexHelper.cs" />
     <Compile Include="ViewModels\UserPanel\AccountOverview\AccountOverviewViewModel.cs" />
+    <Compile Include="ViewModels\UserPanel\AccountOverview\DashboardViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\BreadcumViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\CPAReport\PaymentCPAReportDataViewModel.cs" />
     <Compile Include="ViewModels\UserPanel\CPAReport\CPAReportViewModel.cs" />

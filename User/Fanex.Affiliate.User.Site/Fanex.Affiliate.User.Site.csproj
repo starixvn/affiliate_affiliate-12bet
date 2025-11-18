@@ -756,6 +756,7 @@
     <Content Include="www\build\styles\Images\product\live-casino\banner-mobile.png" />
     <Content Include="www\build\styles\Images\talk.svg" />
     <Content Include="www\build\styles\Images\under-maintenance\banner-um.svg" />
+    <Content Include="www\source\js\components\datepicker.js" />
     <Content Include="www\source\js\lib\bootstrap2-toggle.js" />
     <Content Include="www\source\js\lib\jquery-3.3.1.min.js" />
     <Content Include="www\source\js\lib\swiper.min.js" />

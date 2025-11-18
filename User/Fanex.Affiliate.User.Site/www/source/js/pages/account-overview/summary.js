@@ -1,17 +1,6 @@
 ﻿var Summary = (function ($) {
     const ViewByMonth = '0';
 
-    function formatDateUnit(value) {
-        return value < 10 ? '0' + value : value;
-    }
-
-    function getDateString(date) {
-        var day = date.getDate();
-        var month = date.getMonth() + 1;
-        var year = date.getFullYear();
-        return formatDateUnit(month) + "/" + formatDateUnit(day) + "/" + year;
-    }
-
     function initMonthPicker() {
         let today = $("#Today").val();
         const sixMonthAgo = new Date(today);
@@ -21,21 +10,10 @@
             range: [new Date(sixMonthAgo.getFullYear(), sixMonthAgo.getMonth() + 1, 1), new Date(today)],
             triggerSelector: "#monthPickerTrigger",
             onSelect: function (month, year) {
-                var date = formatDateUnit(month) + "/01/" + year;
+                var date = DatePickerComponent.formatDateUnit(month) + "/01/" + year;
                 $("#MonthDate").data("original-date", date);
             }
         });
-    }
-
-    function initDatePicker(id, triggerId) {
-        UserPanel.datepicker.push(new Pikaday({
-            field: document.getElementById(id),
-            trigger: document.getElementById(triggerId),
-            yearRange: [2015, new Date().getFullYear()],
-            toString: function (date, format) {
-                return getDateString(date);
-            }
-        }));
     }
 
     var _me = {
@@ -47,8 +25,10 @@
             };
 
             initMonthPicker();
-            initDatePicker('FromDate', 'fromPicker');
-            initDatePicker('ToDate', 'toPicker');
+            DatePickerComponent.initLinkedDatePickers('FromDate', 'fromPicker', 'ToDate', 'toPicker', { 
+                datepickerRegistry: UserPanel.datepicker,
+                maxRangeMonths: 3 
+            });
             _me.initEvent();
             _me.renderDashBoardView(params);
             _me.renderDetailView(params, "Overview");
@@ -155,7 +135,7 @@
                 params = {
                     isGetMonthly,
                     fromDate: monthDate,
-                    toDate: maxDateOfMonth < today ? getDateString(maxDateOfMonth) : todayVal
+                    toDate: maxDateOfMonth < today ? DatePickerComponent.getDateString(maxDateOfMonth) : todayVal
                 }
             }
 

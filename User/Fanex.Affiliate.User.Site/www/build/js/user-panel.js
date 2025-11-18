@@ -1,4 +1,4 @@
-﻿"use strict";
+"use strict";
 
 var SUPPORT_MIN_WITDH = 716;
 var SUB_MENU_HEIGHT = 43;

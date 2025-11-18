@@ -40,15 +40,15 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
             // Arrange
             var expectedResult = new OverviewSummary { ActivePlayers = 123 };
             var accountOverviewService = new Mock<IAccountOverviewService>();
-            accountOverviewService.Setup(a => a.GetUserOverviewSummary(It.IsAny<AccountOverviewParam>())).Returns(expectedResult);
+            accountOverviewService.Setup(a => a.GetUserOverviewSummary(It.IsAny<AccountOverviewParam>())).Returns((0, expectedResult));
             var controller = CreateController(accountOverviewService: accountOverviewService.Object);
 
             // Action
             var partialViewResult = controller.Dashboard(new AccountOverviewParam()) as PartialViewResult;
-            var result = partialViewResult.Model as OverviewSummary;
+            var result = partialViewResult.Model as DashboardViewModel;
             // Assert
             Assert.Equal("~/Views/UserPanel/AccountOverView/Summary/Dashboard.cshtml", partialViewResult.ViewName);
-            Assert.Equal(expectedResult, result);
+            Assert.Equal(expectedResult, result.OverviewSummary);
         }
 
         [Fact]
@@ -56,7 +56,7 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
         {
             // Arrange
             var accountOverviewService = new Mock<IAccountOverviewService>();
-            accountOverviewService.Setup(a => a.GetUserOverviewDetailList(It.IsAny<AccountOverviewParam>())).Returns((string.Empty, new List<OverviewDetail>()));
+            accountOverviewService.Setup(a => a.GetUserOverviewDetailList(It.IsAny<AccountOverviewParam>())).Returns((0, new List<OverviewDetail>()));
             var controller = CreateController(accountOverviewService: accountOverviewService.Object);
 
             // Action
@@ -74,7 +74,7 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
             var param = new PlayerDetailParam { FromDate = monthDate, IsSortAsc = true };
             PlayerDetailParam passedParam = null;
             var accountOverviewService = new Mock<IAccountOverviewService>();
-            accountOverviewService.Setup(a => a.GetPlayerDetailList(param)).Returns((string.Empty, new List<PlayerDetail> { new PlayerDetail() })).Callback<PlayerDetailParam>(p => passedParam = p);
+            accountOverviewService.Setup(a => a.GetPlayerDetailList(param)).Returns((0, new List<PlayerDetail> { new PlayerDetail() })).Callback<PlayerDetailParam>(p => passedParam = p);
             var controller = CreateController(accountOverviewService: accountOverviewService.Object);
 
             // Action
@@ -94,7 +94,7 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
             var param = new PlayerDetailParam { ToDate = monthDate };
             PlayerDetailParam passedParam = null;
             var accountOverviewService = new Mock<IAccountOverviewService>();
-            accountOverviewService.Setup(a => a.GetPlayerDetailList(param)).Returns((string.Empty, new List<PlayerDetail> { new PlayerDetail() })).Callback<PlayerDetailParam>(p => passedParam = p);
+            accountOverviewService.Setup(a => a.GetPlayerDetailList(param)).Returns((0, new List<PlayerDetail> { new PlayerDetail() })).Callback<PlayerDetailParam>(p => passedParam = p);
             var controller = CreateController(accountOverviewService: accountOverviewService.Object);
 
             // Action
@@ -112,7 +112,7 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
         {
             // Arrange
             var accountOverviewService = new Mock<IAccountOverviewService>();
-            accountOverviewService.Setup(a => a.GetSubAffDetails(It.IsAny<AccountOverviewParam>())).Returns((string.Empty, new List<SubAffDetail> { new SubAffDetail() }));
+            accountOverviewService.Setup(a => a.GetSubAffDetails(It.IsAny<AccountOverviewParam>())).Returns((0, new List<SubAffDetail> { new SubAffDetail() }));
             var controller = CreateController(accountOverviewService: accountOverviewService.Object);
 
             // Action

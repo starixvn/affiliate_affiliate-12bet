@@ -2787,8 +2787,8 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   <data name="DateRange" xml:space="preserve">
     <value>Khoảng thời gian</value>
   </data>
-  <data name="TentativeRevenueShareAndNetRevenue" xml:space="preserve">
-    <value>Doanh thu chia sẻ tạm tính và doanh thu ròng chỉ được hiển thị khi xem theo tháng.</value>
+  <data name="RevenueShareAndNetRevenue" xml:space="preserve">
+    <value>Doanh thu chia sẻ và Doanh thu ròng chỉ hiển thị khi bạn xem theo tháng.</value>
   </data>
   <data name="ViewBy" xml:space="preserve">
     <value>Xem theo</value>
