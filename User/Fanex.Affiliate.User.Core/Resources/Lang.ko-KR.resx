@@ -1826,7 +1826,7 @@
     <value>$1 이상</value>
   </data>
   <data name="RevenueShare" xml:space="preserve">
-    <value>수익 공유</value>
+    <value>매출 배분</value>
   </data>
   <data name="SuffixProduct12JADE" xml:space="preserve">
     <value>(AE SEXY)</value>
@@ -2794,5 +2794,11 @@
   </data>
   <data name="AffilateLink" xml:space="preserve">
     <value>제휴사 링크</value>
+  </data>
+  <data name="Commission" xml:space="preserve">
+    <value>매출 배분</value>
+  </data>
+  <data name="CommRate" xml:space="preserve">
+    <value>하위 에이전트 수수료율</value>
   </data>
 </root>

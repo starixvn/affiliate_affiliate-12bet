@@ -1836,7 +1836,7 @@ Vì bất kỳ lý do gì, bạn không nhận được email, vui lòng kiểm 
     <value>$1 &amp; hơn</value>
   </data>
   <data name="RevenueShare" xml:space="preserve">
-    <value>Hoa hồng</value>
+    <value>Chia sẻ doanh thu</value>
   </data>
   <data name="ChineseTraditional" xml:space="preserve">
     <value>Tiếng Trung (Phồn Thể)</value>
@@ -2795,5 +2795,8 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   </data>
   <data name="FdmAmt" xml:space="preserve">
     <value>Số tiền FTD</value>
+  </data>
+  <data name="MacbookPro" xml:space="preserve">
+    <value>MACBOOK PRO 16' M3 PRO</value>
   </data>
 </root>
