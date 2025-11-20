@@ -106,7 +106,7 @@ namespace Fanex.Affiliate.Admin.Core.Controllers.Affiliate
                     RootUrl = SiteDomainHelper.GetRootUrl(this),
                 };
 
-                return GenerateJsonNetResult(await _paymentRequestService.HandlePaymentRequest(paymentRequestUpdateParam, emailParam));
+                return GenerateJsonNetResult(await _paymentRequestService.HandlePaymentRequestAsync(paymentRequestUpdateParam, emailParam));
             }
 
             return GenerateErrResult("Transaction not exists!");

@@ -129,7 +129,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Affiliate
             var param = new PaymentRequestUpdateParam { TransId = 123 };
             PaymentRequestUpdateParam passedParam = null;
             var paymentRequestService = new Mock<IPaymentService>();
-            paymentRequestService.Setup(s => s.HandlePaymentRequest(It.IsAny<PaymentRequestUpdateParam>(), It.IsAny<PaymentRequestUpdateEmail>()))
+            paymentRequestService.Setup(s => s.HandlePaymentRequestAsync(It.IsAny<PaymentRequestUpdateParam>(), It.IsAny<PaymentRequestUpdateEmail>()))
                 .Returns(Task.FromResult(new ResultInfo()))
                 .Callback<PaymentRequestUpdateParam, PaymentRequestUpdateEmail>((a, b) => passedParam = a);
 

@@ -2,7 +2,7 @@
 {
     public class DealType
     {
-        public int GroupTypeId { get; set; }
+        public byte GroupTypeId { get; set; }
 
         public string GroupTypeName { get; set; }
     }

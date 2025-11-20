@@ -1,4 +1,4 @@
-﻿namespace Fanex.Affiliate.Admin.Core.DTO.Api
+﻿namespace Fanex.Affiliate.Admin.Core.DTO.Apis
 {
     public class MemberSiteCustomerInfo
     {

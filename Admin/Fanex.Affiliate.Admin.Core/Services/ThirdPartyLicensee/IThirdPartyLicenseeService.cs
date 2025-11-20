@@ -5,6 +5,8 @@ namespace Fanex.Affiliate.Admin.Core.Services.ThirdPartyLicensee
 {
     public interface IThirdPartyLicenseeService
     {
-        Task SendAffiliateInfo(AffiliateBasicInfo affInfo);
+        Task SendAffiliateInfoAsync(AffiliateBasicInfo affInfo);
+
+        Task SendMultipleAffInfosByDealAsync(int dealId);
     }
 }

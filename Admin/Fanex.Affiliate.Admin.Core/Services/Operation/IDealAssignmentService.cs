@@ -7,7 +7,7 @@
 
     public interface IDealAssignmentService
     {
-        Task<ResultInfo> AssignDeal(AssignDealParam param, AffInfoParam affInfo, AffInformationEmail emailParam);
+        Task<ResultInfo> AssignDealAsync(AssignDealParam param, AffInfoParam affInfo, AffInformationEmail emailParam);
 
         bool HasPermissionAssignOnAff(int userId, int affId);
     }

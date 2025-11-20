@@ -77,7 +77,7 @@
                 RootUrl = SiteDomainHelper.GetRootUrl(this)
             };
 
-            return GenerateJsonNetResult(await _dealAssignmentService.AssignDeal(assignParam, affInfo, emailParam));
+            return GenerateJsonNetResult(await _dealAssignmentService.AssignDealAsync(assignParam, affInfo, emailParam));
         }
 
         private static ActionResult CreateAccessDeniedResult()

@@ -1,5 +1,6 @@
-﻿using Fanex.Affiliate.Admin.Core.DTO.Api;
+﻿using Fanex.Affiliate.Admin.Core.DTO.Apis;
 using Refit;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Fanex.Affiliate.Admin.Core.Apis
@@ -16,9 +17,9 @@ namespace Fanex.Affiliate.Admin.Core.Apis
         Task<decimal> UpdatePaymentRequestAsync(PaymentRequestInfo paymentInfo);
 
         [Post("/api/customer/UnlockUser")]
-        Task<ApiResultInfo> UnlockUser(int[] userIds);
+        Task<ApiResultInfo> UnlockUserAsync(int[] userIds);
 
-        [Post("/api/customer/InsertAffiliateInfo")]
-        Task<ApiResultInfo> InsertAffiliateInfo(ApiAffiliateInfo affiliateInfo);
+        [Post("/api/customer/InsertAffInfos")]
+        Task<ApiResultInfo> InsertAffInfosAsync(IEnumerable<ApiAffInfo> affInfos);
     }
 }

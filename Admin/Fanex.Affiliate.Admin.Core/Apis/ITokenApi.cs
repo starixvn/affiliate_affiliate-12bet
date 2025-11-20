@@ -1,5 +1,5 @@
-﻿using Fanex.Affiliate.Admin.Core.DTO.Api;
-using Fanex.Affiliate.Admin.Core.MetaModels.Api;
+﻿using Fanex.Affiliate.Admin.Core.DTO.Apis;
+using Fanex.Affiliate.Admin.Core.MetaModels.Apis;
 using Refit;
 using System.Threading.Tasks;
 

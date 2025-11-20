@@ -2,11 +2,13 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using Data.Repository;
     using Fanex.Affiliate.Admin.Core.Commands.Operation;
     using Fanex.Affiliate.Admin.Core.DTO;
     using Fanex.Affiliate.Admin.Core.MetaModels.Operation;
     using Fanex.Affiliate.Admin.Core.Services.Common;
+    using Fanex.Affiliate.Admin.Core.Services.ThirdPartyLicensee;
     using Fanex.Affiliate.Admin.Core.Utilities.Operation;
 
     public class OperationService : BaseDynamicService, IOperationService
@@ -14,12 +16,15 @@
         private const int OneHundred = 100;
 
         private readonly ISystemService _systemService;
+        private readonly IThirdPartyLicenseeService _thirdPartyLicenseeService;
 
         public OperationService(
             IDynamicRepository dynamicRepository,
-            ISystemService systemService) : base(dynamicRepository)
+            ISystemService systemService,
+            IThirdPartyLicenseeService thirdPartyLicenseeService) : base(dynamicRepository)
         {
             _systemService = systemService;
+            _thirdPartyLicenseeService = thirdPartyLicenseeService;
         }
 
         public ResultInfo AddDeal(DealSettingParam param)
@@ -39,7 +44,7 @@
             return ExecuteReturnResultInfo(command);
         }
 
-        public ResultInfo UpdateDeal(DealSettingParam param)
+        public async Task<ResultInfo> UpdateDealAsync(DealSettingParam param)
         {
             var (isValid, message) = ValidateDeal(param, isAdd: false);
             if (!isValid)
@@ -52,7 +57,14 @@
 
             AssignDealByType(command, param, isAdd: false);
 
-            return ExecuteReturnResultInfo(command);
+            var result = await ExecuteReturnResultInfoAsync(command);
+
+            if(result.IsSuccessful)
+            {
+                await _thirdPartyLicenseeService.SendMultipleAffInfosByDealAsync(param.GroupId);
+            }
+
+            return result;
         }
 
         private static void AssignDealByType(dynamic command, DealSettingParam param, bool isAdd)

@@ -1,12 +1,12 @@
-﻿using Fanex.Affiliate.Admin.Core.Commands.Tracker;
-using Fanex.Affiliate.Admin.Core.Services.Tracker;
+﻿using Fanex.Affiliate.Admin.Core.Commands.Apis;
+using Fanex.Affiliate.Admin.Core.Services.Apis;
 using Fanex.Data.Repository;
 using Moq;
 using Xunit;
 
-namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Tracker
+namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Api
 {
-    public class JobTrackerServiceTest
+    public class ApiAffServiceTest
     {
         [Theory]
         [InlineData(false)]
@@ -18,7 +18,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Tracker
             dynamicRepository.Setup(r => r.Execute(It.IsAny<InsertJobTrackerCommand>(), It.IsAny<string>())).Callback<INonQueryCommand, string>((c, _) => (c as InsertJobTrackerCommand).PushTrackerId = isDBNull ? 0 : 123);
 
             // Action
-            var service = new JobTrackerService(dynamicRepository.Object);
+            var service = new ApiAffService(dynamicRepository.Object);
             var (Id, Result) = service.InsertDataTracker(new InsertJobTrackerCommand());
 
             // Assert
@@ -34,7 +34,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Tracker
             var dynamicRepository = new Mock<IDynamicRepository>();
 
             // Action
-            var service = new JobTrackerService(dynamicRepository.Object);
+            var service = new ApiAffService(dynamicRepository.Object);
             var result = service.UpdateDataTracker(new UpdateJobTrackerCommand());
 
             // Assert

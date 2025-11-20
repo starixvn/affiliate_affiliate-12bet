@@ -1,11 +1,11 @@
 ﻿using Fanex.Affiliate.Admin.Core.Apis;
 using Fanex.Affiliate.Admin.Core.Constants.Apis;
 using Fanex.Affiliate.Admin.Core.DTO;
-using Fanex.Affiliate.Admin.Core.DTO.Api;
+using Fanex.Affiliate.Admin.Core.DTO.Apis;
 using Fanex.Affiliate.Admin.Core.Resources;
 using System.Threading.Tasks;
 
-namespace Fanex.Affiliate.Admin.Core.Services
+namespace Fanex.Affiliate.Admin.Core.Services.Apis
 {
     public class LicenseeService : ILicenseeService
     {
@@ -16,9 +16,9 @@ namespace Fanex.Affiliate.Admin.Core.Services
             _licenseeApi = licenseeApi;
         }
 
-        public async Task<ResultInfo> CheckCustomerIsValid(string userName, int siteId)
+        public async Task<ResultInfo> CheckCustomerIsValidAsync(string userName, int siteId)
         {
-            var cust = await GetMemberSiteCustomerInfo(userName, siteId).ConfigureAwait(false);
+            var cust = await GetMemberSiteCustomerInfoAsync(userName, siteId).ConfigureAwait(false);
             return CheckCustomerIsValid(cust);
         }
 
@@ -59,12 +59,12 @@ namespace Fanex.Affiliate.Admin.Core.Services
 
         }
 
-        public async Task<MemberSiteCustomerInfo> GetMemberSiteCustomerInfo(string userName, int siteId)
+        public async Task<MemberSiteCustomerInfo> GetMemberSiteCustomerInfoAsync(string userName, int siteId)
             => await _licenseeApi.GetCustomerInfoAsync(userName, siteId).ConfigureAwait(false);
 
-        public async Task<ResultInfo> UnlockUser(int userId)
+        public async Task<ResultInfo> UnlockUserAsync(int userId)
         {
-            var result = await _licenseeApi.UnlockUser(new[] { userId });
+            var result = await _licenseeApi.UnlockUserAsync(new[] { userId });
             return new ResultInfo
             {
                 Code = result.IsSuccess ? 0 : CustomerStatus.INTERNAL_ERR,
@@ -72,7 +72,7 @@ namespace Fanex.Affiliate.Admin.Core.Services
             };
         }
 
-        public async Task<ResultInfo> UpdatePaymentRequest(PaymentRequestInfo paymentRequest)
+        public async Task<ResultInfo> UpdatePaymentRequestAsync(PaymentRequestInfo paymentRequest)
         {
             var result = new ResultInfo { Code = 100 };
             if (paymentRequest.Amount == 0)

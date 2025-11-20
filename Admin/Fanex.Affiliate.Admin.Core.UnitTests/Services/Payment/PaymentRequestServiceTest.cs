@@ -6,12 +6,12 @@ using Fanex.Affiliate.Admin.Core.Constants;
 using Fanex.Affiliate.Admin.Core.Criterias.PaymentRequest;
 using Fanex.Affiliate.Admin.Core.DTO;
 using Fanex.Affiliate.Admin.Core.DTO.Affiliate;
-using Fanex.Affiliate.Admin.Core.DTO.Api;
+using Fanex.Affiliate.Admin.Core.DTO.Apis;
 using Fanex.Affiliate.Admin.Core.DTO.Email;
 using Fanex.Affiliate.Admin.Core.DTO.Payment;
 using Fanex.Affiliate.Admin.Core.MetaModels.Payment;
-using Fanex.Affiliate.Admin.Core.Services;
 using Fanex.Affiliate.Admin.Core.Services.Affiliate;
+using Fanex.Affiliate.Admin.Core.Services.Apis;
 using Fanex.Affiliate.Admin.Core.Services.Email;
 using Fanex.Affiliate.Admin.Core.Services.Payment;
 using Fanex.Affiliate.Admin.Core.UnitTests.TestHelper;
@@ -159,7 +159,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Payment
         }
 
         [Fact]
-        public async Task HandlePaymentRequest_WhenCallWithInvalidCustomer_ReturnError()
+        public async Task HandlePaymentRequestAsync_WhenCallWithInvalidCustomer_ReturnError()
         {
             // Arrange
             var appSetting = new Mock<IAppSetting>();
@@ -172,21 +172,21 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Payment
             affiliateService.Setup(a => a.GetAffiliateBasicInfo(It.IsAny<int?>(), null)).Returns(new AffiliateBasicInfo { PreferredLanguage = "vi-VN", AffType = 4 });
 
             var licenseeService = new Mock<ILicenseeService>();
-            licenseeService.Setup(a => a.GetMemberSiteCustomerInfo(It.IsAny<string>(), It.IsAny<int>())).Returns(Task.FromResult(new MemberSiteCustomerInfo { Status = 4 }));
+            licenseeService.Setup(a => a.GetMemberSiteCustomerInfoAsync(It.IsAny<string>(), It.IsAny<int>())).Returns(Task.FromResult(new MemberSiteCustomerInfo { Status = 4 }));
             licenseeService.Setup(a => a.CheckCustomerIsValid(It.IsAny<MemberSiteCustomerInfo>())).Returns(new ResultInfo { Code = 4 });
-            licenseeService.Setup(a => a.UnlockUser(It.IsAny<int>())).Returns(Task.FromResult(new ResultInfo { Code = ErrCode.GeneralErrorCode }));
+            licenseeService.Setup(a => a.UnlockUserAsync(It.IsAny<int>())).Returns(Task.FromResult(new ResultInfo { Code = ErrCode.GeneralErrorCode }));
 
             var service = CreatePaymentRequestService(null, affiliateService.Object, dynamicRepository.Object, licenseeService.Object, appSetting.Object);
 
             // Action
-            var result = await service.HandlePaymentRequest(new PaymentRequestUpdateParam(), new PaymentRequestUpdateEmail());
+            var result = await service.HandlePaymentRequestAsync(new PaymentRequestUpdateParam(), new PaymentRequestUpdateEmail());
 
             // Assert
             Assert.False(result.IsSuccessful);
         }
 
         [Fact]
-        public async Task HandlePaymentRequest_WhenCall_UpdateFailed()
+        public async Task HandlePaymentRequestAsync_WhenCall_UpdateFailed()
         {
             // Arrange
             var appSetting = new Mock<IAppSetting>();
@@ -200,20 +200,20 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Payment
             affiliateService.Setup(a => a.GetAffiliateBasicInfo(It.IsAny<int?>(), null)).Returns(new AffiliateBasicInfo { PreferredLanguage = "vi-VN", AffType = 4 });
 
             var licenseeService = new Mock<ILicenseeService>();
-            licenseeService.Setup(a => a.GetMemberSiteCustomerInfo(It.IsAny<string>(), It.IsAny<int>())).Returns(Task.FromResult(new MemberSiteCustomerInfo()));
+            licenseeService.Setup(a => a.GetMemberSiteCustomerInfoAsync(It.IsAny<string>(), It.IsAny<int>())).Returns(Task.FromResult(new MemberSiteCustomerInfo()));
             licenseeService.Setup(a => a.CheckCustomerIsValid(It.IsAny<MemberSiteCustomerInfo>())).Returns(new ResultInfo { Code = ErrCode.GeneralErrorCode });
 
             var service = CreatePaymentRequestService(null, affiliateService.Object, dynamicRepository.Object, licenseeService.Object, appSetting.Object);
 
             // Action
-            var result = await service.HandlePaymentRequest(new PaymentRequestUpdateParam(), new PaymentRequestUpdateEmail());
+            var result = await service.HandlePaymentRequestAsync(new PaymentRequestUpdateParam(), new PaymentRequestUpdateEmail());
 
             // Assert
             Assert.False(result.IsSuccessful);
         }
 
         [Fact]
-        public async Task HandlePaymentRequest_WhenCallWithReject_UpdateSuccessfully()
+        public async Task HandlePaymentRequestAsync_WhenCallWithReject_UpdateSuccessfully()
         {
             // Arrange
             var appSetting = new Mock<IAppSetting>();
@@ -236,20 +236,20 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Payment
             affiliateService.Setup(a => a.GetAffiliateBasicInfo(It.IsAny<int?>(), null)).Returns(new AffiliateBasicInfo { PreferredLanguage = "vi-VN", AffType = 4 });
 
             var licenseeService = new Mock<ILicenseeService>();
-            licenseeService.Setup(a => a.GetMemberSiteCustomerInfo(It.IsAny<string>(), It.IsAny<int>())).Returns(Task.FromResult(new MemberSiteCustomerInfo()));
+            licenseeService.Setup(a => a.GetMemberSiteCustomerInfoAsync(It.IsAny<string>(), It.IsAny<int>())).Returns(Task.FromResult(new MemberSiteCustomerInfo()));
             licenseeService.Setup(a => a.CheckCustomerIsValid(It.IsAny<MemberSiteCustomerInfo>())).Returns(new ResultInfo());
 
             var service = CreatePaymentRequestService(null, affiliateService.Object, dynamicRepository.Object, licenseeService.Object, appSetting.Object);
 
             // Action
-            var result = await service.HandlePaymentRequest(new PaymentRequestUpdateParam(), new PaymentRequestUpdateEmail());
+            var result = await service.HandlePaymentRequestAsync(new PaymentRequestUpdateParam(), new PaymentRequestUpdateEmail());
 
             // Assert
             Assert.True(result.IsSuccessful);
         }
 
         [Fact]
-        public async Task HandlePaymentRequest_WhenCallWithApproved_UpdateSuccessfully()
+        public async Task HandlePaymentRequestAsync_WhenCallWithApproved_UpdateSuccessfully()
         {
             // Arrange
             MockingHelper.SetUpLogEngineEnviroment();
@@ -273,21 +273,21 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Payment
             affiliateService.Setup(a => a.GetAffiliateBasicInfo(It.IsAny<int?>(), null)).Returns(new AffiliateBasicInfo { PreferredLanguage = "vi-VN", AffType = 4 });
 
             var licenseeService = new Mock<ILicenseeService>();
-            licenseeService.Setup(a => a.GetMemberSiteCustomerInfo(It.IsAny<string>(), It.IsAny<int>())).Returns(Task.FromResult(new MemberSiteCustomerInfo()));
+            licenseeService.Setup(a => a.GetMemberSiteCustomerInfoAsync(It.IsAny<string>(), It.IsAny<int>())).Returns(Task.FromResult(new MemberSiteCustomerInfo()));
             licenseeService.Setup(a => a.CheckCustomerIsValid(It.IsAny<MemberSiteCustomerInfo>())).Returns(new ResultInfo());
-            licenseeService.Setup(l => l.UpdatePaymentRequest(It.IsAny<PaymentRequestInfo>())).Returns(Task.FromResult(new ResultInfo()));
+            licenseeService.Setup(l => l.UpdatePaymentRequestAsync(It.IsAny<PaymentRequestInfo>())).Returns(Task.FromResult(new ResultInfo()));
 
             var service = CreatePaymentRequestService(null, affiliateService.Object, dynamicRepository.Object, licenseeService.Object, appSetting.Object);
 
             // Action
-            var result = await service.HandlePaymentRequest(new PaymentRequestUpdateParam { IsApproved = true }, new PaymentRequestUpdateEmail());
+            var result = await service.HandlePaymentRequestAsync(new PaymentRequestUpdateParam { IsApproved = true }, new PaymentRequestUpdateEmail());
 
             // Assert
             Assert.True(result.IsSuccessful);
         }
 
         [Fact]
-        public async Task HandlePaymentRequest_WhenCallWithApproved_UpdateFailed()
+        public async Task HandlePaymentRequestAsync_WhenCallWithApproved_UpdateFailed()
         {
             // Arrange
             MockingHelper.SetUpLogEngineEnviroment();
@@ -311,21 +311,21 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Payment
             affiliateService.Setup(a => a.GetAffiliateBasicInfo(It.IsAny<int?>(), null)).Returns(new AffiliateBasicInfo { PreferredLanguage = "vi-VN", AffType = 4 });
 
             var licenseeService = new Mock<ILicenseeService>();
-            licenseeService.Setup(a => a.GetMemberSiteCustomerInfo(It.IsAny<string>(), It.IsAny<int>())).Returns(Task.FromResult(new MemberSiteCustomerInfo()));
+            licenseeService.Setup(a => a.GetMemberSiteCustomerInfoAsync(It.IsAny<string>(), It.IsAny<int>())).Returns(Task.FromResult(new MemberSiteCustomerInfo()));
             licenseeService.Setup(a => a.CheckCustomerIsValid(It.IsAny<MemberSiteCustomerInfo>())).Returns(new ResultInfo());
-            licenseeService.Setup(l => l.UpdatePaymentRequest(It.IsAny<PaymentRequestInfo>())).Returns(Task.FromResult(new ResultInfo { Code = ErrCode.GeneralErrorCode }));
+            licenseeService.Setup(l => l.UpdatePaymentRequestAsync(It.IsAny<PaymentRequestInfo>())).Returns(Task.FromResult(new ResultInfo { Code = ErrCode.GeneralErrorCode }));
 
             var service = CreatePaymentRequestService(null, affiliateService.Object, dynamicRepository.Object, licenseeService.Object, appSetting.Object);
 
             // Action
-            var result = await service.HandlePaymentRequest(new PaymentRequestUpdateParam { IsApproved = true }, new PaymentRequestUpdateEmail());
+            var result = await service.HandlePaymentRequestAsync(new PaymentRequestUpdateParam { IsApproved = true }, new PaymentRequestUpdateEmail());
 
             // Assert
             Assert.False(result.IsSuccessful);
         }
 
         [Fact]
-        public void HandlePaymentRequest_WhenCallWithApproved_HaveException()
+        public void HandlePaymentRequestAsync_WhenCallWithApproved_HaveException()
         {
             // Arrange
             var appSetting = new Mock<IAppSetting>();
@@ -348,14 +348,14 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Payment
             affiliateService.Setup(a => a.GetAffiliateBasicInfo(It.IsAny<int?>(), null)).Returns(new AffiliateBasicInfo { PreferredLanguage = "vi-VN", AffType = 4 });
 
             var licenseeService = new Mock<ILicenseeService>();
-            licenseeService.Setup(a => a.GetMemberSiteCustomerInfo(It.IsAny<string>(), It.IsAny<int>())).Returns(Task.FromResult(new MemberSiteCustomerInfo()));
+            licenseeService.Setup(a => a.GetMemberSiteCustomerInfoAsync(It.IsAny<string>(), It.IsAny<int>())).Returns(Task.FromResult(new MemberSiteCustomerInfo()));
             licenseeService.Setup(a => a.CheckCustomerIsValid(It.IsAny<MemberSiteCustomerInfo>())).Returns(new ResultInfo());
-            licenseeService.Setup(l => l.UpdatePaymentRequest(It.IsAny<PaymentRequestInfo>())).Returns(Task.FromResult(new ResultInfo { Code = ErrCode.GeneralErrorCode })).Callback<PaymentRequestInfo>(p => throw new System.Exception());
+            licenseeService.Setup(l => l.UpdatePaymentRequestAsync(It.IsAny<PaymentRequestInfo>())).Returns(Task.FromResult(new ResultInfo { Code = ErrCode.GeneralErrorCode })).Callback<PaymentRequestInfo>(p => throw new System.Exception());
 
             var service = CreatePaymentRequestService(null, affiliateService.Object, dynamicRepository.Object, licenseeService.Object, appSetting.Object);
 
             // Action
-            var result = service.HandlePaymentRequest(new PaymentRequestUpdateParam { IsApproved = true }, new PaymentRequestUpdateEmail());
+            var result = service.HandlePaymentRequestAsync(new PaymentRequestUpdateParam { IsApproved = true }, new PaymentRequestUpdateEmail());
 
             // Assert
             Assert.Single(result.Exception.InnerExceptions);

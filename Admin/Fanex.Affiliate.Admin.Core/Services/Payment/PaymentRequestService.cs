@@ -5,13 +5,14 @@ using Fanex.Affiliate.Admin.Core.Constants.Apis;
 using Fanex.Affiliate.Admin.Core.Criterias.PaymentRequest;
 using Fanex.Affiliate.Admin.Core.DTO;
 using Fanex.Affiliate.Admin.Core.DTO.Affiliate;
-using Fanex.Affiliate.Admin.Core.DTO.Api;
+using Fanex.Affiliate.Admin.Core.DTO.Apis;
 using Fanex.Affiliate.Admin.Core.DTO.Email;
 using Fanex.Affiliate.Admin.Core.DTO.Payment;
 using Fanex.Affiliate.Admin.Core.Exceptions;
 using Fanex.Affiliate.Admin.Core.MetaModels.Payment;
 using Fanex.Affiliate.Admin.Core.Resources;
 using Fanex.Affiliate.Admin.Core.Services.Affiliate;
+using Fanex.Affiliate.Admin.Core.Services.Apis;
 using Fanex.Affiliate.Admin.Core.Services.Email;
 using Fanex.Affiliate.Admin.Core.Utilities;
 using Fanex.Data.Repository;
@@ -80,17 +81,17 @@ namespace Fanex.Affiliate.Admin.Core.Services.Payment
             return result;
         }
 
-        public async Task<ResultInfo> HandlePaymentRequest(PaymentRequestUpdateParam param, PaymentRequestUpdateEmail emailParam)
+        public async Task<ResultInfo> HandlePaymentRequestAsync(PaymentRequestUpdateParam param, PaymentRequestUpdateEmail emailParam)
         {
             var siteId = _appSetting.MemberSiteId;
             var paymentRequestDetail = GetPaymentRequestDetail(param.TransId);
             var affInfo = _affiliateService.GetAffiliateBasicInfo(paymentRequestDetail.AffId);
-            var cust = await _licenseeService.GetMemberSiteCustomerInfo(affInfo.PlayerUsername, siteId);
+            var cust = await _licenseeService.GetMemberSiteCustomerInfoAsync(affInfo.PlayerUsername, siteId);
             var result = _licenseeService.CheckCustomerIsValid(cust);
 
             if (result.Code == CustomerStatus.LOCKED)
             {
-                result = await _licenseeService.UnlockUser(cust.CustId);
+                result = await _licenseeService.UnlockUserAsync(cust.CustId);
             }
 
             if (!result.IsSuccessful)
@@ -117,7 +118,7 @@ namespace Fanex.Affiliate.Admin.Core.Services.Payment
                     LogHelper.WriteInfo($"Call member site API to payment\n" +
                         $"Param: {JsonConvert.SerializeObject(paymentInfo)}");
 
-                    result = await _licenseeService.UpdatePaymentRequest(paymentInfo);
+                    result = await _licenseeService.UpdatePaymentRequestAsync(paymentInfo);
 
                     LogHelper.WriteInfo($"Membersite return result:\n" +
                         $"Param: {JsonConvert.SerializeObject(paymentInfo)}\n" +

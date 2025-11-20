@@ -38,9 +38,9 @@
             _authService = authService;
         }
 
-        public async Task<ResultInfo> AssignDeal(AssignDealParam param, AffInfoParam affInfo, AffInformationEmail emailParam)
+        public async Task<ResultInfo> AssignDealAsync(AssignDealParam param, AffInfoParam affInfo, AffInformationEmail emailParam)
         {
-            return await ProcessAssignGroup(param, affInfo, emailParam);
+            return await ProcessAssignGroupAsync(param, affInfo, emailParam);
         }
 
         public bool HasPermissionAssignOnAff(int userId, int affId)
@@ -57,7 +57,7 @@
             return true;
         }
 
-        private async Task<ResultInfo> ProcessAssignGroup(AssignDealParam param, AffInfoParam affInfo, AffInformationEmail emailParam)
+        private async Task<ResultInfo> ProcessAssignGroupAsync(AssignDealParam param, AffInfoParam affInfo, AffInformationEmail emailParam)
         {
             var command = new AssignDealCommand
             {
@@ -72,25 +72,25 @@
 
             if (!isApproved && assignResult.IsSuccessful)
             {
-                return await ProcessApproveAffiliate(param, affInfo, emailParam);
+                return await ProcessApproveAffiliateAsync(param, affInfo, emailParam);
             }
 
             if (assignResult.IsSuccessful)
             {
-                await SendAffiliateInfoToLicensee(affInfo);
+                await SendAffiliateInfoToLicenseeAsync(affInfo);
             }    
 
             return assignResult;
         }
 
-        private async Task<ResultInfo> ProcessApproveAffiliate(AssignDealParam param, AffInfoParam affInfo, AffInformationEmail emailParam)
+        private async Task<ResultInfo> ProcessApproveAffiliateAsync(AssignDealParam param, AffInfoParam affInfo, AffInformationEmail emailParam)
         {
             var password = Generator.GetRandomString(10);
             var (approvedResult, affCode) = ApproveAffiliate(param, password);
 
             if (approvedResult.IsSuccessful)
             {
-                await SendAffiliateInfoToLicensee(affInfo);
+                await SendAffiliateInfoToLicenseeAsync(affInfo);
                 SendEmailApprove(emailParam, affInfo, password, affCode);
             }
 
@@ -111,7 +111,7 @@
             return _affiliateService.ApproveAffiliate(approveParam);
         }
 
-        private async Task SendAffiliateInfoToLicensee(AffInfoParam affParam)
+        private async Task SendAffiliateInfoToLicenseeAsync(AffInfoParam affParam)
         {
             try
             {
@@ -119,7 +119,7 @@
 
                 if (affInfo != null)
                 {
-                    await _thirdPartyLicenseeService.SendAffiliateInfo(affInfo);
+                    await _thirdPartyLicenseeService.SendAffiliateInfoAsync(affInfo);
                 }
             }
             catch (Exception ex)

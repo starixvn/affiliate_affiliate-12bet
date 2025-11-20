@@ -17,9 +17,10 @@ namespace Fanex.Affiliate.Admin.Core.Services.Affiliate
     using System;
     using Fanex.Affiliate.Admin.Core.Configurations;
     using Fanex.Affiliate.Admin.Core.Constants;
-    using Fanex.Affiliate.Admin.Core.DTO.Api;
+    using Fanex.Affiliate.Admin.Core.DTO.Apis;
     using Fanex.Affiliate.Admin.Core.Resources;
     using Fanex.Affiliate.Admin.Core.Services.UserPanel;
+    using Fanex.Affiliate.Admin.Core.Services.Apis;
 
     public class MarketingAccountService : BaseDynamicService, IMarketingAccountService
     {
@@ -70,15 +71,15 @@ namespace Fanex.Affiliate.Admin.Core.Services.Affiliate
                 }
 
                 var command = model.CreateCommand();
-                await ConfigurePlayerAccountIfNeeded(model, command);
+                await ConfigurePlayerAccountIfNeededAsync(model, command);
 
-                var result = await ExecuteCreateMarketingAccountCommand(command);
+                var result = await ExecuteCreateMarketingAccountCommandAsync(command);
                 if (!result.IsSuccessful)
                 {
                     return result;
                 }
 
-                await NotifyThirdPartyServices(command.Username);
+                await NotifyThirdPartyServicesAsync(command.Username);
                 return result;
             }
             catch (InvalidOperationException ex)
@@ -120,7 +121,7 @@ namespace Fanex.Affiliate.Admin.Core.Services.Affiliate
             return new ResultInfo(); // Default constructor should create a successful result
         }
 
-        private async Task ConfigurePlayerAccountIfNeeded(CreateMarketingAccountModel model, CreateMarketingAccountCommand command)
+        private async Task ConfigurePlayerAccountIfNeededAsync(CreateMarketingAccountModel model, CreateMarketingAccountCommand command)
         {
             if (string.IsNullOrEmpty(command.Player_UserName))
             {
@@ -135,13 +136,13 @@ namespace Fanex.Affiliate.Admin.Core.Services.Affiliate
 
             if (isPlayerAccountPreferred && isDifferentUsername)
             {
-                await SetPlayerAccountDetails(model, command);
+                await SetPlayerAccountDetailsAsync(model, command);
             }
         }
 
-        private async Task SetPlayerAccountDetails(CreateMarketingAccountModel model, dynamic command)
+        private async Task SetPlayerAccountDetailsAsync(CreateMarketingAccountModel model, dynamic command)
         {
-            var memberSiteCust = await _licenseeService.GetMemberSiteCustomerInfo(model.PlayerUsername, _appSetting.MemberSiteId);
+            var memberSiteCust = await _licenseeService.GetMemberSiteCustomerInfoAsync(model.PlayerUsername, _appSetting.MemberSiteId);
             var validationResult = _licenseeService.CheckCustomerIsValid(memberSiteCust);
             
             if (!validationResult.IsSuccessful)
@@ -160,15 +161,15 @@ namespace Fanex.Affiliate.Admin.Core.Services.Affiliate
                 : memberSiteCust.CurrencyId.GetValueOrDefault();
         }
 
-        private async Task<ResultInfo> ExecuteCreateMarketingAccountCommand(dynamic command)
+        private async Task<ResultInfo> ExecuteCreateMarketingAccountCommandAsync(dynamic command)
         {
             return await ExecuteReturnResultInfoAsync(command);
         }
 
-        private async Task NotifyThirdPartyServices(string affName)
+        private async Task NotifyThirdPartyServicesAsync(string affName)
         {
             var affInfo = _affiliateService.GetAffiliateBasicInfo(null, affName);
-            await _thirdPartyLicenseeService.SendAffiliateInfo(affInfo);
+            await _thirdPartyLicenseeService.SendAffiliateInfoAsync(affInfo);
         }
 
         private static void HtmlEncodeModelStringProperties(object model, HttpServerUtilityBase server, Type type, params string[] ignoreProperties)

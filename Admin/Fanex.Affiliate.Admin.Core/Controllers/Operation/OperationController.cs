@@ -1,6 +1,7 @@
 ﻿namespace Fanex.Affiliate.Admin.Core.Controllers.Operation
 {
     using System.Linq;
+    using System.Threading.Tasks;
     using System.Web.Mvc;
     using Extensions;
     using Fanex.Affiliate.Admin.Core.Attributes;
@@ -80,7 +81,7 @@
         [FunctionAuthorize(FunctionName = Function.Deal, IsHost = true)]
         [HttpPost]
         [ValidateAntiForgeryHeader]
-        public ActionResult UpdateDeal(DealSettingParam param)
+        public async Task<ActionResult> UpdateDeal(DealSettingParam param)
         {
             if (!ModelState.IsValid)
             {
@@ -90,7 +91,7 @@
             AssignUserInfoParam(param);
             param.DealName = Server.HtmlDecode(param.DealName);
             param.Description = Server.HtmlDecode(param.Description);
-            return GenerateJsonNetResult(_operationService.UpdateDeal(param));
+            return GenerateJsonNetResult(await _operationService.UpdateDealAsync(param));
         }
 
         [FunctionAuthorize(FunctionName = Function.Deal, IsHost = true)]

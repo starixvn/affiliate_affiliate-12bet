@@ -9,7 +9,7 @@
 
         public string DealName { get; set; }
 
-        public int DealType { get; set; }
+        public byte DealType { get; set; }
 
         public int DealVerifyFlags { get; set; }
 

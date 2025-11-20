@@ -6,7 +6,7 @@
 
         public string GroupName { get; set; }
 
-        public int GroupTypeId { get; set; }
+        public byte GroupTypeId { get; set; }
 
         public override string GetSettingKey() => "Aff_Admin_Deal_Sel";
 

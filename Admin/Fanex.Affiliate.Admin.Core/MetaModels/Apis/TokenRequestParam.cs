@@ -1,5 +1,5 @@
 ﻿
-namespace Fanex.Affiliate.Admin.Core.MetaModels.Api
+namespace Fanex.Affiliate.Admin.Core.MetaModels.Apis
 {
     public class TokenRequestParam
     {

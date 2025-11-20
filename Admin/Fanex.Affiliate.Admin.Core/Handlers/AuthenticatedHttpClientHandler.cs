@@ -1,8 +1,8 @@
 ﻿using Fanex.Affiliate.Admin.Core.Apis;
 using Fanex.Affiliate.Admin.Core.Configurations;
 using Fanex.Affiliate.Admin.Core.Constants;
-using Fanex.Affiliate.Admin.Core.DTO.Api;
-using Fanex.Affiliate.Admin.Core.MetaModels.Api;
+using Fanex.Affiliate.Admin.Core.DTO.Apis;
+using Fanex.Affiliate.Admin.Core.MetaModels.Apis;
 using Fanex.Affiliate.Admin.Core.Utilities;
 using Fanex.Caching;
 using Refit;
@@ -34,12 +34,12 @@ namespace Fanex.Affiliate.Admin.Core.Handlers
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            await SetJwtToken(request);
+            await SetJwtTokenAsync(request);
 
             return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
-        private async Task SetJwtToken(HttpRequestMessage request)
+        private async Task SetJwtTokenAsync(HttpRequestMessage request)
         {
             var token = await _cacheService.GetAsync<string>(CacheKey.TokenExtApi);
 

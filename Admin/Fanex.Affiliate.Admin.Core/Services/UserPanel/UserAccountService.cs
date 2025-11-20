@@ -12,7 +12,7 @@ using Fanex.Affiliate.Admin.Core.DTO.Customer;
 using Fanex.Affiliate.Admin.Core.DTO.UserPanel;
 using Fanex.Affiliate.Admin.Core.Extensions;
 using Fanex.Affiliate.Admin.Core.MetaModels.UserPanel;
-using Fanex.Affiliate.Admin.Core.Resources;
+using Fanex.Affiliate.Admin.Core.Services.Apis;
 using Fanex.Affiliate.Admin.Core.Services.ThirdPartyLicensee;
 using Fanex.Affiliate.Admin.Core.Utilities;
 using Fanex.Data.Repository;
@@ -76,7 +76,7 @@ namespace Fanex.Affiliate.Admin.Core.Services.UserPanel
                 if (isDifferentUsername)
                 {
                     var memberSiteId = _appSetting.MemberSiteId;
-                    var memberSiteCust = await _licenseeService.GetMemberSiteCustomerInfo(param.PlayerUsername, memberSiteId);
+                    var memberSiteCust = await _licenseeService.GetMemberSiteCustomerInfoAsync(param.PlayerUsername, memberSiteId);
                     var validationResult = _licenseeService.CheckCustomerIsValid(memberSiteCust);
 
                     if (!validationResult.IsSuccessful)
@@ -95,10 +95,10 @@ namespace Fanex.Affiliate.Admin.Core.Services.UserPanel
                 }
             }
 
-            return await UpdateUserAccount(param, curUserAccInfo);
+            return await UpdateUserAccountAsync(param, curUserAccInfo);
         }
 
-        private async Task<ResultInfo> UpdateUserAccount(UserAccountParam param, UserAccount curUserAccInfo)
+        private async Task<ResultInfo> UpdateUserAccountAsync(UserAccountParam param, UserAccount curUserAccInfo)
         {
             var command = new UpdateUserAccountCommand
             {
@@ -143,13 +143,13 @@ namespace Fanex.Affiliate.Admin.Core.Services.UserPanel
 
             if (result.IsSuccessful)
             {
-                await SendAffiliateInfoToLicensee(param.AffId, curUserAccInfo);
+                await SendAffiliateInfoToLicenseeAsync(param.AffId, curUserAccInfo);
             }
 
             return result;
         }
 
-        private async Task SendAffiliateInfoToLicensee(int affId, UserAccount curInfo)
+        private async Task SendAffiliateInfoToLicenseeAsync(int affId, UserAccount curInfo)
         {
             try
             {
@@ -166,7 +166,7 @@ namespace Fanex.Affiliate.Admin.Core.Services.UserPanel
 
                     if (isUpdatedSensitiveInfo)
                     {
-                        await _thirdPartyLicenseeService.SendAffiliateInfo(affInfo);
+                        await _thirdPartyLicenseeService.SendAffiliateInfoAsync(affInfo);
                     }
                 }
             }

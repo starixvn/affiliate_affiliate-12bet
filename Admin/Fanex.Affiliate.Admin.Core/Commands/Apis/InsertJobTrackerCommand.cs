@@ -1,6 +1,6 @@
 ﻿using Fanex.Data.Repository;
 
-namespace Fanex.Affiliate.Admin.Core.Commands.Tracker
+namespace Fanex.Affiliate.Admin.Core.Commands.Apis
 {
     public class InsertJobTrackerCommand : NonQueryCommand
     {

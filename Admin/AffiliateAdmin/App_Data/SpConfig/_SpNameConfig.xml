@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Root>
 	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Test" Suffix="_xtest"></item>
+	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_API_AffiliateDetailInfo_Sel" Suffix="_xtest"></item>
 	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_Admin_Affiliate_Sel" Suffix="_xtest"></item>
 	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_Admin_AffiliateInfo_Sel" Suffix="_xtest"></item>
 	<item LicenseeName="12b" Environment="DEV,LOCAL,UAT" SpName="Aff_Admin_Deal_Upd" Suffix="_xtest"></item>

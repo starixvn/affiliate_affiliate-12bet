@@ -116,7 +116,7 @@ namespace Fanex.Affiliate.Admin.Core.Services.Customer
             return ExecuteReturnResultInfo(command);
         }
 
-        public async Task<ResultInfo> UpdateStatus(UpdateStatusParam param, AffInformationEmail emailParam)
+        public async Task<ResultInfo> UpdateStatusAsync(UpdateStatusParam param, AffInformationEmail emailParam)
         {
             var command = new UpdateStatusCommand
             {
@@ -139,17 +139,17 @@ namespace Fanex.Affiliate.Admin.Core.Services.Customer
             {
                 var affInfo = _affiliateService.GetAffiliateBasicInfo(param.AffId);
 
-                await TrackAndSendAffiliateToLicensee(affInfo);
+                await TrackAndSendAffiliateToLicenseeAsync(affInfo);
             }
 
             return result;
         }
 
-        private async Task TrackAndSendAffiliateToLicensee(AffiliateBasicInfo affInfo)
+        private async Task TrackAndSendAffiliateToLicenseeAsync(AffiliateBasicInfo affInfo)
         {
             try
             {
-                await _thirdPartyLicenseeService.SendAffiliateInfo(affInfo);
+                await _thirdPartyLicenseeService.SendAffiliateInfoAsync(affInfo);
 
             }
             catch (Exception ex)

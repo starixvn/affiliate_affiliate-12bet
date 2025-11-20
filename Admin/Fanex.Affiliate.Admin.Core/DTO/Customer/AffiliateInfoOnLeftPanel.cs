@@ -72,7 +72,7 @@ namespace Fanex.Affiliate.Admin.Core.DTO.Customer
         [PermissionCheck(Function.TransferPlayerSetting)]
         public string PlayerCurrency { get; set; }
 
-        public int GroupTypeId { get; set; }
+        public byte GroupTypeId { get; set; }
 
         public string DealTypeName { get; set; }
     }

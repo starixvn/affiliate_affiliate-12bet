@@ -91,7 +91,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
 
             var dealAssignmentService = new Mock<IDealAssignmentService>();
             dealAssignmentService.Setup(d => d.HasPermissionAssignOnAff(It.IsAny<int>(), It.IsAny<int>())).Returns(true);
-            dealAssignmentService.Setup(d => d.AssignDeal(It.IsAny<AssignDealParam>(), It.IsAny<AffInfoParam>(), It.IsAny<AffInformationEmail>()))
+            dealAssignmentService.Setup(d => d.AssignDealAsync(It.IsAny<AssignDealParam>(), It.IsAny<AffInfoParam>(), It.IsAny<AffInformationEmail>()))
                 .ReturnsAsync(expectedResult);
 
             var controller = CreateDealAssignmentController(null, null, null, dealAssignmentService.Object);
@@ -178,7 +178,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
 
             var dealAssignmentService = new Mock<IDealAssignmentService>();
             dealAssignmentService.Setup(d => d.HasPermissionAssignOnAff(It.IsAny<int>(), It.IsAny<int>())).Returns(true);
-            dealAssignmentService.Setup(d => d.AssignDeal(It.IsAny<AssignDealParam>(), It.IsAny<AffInfoParam>(), It.IsAny<AffInformationEmail>()))
+            dealAssignmentService.Setup(d => d.AssignDealAsync(It.IsAny<AssignDealParam>(), It.IsAny<AffInfoParam>(), It.IsAny<AffInformationEmail>()))
                 .ReturnsAsync(expectedResult);
 
             var controller = CreateDealAssignmentController(null, null, null, dealAssignmentService.Object);
@@ -204,7 +204,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
 
             var dealAssignmentService = new Mock<IDealAssignmentService>();
             dealAssignmentService.Setup(d => d.HasPermissionAssignOnAff(It.IsAny<int>(), It.IsAny<int>())).Returns(true);
-            dealAssignmentService.Setup(d => d.AssignDeal(It.IsAny<AssignDealParam>(), It.IsAny<AffInfoParam>(), It.IsAny<AffInformationEmail>()))
+            dealAssignmentService.Setup(d => d.AssignDealAsync(It.IsAny<AssignDealParam>(), It.IsAny<AffInfoParam>(), It.IsAny<AffInformationEmail>()))
                 .ReturnsAsync(expectedResult);
 
             var controller = CreateDealAssignmentController(null, null, null, dealAssignmentService.Object);
@@ -230,7 +230,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
 
             var dealAssignmentService = new Mock<IDealAssignmentService>();
             dealAssignmentService.Setup(d => d.HasPermissionAssignOnAff(It.IsAny<int>(), It.IsAny<int>())).Returns(true);
-            dealAssignmentService.Setup(d => d.AssignDeal(It.IsAny<AssignDealParam>(), It.IsAny<AffInfoParam>(), It.IsAny<AffInformationEmail>()))
+            dealAssignmentService.Setup(d => d.AssignDealAsync(It.IsAny<AssignDealParam>(), It.IsAny<AffInfoParam>(), It.IsAny<AffInformationEmail>()))
                 .ReturnsAsync(expectedResult);
 
             var controller = CreateDealAssignmentController(null, null, null, dealAssignmentService.Object);
@@ -254,7 +254,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
 
             var dealAssignmentService = new Mock<IDealAssignmentService>();
             dealAssignmentService.Setup(d => d.HasPermissionAssignOnAff(It.IsAny<int>(), It.IsAny<int>())).Returns(true);
-            dealAssignmentService.Setup(d => d.AssignDeal(It.IsAny<AssignDealParam>(), It.IsAny<AffInfoParam>(), It.IsAny<AffInformationEmail>()))
+            dealAssignmentService.Setup(d => d.AssignDealAsync(It.IsAny<AssignDealParam>(), It.IsAny<AffInfoParam>(), It.IsAny<AffInformationEmail>()))
                 .ReturnsAsync(expectedResult);
 
             var controller = CreateDealAssignmentController(null, null, null, dealAssignmentService.Object);
