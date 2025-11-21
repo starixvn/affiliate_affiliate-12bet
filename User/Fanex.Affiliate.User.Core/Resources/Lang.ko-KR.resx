@@ -2684,7 +2684,7 @@
   <data name="ManuallyApproved" xml:space="preserve">
     <value>수동 승인</value>
   </data>
-  <data name="AffilateLink" xml:space="preserve">
+  <data name="AffiliateLink" xml:space="preserve">
     <value>제휴사 링크</value>
   </data>
   <data name="RedepositQualifiedPeriod" xml:space="preserve">
@@ -2783,22 +2783,10 @@
   <data name="RevenueShareAndNetRevenue" xml:space="preserve">
     <value>수익 분배 및 순수익은 월별로 볼 때만 표시됩니다.</value>
   </data>
-  <data name="ViewBy" xml:space="preserve">
-    <value>보기 기준</value>
+  <data name="TentativeMonthlyEarning" xml:space="preserve">
+    <value>예상 월 수익</value>
   </data>
-  <data name="TotalCommission" xml:space="preserve">
-    <value>총 매출 배분</value>
-  </data>
-  <data name="FdmAmt" xml:space="preserve">
-    <value>FTD 금액</value>
-  </data>
-  <data name="AffilateLink" xml:space="preserve">
-    <value>제휴사 링크</value>
-  </data>
-  <data name="Commission" xml:space="preserve">
-    <value>매출 배분</value>
-  </data>
-  <data name="CommRate" xml:space="preserve">
-    <value>하위 에이전트 수수료율</value>
+  <data name="UncalculatedTentativeMonthlyEarning" xml:space="preserve">
+    <value>계산되지 않은 예상 월 수익</value>
   </data>
 </root>

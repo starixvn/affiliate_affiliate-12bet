@@ -42,8 +42,6 @@
 
     var _me = {
         initialize: function () {
-            BasePCAReport.initDatePicker('FromDate', 'fromPicker');
-            BasePCAReport.initDatePicker('ToDate', 'toPicker');
             initPager();
             initStatusSelector();
             _me.togglePager();

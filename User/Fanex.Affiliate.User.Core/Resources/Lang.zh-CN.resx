@@ -2712,7 +2712,7 @@
   <data name="ManuallyApproved" xml:space="preserve">
     <value>人工审核通过</value>
   </data>
-  <data name="AffilateLink" xml:space="preserve">
+  <data name="AffiliateLink" xml:space="preserve">
     <value>合作伙伴链接</value>
   </data>
   <data name="RedepositQualifiedPeriod" xml:space="preserve">
@@ -2811,16 +2811,10 @@
   <data name="RevenueShareAndNetRevenue" xml:space="preserve">
     <value>收益分成和净收益仅在按月查看时显示。</value>
   </data>
-  <data name="ViewBy" xml:space="preserve">
-    <value>查看方式</value>
+  <data name="TentativeMonthlyEarning" xml:space="preserve">
+    <value>暂定月收入</value>
   </data>
-  <data name="TotalCommission" xml:space="preserve">
-    <value>总收益分成</value>
-  </data>
-  <data name="FdmAmt" xml:space="preserve">
-    <value>首次存款金额</value>
-  </data>
-  <data name="AffilateLink" xml:space="preserve">
-    <value>合作伙伴链接</value>
+  <data name="UncalculatedTentativeMonthlyEarning" xml:space="preserve">
+    <value>尚未计算的暂定月收入</value>
   </data>
 </root>

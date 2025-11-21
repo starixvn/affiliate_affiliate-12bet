@@ -2444,7 +2444,7 @@ THANH TOÁN ỔN ĐỊNH</value>
   <data name="VerifyEmailAddressIsRequired" xml:space="preserve">
     <value>Nhập lại địa chỉ email là bắt buộc</value>
   </data>
-  <data name="AffilateLink" xml:space="preserve">
+  <data name="AffiliateLink" xml:space="preserve">
     <value>Liên kết tiếp thị</value>
   </data>
   <data name="SubAffiliateLink" xml:space="preserve">
@@ -2790,13 +2790,10 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   <data name="RevenueShareAndNetRevenue" xml:space="preserve">
     <value>Doanh thu chia sẻ và Doanh thu ròng chỉ hiển thị khi bạn xem theo tháng.</value>
   </data>
-  <data name="ViewBy" xml:space="preserve">
-    <value>Xem theo</value>
+  <data name="TentativeMonthlyEarning" xml:space="preserve">
+    <value>Thu nhập hàng tháng tạm tính</value>
   </data>
-  <data name="FdmAmt" xml:space="preserve">
-    <value>Số tiền FTD</value>
-  </data>
-  <data name="MacbookPro" xml:space="preserve">
-    <value>MACBOOK PRO 16' M3 PRO</value>
+  <data name="UncalculatedTentativeMonthlyEarning" xml:space="preserve">
+    <value>Thu nhập hàng tháng tạm tính </value>
   </data>
 </root>

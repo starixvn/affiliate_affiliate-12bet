@@ -2734,7 +2734,7 @@ Anda juga bisa mengirim email ke {1} atau cukup isi formulir di bawah ini.</valu
   <data name="BetTicketDescription" xml:space="preserve">
     <value>Total tiket taruhan selama periode ditahan</value>
   </data>
-  <data name="AffilateLink" xml:space="preserve">
+  <data name="AffiliateLink" xml:space="preserve">
     <value>Tautan Afiliasi</value>
   </data>
   <data name="TotalDepositsDescription" xml:space="preserve">
@@ -2791,16 +2791,10 @@ Anda juga bisa mengirim email ke {1} atau cukup isi formulir di bawah ini.</valu
   <data name="RevenueShareAndNetRevenue" xml:space="preserve">
     <value>Bagi Hasil dan Pendapatan Bersih hanya ditampilkan saat dilihat berdasarkan bulan</value>
   </data>
-  <data name="ViewBy" xml:space="preserve">
-    <value>Lihat Berdasarkan</value>
+  <data name="TentativeMonthlyEarning" xml:space="preserve">
+    <value>Pendapatan Bulanan Tentatif</value>
   </data>
-  <data name="TotalCommission" xml:space="preserve">
-    <value>Total Bagi Hasil</value>
-  </data>
-  <data name="FdmAmt" xml:space="preserve">
-    <value>Jumlah FTD</value>
-  </data>
-  <data name="AffilateLink" xml:space="preserve">
-    <value>Tautan Afiliasi</value>
+  <data name="UncalculatedTentativeMonthlyEarning" xml:space="preserve">
+    <value>Pendapatan Bulanan Tentatif yang Belum Dihitung</value>
   </data>
 </root>

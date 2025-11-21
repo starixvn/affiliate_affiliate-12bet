@@ -37,8 +37,6 @@ var PaymentCPAReport = (function ($) {
 
     var _me = {
         initialize: function () {
-            BasePCAReport.initDatePicker('FromDate', 'fromPicker');
-            BasePCAReport.initDatePicker('ToDate', 'toPicker');
             initPager();
             _me.togglePager();
             _me.toggleTable();

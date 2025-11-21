@@ -512,15 +512,6 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Affiliate Link.
-        /// </summary>
-        public static string AffilateLink {
-            get {
-                return ResourceManager.GetString("AffilateLink", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Affiliate.
         /// </summary>
         public static string Affiliate {
@@ -7049,15 +7040,6 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tentative Revenue Share.
-        /// </summary>
-        public static string TentativeRevenueShare {
-            get {
-                return ResourceManager.GetString("TentativeRevenueShare", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Tentative CPA Earning.
         /// </summary>
         public static string TentativeCpaEarning {
@@ -7072,6 +7054,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string TentativeMonthlyEarning {
             get {
                 return ResourceManager.GetString("TentativeMonthlyEarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tentative Revenue Share.
+        /// </summary>
+        public static string TentativeRevenueShare {
+            get {
+                return ResourceManager.GetString("TentativeRevenueShare", resourceCulture);
             }
         }
         

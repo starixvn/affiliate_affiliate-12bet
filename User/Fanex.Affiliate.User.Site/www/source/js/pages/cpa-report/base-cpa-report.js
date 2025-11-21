@@ -30,17 +30,9 @@
 
     var _me = {
         initialize: function () {
-        },
-
-        initDatePicker: function (id, triggerId) {
-            UserPanel.datepicker.push(new Pikaday({
-                field: document.getElementById(id),
-                trigger: document.getElementById(triggerId),
-                yearRange: [2015, new Date().getFullYear()],
-                toString: function (date, format) {
-                    return getDateString(date);
-                }
-            }));
+            DatePickerComponent.initLinkedDatePickers('FromDate', 'fromPicker', 'ToDate', 'toPicker', {
+                datepickerRegistry: UserPanel.datepicker
+            });
         },
 
         getUrlParameter: function (name) {

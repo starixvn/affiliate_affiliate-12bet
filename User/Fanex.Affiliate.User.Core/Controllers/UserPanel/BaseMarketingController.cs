@@ -165,7 +165,7 @@
                 new SelectListItem
                 {
                     Value = linkType.ToString(),
-                    Text = linkType == AffiliateLinkType.AffiliateLink ? Lang.AffilateLink : Lang.SubAffiliateLink
+                    Text = linkType == AffiliateLinkType.AffiliateLink ? Lang.AffiliateLink : Lang.SubAffiliateLink
                 }
             };
 

@@ -2565,7 +2565,7 @@ CONSISTENT PAYMENT</value>
   <data name="VerifyEmailAddressIsRequired" xml:space="preserve">
     <value>Verify Email Address is required</value>
   </data>
-  <data name="AffilateLink" xml:space="preserve">
+  <data name="AffiliateLink" xml:space="preserve">
     <value>Affiliate Link</value>
   </data>
   <data name="SubAffiliateLink" xml:space="preserve">
@@ -2866,9 +2866,6 @@ You can also email us to {1} or simply fill the form below.</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>No</value>
-  </data>
-  <data name="ViewBy" xml:space="preserve">
-    <value>View By</value>
   </data>
   <data name="DateRange" xml:space="preserve">
     <value>Date Range</value>

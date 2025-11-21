@@ -2716,7 +2716,7 @@
   <data name="ManuallyApproved" xml:space="preserve">
     <value>อนุมัติด้วยตนเอง</value>
   </data>
-  <data name="AffilateLink" xml:space="preserve">
+  <data name="AffiliateLink" xml:space="preserve">
     <value>ลิงก์พันธมิตร</value>
   </data>
   <data name="RedepositQualifiedPeriod" xml:space="preserve">
@@ -2815,16 +2815,10 @@
   <data name="RevenueShareAndNetRevenue" xml:space="preserve">
     <value>ส่วนแบ่งรายได้และรายได้สุทธิจะแสดงเฉพาะข้อมูลแบบรายเดือนเท่านั้น</value>
   </data>
-  <data name="ViewBy" xml:space="preserve">
-    <value>แสดงตาม</value>
+  <data name="TentativeMonthlyEarning" xml:space="preserve">
+    <value>รายได้รายเดือน (โดยประมาณ)</value>
   </data>
-  <data name="TotalCommission" xml:space="preserve">
-    <value>ส่วนแบ่งรายได้รวม</value>
-  </data>
-  <data name="FdmAmt" xml:space="preserve">
-    <value>ยอดฝากครั้งแรก (FTD)</value>
-  </data>
-  <data name="AffilateLink" xml:space="preserve">
-    <value>ลิงก์พันธมิตร</value>
+  <data name="UncalculatedTentativeMonthlyEarning" xml:space="preserve">
+    <value>รายได้รายเดือน (โดยประมาณ ยังไม่ถูกคำนวณ)</value>
   </data>
 </root>
