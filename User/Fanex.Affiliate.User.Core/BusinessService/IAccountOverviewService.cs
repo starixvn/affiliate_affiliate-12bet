@@ -13,7 +13,7 @@
 
         (int, IEnumerable<PlayerDetail>) GetPlayerDetailList(PlayerDetailParam param);
 
-        (int, IEnumerable<SubAffDetail>) GetSubAffDetails(AccountOverviewParam param);
+        IEnumerable<SubAffDetail> GetSubAffDetails(AccountOverviewParam param);
 
         LastLoginInfo GetLastLoginInfo(int affId);
     }

@@ -112,11 +112,10 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
         public ActionResult SubAffDetails(AccountOverviewParam param)
         {
             param.AffId = SessionService.UserSession.AffId;
-            var (groupTypeId, dataList) = _accountOverviewService.GetSubAffDetails(param);
+            var dataList = _accountOverviewService.GetSubAffDetails(param);
 
             var model = new SubAffDetailViewModel
             {
-                GroupTypeId = groupTypeId,
                 IsGetMonthly = param.IsGetMonthly,
                 SubAffDetailList = dataList
             };

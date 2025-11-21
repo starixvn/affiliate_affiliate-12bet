@@ -1,7 +1,5 @@
 ﻿namespace Fanex.Affiliate.User.Core.Criterias
 {
-    using System;
-
     public class GetPlayerDetailListCriteria : AffPagingByDateCriteria
     {
         public int SortById { get; set; }

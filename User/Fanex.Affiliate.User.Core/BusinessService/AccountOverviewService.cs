@@ -43,11 +43,13 @@
             return (dataItems.Item1.FirstOrDefault(), dataItems.Item2.FirstOrDefault());
         }
 
-        public (int, IEnumerable<SubAffDetail>) GetSubAffDetails(AccountOverviewParam param)
+        public IEnumerable<SubAffDetail> GetSubAffDetails(AccountOverviewParam param)
         {
             var criteria = param.MapTo<AccountOverviewParam, GetSubAffDetailsCriteria>();
 
-            return FetchMultipleTData<int, SubAffDetail>(criteria);
+            var dataItems = DynamicRepository.FetchMultiple<SubAffDetail, object>(criteria);
+
+            return dataItems.Item1;
         }
     }
 }

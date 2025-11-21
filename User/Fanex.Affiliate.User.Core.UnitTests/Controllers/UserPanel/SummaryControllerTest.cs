@@ -112,7 +112,7 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
         {
             // Arrange
             var accountOverviewService = new Mock<IAccountOverviewService>();
-            accountOverviewService.Setup(a => a.GetSubAffDetails(It.IsAny<AccountOverviewParam>())).Returns((0, new List<SubAffDetail> { new SubAffDetail() }));
+            accountOverviewService.Setup(a => a.GetSubAffDetails(It.IsAny<AccountOverviewParam>())).Returns(new List<SubAffDetail> { new SubAffDetail() });
             var controller = CreateController(accountOverviewService: accountOverviewService.Object);
 
             // Action
