@@ -5,12 +5,12 @@ import { Form, FormGroup, Input, Label, Button } from 'reactstrap';
 import { DatePicker } from '@9softstudio/react-datepicker';
 
 import { globalResource, selectedAllProduct, SortByIdList, SortingColumnDefault, defaultBaseCurrency } from '../modules/constants';
-import { setParam, fetchData, setSortingColumn } from '../actions';
+import { setParam, fetchData, setSortingColumn, getChannels } from '../actions';
 import ReportExcel from '../modules/reportExcel';
 import { htmlDecode } from '../../../../modules/htmlHelper';
 import Select from '../../../../components/select';
 import MultipleSelect from '../../../../components/multiple-select';
-import { handleChangeMultipleSelected, handleAfterChangeFromDate, handleAfterChangeToDate } from '../../../../modules/utils';
+import { handleChangeMultipleSelected, handleAfterChangeFromDate, handleAfterChangeToDate, convertListToMutilpleSelected } from '../../../../modules/utils';
 import { minDate, sixMonth } from '../../../../modules/constants';
 
 export class Filter extends PureComponent {
@@ -30,8 +30,23 @@ export class Filter extends PureComponent {
             isIncludeRemovedPlayer: false,
             selectedBaseCurrency: baseCurrencyList && baseCurrencyList.length && baseCurrencyList[0].ExchangeId || defaultBaseCurrency,
             selectedCurrencyList: currencyList && currencyList.filter(item => item.checked).map(item => item.key).join(',') || '',
+            selectedChannelList: '',
+            channelList: null,
             currencyList
         }
+    }
+
+    componentDidMount() {
+        if (!this.state.channelList) {
+            this.handleGetChannelList();
+        }
+    }
+
+    handleGetChannelList = async () => {
+        const channelList = await this.props.getChannels();
+        const convertedChannelList = convertListToMutilpleSelected(channelList, "ChannelCode", "ChannelName", true);
+
+        this.setState({ channelList: convertedChannelList, selectedChannelList: convertedChannelList.map(item => item.key).join(',') });
     }
 
     handleChangeFromDate = (momentDate) => {
@@ -67,13 +82,20 @@ export class Filter extends PureComponent {
         this.setState({ selectedCurrencyList, currencyList });
     }
 
+    handleChangeChannel = (item, selectedChannelList) => {
+        const channelList = handleChangeMultipleSelected(this.state.channelList, selectedChannelList);
+
+        this.setState({ selectedChannelList, channelList });
+    }
+
     handleSearch = () => {
-        const { selectedProduct, selectedBaseCurrency, selectedCurrencyList, isIncludeRemovedPlayer, fromDate, toDate } = this.state;
+        const { selectedProduct, selectedBaseCurrency, selectedCurrencyList, selectedChannelList, isIncludeRemovedPlayer, fromDate, toDate } = this.state;
 
         const param = {
             productId: selectedProduct,
             baseCurrencyId: selectedBaseCurrency,
             currencyIds: selectedCurrencyList,
+            channelCodes: selectedChannelList,
             isIncludeRemovedPlayer,
             fromDate,
             toDate,
@@ -83,13 +105,14 @@ export class Filter extends PureComponent {
     }
 
     handleExportExcel = async () => {
-        const { selectedProduct, fromDate, toDate, selectedBaseCurrency, selectedCurrencyList, isIncludeRemovedPlayer } = this.state;
+        const { selectedProduct, fromDate, toDate, selectedBaseCurrency, selectedCurrencyList, selectedChannelList, isIncludeRemovedPlayer } = this.state;
         const { affId, sortingColumn, isDepositFeePercent, isWithdrawalFeePercent } = this.props;
 
         const param = {
             IsExportExcel: true,
             productId: selectedProduct,
             baseCurrencyId: selectedBaseCurrency,
+            currencyIds: selectedCurrencyList,
             currencyIds: selectedCurrencyList,
             isIncludeRemovedPlayer,
             fromDate,
@@ -125,7 +148,7 @@ export class Filter extends PureComponent {
     }
 
     render() {
-        const { selectedProduct, selectedBaseCurrency, fromDate, toDate, currencyList, isIncludeRemovedPlayer } = this.state;
+        const { selectedProduct, selectedBaseCurrency, fromDate, toDate, currencyList, channelList, isIncludeRemovedPlayer } = this.state;
         const { productList, baseCurrencyList, isProduction } = this.props;
         const dataSource = [{ ProductId: selectedAllProduct, ProductName: globalResource.All }].concat(productList);
 
@@ -173,6 +196,18 @@ export class Filter extends PureComponent {
                         </FormGroup>
                     }
 
+                    <FormGroup className="mr-sm-2 multiple-currency-filter">
+                        <Label htmlFor="Channel" className="mr-2">Channel</Label>
+                        <MultipleSelect
+                            dataSource={channelList || []}
+                            keyField="key"
+                            valueField="name"
+                            statusField="checked"
+                            maxDisplayItemCount={1}
+                            selectedAllLabel="All"
+                            onChange={this.handleChangeChannel} />
+                    </FormGroup>
+
                     <FormGroup className="mr-sm-2">
                         <Label className="mr-sm-2">{globalResource.From}</Label>
                         <DatePicker minDate={minDate} maxDate={this.nowString} date={fromDate}
@@ -219,7 +254,7 @@ function mapStateToProps({ today, affCommonInfo, playerDetail, productList, curr
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ setParam, fetchData, setSortingColumn }, dispatch);
+    return bindActionCreators({ setParam, fetchData, setSortingColumn, getChannels }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);

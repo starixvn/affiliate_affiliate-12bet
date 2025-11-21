@@ -5,7 +5,6 @@
         cursor: pointer;
         padding: 0 5px !important;
         height: 23px;
-
     }
 
     .th-wrapper {
@@ -58,6 +57,19 @@
                     cursor: pointer;
                 }
             }
+        }
+    }
+
+    tfoot {
+        font-weight: bold;
+        background: #ffc4a8;
+
+        td {
+            padding: 5px;
+            bottom: 0px;
+            position: sticky;
+            background: #ffc4a8;
+            border: 1px solid #cccccc;
         }
     }
 }

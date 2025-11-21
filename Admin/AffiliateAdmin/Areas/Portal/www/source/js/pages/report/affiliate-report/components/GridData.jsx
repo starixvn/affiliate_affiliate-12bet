@@ -419,7 +419,6 @@ export class GridData extends PureComponent {
     render() {
         const { gridData, total } = this.state;
         const maxHeight = getMaxHeight(true);
-        const style = !this.props.isCheckedDatePicker ? { minWidth: '3250px' } : { minWidth: '2250px'};
 
         return gridData && (
             <Fragment>

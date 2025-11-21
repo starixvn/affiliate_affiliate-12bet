@@ -6,7 +6,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 import { getDateRange } from '../../../../modules/utils';
 import { headerTitle, deviceTypes, globalResource, minDate, AllDevices } from '../modules/constants';
-import { setSelectedPage, setParam, setShortCodeLanguageList, getPageList } from '../actions';
+import { setSelectedPage, setParam, getPageList } from '../actions';
 import { htmlDecode } from '../../../../modules/htmlHelper';
 
 export class Filter extends React.Component {

@@ -498,6 +498,7 @@
     <Compile Include="Criterias\Report\TurnoverCpaDetailCriteria.cs" />
     <Compile Include="Criterias\TargetCountryCriteria.cs" />
     <Compile Include="Criterias\UserPanel\CustomerMemberCriteria.cs" />
+    <Compile Include="Criterias\UserPanel\GetChannelsCriteria.cs" />
     <Compile Include="Criterias\UserPanel\LandingPageStatistics\BaseLandingPageStatisticsCritera.cs" />
     <Compile Include="Criterias\UserPanel\LandingPageStatistics\LandingPageStatisticsCriteria.cs" />
     <Compile Include="Criterias\UserPanel\LandingPageStatistics\LandingPageStatisticsDetailCriteria.cs" />
@@ -591,6 +592,7 @@
     <Compile Include="DTO\Report\TurnoverDetailModel.cs" />
     <Compile Include="DTO\Report\TurnoverGroupByProduct.cs" />
     <Compile Include="DTO\Report\TurnoverGroupByProductDetail.cs" />
+    <Compile Include="DTO\UserPanel\Channel.cs" />
     <Compile Include="DTO\UserPanel\LogType.cs" />
     <Compile Include="DTO\UserPanel\Statistics\ClickStatistics.cs" />
     <Compile Include="DTO\UserPanel\Statistics\MarketingStatistics.cs" />

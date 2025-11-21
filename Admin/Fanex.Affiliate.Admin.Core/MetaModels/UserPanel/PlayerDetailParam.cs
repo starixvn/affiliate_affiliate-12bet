@@ -21,5 +21,8 @@ namespace Fanex.Affiliate.Admin.Core.MetaModels.UserPanel
 
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string CurrencyIds { get; set; }
+
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        public string ChannelCodes { get; set; }
     }
 }
