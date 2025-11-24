@@ -74,22 +74,22 @@ export class Content extends PureComponent {
 
         return (
             <tr>
-                <th width={40}>#</th>
-                <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Username'} title={headerText.UserName} handleClickHeader={this.handleClickHeader} />
-                <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'IbcUsername'} title={headerText.IbcUserName} handleClickHeader={this.handleClickHeader} />
-                <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'RegisteredDate'} title={headerText.RegisteredDateText} handleClickHeader={this.handleClickHeader} />
-                <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Channel'} title={headerText.ChannelName} handleClickHeader={this.handleClickHeader} />
-                <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'FirstDepositDate'} title={headerText.FirstDepositDateText} handleClickHeader={this.handleClickHeader} />
-                <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'FirstDepositAmount'} title={headerText.FirstDepositAmount} handleClickHeader={this.handleClickHeader} />
-                <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Turnover'} title={headerText.Turnover} handleClickHeader={this.handleClickHeader} />
-                <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Ggr'} title={headerText.Ggr} handleClickHeader={this.handleClickHeader} />
-                <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'DepositCount'} title={headerText.DepositCount} handleClickHeader={this.handleClickHeader} />
-                <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Deposit'} title={headerText.Deposit} handleClickHeader={this.handleClickHeader} />
-                <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Withdrawal'} title={headerText.Withdrawal} handleClickHeader={this.handleClickHeader} />
-                <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Bonus'} title={headerText.Bonus} handleClickHeader={this.handleClickHeader} />
-                <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Rebate'} title={headerText.Rebate} handleClickHeader={this.handleClickHeader} />
-                {isDepositFeePercent && <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'DepositFee'} title={headerText.DepositFee} handleClickHeader={this.handleClickHeader} />}
-                {isWithdrawalFeePercent && <SortingCell isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'WithdrawalFee'} title={headerText.WithdrawalFee} handleClickHeader={this.handleClickHeader} />}
+                <th width={35}>#</th>
+                <SortingCell width={100} isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Username'} title={headerText.UserName} handleClickHeader={this.handleClickHeader} />
+                <SortingCell width={100} isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'IbcUsername'} title={headerText.IbcUserName} handleClickHeader={this.handleClickHeader} />
+                <SortingCell width={80} isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'RegisteredDate'} title={headerText.RegisteredDateText} handleClickHeader={this.handleClickHeader} />
+                <SortingCell width={100} isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Channel'} title={headerText.ChannelName} handleClickHeader={this.handleClickHeader} />
+                <SortingCell width={80} isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'FirstDepositDate'} title={headerText.FirstDepositDateText} handleClickHeader={this.handleClickHeader} />
+                <SortingCell width={90} isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'FirstDepositAmount'} title={headerText.FirstDepositAmount} handleClickHeader={this.handleClickHeader} />
+                <SortingCell width={100} isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Turnover'} title={headerText.Turnover} handleClickHeader={this.handleClickHeader} />
+                <SortingCell width={100} isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Ggr'} title={headerText.Ggr} handleClickHeader={this.handleClickHeader} />
+                <SortingCell width={70} isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'DepositCount'} title={headerText.DepositCount} handleClickHeader={this.handleClickHeader} />
+                <SortingCell width={100} isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Deposit'} title={headerText.Deposit} handleClickHeader={this.handleClickHeader} />
+                <SortingCell width={100} isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Withdrawal'} title={headerText.Withdrawal} handleClickHeader={this.handleClickHeader} />
+                <SortingCell width={90} isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Bonus'} title={headerText.Bonus} handleClickHeader={this.handleClickHeader} />
+                <SortingCell width={90} isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'Rebate'} title={headerText.Rebate} handleClickHeader={this.handleClickHeader} />
+                {isDepositFeePercent && <SortingCell width={90} isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'DepositFee'} title={headerText.DepositFee} handleClickHeader={this.handleClickHeader} />}
+                {isWithdrawalFeePercent && <SortingCell width={100} isSortAsc={sortingColumn.IsSortAsc} sortingColumn={sortingColumn.ColumnName} columnName={'WithdrawalFee'} title={headerText.WithdrawalFee} handleClickHeader={this.handleClickHeader} />}
             </tr>
         )
     }
@@ -191,7 +191,7 @@ export class Content extends PureComponent {
                             }
                         </tbody>
                         <tfoot>
-                            {total && this._renderDataSection([total], true)}
+                            {!!data.length && total && this._renderDataSection([total], true)}
                         </tfoot>
                     </Table>
                 </div>
