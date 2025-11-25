@@ -23,10 +23,6 @@ namespace Fanex.Affiliate.User.Core.DTO.Auth
 
         public bool IsMaxSubLevel { get; set; }
 
-        public bool IsDepositFeePercent { get; set; }
-
-        public bool IsWithdrawalFeePercent { get; set; }
-
         public int BaseCurrency { get; set; }
 
         public bool DisabledTransfer { get; set; }

@@ -74,7 +74,8 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
             var param = new PlayerDetailParam { FromDate = monthDate, IsSortAsc = true };
             PlayerDetailParam passedParam = null;
             var accountOverviewService = new Mock<IAccountOverviewService>();
-            accountOverviewService.Setup(a => a.GetPlayerDetailList(param)).Returns((0, new List<PlayerDetail> { new PlayerDetail() })).Callback<PlayerDetailParam>(p => passedParam = p);
+            accountOverviewService.Setup(a => a.GetPlayerDetailList(param)).
+                Returns((new GroupTypeInfo(), new List<PlayerDetail> { new PlayerDetail() })).Callback<PlayerDetailParam>(p => passedParam = p);
             var controller = CreateController(accountOverviewService: accountOverviewService.Object);
 
             // Action
@@ -94,7 +95,8 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
             var param = new PlayerDetailParam { ToDate = monthDate };
             PlayerDetailParam passedParam = null;
             var accountOverviewService = new Mock<IAccountOverviewService>();
-            accountOverviewService.Setup(a => a.GetPlayerDetailList(param)).Returns((0, new List<PlayerDetail> { new PlayerDetail() })).Callback<PlayerDetailParam>(p => passedParam = p);
+            accountOverviewService.Setup(a => a.GetPlayerDetailList(param))
+                .Returns((new GroupTypeInfo(), new List<PlayerDetail> { new PlayerDetail() })).Callback<PlayerDetailParam>(p => passedParam = p);
             var controller = CreateController(accountOverviewService: accountOverviewService.Object);
 
             // Action

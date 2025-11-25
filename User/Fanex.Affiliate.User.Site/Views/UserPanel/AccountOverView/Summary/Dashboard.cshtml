@@ -7,7 +7,7 @@
     var isCurrentMonth = Model.IsCurrentMonth;
     var isGetMonthly = Model.IsGetMonthly;
     var isHybridAff = Model.IsHybridAff;
-    var isCPAAff = Model.IsCPAAff;
+    var isCpaAff = Model.IsCpaAff;
     var isRevenueShareAff = Model.IsRevenueShareAff;
     var overviewSummary = Model.OverviewSummary;
 }
@@ -31,7 +31,7 @@
         }
         else
         {
-            if (isCPAAff)
+            if (isCpaAff)
             {
                 <div class="info-panel">
                     <span class="info-panel-title @sessionService.CurrentLanguage">
@@ -102,7 +102,7 @@
         </div>
     }
 
-    @if (isGetMonthly && !isCPAAff)
+    @if (isGetMonthly && !isCpaAff)
     {
         <div class="group group-two">
             <div class="img-icon">
@@ -146,7 +146,7 @@
         </div>
     }
 
-    @if (!isGetMonthly || isCPAAff)
+    @if (!isGetMonthly || isCpaAff)
     {
         <div class="group group-three">
             <div class="img-icon">

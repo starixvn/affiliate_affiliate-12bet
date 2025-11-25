@@ -7,7 +7,7 @@ namespace Fanex.Affiliate.User.Core.DTO.UserPanel.AccountOverview
         public int GroupTypeId { get; set; }
 
         public bool IsHybridAff => GroupTypeId == GroupType.HybridTypeId;
-        public bool IsCPAAff => GroupTypeId == GroupType.CpaTypeId;
+        public bool IsCpaAff => GroupTypeId == GroupType.CpaTypeId;
         public bool IsRevenueShareAff => GroupTypeId == GroupType.RevenueShareTypeId;
     }
 }

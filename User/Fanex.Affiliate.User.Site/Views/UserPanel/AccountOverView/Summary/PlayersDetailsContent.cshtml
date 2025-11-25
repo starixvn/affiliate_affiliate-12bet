@@ -4,8 +4,8 @@
     var hasScroll = Model.PlayerDetailList != null && Model.PlayerDetailList.Count() > 10;
     var totalItem = Model.TotalItem;
     var startRowNumber = Model.StartRowNumber;
-    var isDepositFeePercent = Model.IsDepositFeePercent && !Model.IsCPAAff;
-    var isWithdrawalFeePercent = Model.IsWithdrawalFeePercent && !Model.IsCPAAff;
+    var isDepositFeePercent = Model.IsDepositFeePercent && !Model.IsCpaAff;
+    var isWithdrawalFeePercent = Model.IsWithdrawalFeePercent && !Model.IsCpaAff;
     var columnDepositFee = isDepositFeePercent ? 1 : 0;
     var columnWithdrawalFee = isWithdrawalFeePercent ? 1 : 0;
 }

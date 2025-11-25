@@ -437,6 +437,7 @@
     <Compile Include="DTO\PaymentRequestInfo.cs" />
     <Compile Include="DTO\Systems\TargetCountry.cs" />
     <Compile Include="DTO\Systems\TargetCountryLanguage.cs" />
+    <Compile Include="DTO\UserPanel\AccountOverview\GroupTypeInfo.cs" />
     <Compile Include="DTO\UserPanel\CPAReport\PaymentCPAReportItem.cs" />
     <Compile Include="DTO\UserPanel\AccountOverview\BaseGroupTypeId.cs" />
     <Compile Include="DTO\UserPanel\Currency.cs" />

@@ -128,16 +128,16 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
             var userSession = SessionService.UserSession;
 
             param.AffId = userSession.AffId;
-            var (groupTypeId, playerDetailList) = _accountOverviewService.GetPlayerDetailList(param);
+            var (groupTypeInfo, playerDetailList) = _accountOverviewService.GetPlayerDetailList(param);
 
             return new PlayerDetailViewModel
             {
                 PlayerDetailList = playerDetailList,
                 TotalItem = param.NRows,
                 StartRowNumber = (param.PageIndex - 1) * param.PageSize + 1,
-                GroupTypeId = groupTypeId,
-                IsDepositFeePercent = userSession.IsDepositFeePercent,
-                IsWithdrawalFeePercent = userSession.IsWithdrawalFeePercent
+                GroupTypeId = groupTypeInfo.GroupTypeId,
+                IsDepositFeePercent = groupTypeInfo.IsDepositFeePercent,
+                IsWithdrawalFeePercent = groupTypeInfo.IsWithdrawalFeePercent
             };
         }
 

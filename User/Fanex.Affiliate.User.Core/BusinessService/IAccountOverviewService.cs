@@ -11,7 +11,7 @@
 
         (int, IEnumerable<OverviewDetail>) GetUserOverviewDetailList(AccountOverviewParam param);
 
-        (int, IEnumerable<PlayerDetail>) GetPlayerDetailList(PlayerDetailParam param);
+        (GroupTypeInfo, IEnumerable<PlayerDetail>) GetPlayerDetailList(PlayerDetailParam param);
 
         IEnumerable<SubAffDetail> GetSubAffDetails(AccountOverviewParam param);
 

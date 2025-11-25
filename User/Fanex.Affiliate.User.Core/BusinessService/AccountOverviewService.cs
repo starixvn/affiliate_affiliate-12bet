@@ -20,11 +20,11 @@
             return GetTData<LastLoginInfo>(new GetLastLoginInfoCriteria(affId));
         }
 
-        public (int, IEnumerable<PlayerDetail>) GetPlayerDetailList(PlayerDetailParam param)
+        public (GroupTypeInfo, IEnumerable<PlayerDetail>) GetPlayerDetailList(PlayerDetailParam param)
         {
             var criteria = param.MapTo<PlayerDetailParam, GetPlayerDetailListCriteria>();
 
-            return FetchMultipleTDataWithPaging<int, PlayerDetail>(criteria, param);
+            return FetchMultipleTDataWithPaging<GroupTypeInfo, PlayerDetail>(criteria, param);
         }
 
         public (int, IEnumerable<OverviewDetail>) GetUserOverviewDetailList(AccountOverviewParam param)

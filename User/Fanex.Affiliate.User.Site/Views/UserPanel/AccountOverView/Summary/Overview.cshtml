@@ -15,7 +15,7 @@
                 <th width="10%">@Lang.Date</th>
                 <th width="10%">@Lang.NewSignUp</th>
                 <th width="10%">@Lang.DepositedMembers</th>
-                @if (!Model.IsCPAAff)
+                @if (!Model.IsCpaAff)
                 {
                     <th width="10%">@Lang.ActivePlayers</th>
                 }
@@ -40,7 +40,7 @@
                         <th class="text-center">@Lang.Total</th>
                         <th class="text-center">@itemTotal.Signups</th>
                         <th class="text-center">@itemTotal.DepositedMembers</th>
-                        @if (!Model.IsCPAAff)
+                        @if (!Model.IsCpaAff)
                         {
                             <th class="text-center">@itemTotal.ActiveMembers</th>
                         }
@@ -72,7 +72,7 @@
                             <td class="text-center">@item.WinlostDate.ToString("MM/dd/yyyy")</td>
                             <td class="text-center">@item.Signups</td>
                             <td class="text-center">@item.DepositedMembers</td>
-                            @if (!Model.IsCPAAff)
+                            @if (!Model.IsCpaAff)
                             {
                                 <td class="text-center">@item.ActiveMembers</td>
                             }
@@ -95,7 +95,7 @@
                 else
                 {
                     <tr>
-                        <td class="text-center" colspan="@(Model.IsCPAAff ? 7 : (Model.IsRevenueShareAff ? 8 : 9))">@Lang.NoInfo</td>
+                        <td class="text-center" colspan="@(Model.IsCpaAff ? 7 : (Model.IsRevenueShareAff ? 8 : 9))">@Lang.NoInfo</td>
                     </tr>
                 }
             }
