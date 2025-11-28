@@ -30,7 +30,7 @@ export class Filter extends PureComponent {
             isIncludeRemovedPlayer: false,
             selectedBaseCurrency: baseCurrencyList && baseCurrencyList.length && baseCurrencyList[0].ExchangeId || defaultBaseCurrency,
             selectedCurrencyList: currencyList && currencyList.filter(item => item.checked).map(item => item.key).join(',') || '',
-            selectedChannelList: '',
+            selectedChannelList: 'all',
             channelList: null,
             currencyList
         }
@@ -43,7 +43,7 @@ export class Filter extends PureComponent {
     }
 
     handleGetChannelList = async () => {
-        const channelList = await this.props.getChannels();
+        const channelList = await this.props.getChannels(this.props.affId);
         const convertedChannelList = convertListToMutilpleSelected(channelList, "ChannelCode", "ChannelName", true);
 
         this.setState({ channelList: convertedChannelList, selectedChannelList: convertedChannelList.map(item => item.key).join(',') });
@@ -89,13 +89,14 @@ export class Filter extends PureComponent {
     }
 
     handleSearch = () => {
-        const { selectedProduct, selectedBaseCurrency, selectedCurrencyList, selectedChannelList, isIncludeRemovedPlayer, fromDate, toDate } = this.state;
+        const { selectedProduct, selectedBaseCurrency, selectedCurrencyList, selectedChannelList, channelList, isIncludeRemovedPlayer, fromDate, toDate } = this.state;
+        const isSelectAllChannels = channelList ? channelList.every(c => c.checked) : true;
 
         const param = {
             productId: selectedProduct,
             baseCurrencyId: selectedBaseCurrency,
             currencyIds: selectedCurrencyList,
-            channelCodes: selectedChannelList,
+            channelCodes: isSelectAllChannels ? 'all' : selectedChannelList,
             isIncludeRemovedPlayer,
             fromDate,
             toDate,

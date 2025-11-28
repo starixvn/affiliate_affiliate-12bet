@@ -15,24 +15,24 @@ namespace Fanex.Affiliate.Admin.Core.Services.UserPanel
         public PlayerDetailService(
             IDynamicRepository dynamicRepository) : base(dynamicRepository) { }
 
-        public IEnumerable<Channel> GetChannels()
+        public IEnumerable<Channel> GetChannels(int affId)
         {
-            //var criteria = new GetChannelsCriteria();
-            //return FetchTData<Channel>(criteria);
+            var criteria = new GetChannelsCriteria(affId);
+            var channels = FetchTData<Channel>(criteria);
 
-            return new List<Channel> { new Channel { ChannelCode = "test", ChannelName = "Test" } };
+            return channels.Append(new Channel { ChannelCode = "Others", ChannelName = "Others" });
         }
 
         public (bool, EntityResult<PlayerDetail>) GetPlayerDetailList(PlayerDetailParam param)
         {
             var criteria = param.MapTo<PlayerDetailParam, PlayerDetailCriteria>();
 
-            var dataItems = DynamicRepository.FetchMultiple<bool, PlayerDetail>(criteria);
+            var dataItems = DynamicRepository.FetchMultiple<bool, PlayerDetail, PlayerDetail>(criteria);
 
             return (dataItems.Item1.FirstOrDefault(), new EntityResult<PlayerDetail>
             {
-                MainData = dataItems.Item2,
-                Total = new PlayerDetail { RegisteredDate = DateTimeHelper.Gmt8Now, FirstDepositDate = DateTimeHelper.Gmt8Now },
+                MainData = dataItems.Item3,
+                Total = dataItems.Item2.FirstOrDefault(),
                 TotalItem = criteria.TotalItem,
             });
         }

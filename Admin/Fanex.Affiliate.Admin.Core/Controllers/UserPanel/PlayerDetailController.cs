@@ -23,9 +23,9 @@ namespace Fanex.Affiliate.Admin.Core.Controllers.UserPanel
 
         [HttpPost]
         [ValidateAntiForgeryHeader]
-        public ActionResult GetChannels()
+        public ActionResult GetChannels(int affId)
         {
-            return GenerateJsonNetResult(_playerDetailService.GetChannels());
+            return GenerateJsonNetResult(_playerDetailService.GetChannels(affId));
         }
 
         [HttpPost]

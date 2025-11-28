@@ -9,6 +9,6 @@ namespace Fanex.Affiliate.Admin.Core.Services.UserPanel
     {
         (bool, EntityResult<PlayerDetail>) GetPlayerDetailList(PlayerDetailParam param);
 
-        IEnumerable<Channel> GetChannels();
+        IEnumerable<Channel> GetChannels(int affId);
     }
 }
