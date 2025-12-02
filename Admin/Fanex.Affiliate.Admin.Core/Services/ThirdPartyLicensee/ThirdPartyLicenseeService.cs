@@ -19,7 +19,6 @@ namespace Fanex.Affiliate.Admin.Core.Services.ThirdPartyLicensee
 {
     public class ThirdPartyLicenseeService : IThirdPartyLicenseeService
     {
-        private const int _Marketing_Cust_ID = -1;
         private const int PAGE_INDEX_DEFAULT = 1;
         private const int PAGE_SIZE_DEFAULT = 1000;
 
@@ -44,13 +43,13 @@ namespace Fanex.Affiliate.Admin.Core.Services.ThirdPartyLicensee
                 AffId = affInfo.AffId,
                 AffCode = affInfo.AffCode,
                 UserName = affInfo.UserName,
-                Player_Username = affInfo.PlayerUsername ?? string.Empty,
+                Player_Username = affInfo.PlayerUsername,
                 FirstName = affInfo.FirstName,
                 LastName = affInfo.LastName,
                 Phone = affInfo.ContactNumber,
                 Email = affInfo.Email,
                 Status = affInfo.Status,
-                Player_CustId = affInfo.PlayerCustId == 0 ? _Marketing_Cust_ID : affInfo.PlayerCustId,
+                Player_CustId = affInfo.PlayerCustId,
                 ParentAff = affInfo.ParentAffName,
                 DealVerifyFlags = affInfo.DealVerifyFlags
             };
@@ -62,10 +61,10 @@ namespace Fanex.Affiliate.Admin.Core.Services.ThirdPartyLicensee
         {
             var affInfos = await GetApiAffInfosAsync(dealId);
 
-            await SendAffInfosByBatchAsync(affInfos);
+            await SendAffInfosByBatchAsync(dealId, affInfos);
         }
 
-        private async Task SendAffInfosByBatchAsync(IEnumerable<ApiAffInfo> affInfos)
+        private async Task SendAffInfosByBatchAsync(int dealId, IEnumerable<ApiAffInfo> affInfos)
         {
             var pageIndex = PAGE_INDEX_DEFAULT;
             var sendAffInfos = affInfos;
@@ -82,7 +81,7 @@ namespace Fanex.Affiliate.Admin.Core.Services.ThirdPartyLicensee
                 if (sendAffInfos.Count() == PAGE_SIZE_DEFAULT)
                 {
                     pageIndex++;
-                    sendAffInfos = await GetApiAffInfosAsync(pageIndex);
+                    sendAffInfos = await GetApiAffInfosAsync(dealId, pageIndex);
                 }
                 else
                 {
