@@ -76,6 +76,7 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
                 Withdrawal = dataList.Sum(item => item.Withdrawal),
                 DepositedMembers = dataList.Sum(item => item.DepositedMembers),
                 QualifiedActiveMembers = dataList.Sum(item => item.QualifiedActiveMembers),
+                QualifiedMemberCPA = dataList.Sum(item => item.QualifiedMemberCPA),
                 GGR = dataList.Sum(item => item.GGR)
             };
 
