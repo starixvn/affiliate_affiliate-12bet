@@ -1,13 +1,12 @@
 ﻿import React from 'react';
 import { Button } from 'reactstrap';
-import { Cell } from '@9softstudio/react-fixed-table-header';
 
 export const SortingCell = (props) => {
-    const { isSortAsc, sortingColumn, columnName, title } = props;
+    const { isSortAsc, sortingColumn, columnName, title, width } = props;
     const isSelectedColumn = sortingColumn === columnName;
 
     return (
-        <Cell header={true} colWidth={100} className="th">
+        <th width={width} className="th">
             <Button className="p-0 th-wrapper btn btn-link" color="link" onClick={() => props.handleClickHeader(columnName)}>
                 <span>{title}</span>
                 <div className="icon-container">
@@ -15,7 +14,7 @@ export const SortingCell = (props) => {
                     <span className={`caret desc ${isSelectedColumn && !isSortAsc ? "current" : ''}`}></span>
                 </div>
             </Button>
-        </Cell>
+        </th>
     )
 }
 

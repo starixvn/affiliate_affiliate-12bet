@@ -8,6 +8,7 @@ export const headerText = {
     UserName: 'User Name',
     IbcUserName: globalResource.SystemUserName,
     RegisteredDateText: 'Registration Date',
+    ChannelName: 'Channel',
     FirstDepositDateText: 'FTD Date',
     FirstDepositAmount: 'FTD Amt',
     Turnover: 'Turnover',
@@ -19,6 +20,7 @@ export const headerText = {
     DepositFee: 'Deposit Fee',
     WithdrawalFee: 'Withdrawal Fee',
     DepositCount: 'Deposit Count',
+    TotalAllPage: 'Total (all pages)'
 }
 
 export const resource = {
@@ -40,6 +42,7 @@ export const SortByIdList = {
     FirstDepositDate: 12,
     FirstDepositAmount: 13,
     DepositCount: 14,
+    Channel: 15,
 };
 
 export const SortingColumnDefault = {

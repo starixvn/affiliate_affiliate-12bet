@@ -104,7 +104,8 @@
 		<Setting Key="Aff_DailyEarning_Detail_Sel" SpName="Aff_DailyEarning_Detail_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 	</Function>
 	<Function Name="Customer">
-		<Setting Key="Aff_Admin_PlayersDetail_Sel" SpName="Aff_Admin_PlayersDetail_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_Admin_PlayersDetail_Sel" SpName="Aff_Admin_PlayersDetail_Sel_UAT1" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_User_AffMediaChannel_Sel" SpName="Aff_User_AffMediaChannel_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_Admin_Member_Sel" SpName="Aff_Admin_Member_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_Admin_AffiliateNote_Sel" SpName="Aff_Admin_AffiliateNote_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" >
 			<Mapping DataField="UpdatedName" ObjectProperty="CreatedBy" />

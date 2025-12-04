@@ -25,5 +25,7 @@ namespace Fanex.Affiliate.Admin.Core.Criterias.UserPanel
 
         [SpParam(SqlParamName = "Currencies")]
         public string CurrencyIds { get; set; }
+
+        public string ChannelCodes { get; set; }
     }
 }

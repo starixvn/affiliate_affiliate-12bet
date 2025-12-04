@@ -20,6 +20,11 @@ export const setSortingColumn = (data) => {
     }
 }
 
+export const getChannels = (affId) => async () => {
+    const response = await post('Portal/UserPanel/PlayerDetail/GetChannels', { affId });
+    return response && response.status === 200 ? response.data : [];
+}
+
 export const fetchData = (param) => async () => {
     const url = 'Portal/UserPanel/PlayerDetail/GetPlayerDetailList';
     const response = await post(url, param);

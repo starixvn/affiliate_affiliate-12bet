@@ -23,6 +23,13 @@ namespace Fanex.Affiliate.Admin.Core.Controllers.UserPanel
 
         [HttpPost]
         [ValidateAntiForgeryHeader]
+        public ActionResult GetChannels(int affId)
+        {
+            return GenerateJsonNetResult(_playerDetailService.GetChannels(affId));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryHeader]
         public ActionResult GetPlayerDetailList(PlayerDetailParam param)
         {
             if (ModelState.IsValid)

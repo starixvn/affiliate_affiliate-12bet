@@ -2,7 +2,8 @@
 import { htmlDecode } from '../../../../modules/htmlHelper';
 import {
     headerCellStyle,
-    bodyCellStyle
+    bodyCellStyle,
+    totalCellStyle
 } from '../../../../modules/excelStyleConstant';
 import {
     headerText
@@ -11,15 +12,20 @@ import {
 const HEADER_ROW_INDEX = 0;
 const DATA_ROW_INDEX = 1;
 
-const TOTAL_COLUMN = 15;
+const TOTAL_COLUMN = 16;
+
+// Constants for total row merge
+const INDEX_FIRST_DEPOSIT_AMOUNT_COLUMN = 5;
 
 const MAIN_SECTION_STYLE = 'mainSectionStyle';
+const TOTAL_SECTION_STYLE = 'totalSectionStyle';
 
 const fields = {
     Index: 'Index',
     UserName: 'UserName',
     IbcUserName: 'IbcUserName',
     RegisteredDateText: 'RegisteredDateText',
+    ChannelName: 'ChannelName',
     FirstDepositDateText: 'FirstDepositDateText',
     FirstDepositAmount: 'FirstDepositAmount',
     Turnover: 'Turnover',
@@ -51,6 +57,7 @@ export default class ReportExcel {
         Excel.process(() => {
             this._createHeader(this.column);
             this._createBodyData(this.column);
+            this._createTotalRow(this.column);
             this._createExcelConfig(this.isDepositFeePercent, this.isWithdrawalPercent, this.column);
 
             Excel.export(this.worksheet, this.title);
@@ -92,12 +99,52 @@ export default class ReportExcel {
         }
     }
 
+    _createTotalRow(column) {
+        const itemTotal = this.data.Total;
+        if (this.data.MainData.length && itemTotal) {
+            itemTotal.FirstDepositDateText = "";
+
+            // Merge first columns for "Total (all pages)" text
+            this.mergeConfig.push({
+                s: {
+                    r: this.currentRowIndex,
+                    c: 0
+                },
+                e: {
+                    r: this.currentRowIndex,
+                    c: INDEX_FIRST_DEPOSIT_AMOUNT_COLUMN - 1
+                }
+            });
+
+            // Create the "Total (all pages)" cell
+            const addressTotal = Excel.getCellAddress({
+                c: 0,
+                r: this.currentRowIndex
+            });
+            this.worksheet[addressTotal] = {
+                t: "s",
+                v: headerText.TotalAllPage,
+                s: totalCellStyle.right
+            }
+
+            // Create data cells for total row starting from FirstDepositAmount column
+            for (let j = INDEX_FIRST_DEPOSIT_AMOUNT_COLUMN; j < TOTAL_COLUMN - column; j++) {
+                const address = Excel.getCellAddress({
+                    c: j,
+                    r: this.currentRowIndex
+                });
+
+                this.worksheet[address] = this._buildDataRow(itemTotal, TOTAL_SECTION_STYLE, 0, j);
+            }
+        }
+    }
+
     _buildDataRow(item, sectionStyleName, rowIndex, colIndex) {
         const columnConfig = this.columnConfigs[colIndex];
         const fieldName = columnConfig.field;
         let value = fieldName === fields.Index ? rowIndex + 1 : item[fieldName];
 
-        if (fieldName === fields.FirstDepositAmount || fieldName === fields.IbcUserName) {
+        if (fieldName === fields.FirstDepositAmount || fieldName === fields.IbcUserName || fieldName === fields.ChannelName) {
             value = value === null ? '' : value
         }
 
@@ -131,9 +178,7 @@ export default class ReportExcel {
         }, {
             wpx: 200
         }, {
-            wpx: 150
-        }, {
-            wpx: 150
+            wpx: 200
         }, {
             wpx: 150
         }, {
@@ -165,67 +210,81 @@ export default class ReportExcel {
         }
 
         this.worksheet['!cols'] = columnList;
+        this.worksheet['!merges'] = this.mergeConfig;
     }
 
     _getcolumnConfigs(isDepositFeePercent, isWithdrawalPercent) {
         const columnlist = [{
             field: fields.Index,
-            [MAIN_SECTION_STYLE]: bodyCellStyle.center
+            [MAIN_SECTION_STYLE]: bodyCellStyle.center,
+            [TOTAL_SECTION_STYLE]: totalCellStyle.center
         }, {
             field: fields.UserName,
-            [MAIN_SECTION_STYLE]: bodyCellStyle.left
+            [MAIN_SECTION_STYLE]: bodyCellStyle.left,
+            [TOTAL_SECTION_STYLE]: totalCellStyle.default
         }, {
             field: fields.IbcUserName,
-            [MAIN_SECTION_STYLE]: bodyCellStyle.left
+            [MAIN_SECTION_STYLE]: bodyCellStyle.left,
+            [TOTAL_SECTION_STYLE]: totalCellStyle.default
         }, {
             field: fields.RegisteredDateText,
-            [MAIN_SECTION_STYLE]: bodyCellStyle.center
+            [MAIN_SECTION_STYLE]: bodyCellStyle.center,
+            [TOTAL_SECTION_STYLE]: totalCellStyle.center
+        }, {
+            field: fields.ChannelName,
+            [MAIN_SECTION_STYLE]: bodyCellStyle.center,
+            [TOTAL_SECTION_STYLE]: totalCellStyle.default
         }, {
             field: fields.FirstDepositDateText,
-            [MAIN_SECTION_STYLE]: bodyCellStyle.center
+            [MAIN_SECTION_STYLE]: bodyCellStyle.center,
+            [TOTAL_SECTION_STYLE]: totalCellStyle.center
         }, {
             field: fields.FirstDepositAmount,
-            [MAIN_SECTION_STYLE]: bodyCellStyle.decimal
+            [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
+            [TOTAL_SECTION_STYLE]: totalCellStyle.decimal
         }, {
             field: fields.Turnover,
-            [MAIN_SECTION_STYLE]: bodyCellStyle.decimal
+            [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
+            [TOTAL_SECTION_STYLE]: totalCellStyle.decimal
         }, {
             field: fields.Ggr,
-            [MAIN_SECTION_STYLE]: bodyCellStyle.decimal
+            [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
+            [TOTAL_SECTION_STYLE]: totalCellStyle.decimal
         }, {
             field: fields.DepositCount,
-            [MAIN_SECTION_STYLE]: bodyCellStyle.right
+            [MAIN_SECTION_STYLE]: bodyCellStyle.right,
+            [TOTAL_SECTION_STYLE]: totalCellStyle.number
         }, {
             field: fields.Deposit,
-            [MAIN_SECTION_STYLE]: bodyCellStyle.decimal
+            [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
+            [TOTAL_SECTION_STYLE]: totalCellStyle.decimal
         }, {
             field: fields.Withdrawal,
-            [MAIN_SECTION_STYLE]: bodyCellStyle.decimal
+            [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
+            [TOTAL_SECTION_STYLE]: totalCellStyle.decimal
         }, {
             field: fields.Bonus,
-            [MAIN_SECTION_STYLE]: bodyCellStyle.decimal
+            [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
+            [TOTAL_SECTION_STYLE]: totalCellStyle.decimal
         },{
             field: fields.Rebate,
-            [MAIN_SECTION_STYLE]: bodyCellStyle.decimal
-        }, {
-            field: fields.DepositFee,
-            [MAIN_SECTION_STYLE]: bodyCellStyle.decimal
-        },{
-            field: fields.WithdrawalFee,
-            [MAIN_SECTION_STYLE]: bodyCellStyle.decimal
+            [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
+            [TOTAL_SECTION_STYLE]: totalCellStyle.decimal
         }];
 
         if (isDepositFeePercent) {
             columnlist.push({
                 field: fields.DepositFee,
-                [MAIN_SECTION_STYLE]: bodyCellStyle.decimal
+                [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
+                [TOTAL_SECTION_STYLE]: totalCellStyle.decimal
             });
         }
 
         if (isWithdrawalPercent) {
             columnlist.push({
                 field: fields.WithdrawalFee,
-                [MAIN_SECTION_STYLE]: bodyCellStyle.decimal
+                [MAIN_SECTION_STYLE]: bodyCellStyle.decimal,
+                [TOTAL_SECTION_STYLE]: totalCellStyle.decimal
             });
         }
 
