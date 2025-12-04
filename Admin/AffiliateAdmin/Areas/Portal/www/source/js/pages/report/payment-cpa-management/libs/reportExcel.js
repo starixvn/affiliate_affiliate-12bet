@@ -399,8 +399,6 @@ export default class ReportExcel {
                 return value ? `${value} days` : '-';
             case fields.RedepositRate:
                 return value ? `${formatDecimal(value * 100)}%` : '-';
-            case fields.NoOfRedepositPlayers:
-                return value || '-';
             default:
                 return value !== null && value !== undefined ? value : '';
         }

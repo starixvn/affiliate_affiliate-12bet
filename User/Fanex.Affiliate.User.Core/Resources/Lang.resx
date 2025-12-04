@@ -2022,7 +2022,7 @@ For any reason, you do not receive the email, please check your Spam box or &lt;
   <data name="Dimension" xml:space="preserve">
     <value>Dimension</value>
   </data>
-  <data name="No" xml:space="preserve">
+  <data name="STT" xml:space="preserve">
     <value>No.</value>
   </data>
   <data name="ShareBanner" xml:space="preserve">
@@ -2857,5 +2857,14 @@ You can also email us to {1} or simply fill the form below.</value>
   </data>
   <data name="TentativeMonthlyEarning" xml:space="preserve">
     <value>Tentative Monthly Earning</value>
+  </data>
+  <data name="Settled" xml:space="preserve">
+    <value>Settled</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
   </data>
 </root>

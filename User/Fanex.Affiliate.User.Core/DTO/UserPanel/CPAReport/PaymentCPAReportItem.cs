@@ -29,6 +29,8 @@
 
         public string NoOfPlayerRedeposit { get; set; }
 
+        public string NoOfPlayerRedepositString => NoOfPlayerRedeposit ?? string.Empty;
+
         public decimal EstimatedCPAAmount { get; set; }
 
         public int StatusId { get; set; }

@@ -1925,7 +1925,7 @@
   <data name="Copied" xml:space="preserve">
     <value>复制</value>
   </data>
-  <data name="No" xml:space="preserve">
+  <data name="STT" xml:space="preserve">
     <value>序号</value>
   </data>
   <data name="Dimension" xml:space="preserve">
@@ -2765,5 +2765,14 @@
   </data>
   <data name="TotalCommission" xml:space="preserve">
     <value>总收入份额</value>
+  </data>
+  <data name="Settled" xml:space="preserve">
+    <value>已结算</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>否</value>
   </data>
 </root>

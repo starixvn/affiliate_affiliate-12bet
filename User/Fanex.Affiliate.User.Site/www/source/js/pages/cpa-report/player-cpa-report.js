@@ -200,12 +200,12 @@
             rowItems.push('<td class="text-center">' + dataRow.DisplayFirstDepositDate + '</td>');
             rowItems.push('<td class="text-center">' + dataRow.RecheckDays + '</td>');
             rowItems.push('<td class="text-center">' + dataRow.DisplayExpiredRedepositDate + '</td>');
-            rowItems.push('<td class="text-center">' + (dataRow.IsRedeposit !== undefined ? (dataRow.IsRedeposit ? 'Yes' : 'No') : '-') + '</td>');
+            rowItems.push('<td class="text-center">' + (dataRow.IsRedeposit !== undefined ? (dataRow.IsRedeposit ? langResource.yes : langResource.no) : '-') + '</td>');
 
             if (dataRow.IsAbnormal) {
-                rowItems.push('<td class="text-center ' + statusClass + '">' + dataRow.CPAStatus + '<span title="' + dataRow.Description + '" class="glyphicon glyphicon-info-sign"></span></td>');
+                rowItems.push('<td class="text-center ' + statusClass + '">' + dataRow.CPAStatusString + '<span title="' + dataRow.Description + '" class="glyphicon glyphicon-info-sign"></span></td>');
             } else {
-                rowItems.push('<td class="text-center ' + statusClass + '">' + dataRow.CPAStatus + '</td>');
+                rowItems.push('<td class="text-center ' + statusClass + '">' + dataRow.CPAStatusString + '</td>');
             }
             rowItems.push('</tr>');
 

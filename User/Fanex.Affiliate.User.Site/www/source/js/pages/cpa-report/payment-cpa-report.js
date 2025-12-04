@@ -183,7 +183,7 @@ var PaymentCPAReport = (function ($) {
             if (isFirstRow) {
                 rowItems.push('<td class="text-center" rowspan=' + length + '>' + dataRow.RedepositPercentage + ' %' + '</td>');
             }
-            rowItems.push('<td class="text-center">' + dataRow.NoOfPlayerRedeposit + '</td>');
+            rowItems.push('<td class="text-center">' + dataRow.NoOfPlayerRedepositString + '</td>');
             rowItems.push(_me.buildCell(BasePCAReport.formatDecimal(dataRow.EstimatedCPAAmount)));
             rowItems.push('<td class="text-center ' + className + '">' + dataRow.Status + '</td>');
             rowItems.push(_me.buildCell(BasePCAReport.formatDecimal(dataRow.AutomaticallyApprovedAmount)));

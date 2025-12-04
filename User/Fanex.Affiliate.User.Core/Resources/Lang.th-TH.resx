@@ -1922,7 +1922,7 @@
   <data name="Copied" xml:space="preserve">
     <value>คัดลอก</value>
   </data>
-  <data name="No" xml:space="preserve">
+  <data name="STT" xml:space="preserve">
     <value>เลขที่</value>
   </data>
   <data name="Dimension" xml:space="preserve">
@@ -2769,5 +2769,14 @@
   </data>
   <data name="TotalCommission" xml:space="preserve">
     <value>รวมส่วนแบ่งรายได้</value>
+  </data>
+  <data name="Settled" xml:space="preserve">
+    <value>ที่ชำระเสร็จสิ้น</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>ใช่</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>ไม่ใช่</value>
   </data>
 </root>

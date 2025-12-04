@@ -1912,7 +1912,7 @@
   <data name="Copied" xml:space="preserve">
     <value>복사됨</value>
   </data>
-  <data name="No" xml:space="preserve">
+  <data name="STT" xml:space="preserve">
     <value>아니오</value>
   </data>
   <data name="Dimension" xml:space="preserve">
@@ -2737,5 +2737,14 @@
   </data>
   <data name="TotalCommission" xml:space="preserve">
     <value>총 매출 배분</value>
+  </data>
+  <data name="Settled" xml:space="preserve">
+    <value>결제된</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>예</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>아니요</value>
   </data>
 </root>

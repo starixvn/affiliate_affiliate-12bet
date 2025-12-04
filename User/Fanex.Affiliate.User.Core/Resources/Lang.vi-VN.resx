@@ -1913,7 +1913,7 @@ Vì bất kỳ lý do gì, bạn không nhận được email, vui lòng kiểm 
   <data name="Copied" xml:space="preserve">
     <value>Đã sao chép</value>
   </data>
-  <data name="No" xml:space="preserve">
+  <data name="STT" xml:space="preserve">
     <value>STT.</value>
   </data>
   <data name="Dimension" xml:space="preserve">
@@ -2744,5 +2744,14 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   </data>
   <data name="FinalCPAAmount" xml:space="preserve">
     <value>Số tiền CPA cuối cùng</value>
+  </data>
+  <data name="Settled" xml:space="preserve">
+    <value>Đã thanh toán</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Có</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Không</value>
   </data>
 </root>

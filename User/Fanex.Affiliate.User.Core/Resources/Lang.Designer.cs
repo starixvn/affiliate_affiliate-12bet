@@ -4649,7 +4649,7 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No..
+        ///   Looks up a localized string similar to No.
         /// </summary>
         public static string No {
             get {
@@ -6184,6 +6184,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settled.
+        /// </summary>
+        public static string Settled {
+            get {
+                return ResourceManager.GetString("Settled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Seychelles .
         /// </summary>
         public static string Seychelles {
@@ -6495,6 +6504,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No..
+        /// </summary>
+        public static string STT {
+            get {
+                return ResourceManager.GetString("STT", resourceCulture);
             }
         }
         
@@ -7828,6 +7846,15 @@ namespace Fanex.Affiliate.User.Core.Resources {
         public static string Yemen {
             get {
                 return ResourceManager.GetString("Yemen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
         

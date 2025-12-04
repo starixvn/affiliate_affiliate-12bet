@@ -1,4 +1,5 @@
 ﻿using Fanex.Affiliate.User.Core.Constants;
+using Fanex.Affiliate.User.Core.Resources;
 using System;
 
 namespace Fanex.Affiliate.User.Core.DTO.UserPanel.CPAReport
@@ -60,6 +61,8 @@ namespace Fanex.Affiliate.User.Core.DTO.UserPanel.CPAReport
         public bool? IsRedeposit { get; set; }
 
         public string CPAStatus { get; set; }
+
+        public string CPAStatusString => string.IsNullOrEmpty(CPAStatus) ? CPAStatus : Lang.ResourceManager.GetString(CPAStatus.Replace(" ", ""));
 
         public bool IsAbnormal { get; set; }
 

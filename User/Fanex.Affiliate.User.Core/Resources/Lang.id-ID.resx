@@ -1922,7 +1922,7 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="Copied" xml:space="preserve">
     <value>Salinan</value>
   </data>
-  <data name="No" xml:space="preserve">
+  <data name="STT" xml:space="preserve">
     <value>No.</value>
   </data>
   <data name="Dimension" xml:space="preserve">
@@ -2745,5 +2745,14 @@ Anda juga bisa mengirim email ke {1} atau cukup isi formulir di bawah ini.</valu
   </data>
   <data name="AdjustmentAmount" xml:space="preserve">
     <value>Jumlah Penyesuaian</value>
+  </data>
+  <data name="Settled" xml:space="preserve">
+    <value>Diselesaikan</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ya</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Tidak</value>
   </data>
 </root>
