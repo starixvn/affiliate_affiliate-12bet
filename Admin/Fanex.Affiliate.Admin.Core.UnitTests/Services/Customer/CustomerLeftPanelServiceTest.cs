@@ -224,7 +224,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Customer
             var service = CreateCustomerLeftPanelService(affiliateService: affiliateService.Object, customerLeftPanelRepository: repository.Object);
 
             // Action
-            var result = await service.UpdateStatus(param, new AffInformationEmail());
+            var result = await service.UpdateStatusAsync(param, new AffInformationEmail());
 
             // Assert
             repository.Verify(d => d.ExecuteAsync(It.Is<UpdateStatusCommand>(c => !string.IsNullOrEmpty(c.GetSettingKey()) && c.IsValid()), It.IsAny<string>()));
@@ -255,7 +255,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Customer
             var service = CreateCustomerLeftPanelService(affiliateService: affiliateService.Object, customerLeftPanelRepository: repository.Object);
 
             // Action
-            var result = await service.UpdateStatus(param, new AffInformationEmail());
+            var result = await service.UpdateStatusAsync(param, new AffInformationEmail());
 
             // Assert
             repository.Verify(d => d.ExecuteAsync(It.Is<UpdateStatusCommand>(c => !string.IsNullOrEmpty(c.GetSettingKey()) && c.IsValid()), It.IsAny<string>()));
@@ -283,12 +283,12 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Customer
             var affiliateService = new Mock<IAffiliateService>();
             affiliateService.Setup(aff => aff.GetAffiliateBasicInfo(It.IsAny<int>(), null)).Returns(new AffiliateBasicInfo { AffId = 1271808, AffType = 2, PreferredLanguage = "vi-VN" });
             var thirdPartyLicenseeService = new Mock<IThirdPartyLicenseeService>();
-            thirdPartyLicenseeService.Setup(comm => comm.SendAffiliateInfo(It.IsAny<AffiliateBasicInfo>())).Returns(Task.CompletedTask);
+            thirdPartyLicenseeService.Setup(comm => comm.SendAffiliateInfoAsync(It.IsAny<AffiliateBasicInfo>())).Returns(Task.CompletedTask);
 
             var service = CreateCustomerLeftPanelService(null, affiliateService.Object, repository.Object, thirdPartyLicenseeService.Object);
 
             // Action
-            var result = await service.UpdateStatus(param, new AffInformationEmail());
+            var result = await service.UpdateStatusAsync(param, new AffInformationEmail());
 
             // Assert
             repository.Verify(d => d.ExecuteAsync(It.Is<UpdateStatusCommand>(c => !string.IsNullOrEmpty(c.GetSettingKey()) && c.IsValid()), It.IsAny<string>()));
@@ -318,12 +318,12 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Customer
             var affiliateService = new Mock<IAffiliateService>();
             affiliateService.Setup(aff => aff.GetAffiliateBasicInfo(It.IsAny<int>(), null)).Returns(new AffiliateBasicInfo { AffId = 1271808, AffType = 2, PreferredLanguage = "vi-VN" });
             var thirdPartyLicenseeService = new Mock<IThirdPartyLicenseeService>();
-            thirdPartyLicenseeService.Setup(comm => comm.SendAffiliateInfo(It.IsAny<AffiliateBasicInfo>())).Throws(new System.Exception());
+            thirdPartyLicenseeService.Setup(comm => comm.SendAffiliateInfoAsync(It.IsAny<AffiliateBasicInfo>())).Throws(new System.Exception());
 
             var service = CreateCustomerLeftPanelService(null, affiliateService.Object, repository.Object, thirdPartyLicenseeService.Object);
 
             // Action
-            var result = await service.UpdateStatus(param, new AffInformationEmail());
+            var result = await service.UpdateStatusAsync(param, new AffInformationEmail());
 
             // Assert
             repository.Verify(d => d.ExecuteAsync(It.Is<UpdateStatusCommand>(c => !string.IsNullOrEmpty(c.GetSettingKey()) && c.IsValid()), It.IsAny<string>()));
@@ -341,7 +341,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services.Customer
             var service = CreateCustomerLeftPanelService(customerLeftPanelRepository: repository.Object);
 
             // Action
-            var result = await service.UpdateStatus(param, new AffInformationEmail());
+            var result = await service.UpdateStatusAsync(param, new AffInformationEmail());
 
             // Assert
             repository.Verify(d => d.ExecuteAsync(It.Is<UpdateStatusCommand>(c => !string.IsNullOrEmpty(c.GetSettingKey()) && c.IsValid()), It.IsAny<string>()));

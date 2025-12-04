@@ -2,6 +2,7 @@
 {
     using Fanex.Affiliate.Admin.Core.DTO;
     using Fanex.Affiliate.Admin.Core.MetaModels.Operation;
+    using System.Threading.Tasks;
 
     public interface IOperationService
     {
@@ -9,6 +10,6 @@
 
         ResultInfo DeleteDeal(DeleteDealParam param);
 
-        ResultInfo UpdateDeal(DealSettingParam param);
+        Task<ResultInfo> UpdateDealAsync(DealSettingParam param);
     }
 }

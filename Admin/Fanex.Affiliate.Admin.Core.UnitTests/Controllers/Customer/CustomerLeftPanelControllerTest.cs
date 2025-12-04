@@ -239,7 +239,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Customer
 
             var param = new UpdateStatusParam { AffId = 1271808, Status = "Approved" };
             var customerLeftPanelService = new Mock<ICustomerLeftPanelService>();
-            customerLeftPanelService.Setup(s => s.UpdateStatus(It.IsAny<UpdateStatusParam>(), It.IsAny<AffInformationEmail>())).Returns(Task.FromResult(new ResultInfo()));
+            customerLeftPanelService.Setup(s => s.UpdateStatusAsync(It.IsAny<UpdateStatusParam>(), It.IsAny<AffInformationEmail>())).Returns(Task.FromResult(new ResultInfo()));
             var controller = CreateCustomerLeftPanelController(customerLeftPanelService: customerLeftPanelService.Object);
 
             var expectedPath = "~/";

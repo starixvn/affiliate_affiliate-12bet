@@ -6,6 +6,6 @@
 
         public string GroupName { get; set; }
 
-        public int GroupTypeId { get; set; }
+        public byte GroupTypeId { get; set; }
     }
 }

@@ -221,7 +221,7 @@
     <Compile Include="Controllers\Domain\SpecificDomainControlControllerTest.cs" />
     <Compile Include="Services\Domain\SpecificDomainControlServiceTest.cs" />
     <Compile Include="Services\EmailHistory\EmailHistoryServiceTest.cs" />
-    <Compile Include="Services\JobTrackerServiceTest.cs" />
+    <Compile Include="Services\ApiAffServiceTest.cs" />
     <Compile Include="Services\Affiliate\AffiliateServiceTest.cs" />
     <Compile Include="Services\Affiliate\AffTypeServiceTest.cs" />
     <Compile Include="Services\Auth\AuthServiceTest.cs" />

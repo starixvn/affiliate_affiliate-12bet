@@ -4,7 +4,7 @@
 
     public class InsertDealCommand : BaseDealCommand
     {
-        public int GroupTypeId { get; set; }
+        public byte GroupTypeId { get; set; }
 
         public DateTime StartDate { get; set; }
 

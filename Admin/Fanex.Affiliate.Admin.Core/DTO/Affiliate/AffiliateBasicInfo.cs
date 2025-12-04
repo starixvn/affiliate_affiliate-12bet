@@ -38,10 +38,10 @@
 
         public bool IsUsingPrivateCommGroup { get; set; }
 
-        public int AffCategoryId { get; set; }
+        public byte AffCategoryId { get; set; }
 
-        public int GroupTypeId { get; set; }
+        public byte GroupTypeId { get; set; }
 
-        public int DealVerifyFlags { get; set; }
+        public byte DealVerifyFlags { get; set; }
     }
 }

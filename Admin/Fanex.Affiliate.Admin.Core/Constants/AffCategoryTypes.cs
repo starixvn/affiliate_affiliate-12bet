@@ -2,8 +2,8 @@
 {
     public static class AffCategoryTypes
     {
-        public const int NormalAccount = 1;
+        public const byte NormalAccount = 1;
 
-        public const int MarketingAccount = 2;
+        public const byte MarketingAccount = 2;
     }
 }

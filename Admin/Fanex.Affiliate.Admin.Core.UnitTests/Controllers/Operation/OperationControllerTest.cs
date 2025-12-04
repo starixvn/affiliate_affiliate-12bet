@@ -19,6 +19,7 @@ using Xunit;
 namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
 {
     using Constants;
+    using System.Threading.Tasks;
 
     public class OperationControllerTest
     {
@@ -32,7 +33,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
 
             var commonDealService = new Mock<ICommonDealService>();
             commonDealService.Setup(c => c.GetDeductionList()).Returns(new List<DeductionItem> { new DeductionItem { DeductionId = 13, DeductionName = "ExchangeGgrShare", DeductedPercentage = 0.05m } });
-            commonDealService.Setup(c => c.GetDealTypes()).Returns(new List<Fanex.Affiliate.Admin.Core.DTO.Operation.DealType> { new Fanex.Affiliate.Admin.Core.DTO.Operation.DealType { GroupTypeId = 1, GroupTypeName = "Test" } });
+            commonDealService.Setup(c => c.GetDealTypes()).Returns(new List<DTO.Operation.DealType> { new DTO.Operation.DealType { GroupTypeId = 1, GroupTypeName = "Test" } });
             commonDealService.Setup(c => c.GetPaymentFrequency()).Returns(new List<PaymentFrequency> { new PaymentFrequency { ScheduleId = 1, ScheduleName = "Monthly" } });
 
             var controller = CreateOperationController(systemService: systemService.Object, commonDealService: commonDealService.Object);
@@ -152,18 +153,18 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
         }
 
         [Fact]
-        public void UpdateDeal_WhenCallWithValidParam_ExecuteCorrectly()
+        public async Task UpdateDeal_WhenCallWithValidParam_ExecuteCorrectly()
         {
             // Arrange
             var param = CreateSampleData();
 
             var operationService = new Mock<IOperationService>();
-            operationService.Setup(c => c.UpdateDeal(It.IsAny<DealSettingParam>())).Returns(new ResultInfo());
+            operationService.Setup(c => c.UpdateDealAsync(It.IsAny<DealSettingParam>())).Returns(Task.FromResult(new ResultInfo()));
 
             var controller = CreateOperationController(operationService: operationService.Object);
 
             // Action
-            var result = controller.UpdateDeal(param) as JsonNetResult;
+            var result = await controller.UpdateDeal(param) as JsonNetResult;
             var resultInfo = result.Data as ResultInfo;
 
             // Assert
@@ -171,19 +172,19 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
         }
 
         [Fact]
-        public void UpdateDeal_WhenCallWithValidParamAndDescriptionNull_ExecuteCorrectly()
+        public async Task UpdateDeal_WhenCallWithValidParamAndDescriptionNull_ExecuteCorrectly()
         {
             // Arrange
             var param = CreateSampleData();
             param.Description = null;
 
             var operationService = new Mock<IOperationService>();
-            operationService.Setup(c => c.UpdateDeal(It.IsAny<DealSettingParam>())).Returns(new ResultInfo());
+            operationService.Setup(c => c.UpdateDealAsync(It.IsAny<DealSettingParam>())).Returns(Task.FromResult(new ResultInfo()));
 
             var controller = CreateOperationController(operationService: operationService.Object);
 
             // Action
-            var result = controller.UpdateDeal(param) as JsonNetResult;
+            var result = await controller.UpdateDeal(param) as JsonNetResult;
             var resultInfo = result.Data as ResultInfo;
 
             // Assert
@@ -283,7 +284,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
         }
 
         [Fact]
-        public void UpdateDeal_WhenCallWithHtmlEncodedData_ExecuteCorrectly()
+        public async Task UpdateDeal_WhenCallWithHtmlEncodedData_ExecuteCorrectly()
         {
             // Arrange
             var param = CreateSampleData();
@@ -291,12 +292,12 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
             param.Description = "&lt;b&gt;Bold text&lt;/b&gt;";
 
             var operationService = new Mock<IOperationService>();
-            operationService.Setup(c => c.UpdateDeal(It.IsAny<DealSettingParam>())).Returns(new ResultInfo());
+            operationService.Setup(c => c.UpdateDealAsync(It.IsAny<DealSettingParam>())).Returns(Task.FromResult(new ResultInfo()));
 
             var controller = CreateOperationController(operationService: operationService.Object);
 
             // Action
-            var result = controller.UpdateDeal(param) as JsonNetResult;
+            var result = await controller.UpdateDeal(param) as JsonNetResult;
             var resultInfo = result.Data as ResultInfo;
 
             // Assert
@@ -326,7 +327,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
         }
 
         [Fact]
-        public void UpdateDeal_WhenCallWithValidParam_AssignUserInfoCorrectly()
+        public async Task UpdateDeal_WhenCallWithValidParam_AssignUserInfoCorrectly()
         {
             // Arrange
             var param = CreateSampleData();
@@ -334,12 +335,12 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
             param.Ip = null; // Reset to test assignment
 
             var operationService = new Mock<IOperationService>();
-            operationService.Setup(c => c.UpdateDeal(It.IsAny<DealSettingParam>())).Returns(new ResultInfo());
+            operationService.Setup(c => c.UpdateDealAsync(It.IsAny<DealSettingParam>())).Returns(Task.FromResult(new ResultInfo()));
 
             var controller = CreateOperationController(operationService: operationService.Object);
 
             // Action
-            var result = controller.UpdateDeal(param) as JsonNetResult;
+            var result = await controller.UpdateDeal(param) as JsonNetResult;
             var resultInfo = result.Data as ResultInfo;
 
             // Assert
@@ -1178,17 +1179,17 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
         }
 
         [Fact]
-        public void UpdateDeal_WhenServiceReturnsSuccess_ReturnSuccess()
+        public async Task UpdateDeal_WhenServiceReturnsSuccess_ReturnSuccess()
         {
             // Arrange
             var param = CreateSampleData();
             param.GroupId = 123; // Existing deal
             var operationService = new Mock<IOperationService>();
-            operationService.Setup(c => c.UpdateDeal(It.IsAny<DealSettingParam>())).Returns(new ResultInfo());
+            operationService.Setup(c => c.UpdateDealAsync(It.IsAny<DealSettingParam>())).Returns(Task.FromResult(new ResultInfo()));
             var controller = CreateOperationController(operationService: operationService.Object);
 
             // Action
-            var result = controller.UpdateDeal(param) as JsonNetResult;
+            var result = await controller.UpdateDeal(param) as JsonNetResult;
             var resultInfo = result.Data as ResultInfo;
 
             // Assert
@@ -1196,17 +1197,17 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
         }
 
         [Fact]
-        public void UpdateDeal_WhenServiceReturnsValidationError_ReturnError()
+        public async Task UpdateDeal_WhenServiceReturnsValidationError_ReturnError()
         {
             // Arrange
             var param = CreateSampleData();
             param.DealName = string.Empty;
             var operationService = new Mock<IOperationService>();
-            operationService.Setup(c => c.UpdateDeal(It.IsAny<DealSettingParam>())).Returns(new ResultInfo(ErrCode.GeneralErrorCode, "Deal name cannot be empty."));
+            operationService.Setup(c => c.UpdateDealAsync(It.IsAny<DealSettingParam>())).Returns(Task.FromResult(new ResultInfo(ErrCode.GeneralErrorCode, "Deal name cannot be empty.")));
             var controller = CreateOperationController(operationService: operationService.Object);
 
             // Action
-            var result = controller.UpdateDeal(param) as JsonNetResult;
+            var result = await controller.UpdateDeal(param) as JsonNetResult;
             var resultInfo = result.Data as ResultInfo;
 
             // Assert
@@ -1215,17 +1216,17 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
         }
 
         [Fact]
-        public void UpdateDeal_WhenServiceReturnsActiveDaysError_ReturnError()
+        public async Task UpdateDeal_WhenServiceReturnsActiveDaysError_ReturnError()
         {
             // Arrange
             var param = CreateSampleData();
             param.ActiveDays = 0;
             var operationService = new Mock<IOperationService>();
-            operationService.Setup(c => c.UpdateDeal(It.IsAny<DealSettingParam>())).Returns(new ResultInfo(ErrCode.GeneralErrorCode, "Activity Period must be between 1 and 30,000."));
+            operationService.Setup(c => c.UpdateDealAsync(It.IsAny<DealSettingParam>())).Returns(Task.FromResult(new ResultInfo(ErrCode.GeneralErrorCode, "Activity Period must be between 1 and 30,000.")));
             var controller = CreateOperationController(operationService: operationService.Object);
 
             // Action
-            var result = controller.UpdateDeal(param) as JsonNetResult;
+            var result = await controller.UpdateDeal(param) as JsonNetResult;
             var resultInfo = result.Data as ResultInfo;
 
             // Assert
@@ -1234,18 +1235,18 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
         }
 
         [Fact]
-        public void UpdateDeal_WhenServiceReturnsHoldingDaysError_ReturnError()
+        public async Task UpdateDeal_WhenServiceReturnsHoldingDaysError_ReturnError()
         {
             // Arrange
             var param = CreateSampleData();
             param.IsActivePlayerHoldingPeriod = true;
             param.HoldingDays = 0;
             var operationService = new Mock<IOperationService>();
-            operationService.Setup(c => c.UpdateDeal(It.IsAny<DealSettingParam>())).Returns(new ResultInfo(ErrCode.GeneralErrorCode, "Holding Tickets and Holding Days must both be between 1 and 30,000."));
+            operationService.Setup(c => c.UpdateDealAsync(It.IsAny<DealSettingParam>())).Returns(Task.FromResult(new ResultInfo(ErrCode.GeneralErrorCode, "Holding Tickets and Holding Days must both be between 1 and 30,000.")));
             var controller = CreateOperationController(operationService: operationService.Object);
 
             // Action
-            var result = controller.UpdateDeal(param) as JsonNetResult;
+            var result = await controller.UpdateDeal(param) as JsonNetResult;
             var resultInfo = result.Data as ResultInfo;
 
             // Assert
@@ -1254,18 +1255,18 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
         }
 
         [Fact]
-        public void UpdateDeal_WhenServiceReturnsQuotaError_ReturnError()
+        public async Task UpdateDeal_WhenServiceReturnsQuotaError_ReturnError()
         {
             // Arrange
             var param = CreateSampleData();
             param.IsQuota = true;
             param.Quota = 0;
             var operationService = new Mock<IOperationService>();
-            operationService.Setup(c => c.UpdateDeal(It.IsAny<DealSettingParam>())).Returns(new ResultInfo(ErrCode.GeneralErrorCode, "Quota must be between 1 and 30,000."));
+            operationService.Setup(c => c.UpdateDealAsync(It.IsAny<DealSettingParam>())).Returns(Task.FromResult(new ResultInfo(ErrCode.GeneralErrorCode, "Quota must be between 1 and 30,000.")));
             var controller = CreateOperationController(operationService: operationService.Object);
 
             // Action
-            var result = controller.UpdateDeal(param) as JsonNetResult;
+            var result = await controller.UpdateDeal(param) as JsonNetResult;
             var resultInfo = result.Data as ResultInfo;
 
             // Assert
@@ -1274,18 +1275,18 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
         }
 
         [Fact]
-        public void UpdateDeal_WhenServiceReturnsRedepositRateError_ReturnError()
+        public async Task UpdateDeal_WhenServiceReturnsRedepositRateError_ReturnError()
         {
             // Arrange
             var param = CreateSampleData();
             param.IsRedeposit = true;
             param.RedepositRate = 0;
             var operationService = new Mock<IOperationService>();
-            operationService.Setup(c => c.UpdateDeal(It.IsAny<DealSettingParam>())).Returns(new ResultInfo(ErrCode.GeneralErrorCode, "Redeposit Percentage must be between 1 and 100."));
+            operationService.Setup(c => c.UpdateDealAsync(It.IsAny<DealSettingParam>())).Returns(Task.FromResult(new ResultInfo(ErrCode.GeneralErrorCode, "Redeposit Percentage must be between 1 and 100.")));
             var controller = CreateOperationController(operationService: operationService.Object);
 
             // Action
-            var result = controller.UpdateDeal(param) as JsonNetResult;
+            var result = await controller.UpdateDeal(param) as JsonNetResult;
             var resultInfo = result.Data as ResultInfo;
 
             // Assert
@@ -1294,7 +1295,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
         }
 
         [Fact]
-        public void UpdateDeal_WhenServiceReturnsCheckBoxError_ReturnError()
+        public async Task UpdateDeal_WhenServiceReturnsCheckBoxError_ReturnError()
         {
             // Arrange
             var param = CreateSampleData();
@@ -1302,11 +1303,11 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
             param.CheckedMinTotalDeposit = false;
             param.CheckedMinTurnover = false;
             var operationService = new Mock<IOperationService>();
-            operationService.Setup(c => c.UpdateDeal(It.IsAny<DealSettingParam>())).Returns(new ResultInfo(ErrCode.GeneralErrorCode, "Please select at least one condition: Min FTD, Min Total Deposit, or Min Turnover."));
+            operationService.Setup(c => c.UpdateDealAsync(It.IsAny<DealSettingParam>())).Returns(Task.FromResult(new ResultInfo(ErrCode.GeneralErrorCode, "Please select at least one condition: Min FTD, Min Total Deposit, or Min Turnover.")));
             var controller = CreateOperationController(operationService: operationService.Object);
 
             // Action
-            var result = controller.UpdateDeal(param) as JsonNetResult;
+            var result = await controller.UpdateDeal(param) as JsonNetResult;
             var resultInfo = result.Data as ResultInfo;
 
             // Assert
@@ -1315,18 +1316,18 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
         }
 
         [Fact]
-        public void UpdateDeal_WhenServiceReturnsProductGroupError_ReturnError()
+        public async Task UpdateDeal_WhenServiceReturnsProductGroupError_ReturnError()
         {
             // Arrange
             var param = CreateSampleData();
             param.CheckedMinTurnover = true;
             param.ProductGroup = new List<CpaGroupProduct>();
             var operationService = new Mock<IOperationService>();
-            operationService.Setup(c => c.UpdateDeal(It.IsAny<DealSettingParam>())).Returns(new ResultInfo(ErrCode.GeneralErrorCode, "Missing or invalid Product List. Please contact your system administrator to resolve this issue."));
+            operationService.Setup(c => c.UpdateDealAsync(It.IsAny<DealSettingParam>())).Returns(Task.FromResult(new ResultInfo(ErrCode.GeneralErrorCode, "Missing or invalid Product List. Please contact your system administrator to resolve this issue.")));
             var controller = CreateOperationController(operationService: operationService.Object);
 
             // Action
-            var result = controller.UpdateDeal(param) as JsonNetResult;
+            var result = await controller.UpdateDeal(param) as JsonNetResult;
             var resultInfo = result.Data as ResultInfo;
 
             // Assert
@@ -1335,17 +1336,17 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Controllers.Operation
         }
 
         [Fact]
-        public void UpdateDeal_WhenServiceReturnsTierSettingError_ReturnError()
+        public async Task UpdateDeal_WhenServiceReturnsTierSettingError_ReturnError()
         {
             // Arrange
             var param = CreateSampleData();
             param.CPATierSetting = new List<CpaTierSetting>();
             var operationService = new Mock<IOperationService>();
-            operationService.Setup(c => c.UpdateDeal(It.IsAny<DealSettingParam>())).Returns(new ResultInfo(ErrCode.GeneralErrorCode, "Missing or invalid Tier Setting. Please contact your system administrator to resolve this issue."));
+            operationService.Setup(c => c.UpdateDealAsync(It.IsAny<DealSettingParam>())).Returns(Task.FromResult(new ResultInfo(ErrCode.GeneralErrorCode, "Missing or invalid Tier Setting. Please contact your system administrator to resolve this issue.")));
             var controller = CreateOperationController(operationService: operationService.Object);
 
             // Action
-            var result = controller.UpdateDeal(param) as JsonNetResult;
+            var result = await controller.UpdateDeal(param) as JsonNetResult;
             var resultInfo = result.Data as ResultInfo;
 
             // Assert

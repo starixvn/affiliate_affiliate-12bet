@@ -336,8 +336,8 @@
     <Compile Include="Commands\Operation\InsertDealCommand.cs" />
     <Compile Include="Commands\Operation\UpdateDealCommand.cs" />
     <Compile Include="Commands\PaymentCpa\AdjustmentAmountCommand.cs" />
-    <Compile Include="Commands\Tracker\InsertJobTrackerCommand.cs" />
-    <Compile Include="Commands\Tracker\UpdateJobTrackerCommand.cs" />
+    <Compile Include="Commands\Apis\InsertJobTrackerCommand.cs" />
+    <Compile Include="Commands\Apis\UpdateJobTrackerCommand.cs" />
     <Compile Include="Commands\UserPanel\Adjustment\BalanceBroughtForwardCommand.cs" />
     <Compile Include="Commands\UserPanel\Adjustment\InsertAdjustmentCommand.cs" />
     <Compile Include="Commands\UserPanel\Note\UpdateNoteCommand.cs" />
@@ -441,6 +441,7 @@
     <Compile Include="Criterias\Affiliate\AffiliateCriteria.cs" />
     <Compile Include="Criterias\AffPagingByDateCriteria.cs" />
     <Compile Include="Commands\Auth\CheckUserPermissionCommand.cs" />
+    <Compile Include="Criterias\Apis\GetApiAffInfosCriteria.cs" />
     <Compile Include="Criterias\Auth\UserPermissionCriteria.cs" />
     <Compile Include="Criterias\CampaignManagement\GetAllCampaignStatusCriteria.cs" />
     <Compile Include="Criterias\CampaignManagement\GetCampaignDashboardCriteria.cs" />
@@ -527,11 +528,11 @@
     <Compile Include="DTO\Affiliate\CreateMarketingAccountModel.cs" />
     <Compile Include="DTO\Affiliate\MarketingAccount.cs" />
     <Compile Include="DTO\AffTypeInfo.cs" />
-    <Compile Include="DTO\Api\AffiliateInfo.cs" />
-    <Compile Include="DTO\Api\ApiResultInfo.cs" />
-    <Compile Include="DTO\Api\MemberSiteCustomerInfo.cs" />
-    <Compile Include="DTO\Api\PaymentRequestInfo.cs" />
-    <Compile Include="DTO\Api\TokenInfo.cs" />
+    <Compile Include="DTO\Apis\ApiAffInfo.cs" />
+    <Compile Include="DTO\Apis\ApiResultInfo.cs" />
+    <Compile Include="DTO\Apis\MemberSiteCustomerInfo.cs" />
+    <Compile Include="DTO\Apis\PaymentRequestInfo.cs" />
+    <Compile Include="DTO\Apis\TokenInfo.cs" />
     <Compile Include="DTO\CampaignManagement\CampaignDashboard.cs" />
     <Compile Include="DTO\CampaignManagement\CampaignStatus.cs" />
     <Compile Include="DTO\Common\TargetCountry.cs" />
@@ -613,7 +614,7 @@
     <Compile Include="MetaModels\Administrator\UpdatePasswordParam.cs" />
     <Compile Include="MetaModels\Administrator\UpdatePolicyParam.cs" />
     <Compile Include="MetaModels\Administrator\UpdateUserParam.cs" />
-    <Compile Include="MetaModels\Api\TokenRequestParam.cs" />
+    <Compile Include="MetaModels\Apis\TokenRequestParam.cs" />
     <Compile Include="MetaModels\AssetModification\DeleteAssetParam.cs" />
     <Compile Include="MetaModels\AssetModification\AddAssetsParam.cs" />
     <Compile Include="MetaModels\CampaignManagement\GetCampaignListParam.cs" />
@@ -777,8 +778,8 @@
     <Compile Include="Services\Report\PlayerCpaService.cs" />
     <Compile Include="Services\Report\IPaymentCpaManagementService.cs" />
     <Compile Include="Services\Report\PaymentCpaManagementService.cs" />
-    <Compile Include="Services\Tracker\IJobTrackerService.cs" />
-    <Compile Include="Services\Tracker\JobTrackerService.cs" />
+    <Compile Include="Services\Apis\IApiAffService.cs" />
+    <Compile Include="Services\Apis\ApiAffService.cs" />
     <Compile Include="Services\UserPanel\Statistics\ILandingPageStatisticsService.cs" />
     <Compile Include="Services\UserPanel\Statistics\IMarketingStatisticsService.cs" />
     <Compile Include="Services\UserPanel\Statistics\IReferrersStatisticsService.cs" />
@@ -842,9 +843,9 @@
     <Compile Include="Services\Affiliate\IAffTypeService.cs" />
     <Compile Include="Services\Email\IEmailService.cs" />
     <Compile Include="Services\Common\ISystemService.cs" />
-    <Compile Include="Services\ILicenseeService.cs" />
+    <Compile Include="Services\Apis\ILicenseeService.cs" />
     <Compile Include="Services\Common\SystemService.cs" />
-    <Compile Include="Services\LicenseeService.cs" />
+    <Compile Include="Services\Apis\LicenseeService.cs" />
     <Compile Include="Services\MediaGallery\BannerListService.cs" />
     <Compile Include="Services\MediaGallery\BannerValidationService.cs" />
     <Compile Include="Services\MediaGallery\CommonMediaGalleryService.cs" />

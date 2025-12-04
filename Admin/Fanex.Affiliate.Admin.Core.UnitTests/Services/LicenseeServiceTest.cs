@@ -1,7 +1,6 @@
 ﻿using Fanex.Affiliate.Admin.Core.Apis;
-using Fanex.Affiliate.Admin.Core.Configurations;
-using Fanex.Affiliate.Admin.Core.DTO.Api;
-using Fanex.Affiliate.Admin.Core.Services;
+using Fanex.Affiliate.Admin.Core.DTO.Apis;
+using Fanex.Affiliate.Admin.Core.Services.Apis;
 using Moq;
 using System.Threading.Tasks;
 using Xunit;
@@ -34,7 +33,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services
             var service = CreateLicenseeService(lisenseeApi.Object);
 
             // Action
-            var result = await service.CheckCustomerIsValid("abc", 123);
+            var result = await service.CheckCustomerIsValidAsync("abc", 123);
 
             // Assert
             Assert.True(result.IsSuccessful);
@@ -86,7 +85,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services
         }
 
         [Fact]
-        public void GetMemberSiteCustomerInfo_WhenCall_ReturnCorrectData()
+        public void GetMemberSiteCustomerInfoAsync_WhenCall_ReturnCorrectData()
         {
             // Arrange
             var lisenseeApi = new Mock<ILicenseeApi>();
@@ -94,7 +93,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services
             var service = CreateLicenseeService();
 
             // Action
-            var result = service.GetMemberSiteCustomerInfo(string.Empty, 123);
+            var result = service.GetMemberSiteCustomerInfoAsync(string.Empty, 123);
 
             // Assert
             Assert.NotNull(result);
@@ -103,36 +102,36 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services
         [Theory]
         [InlineData(0, true)]
         [InlineData(500, false)]
-        public async Task UnlockUser_WhenCall_ReturnCorrectResult(int expectedCode, bool isSuccess)
+        public async Task UnlockUserAsync_WhenCall_ReturnCorrectResult(int expectedCode, bool isSuccess)
         {
             // Arrange
             var lisenseeApi = new Mock<ILicenseeApi>();
-            lisenseeApi.Setup(l => l.UnlockUser(It.IsAny<int[]>())).Returns(Task.FromResult(new ApiResultInfo { IsSuccess = isSuccess }));
+            lisenseeApi.Setup(l => l.UnlockUserAsync(It.IsAny<int[]>())).Returns(Task.FromResult(new ApiResultInfo { IsSuccess = isSuccess }));
 
             var service = CreateLicenseeService(lisenseeApi.Object);
 
             // Action
-            var result = await service.UnlockUser(123);
+            var result = await service.UnlockUserAsync(123);
 
             // Assert
             Assert.Equal(expectedCode, result.Code);
         }
 
         [Fact]
-        public async Task UpdatePaymentRequest_WhenCallWithMountZero_ReturnError()
+        public async Task UpdatePaymentRequestAsync_WhenCallWithMountZero_ReturnError()
         {
             // Arrange
             var service = CreateLicenseeService();
 
             // Action
-            var result = await service.UpdatePaymentRequest(new PaymentRequestInfo());
+            var result = await service.UpdatePaymentRequestAsync(new PaymentRequestInfo());
 
             // Assert
             Assert.False(result.IsSuccessful);
         }
 
         [Fact]
-        public async Task UpdatePaymentRequest_WhenCall_UpdateFailed()
+        public async Task UpdatePaymentRequestAsync_WhenCall_UpdateFailed()
         {
             // Arrange
             var param = new PaymentRequestInfo { Amount = 100m };
@@ -142,14 +141,14 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services
             var service = CreateLicenseeService(lisenseeApi.Object);
 
             // Action
-            var result = await service.UpdatePaymentRequest(param);
+            var result = await service.UpdatePaymentRequestAsync(param);
 
             // Assert
             Assert.False(result.IsSuccessful);
         }
 
         [Fact]
-        public async Task UpdatePaymentRequest_WhenCall_UpdateSuccessfully()
+        public async Task UpdatePaymentRequestAsync_WhenCall_UpdateSuccessfully()
         {
             // Arrange
             var param = new PaymentRequestInfo { Amount = 100m };
@@ -159,7 +158,7 @@ namespace Fanex.Affiliate.Admin.Core.UnitTests.Services
             var service = CreateLicenseeService(lisenseeApi.Object);
 
             // Action
-            var result = await service.UpdatePaymentRequest(param);
+            var result = await service.UpdatePaymentRequestAsync(param);
 
             // Assert
             Assert.True(result.IsSuccessful);

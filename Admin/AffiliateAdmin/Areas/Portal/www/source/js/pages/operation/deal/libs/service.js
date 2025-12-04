@@ -19,6 +19,7 @@ const commonDealInfo = {
     GroupId: 0,
     DealName: '',
     DealType: 3,
+    VerificationMethods: '',
     Description: '',
     IsSubCommRate: false,
     SubCommRate: 0,

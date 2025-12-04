@@ -293,6 +293,7 @@
 	<Function Name="DataTracker">
 		<Setting Key="Task_API_PushDataTracker_Import" SpName="Task_API_PushDataTracker_Import" DbName="DB12B.bodb_12B.wsv_lap" />
 		<Setting Key="Task_API_PushDataTracker_Upd" SpName="Task_API_PushDataTracker_Upd" DbName="DB12B.bodb_12B.wsv_lap" />
+		<Setting Key="Aff_API_AffiliateDetailInfo_Sel" SpName="Aff_API_AffiliateDetailInfo_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 	</Function>
 	<Function Name="Operation">
 		<Setting Key="Aff_Admin_Deal_Sel" SpName="Aff_Admin_Deal_Sel" DbName="" />

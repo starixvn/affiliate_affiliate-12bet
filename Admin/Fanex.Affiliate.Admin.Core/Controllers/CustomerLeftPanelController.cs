@@ -137,7 +137,7 @@ namespace Fanex.Affiliate.Admin.Core.Controllers
                     RootUrl = SiteDomainHelper.GetRootUrl(this)
                 };
 
-                return GenerateJsonNetResult(await _customerLeftPanelService.UpdateStatus(updateStatusParam, emailParam));
+                return GenerateJsonNetResult(await _customerLeftPanelService.UpdateStatusAsync(updateStatusParam, emailParam));
             }
 
             return GenerateModelStateErrResult();

@@ -14,6 +14,6 @@ namespace Fanex.Affiliate.Admin.Core.Services.Payment
 
         ResultInfo UpdatePaymentRequest(PaymentRequestUpdateParam param, PaymentRequestUpdateEmail emailParam);
 
-        Task<ResultInfo> HandlePaymentRequest(PaymentRequestUpdateParam param, PaymentRequestUpdateEmail emailParam);
+        Task<ResultInfo> HandlePaymentRequestAsync(PaymentRequestUpdateParam param, PaymentRequestUpdateEmail emailParam);
     }
 }
