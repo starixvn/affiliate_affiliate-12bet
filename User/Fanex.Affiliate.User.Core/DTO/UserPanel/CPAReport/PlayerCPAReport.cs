@@ -40,19 +40,21 @@ namespace Fanex.Affiliate.User.Core.DTO.UserPanel.CPAReport
 
         public DateTime? HoldingQualifiedDate { get; set; }
 
-        public string DisplayHoldingQualifiedDate => IsHolding && HoldingQualifiedDate.HasValue ? HoldingQualifiedDate?.ToString(DateTimeFormat.MM_dd_yyyy) : HYPHEN;
+        public string DisplayHoldingQualifiedDate => IsHolding && HoldingQualifiedDate.HasValue ? HoldingQualifiedDate.Value.ToString(DateTimeFormat.MM_dd_yyyy) : HYPHEN;
 
         public DateTime? HoldingExpiredDate { get; set; }
 
-        public string DisplayHoldingExpiredDate => IsHolding && HoldingExpiredDate.HasValue ? HoldingExpiredDate?.ToString(DateTimeFormat.MM_dd_yyyy) : HYPHEN;
+        public string DisplayHoldingExpiredDate => IsHolding && HoldingExpiredDate.HasValue ? HoldingExpiredDate.Value.ToString(DateTimeFormat.MM_dd_yyyy) : HYPHEN;
 
         public decimal? EstimatedCPAAmount { get; set; }
 
         public DateTime? FirstDepositDate { get; set; }
 
-        public string DisplayFirstDepositDate => ExpiredRedepositDate.HasValue && FirstDepositDate.HasValue ? FirstDepositDate?.ToString(DateTimeFormat.MM_dd_yyyy) : HYPHEN;
+        public string DisplayFirstDepositDate => ExpiredRedepositDate.HasValue && FirstDepositDate.HasValue ? FirstDepositDate.Value.ToString(DateTimeFormat.MM_dd_yyyy) : HYPHEN;
 
         public int? RecheckDays { get; set; }
+
+        public string DisplayRecheckDays => ExpiredRedepositDate.HasValue && RecheckDays.HasValue ? RecheckDays.ToString() : HYPHEN;
 
         public DateTime? ExpiredRedepositDate { get; set; }
 

@@ -5,7 +5,9 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel.AccountOverview
 {
     public class SummaryViewModel : BaseGroupTypeId
     {
-        public bool IsMaxLevel { get; set; }
+        public bool IsMaxSubLevel { get; set; }
+
+        public bool IsSubCommRate { get; set; }
 
         public DateTime FromDate { get; set; }
 

@@ -4,6 +4,7 @@ using Fanex.Affiliate.User.Core.Constants;
 using Fanex.Affiliate.User.Core.CoreService;
 using Fanex.Affiliate.User.Core.DTO;
 using Fanex.Affiliate.User.Core.DTO.UserPanel.CPAReport;
+using Fanex.Affiliate.User.Core.Extensions;
 using Fanex.Affiliate.User.Core.Filters;
 using Fanex.Affiliate.User.Core.MetalModels.UserPanel.CPAReport;
 using Fanex.Affiliate.User.Core.Utilities;
@@ -13,6 +14,7 @@ using System.Web.Mvc;
 
 namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
 {
+    [CustomAuthorize]
     public class PlayerCPAReportController : BaseController
     {
         private readonly IPlayerCPAReportService _reportService;
@@ -29,6 +31,15 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
         [AjaxOnly]
         public ActionResult Index()
         {
+            if(SessionService.UserSession.GroupTypeId == GroupType.RevenueShareTypeId)
+            {
+                return Json(new 
+                { 
+                    success = false,
+                    redirectUrl = Url.RenderLanguageContent("~/UserPanel/Main/#AccountOverview")
+                }, JsonRequestBehavior.AllowGet);
+            }
+            
             var now = DateTimeHelper.Gmt8Now;
             var viewModel = new CPAReportViewModel
             {

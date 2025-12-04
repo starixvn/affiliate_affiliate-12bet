@@ -78,7 +78,7 @@
             <div class="img-icon">
                 <img class="img-responsive" src="~/www/build/styles/Images/account-overview/commission.svg" alt="Commission icon" />
             </div>
-            @if(isCurrentMonth)
+            @if (isCurrentMonth)
             {
                 <div class="info-panel">
                     <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.ApprovedCPAAmount</span>
@@ -108,7 +108,7 @@
             <div class="img-icon">
                 <img class="img-responsive" src="~/www/build/styles/Images/account-overview/commission.svg" alt="Commission icon" />
             </div>
-            @if(isCurrentMonth)
+            @if (isCurrentMonth)
             {
                 <div class="info-panel">
                     <span class="info-panel-title @sessionService.CurrentLanguage">
@@ -190,30 +190,33 @@
     </div>
 </div>
 
-<div class="dashboard-section-col">
-    <span class="my-account">@Lang.SubAffiliate</span>
-    <div class="group group-four">
-        <div class="img-icon">
-            <img class="img-responsive" src="~/www/build/styles/Images/account-overview/icon-subaff.png" alt="sub-aff icon" />
-        </div>
-        @if (isGetMonthly)
-        {
-            <div class="info-panel">
-                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.SubAffDownline</span>
-                <span class="info-panel-content">@overviewSummary.NoOfSubAff</span>
+@if (!Model.IsMaxSubLevel && Model.IsSubCommRate)
+{
+    <div class="dashboard-section-col">
+        <span class="my-account">@Lang.SubAffiliate</span>
+        <div class="group group-four">
+            <div class="img-icon">
+                <img class="img-responsive" src="~/www/build/styles/Images/account-overview/icon-subaff.png" alt="sub-aff icon" />
             </div>
+            @if (isGetMonthly)
+            {
+                <div class="info-panel">
+                    <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.SubAffDownline</span>
+                    <span class="info-panel-content">@overviewSummary.NoOfSubAff</span>
+                </div>
 
-            <div class="info-panel">
-                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.SubAffEarning </span>
-                <span class="info-panel-content">@overviewSummary.SubAffCommission.ToStringMoneyWithSymbol("$")</span>
-            </div>
-        }
-        else
-        {
-            <div class="info-panel w-100">
-                <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.SubAffDownline</span>
-                <span class="info-panel-content">@overviewSummary.NoOfSubAff</span>
-            </div>
-        }
+                <div class="info-panel">
+                    <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.SubAffEarning </span>
+                    <span class="info-panel-content">@overviewSummary.SubAffCommission.ToStringMoneyWithSymbol("$")</span>
+                </div>
+            }
+            else
+            {
+                <div class="info-panel w-100">
+                    <span class="info-panel-title @sessionService.CurrentLanguage">@Lang.SubAffDownline</span>
+                    <span class="info-panel-content">@overviewSummary.NoOfSubAff</span>
+                </div>
+            }
+        </div>
     </div>
-</div>
+}

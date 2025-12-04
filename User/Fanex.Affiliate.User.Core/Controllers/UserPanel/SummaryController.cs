@@ -34,7 +34,8 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
             var now = DateTimeHelper.Gmt8Now;
             var viewModel = new SummaryViewModel
             {
-                IsMaxLevel = userSession.IsMaxSubLevel,
+                IsMaxSubLevel = userSession.IsMaxSubLevel,
+                IsSubCommRate = userSession.IsSubCommRate,
                 FromDate = DateTimeHelper.CreateDateTime(now.Year, now.Month, 1),
                 ToDate = now,
                 GroupTypeId = userSession.GroupTypeId
@@ -47,11 +48,14 @@ namespace Fanex.Affiliate.User.Core.Controllers.UserPanel
         [AjaxOnly]
         public ActionResult Dashboard(AccountOverviewParam param)
         {
-            param.AffId = SessionService.UserSession.AffId;
+            var userSession = SessionService.UserSession;
+            param.AffId = userSession.AffId;
             var (groupTypeId, dataItem) = _accountOverviewService.GetUserOverviewSummary(param);
             var model = new DashboardViewModel
             {
                 GroupTypeId = groupTypeId,
+                IsMaxSubLevel = userSession.IsMaxSubLevel,
+                IsSubCommRate = userSession.IsSubCommRate,
                 IsCurrentMonth = IsCurrentMonth(param.ToDate),
                 IsGetMonthly = param.IsGetMonthly,
                 OverviewSummary = dataItem

@@ -22,21 +22,20 @@
     <div class="content-menu">
         <ul class="menu list-unstyled" id="mainMenu">
             <li><a class="menu-item" id="menuAccountOverview" href="@Url.RenderLanguageContent("~/UserPanel/Main/#AccountOverview")">@Lang.AccOverview</a></li>
-            @if (string.Equals(groupName, CommGroupName.KoreanAgentComm))
-            {
-                <li><a class="menu-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Member" ? "active" : string.Empty)" id="menuYourCustomer" href="@(Url.RenderLanguageContent("~/UserPanel/Member/Index"))">@Lang.YourCustomers</a></li>
-            }
             <li><a class="menu-item" id="menuStatementHistory" href="@Url.RenderLanguageContent("~/UserPanel/Main/#StatementHistory")">@Lang.StatementHistory</a></li>
             <li><a class="menu-item" id="menuMyAccount" href="@Url.RenderLanguageContent("~/UserPanel/Main/#MyAccount")">@Lang.MyAccount</a></li>
             <li><a class="menu-item" id="menuPaymentRequest" href="@Url.RenderLanguageContent("~/UserPanel/Main/#PaymentRequest")">@Lang.PaymentRequest</a></li>
             <li><a class="menu-item" id="menuRevenueReport" href="@Url.RenderLanguageContent("~/UserPanel/Main/#RevenueReport")">@Lang.CommissionReport</a></li>
-            <li class="parent">
-                <a class="menu-item" href="javascript:;">@Lang.CPAReport <i class="caret"></i></a>
-                <ul class="menu submenu-container list-unstyled">
-                    <li><a class="menu-item" id="menuPlayerCPAReport" href="@Url.RenderLanguageContent("~/UserPanel/Main/#PlayerCPAReport")">@Lang.PlayerCPAReport</a></li>
-                    <li><a class="menu-item" id="menuPaymentCPAReport" href="@Url.RenderLanguageContent("~/UserPanel/Main/#PaymentCPAReport")">@Lang.PaymentCPAReport</a></li>
-                </ul>
-            </li>
+            @if (sessionService.UserSession.GroupTypeId != GroupType.RevenueShareTypeId)
+            {
+                <li class="parent">
+                    <a class="menu-item" href="javascript:;">@Lang.CPAReport <i class="caret"></i></a>
+                    <ul class="menu submenu-container list-unstyled">
+                        <li><a class="menu-item" id="menuPlayerCPAReport" href="@Url.RenderLanguageContent("~/UserPanel/Main/#PlayerCPAReport")">@Lang.PlayerCPAReport</a></li>
+                        <li><a class="menu-item" id="menuPaymentCPAReport" href="@Url.RenderLanguageContent("~/UserPanel/Main/#PaymentCPAReport")">@Lang.PaymentCPAReport</a></li>
+                    </ul>
+                </li>
+            }
             <li class="parent">
                 <a class="menu-item" href="javascript:;">@Lang.Statistics <i class="caret"></i></a>
                 <ul class="menu submenu-container list-unstyled">

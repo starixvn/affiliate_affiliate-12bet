@@ -1,7 +1,9 @@
-﻿@{
+﻿@using Fanex.Affiliate.User.Core.CoreService
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     var controllerName = ViewContext.RouteData.Values["Controller"].ToString();
+    var sessionService = DependencyResolver.Current.GetService<ISessionService>();
 }
 
 @section styles{
@@ -21,12 +23,16 @@
             <li><a class="menu-item" id="menuMyAccount" href="javascript:void(0)">@Lang.MyAccount</a></li>
             <li><a class="menu-item" id="menuPaymentRequest" href="javascript:void(0)">@Lang.PaymentRequest</a></li>
             <li><a class="menu-item" id="menuRevenueReport" href="javascript:void(0)">@Lang.CommissionReport</a></li>
-            <li class="parent">
-                <a class="menu-item" href="javascript:;">CPA Report<i class="caret"></i></a>
-                <ul class="menu submenu-container list-unstyled">
-                    <li><a class="menu-item" id="menuPlayerCPAReport" href="javascript:void(0)">Affiliate CPA Report</a></li>
-                </ul>
-            </li>
+            @if (sessionService.UserSession.GroupTypeId != GroupType.RevenueShareTypeId)
+            {
+                <li class="parent">
+                    <a class="menu-item" href="javascript:;">@Lang.CPAReport <i class="caret"></i></a>
+                    <ul class="menu submenu-container list-unstyled">
+                        <li><a class="menu-item" id="menuPlayerCPAReport" href="javascript:void(0)">@Lang.PlayerCPAReport</a></li>
+                        <li><a class="menu-item" id="menuPaymentCPAReport" href="javascript:void(0)">@Lang.PaymentCPAReport</a></li>
+                    </ul>
+                </li>
+            }
             <li class="parent">
                 <a class="menu-item" href="javascript:;">@Lang.Statistics <i class="caret"></i></a>
                 <ul class="menu submenu-container list-unstyled">

@@ -4,6 +4,8 @@
     using BusinessService;
     using CoreService;
     using Fanex.Affiliate.User.Core.BusinessService.CPAReport;
+    using Fanex.Affiliate.User.Core.Constants;
+    using Fanex.Affiliate.User.Core.Extensions;
     using Filters;
     using MetalModels.UserPanel.CPAReport;
     using Utilities;
@@ -25,6 +27,15 @@
         [AjaxOnly]
         public ActionResult Index()
         {
+            if (SessionService.UserSession.GroupTypeId == GroupType.RevenueShareTypeId)
+            {
+                return Json(new
+                {
+                    success = false,
+                    redirectUrl = Url.RenderLanguageContent("~/UserPanel/Main/#AccountOverview")
+                }, JsonRequestBehavior.AllowGet);
+            }
+
             var now = DateTimeHelper.Gmt8Now;
             var viewModel = new CPAReportViewModel
             {

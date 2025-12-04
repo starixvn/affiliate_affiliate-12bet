@@ -196,7 +196,8 @@
             rowItems.push('<td class="text-center">' + dataRow.DisplayHoldingExpiredDate + '</td>');
             rowItems.push(_me.buildCell(BasePCAReport.formatDecimal(dataRow.EstimatedCPAAmount)));
             rowItems.push('<td class="text-center">' + dataRow.DisplayFirstDepositDate + '</td>');
-            rowItems.push('<td class="text-center">' + dataRow.RecheckDays + '</td>');
+            rowItems.push('<td class="text-center">' + dataRow.DisplayRecheckDays + '</td>');
+
             rowItems.push('<td class="text-center">' + dataRow.DisplayExpiredRedepositDate + '</td>');
             rowItems.push('<td class="text-center">' + (dataRow.IsRedeposit !== undefined ? (dataRow.IsRedeposit ? langResource.yes : langResource.no) : '-') + '</td>');
 

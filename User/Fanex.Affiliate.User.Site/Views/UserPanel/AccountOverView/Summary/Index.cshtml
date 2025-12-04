@@ -58,7 +58,7 @@
                 <ul class="menu list-unstyled">
                     <li><a href="javascript:;" data-name="Overview" class="menu-item details-section-menu-item" id="menuOverview">@Lang.Overview</a></li>
                     <li><a href="javascript:;" data-name="PlayersDetails" class="menu-item details-section-menu-item" id="menuPlayersDetails">@Lang.PlayersDetails</a></li>
-                    @if (!Model.IsMaxLevel)
+                    @if (!Model.IsMaxSubLevel && Model.IsSubCommRate)
                     {
                         <li><a href="javascript:;" data-name="SubAffDetails" class="menu-item details-section-menu-item" id="menuSubAffDetails">@Lang.SubAffDetail</a></li>
                     }

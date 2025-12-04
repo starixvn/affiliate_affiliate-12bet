@@ -6,6 +6,6 @@
     {
         public LastLoginInfo LastLoginInfo { get; set; }
 
-        public bool IsMaxLevel { get; set; }
+        public bool IsMaxSubLevel { get; set; }
     }
 }

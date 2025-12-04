@@ -16,7 +16,7 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
         public void Index_WhenCall_ReturnCorrectView()
         {
             // Arrange
-            var expectResult = new AccountOverviewViewModel { IsMaxLevel = false, LastLoginInfo = new LastLoginInfo() };
+            var expectResult = new AccountOverviewViewModel { IsMaxSubLevel = false, LastLoginInfo = new LastLoginInfo() };
             var repository = new Mock<IAccountOverviewService>();
             repository.Setup(r => r.GetLastLoginInfo(It.IsAny<int>())).Returns(expectResult.LastLoginInfo);
             var controller = new AccountOverviewController(MockingHelper.GetSessionService(), Mock.Of<ISystemService>(), repository.Object);

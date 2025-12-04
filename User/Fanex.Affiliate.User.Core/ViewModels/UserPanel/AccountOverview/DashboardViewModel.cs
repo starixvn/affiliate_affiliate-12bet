@@ -4,6 +4,10 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel.AccountOverview
 {
     public class DashboardViewModel : BaseGroupTypeId
     {
+        public bool IsMaxSubLevel { get; set; }
+
+        public bool IsSubCommRate { get; set; }
+
         public bool IsGetMonthly { get; set; }
 
         public bool IsCurrentMonth { get; set; }

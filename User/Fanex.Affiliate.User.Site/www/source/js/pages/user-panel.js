@@ -97,6 +97,18 @@ var UserPanel = (function ($) {
                 cache: false,
                 url: url,
                 success: function (response) {
+                    // Check if response is JSON (redirect response)
+                    try {
+                        var jsonResponse = typeof response === 'string' ? JSON.parse(response) : response;
+                        if (jsonResponse.redirectUrl) {
+                            // Handle redirect from server
+                            window.location.href = jsonResponse.redirectUrl;
+                            return;
+                        }
+                    } catch (e) {
+                        // Not JSON, treat as HTML
+                    }
+                    
                     $("#mainPanel").html(response);
                 },
                 beforeSend: function () {

@@ -29,7 +29,7 @@
             var model = new AccountOverviewViewModel
             {
                 LastLoginInfo = lastLoginInfo,
-                IsMaxLevel = SessionService.UserSession.IsMaxSubLevel
+                IsMaxSubLevel = SessionService.UserSession.IsMaxSubLevel
             };
 
             return View("~/Views/UserPanel/AccountOverView/Index.cshtml", model);

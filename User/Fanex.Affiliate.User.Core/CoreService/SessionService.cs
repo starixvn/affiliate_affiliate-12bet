@@ -100,6 +100,7 @@ namespace Fanex.Affiliate.User.Core.CoreService
                 AffType = authorizedUser.AffType,
                 GroupName = authorizedUser.GroupName,
                 GroupTypeId = authorizedUser.GroupTypeId,
+                IsSubCommRate = authorizedUser.IsSubCommRate,
                 IsMaxSubLevel = authorizedUser.IsMaxSubLevel,
                 DisabledTransfer = true //authorizedUser.DisabledTransfer //Hide Transfer Player
             };
