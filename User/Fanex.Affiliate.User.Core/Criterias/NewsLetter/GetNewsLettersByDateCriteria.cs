@@ -14,6 +14,6 @@
 
         public override string GetSettingKey() => "Aff_Admin_Newsletter_Sel";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => Date != default;
     }
 }

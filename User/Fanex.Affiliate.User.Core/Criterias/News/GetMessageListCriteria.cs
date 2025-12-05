@@ -11,7 +11,5 @@
         public string Language { get; set; }
 
         public override string GetSettingKey() => DbSettingHelper.BuildSpKey(IsInternal, SpKey);
-
-        public override bool IsValid() => true;
     }
 }

@@ -2,9 +2,11 @@
 {
     using Utilities;
 
-    public class GetStatisticsDetailBySiteCriteria : AffPagingByDateCriteria
+    public class GetStatisticsDetailBySiteCriteria : PagingByDateCriteria
     {
         private const string SpKey = "Aff_ClickStatisticsDetailBySite";
+
+        public int AffId { get; set; }
 
         public short DeviceType { get; set; }
 
@@ -16,6 +18,6 @@
 
         public override string GetSettingKey() => DbSettingHelper.BuildSpKey(IsInternal, SpKey);
 
-        public override bool IsValid() => AffId > 0;
+        public override bool IsValid() => AffId > 0 && base.IsValid();
     }
 }

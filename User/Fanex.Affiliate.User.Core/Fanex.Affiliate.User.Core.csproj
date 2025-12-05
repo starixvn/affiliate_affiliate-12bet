@@ -310,7 +310,6 @@
     <Compile Include="Criterias\Account\GetUserInfoByEmailCriteria.cs" />
     <Compile Include="Criterias\Account\GetUserInfoByIdCriteria.cs" />
     <Compile Include="Criterias\AffByDateCriteria.cs" />
-    <Compile Include="Criterias\AffPagingByDateCriteria.cs" />
     <Compile Include="Criterias\AffPagingCriteria.cs" />
     <Compile Include="Criterias\BaseCriteria.cs" />
     <Compile Include="Criterias\Comm\GetAffiliateCommissionCriteria.cs" />

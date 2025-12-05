@@ -3,7 +3,5 @@
     public class GetUserOverviewDetailListCriteria : AffByDateCriteria
     {
         public override string GetSettingKey() => "Aff_User_Overview_Detail_Sel";
-
-        public override bool IsValid() => AffId > 0;
     }
 }
