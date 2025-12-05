@@ -4,6 +4,7 @@
     var _isSortingAsc = false;
     var _currentBaseCurrency = 0;
     const _currentPage = "RevenueReport";
+    var _isSubmited = false;
 
     function formatDecimal(value) {
         return format(value, 2)
@@ -30,6 +31,7 @@
     var _me = {
         initialize: function () {
             _me.initEvent();
+            _me.toggleTable();
         },
 
         initEvent: function () {
@@ -70,6 +72,10 @@
 
         },
 
+        toggleTable: function () {
+            $('#dataTable').toggle(_isSubmited);
+        },
+
         submit: function () {
             _currentBaseCurrency = $("#base-currency").val();
             var param = {
@@ -85,7 +91,9 @@
                 contentType: "application/json; charset=UTF-8",
                 success: function (response) {
                     _reportData = response;
+                    _isSubmited = true;
                     if (_reportData) {
+                        _me.toggleTable();
                         _me.renderData();
                         _me.activeSortIcon($('#defaultSorting'));
                     }

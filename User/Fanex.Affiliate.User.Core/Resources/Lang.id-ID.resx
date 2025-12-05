@@ -1922,7 +1922,7 @@ Periksa folder Spam apabila Anda tidak menerima email atau &lt;a href='{0}'&gt;H
   <data name="Copied" xml:space="preserve">
     <value>Salinan</value>
   </data>
-  <data name="No" xml:space="preserve">
+  <data name="STT" xml:space="preserve">
     <value>No.</value>
   </data>
   <data name="Dimension" xml:space="preserve">
@@ -2411,11 +2411,11 @@ PEMBAYARAN KONSISTEN</value>
   <data name="RevenueShareByWinloss" xml:space="preserve">
     <value>Hitung Pembagian Pendapatan berdasarkan Kemenangan/Kerugian</value>
   </data>
-  <data name="UncalculatedCommission" xml:space="preserve">
-    <value>Pembagian Pendapatan yang Belum Dihitung</value>
+  <data name="UncalculatedTentativeSubAffiliateRevenueShare" xml:space="preserve">
+    <value>Bagi Hasil Sub-Afiliasi Tentatif yang Belum Dihitung</value>
   </data>
-  <data name="CurrentCommission" xml:space="preserve">
-    <value>Pembagian Pendapatan Saat Ini</value>
+  <data name="TentativeSubAffiliateRevenueShare" xml:space="preserve">
+    <value>Bagi Hasil Sub-Afiliasi Tentatif</value>
   </data>
   <data name="AffiliateCurrency" xml:space="preserve">
     <value>Mata Uang Afiliasi</value>
@@ -2536,19 +2536,265 @@ Anda juga bisa mengirim email ke {1} atau cukup isi formulir di bawah ini.</valu
   <data name="VietnamCountry" xml:space="preserve">
     <value>Viet Nam </value>
   </data>
-  <data name="ActiveReferredPlayers" xml:space="preserve">
-    <value>Pemain aktif yang direferensikan</value>
-  </data>
-  <data name="NetWinLoss" xml:space="preserve">
-    <value>Kemenangan bersih Perusahaan ($)</value>
-  </data>
-  <data name="YourRevenueShare" xml:space="preserve">
-    <value>Pembagian Penghasilan Anda</value>
-  </data>
-  <data name="RevenueSharePayoutExample" xml:space="preserve">
-    <value>Contoh Pembayaran Pembagian Hasil</value>
-  </data>
   <data name="NetRevenue" xml:space="preserve">
     <value>Pendapatan Bersih</value>
+  </data>
+  <data name="CPAReport" xml:space="preserve">
+    <value>Laporan CPA</value>
+  </data>
+  <data name="CPAAmount" xml:space="preserve">
+    <value>Jumlah CPA</value>
+  </data>
+  <data name="NotQualified" xml:space="preserve">
+    <value>Tidak terkualifikasi</value>
+  </data>
+  <data name="Qualified" xml:space="preserve">
+    <value>Terkualifikasi</value>
+  </data>
+  <data name="RedepositStatistics" xml:space="preserve">
+    <value>Statistik Redeposit</value>
+  </data>
+  <data name="EstimatedCPAAmount" xml:space="preserve">
+    <value>Perkiraan Jumlah CPA</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>hari</value>
+  </data>
+  <data name="Monitoring" xml:space="preserve">
+    <value>Monitoring</value>
+  </data>
+  <data name="StartFrom" xml:space="preserve">
+    <value>Mulai Dari</value>
+  </data>
+  <data name="RecheckDay" xml:space="preserve">
+    <value>hari pemeriksaan ulang</value>
+  </data>
+  <data name="TotalAllPages" xml:space="preserve">
+    <value>Total ( semua halaman )</value>
+  </data>
+  <data name="RedepositRate" xml:space="preserve">
+    <value>% Redeposit</value>
+  </data>
+  <data name="CPAStatus" xml:space="preserve">
+    <value>Status CPA</value>
+  </data>
+  <data name="Approval Date" xml:space="preserve">
+    <value>Tanggal Disetujui</value>
+  </data>
+  <data name="ProductGroup" xml:space="preserve">
+    <value>Grup Produk</value>
+  </data>
+  <data name="NumberOfPlayerRedeposit" xml:space="preserve">
+    <value>Jumlah Pemain Redeposit</value>
+  </data>
+  <data name="ExpiredRedepositDate" xml:space="preserve">
+    <value>Tanggal Redeposit Kadaluwarsa</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>Tanggal Registrasi</value>
+  </data>
+  <data name="QuotaExceeded" xml:space="preserve">
+    <value>Kuota Melewati Batas</value>
+  </data>
+  <data name="Quota" xml:space="preserve">
+    <value>Kuota</value>
+  </data>
+  <data name="ActivePeriod" xml:space="preserve">
+    <value>Periode Aktif</value>
+  </data>
+  <data name="HoldingExpiredDate" xml:space="preserve">
+    <value>Tanggal Kadaluwarsa Ditahan</value>
+  </data>
+  <data name="HoldingQualifiedDate" xml:space="preserve">
+    <value>Tanggal Terkualifikasi Ditahan</value>
+  </data>
+  <data name="HoldingPeriod" xml:space="preserve">
+    <value>Periode Ditahan</value>
+  </data>
+  <data name="ActiveQualifiedDate" xml:space="preserve">
+    <value>Tanggal Terkualifikasi Aktif</value>
+  </data>
+  <data name="BetTicket" xml:space="preserve">
+    <value>Tiket Taruhan</value>
+  </data>
+  <data name="Ineligible" xml:space="preserve">
+    <value>Tidak Memenuhi Syarat</value>
+  </data>
+  <data name="Eligible" xml:space="preserve">
+    <value>Memenuhi Syarat</value>
+  </data>
+  <data name="TentativeCpaEarning" xml:space="preserve">
+    <value>Pendapatan CPA Tentatif</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>Lihat Berdasarkan</value>
+  </data>
+  <data name="CpaEarning" xml:space="preserve">
+    <value>Pendapatan CPA</value>
+  </data>
+  <data name="SubAffiliateRevenueShare" xml:space="preserve">
+    <value>Bagi Hasil Sub-Afiliasi</value>
+  </data>
+  <data name="ApprovedCpaEarning" xml:space="preserve">
+    <value>Pendapatan CPA yang Disetujui</value>
+  </data>
+  <data name="SubCpaEarning" xml:space="preserve">
+    <value>CPA Sub-Afiliasi</value>
+  </data>
+  <data name="AllStatuses" xml:space="preserve">
+    <value>Semua Status</value>
+  </data>
+  <data name="TurnoverCPADetail" xml:space="preserve">
+    <value>Detail Turnover CPA</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Grup {0}</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>{0} dipilih</value>
+  </data>
+  <data name="NoneSelect" xml:space="preserve">
+    <value>Tidak Ada Pilih</value>
+  </data>
+  <data name="CPAAmountDescription" xml:space="preserve">
+    <value>Klik untuk melihat detil Turnover CPA</value>
+  </data>
+  <data name="FdmAmt" xml:space="preserve">
+    <value>Jumlah FTD</value>
+  </data>
+  <data name="RedepositFailed" xml:space="preserve">
+    <value>Redeposit Gagal</value>
+  </data>
+  <data name="ScheduleEndDate" xml:space="preserve">
+    <value>Tanggal Akhir Jadwal</value>
+  </data>
+  <data name="FinalCPAAmount" xml:space="preserve">
+    <value>Jumlah CPA Final</value>
+  </data>
+  <data name="TotalCommission" xml:space="preserve">
+    <value>Total bagi hasil</value>
+  </data>
+  <data name="IsRedeposit" xml:space="preserve">
+    <value>Redeposit</value>
+  </data>
+  <data name="AutomaticallyApproved" xml:space="preserve">
+    <value>Disetujui Otomatis</value>
+  </data>
+  <data name="RedepositQualifiedPeriod" xml:space="preserve">
+    <value>Periode Redeposit Memenuhi Syarat</value>
+  </data>
+  <data name="EligiblePlayers" xml:space="preserve">
+    <value>Pemain yang Memenuhi Syarat</value>
+  </data>
+  <data name="ExpiredDate" xml:space="preserve">
+    <value>Tanggal Kadaluwarsa</value>
+  </data>
+  <data name="AutoApprovedDate" xml:space="preserve">
+    <value>CPA Disetujui Otomatis</value>
+  </data>
+  <data name="PaymentSchedule" xml:space="preserve">
+    <value>Jadwal Pembayaran</value>
+  </data>
+  <data name="CpaAdjustment" xml:space="preserve">
+    <value>Penyesuaian CPA</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>Tanggal Akhir</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Tanggal Mulai</value>
+  </data>
+  <data name="Empty" xml:space="preserve">
+    <value>Kosong</value>
+  </data>
+  <data name="ManuallyApproved" xml:space="preserve">
+    <value>Disetujui Manual</value>
+  </data>
+  <data name="PaymentCPAReport" xml:space="preserve">
+    <value>Laporan Pembayaran CPA</value>
+  </data>
+  <data name="AdjustmentDate" xml:space="preserve">
+    <value>Tanggal Penyesuaian</value>
+  </data>
+  <data name="ExpiredDateDescription" xml:space="preserve">
+    <value>Hari akhir untuk pemain melakukan redeposit</value>
+  </data>
+  <data name="HoldingExpiredDateDescription" xml:space="preserve">
+    <value>Tanggal akhir dari periode ditahan</value>
+  </data>
+  <data name="HoldingQualifiedDateDescription" xml:space="preserve">
+    <value>Tanggal ketika tiket taruhan minimal memenuhi syarat</value>
+  </data>
+  <data name="IsRedepositDescription" xml:space="preserve">
+    <value>Tunjukkan apabila pemain telah melakukan redeposit</value>
+  </data>
+  <data name="PlayerCPAReport" xml:space="preserve">
+    <value>Laporan Pemain CPA</value>
+  </data>
+  <data name="BetTicketDescription" xml:space="preserve">
+    <value>Total tiket taruhan selama periode ditahan</value>
+  </data>
+  <data name="AffiliateLink" xml:space="preserve">
+    <value>Tautan Afiliasi</value>
+  </data>
+  <data name="TotalDepositsDescription" xml:space="preserve">
+    <value>Total deposit yang dilakukan oleh Pemain selama Periode Aktivitas. Deposit setelah periode ini tidak termasuk.</value>
+  </data>
+  <data name="ActiveQualifiedDateDescription" xml:space="preserve">
+    <value>Tanggal ketika tiket taruhan minimal memenuhi syarat</value>
+  </data>
+  <data name="AdjustmentAmount" xml:space="preserve">
+    <value>Jumlah Penyesuaian</value>
+  </data>
+  <data name="Settled" xml:space="preserve">
+    <value>Diselesaikan</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ya</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Tidak</value>
+  </data>
+  <data name="QualifiedRevenueSharePlayers" xml:space="preserve">
+    <value>Pemain Yang Memenuhi Syarat Bagi Hasil</value>
+  </data>
+  <data name="QualifiedCPAPlayers" xml:space="preserve">
+    <value>Pemain Yang Memenuhi Syarat CPA</value>
+  </data>
+  <data name="TentativeCPAAmount" xml:space="preserve">
+    <value>Jumlah CPA Tentatif</value>
+  </data>
+  <data name="TentativeRevenueShare" xml:space="preserve">
+    <value>Bagi Hasil Tentatif </value>
+  </data>
+  <data name="ApprovedCPAAmount" xml:space="preserve">
+    <value>Jumlah CPA yang Disetujui</value>
+  </data>
+  <data name="MonthToDateTentativeAmount" xml:space="preserve">
+    <value>Jumlah perkiraan bulan berjalan</value>
+  </data>
+  <data name="PlayersWhoPassed" xml:space="preserve">
+    <value>Pemain yang melewati Periode Ditahan dan tidak gagal dalam Periode ReDeposit (dalam kuota)</value>
+  </data>
+  <data name="QualifiedPlayers" xml:space="preserve">
+    <value>Pemain Yang Memenuhi Syarat</value>
+  </data>
+  <data name="TotalCPAAmountForEligiblePlayers" xml:space="preserve">
+    <value>Total jumlah CPA untuk pemain yang memenuhi syarat hingga sisa kuota, dari awal hingga Tanggal (abaikan Tanggal Mulai)</value>
+  </data>
+  <data name="PlayersWhoPassedTheHoldingPeriod" xml:space="preserve">
+    <value>Pemain yang melewati Periode Ditahan dan tidak gagal dalam Periode ReDeposit (dalam kuota)</value>
+  </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>Rentang Tanggal</value>
+  </data>
+  <data name="RevenueShareAndNetRevenue" xml:space="preserve">
+    <value>Bagi Hasil dan Pendapatan Bersih hanya ditampilkan saat dilihat berdasarkan bulan</value>
+  </data>
+  <data name="TentativeMonthlyEarning" xml:space="preserve">
+    <value>Pendapatan Bulanan Tentatif</value>
+  </data>
+  <data name="UncalculatedTentativeMonthlyEarning" xml:space="preserve">
+    <value>Pendapatan Bulanan Tentatif yang Belum Dihitung</value>
   </data>
 </root>

@@ -1,0 +1,130 @@
+@{
+    Layout = null;
+}
+
+
+@model Fanex.Affiliate.User.Core.ViewModels.UserPanel.CPAReport.CPAReportViewModel
+@Html.InlineStyles("~/www/build/styles/css/cpa-report/player-cpa-report.css")
+
+<div class="page-title">
+    <span class="text">@Lang.PlayerCPAReport</span>
+</div>
+
+<div class="info-group">
+    <div class="panel custom-panel">
+        <div class="panel-body">
+            <form class="form-inline form-filter">
+                <div class="form-group">
+                    <label for="Player">@Lang.Player:</label>
+                    <input class="form-control" type="text" id="Player" />
+                </div>
+                @RazorHelper.RenderMultipleSelect("Status", $"{Lang.CPAStatus}:", Model.StatusList, true, new SelectListItem { Value = "-1", Text = Lang.AllStatuses, Selected = true })
+                <div class="form-group">
+                    <label for="ViewBy">@Lang.ViewBy:</label>
+                    <select id="ViewBy" class="form-control view-by-select">
+                        <option value="1">@Lang.ActiveQualifiedDate</option>
+                        <option value="2">@Lang.HoldingQualifiedDate</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="FromDate">@Lang.From:</label>
+                        <div id="fromPicker" class="date-wrapper">
+                            <input readonly id="FromDate" class="form-control" type="text" value="@Model.FromDate.ToString("MM/dd/yyyy")" />
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ToDate">@Lang.To:</label>
+                        <div id="toPicker" class="date-wrapper">
+                            <input readonly id="ToDate" class="form-control" type="text" value="@Model.ToDate.ToString("MM/dd/yyyy")" />
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-submit" id="btnSubmit">@Lang.Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="report-container">
+    <div class="table player-cpa-report table-responsive">
+        <table id="playerCPAReportTable">
+            <thead>
+                <!-- Main category header row -->
+                <tr>
+                    <th rowspan="2" width="3%" class="th">#</th>
+                    <th rowspan="2" width="10%" class="th">@Lang.Player</th>
+                    <th rowspan="2" width="6%" class="th">@Lang.RegistrationDate</th>
+                    <th colspan="4" class="th">@Lang.ActivePeriod</th>
+                    <th colspan="4" class="th">@Lang.HoldingPeriod</th>
+                    <th colspan="4" class="th">@Lang.RedepositQualifiedPeriod</th>
+                    <th rowspan="2" class="th" width="6%">@Lang.CPAStatus</th>
+                </tr>
+                <!-- Column header row -->
+                <tr>
+                    <th class="th" width="7%">@Lang.FTD</th>
+                    <th class="th" width="7%">@Lang.TotalDeposit<span title="@Lang.TotalDepositsDescription" class="margin-left-3 glyphicon glyphicon-info-sign"></span></th>
+                    <th class="th" width="6%">@Lang.ActiveQualifiedDate<span title="@Lang.ActiveQualifiedDateDescription" class="margin-left-3 glyphicon glyphicon-info-sign"></span></th>
+                    <th class="th" width="7%">@Lang.CPAAmount<span title="@Lang.CPAAmountDescription" class="margin-left-3 glyphicon glyphicon-info-sign"></span></th>
+                    <th class="th" width="5%">@Lang.BetTicket<span title="@Lang.BetTicketDescription" class="margin-left-3 glyphicon glyphicon-info-sign"></span></th>
+                    <th class="th" width="6%">@Lang.HoldingQualifiedDate<span title="@Lang.HoldingQualifiedDateDescription" class="margin-left-3 glyphicon glyphicon-info-sign"></span></th>
+                    <th class="th" width="6%">@Lang.HoldingExpiredDate<span title="@Lang.HoldingExpiredDateDescription" class="margin-left-3 glyphicon glyphicon-info-sign"></span></th>
+                    <th class="th" width="7%">@Lang.EstimatedCPAAmount</th>
+                    <th class="th" width="6%">@Lang.FirstDepositDate</th>
+                    <th class="th" width="5%">@Lang.RecheckDay</th>
+                    <th class="th" width="6%">@Lang.ExpiredDate<span title="@Lang.ExpiredDateDescription" class="margin-left-3 glyphicon glyphicon-info-sign"></span></th>
+                    <th class="th" width="5%">@Lang.IsRedeposit<span title="@Lang.IsRedepositDescription" class="margin-left-3 glyphicon glyphicon-info-sign"></span></th>
+                </tr>
+            </thead>
+            <tbody id="playerCPAReportTbody"></tbody>
+        </table>
+        <div id="playerCPAPager"></div>
+    </div>
+    <div id="playerCPATurnover" class="table player-cpa-turnover table-responsive modal-dialog modal fade display-none" tabindex="-1">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    @Lang.TurnoverCPADetail
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <img src="~/www/build/styles/Images/close-line.svg" alt="close-line" class="show-pc" />
+                    <img src="~/www/build/styles/Images/close-line-mobile.svg" alt="close-line" class="show-mobile" />
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-medium">
+                    <thead>
+                        <tr>
+                            <th width="20%" class="th">@Lang.ProductGroup</th>
+                            <th width="20%" class="th"> @Lang.Turnover</th>
+                            <th width="20%" class="th">@Lang.CPAAmount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="playerCAPTurnoverTbody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var langResource = {
+        allSelected: '@Lang.AllStatuses',
+        selected: '@Lang.Selected',
+        noneSelect: '@Lang.NoneSelect',
+        noInfo: '@Lang.NoInfo',
+        totalAllPages: '@Lang.TotalAllPages',
+        group: '@Lang.Group',
+        total: '@Lang.Total',
+        yes: '@Lang.Yes',
+        no: '@Lang.No',
+        theHighestShare: '@Lang.TheHighestShare',
+        isInvalid: '@Error.IsInvalid'
+    }
+</script>
+
+<script src="@Url.RenderLink("~/www/build/js/pages/cpa-report/player-cpa-report.js")"></script>

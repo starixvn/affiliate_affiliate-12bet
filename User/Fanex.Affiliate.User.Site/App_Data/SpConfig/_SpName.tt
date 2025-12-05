@@ -1,8 +1,6 @@
 ﻿<#@ template debug="true" hostSpecific="true" #>
 <#@ output extension=".txt" #>
-<#@ import namespace="System" #>
-<#@ import namespace="System.Linq" #>
-<#@ include file="$(SolutionDir)\packages\T4.TemplateFileManager.2.2.1\tools\ttinc\TemplateFilemanager.CS.ttinclude" #>
+<#@ include file="$(SolutionDir)\T4.FileManager.VisualStudio.ttinclude" #>
 
 <#
 	var projectPath = Host.ResolveAssemblyReference("$(SolutionDir)") + @"\User\";
@@ -20,7 +18,7 @@
 	{
 		var fileName = env == "dev" ? "SpName.xml" : string.Format("SpName.12b-user.{0}.xml", env);
 		var spContent = originalSpName;
-		manager.StartNewFile(fileName);
+		manager.StartNewFile(fileName, "Fanex.Affiliate.User.Site", "App_Data\\SpConfig");
 
 		foreach(var element in elements)
 		{

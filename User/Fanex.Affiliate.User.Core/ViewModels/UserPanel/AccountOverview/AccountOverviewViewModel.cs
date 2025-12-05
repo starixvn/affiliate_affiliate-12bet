@@ -1,4 +1,4 @@
-﻿namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
+﻿namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel.AccountOverview
 {
     using Fanex.Affiliate.User.Core.DTO.UserPanel.AccountOverview;
 
@@ -6,6 +6,6 @@
     {
         public LastLoginInfo LastLoginInfo { get; set; }
 
-        public bool IsMaxLevel { get; set; }
+        public bool IsMaxSubLevel { get; set; }
     }
 }

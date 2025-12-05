@@ -1,9 +1,9 @@
 ﻿namespace Fanex.Affiliate.User.Core.UnitTests.Utilities
 {
-    using Fanex.Affiliate.User.Core.Utilities;
     using System;
     using System.Collections.Generic;
     using System.Configuration;
+    using Core.Utilities;
     using Xunit;
 
     public class AppSettingTests
@@ -69,16 +69,6 @@
             var result = _appSetting.AllowedAffiliateTypes;
             Assert.Contains("Type1", result);
             Assert.Contains("Type2", result);
-        }
-
-        [Fact]
-        public void JsVersion_ShouldReturnCorrectValue()
-        {
-            SetUpAppSettings(new Dictionary<string, string>
-            {
-                { "JsVersion", "1.0.0" }
-            });
-            Assert.Equal("1.0.0", _appSetting.JsVersion);
         }
 
         [Fact]

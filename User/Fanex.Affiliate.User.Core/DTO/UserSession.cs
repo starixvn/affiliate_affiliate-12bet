@@ -19,11 +19,11 @@ namespace Fanex.Affiliate.User.Core.DTO.Auth
 
         public string GroupName { get; set; }
 
+        public int GroupTypeId { get; set; }
+
         public bool IsMaxSubLevel { get; set; }
 
-        public bool IsDepositFeePercent { get; set; }
-
-        public bool IsWithdrawalFeePercent { get; set; }
+        public bool IsSubCommRate { get; set; }
 
         public int BaseCurrency { get; set; }
 

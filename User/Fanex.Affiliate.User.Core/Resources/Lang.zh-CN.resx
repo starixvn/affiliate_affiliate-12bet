@@ -1233,7 +1233,7 @@
     <value>多哥</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>总数</value>
+    <value>总计</value>
   </data>
   <data name="TotalClick" xml:space="preserve">
     <value>總點擊量</value>
@@ -1831,7 +1831,7 @@
     <value>$1及以上</value>
   </data>
   <data name="RevenueShare" xml:space="preserve">
-    <value>收入占比</value>
+    <value>收益分成</value>
   </data>
   <data name="CambodiaSupport" xml:space="preserve">
     <value>柬埔寨客服</value>
@@ -1925,7 +1925,7 @@
   <data name="Copied" xml:space="preserve">
     <value>复制</value>
   </data>
-  <data name="No" xml:space="preserve">
+  <data name="STT" xml:space="preserve">
     <value>序号</value>
   </data>
   <data name="Dimension" xml:space="preserve">
@@ -2438,11 +2438,11 @@
   <data name="RevenueShareByWinloss" xml:space="preserve">
     <value>按输赢结果计算收入占比</value>
   </data>
-  <data name="UncalculatedCommission" xml:space="preserve">
-    <value>未计算的收入占比</value>
+  <data name="UncalculatedTentativeSubAffiliateRevenueShare" xml:space="preserve">
+    <value>下级合作伙伴尚未计算的暂定月收入</value>
   </data>
-  <data name="CurrentCommission" xml:space="preserve">
-    <value>当前收入占比</value>
+  <data name="TentativeSubAffiliateRevenueShare" xml:space="preserve">
+    <value>下级合作伙伴暂定月收入</value>
   </data>
   <data name="AffiliateCurrency" xml:space="preserve">
     <value>合作伙伴货币</value>
@@ -2556,19 +2556,265 @@
   <data name="VietnamCountry" xml:space="preserve">
     <value>越南</value>
   </data>
-  <data name="ActiveReferredPlayers" xml:space="preserve">
-    <value>活跃推荐玩家</value>
-  </data>
-  <data name="NetWinLoss" xml:space="preserve">
-    <value>公司净赢额 ($)</value>
-  </data>
-  <data name="YourRevenueShare" xml:space="preserve">
-    <value>您的佣金盈利</value>
-  </data>
-  <data name="RevenueSharePayoutExample" xml:space="preserve">
-    <value>佣金盈利计算示例</value>
-  </data>
   <data name="NetRevenue" xml:space="preserve">
     <value>净收入</value>
+  </data>
+  <data name="CPAReport" xml:space="preserve">
+    <value>CPA 报告</value>
+  </data>
+  <data name="CPAAmount" xml:space="preserve">
+    <value>CPA 金额</value>
+  </data>
+  <data name="NotQualified" xml:space="preserve">
+    <value>未达标</value>
+  </data>
+  <data name="Qualified" xml:space="preserve">
+    <value>已达标</value>
+  </data>
+  <data name="RedepositStatistics" xml:space="preserve">
+    <value>再存款数据统计</value>
+  </data>
+  <data name="EstimatedCPAAmount" xml:space="preserve">
+    <value>CPA 预估金额</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>天</value>
+  </data>
+  <data name="Monitoring" xml:space="preserve">
+    <value>监控中</value>
+  </data>
+  <data name="StartFrom" xml:space="preserve">
+    <value>起始日期</value>
+  </data>
+  <data name="RecheckDay" xml:space="preserve">
+    <value>复核天数</value>
+  </data>
+  <data name="TotalAllPages" xml:space="preserve">
+    <value>总计（所有分页）</value>
+  </data>
+  <data name="RedepositRate" xml:space="preserve">
+    <value>再存款率</value>
+  </data>
+  <data name="CPAStatus" xml:space="preserve">
+    <value>CPA 状态</value>
+  </data>
+  <data name="Approval Date" xml:space="preserve">
+    <value>批准日期</value>
+  </data>
+  <data name="ProductGroup" xml:space="preserve">
+    <value>产品组</value>
+  </data>
+  <data name="NumberOfPlayerRedeposit" xml:space="preserve">
+    <value>再存款玩家数</value>
+  </data>
+  <data name="ExpiredRedepositDate" xml:space="preserve">
+    <value>到期再存款日期</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>注册日期</value>
+  </data>
+  <data name="QuotaExceeded" xml:space="preserve">
+    <value>超出配额</value>
+  </data>
+  <data name="Quota" xml:space="preserve">
+    <value>配额</value>
+  </data>
+  <data name="ActivePeriod" xml:space="preserve">
+    <value>活跃期间</value>
+  </data>
+  <data name="HoldingExpiredDate" xml:space="preserve">
+    <value>观察期截止日期</value>
+  </data>
+  <data name="HoldingQualifiedDate" xml:space="preserve">
+    <value>观察期达标日期</value>
+  </data>
+  <data name="HoldingPeriod" xml:space="preserve">
+    <value>观察期间</value>
+  </data>
+  <data name="ActiveQualifiedDate" xml:space="preserve">
+    <value>激活达标日期</value>
+  </data>
+  <data name="BetTicket" xml:space="preserve">
+    <value>投注单</value>
+  </data>
+  <data name="Ineligible" xml:space="preserve">
+    <value>不符合资格</value>
+  </data>
+  <data name="Eligible" xml:space="preserve">
+    <value>符合资格</value>
+  </data>
+  <data name="TentativeCpaEarning" xml:space="preserve">
+    <value>暂定 CPA 收入</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>查看方式</value>
+  </data>
+  <data name="CpaEarning" xml:space="preserve">
+    <value>CPA 收入</value>
+  </data>
+  <data name="SubAffiliateRevenueShare" xml:space="preserve">
+    <value>下级合作伙伴收益分成</value>
+  </data>
+  <data name="ApprovedCpaEarning" xml:space="preserve">
+    <value>经批准的 CPA 收入</value>
+  </data>
+  <data name="SubCpaEarning" xml:space="preserve">
+    <value>下级合作伙伴 CPA 收入</value>
+  </data>
+  <data name="AllStatuses" xml:space="preserve">
+    <value>全部状态</value>
+  </data>
+  <data name="TurnoverCPADetail" xml:space="preserve">
+    <value>CPA 有效流水明细</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>第 {0} 组</value>
+  </data>
+  <data name="IsRedepositDescription" xml:space="preserve">
+    <value>显示玩家是否再次存款。</value>
+  </data>
+  <data name="PlayerCPAReport" xml:space="preserve">
+    <value>CPA 玩家报告</value>
+  </data>
+  <data name="CpaAdjustment" xml:space="preserve">
+    <value>CPA 调整</value>
+  </data>
+  <data name="TotalDepositsDescription" xml:space="preserve">
+    <value>活动期间内玩家的总存款金额，活动期结束后的存款将不予计算。</value>
+  </data>
+  <data name="ActiveQualifiedDateDescription" xml:space="preserve">
+    <value>玩家完成指定要求的日期（例如：最低首次存款金额、存款金额或流水金额）。</value>
+  </data>
+  <data name="BetTicketDescription" xml:space="preserve">
+    <value>观察期间内的总投注笔数。</value>
+  </data>
+  <data name="HoldingQualifiedDateDescription" xml:space="preserve">
+    <value>最低投注笔数达成日期。</value>
+  </data>
+  <data name="HoldingExpiredDateDescription" xml:space="preserve">
+    <value>观察期间终止日期。</value>
+  </data>
+  <data name="ExpiredDateDescription" xml:space="preserve">
+    <value>玩家可再次存款的最后日期。</value>
+  </data>
+  <data name="PaymentCPAReport" xml:space="preserve">
+    <value>CPA 付款报告</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>开始日期</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>结束日期</value>
+  </data>
+  <data name="AdjustmentAmount" xml:space="preserve">
+    <value>调整金额</value>
+  </data>
+  <data name="ManuallyApproved" xml:space="preserve">
+    <value>人工审核通过</value>
+  </data>
+  <data name="AffiliateLink" xml:space="preserve">
+    <value>合作伙伴链接</value>
+  </data>
+  <data name="RedepositQualifiedPeriod" xml:space="preserve">
+    <value>再存资格期间</value>
+  </data>
+  <data name="ExpiredDate" xml:space="preserve">
+    <value>到期日期</value>
+  </data>
+  <data name="IsRedeposit" xml:space="preserve">
+    <value>是否再次存款</value>
+  </data>
+  <data name="AutoApprovedDate" xml:space="preserve">
+    <value>CPA 自动批准</value>
+  </data>
+  <data name="AdjustmentDate" xml:space="preserve">
+    <value>调整日期</value>
+  </data>
+  <data name="Empty" xml:space="preserve">
+    <value>空白</value>
+  </data>
+  <data name="PaymentSchedule" xml:space="preserve">
+    <value>付款时间表</value>
+  </data>
+  <data name="EligiblePlayers" xml:space="preserve">
+    <value>符合资格玩家</value>
+  </data>
+  <data name="AutomaticallyApproved" xml:space="preserve">
+    <value>自动审核通过</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>已选择 {0} 项</value>
+  </data>
+  <data name="NoneSelect" xml:space="preserve">
+    <value>尚未选择</value>
+  </data>
+  <data name="CPAAmountDescription" xml:space="preserve">
+    <value>点击查看 CPA 流水明细</value>
+  </data>
+  <data name="FdmAmt" xml:space="preserve">
+    <value>首次存款金额</value>
+  </data>
+  <data name="RedepositFailed" xml:space="preserve">
+    <value>再次存款失败</value>
+  </data>
+  <data name="ScheduleEndDate" xml:space="preserve">
+    <value>日程结束日期</value>
+  </data>
+  <data name="FinalCPAAmount" xml:space="preserve">
+    <value>CPA 最终金额</value>
+  </data>
+  <data name="TotalCommission" xml:space="preserve">
+    <value>总收入份额</value>
+  </data>
+  <data name="Settled" xml:space="preserve">
+    <value>已结算</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="QualifiedRevenueSharePlayers" xml:space="preserve">
+    <value>符合资格的收益分成玩家</value>
+  </data>
+  <data name="QualifiedCPAPlayers" xml:space="preserve">
+    <value>符合资格的 CPA 玩家</value>
+  </data>
+  <data name="TentativeCPAAmount" xml:space="preserve">
+    <value>暂定 CPA 金额</value>
+  </data>
+  <data name="TentativeRevenueShare" xml:space="preserve">
+    <value>暂定收益分成金额</value>
+  </data>
+  <data name="ApprovedCPAAmount" xml:space="preserve">
+    <value>CPA 已核准金额</value>
+  </data>
+  <data name="MonthToDateTentativeAmount" xml:space="preserve">
+    <value>本月迄今预估金额</value>
+  </data>
+  <data name="PlayersWhoPassed" xml:space="preserve">
+    <value>观察期间符合资格且再存期间未失效的玩家（额度内）</value>
+  </data>
+  <data name="QualifiedPlayers" xml:space="preserve">
+    <value>符合资格的 玩家</value>
+  </data>
+  <data name="TotalCPAAmountForEligiblePlayers" xml:space="preserve">
+    <value>从开始至今（不考虑起始日期），符合资格玩家的 CPA 总金额（按剩余额度计算）</value>
+  </data>
+  <data name="PlayersWhoPassedTheHoldingPeriod" xml:space="preserve">
+    <value>观察期间符合资格且再存期间未失效的玩家（额度内）</value>
+  </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>日期区间</value>
+  </data>
+  <data name="RevenueShareAndNetRevenue" xml:space="preserve">
+    <value>收益分成和净收益仅在按月查看时显示。</value>
+  </data>
+  <data name="TentativeMonthlyEarning" xml:space="preserve">
+    <value>暂定月收入</value>
+  </data>
+  <data name="UncalculatedTentativeMonthlyEarning" xml:space="preserve">
+    <value>尚未计算的暂定月收入</value>
   </data>
 </root>

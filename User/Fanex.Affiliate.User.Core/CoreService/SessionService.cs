@@ -99,9 +99,9 @@ namespace Fanex.Affiliate.User.Core.CoreService
                 OnUserId = authorizedUser.OnUserId,
                 AffType = authorizedUser.AffType,
                 GroupName = authorizedUser.GroupName,
+                GroupTypeId = authorizedUser.GroupTypeId,
+                IsSubCommRate = authorizedUser.IsSubCommRate,
                 IsMaxSubLevel = authorizedUser.IsMaxSubLevel,
-                IsDepositFeePercent = authorizedUser.IsDepositFeePercent,
-                IsWithdrawalFeePercent = authorizedUser.IsWithdrawalFeePercent,
                 DisabledTransfer = true //authorizedUser.DisabledTransfer //Hide Transfer Player
             };
 

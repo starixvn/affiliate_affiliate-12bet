@@ -1,10 +1,8 @@
 ﻿var Summary = (function ($) {
-    function formatDateUnit(value) {
-        return value < 10 ? '0' + value : value;
-    }
+    const ViewByMonth = '0';
 
     function initMonthPicker() {
-        let today = $("#ToDay").val();
+        let today = $("#Today").val();
         const sixMonthAgo = new Date(today);
         sixMonthAgo.setMonth(sixMonthAgo.getMonth() - 6);
 
@@ -12,7 +10,7 @@
             range: [new Date(sixMonthAgo.getFullYear(), sixMonthAgo.getMonth() + 1, 1), new Date(today)],
             triggerSelector: "#monthPickerTrigger",
             onSelect: function (month, year) {
-                var date = formatDateUnit(month) + "/01/" + year;
+                var date = DatePickerComponent.formatDateUnit(month) + "/01/" + year;
                 $("#MonthDate").data("original-date", date);
             }
         });
@@ -20,31 +18,44 @@
 
     var _me = {
         initialize: function () {
-            var params = {
-                monthDate: $("#MonthDate").data("original-date")
+            const params = {
+                isGetMonthly: true,
+                fromDate: $("#MonthDate").data("original-date"),
+                toDate: $("#Today").val()
             };
 
             initMonthPicker();
+            DatePickerComponent.initLinkedDatePickers('FromDate', 'fromPicker', 'ToDate', 'toPicker', { 
+                datepickerRegistry: UserPanel.datepicker,
+                maxRangeMonths: 3 
+            });
             _me.initEvent();
             _me.renderDashBoardView(params);
             _me.renderDetailView(params, "Overview");
         },
 
         initEvent: function () {
-            $("#statisticsSubmit").on("click", function () {
-                var params = {
-                    monthDate: $("#MonthDate").data("original-date")
-                }
-
-                var actionMenu = $('.details-section-menu-item.active').data('name');
-
-                _me.renderDashBoardView(params);
-                _me.renderDetailView(params, actionMenu);
+            $("#dashboardSubmit").on("click", function () {
+                _me.handleDashboardSubmit();
             });
 
             $('#details-section-menu').on('click', '.details-section-menu-item', function () {
-                var name = $(this).data('name');
-                _me.renderDetailView({ monthDate: $("#MonthDate").data("original-date") }, name, true);
+                const name = $(this).data('name');
+                const params = _me.getAccountOverviewParams();
+
+                _me.renderDetailView(params, name, true);
+            });
+
+            $('#ViewBy').on('change', function () {
+                _me.handleDashboardSubmit();
+
+                if ($(this).val() == ViewByMonth) {
+                    $('.month-picker-group').show();
+                    $('.date-picker-group').hide();
+                } else {
+                    $('.month-picker-group').hide();
+                    $('.date-picker-group').show();
+                }
             });
         },
 
@@ -69,7 +80,7 @@
         },
 
         activeMenu: function (actionName) {
-            var activeClassName = "active";
+            const activeClassName = "active";
             $(".details-section-menu-item").removeClass(activeClassName);
             $("#menu" + actionName).addClass(activeClassName);
         },
@@ -94,6 +105,41 @@
                     isClickSubMenu && Site.hideLoader();
                 }
             });
+        },
+
+        handleDashboardSubmit: function () {
+            const params = _me.getAccountOverviewParams()
+
+            const actionMenu = $('.details-section-menu-item.active').data('name');
+
+            _me.renderDashBoardView(params);
+            _me.renderDetailView(params, actionMenu);
+        },
+
+        getAccountOverviewParams: function () {
+            const isGetMonthly = $('#ViewBy').val() == ViewByMonth;
+            let params = {
+                isGetMonthly,
+                fromDate: $('#FromDate').val(),
+                toDate: $('#ToDate').val()
+            }
+
+            if (isGetMonthly) {
+                const todayVal = $("#Today").val();
+                const today = new Date(todayVal);
+
+                const monthDate = $("#MonthDate").data("original-date");
+                const monthDateTime = new Date(monthDate);
+                const maxDateOfMonth = new Date(monthDateTime.getFullYear(), monthDateTime.getMonth() + 1, 0);
+
+                params = {
+                    isGetMonthly,
+                    fromDate: monthDate,
+                    toDate: maxDateOfMonth < today ? DatePickerComponent.getDateString(maxDateOfMonth) : todayVal
+                }
+            }
+
+            return params;
         },
     };
 

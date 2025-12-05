@@ -18,33 +18,18 @@
         });
     }
 
-    function formatDateUnit(value) {
-        return value < 10 ? '0' + value : value;
-    }
-
-    function initDatePicker(id, triggerId) {
-        new Pikaday({
-            field: document.getElementById(id),
-            trigger: document.getElementById(triggerId),
-            yearRange: [2000, new Date().getFullYear()],
-            toString: function (date, format) {
-                var day = date.getDate();
-                var month = date.getMonth() + 1;
-                var year = date.getFullYear();
-                return formatDateUnit(month) + "/" + formatDateUnit(day) + "/" + year;
-            },
-            onOpen: function () {
-                if ($("#chkSearchAll").prop("checked")) {
-                    this.hide();
-                }
-            }
-        });
-    }
-
     var _me = {
         initialize: function () {
-            initDatePicker('FromDate', 'fromPicker');
-            initDatePicker('ToDate', 'toPicker');
+            // Initialize date pickers with custom onOpen callback
+            // Prevent opening when "Search All" checkbox is checked
+            DatePickerComponent.initLinkedDatePickers('FromDate', 'fromPicker', 'ToDate', 'toPicker', {
+                datepickerRegistry: UserPanel.datepicker,
+                onOpen: function () {
+                    if ($("#chkSearchAll").prop("checked")) {
+                        this.hide();
+                    }
+                }
+            });
             initPager();
             _me.initEvent();
         },

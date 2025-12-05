@@ -2,14 +2,8 @@
 <Functions SiteId="32" SiteName="12Bet">
 	<Function Name="Authorization">
 		<Setting Key="Aff_SessionIdSel" SpName="Aff_SessionIdSel" DbName="DBAFF12B.Affiliate_12B.wsv_afinetv" />
-		<Setting Key="Aff_User_Login_UserInfoSel" SpName="Aff_User_Login_UserInfoSel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet">
-			<Mapping DataField="Dep_IsDeductedPercent" ObjectProperty="IsDepositFeePercent" />
-			<Mapping DataField="Wit_IsDeductedPercent" ObjectProperty="IsWithdrawalFeePercent" />
-		</Setting>
-		<Setting Key="Aff_User_Login_UserInfoSel_view" SpName="Aff_User_Login_UserInfoSel" DbName="DBAFF12B.Affiliate_12B.wsv_afinetv">
-			<Mapping DataField="Dep_IsDeductedPercent" ObjectProperty="IsDepositFeePercent" />
-			<Mapping DataField="Wit_IsDeductedPercent" ObjectProperty="IsWithdrawalFeePercent" />
-		</Setting>
+		<Setting Key="Aff_User_Login_UserInfoSel" SpName="Aff_User_Login_UserInfoSel_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_User_Login_UserInfoSel_view" SpName="Aff_User_Login_UserInfoSel_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinetv" />
 		<Setting Key="Aff_User_Login_ResultUpd" SpName="Aff_User_Login_ResultUpd" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_User_Login_ResultUpd_view" SpName="Aff_User_Login_ResultUpd" DbName="DBAFF12B.Affiliate_12B.wsv_afinetv" />
 		<Setting Key="Aff_CheckIn" SpName="Aff_CheckIn" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
@@ -64,8 +58,8 @@
 	</Function>
 
 	<Function Name="Statement History">
-		<Setting Key="Aff_User_StatementHistory_Sel" SpName="Aff_User_StatementHistory_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
-		<Setting Key="Aff_User_StatementHistory_Sel_view" SpName="Aff_User_StatementHistory_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinetv" />
+		<Setting Key="Aff_User_StatementHistory_Sel" SpName="Aff_User_StatementHistory_Sel_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_User_StatementHistory_Sel_view" SpName="Aff_User_StatementHistory_Sel_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinetv" />
 		<Setting Key="Aff_ProductList_Sel" SpName="Aff_ProductList_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_ProductList_Sel_view" SpName="Aff_ProductList_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinetv" />
 		<Setting Key="Aff_DailyEarning_Sel" SpName="Aff_DailyEarning_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet">
@@ -104,13 +98,16 @@
 		<Setting Key="Aff_User_SecurityQuestions_Sel" SpName="Aff_User_SecurityQuestions_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 	</Function>
 	<Function Name="AccountOverview">
-		<Setting Key="Aff_User_Overview_PlayersDetail_Sel" SpName="Aff_User_Overview_PlayersDetail_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
-		<Setting Key="Aff_User_Overview_Detail_Sel" SpName="Aff_User_Overview_Detail_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
-		<Setting Key="Aff_User_Overview_Summary_Sel" SpName="Aff_User_Overview_Summary_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_User_Overview_PlayersDetail_Sel" SpName="Aff_User_Overview_PlayersDetail_Sel_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" >
+			<Mapping DataField="Dep_IsDeductedPercent" ObjectProperty="IsDepositFeePercent" />
+			<Mapping DataField="Wit_IsDeductedPercent" ObjectProperty="IsWithdrawalFeePercent" />
+		</Setting>
+		<Setting Key="Aff_User_Overview_Detail_Sel" SpName="Aff_User_Overview_Detail_Sel_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_User_Overview_Summary_Sel" SpName="Aff_User_Overview_Summary_Sel_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_User_LoginInfo_Sel" SpName="Aff_User_LoginInfo_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 
 		<Setting Key="Aff_Admin_MediaCategory_Sel" SpName="Aff_Admin_MediaCategory_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
-		<Setting Key="Aff_Market_Sel" SpName="Aff_Market_Sel_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet">
+		<Setting Key="Aff_Market_Sel" SpName="Aff_Market_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet">
 			<Mapping DataField="MarketId" ObjectProperty="Code" />
 			<Mapping DataField="MarketName" ObjectProperty="EnglishName" />
 			<Mapping DataField="MarketNativeName" ObjectProperty="NativeName" />
@@ -123,7 +120,7 @@
 		<Setting Key="Aff_User_LandingPage_Sel" SpName="Aff_User_LandingPage_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_Admin_Text_Sel" SpName="Aff_Admin_Text_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 		<Setting Key="Aff_Admin_Banner_Sel" SpName="Aff_Admin_Banner_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
-		<Setting Key="Aff_User_Overview_SubAffiliate_Sel" SpName="Aff_User_Overview_SubAffiliate_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
+		<Setting Key="Aff_User_Overview_SubAffiliate_Sel" SpName="Aff_User_Overview_SubAffiliate_Sel_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" />
 
 		<Setting Key="Aff_Admin_MediaCategory_Sel_view" SpName="Aff_Admin_MediaCategory_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinetv" />
 		<Setting Key="Aff_Market_Sel_view" SpName="Aff_Market_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinetv">
@@ -152,7 +149,7 @@
 	</Function>
 	
 	<Function Name="TargetCountry">
-		<Setting Key="Aff_TargetCountry_Sel" SpName="Aff_TargetCountry_Sel_xtest" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" >
+		<Setting Key="Aff_TargetCountry_Sel" SpName="Aff_TargetCountry_Sel" DbName="DBAFF12B.Affiliate_12B.wsv_afinet" >
 			<Mapping DataField="MarketId" ObjectProperty="Code" />
 			<Mapping DataField="MarketName" ObjectProperty="EnglishName" />
 			<Mapping DataField="MarketNativeName" ObjectProperty="NativeName" />
@@ -166,5 +163,11 @@
 	
 	<Function Name="IPCountry">
 		<Setting Key="Acc_GetIPInfo_Full" SpName="Acc_GetIPInfo_Full" DbName="DBCUST.IPDB.wsv_afinet" />
+	</Function>
+
+	<Function Name="CPAReport">
+		<Setting Key="Aff_User_Report_PaymentCPA" SpName="Aff_User_Report_PaymentCPA_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinet"></Setting>
+		<Setting Key="Aff_User_Report_PlayerCPA" SpName="Aff_User_Report_PlayerCPA_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinet"></Setting>
+		<Setting Key="Aff_Admin_Report_PlayerCPA_TO_Detail" SpName="Aff_Admin_Report_PlayerCPA_TO_Detail_xpre" DbName="DBAFF12B.Affiliate_12B.wsv_afinet"></Setting>
 	</Function>
 </Functions>

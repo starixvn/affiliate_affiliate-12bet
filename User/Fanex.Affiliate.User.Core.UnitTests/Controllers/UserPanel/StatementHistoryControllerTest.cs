@@ -98,9 +98,9 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
         }
 
         [Theory]
-        [InlineData(TransType.Commission, "running", "December-2020", "Processing", "Monthly Earning", "Current Monthly Earning (Calculate Revenue Share by Turnover)", 0)]
-        [InlineData(TransType.Commission, "pending", "December-2020", "Processing", "Monthly Earning", "Uncalculated Monthly Earning (Calculate Revenue Share by Turnover)", 1)]
-        [InlineData(TransType.Commission, "completed", "December-2020", "Approved", "Monthly Earning", "Monthly Earning (Calculate Revenue Share by Turnover)", 2)]
+        [InlineData(TransType.MonthlyEarning, "running", "December-2020", "Processing", "Monthly Earning", "Current Monthly Earning (Calculate Revenue Share by Turnover)", 0)]
+        [InlineData(TransType.MonthlyEarning, "pending", "December-2020", "Processing", "Monthly Earning", "Uncalculated Monthly Earning (Calculate Revenue Share by Turnover)", 1)]
+        [InlineData(TransType.MonthlyEarning, "completed", "December-2020", "Approved", "Monthly Earning", "Monthly Earning (Calculate Revenue Share by Turnover)", 2)]
         //[InlineData(TransType.SubAffBonus, "cancelled", "December-2020", "Cancelled", "Sub-Affiliate", "Current Revenue Share", 0)]
         //[InlineData(TransType.SubAffBonus, "approved", "December-2020", "Approved", "Sub-Affiliate", "Uncalculated Revenue Share", 1)]
         //[InlineData(TransType.SubAffBonus, "rejected", "December-2020", "Rejected", "Sub-Affiliate", "Revenue Share", 2)]
@@ -147,7 +147,7 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
         }
 
         [Theory]
-        [InlineData(TransType.Commission, "running", "December-2020", "Processing", "Monthly Earning", "Current Monthly Earning (Calculate Revenue Share by Turnover)")]
+        [InlineData(TransType.MonthlyEarning, "running", "December-2020", "Processing", "Monthly Earning", "Current Monthly Earning (Calculate Revenue Share by Turnover)")]
         //[InlineData(TransType.SubAffBonus, "cancelled", "December-2020", "Cancelled", "Sub-Affiliate", "Current Revenue Share")]
         [InlineData(TransType.MonthlyTotal, "current", "December-2020", "Current", "Transaction", "Current Month Statistics")]
         public void Index_WhenCallWithIsMaxSubLevelAndCalculatedTypeNull_ReturnPartialView(int transType, string status, string dateString, string displayStatus,
@@ -217,18 +217,18 @@ namespace Fanex.Affiliate.User.Core.UnitTests.Controllers.UserPanel
                     param.NRows = 4;
                 });
             Repo.GetStatementHistory(Arg.Any<StatementHistoryParam>()).Returns(new List<StatementHistory> {
-                    new StatementHistory { TransType = TransType.SubAffBonus, MonthDate = DateTimeHelper.CreateDateTime(2020, 09, 10), Status = null, CalculatedType = null },
+                    new StatementHistory { TransType = TransType.SubAffiliateRevenueShare, MonthDate = DateTimeHelper.CreateDateTime(2020, 09, 10), Status = null, CalculatedType = null },
 
-                    new StatementHistory { TransType = TransType.Commission, MonthDate = DateTimeHelper.CreateDateTime(2020, 07, 10), Status = null, CalculatedType = null },
+                    new StatementHistory { TransType = TransType.MonthlyEarning, MonthDate = DateTimeHelper.CreateDateTime(2020, 07, 10), Status = null, CalculatedType = null },
 
-                    new StatementHistory { TransType = TransType.Commission, MonthDate = DateTimeHelper.CreateDateTime(2020, 06, 10), Status = null, CalculatedType = null },
-                    new StatementHistory { TransType = TransType.SubAffBonus, MonthDate = DateTimeHelper.CreateDateTime(2020, 06, 10), Status = null, CalculatedType = null },
+                    new StatementHistory { TransType = TransType.MonthlyEarning, MonthDate = DateTimeHelper.CreateDateTime(2020, 06, 10), Status = null, CalculatedType = null },
+                    new StatementHistory { TransType = TransType.SubAffiliateRevenueShare, MonthDate = DateTimeHelper.CreateDateTime(2020, 06, 10), Status = null, CalculatedType = null },
 
-                    new StatementHistory { TransType = TransType.Commission, MonthDate = DateTimeHelper.CreateDateTime(2020, 05, 10), Status = null, CalculatedType = null },
-                    new StatementHistory { TransType = TransType.SubAffBonus, MonthDate = DateTimeHelper.CreateDateTime(2020, 05, 10), Status = "Current", CalculatedType = 1 },
+                    new StatementHistory { TransType = TransType.MonthlyEarning, MonthDate = DateTimeHelper.CreateDateTime(2020, 05, 10), Status = null, CalculatedType = null },
+                    new StatementHistory { TransType = TransType.SubAffiliateRevenueShare, MonthDate = DateTimeHelper.CreateDateTime(2020, 05, 10), Status = "Current", CalculatedType = 1 },
 
-                    new StatementHistory { TransType = TransType.Commission, MonthDate = DateTimeHelper.CreateDateTime(2020, 04, 10), Status = "Current", CalculatedType = 1 },
-                    new StatementHistory { TransType = TransType.SubAffBonus, MonthDate = DateTimeHelper.CreateDateTime(2020, 04, 10), Status = "Current", CalculatedType = 1 },
+                    new StatementHistory { TransType = TransType.MonthlyEarning, MonthDate = DateTimeHelper.CreateDateTime(2020, 04, 10), Status = "Current", CalculatedType = 1 },
+                    new StatementHistory { TransType = TransType.SubAffiliateRevenueShare, MonthDate = DateTimeHelper.CreateDateTime(2020, 04, 10), Status = "Current", CalculatedType = 1 },
 
                     new StatementHistory { TransType = TransType.Payment, MonthDate = DateTimeHelper.CreateDateTime(2020, 03, 10), Status = "Current", CalculatedType = 0 }
                 });

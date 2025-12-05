@@ -1,5 +1,7 @@
-﻿
-@model IEnumerable<Fanex.Affiliate.User.Core.DTO.UserPanel.SubAffDetail>
+﻿@model Fanex.Affiliate.User.Core.ViewModels.UserPanel.AccountOverview.SubAffDetailViewModel
+@{
+    var subAffDetailList = Model.SubAffDetailList;
+}
 
 <div class="table">
     <table id="sub-aff-detail-table">
@@ -14,18 +16,22 @@
                 <th width="8%" hidden>@Lang.SuspensionDate</th>
                 <th width="9%">@Lang.TotalTurnover <br /> (@Lang.CurrencyLabel)</th>
                 <th width="9%">@Lang.TotalGGR <br /> (@Lang.CurrencyLabel)</th>
-                <th width="9%">@Lang.TotalCommission <br /> (@Lang.CurrencyLabel)</th>
+                @if (Model.IsGetMonthly)
+                {
+                    <th width="9%">@Lang.TotalCommission <br /> (@Lang.CurrencyLabel)</th>
+                }
                 <th width="7%">@Lang.ActivePlayers</th>
-                <th width="7%">@Lang.QualifiedActivePlayers</th>
+                <th width="7%">@Lang.QualifiedRevenueSharePlayers</th>
+                <th width="7%">@Lang.QualifiedCPAPlayers</th>
                 <th width="7%" hidden>@Lang.Remove</th>
             </tr>
         </thead>
         <tbody>
             @{
-                if (Model != null && Model.Any())
+                if (subAffDetailList != null && subAffDetailList.Any())
                 {
                     var startRowNumber = 1;
-                    foreach (var item in Model)
+                    foreach (var item in subAffDetailList)
                     {
                         <tr>
                             <td class="text-center">@startRowNumber</td>
@@ -35,9 +41,14 @@
                             <td class="text-center">@item.ApprovedDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
                             <td class="text-center">@item.Turnover.FormatDecimal()</td>
                             <td class="text-center">@item.GGR.FormatDecimal()</td>
-                            <td class="text-center">@item.Commission.FormatDecimal()</td>
-                            <td class="text-center">@item.ActivePlayer</td>
-                            <td class="text-center">@item.QualifiedMember</td>
+                            @if (Model.IsGetMonthly)
+                            {
+                                <td class="text-center">@(item.IsCpaAff ? "-" : item.Commission.FormatDecimal())</td>
+                            }
+
+                            <td class="text-center">@(item.IsCpaAff ? "-" : item.ActivePlayer.ToString())</td>
+                            <td class="text-center">@(item.IsCpaAff ? "-" : item.QualifiedMember.ToString())</td>
+                            <td class="text-center">@(item.IsRevenueShareAff ? "-" : item.QualifiedMemberCPA.ToString())</td>
                         </tr>
 
                         startRowNumber++;
@@ -46,7 +57,7 @@
                 else
                 {
                     <tr>
-                        <td class="text-center" colspan="10">@Lang.NoInfo</td>
+                        <td class="text-center" colspan="@(Model.IsGetMonthly ? 11 : 10)">@Lang.NoInfo</td>
                     </tr>
                 }
             }

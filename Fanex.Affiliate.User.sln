@@ -1,7 +1,6 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Affiliate.User.Core", "User\Fanex.Affiliate.User.Core\Fanex.Affiliate.User.Core.csproj", "{DDD2AE54-93D0-40B7-B5E9-BCFD46A3A339}"
 EndProject
@@ -17,6 +16,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SonarLint", "SonarLint", "{
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Affiliate.User.Site", "User\Fanex.Affiliate.User.Site\Fanex.Affiliate.User.Site.csproj", "{910BBC71-0F81-4C02-B57F-22EC9709F126}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		T4.FileManager.VisualStudio.ttinclude = T4.FileManager.VisualStudio.ttinclude
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

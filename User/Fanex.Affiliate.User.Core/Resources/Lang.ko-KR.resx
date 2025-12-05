@@ -1252,7 +1252,7 @@
     <value>토고</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>총</value>
+    <value>합계</value>
   </data>
   <data name="TotalClick" xml:space="preserve">
     <value>총 클릭횟수</value>
@@ -1826,7 +1826,7 @@
     <value>$1 이상</value>
   </data>
   <data name="RevenueShare" xml:space="preserve">
-    <value>수익 공유</value>
+    <value>매출 배분</value>
   </data>
   <data name="SuffixProduct12JADE" xml:space="preserve">
     <value>(AE SEXY)</value>
@@ -1912,7 +1912,7 @@
   <data name="Copied" xml:space="preserve">
     <value>복사됨</value>
   </data>
-  <data name="No" xml:space="preserve">
+  <data name="STT" xml:space="preserve">
     <value>아니오</value>
   </data>
   <data name="Dimension" xml:space="preserve">
@@ -2389,11 +2389,11 @@
   <data name="RevenueShareByWinloss" xml:space="preserve">
     <value>손익에 따른 수익 공유 계산</value>
   </data>
-  <data name="UncalculatedCommission" xml:space="preserve">
-    <value>계산되지 않은 수익 공유</value>
+  <data name="UncalculatedTentativeSubAffiliateRevenueShare" xml:space="preserve">
+    <value>계산되지 않은 예상 하위 제휴사 매출 배분</value>
   </data>
-  <data name="CurrentCommission" xml:space="preserve">
-    <value>현재 수익 공유</value>
+  <data name="TentativeSubAffiliateRevenueShare" xml:space="preserve">
+    <value>예상 하위 제휴사 매출 배분</value>
   </data>
   <data name="AffiliateCurrency" xml:space="preserve">
     <value>제휴 통화</value>
@@ -2524,5 +2524,269 @@
   </data>
   <data name="NetRevenue" xml:space="preserve">
     <value>순수익</value>
+  </data>
+  <data name="CPAReport" xml:space="preserve">
+    <value>CPA 보고서</value>
+  </data>
+  <data name="CPAAmount" xml:space="preserve">
+    <value>CPA 금액</value>
+  </data>
+  <data name="NotQualified" xml:space="preserve">
+    <value>자격 미달</value>
+  </data>
+  <data name="Qualified" xml:space="preserve">
+    <value>자격 있음</value>
+  </data>
+  <data name="RedepositStatistics" xml:space="preserve">
+    <value>재입금 통계</value>
+  </data>
+  <data name="EstimatedCPAAmount" xml:space="preserve">
+    <value>예상 CPA 금액</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>일</value>
+  </data>
+  <data name="Monitoring" xml:space="preserve">
+    <value>모니터링</value>
+  </data>
+  <data name="StartFrom" xml:space="preserve">
+    <value>시작일</value>
+  </data>
+  <data name="RecheckDay" xml:space="preserve">
+    <value>재확인 일수</value>
+  </data>
+  <data name="TotalAllPages" xml:space="preserve">
+    <value>총액(모든 페이지)</value>
+  </data>
+  <data name="RedepositRate" xml:space="preserve">
+    <value>재입금 비율(%)</value>
+  </data>
+  <data name="CPAStatus" xml:space="preserve">
+    <value>CPA 상태</value>
+  </data>
+  <data name="Approval Date" xml:space="preserve">
+    <value>승인 날짜</value>
+  </data>
+  <data name="ProductGroup" xml:space="preserve">
+    <value>제품 그룹</value>
+  </data>
+  <data name="NumberOfPlayerRedeposit" xml:space="preserve">
+    <value>재입금 플레이어 수</value>
+  </data>
+  <data name="ExpiredRedepositDate" xml:space="preserve">
+    <value>재입금 만료일</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>등록일</value>
+  </data>
+  <data name="QuotaExceeded" xml:space="preserve">
+    <value>할당량 초과</value>
+  </data>
+  <data name="Quota" xml:space="preserve">
+    <value>할당량</value>
+  </data>
+  <data name="ActivePeriod" xml:space="preserve">
+    <value>활성 기간</value>
+  </data>
+  <data name="HoldingExpiredDate" xml:space="preserve">
+    <value>보류 만료일</value>
+  </data>
+  <data name="HoldingQualifiedDate" xml:space="preserve">
+    <value>보류 자격 날짜</value>
+  </data>
+  <data name="HoldingPeriod" xml:space="preserve">
+    <value>보류 기간</value>
+  </data>
+  <data name="ActiveQualifiedDate" xml:space="preserve">
+    <value>활성 자격 날짜</value>
+  </data>
+  <data name="BetTicket" xml:space="preserve">
+    <value>베팅 티켓</value>
+  </data>
+  <data name="Ineligible" xml:space="preserve">
+    <value>부적격</value>
+  </data>
+  <data name="Eligible" xml:space="preserve">
+    <value>적격</value>
+  </data>
+  <data name="TentativeCpaEarning" xml:space="preserve">
+    <value>예상 CPA 수익</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>보기 기준</value>
+  </data>
+  <data name="CpaEarning" xml:space="preserve">
+    <value>CPA 수익</value>
+  </data>
+  <data name="SubAffiliateRevenueShare" xml:space="preserve">
+    <value>하위 제휴사 매출 배분</value>
+  </data>
+  <data name="ApprovedCpaEarning" xml:space="preserve">
+    <value>승인된 CPA 수익</value>
+  </data>
+  <data name="SubCpaEarning" xml:space="preserve">
+    <value>하위 제휴사 CPA</value>
+  </data>
+  <data name="Commission" xml:space="preserve">
+    <value>매출 배분</value>
+  </data>
+  <data name="CommRate" xml:space="preserve">
+    <value>하위 에이전트 수수료율</value>
+  </data>
+  <data name="AllStatuses" xml:space="preserve">
+    <value>모든 상태</value>
+  </data>
+  <data name="TurnoverCPADetail" xml:space="preserve">
+    <value>매출 CPA 세부 정보</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>그룹 {0}</value>
+  </data>
+  <data name="IsRedepositDescription" xml:space="preserve">
+    <value>플레이어가 재입금했는지 여부를 표시합니다.</value>
+  </data>
+  <data name="PlayerCPAReport" xml:space="preserve">
+    <value>플레이어 CPA 보고서</value>
+  </data>
+  <data name="CpaAdjustment" xml:space="preserve">
+    <value>CPA 조정</value>
+  </data>
+  <data name="TotalDepositsDescription" xml:space="preserve">
+    <value>활동 기간 동안 플레이어가 입금한 총 금액입니다. 이 기간 이후의 입금은 제외됩니다.</value>
+  </data>
+  <data name="ActiveQualifiedDateDescription" xml:space="preserve">
+    <value>플레이어가 필요한 조치(예: 최소 FTD, 입금 또는 매출)를 충족한 날짜</value>
+  </data>
+  <data name="BetTicketDescription" xml:space="preserve">
+    <value>보류 기간 동안 베팅된 총 베팅 티켓</value>
+  </data>
+  <data name="HoldingQualifiedDateDescription" xml:space="preserve">
+    <value>최소 베팅 티켓이 충족된 날짜</value>
+  </data>
+  <data name="HoldingExpiredDateDescription" xml:space="preserve">
+    <value>보류 기간 종료일</value>
+  </data>
+  <data name="ExpiredDateDescription" xml:space="preserve">
+    <value>플레이어가 재입금할 수 있는 마지막 날짜</value>
+  </data>
+  <data name="PaymentCPAReport" xml:space="preserve">
+    <value>지불 CPA 보고서</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>시작일</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>종료일</value>
+  </data>
+  <data name="AdjustmentAmount" xml:space="preserve">
+    <value>조정 금액</value>
+  </data>
+  <data name="ManuallyApproved" xml:space="preserve">
+    <value>수동 승인</value>
+  </data>
+  <data name="AffiliateLink" xml:space="preserve">
+    <value>제휴사 링크</value>
+  </data>
+  <data name="RedepositQualifiedPeriod" xml:space="preserve">
+    <value>재입금 적격 기간</value>
+  </data>
+  <data name="ExpiredDate" xml:space="preserve">
+    <value>만료일</value>
+  </data>
+  <data name="IsRedeposit" xml:space="preserve">
+    <value>재입금 여부</value>
+  </data>
+  <data name="AutoApprovedDate" xml:space="preserve">
+    <value>자동 승인된 CPA</value>
+  </data>
+  <data name="AdjustmentDate" xml:space="preserve">
+    <value>조정일</value>
+  </data>
+  <data name="Empty" xml:space="preserve">
+    <value>비어 있음</value>
+  </data>
+  <data name="PaymentSchedule" xml:space="preserve">
+    <value>지급 일정</value>
+  </data>
+  <data name="EligiblePlayers" xml:space="preserve">
+    <value>적격 플레이어</value>
+  </data>
+  <data name="AutomaticallyApproved" xml:space="preserve">
+    <value>자동 승인</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>{0}개 ​​선택됨</value>
+  </data>
+  <data name="NoneSelect" xml:space="preserve">
+    <value>없음 선택</value>
+  </data>
+  <data name="CPAAmountDescription" xml:space="preserve">
+    <value>매출 CPA 세부 정보를 보려면 클릭하세요.</value>
+  </data>
+  <data name="FdmAmt" xml:space="preserve">
+    <value>FTD 금액</value>
+  </data>
+  <data name="RedepositFailed" xml:space="preserve">
+    <value>재입금 실패</value>
+  </data>
+  <data name="ScheduleEndDate" xml:space="preserve">
+    <value>일정 종료일</value>
+  </data>
+  <data name="FinalCPAAmount" xml:space="preserve">
+    <value>최종 CPA 금액</value>
+  </data>
+  <data name="TotalCommission" xml:space="preserve">
+    <value>총 매출 배분</value>
+  </data>
+  <data name="Settled" xml:space="preserve">
+    <value>결제된</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>예</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>아니요</value>
+  </data>
+  <data name="QualifiedRevenueSharePlayers" xml:space="preserve">
+    <value>적격 수익 배분 플레이어</value>
+  </data>
+  <data name="QualifiedCPAPlayers" xml:space="preserve">
+    <value>적격 CPA 플레이어</value>
+  </data>
+  <data name="TentativeCPAAmount" xml:space="preserve">
+    <value>예정 CPA 금액</value>
+  </data>
+  <data name="TentativeRevenueShare" xml:space="preserve">
+    <value>예정 수익 배분</value>
+  </data>
+  <data name="ApprovedCPAAmount" xml:space="preserve">
+    <value>승인된 CPA 금액</value>
+  </data>
+  <data name="MonthToDateTentativeAmount" xml:space="preserve">
+    <value>월별 예상 금액</value>
+  </data>
+  <data name="PlayersWhoPassed" xml:space="preserve">
+    <value>보류 기간을 통과하고 재입금 기간을 통과하지 않은 플레이어 (할당량 이내)</value>
+  </data>
+  <data name="QualifiedPlayers" xml:space="preserve">
+    <value>적격 플레이어</value>
+  </data>
+  <data name="TotalCPAAmountForEligiblePlayers" xml:space="preserve">
+    <value>시작일부터 종료일까지 남은 할당량까지 적격 플레이어의 총 CPA 금액 (시작일은 무시)</value>
+  </data>
+  <data name="PlayersWhoPassedTheHoldingPeriod" xml:space="preserve">
+    <value>보류 기간을 통과하고 재입금 기간을 통과하지 않은 플레이어 (할당량 이내)</value>
+  </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>날짜 범위</value>
+  </data>
+  <data name="RevenueShareAndNetRevenue" xml:space="preserve">
+    <value>수익 분배 및 순수익은 월별로 볼 때만 표시됩니다.</value>
+  </data>
+  <data name="TentativeMonthlyEarning" xml:space="preserve">
+    <value>예상 월 수익</value>
+  </data>
+  <data name="UncalculatedTentativeMonthlyEarning" xml:space="preserve">
+    <value>계산되지 않은 예상 월 수익</value>
   </data>
 </root>

@@ -20,7 +20,11 @@
 
         public string GroupName { get; set; }
 
+        public int GroupTypeId { get; set; }
+
         public bool IsMaxSubLevel { get; set; }
+
+        public bool IsSubCommRate { get; set; }
 
         public bool IsDepositFeePercent { get; set; }
 

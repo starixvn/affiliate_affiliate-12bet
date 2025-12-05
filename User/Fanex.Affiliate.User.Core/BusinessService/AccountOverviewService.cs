@@ -3,11 +3,11 @@
     using CoreService;
     using Criterias;
     using Data.Repository;
-    using DTO.UserPanel;
     using DTO.UserPanel.AccountOverview;
+    using Fanex.Affiliate.User.Core.MetalModels.UserPanel.AccountOverview;
     using MetalModels.UserPanel;
-    using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Utilities;
 
     public class AccountOverviewService : BaseDynamicService, IAccountOverviewService
@@ -20,28 +20,36 @@
             return GetTData<LastLoginInfo>(new GetLastLoginInfoCriteria(affId));
         }
 
-        public IEnumerable<PlayerDetail> GetPlayerDetailList(PlayerDetailParam param)
+        public (GroupTypeInfo, IEnumerable<PlayerDetail>) GetPlayerDetailList(PlayerDetailParam param)
         {
             var criteria = param.MapTo<PlayerDetailParam, GetPlayerDetailListCriteria>();
 
-            return FetchTDataWithPaging<PlayerDetail>(criteria, param);
+            return FetchMultipleTDataWithPaging<GroupTypeInfo, PlayerDetail>(criteria, param);
         }
 
-        public IEnumerable<OverviewDetail> GetUserOverviewDetailList(int affId, DateTime monthDate)
+        public (int, IEnumerable<OverviewDetail>) GetUserOverviewDetailList(AccountOverviewParam param)
         {
-            return FetchTData<OverviewDetail>(new GetUserOverviewDetailListCriteria(affId, monthDate));
+            var criteria = param.MapTo<AccountOverviewParam, GetUserOverviewDetailListCriteria>();
+
+            return FetchMultipleTData<int, OverviewDetail>(criteria);
         }
 
-        public OverviewSummary GetUserOverviewSummary(int affId, DateTime monthDate)
+        public (int, OverviewSummary) GetUserOverviewSummary(AccountOverviewParam param)
         {
-            var overviewInfo = GetTData<OverviewSummary>(new GetUserOverviewSummaryCriteria(affId, monthDate)) ?? new OverviewSummary();
+            var criteria = param.MapTo<AccountOverviewParam, GetUserOverviewSummaryCriteria>();
 
-            return overviewInfo;
+            var dataItems = DynamicRepository.FetchMultiple<int, OverviewSummary>(criteria);
+
+            return (dataItems.Item1.FirstOrDefault(), dataItems.Item2.FirstOrDefault());
         }
 
-        public IEnumerable<SubAffDetail> GetSubAffDetails(SubAffDetailParam param)
+        public IEnumerable<SubAffDetail> GetSubAffDetails(AccountOverviewParam param)
         {
-            return FetchTData<SubAffDetail>(param.MapTo<SubAffDetailParam, GetSubAffDetailsCriteria>());
+            var criteria = param.MapTo<AccountOverviewParam, GetSubAffDetailsCriteria>();
+
+            var dataItems = DynamicRepository.FetchMultiple<SubAffDetail, object>(criteria);
+
+            return dataItems.Item1;
         }
     }
 }

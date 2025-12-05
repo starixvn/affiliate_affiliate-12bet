@@ -1,13 +1,13 @@
-﻿@model Fanex.Affiliate.User.Core.ViewModels.UserPanel.PlayerDetailViewModel
+﻿@model Fanex.Affiliate.User.Core.ViewModels.UserPanel.AccountOverview.PlayerDetailViewModel
 
 @{
     var hasScroll = Model.PlayerDetailList != null && Model.PlayerDetailList.Count() > 10;
     var totalItem = Model.TotalItem;
     var startRowNumber = Model.StartRowNumber;
-    var isDepositFeePercent = Model.IsDepositFeePercent;
-    var isWithdrawalFeePercent = Model.IsWithdrawalFeePercent;
-    var columnDepositFee = Model.IsDepositFeePercent ? 1 : 0;
-    var columnWithdrawalFee = Model.IsWithdrawalFeePercent ? 1 : 0;
+    var isDepositFeePercent = Model.IsDepositFeePercent && !Model.IsCpaAff;
+    var isWithdrawalFeePercent = Model.IsWithdrawalFeePercent && !Model.IsCpaAff;
+    var columnDepositFee = isDepositFeePercent ? 1 : 0;
+    var columnWithdrawalFee = isWithdrawalFeePercent ? 1 : 0;
 }
 
 @{

@@ -1,6 +1,6 @@
 ﻿namespace Fanex.Affiliate.User.Core.DTO.UserPanel.AccountOverview
 {
-    public class OverviewSummary
+    public class OverviewSummary : BaseGroupTypeId
     {
         public int Signups { get; set; }
 
@@ -22,12 +22,14 @@
 
         public decimal SubAffCommission { get; set; }
 
-        public bool IsMaxSubLevel { get; set; }
-
         public decimal NetGGR { get; set; }
 
         public int TotalClick { get; set; }
 
         public int UniqueClick { get; set; }
+
+        public decimal ApprovedCPAAmount { get; set; }
+        public decimal TentativeCPAAmount { get; set; }
+        public decimal QualifiedMemberCPA { get; set; }
     }
 }

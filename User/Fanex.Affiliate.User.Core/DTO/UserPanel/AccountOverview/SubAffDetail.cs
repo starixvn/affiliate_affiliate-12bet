@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Fanex.Affiliate.User.Core.DTO.UserPanel
+namespace Fanex.Affiliate.User.Core.DTO.UserPanel.AccountOverview
 {
-    public class SubAffDetail
+    public class SubAffDetail : BaseGroupTypeId
     {
         public int AffId { get; set; }
 
@@ -27,5 +27,7 @@ namespace Fanex.Affiliate.User.Core.DTO.UserPanel
         public int ActivePlayer { get; set; }
 
         public int QualifiedMember { get; set; }
+
+        public int QualifiedMemberCPA { get; set; }
     }
 }

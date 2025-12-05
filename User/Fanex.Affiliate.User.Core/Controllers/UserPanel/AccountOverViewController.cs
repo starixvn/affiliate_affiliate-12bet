@@ -4,7 +4,7 @@
     using CoreService;
     using Filters;
     using System.Web.Mvc;
-    using ViewModels.UserPanel;
+    using ViewModels.UserPanel.AccountOverview;
 
     [CustomAuthorize]
     public class AccountOverviewController : BaseController
@@ -29,7 +29,7 @@
             var model = new AccountOverviewViewModel
             {
                 LastLoginInfo = lastLoginInfo,
-                IsMaxLevel = SessionService.UserSession.IsMaxSubLevel
+                IsMaxSubLevel = SessionService.UserSession.IsMaxSubLevel
             };
 
             return View("~/Views/UserPanel/AccountOverView/Index.cshtml", model);

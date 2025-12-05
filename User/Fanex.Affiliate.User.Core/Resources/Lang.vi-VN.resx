@@ -1836,7 +1836,7 @@ Vì bất kỳ lý do gì, bạn không nhận được email, vui lòng kiểm 
     <value>$1 &amp; hơn</value>
   </data>
   <data name="RevenueShare" xml:space="preserve">
-    <value>Hoa hồng</value>
+    <value>Chia sẻ doanh thu</value>
   </data>
   <data name="ChineseTraditional" xml:space="preserve">
     <value>Tiếng Trung (Phồn Thể)</value>
@@ -1913,7 +1913,7 @@ Vì bất kỳ lý do gì, bạn không nhận được email, vui lòng kiểm 
   <data name="Copied" xml:space="preserve">
     <value>Đã sao chép</value>
   </data>
-  <data name="No" xml:space="preserve">
+  <data name="STT" xml:space="preserve">
     <value>STT.</value>
   </data>
   <data name="Dimension" xml:space="preserve">
@@ -2118,7 +2118,7 @@ Vì bất kỳ lý do gì, bạn không nhận được email, vui lòng kiểm 
     <value>Tiền thưởng hoa hồng FTD bổ sung</value>
   </data>
   <data name="TotalCommission" xml:space="preserve">
-    <value>Tổng hoa hồng</value>
+    <value>Tổng chia sẻ doanh thu</value>
   </data>
   <data name="Hindi" xml:space="preserve">
     <value>Tiếng Hindi</value>
@@ -2393,11 +2393,11 @@ THANH TOÁN ỔN ĐỊNH</value>
   <data name="Commission" xml:space="preserve">
     <value>Hoa hồng</value>
   </data>
-  <data name="UncalculatedCommission" xml:space="preserve">
-    <value>Hoa hồng chưa tính</value>
+  <data name="UncalculatedTentativeSubAffiliateRevenueShare" xml:space="preserve">
+    <value>Chia sẻ doanh thu tạm tính của cộng tác viên cấp dưới</value>
   </data>
-  <data name="CurrentCommission" xml:space="preserve">
-    <value>Hoa hồng hiện tại</value>
+  <data name="TentativeSubAffiliateRevenueShare" xml:space="preserve">
+    <value>Chia sẻ doanh thu tạm tính của cộng tác viên cấp dưới</value>
   </data>
   <data name="AffiliateCurrency" xml:space="preserve">
     <value>Tiền tệ đại lý</value>
@@ -2444,8 +2444,8 @@ THANH TOÁN ỔN ĐỊNH</value>
   <data name="VerifyEmailAddressIsRequired" xml:space="preserve">
     <value>Nhập lại địa chỉ email là bắt buộc</value>
   </data>
-  <data name="AffilateLink" xml:space="preserve">
-    <value>Đường dẫn liên kết</value>
+  <data name="AffiliateLink" xml:space="preserve">
+    <value>Liên kết tiếp thị</value>
   </data>
   <data name="SubAffiliateLink" xml:space="preserve">
     <value>Đường Dẫn Đại Lý Cấp Dưới</value>
@@ -2538,19 +2538,262 @@ Bạn cũng có thể gửi email đến: {1} hoặc điền vào biểu mẫu b
   <data name="VietnamCountry" xml:space="preserve">
     <value>Việt Nam </value>
   </data>
-  <data name="ActiveReferredPlayers" xml:space="preserve">
-    <value>Người Chơi Đủ Điều Kiện</value>
-  </data>
-  <data name="NetWinLoss" xml:space="preserve">
-    <value>Lãi Thực Công Ty ($)</value>
-  </data>
-  <data name="YourRevenueShare" xml:space="preserve">
-    <value>Hoa Hồng Của Bạn</value>
-  </data>
-  <data name="RevenueSharePayoutExample" xml:space="preserve">
-    <value>Ví dụ về cách tính tiền hoa hồng</value>
-  </data>
   <data name="NetRevenue" xml:space="preserve">
     <value>Doanh thu thuần</value>
+  </data>
+  <data name="CPAReport" xml:space="preserve">
+    <value>Báo cáo CPA</value>
+  </data>
+  <data name="CPAAmount" xml:space="preserve">
+    <value>Số tiền CPA</value>
+  </data>
+  <data name="NotQualified" xml:space="preserve">
+    <value>Không đủ điều kiện</value>
+  </data>
+  <data name="Qualified" xml:space="preserve">
+    <value>Đủ điều kiện</value>
+  </data>
+  <data name="RedepositStatistics" xml:space="preserve">
+    <value>Thống kê tái nạp</value>
+  </data>
+  <data name="EstimatedCPAAmount" xml:space="preserve">
+    <value>Số tiền CPA dự kiến</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>ngày</value>
+  </data>
+  <data name="Monitoring" xml:space="preserve">
+    <value>Đang theo dõi</value>
+  </data>
+  <data name="StartFrom" xml:space="preserve">
+    <value>Bắt đầu từ</value>
+  </data>
+  <data name="RecheckDay" xml:space="preserve">
+    <value>Số ngày kiểm tra lại</value>
+  </data>
+  <data name="TotalAllPages" xml:space="preserve">
+    <value>Tổng cộng (tất cả các trang)</value>
+  </data>
+  <data name="RedepositRate" xml:space="preserve">
+    <value>Tỷ lệ tái nạp (%)</value>
+  </data>
+  <data name="CPAStatus" xml:space="preserve">
+    <value>Trạng thái CPA</value>
+  </data>
+  <data name="Approval Date" xml:space="preserve">
+    <value>Ngày duyệt</value>
+  </data>
+  <data name="ProductGroup" xml:space="preserve">
+    <value>Nhóm sản phẩm</value>
+  </data>
+  <data name="NumberOfPlayerRedeposit" xml:space="preserve">
+    <value>Số người chơi tái nạp</value>
+  </data>
+  <data name="ExpiredRedepositDate" xml:space="preserve">
+    <value>Ngày hết hạn tái nạp</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>Ngày đăng ký</value>
+  </data>
+  <data name="QuotaExceeded" xml:space="preserve">
+    <value>Vượt chỉ tiêu</value>
+  </data>
+  <data name="Quota" xml:space="preserve">
+    <value>Chỉ tiêu</value>
+  </data>
+  <data name="ActivePeriod" xml:space="preserve">
+    <value>Thời gian hoạt động</value>
+  </data>
+  <data name="HoldingExpiredDate" xml:space="preserve">
+    <value>Ngày hết hạn giữ</value>
+  </data>
+  <data name="HoldingQualifiedDate" xml:space="preserve">
+    <value>Ngày đủ điều kiện (tạm giữ)</value>
+  </data>
+  <data name="HoldingPeriod" xml:space="preserve">
+    <value>Thời gian giữ / Thời gian duy trì</value>
+  </data>
+  <data name="ActiveQualifiedDate" xml:space="preserve">
+    <value>Ngày đủ điều kiện (hoạt động)</value>
+  </data>
+  <data name="BetTicket" xml:space="preserve">
+    <value>Vé cược</value>
+  </data>
+  <data name="Ineligible" xml:space="preserve">
+    <value>Không đủ điều kiện</value>
+  </data>
+  <data name="Eligible" xml:space="preserve">
+    <value>Đủ điều kiện</value>
+  </data>
+  <data name="TentativeCpaEarning" xml:space="preserve">
+    <value>Thu nhập CPA tạm tính</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>Xem theo</value>
+  </data>
+  <data name="CpaEarning" xml:space="preserve">
+    <value>Thu nhập CPA</value>
+  </data>
+  <data name="SubAffiliateRevenueShare" xml:space="preserve">
+    <value>Chia sẻ doanh thu của cộng tác viên cấp dưới</value>
+  </data>
+  <data name="ApprovedCpaEarning" xml:space="preserve">
+    <value>Thu nhập CPA đã được duyệt</value>
+  </data>
+  <data name="SubCpaEarning" xml:space="preserve">
+    <value>CPA của cộng tác viên cấp dưới</value>
+  </data>
+  <data name="MacbookPro" xml:space="preserve">
+    <value>MACBOOK PRO 16' M3 PRO</value>
+  </data>
+  <data name="AllStatuses" xml:space="preserve">
+    <value>Tất cả trạng thái</value>
+  </data>
+  <data name="TurnoverCPADetail" xml:space="preserve">
+    <value>Chi tiết doanh thu CPA</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Nhóm {0}</value>
+  </data>
+  <data name="IsRedepositDescription" xml:space="preserve">
+    <value>Hiển thị nếu người chơi đã tái nạp</value>
+  </data>
+  <data name="PlayerCPAReport" xml:space="preserve">
+    <value>Báo cáo CPA người chơi</value>
+  </data>
+  <data name="CpaAdjustment" xml:space="preserve">
+    <value>Điều chỉnh CPA</value>
+  </data>
+  <data name="TotalDepositsDescription" xml:space="preserve">
+    <value>Tổng số tiền người chơi đã nạp trong thời gian hoạt động. Các khoản nạp sau thời gian này sẽ không được tính.</value>
+  </data>
+  <data name="ActiveQualifiedDateDescription" xml:space="preserve">
+    <value>Ngày người chơi đạt đủ điều kiện (VD: nạp đầu tối thiểu, nạp tiền hoặc tổng cược).</value>
+  </data>
+  <data name="BetTicketDescription" xml:space="preserve">
+    <value>Tổng vé cược trong thời gian giữ</value>
+  </data>
+  <data name="HoldingQualifiedDateDescription" xml:space="preserve">
+    <value>Ngày đạt đủ vé cược tối thiểu</value>
+  </data>
+  <data name="HoldingExpiredDateDescription" xml:space="preserve">
+    <value>Ngày kết thúc thời gian giữ</value>
+  </data>
+  <data name="ExpiredDateDescription" xml:space="preserve">
+    <value>Hạn tái nạp</value>
+  </data>
+  <data name="PaymentCPAReport" xml:space="preserve">
+    <value>Báo cáo chi trả CPA</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Ngày bắt đầu</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>Ngày kết thúc</value>
+  </data>
+  <data name="AdjustmentAmount" xml:space="preserve">
+    <value>Số tiền điều chỉnh</value>
+  </data>
+  <data name="ManuallyApproved" xml:space="preserve">
+    <value>Duyệt thủ công</value>
+  </data>
+  <data name="RedepositQualifiedPeriod" xml:space="preserve">
+    <value>Thời gian tái nạp</value>
+  </data>
+  <data name="ExpiredDate" xml:space="preserve">
+    <value>Ngày hết hạn</value>
+  </data>
+  <data name="IsRedeposit" xml:space="preserve">
+    <value>Tái nạp</value>
+  </data>
+  <data name="AutoApprovedDate" xml:space="preserve">
+    <value>CPA tự động duyệt</value>
+  </data>
+  <data name="AdjustmentDate" xml:space="preserve">
+    <value>Ngày điều chỉnh</value>
+  </data>
+  <data name="Empty" xml:space="preserve">
+    <value>Trống</value>
+  </data>
+  <data name="PaymentSchedule" xml:space="preserve">
+    <value>Lịch thanh toán</value>
+  </data>
+  <data name="EligiblePlayers" xml:space="preserve">
+    <value>Người chơi đủ điều kiện</value>
+  </data>
+  <data name="AutomaticallyApproved" xml:space="preserve">
+    <value>Tự động phê duyệt</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>{0} đã chọn</value>
+  </data>
+  <data name="NoneSelect" xml:space="preserve">
+    <value>Không chọn</value>
+  </data>
+  <data name="CPAAmountDescription" xml:space="preserve">
+    <value>Nhấn để xem Chi tiết Doanh thu CPA</value>
+  </data>
+  <data name="FdmAmt" xml:space="preserve">
+    <value>Số tiền FTD</value>
+  </data>
+  <data name="RedepositFailed" xml:space="preserve">
+    <value>Nạp lại thất bại</value>
+  </data>
+  <data name="ScheduleEndDate" xml:space="preserve">
+    <value>Ngày kết thúc lịch trình</value>
+  </data>
+  <data name="FinalCPAAmount" xml:space="preserve">
+    <value>Số tiền CPA cuối cùng</value>
+  </data>
+  <data name="Settled" xml:space="preserve">
+    <value>Đã thanh toán</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Có</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Không</value>
+  </data>
+  <data name="QualifiedRevenueSharePlayers" xml:space="preserve">
+    <value>Người chơi đủ điều kiện chia doanh thu</value>
+  </data>
+  <data name="QualifiedCPAPlayers" xml:space="preserve">
+    <value>Người chơi đủ điều kiện CPA</value>
+  </data>
+  <data name="TentativeCPAAmount" xml:space="preserve">
+    <value>Số tiền CPA tạm tính</value>
+  </data>
+  <data name="TentativeRevenueShare" xml:space="preserve">
+    <value>Doanh thu chia sẻ tạm tính</value>
+  </data>
+  <data name="ApprovedCPAAmount" xml:space="preserve">
+    <value>Số tiền CPA đã duyệt</value>
+  </data>
+  <data name="MonthToDateTentativeAmount" xml:space="preserve">
+    <value>Số tiền ước tính từ đầu tháng đến nay</value>
+  </data>
+  <data name="PlayersWhoPassed" xml:space="preserve">
+    <value>Người chơi đủ điều kiện là những người đã hoàn tất thời gian giữ (Holding Period) và tuân thủ yêu cầu tái nạp Redeposit Period (trong phạm vi hạn mức cho phép)</value>
+  </data>
+  <data name="QualifiedPlayers" xml:space="preserve">
+    <value>Người chơi đủ điều kiện</value>
+  </data>
+  <data name="TotalCPAAmountForEligiblePlayers" xml:space="preserve">
+    <value>Tổng CPA cho người chơi đủ điều kiện, tính theo hạn mức còn lại, dựa trên dữ liệu từ thời điểm bắt đầu đến ngày kết thúc (không tính ngày bắt đầu)</value>
+  </data>
+  <data name="PlayersWhoPassedTheHoldingPeriod" xml:space="preserve">
+    <value>Người chơi đủ điều kiện là những người đã hoàn tất thời gian giữ (Holding Period) và tuân thủ yêu cầu tái nạp Redeposit Period (trong phạm vi hạn mức cho phép)</value>
+  </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>Khoảng thời gian</value>
+  </data>
+  <data name="RevenueShareAndNetRevenue" xml:space="preserve">
+    <value>Doanh thu chia sẻ và Doanh thu ròng chỉ hiển thị khi bạn xem theo tháng.</value>
+  </data>
+  <data name="TentativeMonthlyEarning" xml:space="preserve">
+    <value>Thu nhập hàng tháng tạm tính</value>
+  </data>
+  <data name="UncalculatedTentativeMonthlyEarning" xml:space="preserve">
+    <value>Thu nhập hàng tháng tạm tính </value>
   </data>
 </root>

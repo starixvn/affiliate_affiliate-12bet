@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
 {
@@ -18,7 +17,7 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
 
         public byte? CalculatedType { get; set; }
 
-        public string DateString => TransType == Constants.TransType.Payment || TransType == Constants.TransType.Adjustment
+        public string DateString => ShouldDisplayFullDate(TransType)
                 ? MonthDate.ToString("MM-dd-yyyy")
                 : MonthDate.ToString("MMMM-yyyy");
 
@@ -61,20 +60,21 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
                 {
                     case Constants.TransType.Adjustment:
                         return Resources.Lang.Adjustment;
-                    case Constants.TransType.Commission:
-                        return Resources.Lang.MonthlyEarning;
+                    case Constants.TransType.MonthlyEarning:
+                        return Resources.Lang.RevenueShare;
                     case Constants.TransType.Payment:
                         return Resources.Lang.PaymentRequest;
-                    case Constants.TransType.SubAffBonus:
-                        return Resources.Lang.SubAffiliate;
+                    case Constants.TransType.SubAffiliateRevenueShare:
+                        return Resources.Lang.SubAffiliateRevenueShare;
+                    case Constants.TransType.AprrovedCpaEarning: case Constants.TransType.TentativeCpaEarning:
+                        return Resources.Lang.CpaEarning;
+                    case Constants.TransType.SubCpaEarning:
+                        return Resources.Lang.SubCpaEarning;
+                    case Constants.TransType.CpaAdjustment:
+                        return Resources.Lang.CpaAdjustment;
                     case Constants.TransType.MonthlyTotal:
                         {
-                            if (CalculatedType == Constants.CalculatedType.CalculatedMonth || CalculatedType == Constants.CalculatedType.UnCalculatedMonth)
-                            {
-                                return Resources.Lang.MonthlyTotal;
-                            }
-
-                            return Resources.Lang.Transaction;
+                            return GetMonthlyTotalTransType(CalculatedType);
                         }
                     default:
                         return Resources.Lang.Transaction;
@@ -88,14 +88,20 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
             {
                 switch (TransType)
                 {
-                    case Constants.TransType.Commission:
-                        return GetCommissionDescription(CalculatedType);
-                    case Constants.TransType.SubAffBonus:
-                        return GetSubAffiliateDescription(CalculatedType);
                     case Constants.TransType.MonthlyTotal:
                         return GetMonthlyTotalDescription(CalculatedType);
+                    case Constants.TransType.MonthlyEarning:
+                        return GetCommissionDescription(CalculatedType);
                     case Constants.TransType.Adjustment:
                         return GetAdjustmentDescription(Description);
+                    case Constants.TransType.SubAffiliateRevenueShare:
+                        return GetSubAffiliateRevenueShareDescription(CalculatedType);
+                    case Constants.TransType.AprrovedCpaEarning:
+                        return Resources.Lang.ApprovedCpaEarning;
+                    case Constants.TransType.TentativeCpaEarning:
+                        return Resources.Lang.TentativeCpaEarning;
+                    case Constants.TransType.SubCpaEarning:
+                        return Resources.Lang.SubCpaEarning;
                     default:
                         return Description;
                 }
@@ -104,40 +110,40 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
 
         public IEnumerable<StatementHistoryViewModel> Children { get; set; } = new List<StatementHistoryViewModel>();
 
-        private string GetCommissionDescription(byte? calculatedType)
+        private static string GetMonthlyTotalTransType(byte? calculatedType)
         {
-            var description = new StringBuilder();
-
             switch (calculatedType)
             {
-                case Constants.CalculatedType.CalculatedMonth:
-                    description.Append(Resources.Lang.MonthlyEarning);
-                    break;
-                case Constants.CalculatedType.UnCalculatedMonth:
-                    description.Append(Resources.Lang.UncalculatedMonthlyEarning);
-                    break;
+                case Constants.CalculatedType.CalculatedMonth: case Constants.CalculatedType.UnCalculatedMonth:
+                    return Resources.Lang.MonthlyTotal;
                 default:
-                    description.Append(Resources.Lang.CurrentMonthlyEarning);
-                    break;
+                    return Resources.Lang.Transaction;
             }
-
-            description.Append(Description.Contains(Constants.CommByGroupType.Winloss)
-                ? $" ({Resources.Lang.RevenueShareByWinloss})"
-                : $" ({Resources.Lang.RevenueShareByTurnover})");
-
-            return description.ToString();
         }
 
-        private static string GetSubAffiliateDescription(byte? calculatedType)
+        private string GetCommissionDescription(byte? calculatedType)
         {
             switch (calculatedType)
             {
                 case Constants.CalculatedType.CalculatedMonth:
-                    return Resources.Lang.Commission;
+                    return $"{Resources.Lang.MonthlyEarning} ({Resources.Lang.RevenueShare})";
                 case Constants.CalculatedType.UnCalculatedMonth:
-                    return Resources.Lang.UncalculatedCommission;
+                    return $"{Resources.Lang.UncalculatedTentativeMonthlyEarning} ({Resources.Lang.RevenueShare})";
                 default:
-                    return Resources.Lang.CurrentCommission;
+                    return $"{Resources.Lang.TentativeMonthlyEarning} ({Resources.Lang.RevenueShare})";
+            }
+        }
+
+        private static string GetSubAffiliateRevenueShareDescription(byte? calculatedType)
+        {
+            switch (calculatedType)
+            {
+                case Constants.CalculatedType.CalculatedMonth:
+                    return Resources.Lang.SubAffiliateRevenueShare;
+                case Constants.CalculatedType.UnCalculatedMonth:
+                    return Resources.Lang.UncalculatedTentativeSubAffiliateRevenueShare;
+                default:
+                    return Resources.Lang.TentativeSubAffiliateRevenueShare;
             }
         }
 
@@ -161,6 +167,13 @@ namespace Fanex.Affiliate.User.Core.ViewModels.UserPanel
             return description.Trim().Equals(desc, StringComparison.InvariantCultureIgnoreCase)
                 ? Resources.Lang.PreviousSystemBalanceDescription
                 : string.Empty;
+        }
+
+        private static bool ShouldDisplayFullDate(int transType)
+        {
+            return transType == Constants.TransType.Payment
+                || transType == Constants.TransType.Adjustment
+                || transType == Constants.TransType.CpaAdjustment;
         }
     }
 }

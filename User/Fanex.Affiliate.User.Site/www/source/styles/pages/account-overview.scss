@@ -2,6 +2,7 @@
 @import "../scss/abstracts/variables";
 @import "../scss/abstracts/mixins";
 @import "../scss/components/pager";
+@import "../scss/components/pikaday";
 @import '../scss/components/table-sticky';
 @import '../scss/components/toogle-button';
 @import '../scss/components/qr_code';
@@ -60,7 +61,7 @@
 }
 
 .summary {
-    .form-group {
+    .form-filter {
         padding-top: 12px;
         padding-left: 10px;
         margin-bottom: 0;
@@ -69,9 +70,8 @@
 
         .form-wrapper {
             .form-control {
-                width: 100px;
-                height: 24px;
-                text-align: center;
+                display: inline-block;
+                background-color: #ffffff;
             }
 
             .glyphicon-calendar {
@@ -79,6 +79,20 @@
                 color: darkred;
                 cursor: pointer;
             }
+        }
+
+        .view-by-select-group {
+            display: flex;
+            align-items: baseline;
+
+            .info-container {
+                margin-left: 3px;
+            }
+        }
+
+        .date-picker-group {
+            display: inline-flex;
+            margin-right: 0px;
         }
     }
 
@@ -88,6 +102,12 @@
         border-top: none;
 
         .dashboard-section {
+            margin: 0 -10px;
+
+            .dashboard-section-col {
+                padding: 0 10px;
+            }
+
             .my-account {
                 font-size: 2rem;
                 font-weight: bold;
@@ -99,7 +119,7 @@
                 justify-content: flex-start;
                 align-items: center;
                 height: 70px;
-                width: 710px;
+                max-width: 710px;
                 border-radius: 5px;
                 margin-bottom: 10px;
 
@@ -141,6 +161,10 @@
                     background: -moz-linear-gradient(180deg, #596174 0%, #303A52 100%);
                     background: -o-linear-gradient(180deg, #596174 0%, #303A52 100%);
                     background: linear-gradient(180deg, #596174 0%, #303A52 100%);
+
+                    img {
+                        max-width: 40px;
+                    }
                 }
             }
         }
@@ -278,7 +302,6 @@
                         td, th {
                             border-top: none;
                             border-bottom: none;
-                            font-size: 1.3rem;
                         }
 
                         .break-all {
@@ -394,6 +417,17 @@
 }
 
 @media (max-width: 767px) {
+    .summary {
+        .form-filter {
+            .form-group {
+                display: block;
+            }
+
+            .date-picker-group, .month-picker-group {
+                display: inline-block;
+            }
+        }
+    }
     .details-section-content {
         .table {
             overflow-x: scroll;

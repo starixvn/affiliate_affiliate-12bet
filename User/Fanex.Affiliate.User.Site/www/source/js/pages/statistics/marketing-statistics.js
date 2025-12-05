@@ -1,22 +1,4 @@
 ﻿var ReferrerStatistics = (function ($) {
-    function formatDateUnit(value) {
-        return value < 10 ? '0' + value : value;
-    }
-
-    function initDatePicker(id, triggerId) {
-        UserPanel.datepicker.push(new Pikaday({
-            field: document.getElementById(id),
-            trigger: document.getElementById(triggerId),
-            yearRange: [2015, new Date().getFullYear()],
-            toString: function (date, format) {
-                var day = date.getDate();
-                var month = date.getMonth() + 1;
-                var year = date.getFullYear();
-                return formatDateUnit(month) + "/" + formatDateUnit(day) + "/" + year;
-            }
-        }));
-    }
-
     function toggleChildrenElem(children) {
         $(children).toggleClass("display-none");
     }
@@ -34,8 +16,9 @@
     var _me = {
 
         initialize: function () {
-            initDatePicker('FromDate', 'fromPicker');
-            initDatePicker('ToDate', 'toPicker');
+            DatePickerComponent.initLinkedDatePickers('FromDate', 'fromPicker', 'ToDate', 'toPicker', {
+                datepickerRegistry: UserPanel.datepicker
+            });
             _me.initEvent();
             _me.renderMainView();
         },

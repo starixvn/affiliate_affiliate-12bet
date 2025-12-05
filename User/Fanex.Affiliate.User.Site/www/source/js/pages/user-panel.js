@@ -42,9 +42,19 @@ function handleResize() {
 
 var UserPanel = (function ($) {
     var DEFAULT_ACTION = 'AccountOverview';
-    var allowedActionList = ["AccountOverview", "StatementHistory", "MyAccount", "PaymentRequest",
-        "ReferrersStatistics", "LandingPageStatistics", "MarketingLinkStatistics",
-        "DailyEarning", "SubAffEarning", "RevenueReport"];
+    var allowedActionList = [
+        "AccountOverview",
+        "StatementHistory",
+        "MyAccount",
+        "PaymentRequest",
+        "ReferrersStatistics",
+        "LandingPageStatistics",
+        "MarketingLinkStatistics",
+        "DailyEarning",
+        "SubAffEarning",
+        "RevenueReport",
+        "PaymentCPAReport",
+        "PlayerCPAReport"];
 
     var _ajaxRequest = null;
 
@@ -87,6 +97,18 @@ var UserPanel = (function ($) {
                 cache: false,
                 url: url,
                 success: function (response) {
+                    // Check if response is JSON (redirect response)
+                    try {
+                        var jsonResponse = typeof response === 'string' ? JSON.parse(response) : response;
+                        if (jsonResponse.redirectUrl) {
+                            // Handle redirect from server
+                            window.location.href = jsonResponse.redirectUrl;
+                            return;
+                        }
+                    } catch (e) {
+                        // Not JSON, treat as HTML
+                    }
+                    
                     $("#mainPanel").html(response);
                 },
                 beforeSend: function () {
@@ -100,6 +122,8 @@ var UserPanel = (function ($) {
 
         clearEventListener: function(){
             $("#mainPanel *").off();
+            
+            // Destroy all registered date pickers
             if (_me.datepicker) {
                 for (var i = 0; i < _me.datepicker.length; i++) {
                     if (_me.datepicker[i]) {
@@ -108,6 +132,9 @@ var UserPanel = (function ($) {
                 }
                 _me.datepicker = [];
             }
+            
+            // Remove any lingering Pikaday elements from DOM
+            $('.pika-single').remove();
 
             window.removeEventListener("scroll", handleScroll);
             window.removeEventListener("resize", handleResize);

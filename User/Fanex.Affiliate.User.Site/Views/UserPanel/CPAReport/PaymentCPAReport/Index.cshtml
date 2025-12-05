@@ -1,0 +1,101 @@
+@{
+    Layout = null;
+}
+
+@Html.InlineStyles("~/www/build/styles/css/pages/cpa-report/payment-cpa-report.css")
+@model Fanex.Affiliate.User.Core.ViewModels.UserPanel.CPAReport.CPAReportViewModel
+<div class="report-container">
+    <div class="page-title">
+        <span class="text">@Lang.PaymentCPAReport</span>
+    </div>
+    <div class="info-group payment-cpa-report">
+        <div class="panel custom-panel">
+            <div class="panel-body">
+                <form class="form-inline form-filter">
+                    <div class="form-group">
+                        <label for="FromDate">@Lang.From:</label>
+                        <div id="fromPicker" class="date-wrapper">
+                            <input readonly id="FromDate" class="form-control" type="text" value="@Model.FromDate.ToString("MM/dd/yyyy")" />
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ToDate">@Lang.To:</label>
+                        <div id="toPicker" class="date-wrapper">
+                            <input readonly id="ToDate" class="form-control" type="text" value="@Model.ToDate.ToString("MM/dd/yyyy")" />
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="Status">@Lang.Status:</label>
+                            <select id="Status" class="form-control">
+                                <option value="0">@Lang.All</option>
+                                <option value="1">@Lang.Monitoring</option>
+                                <option value="2">@Lang.NotQualified</option>
+                                <option value="3">@Lang.Qualified</option>
+                                <option value="4">@Lang.Empty</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ViewBy">@Lang.ViewBy:</label>
+                            <select id="ViewBy" class="form-control view-by-select">
+                                <option value="1">@Lang.ScheduleEndDate</option>
+                                <option value="2">@Lang.AutoApprovedDate</option>
+                                <option value="3">@Lang.AdjustmentDate</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-submit btn-payment-cpa-report" id="btnSubmit">@Lang.Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="table table-responsive">
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th width="3%" class="th" rowspan="2">#</th>
+                        <th class="th" colspan="4">@Lang.PaymentSchedule</th>
+                        <th class="th" colspan="3">@Lang.RedepositStatistics</th>
+                        <th width="7%" class="th" rowspan="2" data-name="EstimatedCPAAmount"> @Lang.EstimatedCPAAmount</th>
+                        <th width="4%" class="th" rowspan="2" data-name="Status"> @Lang.Status</th>
+                        <th class="th" colspan="2">@Lang.AutomaticallyApproved</th>
+                        <th class="th" colspan="3">@Lang.ManuallyApproved</th>
+                        <th width="7%" class="th" rowspan="2" data-name="AdjustmentAmount"> @Lang.AdjustmentAmount</th>
+                        <th width="7%" class="th" rowspan="2" data-name="FinalCPAAmount"> @Lang.FinalCPAAmount</th>
+                    </tr>
+                    <tr>
+                        <th width="5%" class="th" data-name="StartDate">@Lang.StartDate</th>
+                        <th width="5%" class="th" data-name="EndDate"> @Lang.EndDate</th>
+                        <th width="5%" class="th" data-name="RecheckDay"> @Lang.RecheckDay</th>
+                        <th width="5%" class="th" data-name="ExpiredRedepositDate"> @Lang.ExpiredRedepositDate</th>
+                        <th width="6%" class="th" data-name="EligiblePlayers"> @Lang.EligiblePlayers</th>
+                        <th width="6%" class="th" data-name="RedepositRate"> @Lang.RedepositRate</th>
+                        <th width="7%" class="th" data-name="NumberOfPlayerRedeposit"> @Lang.NumberOfPlayerRedeposit</th>
+                        <th width="7%" class="th" data-name="AutomaticallyAmount"> @Lang.Amount</th>
+                        <th width="5%" class="th" data-name="AutomaticallyDate"> @Lang.Date</th>
+                        <th width="7%" class="th" data-name="ManuallyAmount"> @Lang.Amount</th>
+                        <th width="5%" class="th" data-name="ManuallyDate"> @Lang.Date</th>
+                        <th width="10%" class="th" data-name="Description"> @Lang.Description</th>
+                    </tr>
+                </thead>
+                <tbody id="report-data"></tbody>
+            </table>
+            <div id="payment-CPA-report-pager"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var langResource = {
+        noInfo: '@Lang.NoInfo',
+        totalAllPages: '@Lang.TotalAllPages',
+        days: '@Lang.Days',
+        isInvalid: '@Error.IsInvalid'
+    }
+</script>
+
+<script src="@Url.RenderLink("~/www/build/js/pages/cpa-report/payment-cpa-report.js")"></script>

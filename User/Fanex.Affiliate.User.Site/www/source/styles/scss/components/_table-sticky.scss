@@ -36,12 +36,6 @@
             min-width: 160rem;
         }
 
-        th {
-            @include TableAndMobile {
-                font-size: 13px;
-            }
-        }
-
         thead {
             .overview-table-header {
                 th {

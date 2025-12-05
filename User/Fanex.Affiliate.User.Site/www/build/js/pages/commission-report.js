@@ -6,6 +6,7 @@ var commissionReport = (function ($) {
     var _isSortingAsc = false;
     var _currentBaseCurrency = 0;
     var _currentPage = "RevenueReport";
+    var _isSubmited = false;
 
     function formatDecimal(value) {
         return format(value, 2);
@@ -32,6 +33,7 @@ var commissionReport = (function ($) {
     var _me = {
         initialize: function initialize() {
             _me.initEvent();
+            _me.toggleTable();
         },
 
         initEvent: function initEvent() {
@@ -69,6 +71,10 @@ var commissionReport = (function ($) {
             });
         },
 
+        toggleTable: function toggleTable() {
+            $('#dataTable').toggle(_isSubmited);
+        },
+
         submit: function submit() {
             _currentBaseCurrency = $("#base-currency").val();
             var param = {
@@ -84,7 +90,9 @@ var commissionReport = (function ($) {
                 contentType: "application/json; charset=UTF-8",
                 success: function success(response) {
                     _reportData = response;
+                    _isSubmited = true;
                     if (_reportData) {
+                        _me.toggleTable();
                         _me.renderData();
                         _me.activeSortIcon($('#defaultSorting'));
                     }

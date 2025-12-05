@@ -72,8 +72,8 @@
     <Reference Include="Fanex.Common, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Common.1.1.0.1\lib\net40\Fanex.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.Data.ProxyClient, Version=1.0.3.6, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Fanex.Data.ProxyClient.1.0.3.6\lib\net472\Fanex.Data.ProxyClient.dll</HintPath>
+    <Reference Include="Fanex.Data.ProxyClient, Version=1.0.6.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Fanex.Data.ProxyClient.1.0.6.1\lib\net472\Fanex.Data.ProxyClient.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Logging, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Fanex.Logging.2.0.1.1\lib\net461\Fanex.Logging.dll</HintPath>
@@ -141,6 +141,9 @@
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.XmlTransform, Version=3.0.0.34420, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Web.Xdt.3.0.0\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -382,6 +385,8 @@
       <DependentUpon>bootstrap2-toggle.js</DependentUpon>
     </Content>
     <Content Include="www\build\js\lib\jquery-3.3.1.min.js" />
+    <Content Include="www\build\js\marketing-statistics.js" />
+    <Content Include="www\build\js\marketing-statistics.min.js" />
     <Content Include="www\build\js\mediagallery.js" />
     <Content Include="www\build\js\mediagallery.min.js">
       <DependentUpon>mediagallery.js</DependentUpon>
@@ -393,6 +398,10 @@
     <Content Include="www\build\js\pages\commission-structure.min.js">
       <DependentUpon>commission-structure.js</DependentUpon>
     </Content>
+    <Content Include="www\build\js\pages\cpa-report\payment-cpa-report.js" />
+    <Content Include="www\build\js\pages\cpa-report\payment-cpa-report.min.js" />
+    <Content Include="www\build\js\pages\cpa-report\player-cpa-report.js" />
+    <Content Include="www\build\js\pages\cpa-report\player-cpa-report.min.js" />
     <Content Include="www\build\js\pages\home.js" />
     <Content Include="www\build\js\pages\home.min.js">
       <DependentUpon>home.js</DependentUpon>
@@ -424,13 +433,33 @@
     <Content Include="www\build\js\summary.min.js">
       <DependentUpon>summary.js</DependentUpon>
     </Content>
+    <Content Include="www\build\styles\css\affiliate-cpa-report.css" />
+    <Content Include="www\build\styles\css\affiliate-cpa-report.min.css">
+      <DependentUpon>affiliate-cpa-report.css</DependentUpon>
+    </Content>
+    <Content Include="www\build\styles\css\affiliate-pca-report.css" />
+    <Content Include="www\build\styles\css\affiliate-pca-report.min.css">
+      <DependentUpon>affiliate-pca-report.css</DependentUpon>
+    </Content>
     <Content Include="www\build\styles\css\commission-structure.css" />
     <Content Include="www\build\styles\css\commission-structure.min.css">
       <DependentUpon>commission-structure.css</DependentUpon>
     </Content>
+    <Content Include="www\build\styles\css\cpa-report\player-cpa-report.css" />
+    <Content Include="www\build\styles\css\cpa-report\player-cpa-report.min.css">
+      <DependentUpon>player-cpa-report.css</DependentUpon>
+    </Content>
     <Content Include="www\build\styles\css\forgot-password.css" />
     <Content Include="www\build\styles\css\forgot-password.min.css">
       <DependentUpon>forgot-password.css</DependentUpon>
+    </Content>
+    <Content Include="www\build\styles\css\pages\cpa-report\payment-cpa-report.css" />
+    <Content Include="www\build\styles\css\pages\cpa-report\payment-cpa-report.min.css">
+      <DependentUpon>payment-cpa-report.css</DependentUpon>
+    </Content>
+    <Content Include="www\build\styles\css\pages\cpa-report\redeposit-cpa-report.css" />
+    <Content Include="www\build\styles\css\pages\cpa-report\redeposit-cpa-report.min.css">
+      <DependentUpon>redeposit-cpa-report.css</DependentUpon>
     </Content>
     <Content Include="www\build\styles\css\under-maintenance.css" />
     <Content Include="www\build\styles\css\under-maintenance.min.css">
@@ -727,12 +756,16 @@
     <Content Include="www\build\styles\Images\product\live-casino\banner-mobile.png" />
     <Content Include="www\build\styles\Images\talk.svg" />
     <Content Include="www\build\styles\Images\under-maintenance\banner-um.svg" />
+    <Content Include="www\source\js\components\datepicker.js" />
     <Content Include="www\source\js\lib\bootstrap2-toggle.js" />
     <Content Include="www\source\js\lib\jquery-3.3.1.min.js" />
     <Content Include="www\source\js\lib\swiper.min.js" />
     <Content Include="www\source\js\pages\account-overview\channel-link-statistic.js" />
+    <Content Include="www\source\js\pages\cpa-report\base-cpa-report.js" />
+    <Content Include="www\source\js\pages\cpa-report\player-cpa-report.js" />
     <Content Include="www\source\js\pages\commission-structure.js" />
     <Content Include="www\source\js\pages\contactus.js" />
+    <Content Include="www\source\js\pages\cpa-report\payment-cpa-report.js" />
     <Content Include="www\source\js\pages\products.js" />
     <Content Include="www\source\js\pages\statistics\marketing-statistics.js" />
     <Content Include="www\source\js\pages\sub-affiliate-earning.js" />
@@ -1369,6 +1402,10 @@
     <Content Include="www\build\styles\Images\home\top-banner\item\mobile.ja-JP.webp" />
     <Content Include="www\build\styles\Images\home\top-banner\item\mobile.en-PH.webp" />
     <Content Include="www\build\styles\Images\home\top-banner\item\desktop.en-IN.webp" />
+    <Content Include="Views\UserPanel\CPAReport\PaymentCPAReport\Index.cshtml" />
+    <Content Include="Views\UserPanel\CPAReport\PlayerCPAReport\Index.cshtml" />
+    <Content Include="www\source\styles\pages\cpa-report\player-cpa-report.scss" />
+    <Content Include="www\source\styles\pages\cpa-report\payment-cpa-report.scss" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

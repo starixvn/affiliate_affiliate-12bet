@@ -2022,7 +2022,7 @@ For any reason, you do not receive the email, please check your Spam box or &lt;
   <data name="Dimension" xml:space="preserve">
     <value>Dimension</value>
   </data>
-  <data name="No" xml:space="preserve">
+  <data name="STT" xml:space="preserve">
     <value>No.</value>
   </data>
   <data name="ShareBanner" xml:space="preserve">
@@ -2508,11 +2508,11 @@ CONSISTENT PAYMENT</value>
   <data name="Commission" xml:space="preserve">
     <value>Revenue Share</value>
   </data>
-  <data name="UncalculatedCommission" xml:space="preserve">
-    <value>Uncalculated Revenue Share</value>
+  <data name="UncalculatedTentativeSubAffiliateRevenueShare" xml:space="preserve">
+    <value>Uncalculated Tentative Sub-Affiliate Revenue Share</value>
   </data>
-  <data name="CurrentCommission" xml:space="preserve">
-    <value>Current Revenue Share</value>
+  <data name="TentativeSubAffiliateRevenueShare" xml:space="preserve">
+    <value>Tentative Sub-Affiliate Revenue Share</value>
   </data>
   <data name="CurrencyLabel" xml:space="preserve">
     <value>USD</value>
@@ -2565,7 +2565,7 @@ CONSISTENT PAYMENT</value>
   <data name="VerifyEmailAddressIsRequired" xml:space="preserve">
     <value>Verify Email Address is required</value>
   </data>
-  <data name="AffilateLink" xml:space="preserve">
+  <data name="AffiliateLink" xml:space="preserve">
     <value>Affiliate Link</value>
   </data>
   <data name="SubAffiliateLink" xml:space="preserve">
@@ -2651,19 +2651,256 @@ You can also email us to {1} or simply fill the form below.</value>
   <data name="VietnamCountry" xml:space="preserve">
     <value>Viet Nam</value>
   </data>
-  <data name="ActiveReferredPlayers" xml:space="preserve">
-    <value>Active Referred Players</value>
-  </data>
-  <data name="NetWinLoss" xml:space="preserve">
-    <value>Company Net Win ($)</value>
-  </data>
-  <data name="YourRevenueShare" xml:space="preserve">
-    <value>Your Revenue Share</value>
-  </data>
-  <data name="RevenueSharePayoutExample" xml:space="preserve">
-    <value>Revenue Share Payout Example</value>
-  </data>
   <data name="NetRevenue" xml:space="preserve">
     <value>Net Revenue</value>
+  </data>
+  <data name="CPAReport" xml:space="preserve">
+    <value>CPA Report</value>
+  </data>
+  <data name="PlayerCPAReport" xml:space="preserve">
+    <value>Player CPA Report</value>
+  </data>
+  <data name="PaymentCPAReport" xml:space="preserve">
+    <value>Payment CPA Report</value>
+  </data>
+  <data name="StartFrom" xml:space="preserve">
+    <value>Start From</value>
+  </data>
+  <data name="RecheckDay" xml:space="preserve">
+    <value>Re-check days</value>
+  </data>
+  <data name="ExpiredRedepositDate" xml:space="preserve">
+    <value>Expired Redeposit Date</value>
+  </data>
+  <data name="RedepositRate" xml:space="preserve">
+    <value>Redeposit %</value>
+  </data>
+  <data name="NumberOfPlayerRedeposit" xml:space="preserve">
+    <value>No. of Player Redeposit</value>
+  </data>
+  <data name="RedepositStatistics" xml:space="preserve">
+    <value>Redeposit Statistics</value>
+  </data>
+  <data name="TotalAllPages" xml:space="preserve">
+    <value>Total (all pages)</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>days</value>
+  </data>
+  <data name="Monitoring" xml:space="preserve">
+    <value>Monitoring</value>
+  </data>
+  <data name="Qualified" xml:space="preserve">
+    <value>Qualified</value>
+  </data>
+  <data name="NotQualified" xml:space="preserve">
+    <value>Not Qualified</value>
+  </data>
+  <data name="Quota" xml:space="preserve">
+    <value>Quota</value>
+  </data>
+  <data name="CPAAmount" xml:space="preserve">
+    <value>CPA Amount</value>
+  </data>
+  <data name="EstimatedCPAAmount" xml:space="preserve">
+    <value>Estimated CPA Amount</value>
+  </data>
+  <data name="ActivePeriod" xml:space="preserve">
+    <value>Active Period</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>Registration Date</value>
+  </data>
+  <data name="HoldingPeriod" xml:space="preserve">
+    <value>Holding Period</value>
+  </data>
+  <data name="ActiveQualifiedDate" xml:space="preserve">
+    <value>Active Qualified Date</value>
+  </data>
+  <data name="BetTicket" xml:space="preserve">
+    <value>Bet Ticket</value>
+  </data>
+  <data name="HoldingQualifiedDate" xml:space="preserve">
+    <value>Holding Qualified Date</value>
+  </data>
+  <data name="HoldingExpiredDate" xml:space="preserve">
+    <value>Holding Expired Date</value>
+  </data>
+  <data name="CPAStatus" xml:space="preserve">
+    <value>CPA Status</value>
+  </data>
+  <data name="Approval Date" xml:space="preserve">
+    <value>Approval Date</value>
+  </data>
+  <data name="ProductGroup" xml:space="preserve">
+    <value>Product Group</value>
+  </data>
+  <data name="Eligible" xml:space="preserve">
+    <value>Eligible</value>
+  </data>
+  <data name="Ineligible" xml:space="preserve">
+    <value>Ineligible</value>
+  </data>
+  <data name="QuotaExceeded" xml:space="preserve">
+    <value>Quota Exceeded</value>
+  </data>
+  <data name="SubAffiliateRevenueShare" xml:space="preserve">
+    <value>Sub-Affiliate Revenue Share</value>
+  </data>
+  <data name="CpaEarning" xml:space="preserve">
+    <value>CPA Earning</value>
+  </data>
+  <data name="SubCpaEarning" xml:space="preserve">
+    <value>Sub-Affiliate CPA</value>
+  </data>
+  <data name="ApprovedCpaEarning" xml:space="preserve">
+    <value>Approved CPA Earning</value>
+  </data>
+  <data name="TentativeCpaEarning" xml:space="preserve">
+    <value>Tentative CPA Earning</value>
+  </data>
+  <data name="ScheduleEndDate" xml:space="preserve">
+    <value>Schedule End Date</value>
+  </data>
+  <data name="AutoApprovedDate" xml:space="preserve">
+    <value>Auto Approved Date</value>
+  </data>
+  <data name="AdjustmentDate" xml:space="preserve">
+    <value>Adjustment Date</value>
+  </data>
+  <data name="Empty" xml:space="preserve">
+    <value>Empty</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>View By</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="PaymentSchedule" xml:space="preserve">
+    <value>Payment Schedule</value>
+  </data>
+  <data name="EligiblePlayers" xml:space="preserve">
+    <value>Eligible Players</value>
+  </data>
+  <data name="AutomaticallyApproved" xml:space="preserve">
+    <value>Automatically Approved</value>
+  </data>
+  <data name="ManuallyApproved" xml:space="preserve">
+    <value>Manually Approved</value>
+  </data>
+  <data name="AdjustmentAmount" xml:space="preserve">
+    <value>Adjustment Amount</value>
+  </data>
+  <data name="FinalCPAAmount" xml:space="preserve">
+    <value>Final CPA Amount</value>
+  </data>
+  <data name="RedepositFailed" xml:space="preserve">
+    <value>Redeposit Failed</value>
+  </data>
+  <data name="AllStatuses" xml:space="preserve">
+    <value>All Statuses</value>
+  </data>
+  <data name="RedepositQualifiedPeriod" xml:space="preserve">
+    <value>Redeposit Qualified Period</value>
+  </data>
+  <data name="ExpiredDate" xml:space="preserve">
+    <value>Expired Date</value>
+  </data>
+  <data name="IsRedeposit" xml:space="preserve">
+    <value>Is Redeposit</value>
+  </data>
+  <data name="TurnoverCPADetail" xml:space="preserve">
+    <value>Turnover CPA Detail</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group {0}</value>
+  </data>
+  <data name="NoneSelect" xml:space="preserve">
+    <value>None Select</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>{0} selected</value>
+  </data>
+  <data name="CpaAdjustment" xml:space="preserve">
+    <value>CPA Adjustment</value>
+  </data>
+  <data name="TotalDepositsDescription" xml:space="preserve">
+    <value>Total deposits made by the Player during the Activity Period. Deposits after this period are excluded.</value>
+  </data>
+  <data name="ActiveQualifiedDateDescription" xml:space="preserve">
+    <value>Date when player meets required actions (e.g., Min FTD, Deposit, or Turnover).</value>
+  </data>
+  <data name="BetTicketDescription" xml:space="preserve">
+    <value>Total bet tickets placed during holding period.</value>
+  </data>
+  <data name="HoldingQualifiedDateDescription" xml:space="preserve">
+    <value>Date when minimum bet tickets are met.</value>
+  </data>
+  <data name="HoldingExpiredDateDescription" xml:space="preserve">
+    <value>End date of the holding period.</value>
+  </data>
+  <data name="ExpiredDateDescription" xml:space="preserve">
+    <value>Last day for player to redeposit.</value>
+  </data>
+  <data name="IsRedepositDescription" xml:space="preserve">
+    <value>Shows if the player has redeposited.</value>
+  </data>
+  <data name="CPAAmountDescription" xml:space="preserve">
+    <value>Click to view Turnover CPA Detail.</value>
+  </data>
+  <data name="UncalculatedTentativeMonthlyEarning" xml:space="preserve">
+    <value>Uncalculated Tentative Monthly Earning</value>
+  </data>
+  <data name="TentativeMonthlyEarning" xml:space="preserve">
+    <value>Tentative Monthly Earning</value>
+  </data>
+  <data name="Settled" xml:space="preserve">
+    <value>Settled</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>Date Range</value>
+  </data>
+  <data name="QualifiedRevenueSharePlayers" xml:space="preserve">
+    <value>Qualified Revenue Share Players</value>
+  </data>
+  <data name="QualifiedCPAPlayers" xml:space="preserve">
+    <value>Qualified CPA Players</value>
+  </data>
+  <data name="TentativeCPAAmount" xml:space="preserve">
+    <value>Tentative CPA Amount</value>
+  </data>
+  <data name="TentativeRevenueShare" xml:space="preserve">
+    <value>Tentative Revenue Share</value>
+  </data>
+  <data name="ApprovedCPAAmount" xml:space="preserve">
+    <value>Approved CPA Amount</value>
+  </data>
+  <data name="RevenueShareAndNetRevenue" xml:space="preserve">
+    <value>Revenue Share and Net Revenue are displayed only when viewing by month</value>
+  </data>
+  <data name="MonthToDateTentativeAmount" xml:space="preserve">
+    <value>Month-to-date tentative amount</value>
+  </data>
+  <data name="PlayersWhoPassed" xml:space="preserve">
+    <value>Players who passed the Holding Period and haven’t failed the Redeposit Period (within quota)</value>
+  </data>
+  <data name="QualifiedPlayers" xml:space="preserve">
+    <value>Qualified Players</value>
+  </data>
+  <data name="TotalCPAAmountForEligiblePlayers" xml:space="preserve">
+    <value>Total CPA amount for eligible players up to remaining quota, from start until To Date (ignores From Date)</value>
+  </data>
+  <data name="PlayersWhoPassedTheHoldingPeriod" xml:space="preserve">
+    <value>Players who passed the Holding Period and haven’t failed the Redeposit Period (within quota)</value>
   </data>
 </root>

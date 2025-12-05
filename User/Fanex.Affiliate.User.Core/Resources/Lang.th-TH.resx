@@ -1241,7 +1241,7 @@
     <value>ยอดรวม</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>ยอดรวม</value>
+    <value>รวม</value>
   </data>
   <data name="TotalClick" xml:space="preserve">
     <value>จำนวนรวมครั้งของการคลิ๊กทั้งหมด</value>
@@ -1922,7 +1922,7 @@
   <data name="Copied" xml:space="preserve">
     <value>คัดลอก</value>
   </data>
-  <data name="No" xml:space="preserve">
+  <data name="STT" xml:space="preserve">
     <value>เลขที่</value>
   </data>
   <data name="Dimension" xml:space="preserve">
@@ -2445,11 +2445,11 @@
   <data name="RevenueShareByWinloss" xml:space="preserve">
     <value>คำนวณส่วนแบ่งรายได้ตามอัตราแพ้/ชนะ</value>
   </data>
-  <data name="UncalculatedCommission" xml:space="preserve">
-    <value>ส่วนแบ่งรายได้ที่ไม่ได้คํานวณ</value>
+  <data name="UncalculatedTentativeSubAffiliateRevenueShare" xml:space="preserve">
+    <value>ส่วนแบ่งรายได้ของพันธมิตรย่อย (โดยประมาณ ยังไม่ถูกคำนวณ)</value>
   </data>
-  <data name="CurrentCommission" xml:space="preserve">
-    <value>ส่วนแบ่งรายได้ปัจจุบัน</value>
+  <data name="TentativeSubAffiliateRevenueShare" xml:space="preserve">
+    <value>ส่วนแบ่งรายได้ของพันธมิิตรย่อย (โดยประมาณ)</value>
   </data>
   <data name="AffiliateCurrency" xml:space="preserve">
     <value>สกุลเงินพันธมิตร</value>
@@ -2560,19 +2560,265 @@
   <data name="VietnamCountry" xml:space="preserve">
     <value>เวียดนาม</value>
   </data>
-  <data name="ActiveReferredPlayers" xml:space="preserve">
-    <value>ผู้เล่นที่แนะนำมาที่ยัง Active</value>
-  </data>
-  <data name="NetWinLoss" xml:space="preserve">
-    <value>รายได้ทั้งหมดของบริษัท ($)</value>
-  </data>
-  <data name="YourRevenueShare" xml:space="preserve">
-    <value>ส่วนแบ่งรายได้ของคุณ</value>
-  </data>
-  <data name="RevenueSharePayoutExample" xml:space="preserve">
-    <value>ตัวอย่างการจ่ายส่วนแบ่งรายได้</value>
-  </data>
   <data name="NetRevenue" xml:space="preserve">
     <value>รายได้สุทธิ</value>
+  </data>
+  <data name="CPAReport" xml:space="preserve">
+    <value>รายงาน CPA</value>
+  </data>
+  <data name="CPAAmount" xml:space="preserve">
+    <value>จำนวนเงิน CPA</value>
+  </data>
+  <data name="NotQualified" xml:space="preserve">
+    <value>ไม่ผ่านเกณฑ์</value>
+  </data>
+  <data name="Qualified" xml:space="preserve">
+    <value>ผ่านเกณฑ์</value>
+  </data>
+  <data name="RedepositStatistics" xml:space="preserve">
+    <value>สถิติการฝากซ้ำ</value>
+  </data>
+  <data name="EstimatedCPAAmount" xml:space="preserve">
+    <value>จำนวนเงิน CPA โดยประมาณ</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>วัน</value>
+  </data>
+  <data name="Monitoring" xml:space="preserve">
+    <value>กำลังติดตาม</value>
+  </data>
+  <data name="StartFrom" xml:space="preserve">
+    <value>เริ่มตั้งแต่</value>
+  </data>
+  <data name="RecheckDay" xml:space="preserve">
+    <value>จำนวนวันตรวจสอบซ้ำ</value>
+  </data>
+  <data name="TotalAllPages" xml:space="preserve">
+    <value>รวม (ทุกหน้า)</value>
+  </data>
+  <data name="RedepositRate" xml:space="preserve">
+    <value>% การฝากซ้ำ</value>
+  </data>
+  <data name="CPAStatus" xml:space="preserve">
+    <value>สถานะ CPA</value>
+  </data>
+  <data name="Approval Date" xml:space="preserve">
+    <value>วันที่อนุมัติ</value>
+  </data>
+  <data name="ProductGroup" xml:space="preserve">
+    <value>กลุ่มผลิตภัณฑ์</value>
+  </data>
+  <data name="NumberOfPlayerRedeposit" xml:space="preserve">
+    <value>จำนวนผู้เล่นที่ฝากซ้ำ</value>
+  </data>
+  <data name="ExpiredRedepositDate" xml:space="preserve">
+    <value>วันที่หมดอายุการฝากซ้ำ</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>วันที่ลงทะเบียน</value>
+  </data>
+  <data name="QuotaExceeded" xml:space="preserve">
+    <value>เกินกำหนดโควตา</value>
+  </data>
+  <data name="Quota" xml:space="preserve">
+    <value>โควตา</value>
+  </data>
+  <data name="ActivePeriod" xml:space="preserve">
+    <value>ช่วงใช้งาน</value>
+  </data>
+  <data name="HoldingExpiredDate" xml:space="preserve">
+    <value>วันที่หมดช่วงพักสถานะ</value>
+  </data>
+  <data name="HoldingQualifiedDate" xml:space="preserve">
+    <value>วันที่ผ่านเงื่อนไข (ระงับชั่วคราว)</value>
+  </data>
+  <data name="HoldingPeriod" xml:space="preserve">
+    <value>ช่วงพักสถานะ (Holding)</value>
+  </data>
+  <data name="ActiveQualifiedDate" xml:space="preserve">
+    <value>วันที่ผ่านเงื่อนไขและเปิดใช้งาน</value>
+  </data>
+  <data name="BetTicket" xml:space="preserve">
+    <value>บิลเดิมพัน</value>
+  </data>
+  <data name="Ineligible" xml:space="preserve">
+    <value>ไม่มีคุณสมบัติ</value>
+  </data>
+  <data name="Eligible" xml:space="preserve">
+    <value>ที่เข้าเงื่อนไข</value>
+  </data>
+  <data name="TentativeCpaEarning" xml:space="preserve">
+    <value>รายได้ CPA (โดยประมาณ)</value>
+  </data>
+  <data name="ViewBy" xml:space="preserve">
+    <value>แสดงตาม</value>
+  </data>
+  <data name="CpaEarning" xml:space="preserve">
+    <value>รายได้แบบ CPA</value>
+  </data>
+  <data name="SubAffiliateRevenueShare" xml:space="preserve">
+    <value>ส่วนแบ่งรายได้ของพันธมิตรย่อย</value>
+  </data>
+  <data name="ApprovedCpaEarning" xml:space="preserve">
+    <value>รายได้ CPA ที่อนุมัติแล้ว</value>
+  </data>
+  <data name="SubCpaEarning" xml:space="preserve">
+    <value>CPA ของพันธมิตรย่อย</value>
+  </data>
+  <data name="AllStatuses" xml:space="preserve">
+    <value>สถานะทั้งหมด</value>
+  </data>
+  <data name="TurnoverCPADetail" xml:space="preserve">
+    <value>รายละเอียด CPA เทิร์นโอเวอร์</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>กลุ่ม {0}</value>
+  </data>
+  <data name="IsRedepositDescription" xml:space="preserve">
+    <value>แสดงว่าผู้เล่นมีการฝากซ้ำหรือไม่</value>
+  </data>
+  <data name="PlayerCPAReport" xml:space="preserve">
+    <value>รายงาน CPA ของผู้เล่น</value>
+  </data>
+  <data name="CpaAdjustment" xml:space="preserve">
+    <value>การปรับ CPA</value>
+  </data>
+  <data name="TotalDepositsDescription" xml:space="preserve">
+    <value>ยอดฝากทั้งหมดของผู้เล่นในช่วงเวลากิจกรรม การฝากหลังจากนี้จะไม่นับรวม</value>
+  </data>
+  <data name="ActiveQualifiedDateDescription" xml:space="preserve">
+    <value>วันที่ผู้เล่นทำตามเงื่อนไขที่กำหนด เช่น ฝากขั้นต่ำ (FTD) การฝาก หรือยอดเทิร์น</value>
+  </data>
+  <data name="BetTicketDescription" xml:space="preserve">
+    <value>จำนวนบิลเดิมพันทั้งหมดที่วางในช่วงถือครอง</value>
+  </data>
+  <data name="HoldingQualifiedDateDescription" xml:space="preserve">
+    <value>วันที่จำนวนบิลเดิมพันขั้นต่ำครบตามกำหนด</value>
+  </data>
+  <data name="HoldingExpiredDateDescription" xml:space="preserve">
+    <value>วันสิ้นสุดของช่วงถือครอง</value>
+  </data>
+  <data name="ExpiredDateDescription" xml:space="preserve">
+    <value>วันสุดท้ายที่ผู้เล่นสามารถฝากซ้ำได้</value>
+  </data>
+  <data name="PaymentCPAReport" xml:space="preserve">
+    <value>รายงานการจ่าย CPA</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>วันที่เริ่มต้น</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>วันที่สิ้นสุด</value>
+  </data>
+  <data name="AdjustmentAmount" xml:space="preserve">
+    <value>จำนวนเงินที่ปรับ</value>
+  </data>
+  <data name="ManuallyApproved" xml:space="preserve">
+    <value>อนุมัติด้วยตนเอง</value>
+  </data>
+  <data name="AffiliateLink" xml:space="preserve">
+    <value>ลิงก์พันธมิตร</value>
+  </data>
+  <data name="RedepositQualifiedPeriod" xml:space="preserve">
+    <value>ช่วงเวลาที่เข้าเกณฑ์การฝากซ้ำ</value>
+  </data>
+  <data name="ExpiredDate" xml:space="preserve">
+    <value>วันที่หมดอายุ</value>
+  </data>
+  <data name="IsRedeposit" xml:space="preserve">
+    <value>การฝากซ้ำหรือไม่</value>
+  </data>
+  <data name="AutoApprovedDate" xml:space="preserve">
+    <value>CPA ที่อนุมัติโดยอัตโนมัติ</value>
+  </data>
+  <data name="AdjustmentDate" xml:space="preserve">
+    <value>วันที่ปรับยอด</value>
+  </data>
+  <data name="Empty" xml:space="preserve">
+    <value>ว่างเปล่า</value>
+  </data>
+  <data name="PaymentSchedule" xml:space="preserve">
+    <value>ตารางการชำระเงิน</value>
+  </data>
+  <data name="EligiblePlayers" xml:space="preserve">
+    <value>ผู้เล่นที่มีสิทธิ์</value>
+  </data>
+  <data name="AutomaticallyApproved" xml:space="preserve">
+    <value>อนุมัติโดยอัตโนมัติ</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>เลือกแล้ว {0} รายการ</value>
+  </data>
+  <data name="NoneSelect" xml:space="preserve">
+    <value>ยังไม่ได้เลือก</value>
+  </data>
+  <data name="CPAAmountDescription" xml:space="preserve">
+    <value>คลิกเพื่อดูรายละเอียดยอดเทิร์น CPA</value>
+  </data>
+  <data name="FdmAmt" xml:space="preserve">
+    <value>ยอดฝากครั้งแรก (FTD)</value>
+  </data>
+  <data name="RedepositFailed" xml:space="preserve">
+    <value>การฝากซ้ำไม่สำเร็จ</value>
+  </data>
+  <data name="ScheduleEndDate" xml:space="preserve">
+    <value>วันที่สิ้นสุดกำหนดการ</value>
+  </data>
+  <data name="FinalCPAAmount" xml:space="preserve">
+    <value>ยอด CPA สุดท้าย</value>
+  </data>
+  <data name="TotalCommission" xml:space="preserve">
+    <value>รวมส่วนแบ่งรายได้</value>
+  </data>
+  <data name="Settled" xml:space="preserve">
+    <value>ที่ชำระเสร็จสิ้น</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>ใช่</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>ไม่ใช่</value>
+  </data>
+  <data name="QualifiedRevenueSharePlayers" xml:space="preserve">
+    <value>ผู้เล่นที่ผ่านเกณฑ์สำหรับส่วนแบ่งรายได้</value>
+  </data>
+  <data name="QualifiedCPAPlayers" xml:space="preserve">
+    <value>ผู้เล่นที่ผ่านเกณฑ์สำหรับ CPA</value>
+  </data>
+  <data name="TentativeCPAAmount" xml:space="preserve">
+    <value>จำนวน CPA (โดยประมาณ)</value>
+  </data>
+  <data name="TentativeRevenueShare" xml:space="preserve">
+    <value>ส่วนแบ่งรายได้ (โดยประมาณ)</value>
+  </data>
+  <data name="ApprovedCPAAmount" xml:space="preserve">
+    <value>จำนวนเงิน CPA ที่อนุมัติแล้ว</value>
+  </data>
+  <data name="MonthToDateTentativeAmount" xml:space="preserve">
+    <value>ยอดโดยประมาณเดือนนี้ถึงปัจจุบัน</value>
+  </data>
+  <data name="PlayersWhoPassed" xml:space="preserve">
+    <value>ผู้เล่นที่ผ่านช่วงรอคอย (Holding Period) แล้ว และยังไม่พลาดกำหนดฝากซ้ำ (อยู่ภายในโควตา)</value>
+  </data>
+  <data name="QualifiedPlayers" xml:space="preserve">
+    <value>ผู้เล่นที่ผ่านเกณฑ์สำหรับ</value>
+  </data>
+  <data name="TotalCPAAmountForEligiblePlayers" xml:space="preserve">
+    <value>ยอดรวม CPA สำหรับผู้เล่นที่เข้าเกณฑ์จนถึงโควตาที่เหลือ ตั้งแต่เริ่มต้นจนถึงวันสิ้นสุด (ไม่กำหนดวันเริ่มต้น)</value>
+  </data>
+  <data name="PlayersWhoPassedTheHoldingPeriod" xml:space="preserve">
+    <value>ผู้เล่นที่ผ่านช่วงรอคอย (Holding Period) แล้ว และยังไม่พลาดกำหนดฝากซ้ำ (อยู่ภายในโควตา)</value>
+  </data>
+  <data name="DateRange" xml:space="preserve">
+    <value>ช่วงวันที่</value>
+  </data>
+  <data name="RevenueShareAndNetRevenue" xml:space="preserve">
+    <value>ส่วนแบ่งรายได้และรายได้สุทธิจะแสดงเฉพาะข้อมูลแบบรายเดือนเท่านั้น</value>
+  </data>
+  <data name="TentativeMonthlyEarning" xml:space="preserve">
+    <value>รายได้รายเดือน (โดยประมาณ)</value>
+  </data>
+  <data name="UncalculatedTentativeMonthlyEarning" xml:space="preserve">
+    <value>รายได้รายเดือน (โดยประมาณ ยังไม่ถูกคำนวณ)</value>
   </data>
 </root>
